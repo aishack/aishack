@@ -79,11 +79,20 @@ class BBP_Shortcodes {
 
 			'bbp-single-view'      => array( $this, 'display_view'          ), // Single view
 
+			/** Search ********************************************************/
+
+			'bbp-search-form'      => array( $this, 'display_search_form'   ), // Search form
+			'bbp-search'           => array( $this, 'display_search'        ), // Search
+
 			/** Account *******************************************************/
 
 			'bbp-login'            => array( $this, 'display_login'         ), // Login
 			'bbp-register'         => array( $this, 'display_register'      ), // Register
 			'bbp-lost-pass'        => array( $this, 'display_lost_pass'     ), // Lost Password
+
+			/** Others *******************************************************/
+
+			'bbp-stats'            => array( $this, 'display_stats'         ), // Stats
 		) );
 	}
 
@@ -96,7 +105,7 @@ class BBP_Shortcodes {
 	 * @uses do_action()
 	 */
 	private function add_shortcodes() {
-		foreach( (array) $this->codes as $code => $function ) {
+		foreach ( (array) $this->codes as $code => $function ) {
 			add_shortcode( $code, $function );
 		}
 	}
@@ -110,9 +119,10 @@ class BBP_Shortcodes {
 		$bbp = bbpress();
 
 		// Unset global queries
-		$bbp->forum_query = new stdClass;
-		$bbp->topic_query = new stdClass;
-		$bbp->reply_query = new stdClass;
+		$bbp->forum_query  = new WP_Query();
+		$bbp->topic_query  = new WP_Query();
+		$bbp->reply_query  = new WP_Query();
+		$bbp->search_query = new WP_Query();
 
 		// Unset global ID's
 		$bbp->current_forum_id     = 0;
@@ -145,9 +155,6 @@ class BBP_Shortcodes {
 		// Set query name
 		bbp_set_query_name( $query_name );
 
-		// Remove 'bbp_replace_the_content' filter to prevent infinite loops
-		remove_filter( 'the_content', 'bbp_replace_the_content' );
-
 		// Start output buffer
 		ob_start();
 	}
@@ -162,22 +169,14 @@ class BBP_Shortcodes {
 	 */
 	private function end() {
 
-		// Put output into usable variable
-		$output = ob_get_contents();
-
 		// Unset globals
 		$this->unset_globals();
-
-		// Flush the output buffer
-		ob_end_clean();
 
 		// Reset the query name
 		bbp_reset_query_name();
 
-		// Add 'bbp_replace_the_content' filter back (@see $this::start())
-		add_filter( 'the_content', 'bbp_replace_the_content' );
-
-		return $output;
+		// Return and flush the output buffer
+		return ob_get_clean();
 	}
 
 	/** Forum shortcodes ******************************************************/
@@ -367,17 +366,53 @@ class BBP_Shortcodes {
 	 * Display the topic form in an output buffer and return to ensure
 	 * post/page contents are displayed first.
 	 *
+	 * Supports 'forum_id' attribute to display the topic form for a particular
+	 * forum. This currently has styling issues from not being wrapped in
+	 * <div id="bbpress-forums"></div> which will need to be sorted out later.
+	 *
 	 * @since bbPress (r3031)
 	 *
+	 * @param array $attr
+	 * @param string $content
 	 * @uses get_template_part()
+	 * @return string
 	 */
-	public function display_topic_form() {
+	public function display_topic_form( $attr = array(), $content = '' ) {
 
-		// Start output buffer
-		$this->start( 'bbp_topic_form' );
+		// Sanity check supplied info
+		if ( !empty( $content ) || ( !empty( $attr['forum_id'] ) && ( !is_numeric( $attr['forum_id'] ) || !bbp_is_forum( $attr['forum_id'] ) ) ) )
+			return $content;
 
-		// Output templates
-		bbp_get_template_part( 'form', 'topic' );
+		// Unset globals
+		$this->unset_globals();
+
+		// If forum id is set, use the 'bbp_single_forum' query name
+		if ( !empty( $attr['forum_id'] ) ) {
+
+			// Set the global current_forum_id for future requests
+			bbpress()->current_forum_id = $forum_id = bbp_get_forum_id( $attr['forum_id'] );
+
+			// Start output buffer
+			$this->start( 'bbp_single_forum' );
+
+		// No forum id was passed
+		} else {
+
+			// Set the $forum_id variable to satisfy checks below
+			$forum_id = 0;
+
+			// Start output buffer
+			$this->start( 'bbp_topic_form' );
+		}
+
+		// If the forum id is set, check forum caps else display normal topic form
+		if ( empty( $forum_id ) || bbp_user_can_view_forum( array( 'forum_id' => $forum_id ) ) ) {
+			bbp_get_template_part( 'form', 'topic' );
+
+		// Forum is private and user does not have caps
+		} elseif ( bbp_is_forum_private( $forum_id, false ) ) {
+			bbp_get_template_part( 'feedback', 'no-access' );
+		}
 
 		// Return contents of output buffer
 		return $this->end();
@@ -598,6 +633,80 @@ class BBP_Shortcodes {
 		return $this->end();
 	}
 
+	/** Search ****************************************************************/
+
+	/**
+	 * Display the search form in an output buffer and return to ensure
+	 * post/page contents are displayed first.
+	 *
+	 * @since bbPress (r4585)
+	 *
+	 * @uses get_template_part()
+	 */
+	public function display_search_form() {
+
+		// Bail if search is disabled
+		if ( ! bbp_allow_search() ) {
+			return;
+		}
+
+		// Start output buffer
+		$this->start( 'bbp_search_form' );
+
+		// Output templates
+		bbp_get_template_part( 'form', 'search' );
+
+		// Return contents of output buffer
+		return $this->end();
+	}
+
+	/**
+	 * Display the contents of search results in an output buffer and return to
+	 * ensure that post/page contents are displayed first.
+	 *
+	 * @since bbPress (r4579)
+	 *
+	 * @param array $attr
+	 * @param string $content
+	 * @uses bbp_search_query()
+	 * @uses get_template_part()
+	 */
+	public function display_search( $attr, $content = '' ) {
+
+		// Sanity check required info
+		if ( !empty( $content ) ) {
+			return $content;
+		}
+
+		// Bail if search is disabled
+		if ( ! bbp_allow_search() ) {
+			return;
+		}
+
+		// Trim search attribute if it's set
+		if ( isset( $attr['search'] ) ) {
+			$attr['search'] = trim( $attr['search'] );
+		}
+
+		// Set passed attribute to $search_terms for clarity
+		$search_terms = empty( $attr['search'] ) ? bbp_get_search_terms() : $attr['search'];
+
+		// Unset globals
+		$this->unset_globals();
+
+		// Set terms for query
+		set_query_var( bbp_get_search_rewrite_id(), $search_terms );
+
+		// Start output buffer
+		$this->start( 'bbp_search' );
+
+		// Output template
+		bbp_get_template_part( 'content', 'search' );
+
+		// Return contents of output buffer
+		return $this->end();
+	}
+
 	/** Account ***************************************************************/
 
 	/**
@@ -670,12 +779,34 @@ class BBP_Shortcodes {
 			bbp_get_template_part( 'form',     'user-lost-pass' );
 		else
 			bbp_get_template_part( 'feedback', 'logged-in'      );
-	
+
 		// Return contents of output buffer
 		return $this->end();
 	}
 
 	/** Other *****************************************************************/
+
+	/**
+	 * Display forum statistics
+	 *
+	 * @since bbPress (r4509)
+	 *
+	 * @return shring
+	 */
+	public function display_stats() {
+
+		// Unset globals
+		$this->unset_globals();
+
+		// Start output buffer
+		$this->start();
+
+		// Output statistics
+		bbp_get_template_part( 'content', 'statistics' );
+
+		// Return contents of output buffer
+		return $this->end();
+	}
 
 	/**
 	 * Display a breadcrumb

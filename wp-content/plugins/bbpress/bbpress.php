@@ -5,7 +5,7 @@
  *
  * bbPress is forum software with a twist from the creators of WordPress.
  *
- * $Id: bbpress.php 4711 2013-01-24 16:57:02Z johnjamesjacoby $
+ * $Id: bbpress.php 5127 2013-10-10 23:11:01Z johnjamesjacoby $
  *
  * @package bbPress
  * @subpackage Main
@@ -17,7 +17,7 @@
  * Description: bbPress is forum software with a twist from the creators of WordPress.
  * Author:      The bbPress Community
  * Author URI:  http://bbpress.org
- * Version:     2.2.4
+ * Version:     2.4.1
  * Text Domain: bbpress
  * Domain Path: /languages/
  */
@@ -29,7 +29,7 @@ if ( !class_exists( 'bbPress' ) ) :
 /**
  * Main bbPress Class
  *
- * Tap tap tap... Is this thing on?
+ * "How doth the little busy bee, improve each shining hour..."
  *
  * @since bbPress (r2464)
  */
@@ -38,11 +38,12 @@ final class bbPress {
 	/** Magic *****************************************************************/
 
 	/**
-	 * bbPress uses many variables, most of which can be filtered to customize
-	 * the way that it works. To prevent unauthorized access, these variables
-	 * are stored in a private array that is magically updated using PHP 5.2+
-	 * methods. This is to prevent third party plugins from tampering with
-	 * essential information indirectly, which would cause issues later.
+	 * bbPress uses many variables, several of which can be filtered to
+	 * customize the way it operates. Most of these variables are stored in a
+	 * private array that gets updated with the help of PHP magic methods.
+	 *
+	 * This is a precautionary measure, to avoid potential errors produced by
+	 * unanticipated direct manipulation of bbPress's run-time data.
 	 *
 	 * @see bbPress::setup_globals()
 	 * @var array
@@ -79,11 +80,6 @@ final class bbPress {
 	/** Singleton *************************************************************/
 
 	/**
-	 * @var bbPress The one true bbPress
-	 */
-	private static $instance;
-
-	/**
 	 * Main bbPress Instance
 	 *
 	 * bbPress is fun
@@ -94,7 +90,7 @@ final class bbPress {
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since bbPress (r3757)
-	 * @staticvar array $instance
+	 * @staticvar object $instance
 	 * @uses bbPress::setup_globals() Setup the globals needed
 	 * @uses bbPress::includes() Include the required files
 	 * @uses bbPress::setup_actions() Setup the hooks and actions
@@ -102,13 +98,20 @@ final class bbPress {
 	 * @return The one true bbPress
 	 */
 	public static function instance() {
-		if ( ! isset( self::$instance ) ) {
-			self::$instance = new bbPress;
-			self::$instance->setup_globals();
-			self::$instance->includes();
-			self::$instance->setup_actions();
+
+		// Store the instance locally to avoid private static replication
+		static $instance = null;
+
+		// Only run these methods if they haven't been ran previously
+		if ( null === $instance ) {
+			$instance = new bbPress;
+			$instance->setup_globals();
+			$instance->includes();
+			$instance->setup_actions();
 		}
-		return self::$instance;
+
+		// Always return the instance
+		return $instance;
 	}
 
 	/** Magic Methods *********************************************************/
@@ -144,18 +147,25 @@ final class bbPress {
 	public function __isset( $key ) { return isset( $this->data[$key] ); }
 
 	/**
-	 * Magic method for getting bbPress varibles
+	 * Magic method for getting bbPress variables
 	 *
 	 * @since bbPress (r3951)
 	 */
 	public function __get( $key ) { return isset( $this->data[$key] ) ? $this->data[$key] : null; }
 
 	/**
-	 * Magic method for setting bbPress varibles
+	 * Magic method for setting bbPress variables
 	 *
 	 * @since bbPress (r3951)
 	 */
 	public function __set( $key, $value ) { $this->data[$key] = $value; }
+
+	/**
+	 * Magic method for unsetting bbPress variables
+	 *
+	 * @since bbPress (r4628)
+	 */
+	public function __unset( $key ) { if ( isset( $this->data[$key] ) ) unset( $this->data[$key] ); }
 
 	/**
 	 * Magic method to prevent notices and errors from invalid method calls
@@ -180,8 +190,8 @@ final class bbPress {
 
 		/** Versions **********************************************************/
 
-		$this->version    = '2.2.4';
-		$this->db_version = '224';
+		$this->version    = '2.4.1';
+		$this->db_version = '240';
 
 		/** Paths *************************************************************/
 
@@ -221,13 +231,15 @@ final class bbPress {
 		$this->trash_status_id   = apply_filters( 'bbp_trash_post_status',   'trash'   );
 
 		// Other identifiers
-		$this->user_id           = apply_filters( 'bbp_user_id', 'bbp_user' );
-		$this->tops_id           = apply_filters( 'bbp_tops_id', 'bbp_tops' );
-		$this->reps_id           = apply_filters( 'bbp_reps_id', 'bbp_reps' );
-		$this->favs_id           = apply_filters( 'bbp_favs_id', 'bbp_favs' );
-		$this->subs_id           = apply_filters( 'bbp_subs_id', 'bbp_subs' );
-		$this->view_id           = apply_filters( 'bbp_view_id', 'bbp_view' );
-		$this->edit_id           = apply_filters( 'bbp_edit_id', 'edit'     );
+		$this->user_id           = apply_filters( 'bbp_user_id',   'bbp_user'   );
+		$this->tops_id           = apply_filters( 'bbp_tops_id',   'bbp_tops'   );
+		$this->reps_id           = apply_filters( 'bbp_reps_id',   'bbp_reps'   );
+		$this->favs_id           = apply_filters( 'bbp_favs_id',   'bbp_favs'   );
+		$this->subs_id           = apply_filters( 'bbp_subs_id',   'bbp_subs'   );
+		$this->view_id           = apply_filters( 'bbp_view_id',   'bbp_view'   );
+		$this->edit_id           = apply_filters( 'bbp_edit_id',   'edit'       );
+		$this->paged_id          = apply_filters( 'bbp_paged_id',  'paged'      );
+		$this->search_id         = apply_filters( 'bbp_search_id', 'bbp_search' );
 
 		/** Queries ***********************************************************/
 
@@ -236,9 +248,10 @@ final class bbPress {
 		$this->current_reply_id     = 0; // Current reply id
 		$this->current_topic_tag_id = 0; // Current topic tag id
 
-		$this->forum_query    = new stdClass(); // Main forum query
-		$this->topic_query    = new stdClass(); // Main topic query
-		$this->reply_query    = new stdClass(); // Main reply query
+		$this->forum_query    = new WP_Query(); // Main forum query
+		$this->topic_query    = new WP_Query(); // Main topic query
+		$this->reply_query    = new WP_Query(); // Main reply query
+		$this->search_query   = new WP_Query(); // Main search query
 
 		/** Theme Compat ******************************************************/
 
@@ -247,8 +260,8 @@ final class bbPress {
 
 		/** Users *************************************************************/
 
-		$this->current_user   = new stdClass(); // Currently logged in user
-		$this->displayed_user = new stdClass(); // Currently displayed user
+		$this->current_user   = new WP_User(); // Currently logged in user
+		$this->displayed_user = new WP_User(); // Currently displayed user
 
 		/** Misc **************************************************************/
 
@@ -256,11 +269,6 @@ final class bbPress {
 		$this->extend         = new stdClass(); // Plugins add data here
 		$this->errors         = new WP_Error(); // Feedback
 		$this->tab_index      = apply_filters( 'bbp_default_tab_index', 100 );
-
-		/** Cache *************************************************************/
-
-		// Add bbPress to global cache groups
-		wp_cache_add_global_groups( 'bbpress' );
 	}
 
 	/**
@@ -287,32 +295,38 @@ final class bbPress {
 		/** Components ********************************************************/
 
 		// Common
-		require( $this->includes_dir . 'common/classes.php'        );
-		require( $this->includes_dir . 'common/functions.php'      );
-		require( $this->includes_dir . 'common/template-tags.php'  );
-		require( $this->includes_dir . 'common/widgets.php'        );
-		require( $this->includes_dir . 'common/shortcodes.php'     );
+		require( $this->includes_dir . 'common/ajax.php'          );
+		require( $this->includes_dir . 'common/classes.php'       );
+		require( $this->includes_dir . 'common/functions.php'     );
+		require( $this->includes_dir . 'common/formatting.php'    );
+		require( $this->includes_dir . 'common/template.php'      );
+		require( $this->includes_dir . 'common/widgets.php'       );
+		require( $this->includes_dir . 'common/shortcodes.php'    );
 
 		// Forums
-		require( $this->includes_dir . 'forums/capabilities.php'   );
-		require( $this->includes_dir . 'forums/functions.php'      );
-		require( $this->includes_dir . 'forums/template-tags.php'  );
+		require( $this->includes_dir . 'forums/capabilities.php'  );
+		require( $this->includes_dir . 'forums/functions.php'     );
+		require( $this->includes_dir . 'forums/template.php'      );
 
 		// Topics
-		require( $this->includes_dir . 'topics/capabilities.php'   );
-		require( $this->includes_dir . 'topics/functions.php'      );
-		require( $this->includes_dir . 'topics/template-tags.php'  );
+		require( $this->includes_dir . 'topics/capabilities.php'  );
+		require( $this->includes_dir . 'topics/functions.php'     );
+		require( $this->includes_dir . 'topics/template.php'      );
 
 		// Replies
-		require( $this->includes_dir . 'replies/capabilities.php'  );
-		require( $this->includes_dir . 'replies/functions.php'     );
-		require( $this->includes_dir . 'replies/template-tags.php' );
+		require( $this->includes_dir . 'replies/capabilities.php' );
+		require( $this->includes_dir . 'replies/functions.php'    );
+		require( $this->includes_dir . 'replies/template.php'     );
+
+		// Search
+		require( $this->includes_dir . 'search/functions.php'     );
+		require( $this->includes_dir . 'search/template.php'      );
 
 		// Users
-		require( $this->includes_dir . 'users/capabilities.php'    );
-		require( $this->includes_dir . 'users/functions.php'       );
-		require( $this->includes_dir . 'users/template-tags.php'   );
-		require( $this->includes_dir . 'users/options.php'         );
+		require( $this->includes_dir . 'users/capabilities.php'   );
+		require( $this->includes_dir . 'users/functions.php'      );
+		require( $this->includes_dir . 'users/template.php'       );
+		require( $this->includes_dir . 'users/options.php'        );
 
 		/** Hooks *************************************************************/
 
@@ -357,12 +371,13 @@ final class bbPress {
 			'register_views',           // Register the views (no-replies)
 			'register_theme_packages',  // Register bundled theme packages (bbp-theme-compat/bbp-themes)
 			'load_textdomain',          // Load textdomain (bbpress)
-			'add_rewrite_tags',         // Add rewrite tags (view|user|edit)
-			'generate_rewrite_rules'    // Generate rewrite rules (view|edit)
+			'add_rewrite_tags',         // Add rewrite tags (view|user|edit|search)
+			'add_rewrite_rules',        // Generate rewrite rules (view|edit|paged|search)
+			'add_permastructs'          // Add permalink structures (view|user|search)
 		);
 
 		// Add the actions
-		foreach( $actions as $class_action )
+		foreach ( $actions as $class_action )
 			add_action( 'bbp_' . $class_action, array( $this, $class_action ), 5 );
 
 		// All bbPress actions are setup (includes bbp-core-hooks.php)
@@ -398,7 +413,7 @@ final class bbPress {
 	}
 
 	/**
-	 * Setup the default bbPress theme compatability location.
+	 * Setup the default bbPress theme compatibility location.
 	 *
 	 * @since bbPress (r3778)
 	 */
@@ -423,15 +438,13 @@ final class bbPress {
 	 *
 	 * @since bbPress (r2596)
 	 *
-	 * @uses apply_filters() Calls 'bbpress_locale' with the
-	 *                        {@link get_locale()} value
+	 * @uses apply_filters() Calls 'plugin_locale' with {@link get_locale()} value
 	 * @uses load_textdomain() To load the textdomain
-	 * @return bool True on success, false on failure
 	 */
 	public function load_textdomain() {
 
 		// Traditional WordPress plugin locale filter
-		$locale        = apply_filters( 'plugin_locale',  get_locale(), $this->domain );
+		$locale        = apply_filters( 'plugin_locale', get_locale(), $this->domain );
 		$mofile        = sprintf( '%1$s-%2$s.mo', $this->domain, $locale );
 
 		// Setup paths to current locale file
@@ -439,16 +452,10 @@ final class bbPress {
 		$mofile_global = WP_LANG_DIR . '/bbpress/' . $mofile;
 
 		// Look in global /wp-content/languages/bbpress folder
-		if ( file_exists( $mofile_global ) ) {
-			return load_textdomain( $this->domain, $mofile_global );
+		load_textdomain( $this->domain, $mofile_global );
 
 		// Look in local /wp-content/plugins/bbpress/bbp-languages/ folder
-		} elseif ( file_exists( $mofile_local ) ) {
-			return load_textdomain( $this->domain, $mofile_local );
-		}
-
-		// Nothing found
-		return false;
+		load_textdomain( $this->domain, $mofile_local );
 	}
 
 	/**
@@ -566,7 +573,7 @@ final class bbPress {
 				'capabilities'        => bbp_get_topic_caps(),
 				'capability_type'     => array( 'topic', 'topics' ),
 				'menu_position'       => 555555,
-				'has_archive'         => bbp_get_topic_archive_slug(),
+				'has_archive'         => ( 'forums' === bbp_show_on_root() ) ? bbp_get_topic_archive_slug() : false,
 				'exclude_from_search' => true,
 				'show_in_nav_menus'   => false,
 				'public'              => true,
@@ -655,7 +662,7 @@ final class bbPress {
 			bbp_get_closed_status_id(),
 			apply_filters( 'bbp_register_closed_post_status', array(
 				'label'             => _x( 'Closed', 'post', 'bbpress' ),
-				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'bbpress' ),
+				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'post', 'bbpress' ),
 				'public'            => true,
 				'show_in_admin_all' => true
 			) )
@@ -666,7 +673,7 @@ final class bbPress {
 			bbp_get_spam_status_id(),
 			apply_filters( 'bbp_register_spam_post_status', array(
 				'label'                     => _x( 'Spam', 'post', 'bbpress' ),
-				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'bbpress' ),
+				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'post', 'bbpress' ),
 				'protected'                 => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -679,7 +686,7 @@ final class bbPress {
 			bbp_get_orphan_status_id(),
 			apply_filters( 'bbp_register_orphan_post_status', array(
 				'label'                     => _x( 'Orphan', 'post', 'bbpress' ),
-				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'bbpress' ),
+				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'post', 'bbpress' ),
 				'protected'                 => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -692,7 +699,7 @@ final class bbPress {
 			bbp_get_hidden_status_id(),
 			apply_filters( 'bbp_register_hidden_post_status', array(
 				'label'                     => _x( 'Hidden', 'post', 'bbpress' ),
-				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'bbpress' ),
+				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'post', 'bbpress' ),
 				'private'                   => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -718,7 +725,7 @@ final class bbPress {
 				$wp_post_statuses['trash']->protected = true;
 
 			// User cannot view trash so set internal to true
-			} elseif ( !current_user_can( 'view_trash' ) ) {
+			} else {
 				$wp_post_statuses['trash']->internal = true;
 			}
 		}
@@ -767,6 +774,7 @@ final class bbPress {
 				'query_var'             => true,
 				'show_tagcloud'         => true,
 				'hierarchical'          => false,
+				'show_in_nav_menus'     => false,
 				'public'                => true,
 				'show_ui'               => bbp_allow_topic_tags() && current_user_can( 'bbp_topic_tags_admin' )
 			)
@@ -781,15 +789,28 @@ final class bbPress {
 	 */
 	public static function register_views() {
 
+		// Popular topics
+		bbp_register_view(
+			'popular',
+			__( 'Most popular topics', 'bbpress' ),
+			apply_filters( 'bbp_register_view_popular', array(
+				'meta_key'      => '_bbp_reply_count',
+				'max_num_pages' => 1,
+				'orderby'       => 'meta_value_num',
+				'show_stickies' => false
+			)
+		) );
+
 		// Topics with no replies
 		bbp_register_view(
 			'no-replies',
 			__( 'Topics with no replies', 'bbpress' ),
 			apply_filters( 'bbp_register_view_no_replies', array(
-				'meta_key'     => '_bbp_reply_count',
-				'meta_value'   => 1,
-				'meta_compare' => '<',
-				'orderby'      => ''
+				'meta_key'      => '_bbp_reply_count',
+				'meta_value'    => 1,
+				'meta_compare'  => '<',
+				'orderby'       => '',
+				'show_stickies' => false
 			)
 		) );
 	}
@@ -817,7 +838,7 @@ final class bbPress {
 	 * @uses wp_get_current_user()
 	 */
 	public function setup_current_user() {
-		$this->current_user = &wp_get_current_user();
+		$this->current_user = wp_get_current_user();
 	}
 
 	/** Custom Rewrite Rules **************************************************/
@@ -829,90 +850,168 @@ final class bbPress {
 	 * @uses add_rewrite_tag() To add the rewrite tags
 	 */
 	public static function add_rewrite_tags() {
-		add_rewrite_tag( '%%' . bbp_get_view_rewrite_id()               . '%%', '([^/]+)'   ); // View Page tag
-		add_rewrite_tag( '%%' . bbp_get_edit_rewrite_id()               . '%%', '([1]{1,})' ); // Edit Page tag
-		add_rewrite_tag( '%%' . bbp_get_user_rewrite_id()               . '%%', '([^/]+)'   ); // User Profile tag
-		add_rewrite_tag( '%%' . bbp_get_user_favorites_rewrite_id()     . '%%', '([1]{1,})' ); // User Favorites tag
-		add_rewrite_tag( '%%' . bbp_get_user_subscriptions_rewrite_id() . '%%', '([1]{1,})' ); // User Subscriptions tag
-		add_rewrite_tag( '%%' . bbp_get_user_topics_rewrite_id()        . '%%', '([1]{1,})' ); // User Topics Tag
-		add_rewrite_tag( '%%' . bbp_get_user_replies_rewrite_id()       . '%%', '([1]{1,})' ); // User Replies Tag
+		add_rewrite_tag( '%' . bbp_get_view_rewrite_id()               . '%', '([^/]+)'   ); // View Page tag
+		add_rewrite_tag( '%' . bbp_get_edit_rewrite_id()               . '%', '([1]{1,})' ); // Edit Page tag
+		add_rewrite_tag( '%' . bbp_get_search_rewrite_id()             . '%', '([^/]+)'   ); // Search Results tag
+		add_rewrite_tag( '%' . bbp_get_user_rewrite_id()               . '%', '([^/]+)'   ); // User Profile tag
+		add_rewrite_tag( '%' . bbp_get_user_favorites_rewrite_id()     . '%', '([1]{1,})' ); // User Favorites tag
+		add_rewrite_tag( '%' . bbp_get_user_subscriptions_rewrite_id() . '%', '([1]{1,})' ); // User Subscriptions tag
+		add_rewrite_tag( '%' . bbp_get_user_topics_rewrite_id()        . '%', '([1]{1,})' ); // User Topics Tag
+		add_rewrite_tag( '%' . bbp_get_user_replies_rewrite_id()       . '%', '([1]{1,})' ); // User Replies Tag
 	}
 
 	/**
-	 * Register bbPress-specific rewrite rules for uri's that are not
+	 * Add bbPress-specific rewrite rules for uri's that are not
 	 * setup for us by way of custom post types or taxonomies. This includes:
 	 * - Front-end editing
 	 * - Topic views
 	 * - User profiles
 	 *
 	 * @since bbPress (r2688)
-	 * @param WP_Rewrite $wp_rewrite bbPress-sepecific rules are appended in
-	 *                                $wp_rewrite->rules
+	 * @todo Extract into an API
 	 */
-	public static function generate_rewrite_rules( $wp_rewrite ) {
+	public static function add_rewrite_rules() {
 
-		// Slugs
-		$view_slug = bbp_get_view_slug();
-		$user_slug = bbp_get_user_slug();
+		/** Setup *************************************************************/
+
+		// Add rules to top or bottom?
+		$priority           = 'top';
+
+		// Single Slugs
+		$forum_slug         = bbp_get_forum_slug();
+		$topic_slug         = bbp_get_topic_slug();
+		$reply_slug         = bbp_get_reply_slug();
+		$ttag_slug          = bbp_get_topic_tag_tax_slug();
+
+		// Archive Slugs
+		$user_slug          = bbp_get_user_slug();
+		$view_slug          = bbp_get_view_slug();
+		$search_slug        = bbp_get_search_slug();
+		$topic_archive_slug = bbp_get_topic_archive_slug();
+		$reply_archive_slug = bbp_get_reply_archive_slug();
+
+		// Tertiary Slugs
+		$feed_slug          = 'feed';
+		$edit_slug          = 'edit';
+		$paged_slug         = bbp_get_paged_slug();
+		$user_favs_slug     = bbp_get_user_favorites_slug();
+		$user_subs_slug     = bbp_get_user_subscriptions_slug();
 
 		// Unique rewrite ID's
-		$edit_id = bbp_get_edit_rewrite_id();
-		$view_id = bbp_get_view_rewrite_id();
-		$user_id = bbp_get_user_rewrite_id();
-		$favs_id = bbp_get_user_favorites_rewrite_id();
-		$subs_id = bbp_get_user_subscriptions_rewrite_id();
-		$tops_id = bbp_get_user_topics_rewrite_id();
-		$reps_id = bbp_get_user_replies_rewrite_id();
+		$feed_id            = 'feed';
+		$edit_id            = 'edit';
+		$view_id            = bbp_get_view_rewrite_id();
+		$paged_id           = bbp_get_paged_rewrite_id();
+		$search_id          = bbp_get_search_rewrite_id();
+		$user_id            = bbp_get_user_rewrite_id();
+		$user_favs_id       = bbp_get_user_favorites_rewrite_id();
+		$user_subs_id       = bbp_get_user_subscriptions_rewrite_id();
+		$user_tops_id       = bbp_get_user_topics_rewrite_id();
+		$user_reps_id       = bbp_get_user_replies_rewrite_id();
 
 		// Rewrite rule matches used repeatedly below
-		$root_rule = '/([^/]+)/?$';
-		$edit_rule = '/([^/]+)/edit/?$';
-		$feed_rule = '/([^/]+)/feed/?$';
-		$page_rule = '/([^/]+)/page/?([0-9]{1,})/?$';
+		$root_rule    = '/([^/]+)/?$';
+		$feed_rule    = '/([^/]+)/' . $feed_slug  . '/?$';
+		$edit_rule    = '/([^/]+)/' . $edit_slug  . '/?$';
+		$paged_rule   = '/([^/]+)/' . $paged_slug . '/?([0-9]{1,})/?$';
+
+		// Search rules (without slug check)
+		$search_root_rule  = '/?$';
+		$search_paged_rule = '/' . $paged_slug . '/?([0-9]{1,})/?$';
+
+		/** Add ***************************************************************/
 
 		// User profile rules
-		$tops_rule      = '/([^/]+)/topics/?$';
-		$reps_rule      = '/([^/]+)/replies/?$';
-		$favs_rule      = '/([^/]+)/' . bbp_get_user_favorites_slug()     . '/?$';
-		$subs_rule      = '/([^/]+)/' . bbp_get_user_subscriptions_slug() . '/?$';
-		$tops_page_rule = '/([^/]+)/topics/page/?([0-9]{1,})/?$';
-		$reps_page_rule = '/([^/]+)/replies/page/?([0-9]{1,})/?$';
-		$favs_page_rule = '/([^/]+)/' . bbp_get_user_favorites_slug()     . '/page/?([0-9]{1,})/?$';
-		$subs_page_rule = '/([^/]+)/' . bbp_get_user_subscriptions_slug() . '/page/?([0-9]{1,})/?$';
+		$tops_rule       = '/([^/]+)/' . $topic_archive_slug . '/?$';
+		$reps_rule       = '/([^/]+)/' . $reply_archive_slug . '/?$';
+		$favs_rule       = '/([^/]+)/' . $user_favs_slug     . '/?$';
+		$subs_rule       = '/([^/]+)/' . $user_subs_slug     . '/?$';
+		$tops_paged_rule = '/([^/]+)/' . $topic_archive_slug . '/' . $paged_slug . '/?([0-9]{1,})/?$';
+		$reps_paged_rule = '/([^/]+)/' . $reply_archive_slug . '/' . $paged_slug . '/?([0-9]{1,})/?$';
+		$favs_paged_rule = '/([^/]+)/' . $user_favs_slug     . '/' . $paged_slug . '/?([0-9]{1,})/?$';
+		$subs_paged_rule = '/([^/]+)/' . $user_subs_slug     . '/' . $paged_slug . '/?([0-9]{1,})/?$';
 
-		// New bbPress specific rules to merge with existing that are not
-		// handled automatically by custom post types or taxonomy types
-		$bbp_rules = array(
+		// Edit Forum|Topic|Reply|Topic-tag
+		add_rewrite_rule( $forum_slug . $edit_rule, 'index.php?' . bbp_get_forum_post_type()  . '=$matches[1]&' . $edit_id . '=1', $priority );
+		add_rewrite_rule( $topic_slug . $edit_rule, 'index.php?' . bbp_get_topic_post_type()  . '=$matches[1]&' . $edit_id . '=1', $priority );
+		add_rewrite_rule( $reply_slug . $edit_rule, 'index.php?' . bbp_get_reply_post_type()  . '=$matches[1]&' . $edit_id . '=1', $priority );
+		add_rewrite_rule( $ttag_slug  . $edit_rule, 'index.php?' . bbp_get_topic_tag_tax_id() . '=$matches[1]&' . $edit_id . '=1', $priority );
 
-			// Edit Forum|Topic|Reply|Topic-tag
-			bbp_get_forum_slug()         . $edit_rule => 'index.php?' . bbp_get_forum_post_type()  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			bbp_get_topic_slug()         . $edit_rule => 'index.php?' . bbp_get_topic_post_type()  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			bbp_get_reply_slug()         . $edit_rule => 'index.php?' . bbp_get_reply_post_type()  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			bbp_get_topic_tag_tax_slug() . $edit_rule => 'index.php?' . bbp_get_topic_tag_tax_id() . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
+		// User Pagination|Edit|View
+		add_rewrite_rule( $user_slug . $tops_paged_rule, 'index.php?' . $user_id  . '=$matches[1]&' . $user_tops_id . '=1&' . $paged_id . '=$matches[2]', $priority );
+		add_rewrite_rule( $user_slug . $reps_paged_rule, 'index.php?' . $user_id  . '=$matches[1]&' . $user_reps_id . '=1&' . $paged_id . '=$matches[2]', $priority );
+		add_rewrite_rule( $user_slug . $favs_paged_rule, 'index.php?' . $user_id  . '=$matches[1]&' . $user_favs_id . '=1&' . $paged_id . '=$matches[2]', $priority );
+		add_rewrite_rule( $user_slug . $subs_paged_rule, 'index.php?' . $user_id  . '=$matches[1]&' . $user_subs_id . '=1&' . $paged_id . '=$matches[2]', $priority );
+		add_rewrite_rule( $user_slug . $tops_rule,       'index.php?' . $user_id  . '=$matches[1]&' . $user_tops_id . '=1',                               $priority );
+		add_rewrite_rule( $user_slug . $reps_rule,       'index.php?' . $user_id  . '=$matches[1]&' . $user_reps_id . '=1',                               $priority );
+		add_rewrite_rule( $user_slug . $favs_rule,       'index.php?' . $user_id  . '=$matches[1]&' . $user_favs_id . '=1',                               $priority );
+		add_rewrite_rule( $user_slug . $subs_rule,       'index.php?' . $user_id  . '=$matches[1]&' . $user_subs_id . '=1',                               $priority );
+		add_rewrite_rule( $user_slug . $edit_rule,       'index.php?' . $user_id  . '=$matches[1]&' . $edit_id      . '=1',                               $priority );
+		add_rewrite_rule( $user_slug . $root_rule,       'index.php?' . $user_id  . '=$matches[1]',                                                       $priority );
 
-			// User Pagination|Edit|View
-			$user_slug . $tops_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $tops_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $reps_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $reps_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $favs_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $favs_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $subs_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $subs_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $tops_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $tops_id . '=1',
-			$user_slug . $reps_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $reps_id . '=1',
-			$user_slug . $favs_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $favs_id . '=1',
-			$user_slug . $subs_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $subs_id . '=1',
-			$user_slug . $edit_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			$user_slug . $root_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ),
+		// Topic-View Pagination|Feed|View
+		add_rewrite_rule( $view_slug . $paged_rule, 'index.php?' . $view_id . '=$matches[1]&' . $paged_id . '=$matches[2]', $priority );
+		add_rewrite_rule( $view_slug . $feed_rule,  'index.php?' . $view_id . '=$matches[1]&' . $feed_id  . '=$matches[2]', $priority );
+		add_rewrite_rule( $view_slug . $root_rule,  'index.php?' . $view_id . '=$matches[1]',                               $priority );
 
-			// Topic-View Pagination|Feed|View
-			$view_slug . $page_rule => 'index.php?' . $view_id . '=' . $wp_rewrite->preg_index( 1 ) . '&paged=' . $wp_rewrite->preg_index( 2 ),
-			$view_slug . $feed_rule => 'index.php?' . $view_id . '=' . $wp_rewrite->preg_index( 1 ) . '&feed='  . $wp_rewrite->preg_index( 2 ),
-			$view_slug . $root_rule => 'index.php?' . $view_id . '=' . $wp_rewrite->preg_index( 1 ),
-		);
+		// Search All
+		add_rewrite_rule( $search_slug . $search_paged_rule, 'index.php?' . $paged_id .'=$matches[1]', $priority );
+		add_rewrite_rule( $search_slug . $search_root_rule,  'index.php?' . $search_id,                $priority );
+	}
 
-		// Merge bbPress rules with existing
-		$wp_rewrite->rules = array_merge( $bbp_rules, $wp_rewrite->rules );
+	/**
+	 * Add permalink structures for new archive-style destinations.
+	 *
+	 * - Users
+	 * - Topic Views
+	 * - Search
+	 *
+	 * @since bbPress (r4930)
+	 */
+	public static function add_permastructs() {
 
-		// Return merged rules
-		return $wp_rewrite;
+		// Get unique ID's
+		$user_id     = bbp_get_user_rewrite_id();
+		$view_id     = bbp_get_view_rewrite_id();
+		$search_id   = bbp_get_search_rewrite_id();
+
+		// Get root slugs
+		$user_slug   = bbp_get_user_slug();
+		$view_slug   = bbp_get_view_slug();
+		$search_slug = bbp_get_search_slug();
+
+		// User Permastruct
+		add_permastruct( $user_id, $user_slug . '/%' . $user_id . '%', array(
+			'with_front'  => false,
+			'ep_mask'     => EP_NONE,
+			'paged'       => false,
+			'feed'        => false,
+			'forcomments' => false,
+			'walk_dirs'   => true,
+			'endpoints'   => false,
+		) );
+
+		// Topic View Permastruct
+		add_permastruct( $view_id, $view_slug . '/%' . $view_id . '%', array(
+			'with_front'  => false,
+			'ep_mask'     => EP_NONE,
+			'paged'       => false,
+			'feed'        => false,
+			'forcomments' => false,
+			'walk_dirs'   => true,
+			'endpoints'   => false,
+		) );
+
+		// Search Permastruct
+		add_permastruct( $user_id, $search_slug . '/%' . $search_id . '%', array(
+			'with_front'  => false,
+			'ep_mask'     => EP_NONE,
+			'paged'       => true,
+			'feed'        => false,
+			'forcomments' => false,
+			'walk_dirs'   => true,
+			'endpoints'   => false,
+		) );
 	}
 }
 

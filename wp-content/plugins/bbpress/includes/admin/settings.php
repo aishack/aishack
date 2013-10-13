@@ -20,45 +20,55 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function bbp_admin_get_settings_sections() {
 	return (array) apply_filters( 'bbp_admin_get_settings_sections', array(
-		'bbp_settings_main' => array(
-			'title'    => __( 'Main Settings', 'bbpress' ),
-			'callback' => 'bbp_admin_setting_callback_main_section',
-			'page'     => 'bbpress',
+		'bbp_settings_users' => array(
+			'title'    => __( 'Forum User Settings', 'bbpress' ),
+			'callback' => 'bbp_admin_setting_callback_user_section',
+			'page'     => 'discussion'
+		),
+		'bbp_settings_features' => array(
+			'title'    => __( 'Forum Features', 'bbpress' ),
+			'callback' => 'bbp_admin_setting_callback_features_section',
+			'page'     => 'discussion'
 		),
 		'bbp_settings_theme_compat' => array(
-			'title'    => __( 'Theme Packages', 'bbpress' ),
+			'title'    => __( 'Forum Theme Packages', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_subtheme_section',
-			'page'     => 'bbpress',
+			'page'     => 'general'
 		),
 		'bbp_settings_per_page' => array(
-			'title'    => __( 'Per Page', 'bbpress' ),
+			'title'    => __( 'Topics and Replies Per Page', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_per_page_section',
-			'page'     => 'bbpress',
+			'page'     => 'reading'
 		),
 		'bbp_settings_per_rss_page' => array(
-			'title'    => __( 'Per RSS Page', 'bbpress' ),
+			'title'    => __( 'Topics and Replies Per RSS Page', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_per_rss_page_section',
-			'page'     => 'bbpress',
+			'page'     => 'reading',
 		),
 		'bbp_settings_root_slugs' => array(
-			'title'    => __( 'Archive Slugs', 'bbpress' ),
+			'title'    => __( 'Forum Root Slug', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_root_slug_section',
-			'page'     => 'bbpress',
+			'page'     => 'permalink'
 		),
 		'bbp_settings_single_slugs' => array(
-			'title'    => __( 'Single Slugs', 'bbpress' ),
+			'title'    => __( 'Single Forum Slugs', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_single_slug_section',
-			'page'     => 'bbpress',
+			'page'     => 'permalink',
+		),
+		'bbp_settings_user_slugs' => array(
+			'title'    => __( 'Forum User Slugs', 'bbpress' ),
+			'callback' => 'bbp_admin_setting_callback_user_slug_section',
+			'page'     => 'permalink',
 		),
 		'bbp_settings_buddypress' => array(
-			'title'    => __( 'BuddyPress', 'bbpress' ),
+			'title'    => __( 'BuddyPress Integration', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_buddypress_section',
-			'page'     => 'bbpress',
+			'page'     => 'buddypress',
 		),
 		'bbp_settings_akismet' => array(
-			'title'    => __( 'Akismet', 'bbpress' ),
+			'title'    => __( 'Akismet Integration', 'bbpress' ),
 			'callback' => 'bbp_admin_setting_callback_akismet_section',
-			'page'     => 'bbpress'
+			'page'     => 'discussion'
 		)
 	) );
 }
@@ -72,9 +82,9 @@ function bbp_admin_get_settings_sections() {
 function bbp_admin_get_settings_fields() {
 	return (array) apply_filters( 'bbp_admin_get_settings_fields', array(
 
-		/** Main Section ******************************************************/
+		/** User Section ******************************************************/
 
-		'bbp_settings_main' => array(
+		'bbp_settings_users' => array(
 
 			// Edit lock setting
 			'_bbp_edit_lock' => array(
@@ -91,6 +101,33 @@ function bbp_admin_get_settings_fields() {
 				'sanitize_callback' => 'intval',
 				'args'              => array()
 			),
+
+			// Allow anonymous posting setting
+			'_bbp_allow_anonymous' => array(
+				'title'             => __( 'Anonymous posting', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_anonymous',
+				'sanitize_callback' => 'intval',
+				'args'              => array()
+			),
+
+			// Allow global access (on multisite)
+			'_bbp_allow_global_access' => array(
+				'title'             => __( 'Auto role', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_global_access',
+				'sanitize_callback' => 'intval',
+				'args'              => array()
+			),
+
+			// Allow global access (on multisite)
+			'_bbp_default_role' => array(
+				'sanitize_callback' => 'sanitize_text_field',
+				'args'              => array()
+			)
+		),
+
+		/** Features Section **************************************************/
+
+		'bbp_settings_features' => array(
 
 			// Allow topic and reply revisions
 			'_bbp_allow_revisions' => array(
@@ -124,33 +161,17 @@ function bbp_admin_get_settings_fields() {
 				'args'              => array()
 			),
 
-			// Allow anonymous posting setting
-			'_bbp_allow_anonymous' => array(
-				'title'             => __( 'Anonymous posting', 'bbpress' ),
-				'callback'          => 'bbp_admin_setting_callback_anonymous',
-				'sanitize_callback' => 'intval',
-				'args'              => array()
-			),
-
-			// Allow global access (on multisite)
-			'_bbp_default_role' => array(
-				'title'             => __( 'Default user role', 'bbpress' ),
-				'callback'          => 'bbp_admin_setting_callback_default_role',
-				'sanitize_callback' => 'sanitize_text_field',
-				'args'              => array()
-			),
-
-			// Allow global access (on multisite)
-			'_bbp_allow_global_access' => array(
-				'title'             => __( 'Auto role', 'bbpress' ),
-				'callback'          => 'bbp_admin_setting_callback_global_access',
+			// Allow topic tags
+			'_bbp_allow_search' => array(
+				'title'             => __( 'Search', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_search',
 				'sanitize_callback' => 'intval',
 				'args'              => array()
 			),
 
 			// Allow fancy editor setting
 			'_bbp_use_wp_editor' => array(
-				'title'             => __( 'Fancy editor', 'bbpress' ),
+				'title'             => __( 'Post Formatting', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_use_wp_editor',
 				'args'              => array(),
 				'sanitize_callback' => 'intval'
@@ -162,6 +183,20 @@ function bbp_admin_get_settings_fields() {
 				'callback'          => 'bbp_admin_setting_callback_use_autoembed',
 				'sanitize_callback' => 'intval',
 				'args'              => array()
+			),
+
+			// Set reply threading level
+			'_bbp_thread_replies_depth' => array(
+				'title'             => __( 'Reply Threading', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_thread_replies_depth',
+				'sanitize_callback' => 'intval',
+				'args'              => array()
+			),
+
+			// Allow threadde replies
+			'_bbp_allow_threaded_replies' => array(
+				'sanitize_callback' => 'intval',
+				'args'              => array()
 			)
 		),
 
@@ -169,7 +204,7 @@ function bbp_admin_get_settings_fields() {
 
 		'bbp_settings_theme_compat' => array(
 
-			// Replies per page setting
+			// Theme package setting
 			'_bbp_theme_package_id' => array(
 				'title'             => __( 'Current Package', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_subtheme_id',
@@ -226,24 +261,11 @@ function bbp_admin_get_settings_fields() {
 
 			// Root slug setting
 			'_bbp_root_slug' => array(
-				'title'             => __( 'Forums base', 'bbpress' ),
+				'title'             => __( 'Forum Root', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_root_slug',
 				'sanitize_callback' => 'esc_sql',
 				'args'              => array()
 			),
-
-			// Topic archive setting
-			'_bbp_topic_archive_slug' => array(
-				'title'             => __( 'Topics base', 'bbpress' ),
-				'callback'          => 'bbp_admin_setting_callback_topic_archive_slug',
-				'sanitize_callback' => 'esc_sql',
-				'args'              => array()
-			)
-		),
-
-		/** Single Slugs ******************************************************/
-
-		'bbp_settings_single_slugs' => array(
 
 			// Include root setting
 			'_bbp_include_root' => array(
@@ -253,9 +275,22 @@ function bbp_admin_get_settings_fields() {
 				'args'              => array()
 			),
 
+			// What to show on Forum Root
+			'_bbp_show_on_root' => array(
+				'title'             => __( 'Forum root should show', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_show_on_root',
+				'sanitize_callback' => 'sanitize_text_field',
+				'args'              => array()
+			),
+		),
+
+		/** Single Slugs ******************************************************/
+
+		'bbp_settings_single_slugs' => array(
+
 			// Forum slug setting
 			'_bbp_forum_slug' => array(
-				'title'             => __( 'Forum slug', 'bbpress' ),
+				'title'             => __( 'Forum', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_forum_slug',
 				'sanitize_callback' => 'sanitize_title',
 				'args'              => array()
@@ -263,7 +298,7 @@ function bbp_admin_get_settings_fields() {
 
 			// Topic slug setting
 			'_bbp_topic_slug' => array(
-				'title'             => __( 'Topic slug', 'bbpress' ),
+				'title'             => __( 'Topic', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_topic_slug',
 				'sanitize_callback' => 'sanitize_title',
 				'args'              => array()
@@ -271,33 +306,78 @@ function bbp_admin_get_settings_fields() {
 
 			// Topic tag slug setting
 			'_bbp_topic_tag_slug' => array(
-				'title'             => __( 'Topic tag slug', 'bbpress' ),
+				'title'             => __( 'Topic Tag', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_topic_tag_slug',
-				'sanitize_callback' => 'sanitize_title',
-				'args'              => array()
-			),
-
-			// Reply slug setting
-			'_bbp_reply_slug' => array(
-				'title'             => __( 'Reply slug', 'bbpress' ),
-				'callback'          => 'bbp_admin_setting_callback_reply_slug',
-				'sanitize_callback' => 'sanitize_title',
-				'args'              => array()
-			),
-
-			// User slug setting
-			'_bbp_user_slug' => array(
-				'title'             => __( 'User slug', 'bbpress' ),
-				'callback'          => 'bbp_admin_setting_callback_user_slug',
 				'sanitize_callback' => 'sanitize_title',
 				'args'              => array()
 			),
 
 			// View slug setting
 			'_bbp_view_slug' => array(
-				'title'             => __( 'Topic view slug', 'bbpress' ),
+				'title'             => __( 'Topic View', 'bbpress' ),
 				'callback'          => 'bbp_admin_setting_callback_view_slug',
 				'sanitize_callback' => 'sanitize_title',
+				'args'              => array()
+			),
+
+			// Reply slug setting
+			'_bbp_reply_slug' => array(
+				'title'             => __( 'Reply', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_reply_slug',
+				'sanitize_callback' => 'sanitize_title',
+				'args'              => array()
+			),
+
+			// Search slug setting
+			'_bbp_search_slug' => array(
+				'title'             => __( 'Search', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_search_slug',
+				'sanitize_callback' => 'sanitize_title',
+				'args'              => array()
+			)
+		),
+
+		/** User Slugs ********************************************************/
+
+		'bbp_settings_user_slugs' => array(
+
+			// User slug setting
+			'_bbp_user_slug' => array(
+				'title'             => __( 'User Base', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_user_slug',
+				'sanitize_callback' => 'sanitize_title',
+				'args'              => array()
+			),
+
+			// Topics slug setting
+			'_bbp_topic_archive_slug' => array(
+				'title'             => __( 'Topics Started', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_topic_archive_slug',
+				'sanitize_callback' => 'esc_sql',
+				'args'              => array()
+			),
+
+			// Replies slug setting
+			'_bbp_reply_archive_slug' => array(
+				'title'             => __( 'Replies Created', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_reply_archive_slug',
+				'sanitize_callback' => 'esc_sql',
+				'args'              => array()
+			),
+
+			// Favorites slug setting
+			'_bbp_user_favs_slug' => array(
+				'title'             => __( 'Favorite Topics', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_user_favs_slug',
+				'sanitize_callback' => 'esc_sql',
+				'args'              => array()
+			),
+
+			// Subscriptions slug setting
+			'_bbp_user_subs_slug' => array(
+				'title'             => __( 'Topic Subscriptions', 'bbpress' ),
+				'callback'          => 'bbp_admin_setting_callback_user_subs_slug',
+				'sanitize_callback' => 'esc_sql',
 				'args'              => array()
 			)
 		),
@@ -357,20 +437,21 @@ function bbp_admin_get_settings_fields_for_section( $section_id = '' ) {
 	return (array) apply_filters( 'bbp_admin_get_settings_fields_for_section', $retval, $section_id );
 }
 
-/** Main Section **************************************************************/
+/** User Section **************************************************************/
 
 /**
- * Main settings section description for the settings page
+ * User settings section description for the settings page
  *
  * @since bbPress (r2786)
  */
-function bbp_admin_setting_callback_main_section() {
+function bbp_admin_setting_callback_user_section() {
 ?>
 
-	<p><?php _e( 'Main forum settings for enabling features and setting time limits', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'Setting time limits and other user posting capabilities', 'bbpress' ); ?></p>
 
 <?php
 }
+
 
 /**
  * Edit lock setting field
@@ -382,8 +463,8 @@ function bbp_admin_setting_callback_main_section() {
 function bbp_admin_setting_callback_editlock() {
 ?>
 
-	<input name="_bbp_edit_lock" type="number" min="0" step="1" id="_bbp_edit_lock" value="<?php bbp_form_option( '_bbp_edit_lock', '5' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_edit_lock' ); ?> />
-	<label for="_bbp_edit_lock"><?php _e( 'minutes', 'bbpress' ); ?></label>
+	<input name="_bbp_edit_lock" id="_bbp_edit_lock" type="number" min="0" step="1" value="<?php bbp_form_option( '_bbp_edit_lock', '5' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_edit_lock' ); ?> />
+	<label for="_bbp_edit_lock"><?php esc_html_e( 'minutes', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -398,72 +479,8 @@ function bbp_admin_setting_callback_editlock() {
 function bbp_admin_setting_callback_throttle() {
 ?>
 
-	<input name="_bbp_throttle_time" type="number" min="0" step="1" id="_bbp_throttle_time" value="<?php bbp_form_option( '_bbp_throttle_time', '10' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_throttle_time' ); ?> />
-	<label for="_bbp_throttle_time"><?php _e( 'seconds', 'bbpress' ); ?></label>
-
-<?php
-}
-
-/**
- * Allow favorites setting field
- *
- * @since bbPress (r2786)
- *
- * @uses checked() To display the checked attribute
- */
-function bbp_admin_setting_callback_favorites() {
-?>
-
-	<input id="_bbp_enable_favorites" name="_bbp_enable_favorites" type="checkbox" id="_bbp_enable_favorites" value="1" <?php checked( bbp_is_favorites_active( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_enable_favorites' ); ?> />
-	<label for="_bbp_enable_favorites"><?php _e( 'Allow users to mark topics as favorites', 'bbpress' ); ?></label>
-
-<?php
-}
-
-/**
- * Allow subscriptions setting field
- *
- * @since bbPress (r2737)
- *
- * @uses checked() To display the checked attribute
- */
-function bbp_admin_setting_callback_subscriptions() {
-?>
-
-	<input id="_bbp_enable_subscriptions" name="_bbp_enable_subscriptions" type="checkbox" id="_bbp_enable_subscriptions" value="1" <?php checked( bbp_is_subscriptions_active( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_enable_subscriptions' ); ?> />
-	<label for="_bbp_enable_subscriptions"><?php _e( 'Allow users to subscribe to topics', 'bbpress' ); ?></label>
-
-<?php
-}
-
-/**
- * Allow topic tags setting field
- *
- * @since bbPress (r####)
- *
- * @uses checked() To display the checked attribute
- */
-function bbp_admin_setting_callback_topic_tags() {
-?>
-
-	<input id="_bbp_allow_topic_tags" name="_bbp_allow_topic_tags" type="checkbox" id="_bbp_allow_topic_tags" value="1" <?php checked( bbp_allow_topic_tags( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_topic_tags' ); ?> />
-	<label for="_bbp_allow_topic_tags"><?php _e( 'Allow topics to have tags', 'bbpress' ); ?></label>
-
-<?php
-}
-
-/**
- * Allow topic and reply revisions
- *
- * @since bbPress (r3412)
- *
- * @uses checked() To display the checked attribute
- */
-function bbp_admin_setting_callback_revisions() {
-?>
-
-	<input id="_bbp_allow_revisions" name="_bbp_allow_revisions" type="checkbox" id="_bbp_allow_revisions" value="1" <?php checked( bbp_allow_revisions( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_revisions' ); ?> />
-	<label for="_bbp_allow_revisions"><?php _e( 'Allow topic and reply revision logging', 'bbpress' ); ?></label>
+	<input name="_bbp_throttle_time" id="_bbp_throttle_time" type="number" min="0" step="1" value="<?php bbp_form_option( '_bbp_throttle_time', '10' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_throttle_time' ); ?> />
+	<label for="_bbp_throttle_time"><?php esc_html_e( 'seconds', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -478,8 +495,8 @@ function bbp_admin_setting_callback_revisions() {
 function bbp_admin_setting_callback_anonymous() {
 ?>
 
-	<input id="_bbp_allow_anonymous" name="_bbp_allow_anonymous" type="checkbox" id="_bbp_allow_anonymous" value="1" <?php checked( bbp_allow_anonymous( false ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_anonymous' ); ?> />
-	<label for="_bbp_allow_anonymous"><?php _e( 'Allow guest users without accounts to create topics and replies', 'bbpress' ); ?></label>
+	<input name="_bbp_allow_anonymous" id="_bbp_allow_anonymous" type="checkbox" value="1" <?php checked( bbp_allow_anonymous( false ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_anonymous' ); ?> />
+	<label for="_bbp_allow_anonymous"><?php esc_html_e( 'Allow guest users without accounts to create topics and replies', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -492,22 +509,12 @@ function bbp_admin_setting_callback_anonymous() {
  * @uses checked() To display the checked attribute
  */
 function bbp_admin_setting_callback_global_access() {
-?>
 
-	<input id="_bbp_allow_global_access" name="_bbp_allow_global_access" type="checkbox" id="_bbp_allow_global_access" value="1" <?php checked( bbp_allow_global_access( false ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_global_access' ); ?> />
-	<label for="_bbp_allow_global_access"><?php _e( 'Automatically assign default role to new, registered users upon visiting the site.', 'bbpress' ); ?></label>
+	// Get the default role once rather than loop repeatedly below
+	$default_role = bbp_get_default_role();
 
-<?php
-}
-
-/**
- * Output forum role selector (for user edit)
- *
- * @since bbPress (r4284)
- */
-function bbp_admin_setting_callback_default_role() {
-
-	$default_role = bbp_get_default_role(); ?>
+	// Start the output buffer for the select dropdown
+	ob_start(); ?>
 
 	<select name="_bbp_default_role" id="_bbp_default_role" <?php bbp_maybe_admin_setting_disabled( '_bbp_default_role' ); ?>>
 
@@ -519,7 +526,147 @@ function bbp_admin_setting_callback_default_role() {
 
 	</select>
 
-	<?php
+	<?php $select = ob_get_clean(); ?>
+
+	<label for="_bbp_allow_global_access">
+		<input name="_bbp_allow_global_access" id="_bbp_allow_global_access" type="checkbox" value="1" <?php checked( bbp_allow_global_access( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_global_access' ); ?> />
+		<?php printf( esc_html__( 'Automatically give registered visitors the %s forum role', 'bbpress' ), $select ); ?>
+	</label>
+
+<?php
+}
+
+/** Features Section **********************************************************/
+
+/**
+ * Features settings section description for the settings page
+ *
+ * @since bbPress (r2786)
+ */
+function bbp_admin_setting_callback_features_section() {
+?>
+
+	<p><?php esc_html_e( 'Forum features that can be toggled on and off', 'bbpress' ); ?></p>
+
+<?php
+}
+
+/**
+ * Allow favorites setting field
+ *
+ * @since bbPress (r2786)
+ *
+ * @uses checked() To display the checked attribute
+ */
+function bbp_admin_setting_callback_favorites() {
+?>
+
+	<input name="_bbp_enable_favorites" id="_bbp_enable_favorites" type="checkbox" value="1" <?php checked( bbp_is_favorites_active( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_enable_favorites' ); ?> />
+	<label for="_bbp_enable_favorites"><?php esc_html_e( 'Allow users to mark topics as favorites', 'bbpress' ); ?></label>
+
+<?php
+}
+
+/**
+ * Allow subscriptions setting field
+ *
+ * @since bbPress (r2737)
+ *
+ * @uses checked() To display the checked attribute
+ */
+function bbp_admin_setting_callback_subscriptions() {
+?>
+
+	<input name="_bbp_enable_subscriptions" id="_bbp_enable_subscriptions" type="checkbox" value="1" <?php checked( bbp_is_subscriptions_active( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_enable_subscriptions' ); ?> />
+	<label for="_bbp_enable_subscriptions"><?php esc_html_e( 'Allow users to subscribe to topics', 'bbpress' ); ?></label>
+
+<?php
+}
+
+/**
+ * Allow topic tags setting field
+ *
+ * @since bbPress (r4944)
+ *
+ * @uses checked() To display the checked attribute
+ */
+function bbp_admin_setting_callback_topic_tags() {
+?>
+
+	<input name="_bbp_allow_topic_tags" id="_bbp_allow_topic_tags" type="checkbox" value="1" <?php checked( bbp_allow_topic_tags( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_topic_tags' ); ?> />
+	<label for="_bbp_allow_topic_tags"><?php esc_html_e( 'Allow topics to have tags', 'bbpress' ); ?></label>
+
+<?php
+}
+
+/**
+ * Allow forum wide search
+ *
+ * @since bbPress (r4970)
+ *
+ * @uses checked() To display the checked attribute
+ */
+function bbp_admin_setting_callback_search() {
+?>
+
+	<input name="_bbp_allow_search" id="_bbp_allow_search" type="checkbox" value="1" <?php checked( bbp_allow_search( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_search' ); ?> />
+	<label for="_bbp_allow_search"><?php esc_html_e( 'Allow forum wide search', 'bbpress' ); ?></label>
+
+<?php
+}
+
+/**
+ * Hierarchical reply maximum depth level setting field
+ *
+ * Replies will be threaded if depth is 2 or greater
+ *
+ * @since bbPress (r4944)
+ *
+ * @uses apply_filters() Calls 'bbp_thread_replies_depth_max' to set a
+ *                        maximum displayed level
+ * @uses selected() To display the selected attribute
+ */
+function bbp_admin_setting_callback_thread_replies_depth() {
+
+	// Set maximum depth for dropdown
+	$max_depth     = (int) apply_filters( 'bbp_thread_replies_depth_max', 10 );
+	$current_depth = bbp_thread_replies_depth();
+
+	// Start an output buffer for the select dropdown
+	ob_start(); ?>
+
+	<select name="_bbp_thread_replies_depth" id="_bbp_thread_replies_depth" <?php bbp_maybe_admin_setting_disabled( '_bbp_thread_replies_depth' ); ?>>
+	<?php for ( $i = 2; $i <= $max_depth; $i++ ) : ?>
+
+		<option value="<?php echo esc_attr( $i ); ?>" <?php selected( $i, $current_depth ); ?>><?php echo esc_html( $i ); ?></option>
+
+	<?php endfor; ?>
+	</select>
+
+	<?php $select = ob_get_clean(); ?>
+
+	<label for="_bbp_allow_threaded_replies">
+		<input name="_bbp_allow_threaded_replies" id="_bbp_allow_threaded_replies" type="checkbox" value="1" <?php checked( '1', bbp_allow_threaded_replies( false ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_threaded_replies' ); ?> />
+		<?php printf( esc_html__( 'Enable threaded (nested) replies %s levels deep', 'bbpress' ), $select ); ?>
+	</label>
+
+<?php
+}
+
+/**
+ * Allow topic and reply revisions
+ *
+ * @since bbPress (r3412)
+ *
+ * @uses checked() To display the checked attribute
+ */
+function bbp_admin_setting_callback_revisions() {
+?>
+
+	<input name="_bbp_allow_revisions" id="_bbp_allow_revisions" type="checkbox" value="1" <?php checked( bbp_allow_revisions( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_allow_revisions' ); ?> />
+	<label for="_bbp_allow_revisions"><?php esc_html_e( 'Allow topic and reply revision logging', 'bbpress' ); ?></label>
+
+<?php
 }
 
 /**
@@ -532,8 +679,8 @@ function bbp_admin_setting_callback_default_role() {
 function bbp_admin_setting_callback_use_wp_editor() {
 ?>
 
-	<input id="_bbp_use_wp_editor" name="_bbp_use_wp_editor" type="checkbox" id="_bbp_use_wp_editor" value="1" <?php checked( bbp_use_wp_editor( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_use_wp_editor' ); ?> />
-	<label for="_bbp_use_wp_editor"><?php _e( 'Use the fancy WordPress editor to create and edit topics and replies', 'bbpress' ); ?></label>
+	<input name="_bbp_use_wp_editor" id="_bbp_use_wp_editor" type="checkbox" value="1" <?php checked( bbp_use_wp_editor( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_use_wp_editor' ); ?> />
+	<label for="_bbp_use_wp_editor"><?php esc_html_e( 'Add toolbar & buttons to textareas to help with HTML formatting', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -546,7 +693,7 @@ function bbp_admin_setting_callback_use_wp_editor() {
 function bbp_admin_setting_callback_subtheme_section() {
 ?>
 
-	<p><?php _e( 'How your forum content is displayed within your existing theme.', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'How your forum content is displayed within your existing theme.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -570,17 +717,17 @@ function bbp_admin_setting_callback_subtheme_id() {
 	//
 	// @see bbPress::register_theme_packages()
 	foreach ( (array) bbpress()->theme_compat->packages as $id => $theme ) {
-		$theme_options .= '<option value="' . esc_attr( $id ) . '"' . selected( $theme->id, $current_package, false ) . '>' . sprintf( __( '%1$s - %2$s', 'bbpress' ), esc_html( $theme->name ), esc_html( str_replace( WP_CONTENT_DIR, '', $theme->dir ) ) )  . '</option>';
+		$theme_options .= '<option value="' . esc_attr( $id ) . '"' . selected( $theme->id, $current_package, false ) . '>' . sprintf( esc_html__( '%1$s - %2$s', 'bbpress' ), esc_html( $theme->name ), esc_html( str_replace( WP_CONTENT_DIR, '', $theme->dir ) ) )  . '</option>';
 	}
 
 	if ( !empty( $theme_options ) ) : ?>
 
 		<select name="_bbp_theme_package_id" id="_bbp_theme_package_id" <?php bbp_maybe_admin_setting_disabled( '_bbp_theme_package_id' ); ?>><?php echo $theme_options ?></select>
-		<label for="_bbp_theme_package_id"><?php _e( 'will serve all bbPress templates', 'bbpress' ); ?></label>
+		<label for="_bbp_theme_package_id"><?php esc_html_e( 'will serve all bbPress templates', 'bbpress' ); ?></label>
 
 	<?php else : ?>
 
-		<p><?php _e( 'No template packages available.', 'bbpress' ); ?></p>
+		<p><?php esc_html_e( 'No template packages available.', 'bbpress' ); ?></p>
 
 	<?php endif;
 }
@@ -595,8 +742,8 @@ function bbp_admin_setting_callback_subtheme_id() {
 function bbp_admin_setting_callback_use_autoembed() {
 ?>
 
-	<input id="_bbp_use_autoembed" name="_bbp_use_autoembed" type="checkbox" id="_bbp_use_autoembed" value="1" <?php checked( bbp_use_autoembed( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_use_autoembed' ); ?> />
-	<label for="_bbp_use_autoembed"><?php _e( 'Embed media (YouTube, Twitter, Flickr, etc...) directly into topics and replies', 'bbpress' ); ?></label>
+	<input name="_bbp_use_autoembed" id="_bbp_use_autoembed" type="checkbox" value="1" <?php checked( bbp_use_autoembed( true ) ); bbp_maybe_admin_setting_disabled( '_bbp_use_autoembed' ); ?> />
+	<label for="_bbp_use_autoembed"><?php esc_html_e( 'Embed media (YouTube, Twitter, Flickr, etc...) directly into topics and replies', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -611,7 +758,7 @@ function bbp_admin_setting_callback_use_autoembed() {
 function bbp_admin_setting_callback_per_page_section() {
 ?>
 
-	<p><?php _e( 'How many topics and replies to show per page', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'How many topics and replies to show per page', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -626,8 +773,8 @@ function bbp_admin_setting_callback_per_page_section() {
 function bbp_admin_setting_callback_topics_per_page() {
 ?>
 
-	<input name="_bbp_topics_per_page" type="number" min="1" step="1" id="_bbp_topics_per_page" value="<?php bbp_form_option( '_bbp_topics_per_page', '15' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_topics_per_page' ); ?> />
-	<label for="_bbp_topics_per_page"><?php _e( 'per page', 'bbpress' ); ?></label>
+	<input name="_bbp_topics_per_page" id="_bbp_topics_per_page" type="number" min="1" step="1" value="<?php bbp_form_option( '_bbp_topics_per_page', '15' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_topics_per_page' ); ?> />
+	<label for="_bbp_topics_per_page"><?php esc_html_e( 'per page', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -642,8 +789,8 @@ function bbp_admin_setting_callback_topics_per_page() {
 function bbp_admin_setting_callback_replies_per_page() {
 ?>
 
-	<input name="_bbp_replies_per_page" type="number" min="1" step="1" id="_bbp_replies_per_page" value="<?php bbp_form_option( '_bbp_replies_per_page', '15' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_replies_per_page' ); ?> />
-	<label for="_bbp_replies_per_page"><?php _e( 'per page', 'bbpress' ); ?></label>
+	<input name="_bbp_replies_per_page" id="_bbp_replies_per_page" type="number" min="1" step="1" value="<?php bbp_form_option( '_bbp_replies_per_page', '15' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_replies_per_page' ); ?> />
+	<label for="_bbp_replies_per_page"><?php esc_html_e( 'per page', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -658,7 +805,7 @@ function bbp_admin_setting_callback_replies_per_page() {
 function bbp_admin_setting_callback_per_rss_page_section() {
 ?>
 
-	<p><?php _e( 'How many topics and replies to show per RSS page', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'How many topics and replies to show per RSS page', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -673,8 +820,8 @@ function bbp_admin_setting_callback_per_rss_page_section() {
 function bbp_admin_setting_callback_topics_per_rss_page() {
 ?>
 
-	<input name="_bbp_topics_per_rss_page" type="number" min="1" step="1" id="_bbp_topics_per_rss_page" value="<?php bbp_form_option( '_bbp_topics_per_rss_page', '25' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_topics_per_rss_page' ); ?> />
-	<label for="_bbp_topics_per_rss_page"><?php _e( 'per page', 'bbpress' ); ?></label>
+	<input name="_bbp_topics_per_rss_page" id="_bbp_topics_per_rss_page" type="number" min="1" step="1" value="<?php bbp_form_option( '_bbp_topics_per_rss_page', '25' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_topics_per_rss_page' ); ?> />
+	<label for="_bbp_topics_per_rss_page"><?php esc_html_e( 'per page', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -689,8 +836,8 @@ function bbp_admin_setting_callback_topics_per_rss_page() {
 function bbp_admin_setting_callback_replies_per_rss_page() {
 ?>
 
-	<input name="_bbp_replies_per_rss_page" type="number" min="1" step="1" id="_bbp_replies_per_rss_page" value="<?php bbp_form_option( '_bbp_replies_per_rss_page', '25' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_replies_per_rss_page' ); ?> />
-	<label for="_bbp_replies_per_rss_page"><?php _e( 'per page', 'bbpress' ); ?></label>
+	<input name="_bbp_replies_per_rss_page" id="_bbp_replies_per_rss_page" type="number" min="1" step="1" value="<?php bbp_form_option( '_bbp_replies_per_rss_page', '25' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_replies_per_rss_page' ); ?> />
+	<label for="_bbp_replies_per_rss_page"><?php esc_html_e( 'per page', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -708,7 +855,7 @@ function bbp_admin_setting_callback_root_slug_section() {
 	if ( isset( $_GET['settings-updated'] ) && isset( $_GET['page'] ) )
 		flush_rewrite_rules(); ?>
 
-	<p><?php printf( __( 'Custom root slugs to prefix your forums and topics with. These can be partnered with WordPress pages to allow more flexibility.', 'bbpress' ), get_admin_url( null, 'options-permalink.php' ) ); ?></p>
+	<p><?php esc_html_e( 'Customize your Forums root. Partner with a WordPress Page and use Shortcodes for more flexibility.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -723,43 +870,11 @@ function bbp_admin_setting_callback_root_slug_section() {
 function bbp_admin_setting_callback_root_slug() {
 ?>
 
-		<input name="_bbp_root_slug" type="text" id="_bbp_root_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_root_slug', 'forums', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_root_slug' ); ?> />
+        <input name="_bbp_root_slug" id="_bbp_root_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_root_slug', 'forums', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_root_slug' ); ?> />
 
 <?php
 	// Slug Check
 	bbp_form_slug_conflict_check( '_bbp_root_slug', 'forums' );
-}
-
-/**
- * Topic archive slug setting field
- *
- * @since bbPress (r2786)
- *
- * @uses bbp_form_option() To output the option value
- */
-function bbp_admin_setting_callback_topic_archive_slug() {
-?>
-
-	<input name="_bbp_topic_archive_slug" type="text" id="_bbp_topic_archive_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_topic_archive_slug', 'topics', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_topic_archive_slug' ); ?> />
-
-<?php
-	// Slug Check
-	bbp_form_slug_conflict_check( '_bbp_topic_archive_slug', 'topics' );
-}
-
-/** Single Slugs **************************************************************/
-
-/**
- * Slugs settings section description for the settings page
- *
- * @since bbPress (r2786)
- */
-function bbp_admin_setting_callback_single_slug_section() {
-?>
-
-	<p><?php printf( __( 'Custom slugs for single forums, topics, replies, tags, users, and views here. If you change these, existing permalinks will also change.', 'bbpress' ), get_admin_url( null, 'options-permalink.php' ) ); ?></p>
-
-<?php
 }
 
 /**
@@ -772,8 +887,158 @@ function bbp_admin_setting_callback_single_slug_section() {
 function bbp_admin_setting_callback_include_root() {
 ?>
 
-	<input id="_bbp_include_root" name="_bbp_include_root" type="checkbox" id="_bbp_include_root" value="1" <?php checked( get_option( '_bbp_include_root', true ) ); bbp_maybe_admin_setting_disabled( '_bbp_include_root' ); ?> />
-	<label for="_bbp_include_root"><?php _e( 'Prefix your forum area with the Forum Base slug (Recommended)', 'bbpress' ); ?></label>
+	<input name="_bbp_include_root" id="_bbp_include_root" type="checkbox" value="1" <?php checked( bbp_include_root_slug() ); bbp_maybe_admin_setting_disabled( '_bbp_include_root' ); ?> />
+	<label for="_bbp_include_root"><?php esc_html_e( 'Prefix all forum content with the Forum Root slug (Recommended)', 'bbpress' ); ?></label>
+
+<?php
+}
+
+/**
+ * Include root slug setting field
+ *
+ * @since bbPress (r2786)
+ *
+ * @uses checked() To display the checked attribute
+ */
+function bbp_admin_setting_callback_show_on_root() {
+
+	// Current setting
+	$show_on_root = bbp_show_on_root();
+
+	// Options for forum root output
+	$root_options = array(
+		'forums' => array(
+			'name' => __( 'Forum Index', 'bbpress' )
+		),
+		'topics' => array(
+			'name' => __( 'Topics by Freshness', 'bbpress' )
+		)
+	); ?>
+
+	<select name="_bbp_show_on_root" id="_bbp_show_on_root" <?php bbp_maybe_admin_setting_disabled( '_bbp_show_on_root' ); ?>>
+
+		<?php foreach ( $root_options as $option_id => $details ) : ?>
+
+			<option <?php selected( $show_on_root, $option_id ); ?> value="<?php echo esc_attr( $option_id ); ?>"><?php echo esc_html( $details['name'] ); ?></option>
+
+		<?php endforeach; ?>
+
+	</select>
+
+<?php
+}
+
+/** User Slug Section *********************************************************/
+
+/**
+ * Slugs settings section description for the settings page
+ *
+ * @since bbPress (r2786)
+ */
+function bbp_admin_setting_callback_user_slug_section() {
+?>
+
+	<p><?php esc_html_e( 'Customize your user profile slugs.', 'bbpress' ); ?></p>
+
+<?php
+}
+
+/**
+ * User slug setting field
+ *
+ * @since bbPress (r2786)
+ *
+ * @uses bbp_form_option() To output the option value
+ */
+function bbp_admin_setting_callback_user_slug() {
+?>
+
+	<input name="_bbp_user_slug" id="_bbp_user_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_user_slug', 'users', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_user_slug' ); ?> />
+
+<?php
+	// Slug Check
+	bbp_form_slug_conflict_check( '_bbp_user_slug', 'users' );
+}
+
+/**
+ * Topic archive slug setting field
+ *
+ * @since bbPress (r2786)
+ *
+ * @uses bbp_form_option() To output the option value
+ */
+function bbp_admin_setting_callback_topic_archive_slug() {
+?>
+
+	<input name="_bbp_topic_archive_slug" id="_bbp_topic_archive_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_topic_archive_slug', 'topics', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_topic_archive_slug' ); ?> />
+
+<?php
+	// Slug Check
+	bbp_form_slug_conflict_check( '_bbp_topic_archive_slug', 'topics' );
+}
+
+/**
+ * Reply archive slug setting field
+ *
+ * @since bbPress (r4932)
+ *
+ * @uses bbp_form_option() To output the option value
+ */
+function bbp_admin_setting_callback_reply_archive_slug() {
+?>
+
+	<input name="_bbp_reply_archive_slug" id="_bbp_reply_archive_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_reply_archive_slug', 'replies', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_reply_archive_slug' ); ?> />
+
+<?php
+	// Slug Check
+	bbp_form_slug_conflict_check( '_bbp_reply_archive_slug', 'replies' );
+}
+
+/**
+ * Favorites slug setting field
+ *
+ * @since bbPress (r4932)
+ *
+ * @uses bbp_form_option() To output the option value
+ */
+function bbp_admin_setting_callback_user_favs_slug() {
+?>
+
+	<input name="_bbp_user_favs_slug" id="_bbp_user_favs_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_user_favs_slug', 'favorites', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_user_favs_slug' ); ?> />
+
+<?php
+	// Slug Check
+	bbp_form_slug_conflict_check( '_bbp_reply_archive_slug', 'favorites' );
+}
+
+/**
+ * Favorites slug setting field
+ *
+ * @since bbPress (r4932)
+ *
+ * @uses bbp_form_option() To output the option value
+ */
+function bbp_admin_setting_callback_user_subs_slug() {
+?>
+
+	<input name="_bbp_user_subs_slug" id="_bbp_user_subs_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_user_subs_slug', 'subscriptions', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_user_subs_slug' ); ?> />
+
+<?php
+	// Slug Check
+	bbp_form_slug_conflict_check( '_bbp_user_subs_slug', 'subscriptions' );
+}
+
+/** Single Slugs **************************************************************/
+
+/**
+ * Slugs settings section description for the settings page
+ *
+ * @since bbPress (r2786)
+ */
+function bbp_admin_setting_callback_single_slug_section() {
+?>
+
+	<p><?php printf( esc_html__( 'Custom slugs for single forums, topics, replies, tags, views, and search.', 'bbpress' ), get_admin_url( null, 'options-permalink.php' ) ); ?></p>
 
 <?php
 }
@@ -788,7 +1053,7 @@ function bbp_admin_setting_callback_include_root() {
 function bbp_admin_setting_callback_forum_slug() {
 ?>
 
-	<input name="_bbp_forum_slug" type="text" id="_bbp_forum_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_forum_slug', 'forum', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_slug' ); ?> />
+	<input name="_bbp_forum_slug" id="_bbp_forum_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_forum_slug', 'forum', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_slug' ); ?> />
 
 <?php
 	// Slug Check
@@ -805,7 +1070,7 @@ function bbp_admin_setting_callback_forum_slug() {
 function bbp_admin_setting_callback_topic_slug() {
 ?>
 
-	<input name="_bbp_topic_slug" type="text" id="_bbp_topic_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_topic_slug', 'topic', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_topic_slug' ); ?> />
+	<input name="_bbp_topic_slug" id="_bbp_topic_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_topic_slug', 'topic', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_topic_slug' ); ?> />
 
 <?php
 	// Slug Check
@@ -822,7 +1087,7 @@ function bbp_admin_setting_callback_topic_slug() {
 function bbp_admin_setting_callback_reply_slug() {
 ?>
 
-	<input name="_bbp_reply_slug" type="text" id="_bbp_reply_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_reply_slug', 'reply', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_reply_slug' ); ?> />
+	<input name="_bbp_reply_slug" id="_bbp_reply_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_reply_slug', 'reply', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_reply_slug' ); ?> />
 
 <?php
 	// Slug Check
@@ -839,31 +1104,12 @@ function bbp_admin_setting_callback_reply_slug() {
 function bbp_admin_setting_callback_topic_tag_slug() {
 ?>
 
-	<input name="_bbp_topic_tag_slug" type="text" id="_bbp_topic_tag_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_topic_tag_slug', 'topic-tag', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_topic_tag_slug' ); ?> />
+	<input name="_bbp_topic_tag_slug" id="_bbp_topic_tag_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_topic_tag_slug', 'topic-tag', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_topic_tag_slug' ); ?> />
 
 <?php
 
 	// Slug Check
 	bbp_form_slug_conflict_check( '_bbp_topic_tag_slug', 'topic-tag' );
-}
-
-/** Other Slugs ***************************************************************/
-
-/**
- * User slug setting field
- *
- * @since bbPress (r2786)
- *
- * @uses bbp_form_option() To output the option value
- */
-function bbp_admin_setting_callback_user_slug() {
-?>
-
-	<input name="_bbp_user_slug" type="text" id="_bbp_user_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_user_slug', 'users', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_user_slug' ); ?> />
-
-<?php
-	// Slug Check
-	bbp_form_slug_conflict_check( '_bbp_user_slug', 'users' );
 }
 
 /**
@@ -876,11 +1122,28 @@ function bbp_admin_setting_callback_user_slug() {
 function bbp_admin_setting_callback_view_slug() {
 ?>
 
-	<input name="_bbp_view_slug" type="text" id="_bbp_view_slug" class="regular-text code" value="<?php bbp_form_option( '_bbp_view_slug', 'view', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_view_slug' ); ?> />
+	<input name="_bbp_view_slug" id="_bbp_view_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_view_slug', 'view', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_view_slug' ); ?> />
 
 <?php
 	// Slug Check
 	bbp_form_slug_conflict_check( '_bbp_view_slug', 'view' );
+}
+
+/**
+ * Search slug setting field
+ *
+ * @since bbPress (r4579)
+ *
+ * @uses bbp_form_option() To output the option value
+ */
+function bbp_admin_setting_callback_search_slug() {
+?>
+
+	<input name="_bbp_search_slug" id="_bbp_search_slug" type="text" class="regular-text code" value="<?php bbp_form_option( '_bbp_search_slug', 'search', true ); ?>"<?php bbp_maybe_admin_setting_disabled( '_bbp_search_slug' ); ?> />
+
+<?php
+	// Slug Check
+	bbp_form_slug_conflict_check( '_bbp_search_slug', 'search' );
 }
 
 /** BuddyPress ****************************************************************/
@@ -893,7 +1156,7 @@ function bbp_admin_setting_callback_view_slug() {
 function bbp_admin_setting_callback_buddypress_section() {
 ?>
 
-	<p><?php _e( 'Forum settings for BuddyPress', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'Forum settings for BuddyPress', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -908,8 +1171,8 @@ function bbp_admin_setting_callback_buddypress_section() {
 function bbp_admin_setting_callback_group_forums() {
 ?>
 
-	<input id="_bbp_enable_group_forums" name="_bbp_enable_group_forums" type="checkbox" id="_bbp_enable_group_forums" value="1" <?php checked( bbp_is_group_forums_active( true ) );  bbp_maybe_admin_setting_disabled( '_bbp_enable_group_forums' ); ?> />
-	<label for="_bbp_enable_group_forums"><?php _e( 'Allow BuddyPress Groups to have their own forums', 'bbpress' ); ?></label>
+	<input name="_bbp_enable_group_forums" id="_bbp_enable_group_forums" type="checkbox" value="1" <?php checked( bbp_is_group_forums_active( true ) );  bbp_maybe_admin_setting_disabled( '_bbp_enable_group_forums' ); ?> />
+	<label for="_bbp_enable_group_forums"><?php esc_html_e( 'Allow BuddyPress Groups to have their own forums', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -934,8 +1197,8 @@ function bbp_admin_setting_callback_group_forums_root_id() {
 		'disabled'           => '_bbp_group_forums_root_id'
 	) ); ?>
 
-	<label for="_bbp_group_forums_root_id"><?php _e( 'is the parent for all group forums', 'bbpress' ); ?></label>
-	<p class="description"><?php _e( 'Using the Forum Root is not recommended. Changing this does not move existing forums.', 'bbpress' ); ?></p>
+	<label for="_bbp_group_forums_root_id"><?php esc_html_e( 'is the parent for all group forums', 'bbpress' ); ?></label>
+	<p class="description"><?php esc_html_e( 'Using the Forum Root is not recommended. Changing this does not move existing forums.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -950,7 +1213,7 @@ function bbp_admin_setting_callback_group_forums_root_id() {
 function bbp_admin_setting_callback_akismet_section() {
 ?>
 
-	<p><?php _e( 'Forum settings for Akismet', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'Forum settings for Akismet', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -966,8 +1229,8 @@ function bbp_admin_setting_callback_akismet_section() {
 function bbp_admin_setting_callback_akismet() {
 ?>
 
-	<input id="_bbp_enable_akismet" name="_bbp_enable_akismet" type="checkbox" id="_bbp_enable_akismet" value="1" <?php checked( bbp_is_akismet_active( true ) );  bbp_maybe_admin_setting_disabled( '_bbp_enable_akismet' ); ?> />
-	<label for="_bbp_enable_akismet"><?php _e( 'Allow Akismet to actively prevent forum spam.', 'bbpress' ); ?></label>
+	<input name="_bbp_enable_akismet" id="_bbp_enable_akismet" type="checkbox" value="1" <?php checked( bbp_is_akismet_active( true ) );  bbp_maybe_admin_setting_disabled( '_bbp_enable_akismet' ); ?> />
+	<label for="_bbp_enable_akismet"><?php esc_html_e( 'Allow Akismet to actively prevent forum spam.', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -990,7 +1253,7 @@ function bbp_admin_settings() {
 
 		<?php screen_icon(); ?>
 
-		<h2><?php _e( 'Forums Settings', 'bbpress' ) ?></h2>
+		<h2><?php esc_html_e( 'Forums Settings', 'bbpress' ) ?></h2>
 
 		<form action="options.php" method="post">
 
@@ -1018,7 +1281,7 @@ function bbp_admin_settings() {
 function bbp_converter_setting_callback_main_section() {
 ?>
 
-	<p><?php _e( 'Information about your previous forums database so that they can be converted. <strong>Backup your database before proceeding.</strong>', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'Information about your previous forums database so that they can be converted. <strong>Backup your database before proceeding.</strong>', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1041,14 +1304,14 @@ function bbp_converter_setting_callback_platform() {
 	while ( $file = readdir( $curdir ) ) {
 		if ( ( stristr( $file, '.php' ) ) && ( stristr( $file, 'index' ) === false ) ) {
 			$file              = preg_replace( '/.php/', '', $file );
-			$platform_options .= '<option value="' . $file . '">' . $file . '</option>';
+			$platform_options .= '<option value="' . $file . '">' . esc_html( $file ) . '</option>';
 		}
 	}
 
 	closedir( $curdir ); ?>
 
 	<select name="_bbp_converter_platform" id="_bbp_converter_platform" /><?php echo $platform_options ?></select>
-	<label for="_bbp_converter_platform"><?php _e( 'is the previous forum software', 'bbpress' ); ?></label>
+	<label for="_bbp_converter_platform"><?php esc_html_e( 'is the previous forum software', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1061,8 +1324,8 @@ function bbp_converter_setting_callback_platform() {
 function bbp_converter_setting_callback_dbserver() {
 ?>
 
-	<input name="_bbp_converter_db_server" type="text" id="_bbp_converter_db_server" value="<?php bbp_form_option( '_bbp_converter_db_server', 'localhost' ); ?>" class="medium-text" />
-	<label for="_bbp_converter_db_server"><?php _e( 'IP or hostname', 'bbpress' ); ?></label>
+	<input name="_bbp_converter_db_server" id="_bbp_converter_db_server" type="text" value="<?php bbp_form_option( '_bbp_converter_db_server', 'localhost' ); ?>" class="medium-text" />
+	<label for="_bbp_converter_db_server"><?php esc_html_e( 'IP or hostname', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1075,8 +1338,8 @@ function bbp_converter_setting_callback_dbserver() {
 function bbp_converter_setting_callback_dbport() {
 ?>
 
-	<input name="_bbp_converter_db_port" type="text" id="_bbp_converter_db_port" value="<?php bbp_form_option( '_bbp_converter_db_port', '3306' ); ?>" class="small-text" />
-	<label for="_bbp_converter_db_port"><?php _e( 'Use default 3306 if unsure', 'bbpress' ); ?></label>
+	<input name="_bbp_converter_db_port" id="_bbp_converter_db_port" type="text" value="<?php bbp_form_option( '_bbp_converter_db_port', '3306' ); ?>" class="small-text" />
+	<label for="_bbp_converter_db_port"><?php esc_html_e( 'Use default 3306 if unsure', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1089,8 +1352,8 @@ function bbp_converter_setting_callback_dbport() {
 function bbp_converter_setting_callback_dbuser() {
 ?>
 
-	<input name="_bbp_converter_db_user" type="text" id="_bbp_converter_db_user" value="<?php bbp_form_option( '_bbp_converter_db_user' ); ?>" class="medium-text" />
-	<label for="_bbp_converter_db_user"><?php _e( 'User for your database connection', 'bbpress' ); ?></label>
+	<input name="_bbp_converter_db_user" id="_bbp_converter_db_user" type="text" value="<?php bbp_form_option( '_bbp_converter_db_user' ); ?>" class="medium-text" />
+	<label for="_bbp_converter_db_user"><?php esc_html_e( 'User for your database connection', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1103,8 +1366,8 @@ function bbp_converter_setting_callback_dbuser() {
 function bbp_converter_setting_callback_dbpass() {
 ?>
 
-	<input name="_bbp_converter_db_pass" type="password" id="_bbp_converter_db_pass" value="<?php bbp_form_option( '_bbp_converter_db_pass' ); ?>" class="medium-text" />
-	<label for="_bbp_converter_db_pass"><?php _e( 'Password to access the database', 'bbpress' ); ?></label>
+	<input name="_bbp_converter_db_pass" id="_bbp_converter_db_pass" type="password" value="<?php bbp_form_option( '_bbp_converter_db_pass' ); ?>" class="medium-text" />
+	<label for="_bbp_converter_db_pass"><?php esc_html_e( 'Password to access the database', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1117,8 +1380,8 @@ function bbp_converter_setting_callback_dbpass() {
 function bbp_converter_setting_callback_dbname() {
 ?>
 
-	<input name="_bbp_converter_db_name" type="text" id="_bbp_converter_db_name" value="<?php bbp_form_option( '_bbp_converter_db_name' ); ?>" class="medium-text" />
-	<label for="_bbp_converter_db_name"><?php _e( 'Name of the database with your old forum data', 'bbpress' ); ?></label>
+	<input name="_bbp_converter_db_name" id="_bbp_converter_db_name" type="text" value="<?php bbp_form_option( '_bbp_converter_db_name' ); ?>" class="medium-text" />
+	<label for="_bbp_converter_db_name"><?php esc_html_e( 'Name of the database with your old forum data', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1131,7 +1394,7 @@ function bbp_converter_setting_callback_dbname() {
 function bbp_converter_setting_callback_options_section() {
 ?>
 
-	<p><?php _e( 'Some optional parameters to help tune the conversion process.', 'bbpress' ); ?></p>
+	<p><?php esc_html_e( 'Some optional parameters to help tune the conversion process.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1144,8 +1407,8 @@ function bbp_converter_setting_callback_options_section() {
 function bbp_converter_setting_callback_dbprefix() {
 ?>
 
-	<input name="_bbp_converter_db_prefix" type="text" id="_bbp_converter_db_prefix" value="<?php bbp_form_option( '_bbp_converter_db_prefix' ); ?>" class="medium-text" />
-	<label for="_bbp_converter_db_prefix"><?php _e( '(If converting from BuddyPress Forums, use "wp_bb_" or your custom prefix)', 'bbpress' ); ?></label>
+	<input name="_bbp_converter_db_prefix" id="_bbp_converter_db_prefix" type="text" value="<?php bbp_form_option( '_bbp_converter_db_prefix' ); ?>" class="medium-text" />
+	<label for="_bbp_converter_db_prefix"><?php esc_html_e( '(If converting from BuddyPress Forums, use "wp_bb_" or your custom prefix)', 'bbpress' ); ?></label>
 
 <?php
 }
@@ -1158,9 +1421,9 @@ function bbp_converter_setting_callback_dbprefix() {
 function bbp_converter_setting_callback_rows() {
 ?>
 
-	<input name="_bbp_converter_rows" type="text" id="_bbp_converter_rows" value="<?php bbp_form_option( '_bbp_converter_rows', '100' ); ?>" class="small-text" />
-	<label for="_bbp_converter_rows"><?php _e( 'rows to process at a time', 'bbpress' ); ?></label>
-	<p class="description"><?php _e( 'Keep this low if you experience out-of-memory issues.', 'bbpress' ); ?></p>
+	<input name="_bbp_converter_rows" id="_bbp_converter_rows" type="text" value="<?php bbp_form_option( '_bbp_converter_rows', '100' ); ?>" class="small-text" />
+	<label for="_bbp_converter_rows"><?php esc_html_e( 'rows to process at a time', 'bbpress' ); ?></label>
+	<p class="description"><?php esc_html_e( 'Keep this low if you experience out-of-memory issues.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1173,9 +1436,9 @@ function bbp_converter_setting_callback_rows() {
 function bbp_converter_setting_callback_delay_time() {
 ?>
 
-	<input name="_bbp_converter_delay_time" type="text" id="_bbp_converter_delay_time" value="<?php bbp_form_option( '_bbp_converter_delay_time', '1' ); ?>" class="small-text" />
-	<label for="_bbp_converter_delay_time"><?php _e( 'second(s) delay between each group of rows', 'bbpress' ); ?></label>
-	<p class="description"><?php _e( 'Keep this high to prevent too-many-connection issues.', 'bbpress' ); ?></p>
+	<input name="_bbp_converter_delay_time" id="_bbp_converter_delay_time" type="text" value="<?php bbp_form_option( '_bbp_converter_delay_time', '1' ); ?>" class="small-text" />
+	<label for="_bbp_converter_delay_time"><?php esc_html_e( 'second(s) delay between each group of rows', 'bbpress' ); ?></label>
+	<p class="description"><?php esc_html_e( 'Keep this high to prevent too-many-connection issues.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1188,9 +1451,9 @@ function bbp_converter_setting_callback_delay_time() {
 function bbp_converter_setting_callback_restart() {
 ?>
 
-	<input id="_bbp_converter_restart" name="_bbp_converter_restart" type="checkbox" id="_bbp_converter_restart" value="1" <?php checked( get_option( '_bbp_converter_restart', false ) ); ?> />
-	<label for="_bbp_converter_restart"><?php _e( 'Start a fresh conversion from the beginning', 'bbpress' ); ?></label>
-	<p class="description"><?php _e( 'You should clean old conversion information before starting over.', 'bbpress' ); ?></p>
+	<input name="_bbp_converter_restart" id="_bbp_converter_restart" type="checkbox" value="1" <?php checked( get_option( '_bbp_converter_restart', false ) ); ?> />
+	<label for="_bbp_converter_restart"><?php esc_html_e( 'Start a fresh conversion from the beginning', 'bbpress' ); ?></label>
+	<p class="description"><?php esc_html_e( 'You should clean old conversion information before starting over.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1203,9 +1466,9 @@ function bbp_converter_setting_callback_restart() {
 function bbp_converter_setting_callback_clean() {
 ?>
 
-	<input id="_bbp_converter_clean" name="_bbp_converter_clean" type="checkbox" id="_bbp_converter_clean" value="1" <?php checked( get_option( '_bbp_converter_clean', false ) ); ?> />
-	<label for="_bbp_converter_clean"><?php _e( 'Purge all information from a previously attempted import', 'bbpress' ); ?></label>
-	<p class="description"><?php _e( 'Use this if an import failed and you want to remove that incomplete data.', 'bbpress' ); ?></p>
+	<input name="_bbp_converter_clean" id="_bbp_converter_clean" type="checkbox" value="1" <?php checked( get_option( '_bbp_converter_clean', false ) ); ?> />
+	<label for="_bbp_converter_clean"><?php esc_html_e( 'Purge all information from a previously attempted import', 'bbpress' ); ?></label>
+	<p class="description"><?php esc_html_e( 'Use this if an import failed and you want to remove that incomplete data.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1218,9 +1481,9 @@ function bbp_converter_setting_callback_clean() {
 function bbp_converter_setting_callback_convert_users() {
 ?>
 
-	<input id="_bbp_converter_convert_users" name="_bbp_converter_convert_users" type="checkbox" id="_bbp_converter_convert_users" value="1" <?php checked( get_option( '_bbp_converter_convert_users', false ) ); ?> />
-	<label for="_bbp_converter_convert_users"><?php _e( 'Attempt to import user accounts from previous forums', 'bbpress' ); ?></label>
-	<p class="description"><?php _e( 'Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in.', 'bbpress' ); ?></p>
+	<input name="_bbp_converter_convert_users" id="_bbp_converter_convert_users" type="checkbox" value="1" <?php checked( get_option( '_bbp_converter_convert_users', false ) ); ?> />
+	<label for="_bbp_converter_convert_users"><?php esc_html_e( 'Attempt to import user accounts from previous forums', 'bbpress' ); ?></label>
+	<p class="description"><?php esc_html_e( 'Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in.', 'bbpress' ); ?></p>
 
 <?php
 }
@@ -1241,7 +1504,7 @@ function bbp_converter_settings() {
 
 		<?php screen_icon( 'tools' ); ?>
 
-		<h2 class="nav-tab-wrapper"><?php bbp_tools_admin_tabs( __( 'Import Forums', 'bbpress' ) ); ?></h2>
+		<h2 class="nav-tab-wrapper"><?php bbp_tools_admin_tabs( esc_html__( 'Import Forums', 'bbpress' ) ); ?></h2>
 
 		<form action="#" method="post" id="bbp-converter-settings">
 
@@ -1250,8 +1513,8 @@ function bbp_converter_settings() {
 			<?php do_settings_sections( 'bbpress_converter' ); ?>
 
 			<p class="submit">
-				<input type="button" name="submit" class="button-primary" id="bbp-converter-start" value="<?php esc_attr_e( 'Start', 'bbpress' ); ?>" onclick="bbconverter_start()" />
-				<input type="button" name="submit" class="button-primary" id="bbp-converter-stop" value="<?php esc_attr_e( 'Stop', 'bbpress' ); ?>" onclick="bbconverter_stop()" />
+				<input type="button" name="submit" class="button-primary" id="bbp-converter-start" value="<?php esc_attr_e( 'Start', 'bbpress' ); ?>" onclick="bbconverter_start();" />
+				<input type="button" name="submit" class="button-primary" id="bbp-converter-stop" value="<?php esc_attr_e( 'Stop', 'bbpress' ); ?>" onclick="bbconverter_stop();" />
 				<img id="bbp-converter-progress" src="">
 			</p>
 
@@ -1327,7 +1590,7 @@ function bbp_admin_settings_help() {
 
 	// Help Sidebar
 	$current_screen->set_help_sidebar(
-		'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+		'<p><strong>' . __( 'For more information:', 'bbpress' ) . '</strong></p>' .
 		'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">bbPress Documentation</a>',    'bbpress' ) . '</p>' .
 		'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>', 'bbpress' ) . '</p>'
 	);
@@ -1479,15 +1742,15 @@ function bbp_form_slug_conflict_check( $slug, $default ) {
 	}
 
 	// Loop through slugs to check
-	foreach( $the_core_slugs as $key => $value ) {
+	foreach ( $the_core_slugs as $key => $value ) {
 
 		// Get the slug
 		$slug_check = bbp_get_form_option( $key, $value['default'], true );
 
 		// Compare
-		if ( ( $slug != $key ) && ( $slug_check == $this_slug ) ) : ?>
+		if ( ( $slug !== $key ) && ( $slug_check === $this_slug ) ) : ?>
 
-			<span class="attention"><?php printf( __( 'Possible %1$s conflict: <strong>%2$s</strong>', 'bbpress' ), $value['context'], $value['name'] ); ?></span>
+			<span class="attention"><?php printf( esc_html__( 'Possible %1$s conflict: %2$s', 'bbpress' ), $value['context'], '<strong>' . $value['name'] . '</strong>' ); ?></span>
 
 		<?php endif;
 	}

@@ -50,32 +50,43 @@ function bbp_is_update() {
  * @return bool True if activating bbPress, false if not
  */
 function bbp_is_activation( $basename = '' ) {
-	$bbp = bbpress();
+	global $pagenow;
 
+	$bbp    = bbpress();
 	$action = false;
-	if ( ! empty( $_REQUEST['action'] ) && ( '-1' != $_REQUEST['action'] ) )
+
+	// Bail if not in admin/plugins
+	if ( ! ( is_admin() && ( 'plugins.php' === $pagenow ) ) ) {
+		return false;
+	}
+
+	if ( ! empty( $_REQUEST['action'] ) && ( '-1' !== $_REQUEST['action'] ) ) {
 		$action = $_REQUEST['action'];
-	elseif ( ! empty( $_REQUEST['action2'] ) && ( '-1' != $_REQUEST['action2'] ) )
+	} elseif ( ! empty( $_REQUEST['action2'] ) && ( '-1' !== $_REQUEST['action2'] ) ) {
 		$action = $_REQUEST['action2'];
+	}
 
 	// Bail if not activating
-	if ( empty( $action ) || !in_array( $action, array( 'activate', 'activate-selected' ) ) )
+	if ( empty( $action ) || !in_array( $action, array( 'activate', 'activate-selected' ) ) ) {
 		return false;
+	}
 
 	// The plugin(s) being activated
-	if ( $action == 'activate' ) {
+	if ( $action === 'activate' ) {
 		$plugins = isset( $_GET['plugin'] ) ? array( $_GET['plugin'] ) : array();
 	} else {
 		$plugins = isset( $_POST['checked'] ) ? (array) $_POST['checked'] : array();
 	}
 
 	// Set basename if empty
-	if ( empty( $basename ) && !empty( $bbp->basename ) )
+	if ( empty( $basename ) && !empty( $bbp->basename ) ) {
 		$basename = $bbp->basename;
+	}
 
 	// Bail if no basename
-	if ( empty( $basename ) )
+	if ( empty( $basename ) ) {
 		return false;
+	}
 
 	// Is bbPress being activated?
 	return in_array( $basename, $plugins );
@@ -88,32 +99,43 @@ function bbp_is_activation( $basename = '' ) {
  * @return bool True if deactivating bbPress, false if not
  */
 function bbp_is_deactivation( $basename = '' ) {
-	$bbp = bbpress();
+	global $pagenow;
 
+	$bbp    = bbpress();
 	$action = false;
-	if ( ! empty( $_REQUEST['action'] ) && ( '-1' != $_REQUEST['action'] ) )
+
+	// Bail if not in admin/plugins
+	if ( ! ( is_admin() && ( 'plugins.php' === $pagenow ) ) ) {
+		return false;
+	}
+
+	if ( ! empty( $_REQUEST['action'] ) && ( '-1' !== $_REQUEST['action'] ) ) {
 		$action = $_REQUEST['action'];
-	elseif ( ! empty( $_REQUEST['action2'] ) && ( '-1' != $_REQUEST['action2'] ) )
+	} elseif ( ! empty( $_REQUEST['action2'] ) && ( '-1' !== $_REQUEST['action2'] ) ) {
 		$action = $_REQUEST['action2'];
+	}
 
 	// Bail if not deactivating
-	if ( empty( $action ) || !in_array( $action, array( 'deactivate', 'deactivate-selected' ) ) )
+	if ( empty( $action ) || !in_array( $action, array( 'deactivate', 'deactivate-selected' ) ) ) {
 		return false;
+	}
 
 	// The plugin(s) being deactivated
-	if ( $action == 'deactivate' ) {
+	if ( $action === 'deactivate' ) {
 		$plugins = isset( $_GET['plugin'] ) ? array( $_GET['plugin'] ) : array();
 	} else {
 		$plugins = isset( $_POST['checked'] ) ? (array) $_POST['checked'] : array();
 	}
 
 	// Set basename if empty
-	if ( empty( $basename ) && !empty( $bbp->basename ) )
+	if ( empty( $basename ) && !empty( $bbp->basename ) ) {
 		$basename = $bbp->basename;
+	}
 
 	// Bail if no basename
-	if ( empty( $basename ) )
+	if ( empty( $basename ) ) {
 		return false;
+	}
 
 	// Is bbPress being deactivated?
 	return in_array( $basename, $plugins );
@@ -127,8 +149,7 @@ function bbp_is_deactivation( $basename = '' ) {
  * @uses bbp_get_db_version() To get bbPress's database version
  */
 function bbp_version_bump() {
-	$db_version = bbp_get_db_version();
-	update_option( '_bbp_db_version', $db_version );
+	update_option( '_bbp_db_version', bbp_get_db_version() );
 }
 
 /**
@@ -158,7 +179,8 @@ function bbp_setup_updater() {
  */
 function bbp_create_initial_content( $args = array() ) {
 
-	$defaults = array(
+	// Parse arguments against default values
+	$r = bbp_parse_args( $args, array(
 		'forum_parent'  => 0,
 		'forum_status'  => 'publish',
 		'forum_title'   => __( 'General',                                  'bbpress' ),
@@ -167,24 +189,22 @@ function bbp_create_initial_content( $args = array() ) {
 		'topic_content' => __( 'I am the first topic in your new forums.', 'bbpress' ),
 		'reply_title'   => __( 'Re: Hello World!',                         'bbpress' ),
 		'reply_content' => __( 'Oh, and this is what a reply looks like.', 'bbpress' ),
-	);
-	$r = bbp_parse_args( $args, $defaults, 'create_initial_content' );
-	extract( $r );
+	), 'create_initial_content' );
 
 	// Create the initial forum
 	$forum_id = bbp_insert_forum( array(
-		'post_parent'  => $forum_parent,
-		'post_status'  => $forum_status,
-		'post_title'   => $forum_title,
-		'post_content' => $forum_content
+		'post_parent'  => $r['forum_parent'],
+		'post_status'  => $r['forum_status'],
+		'post_title'   => $r['forum_title'],
+		'post_content' => $r['forum_content']
 	) );
 
 	// Create the initial topic
 	$topic_id = bbp_insert_topic(
 		array(
 			'post_parent'  => $forum_id,
-			'post_title'   => $topic_title,
-			'post_content' => $topic_content
+			'post_title'   => $r['topic_title'],
+			'post_content' => $r['topic_content']
 		),
 		array( 'forum_id'  => $forum_id )
 	);
@@ -193,8 +213,8 @@ function bbp_create_initial_content( $args = array() ) {
 	$reply_id = bbp_insert_reply(
 		array(
 			'post_parent'  => $topic_id,
-			'post_title'   => $reply_title,
-			'post_content' => $reply_content
+			'post_title'   => $r['reply_title'],
+			'post_content' => $r['reply_content']
 		),
 		array(
 			'forum_id'     => $forum_id,
@@ -227,7 +247,7 @@ function bbp_version_updater() {
 
 	// 2.0, 2.0.1, 2.0.2, 2.0.3
 	if ( $raw_db_version < 200 ) {
-		// Do nothing
+		// No changes
 	}
 
 	/** 2.1 Branch ************************************************************/
@@ -246,7 +266,7 @@ function bbp_version_updater() {
 	/** 2.2 Branch ************************************************************/
 
 	// 2.2
-	if ( $raw_db_version < 223 ) {
+	if ( $raw_db_version < 220 ) {
 
 		// Remove the Moderator role from the database
 		remove_role( bbp_get_moderator_role() );
@@ -254,8 +274,15 @@ function bbp_version_updater() {
 		// Remove the Participant role from the database
 		remove_role( bbp_get_participant_role() );
 
-		// Refresh capabilities
+		// Remove capabilities
 		bbp_remove_caps();
+	}
+
+	/** 2.3 Branch ************************************************************/
+
+	// 2.3
+	if ( $raw_db_version < 230 ) {
+		// No changes
 	}
 
 	/** All done! *************************************************************/
@@ -287,4 +314,44 @@ function bbp_add_activation_redirect() {
 
 	// Add the transient to redirect
     set_transient( '_bbp_activation_redirect', true, 30 );
+}
+
+/**
+ * Hooked to the 'bbp_activate' action, this helper function automatically makes
+ * the current user a Key Master in the forums if they just activated bbPress,
+ * regardless of the bbp_allow_global_access() setting.
+ *
+ * @since bbPress (r4910)
+ *
+ * @internal Used to internally make the current user a keymaster on activation
+ *
+ * @uses current_user_can() to bail if user cannot activate plugins
+ * @uses get_current_user_id() to get the current user ID
+ * @uses get_current_blog_id() to get the current blog ID
+ * @uses is_user_member_of_blog() to bail if the current user does not have a role
+ * @uses bbp_is_user_keymaster() to bail if the user is already a keymaster
+ * @uses bbp_set_user_role() to make the current user a keymaster
+ *
+ * @return If user can't activate plugins or is already a keymaster
+ */
+function bbp_make_current_user_keymaster() {
+
+	// Bail if the current user can't activate plugins since previous pageload
+	if ( ! current_user_can( 'activate_plugins' ) )
+		return;
+
+	// Get the current user ID
+	$user_id = get_current_user_id();
+	$blog_id = get_current_blog_id();
+
+	// Bail if user is not actually a member of this site
+	if ( ! is_user_member_of_blog( $user_id, $blog_id ) )
+		return;
+
+	// Bail if the current user is already a keymaster
+	if ( bbp_is_user_keymaster( $user_id ) )
+		return;
+
+	// Make the current user a keymaster
+	bbp_set_user_role( $user_id, bbp_get_keymaster_role() );
 }

@@ -1,9 +1,9 @@
 === Digg Digg ===
 Contributors: joelg87, andy7629
-Tags: digg digg, buffer, digg, google, google+1, plus one, tweet, twitter, facebook, share, like, stumbleupon, social sharing, linkedin, reddit, pinterest, sharebar, social media, social networking, sharethis
+Tags: digg digg, buffer, digg, google, google+1, plus one, tweet, twitter, facebook, share, like, stumbleupon, social sharing, linkedin, reddit, pinterest, sharebar, social media, social networking, sharethis, pocket, tumblr
 Requires at least: 2.3
-Tested up to: 3.4
-Stable tag: 5.3.0
+Tested up to: 3.5.1
+Stable tag: 5.3.6
 
 Your all in one share buttons plugin. Add a floating bar with share buttons to your blog. Just like Mashable!
 
@@ -12,7 +12,7 @@ With Digg Digg by Buffer, you have an all in one social sharing plugin for your 
 
 = Features =
 
-* Display all popular social sharing buttons with count, such as Twitter, Buffer, Facebook Share, Facebook Like, Digg, LinkedIn, Google +1, Reddit, dZone, TweetMeme, Topsy, Yahoo Buzz, StumbleUpon, Del.icio.us, Sphinn, Designbump, WebBlend, BlogEngage and Serpd, Pinterest.
+* Display all popular social sharing buttons with count, such as Twitter, Buffer, Facebook Share, Facebook Like, Digg, LinkedIn, Google +1, Reddit, dZone, TweetMeme, Topsy, Yahoo Buzz, StumbleUpon, Del.icio.us, Sphinn, Designbump, WebBlend, BlogEngage, Serpd, Pinterest, Pocket and Tumblr.
 * Facebook Like (Iframe or XFBML), support thumbnail generation, multiple languages, show faces and send button.
 * Great customization options. Choose a floating bar like here: http://blog.bufferapp.com or sharing buttons at the top or bottom of the post.
 * Lazy loading to increase website performance.
@@ -38,13 +38,21 @@ If you have any questions, we'd love to hear from you. Email us: diggdigg@buffer
 
 = How can I disable the Digg Digg Floating Bar on a particular page? =
 
-To disable the bar on a particular page add the following few lines to your themes functions.php file, changing the conditional tags to ones that fit your requirement.
+You can insert the following within the HTML editor anywhere when editing a post and it will disable Digg Digg on that page.
 
-`if(is_page('page-slug-1') || is_page('page-slug-2')) {
-	remove_filter('the_excerpt', 'dd_hook_wp_content');
-	remove_filter('the_content', 'dd_hook_wp_content');
-}`
+`<!-- Digg Digg Disabled -->`
 
+Another method to disable the bar on a particular page add the following few lines to your themes functions.php file, changing the conditional tags to ones that fit your requirement.
+
+`function dd_exclude_from_pages() {
+if(is_page(1)) {
+      remove_filter('the_excerpt', 'dd_hook_wp_content');
+    	remove_filter('the_content', 'dd_hook_wp_content');
+	}
+}
+add_action('template_redirect', 'dd_exclude_from_pages');`
+
+More details here... http://www.eugenoprea.com/code-snippets/exclude-diggdigg-from-specific-pages/
 
 = How can I add the Digg Digg Floating Bar on a particular page? =
 
@@ -68,6 +76,36 @@ In both Normal Display and Floating Display settings pages you can change the we
 4. Normal Bar with Small Buttons at Top
 
 == Changelog ==
+
+= Digg Digg v5.3.6 - 01/07/2013 =
+* Fixed: Use WordPress HTTP API for delicious.
+* Fixed: Typo in Linkedin sharer.
+* Fixed: Uses wp_enqueue_script rather than wp_head.
+
+= Digg Digg v5.3.5 - 19/05/2013 =
+* Added: Support for WordPress nonce fields. Prevents cross-site request forgery. Credit to Charlie Eriksen via Secunia SVCRP for finding and reporting.
+
+= Digg Digg v5.3.4 - 05/05/2013 =
+* Added: Support for both HTTP and HTTPS URL Schemes. Thanks Maks3w.
+* Added: Extra flexibility over the position of the Digg Digg Floating Bar, allowing you to set a specific DOM element per post using Custom Fields. Thanks DaveBurns.
+* Added: Site wide customisation of the specific DOM element that Digg Digg uses to set its initial position. Thanks again DaveBurns for inspiration for adding this.
+* Fixed: Facebook Like XFMBL no longer requires URL Encoding. Thanks to various people in the support forum for pointing this out.
+* Fixed: Various other small bug fixes.
+* Note: As always if you have a bugfix or a feature and want to help make Digg Digg better then you can contribute via GitHub here... https://github.com/bufferapp/diggdigg
+
+= Digg Digg v5.3.3 - 12/04/2013 =
+* Fixed: Critical issue with updating Digg Digg where the plugin would disappear completely. Sorry about that guys!
+
+= Digg Digg v5.3.2 - 12/04/2013 =
+* New: Added Pocket Publisher Button
+* New: Added Tumblr Share Button
+* New: Buffer button now uses the post title rather than grabbing content from the page title.
+
+= Digg Digg v5.3.1 - 03/03/2013 =
+* New: Extra documentation for excluding Digg Digg from certain pages within the FAQ.
+* Fixed: Issue with duplicate LinkedIn buttons.
+* Fixed: Issue with HTTPS CSS, thanks desrosj.
+* Removed: Old buttons that are no longer available. Google Buzz, Digg.
 
 = Digg Digg v5.3.0 - 25/11/2012 =
 * New: Digg Digg is now Open Source, please contribute on GitHub here... https://github.com/bufferapp/diggdigg

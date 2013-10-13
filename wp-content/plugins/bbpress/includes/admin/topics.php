@@ -64,11 +64,11 @@ class BBP_Topics_Admin {
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 
 		// Topic column headers.
-		add_filter( 'manage_' . $this->post_type . '_posts_columns',        array( $this, 'topics_column_headers' ) );
+		add_filter( 'manage_' . $this->post_type . '_posts_columns',        array( $this, 'column_headers' ) );
 
 		// Topic columns (in post row)
-		add_action( 'manage_' . $this->post_type . '_posts_custom_column',  array( $this, 'topics_column_data' ), 10, 2 );
-		add_filter( 'post_row_actions',                                     array( $this, 'topics_row_actions' ), 10, 2 );
+		add_action( 'manage_' . $this->post_type . '_posts_custom_column',  array( $this, 'column_data' ), 10, 2 );
+		add_filter( 'post_row_actions',                                     array( $this, 'row_actions' ), 10, 2 );
 
 		// Topic metabox actions
 		add_action( 'add_meta_boxes', array( $this, 'attributes_metabox'      ) );
@@ -80,7 +80,6 @@ class BBP_Topics_Admin {
 
 		// Anonymous metabox actions
 		add_action( 'add_meta_boxes', array( $this, 'author_metabox'      ) );
-		add_action( 'save_post',      array( $this, 'author_metabox_save' ) );
 
 		// Add ability to filter topics and replies per forum
 		add_filter( 'restrict_manage_posts', array( $this, 'filter_dropdown'  ) );
@@ -88,6 +87,7 @@ class BBP_Topics_Admin {
 
 		// Contextual Help
 		add_action( 'load-edit.php',     array( $this, 'edit_help' ) );
+		add_action( 'load-post.php',     array( $this, 'new_help'  ) );
 		add_action( 'load-post-new.php', array( $this, 'new_help'  ) );
 	}
 
@@ -98,7 +98,7 @@ class BBP_Topics_Admin {
 	 * @return boolean
 	 */
 	private function bail() {
-		if ( !isset( get_current_screen()->post_type ) || ( $this->post_type != get_current_screen()->post_type ) )
+		if ( !isset( get_current_screen()->post_type ) || ( $this->post_type !== get_current_screen()->post_type ) )
 			return true;
 
 		return false;
@@ -209,11 +209,7 @@ class BBP_Topics_Admin {
 
 		$publish_box = '<p>' . __( '<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic.', 'bbpress' ) . '</p>';
 
-		if ( current_theme_supports( 'topic-formats' ) && topic_type_supports( 'topic', 'topic-formats' ) ) {
-			$publish_box .= '<p>' . __( '<strong>topic Format</strong> - This designates how your theme will display a specific topic. For example, you could have a <em>standard</em> blog topic with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href="http://codex.wordpress.org/Post_Formats#Supported_Formats">descriptions of each topic format</a>. Your theme could enable all or some of 10 possible formats.', 'bbpress' ) . '</p>';
-		}
-
-		if ( current_theme_supports( 'topic-thumbnails' ) && topic_type_supports( 'topic', 'thumbnail' ) ) {
+		if ( current_theme_supports( 'topic-thumbnails' ) && post_type_supports( 'topic', 'thumbnail' ) ) {
 			$publish_box .= '<p>' . __( '<strong>Featured Image</strong> - This allows you to associate an image with your topic without inserting it. This is usually useful only if your theme makes use of the featured image as a topic thumbnail on the home page, a custom header, etc.', 'bbpress' ) . '</p>';
 		}
 
@@ -232,14 +228,6 @@ class BBP_Topics_Admin {
 			'id'      => 'publish-box',
 			'title'   => __( 'Publish Box', 'bbpress' ),
 			'content' => $publish_box,
-		) );
-
-		get_current_screen()->add_help_tab( array(
-			'id'      => 'discussion-settings',
-			'title'   => __( 'Discussion Settings', 'bbpress' ),
-			'content' =>
-				'<p>' . __( '<strong>Send Trackbacks</strong> - Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. Enter the URL(s) you want to send trackbacks. If you link to other WordPress sites they&#8217;ll be notified automatically using pingbacks, and this field is unnecessary.', 'bbpress' ) . '</p>' .
-				'<p>' . __( '<strong>Discussion</strong> - You can turn comments and pings on or off, and if there are comments on the topic, you can see them here and moderate them.', 'bbpress' ) . '</p>'
 		) );
 
 		get_current_screen()->set_help_sidebar(
@@ -295,7 +283,7 @@ class BBP_Topics_Admin {
 			return $topic_id;
 
 		// Bail if not a post request
-		if ( 'POST' != strtoupper( $_SERVER['REQUEST_METHOD'] ) )
+		if ( ! bbp_is_post_request() )
 			return $topic_id;
 
 		// Nonce check
@@ -309,8 +297,13 @@ class BBP_Topics_Admin {
 		// Get the forum ID
 		$forum_id = !empty( $_POST['parent_id'] ) ? (int) $_POST['parent_id'] : 0;
 
+		// Get topic author data
+		$anonymous_data = bbp_filter_anonymous_post_data();
+		$author_id      = bbp_get_topic_author_id( $topic_id );
+		$is_edit        = (bool) isset( $_POST['save'] );
+
 		// Formally update the topic
-		bbp_update_topic( $topic_id, $forum_id );
+		bbp_update_topic( $topic_id, $forum_id, $anonymous_data, $author_id, $is_edit );
 
 		// Stickies
 		if ( !empty( $_POST['bbp_stick_topic'] ) && in_array( $_POST['bbp_stick_topic'], array( 'stick', 'super', 'unstick' ) ) ) {
@@ -337,7 +330,8 @@ class BBP_Topics_Admin {
 		}
 
 		// Allow other fun things to happen
-		do_action( 'bbp_topic_attributes_metabox_save', $topic_id, $forum_id );
+		do_action( 'bbp_topic_attributes_metabox_save', $topic_id, $forum_id       );
+		do_action( 'bbp_author_metabox_save',           $topic_id, $anonymous_data );
 
 		return $topic_id;
 	}
@@ -360,7 +354,7 @@ class BBP_Topics_Admin {
 		if ( $this->bail() ) return;
 
 		// Bail if post_type is not a topic
-		if ( empty( $_GET['action'] ) || ( 'edit' != $_GET['action'] ) )
+		if ( empty( $_GET['action'] ) || ( 'edit' !== $_GET['action'] ) )
 			return;
 
 		// Add the metabox
@@ -374,53 +368,6 @@ class BBP_Topics_Admin {
 		);
 
 		do_action( 'bbp_author_metabox', get_the_ID() );
-	}
-
-	/**
-	 * Save the author information for the topic
-	 *
-	 * @since bbPress (r2828)
-	 *
-	 * @param int $post_id Topic or reply id
-	 * @uses bbp_get_topic() To get the topic
-	 * @uses bbp_get_reply() To get the reply
-	 * @uses current_user_can() To check if the current user can edit the
-	 *                           topic or reply
-	 * @uses bbp_filter_author_post_data() To filter the author data
-	 * @uses update_post_meta() To update the anonymous user data
-	 * @uses do_action() Calls 'bbp_author_metabox_save' with the topic id and
-	 *                    anonymous data
-	 * @return int Topic or reply id
-	 */
-	public function author_metabox_save( $post_id ) {
-
-		if ( $this->bail() ) return $post_id;
-
-		// Bail if no post_id
-		if ( empty( $post_id ) )
-			return $post_id;
-
-		// Bail if doing an autosave
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-			return $post_id;
-
-		// Bail if not a post request
-		if ( 'POST' != strtoupper( $_SERVER['REQUEST_METHOD'] ) )
-			return $post_id;
-
-		// Bail if user cannot edit topics
-		if ( !current_user_can( 'edit_topic', $post_id ) )
-			return $post_id;
-
-		$anonymous_data = bbp_filter_anonymous_post_data();
-
-		update_post_meta( $post_id, '_bbp_anonymous_name',    $anonymous_data['bbp_anonymous_name']    );
-		update_post_meta( $post_id, '_bbp_anonymous_email',   $anonymous_data['bbp_anonymous_email']   );
-		update_post_meta( $post_id, '_bbp_anonymous_website', $anonymous_data['bbp_anonymous_website'] );
-
-		do_action( 'bbp_author_metabox_save', $post_id, $anonymous_data );
-
-		return $post_id;
 	}
 
 	/**
@@ -526,7 +473,7 @@ class BBP_Topics_Admin {
 		if ( $this->bail() ) return;
 
 		// Only proceed if GET is a topic toggle action
-		if ( 'GET' == $_SERVER['REQUEST_METHOD'] && !empty( $_GET['action'] ) && in_array( $_GET['action'], array( 'bbp_toggle_topic_close', 'bbp_toggle_topic_stick', 'bbp_toggle_topic_spam' ) ) && !empty( $_GET['topic_id'] ) ) {
+		if ( bbp_is_get_request() && !empty( $_GET['action'] ) && in_array( $_GET['action'], array( 'bbp_toggle_topic_close', 'bbp_toggle_topic_stick', 'bbp_toggle_topic_spam' ) ) && !empty( $_GET['topic_id'] ) ) {
 			$action    = $_GET['action'];            // What action is taking place?
 			$topic_id  = (int) $_GET['topic_id'];    // What's the topic id?
 			$success   = false;                      // Flag
@@ -545,8 +492,8 @@ class BBP_Topics_Admin {
 					check_admin_referer( 'close-topic_' . $topic_id );
 
 					$is_open = bbp_is_topic_open( $topic_id );
-					$message = true == $is_open ? 'closed' : 'opened';
-					$success = true == $is_open ? bbp_close_topic( $topic_id ) : bbp_open_topic( $topic_id );
+					$message = true === $is_open ? 'closed' : 'opened';
+					$success = true === $is_open ? bbp_close_topic( $topic_id ) : bbp_open_topic( $topic_id );
 
 					break;
 
@@ -554,10 +501,10 @@ class BBP_Topics_Admin {
 					check_admin_referer( 'stick-topic_' . $topic_id );
 
 					$is_sticky = bbp_is_topic_sticky( $topic_id );
-					$is_super  = ( empty( $is_sticky ) && !empty( $_GET['super'] ) && 1 == (int) $_GET['super'] ) ? true : false;
-					$message   = true == $is_sticky ? 'unsticked'     : 'sticked';
-					$message   = true == $is_super  ? 'super_sticked' : $message;
-					$success   = true == $is_sticky ? bbp_unstick_topic( $topic_id ) : bbp_stick_topic( $topic_id, $is_super );
+					$is_super  = false === $is_sticky && !empty( $_GET['super'] ) && ( "1" === $_GET['super'] ) ? true : false;
+					$message   = true  === $is_sticky ? 'unsticked'     : 'sticked';
+					$message   = true  === $is_super  ? 'super_sticked' : $message;
+					$success   = true  === $is_sticky ? bbp_unstick_topic( $topic_id ) : bbp_stick_topic( $topic_id, $is_super );
 
 					break;
 
@@ -565,15 +512,15 @@ class BBP_Topics_Admin {
 					check_admin_referer( 'spam-topic_' . $topic_id );
 
 					$is_spam = bbp_is_topic_spam( $topic_id );
-					$message = true == $is_spam ? 'unspammed' : 'spammed';
-					$success = true == $is_spam ? bbp_unspam_topic( $topic_id ) : bbp_spam_topic( $topic_id );
+					$message = true === $is_spam ? 'unspammed' : 'spammed';
+					$success = true === $is_spam ? bbp_unspam_topic( $topic_id ) : bbp_spam_topic( $topic_id );
 
 					break;
 			}
 
 			$message = array( 'bbp_topic_toggle_notice' => $message, 'topic_id' => $topic->ID );
 
-			if ( false == $success || is_wp_error( $success ) )
+			if ( false === $success || is_wp_error( $success ) )
 				$message['failed'] = '1';
 
 			// Do additional topic toggle actions (admin side)
@@ -607,7 +554,7 @@ class BBP_Topics_Admin {
 		if ( $this->bail() ) return;
 
 		// Only proceed if GET is a topic toggle action
-		if ( 'GET' == $_SERVER['REQUEST_METHOD'] && !empty( $_GET['bbp_topic_toggle_notice'] ) && in_array( $_GET['bbp_topic_toggle_notice'], array( 'opened', 'closed', 'super_sticked', 'sticked', 'unsticked', 'spammed', 'unspammed' ) ) && !empty( $_GET['topic_id'] ) ) {
+		if ( bbp_is_get_request() && !empty( $_GET['bbp_topic_toggle_notice'] ) && in_array( $_GET['bbp_topic_toggle_notice'], array( 'opened', 'closed', 'super_sticked', 'sticked', 'unsticked', 'spammed', 'unspammed' ) ) && !empty( $_GET['topic_id'] ) ) {
 			$notice     = $_GET['bbp_topic_toggle_notice'];         // Which notice?
 			$topic_id   = (int) $_GET['topic_id'];                  // What's the topic id?
 			$is_failure = !empty( $_GET['failed'] ) ? true : false; // Was that a failure?
@@ -621,35 +568,35 @@ class BBP_Topics_Admin {
 			if ( empty( $topic ) )
 				return;
 
-			$topic_title = esc_html( bbp_get_topic_title( $topic->ID ) );
+			$topic_title = bbp_get_topic_title( $topic->ID );
 
 			switch ( $notice ) {
 				case 'opened'    :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem opening the topic "%1$s".',           'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully opened.',           'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem opening the topic "%1$s".',           'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully opened.',           'bbpress' ), $topic_title );
 					break;
 
 				case 'closed'    :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem closing the topic "%1$s".',           'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully closed.',           'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem closing the topic "%1$s".',           'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully closed.',           'bbpress' ), $topic_title );
 					break;
 
 				case 'super_sticked' :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem sticking the topic "%1$s" to front.', 'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully sticked to front.', 'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem sticking the topic "%1$s" to front.', 'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully sticked to front.', 'bbpress' ), $topic_title );
 					break;
 
 				case 'sticked'   :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem sticking the topic "%1$s".',          'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully sticked.',          'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem sticking the topic "%1$s".',          'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully sticked.',          'bbpress' ), $topic_title );
 					break;
 
 				case 'unsticked' :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem unsticking the topic "%1$s".',        'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully unsticked.',        'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem unsticking the topic "%1$s".',        'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully unsticked.',        'bbpress' ), $topic_title );
 					break;
 
 				case 'spammed'   :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem marking the topic "%1$s" as spam.',   'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully marked as spam.',   'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem marking the topic "%1$s" as spam.',   'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully marked as spam.',   'bbpress' ), $topic_title );
 					break;
 
 				case 'unspammed' :
-					$message = $is_failure == true ? sprintf( __( 'There was a problem unmarking the topic "%1$s" as spam.', 'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully unmarked as spam.', 'bbpress' ), $topic_title );
+					$message = $is_failure === true ? sprintf( __( 'There was a problem unmarking the topic "%1$s" as spam.', 'bbpress' ), $topic_title ) : sprintf( __( 'Topic "%1$s" successfully unmarked as spam.', 'bbpress' ), $topic_title );
 					break;
 			}
 
@@ -658,8 +605,8 @@ class BBP_Topics_Admin {
 
 			?>
 
-			<div id="message" class="<?php echo $is_failure == true ? 'error' : 'updated'; ?> fade">
-				<p style="line-height: 150%"><?php echo $message; ?></p>
+			<div id="message" class="<?php echo $is_failure === true ? 'error' : 'updated'; ?> fade">
+				<p style="line-height: 150%"><?php echo esc_html( $message ); ?></p>
 			</div>
 
 			<?php
@@ -676,7 +623,7 @@ class BBP_Topics_Admin {
 	 *                        the columns
 	 * @return array $columns bbPress topic columns
 	 */
-	public function topics_column_headers( $columns ) {
+	public function column_headers( $columns ) {
 
 		if ( $this->bail() ) return $columns;
 
@@ -719,7 +666,7 @@ class BBP_Topics_Admin {
 	 * @uses do_action() Calls 'bbp_admin_topics_column_data' with the
 	 *                    column and topic id
 	 */
-	function topics_column_data( $column, $topic_id ) {
+	public function column_data( $column, $topic_id ) {
 
 		if ( $this->bail() ) return;
 
@@ -738,14 +685,14 @@ class BBP_Topics_Admin {
 					// Forum Title
 					$forum_title = bbp_get_forum_title( $forum_id );
 					if ( empty( $forum_title ) ) {
-						$forum_title = __( 'No Forum', 'bbpress' );
+						$forum_title = esc_html__( 'No Forum', 'bbpress' );
 					}
 
 					// Output the title
 					echo $forum_title;
 
 				} else {
-					_e( '(No Forum)', 'bbpress' );
+					esc_html_e( '(No Forum)', 'bbpress' );
 				}
 
 				break;
@@ -767,7 +714,7 @@ class BBP_Topics_Admin {
 
 			// Freshness
 			case 'bbp_topic_created':
-				printf( __( '%1$s <br /> %2$s', 'bbpress' ),
+				printf( '%1$s <br /> %2$s',
 					get_the_date(),
 					esc_attr( get_the_time() )
 				);
@@ -778,9 +725,9 @@ class BBP_Topics_Admin {
 			case 'bbp_topic_freshness' :
 				$last_active = bbp_get_topic_last_active_time( $topic_id, false );
 				if ( !empty( $last_active ) ) {
-					echo $last_active;
+					echo esc_html( $last_active );
 				} else {
-					_e( 'No Replies', 'bbpress' ); // This should never happen
+					esc_html_e( 'No Replies', 'bbpress' ); // This should never happen
 				}
 
 				break;
@@ -819,15 +766,15 @@ class BBP_Topics_Admin {
 	 * @uses get_delete_post_link() To get the delete post link of the topic
 	 * @return array $actions Actions
 	 */
-	public function topics_row_actions( $actions, $topic ) {
+	public function row_actions( $actions, $topic ) {
 
 		if ( $this->bail() ) return $actions;
 
 		unset( $actions['inline hide-if-no-js'] );
 
 		// Show view link if it's not set, the topic is trashed and the user can view trashed topics
-		if ( empty( $actions['view'] ) && ( bbp_get_trash_status_id() == $topic->post_status ) && current_user_can( 'view_trash' ) )
-			$actions['view'] = '<a href="' . bbp_get_topic_permalink( $topic->ID ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;', 'bbpress' ), bbp_get_topic_title( $topic->ID ) ) ) . '" rel="permalink">' . __( 'View', 'bbpress' ) . '</a>';
+		if ( empty( $actions['view'] ) && ( bbp_get_trash_status_id() === $topic->post_status ) && current_user_can( 'view_trash' ) )
+			$actions['view'] = '<a href="' . esc_url( bbp_get_topic_permalink( $topic->ID ) ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;', 'bbpress' ), bbp_get_topic_title( $topic->ID ) ) ) . '" rel="permalink">' . esc_html__( 'View', 'bbpress' ) . '</a>';
 
 		// Only show the actions if the user is capable of viewing them :)
 		if ( current_user_can( 'moderate', $topic->ID ) ) {
@@ -835,47 +782,47 @@ class BBP_Topics_Admin {
 			// Close
 			// Show the 'close' and 'open' link on published and closed posts only
 			if ( in_array( $topic->post_status, array( bbp_get_public_status_id(), bbp_get_closed_status_id() ) ) ) {
-				$close_uri = esc_url( wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_close' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'close-topic_' . $topic->ID ) );
+				$close_uri = wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_close' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'close-topic_' . $topic->ID );
 				if ( bbp_is_topic_open( $topic->ID ) )
-					$actions['closed'] = '<a href="' . $close_uri . '" title="' . esc_attr__( 'Close this topic', 'bbpress' ) . '">' . _x( 'Close', 'Close a Topic', 'bbpress' ) . '</a>';
+					$actions['closed'] = '<a href="' . esc_url( $close_uri ) . '" title="' . esc_attr__( 'Close this topic', 'bbpress' ) . '">' . _x( 'Close', 'Close a Topic', 'bbpress' ) . '</a>';
 				else
-					$actions['closed'] = '<a href="' . $close_uri . '" title="' . esc_attr__( 'Open this topic',  'bbpress' ) . '">' . _x( 'Open',  'Open a Topic',  'bbpress' ) . '</a>';
+					$actions['closed'] = '<a href="' . esc_url( $close_uri ) . '" title="' . esc_attr__( 'Open this topic',  'bbpress' ) . '">' . _x( 'Open',  'Open a Topic',  'bbpress' ) . '</a>';
 			}
 
 			// Dont show sticky if topic links is spam or trash
 			if ( !bbp_is_topic_spam( $topic->ID ) && !bbp_is_topic_trash( $topic->ID ) ) {
 
 				// Sticky
-				$stick_uri  = esc_url( wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_stick' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'stick-topic_'  . $topic->ID ) );
+				$stick_uri  = wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_stick' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'stick-topic_'  . $topic->ID );
 				if ( bbp_is_topic_sticky( $topic->ID ) ) {
-					$actions['stick'] = '<a href="' . $stick_uri . '" title="' . esc_attr__( 'Unstick this topic', 'bbpress' ) . '">' . __( 'Unstick', 'bbpress' ) . '</a>';
+					$actions['stick'] = '<a href="' . esc_url( $stick_uri ) . '" title="' . esc_attr__( 'Unstick this topic', 'bbpress' ) . '">' . esc_html__( 'Unstick', 'bbpress' ) . '</a>';
 				} else {
-					$super_uri        = esc_url( wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_stick', 'super' => '1' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'stick-topic_'  . $topic->ID ) );
-					$actions['stick'] = '<a href="' . $stick_uri . '" title="' . esc_attr__( 'Stick this topic to its forum', 'bbpress' ) . '">' . __( 'Stick', 'bbpress' ) . '</a> (<a href="' . $super_uri . '" title="' . esc_attr__( 'Stick this topic to front', 'bbpress' ) . '">' . __( 'to front', 'bbpress' ) . '</a>)';
+					$super_uri        = wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_stick', 'super' => '1' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'stick-topic_'  . $topic->ID );
+					$actions['stick'] = '<a href="' . esc_url( $stick_uri ) . '" title="' . esc_attr__( 'Stick this topic to its forum', 'bbpress' ) . '">' . esc_html__( 'Stick', 'bbpress' ) . '</a> <a href="' . esc_url( $super_uri ) . '" title="' . esc_attr__( 'Stick this topic to front', 'bbpress' ) . '">' . esc_html__( '(to front)', 'bbpress' ) . '</a>';
 				}
 			}
 
 			// Spam
-			$spam_uri  = esc_url( wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_spam' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'spam-topic_'  . $topic->ID ) );
+			$spam_uri  = wp_nonce_url( add_query_arg( array( 'topic_id' => $topic->ID, 'action' => 'bbp_toggle_topic_spam' ), remove_query_arg( array( 'bbp_topic_toggle_notice', 'topic_id', 'failed', 'super' ) ) ), 'spam-topic_'  . $topic->ID );
 			if ( bbp_is_topic_spam( $topic->ID ) )
-				$actions['spam'] = '<a href="' . $spam_uri . '" title="' . esc_attr__( 'Mark the topic as not spam', 'bbpress' ) . '">' . __( 'Not spam', 'bbpress' ) . '</a>';
+				$actions['spam'] = '<a href="' . esc_url( $spam_uri ) . '" title="' . esc_attr__( 'Mark the topic as not spam', 'bbpress' ) . '">' . esc_html__( 'Not spam', 'bbpress' ) . '</a>';
 			else
-				$actions['spam'] = '<a href="' . $spam_uri . '" title="' . esc_attr__( 'Mark this topic as spam',    'bbpress' ) . '">' . __( 'Spam',     'bbpress' ) . '</a>';
+				$actions['spam'] = '<a href="' . esc_url( $spam_uri ) . '" title="' . esc_attr__( 'Mark this topic as spam',    'bbpress' ) . '">' . esc_html__( 'Spam',     'bbpress' ) . '</a>';
 
 		}
 
 		// Do not show trash links for spam topics, or spam links for trashed topics
 		if ( current_user_can( 'delete_topic', $topic->ID ) ) {
-			if ( bbp_get_trash_status_id() == $topic->post_status ) {
+			if ( bbp_get_trash_status_id() === $topic->post_status ) {
 				$post_type_object   = get_post_type_object( bbp_get_topic_post_type() );
-				$actions['untrash'] = "<a title='" . esc_attr__( 'Restore this item from the Trash', 'bbpress' ) . "' href='" . wp_nonce_url( add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_topic_post_type() ), admin_url( 'edit.php' ) ) ), admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $topic->ID ) ) ), 'untrash-' . $topic->post_type . '_' . $topic->ID ) . "'>" . __( 'Restore', 'bbpress' ) . "</a>";
+				$actions['untrash'] = "<a title='" . esc_attr__( 'Restore this item from the Trash', 'bbpress' ) . "' href='" . wp_nonce_url( add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_topic_post_type() ), admin_url( 'edit.php' ) ) ), admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $topic->ID ) ) ), 'untrash-' . $topic->post_type . '_' . $topic->ID ) . "'>" . esc_html__( 'Restore', 'bbpress' ) . "</a>";
 			} elseif ( EMPTY_TRASH_DAYS ) {
-				$actions['trash'] = "<a class='submitdelete' title='" . esc_attr__( 'Move this item to the Trash', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_topic_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $topic->ID ) ) . "'>" . __( 'Trash', 'bbpress' ) . "</a>";
+				$actions['trash'] = "<a class='submitdelete' title='" . esc_attr__( 'Move this item to the Trash', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_topic_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $topic->ID ) ) . "'>" . esc_html__( 'Trash', 'bbpress' ) . "</a>";
 			}
 
-			if ( bbp_get_trash_status_id() == $topic->post_status || !EMPTY_TRASH_DAYS ) {
-				$actions['delete'] = "<a class='submitdelete' title='" . esc_attr__( 'Delete this item permanently', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_topic_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $topic->ID, '', true ) ) . "'>" . __( 'Delete Permanently', 'bbpress' ) . "</a>";
-			} elseif ( bbp_get_spam_status_id() == $topic->post_status ) {
+			if ( bbp_get_trash_status_id() === $topic->post_status || !EMPTY_TRASH_DAYS ) {
+				$actions['delete'] = "<a class='submitdelete' title='" . esc_attr__( 'Delete this item permanently', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_topic_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $topic->ID, '', true ) ) . "'>" . esc_html__( 'Delete Permanently', 'bbpress' ) . "</a>";
+			} elseif ( bbp_get_spam_status_id() === $topic->post_status ) {
 				unset( $actions['trash'] );
 			}
 		}
@@ -898,7 +845,7 @@ class BBP_Topics_Admin {
 		if ( $this->bail() ) return;
 
 		// Add Empty Spam button
-		if ( !empty( $_GET['post_status'] ) && ( bbp_get_spam_status_id() == $_GET['post_status'] ) && current_user_can( 'moderate' ) ) {
+		if ( !empty( $_GET['post_status'] ) && ( bbp_get_spam_status_id() === $_GET['post_status'] ) && current_user_can( 'moderate' ) ) {
 			wp_nonce_field( 'bulk-destroy', '_destroy_nonce' );
 			$title = esc_attr__( 'Empty Spam', 'bbpress' );
 			submit_button( $title, 'button-secondary apply', 'delete_all', false );

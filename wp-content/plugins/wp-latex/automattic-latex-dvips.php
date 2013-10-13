@@ -20,8 +20,9 @@ class Automattic_Latex_DVIPS extends Automattic_Latex_DVIPNG {
 			return new WP_Error( 'dvips_path', __( 'dvips path not specified.', 'automattic-latex' ) );
 		
 		$ps_file = preg_replace( '/[.]dvi$/', '', $dvi_file ) . '.ps';
+		$output_resolution = round( 100 * $this->zoom );
 
-		$dvips_exec = AUTOMATTIC_LATEX_DVIPS_PATH . ' -D 100 -E ' . escapeshellarg( $dvi_file ) . ' -o ' . escapeshellarg( $ps_file );
+		$dvips_exec = AUTOMATTIC_LATEX_DVIPS_PATH . ' -D ' . intval( $output_resolution ) . ' -E ' . escapeshellarg( $dvi_file ) . ' -o ' . escapeshellarg( $ps_file );
 		exec( "$dvips_exec > /dev/null 2>&1", $dvips_out, $dps );
 		if ( 0 != $dps )
 			return new WP_Error( 'dvips_exec', __( 'Cannot create image', 'automattic-latex' ), $dvips_exec );
@@ -45,7 +46,9 @@ class Automattic_Latex_DVIPS extends Automattic_Latex_DVIPNG {
 		if ( 'T' == $this->fg_hex )
 			$this->fg_hex = '000000';
 
-		$convert_exec = AUTOMATTIC_LATEX_CONVERT_PATH . ' -units PixelsPerInch -density 100 ';
+		$output_resolution = round( 100 * $this->zoom );
+
+		$convert_exec = AUTOMATTIC_LATEX_CONVERT_PATH . ' -units PixelsPerInch -density ' . intval( $output_resolution ) . ' ';
 		if ( 'T' != $this->bg_hex )
 			$convert_exec .= '-flatten ';
 		$convert_exec .= escapeshellarg( "$this->tmp_file.ps" );

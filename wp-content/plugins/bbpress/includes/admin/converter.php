@@ -26,6 +26,10 @@ class BBP_Converter {
 	 */
 	public function __construct() {
 
+		// "I wonder where I'll float next."
+		if ( empty( $_SERVER['REQUEST_METHOD'] ) )
+			return;
+
 		// Bail if request is not correct
 		switch ( strtoupper( $_SERVER['REQUEST_METHOD'] ) ) {
 
@@ -216,7 +220,7 @@ class BBP_Converter {
 					jQuery('#bbp-converter-start').hide();
 					jQuery('#bbp-converter-stop').show();
 					jQuery('#bbp-converter-progress').show();
-					bbconverter_log( '<p class="loading"><?php _e( 'Starting Conversion', 'bbpress' ); ?></p>' );
+					bbconverter_log( '<p class="loading"><?php esc_html_e( 'Starting Conversion', 'bbpress' ); ?></p>' );
 					bbconverter_run();
 				}
 			}
@@ -241,7 +245,7 @@ class BBP_Converter {
 			function bbconverter_success(response) {
 				bbconverter_log(response);
 
-				if ( response == '<p class="loading"><?php _e( 'Conversion Complete', 'bbpress' ); ?></p>' || response.indexOf('error') > -1 ) {
+				if ( response == '<p class="loading"><?php esc_html_e( 'Conversion Complete', 'bbpress' ); ?></p>' || response.indexOf('error') > -1 ) {
 					bbconverter_log('<p>Repair any missing information: <a href="<?php echo admin_url(); ?>tools.php?page=bbp-repair">Continue</a></p>');
 					bbconverter_stop();
 				} else if( bbconverter_is_running ) { // keep going
@@ -379,7 +383,7 @@ class BBP_Converter {
 						}
 					} else {
 						update_option( '_bbp_converter_start', $max + 1 );
-						$this->converter_output( sprintf( __( 'Delete users wordpress default passwords (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
+						$this->converter_output( sprintf( __( 'Delete users WordPress default passwords (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
 					}
 				} else {
 					update_option( '_bbp_converter_step',  $step + 1 );
@@ -463,6 +467,21 @@ class BBP_Converter {
 
 				break;
 
+			// STEP 9. Convert reply_to parents.
+			case 9 :
+				if ( $converter->convert_reply_to_parents( $start ) ) {
+					update_option( '_bbp_converter_step',  $step + 1 );
+					update_option( '_bbp_converter_start', 0         );
+					if ( empty( $start ) ) {
+						$this->converter_output( __( 'No reply_to parents to convert', 'bbpress' ) );
+					}
+				} else {
+					update_option( '_bbp_converter_start', $max + 1 );
+					$this->converter_output( sprintf( __( 'Calculating reply_to parents (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
+				}
+
+				break;
+
 			default :
 				delete_option( '_bbp_converter_step'  );
 				delete_option( '_bbp_converter_start' );
@@ -525,7 +544,7 @@ abstract class BBP_Converter_Base {
 	protected $field_map = array();
 
 	/**
-	 * @var object This is the connection to the wordpress datbase.
+	 * @var object This is the connection to the WordPress datbase.
 	 */
 	protected $wpdb;
 
@@ -553,6 +572,11 @@ abstract class BBP_Converter_Base {
 	 * @var array() Map of from old topic ids to new topic ids.  It is for optimization.
 	 */
 	private $map_topicid = array();
+
+	/**
+	 * @var array() Map of from old reply_to ids to new reply_to ids.  It is for optimization.
+	 */
+	private $map_reply_to = array();
 
 	/**
 	 * @var array() Map of from old user ids to new user ids.  It is for optimization.
@@ -959,6 +983,11 @@ abstract class BBP_Converter_Base {
 										} elseif ( '_id' == substr( $key, -3 ) && ( true === $this->sync_table ) ) {
 											$this->wpdb->insert( $this->sync_table_name, array( 'value_type' => 'post', 'value_id' => $post_id, 'meta_key' => $key, 'meta_value' => $value ) );
 										}
+
+										// Replies need to save their old reply_to ID for hierarchical replies association
+										if ( ( 'reply' == $to_type ) && ( '_bbp_reply_to' == $key ) ) {
+											add_post_meta( $post_id, '_bbp_old_reply_to', $value );
+										}
 									}
 								}
 								break;
@@ -972,14 +1001,18 @@ abstract class BBP_Converter_Base {
 		return ! $has_insert;
 	}
 
+	/**
+	 * This method converts old forum heirarchy to new bbPress heirarchy.
+	 */
 	public function convert_forum_parents( $start ) {
 
 		$has_update = false;
 
-		if ( !empty( $this->sync_table ) )
-			$query = $this->wpdb->prepare( "SELECT value_id, meta_value FROM {$this->sync_table_name} WHERE meta_key = '_bbp_forum_parent_id' AND meta_value > 0 LIMIT %d, %d", $start, $this->max_rows );
-		else
-			$query = $this->wpdb->prepare( "SELECT post_id AS value_id, meta_value FROM {$this->wpdb->postmeta} WHERE meta_key = '_bbp_forum_parent_id' AND meta_value > 0 LIMIT %d, %d", $start, $this->max_rows );
+		if ( !empty( $this->sync_table ) ) {
+			$query = 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_forum_parent_id" AND meta_value > 0 LIMIT ' . $start . ', ' . $this->max_rows;
+		} else {
+			$query = 'SELECT post_id AS value_id, meta_value FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_forum_parent_id" AND meta_value > 0 LIMIT ' . $start . ', ' . $this->max_rows;
+		}
 
 		update_option( '_bbp_converter_query', $query );
 
@@ -987,7 +1020,33 @@ abstract class BBP_Converter_Base {
 
 		foreach ( (array) $forum_array as $row ) {
 			$parent_id = $this->callback_forumid( $row->meta_value );
-			$this->wpdb->query( $this->wpdb->prepare( "UPDATE {$this->wpdb->posts} SET post_parent = '%d' WHERE ID = '%d' LIMIT 1", $parent_id, $row->value_id ) );
+			$this->wpdb->query( 'UPDATE ' . $this->wpdb->posts . ' SET post_parent = "' . $parent_id . '" WHERE ID = "' . $row->value_id . '" LIMIT 1' );
+			$has_update = true;
+		}
+
+		return ! $has_update;
+	}
+
+	/**
+	 * This method converts old reply_to post id to new bbPress reply_to post id.
+	 */
+	public function convert_reply_to_parents( $start ) {
+
+		$has_update = false;
+
+		if ( !empty( $this->sync_table ) ) {
+			$query = 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_old_reply_to" AND meta_value > 0 LIMIT ' . $start . ', ' . $this->max_rows;
+		} else {
+			$query = 'SELECT post_id AS value_id, meta_value FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_old_reply_to" AND meta_value > 0 LIMIT ' . $start . ', ' . $this->max_rows;
+		}
+
+		update_option( '_bbp_converter_query', $query );
+
+		$reply_to_array = $this->wpdb->get_results( $query );
+
+		foreach ( (array) $reply_to_array as $row ) {
+			$reply_to = $this->callback_reply_to( $row->meta_value );
+			$this->wpdb->query( 'UPDATE ' . $this->wpdb->postmeta . ' SET meta_value = "' . $reply_to . '" WHERE meta_key = "_bbp_reply_to" AND post_id = "' . $row->value_id . '" LIMIT 1' );
 			$has_update = true;
 		}
 
@@ -1004,10 +1063,11 @@ abstract class BBP_Converter_Base {
 
 		/** Delete bbconverter topics/forums/posts ****************************/
 
-		if ( true === $this->sync_table )
-			$query = $this->wpdb->prepare( 'SELECT value_id FROM ' . $this->sync_table_name . ' INNER JOIN ' . $this->wpdb->posts . ' ON(value_id = ID) WHERE meta_key LIKE "_bbp_%" AND value_type = "post" GROUP BY value_id ORDER BY value_id DESC LIMIT %d', $this->max_rows );
-		else
-			$query = $this->wpdb->prepare( 'SELECT post_id AS value_id FROM ' . $this->wpdb->postmeta . ' WHERE meta_key LIKE "_bbp_%" GROUP BY post_id ORDER BY post_id DESC LIMIT %d', $this->max_rows );
+		if ( true === $this->sync_table ) {
+			$query = 'SELECT value_id FROM ' . $this->sync_table_name . ' INNER JOIN ' . $this->wpdb->posts . ' ON(value_id = ID) WHERE meta_key LIKE "_bbp_%" AND value_type = "post" GROUP BY value_id ORDER BY value_id DESC LIMIT ' . $this->max_rows;
+		} else {
+			$query = 'SELECT post_id AS value_id FROM ' . $this->wpdb->postmeta . ' WHERE meta_key LIKE "_bbp_%" GROUP BY post_id ORDER BY post_id DESC LIMIT ' . $this->max_rows;
+		}
 
 		update_option( '_bbp_converter_query', $query );
 
@@ -1022,10 +1082,11 @@ abstract class BBP_Converter_Base {
 
 		/** Delete bbconverter users ******************************************/
 
-		if ( true === $this->sync_table )
-			$query = $this->wpdb->prepare( 'SELECT value_id FROM ' . $this->sync_table_name . ' INNER JOIN ' . $this->wpdb->users . ' ON(value_id = ID) WHERE meta_key = "_bbp_user_id" AND value_type = "user" LIMIT %d', $this->max_rows );
-		else
-			$query = $this->wpdb->prepare( 'SELECT user_id AS value_id FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_user_id" LIMIT %d', $this->max_rows );
+		if ( true === $this->sync_table ) {
+			$query = 'SELECT value_id FROM ' . $this->sync_table_name . ' INNER JOIN ' . $this->wpdb->users . ' ON(value_id = ID) WHERE meta_key = "_bbp_user_id" AND value_type = "user" LIMIT ' . $this->max_rows;
+		} else {
+			$query = 'SELECT user_id AS value_id FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_user_id" LIMIT ' . $this->max_rows;
+		}
 
 		update_option( '_bbp_converter_query', $query );
 
@@ -1055,7 +1116,7 @@ abstract class BBP_Converter_Base {
 
 		/** Delete bbconverter passwords **************************************/
 
-		$query       = $this->wpdb->prepare( 'SELECT user_id, meta_value FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" LIMIT %d, %d', $start, $this->max_rows );
+		$query       = 'SELECT user_id, meta_value FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" LIMIT ' . $start . ', ' . $this->max_rows;
 		update_option( '_bbp_converter_query', $query );
 
 		$bbconverter = $this->wpdb->get_results( $query, ARRAY_A );
@@ -1064,10 +1125,10 @@ abstract class BBP_Converter_Base {
 
 			foreach ( $bbconverter as $value ) {
 				if ( is_serialized( $value['meta_value'] ) ) {
-					$this->wpdb->query( $this->wpdb->prepare( 'UPDATE ' . $this->wpdb->users . ' SET user_pass = "" WHERE ID = "%d"', $value['user_id'] ) );
+					$this->wpdb->query( 'UPDATE ' . $this->wpdb->users . ' ' . 'SET user_pass = "" ' . 'WHERE ID = "' . $value['user_id'] . '"' );
 				} else {
-					$this->wpdb->query( $this->wpdb->prepare( 'UPDATE ' . $this->wpdb->users . ' SET user_pass = "%s" WHERE ID = "%d"', $value['meta_value'], $value['user_id'] ) );
-					$this->wpdb->query( $this->wpdb->prepare( 'DELETE FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" AND user_id = "%d"', $value['user_id'] ) );
+					$this->wpdb->query( 'UPDATE ' . $this->wpdb->users . ' ' . 'SET user_pass = "' . $value['meta_value'] . '" ' . 'WHERE ID = "' . $value['user_id'] . '"' );
+					$this->wpdb->query( 'DELETE FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" AND user_id = "' . $value['user_id'] . '"' );
 				}
 			}
 			$has_delete = true;
@@ -1121,12 +1182,12 @@ abstract class BBP_Converter_Base {
 	public function callback_pass( $username, $password ) {
 		$user = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT * FROM ' . $this->wpdb->users . ' WHERE user_login = "%s" AND user_pass = "" LIMIT 1', $username ) );
 		if ( !empty( $user ) ) {
-			$usermeta = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT * FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" AND user_id = "%d" LIMIT 1', $user->ID ) );
+			$usermeta = $this->wpdb->get_row( 'SELECT * FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" AND user_id = "' . $user->ID . '" LIMIT 1' );
 
 			if ( !empty( $usermeta ) ) {
 				if ( $this->authenticate_pass( $password, $usermeta->meta_value ) ) {
-					$this->wpdb->query( $this->wpdb->prepare( 'UPDATE ' . $this->wpdb->users . ' ' . 'SET user_pass = "%s" ' . 'WHERE ID = "%d"', wp_hash_password( $password ), $user->ID ) );
-					$this->wpdb->query( $this->wpdb->prepare( 'DELETE FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" AND user_id = "%d"', $user->ID ) );
+					$this->wpdb->query( 'UPDATE ' . $this->wpdb->users . ' ' . 'SET user_pass = "' . wp_hash_password( $password ) . '" ' . 'WHERE ID = "' . $user->ID . '"' );
+					$this->wpdb->query( 'DELETE FROM ' . $this->wpdb->usermeta . ' WHERE meta_key = "_bbp_password" AND user_id = "' . $user->ID . '"' );
 				}
 			}
 		}
@@ -1179,6 +1240,29 @@ abstract class BBP_Converter_Base {
 	}
 
 	/**
+	 * A mini cache system to reduce database calls to reply_to post id.
+	 *
+	 * @param string $field
+	 * @return string
+	 */
+	private function callback_reply_to( $field ) {
+		if ( !isset( $this->map_reply_to[$field] ) ) {
+			if ( !empty( $this->sync_table ) ) {
+				$row = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_post_id" AND meta_value = "%s" LIMIT 1', $field ) );
+			} else {
+				$row = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT post_id AS value_id FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_post_id" AND meta_value = "%s" LIMIT 1', $field ) );
+			}
+
+			if ( !is_null( $row ) ) {
+				$this->map_reply_to[$field] = $row->value_id;
+			} else {
+				$this->map_reply_to[$field] = 0;
+			}
+		}
+		return $this->map_reply_to[$field];
+	}
+
+	/**
 	 * A mini cache system to reduce database calls to user ID's
 	 *
 	 * @param string $field
@@ -1216,7 +1300,7 @@ abstract class BBP_Converter_Base {
 		if ( empty( $topicid ) ) {
 			$this->map_topicid_to_forumid[$topicid] = 0;
 		} elseif ( ! isset( $this->map_topicid_to_forumid[$topicid] ) ) {
-			$row = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT post_parent FROM ' . $this->wpdb->posts . ' WHERE ID = "%d" LIMIT 1', $topicid ) );
+			$row = $this->wpdb->get_row( 'SELECT post_parent FROM ' . $this->wpdb->posts . ' WHERE ID = "' . $topicid . '" LIMIT 1' );
 
 			if ( !is_null( $row ) ) {
 				$this->map_topicid_to_forumid[$topicid] = $row->post_parent;

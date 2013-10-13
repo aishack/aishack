@@ -64,11 +64,16 @@ class BBP_Akismet {
 
 		// Add the checks
 		foreach ( $checks as $type => $functions )
-			foreach( $functions as $function => $priority )
+			foreach ( $functions as $function => $priority )
 				add_filter( $function, array( $this, $type . '_post'  ), $priority );
 
 		// Update post meta
 		add_action( 'wp_insert_post', array( $this, 'update_post_meta' ), 10, 2 );
+
+		// Admin
+		if ( is_admin() ) {
+			add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
+		}
 	}
 
 	/**
@@ -84,7 +89,7 @@ class BBP_Akismet {
 	 * @uses bbp_get_reply_url() To get the permalink of the reply
 	 * @uses bbp_current_author_ip() To get the IP address of the current user
 	 * @uses BBP_Akismet::maybe_spam() To check if post is spam
-	 * @uses akismet_get_user_roles() To get the role(s) of the current user
+	 * @uses BBP_Akismet::get_user_roles() To get the role(s) of the current user
 	 * @uses do_action() To call the 'bbp_akismet_spam_caught' hook
 	 * @uses add_filter() To call the 'bbp_new_reply_pre_set_terms' hook
 	 *
@@ -97,7 +102,7 @@ class BBP_Akismet {
 		$post_permalink = '';
 
 		// Post is not published
-		if ( bbp_get_public_status_id() != $post_data['post_status'] )
+		if ( bbp_get_public_status_id() !== $post_data['post_status'] )
 			return $post_data;
 
 		// Cast the post_author to 0 if it's empty
@@ -148,7 +153,7 @@ class BBP_Akismet {
 			'user_agent'           => $_SERVER['HTTP_USER_AGENT'],
 			'user_ID'              => $post_data['post_author'],
 			'user_ip'              => bbp_current_author_ip(),
-			'user_role'            => akismet_get_user_roles( $post_data['post_author'] ),
+			'user_role'            => $this->get_user_roles( $post_data['post_author'] ),
 		);
 
 		// Check the post_data
@@ -165,7 +170,7 @@ class BBP_Akismet {
 		do_action_ref_array( 'bbp_akismet_check_post', $post_data );
 
 		// Spam
-		if ( 'true' == $post_data['bbp_akismet_result'] ) {
+		if ( 'true' === $post_data['bbp_akismet_result'] ) {
 
 			// Let plugins do their thing
 			do_action( 'bbp_akismet_spam_caught' );
@@ -208,7 +213,7 @@ class BBP_Akismet {
 	 * @uses get_post_meta() To get the post meta
 	 * @uses bbp_get_user_profile_url() To get a user's profile url
 	 * @uses get_permalink() To get the permalink of the post_parent
-	 * @uses akismet_get_user_roles() To get the role(s) of the post_author
+	 * @uses BBP_Akismet::get_user_roles() To get the role(s) of the post_author
 	 * @uses bbp_current_author_ip() To get the IP address of the current user
 	 * @uses BBP_Akismet::maybe_spam() To submit the post as ham or spam
 	 * @uses update_post_meta() To update the post meta with some Akismet data
@@ -254,7 +259,7 @@ class BBP_Akismet {
 			return;
 
 		// Bail if we're spamming, but the post_status isn't spam
-		if ( ( 'spam' == $request_type ) && ( bbp_get_spam_status_id() != $_post->post_status ) )
+		if ( ( 'spam' === $request_type ) && ( bbp_get_spam_status_id() !== $_post->post_status ) )
 			return;
 
 		// Set some default post_data
@@ -271,7 +276,7 @@ class BBP_Akismet {
 			'permalink'            => get_permalink( $post_id ),
 			'user_ID'              => $_post->post_author,
 			'user_ip'              => get_post_meta( $post_id, '_bbp_author_ip', true ),
-			'user_role'            => akismet_get_user_roles( $_post->post_author ),
+			'user_role'            => $this->get_user_roles( $_post->post_author ),
 		);
 
 		// Use the original version stored in post_meta if available
@@ -301,14 +306,14 @@ class BBP_Akismet {
 
 				// Spammy
 				case 'spam' :
-					$this->update_post_history( $post_id, sprintf( __( '%1$s reported this %2$s as spam', 'bbpress' ),     $post_data['reporter'], $post_data['comment_type'] ), 'report-spam' );
+					$this->update_post_history( $post_id, sprintf( esc_html__( '%1$s reported this %2$s as spam', 'bbpress' ),     $post_data['reporter'], $post_data['comment_type'] ), 'report-spam' );
 					update_post_meta( $post_id, '_bbp_akismet_user_result', 'true'                 );
 					update_post_meta( $post_id, '_bbp_akismet_user',        $post_data['reporter'] );
 					break;
 
 				// Hammy
 				case 'ham'  :
-					$this->update_post_history( $post_id, sprintf( __( '%1$s reported this %2$s as not spam', 'bbpress' ), $post_data['reporter'], $post_data['comment_type'] ), 'report-ham'  );
+					$this->update_post_history( $post_id, sprintf( esc_html__( '%1$s reported this %2$s as not spam', 'bbpress' ), $post_data['reporter'], $post_data['comment_type'] ), 'report-ham'  );
 					update_post_meta( $post_id, '_bbp_akismet_user_result', 'false'                 );
 					update_post_meta( $post_id, '_bbp_akismet_user',         $post_data['reporter'] );
 
@@ -384,9 +389,9 @@ class BBP_Akismet {
 			$query_string .= $key . '=' . urlencode( stripslashes( $data ) ) . '&';
 
 		// Aim...
-		if ( 'check' == $check ) {
+		if ( 'check' === $check ) {
 			$path = '/1.1/comment-check';
-		} elseif ( 'submit' == $check ) {
+		} elseif ( 'submit' === $check ) {
 			$path = '/1.1/submit-' . $spam;
 		}
 
@@ -397,7 +402,7 @@ class BBP_Akismet {
 		if ( !empty( $response[1] ) ) {
 			$post_data['bbp_akismet_result'] = $response[1];
 		} else {
-			$post_data['bbp_akismet_result'] = __( 'No response', 'bbpress' );
+			$post_data['bbp_akismet_result'] = esc_html__( 'No response', 'bbpress' );
 		}
 
 		// This is ham
@@ -445,43 +450,43 @@ class BBP_Akismet {
 			$anonymous_data = bbp_filter_anonymous_post_data();
 
 			// More checks
-			if (	intval( $as_submitted['comment_post_ID'] )    == intval( $_post->post_parent )
-					&&      $as_submitted['comment_author']       == ( $anonymous_data ? $anonymous_data['bbp_anonymous_name']  : $userdata->display_name )
-					&&      $as_submitted['comment_author_email'] == ( $anonymous_data ? $anonymous_data['bbp_anonymous_email'] : $userdata->user_email   )
+			if (	intval( $as_submitted['comment_post_ID'] )    === intval( $_post->post_parent )
+					&&      $as_submitted['comment_author']       === ( $anonymous_data ? $anonymous_data['bbp_anonymous_name']  : $userdata->display_name )
+					&&      $as_submitted['comment_author_email'] === ( $anonymous_data ? $anonymous_data['bbp_anonymous_email'] : $userdata->user_email   )
 				) {
 
 				// Normal result: true
-				if ( $this->last_post['bbp_akismet_result'] == 'true' ) {
+				if ( $this->last_post['bbp_akismet_result'] === 'true' ) {
 
 					// Leave a trail so other's know what we did
 					update_post_meta( $post_id, '_bbp_akismet_result', 'true' );
-					$this->update_post_history( $post_id, __( 'Akismet caught this post as spam', 'bbpress' ), 'check-spam' );
+					$this->update_post_history( $post_id, esc_html__( 'Akismet caught this post as spam', 'bbpress' ), 'check-spam' );
 
 					// If post_status isn't the spam status, as expected, leave a note
-					if ( $_post->post_status != bbp_get_spam_status_id() ) {
-						$this->update_post_history( $post_id, sprintf( __( 'Post status was changed to %s', 'bbpress' ), $_post->post_status ), 'status-changed-' . $_post->post_status );
+					if ( bbp_get_spam_status_id() !== $_post->post_status ) {
+						$this->update_post_history( $post_id, sprintf( esc_html__( 'Post status was changed to %s', 'bbpress' ), $_post->post_status ), 'status-changed-' . $_post->post_status );
 					}
 
 				// Normal result: false
-				} elseif ( $this->last_post['bbp_akismet_result'] == 'false' ) {
+				} elseif ( $this->last_post['bbp_akismet_result'] === 'false' ) {
 
 					// Leave a trail so other's know what we did
 					update_post_meta( $post_id, '_bbp_akismet_result', 'false' );
-					$this->update_post_history( $post_id, __( 'Akismet cleared this post', 'bbpress' ), 'check-ham' );
+					$this->update_post_history( $post_id, esc_html__( 'Akismet cleared this post as not spam', 'bbpress' ), 'check-ham' );
 
 					// If post_status is the spam status, which isn't expected, leave a note
-					if ( $_post->post_status == bbp_get_spam_status_id() ) {
+					if ( bbp_get_spam_status_id() === $_post->post_status ) {
 
 						// @todo Use wp_blacklist_check()
 
-						$this->update_post_history( $post_id, sprintf( __( 'Post status was changed to %s', 'bbpress' ), $_post->post_status ), 'status-changed-' . $_post->post_status );
+						$this->update_post_history( $post_id, sprintf( esc_html__( 'Post status was changed to %s', 'bbpress' ), $_post->post_status ), 'status-changed-' . $_post->post_status );
 					}
 
 				// Abnormal result: error
 				} else {
 					// Leave a trail so other's know what we did
 					update_post_meta( $post_id, '_bbp_akismet_error', time() );
-					$this->update_post_history( $post_id, sprintf( __( 'Akismet was unable to check this post (response: %s), will automatically retry again later.', 'bbpress' ), $this->last_post['bbp_akismet_result'] ), 'check-error' );
+					$this->update_post_history( $post_id, sprintf( esc_html__( 'Akismet was unable to check this post (response: %s), will automatically retry again later.', 'bbpress' ), $this->last_post['bbp_akismet_result'] ), 'check-error' );
 				}
 
 				// Record the complete original data as submitted for checking
@@ -660,7 +665,7 @@ class BBP_Akismet {
 			$http_request .= $request;
 
 			// Open a socket connection
-			if ( false != ( $fs = @fsockopen( $http_host, $port, $errno, $errstr, 10 ) ) ) {
+			if ( false !== ( $fs = @fsockopen( $http_host, $port, $errno, $errstr, 10 ) ) ) {
 
 				// Write our request to the pointer
 				fwrite( $fs, $http_request );
@@ -681,6 +686,117 @@ class BBP_Akismet {
 			// Return the response ('' if error/empty)
 			return $response;
 		}
+	}
+
+	/**
+	 * Return a user's roles on this site (including super_admin)
+	 *
+	 * @since bbPress (r4812)
+	 *
+	 * @param type $user_id
+	 * @return boolean
+	 */
+	private function get_user_roles( $user_id = 0 ) {
+
+		// Default return value
+		$roles = array();
+
+		// Bail if cannot query the user
+		if ( ! class_exists( 'WP_User' ) || empty( $user_id ) ) {
+			return false;
+		}
+
+		// User ID
+		$user = new WP_User( $user_id );
+		if ( isset( $user->roles ) ) {
+			$roles = (array) $user->roles;
+		}
+
+		// Super admin
+		if ( is_multisite() && is_super_admin( $user_id ) ) {
+			$roles[] = 'super_admin';
+		}
+
+		return implode( ',', $roles );
+	}
+
+	/** Admin *****************************************************************/
+
+	/**
+	 * Add Aksimet History metaboxes to topics and replies
+	 *
+	 * @since bbPress (r5049)
+	 */
+	public function add_metaboxes() {
+
+		// Topics
+		add_meta_box(
+			'bbp_akismet_topic_history',
+			__( 'Akismet History', 'bbpress' ),
+			array( $this, 'history_metabox' ),
+			bbp_get_topic_post_type(),
+			'normal',
+			'core'
+		);
+
+		// Replies
+		add_meta_box(
+			'bbp_akismet_reply_history',
+			__( 'Akismet History', 'bbpress' ),
+			array( $this, 'history_metabox' ),
+			bbp_get_reply_post_type(),
+			'normal',
+			'core'
+		);
+	}
+
+	/**
+	 * Output for Akismet History metabox
+	 *
+	 * @since bbPress (r5049)
+	 *
+	 * @uses get_post_history() To get the Akismet history for the post
+	 * @uses get_the_ID() To get the post ID
+	 * @uses bbp_time_since() To get the human readable time
+	 */
+	public function history_metabox() {
+
+		// Post ID
+		$history = $this->get_post_history( get_the_ID() ); ?>
+
+		<div class="akismet-history" style="margin: 13px 0;">
+
+			<?php if ( !empty( $history ) ) : ?>
+
+				<table>
+					<tbody>
+
+						<?php foreach ( $history as $row ) : ?>
+
+							<tr>
+								<td style="color: #999; text-align: right; white-space: nowrap;">
+									<span title="<?php echo esc_attr( date( 'D d M Y @ h:i:m a', $row['time'] ) . ' GMT' ); ?>">
+										<?php bbp_time_since( $row['time'], false, true ); ?>
+									</span>
+								</td>
+								<td style="padding-left: 5px;">
+									<?php echo esc_html( $row['message'] ); ?>
+								</td>
+							</tr>
+
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+
+			<?php else : ?>
+
+				<p><?php esc_html_e( 'No recorded history. Akismet has not checked this post.', 'bbpress' ); ?></p>
+
+			<?php endif; ?>
+
+		</div>
+
+		<?php
 	}
 }
 endif;

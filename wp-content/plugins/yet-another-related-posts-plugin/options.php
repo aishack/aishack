@@ -14,34 +14,52 @@ if ( !$yarpp->diagnostic_custom_templates() ) {
 		yarpp_set_option( 'rss_template', false );
 }
 
+/* TODO: Verify if this version check is actually overwriting wp defaults */
 // 3.3: move version checking here, in PHP:
-if ( current_user_can('update_plugins' ) ) {
+if (current_user_can('update_plugins')) {
 	$yarpp_version_info = $yarpp->version_info();
 	
 	// these strings are not localizable, as long as the plugin data on wordpress.org
 	// cannot be.
 	$slug = 'yet-another-related-posts-plugin';
 	$plugin_name = 'Yet Another Related Posts Plugin';
-	$file = basename(YARPP_DIR) . '/yarpp.php';
-	if ( $yarpp_version_info['result'] == 'new' ) {
+	$file = basename(YARPP_DIR).'/yarpp.php';
+	if ( $yarpp_version_info['result'] === 'new' ) {
 		// make sure the update system is aware of this version
 		$current = get_site_transient( 'update_plugins' );
 		if ( !isset( $current->response[ $file ] ) ) {
-			delete_site_transient( 'update_plugins' );
+			delete_site_transient('update_plugins');
 			wp_update_plugins();
 		}
 	
 		echo '<div class="updated"><p>';
-		$details_url = self_admin_url('plugin-install.php?tab=plugin-information&plugin=' . $slug . '&TB_iframe=true&width=600&height=800');
-		printf( __('There is a new version of %1$s available. <a href="%2$s" class="thickbox" title="%3$s">View version %4$s details</a> or <a href="%5$s">update automatically</a>.', 'yarpp'), $plugin_name, esc_url($details_url), esc_attr($plugin_name), $yarpp_version_info['current']['version'], wp_nonce_url( self_admin_url('update.php?action=upgrade-plugin&plugin=') . $file, 'upgrade-plugin_' . $file) );
+		$details_url = self_admin_url('plugin-install.php?tab=plugin-information&plugin='.$slug.'&TB_iframe=true&width=600&height=800');
+		printf(
+            __(
+               'There is a new version of %1$s available.'.
+               '<a href="%2$s" class="thickbox" title="%3$s">View version %4$s details</a>'.
+               'or <a href="%5$s">update automatically</a>.', 'yarpp'),
+            $plugin_name,
+            esc_url($details_url),
+            esc_attr($plugin_name),
+            $yarpp_version_info['current']['version'],
+            wp_nonce_url( self_admin_url('update.php?action=upgrade-plugin&plugin=').$file, 'upgrade-plugin_'.$file)
+        );
 		echo '</p></div>';
-	} else if ( $yarpp_version_info['result'] == 'newbeta' ) {
+	} else if ( $yarpp_version_info['result'] === 'newbeta' ) {
 		echo '<div class="updated"><p>';
-		printf(__("There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk.","yarpp"), $yarpp_version_info['beta']['version'], $yarpp_version_info['beta']['url']);
+		printf(
+            __(
+                "There is a new beta (%s) of Yet Another Related Posts Plugin. ".
+                "You can <a href=\"%s\">download it here</a> at your own risk.", "yarpp"),
+            $yarpp_version_info['beta']['version'],
+            $yarpp_version_info['beta']['url']
+        );
 		echo '</p></div>';
 	}
 }
 
+/* MARK: MyIsam message */
 if (isset($_POST['myisam_override'])) {
 	yarpp_set_option( 'myisam_override', 1 );
 	echo "<div class='updated'>"
@@ -52,29 +70,49 @@ if (isset($_POST['myisam_override'])) {
 }
 
 $table_type = $yarpp->diagnostic_myisam_posts();
-if ( $table_type !== true )
-	$yarpp->disable_fulltext();
 
-if ( !yarpp_get_option('myisam_override') && $yarpp->diagnostic_fulltext_disabled() ) {
-	echo "<div class='updated'>"
-	.sprintf(__("YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled.",'yarpp'), $wpdb->posts, $table_type)
-	."<br />"
-	.sprintf(__("To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications.",'yarpp'), $wpdb->posts, $wpdb->posts)
-	."<br />"
-	.sprintf(__("If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:",'yarpp'), $wpdb->posts)
-	."<br />"
-	."<form method='post'><input type='submit' class='button' name='myisam_override' value='"
-	.__("Trust me. Let me use MyISAM features.",'yarpp')
-	."'></input></form>"
-	."</div>";
+if ( $table_type !== true ) $yarpp->disable_fulltext();
+
+if (!yarpp_get_option('myisam_override') && $yarpp->diagnostic_fulltext_disabled()) {
+	echo(
+        "<div class='updated'>".
+            sprintf(
+                __("YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code>
+                    table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>,
+                    but the table seems to be using the <code>%s</code> engine. These two options have been disabled.",'yarpp'),
+                $wpdb->posts,
+                $table_type
+            ).
+            "<br />".
+            sprintf(
+                __("To restore these features, please update your <code>%s</code> table by executing the following SQL
+                    directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the
+                    table's engine, although there are performance implications.",'yarpp'),
+                $wpdb->posts,
+                $wpdb->posts
+            ).
+            "<br />".
+            sprintf(
+                __("If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic
+                    button:",'yarpp'),
+                $wpdb->posts
+            ).
+            "<br />".
+            "<form method='post'>".
+                "<input type='submit' class='button' name='myisam_override' value='".__("Trust me. Let me use MyISAM features.",'yarpp')."'/>".
+            "</form>"
+	    ."</div>"
+    );
 }
 
-if ( !$yarpp->enabled() && !$yarpp->activate() ) {
-	echo '<div class="updated">';
-	_e('The YARPP database has an error which could not be fixed.','yarpp');
-	echo ' ';
-	printf(__('Please try <a href="%s" target="_blank">manual SQL setup</a>.','yarpp'), 'http://mitcho.com/code/yarpp/sql.php?prefix='.urlencode($wpdb->prefix));
-	echo '</div>';
+if(!$yarpp->enabled() && !$yarpp->activate()) {
+	echo '<div class="updated">'.__('The YARPP database has an error which could not be fixed.','yarpp').'</div>';
+	/* TODO: SQL Error */
+    //	printf(
+    //        __('Please try <a href="%s" target="_blank">manual SQL setup</a>.','yarpp'),
+    //           'http://--/code/yarpp/sql.php?prefix='.urlencode($wpdb->prefix)
+    //    );
+	//  echo '</div>';
 }
 
 if (isset($_POST['update_yarpp'])) {
@@ -149,7 +187,8 @@ if (isset($_POST['update_yarpp'])) {
 	<form method="post">
 
 	<div id="yarpp_author_text">
-	<small><?php printf(__('by <a href="%s" target="_blank">mitcho (Michael 芳貴 Erlewine)</a>','yarpp'), 'http://mitcho.com/');?></small>
+        <!-- TODO: Author -->
+        <!-- <small><?php printf(__('by <a href="%s" target="_blank">-- (Michael 芳貴 Erlewine)</a>','yarpp'), 'http://--/');?></small> -->
 	</div>
 
 <?php

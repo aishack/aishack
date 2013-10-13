@@ -9,7 +9,7 @@
 
 ?>
 
-<ul id="topic-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
+<ul id="bbp-topic-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
 
 	<li class="bbp-topic-title">
 
@@ -21,7 +21,7 @@
 
 					<?php do_action( 'bbp_theme_before_topic_favorites_action' ); ?>
 
-					<?php bbp_user_favorites_link( array( 'mid' => '+', 'post' => '' ), array( 'pre' => '', 'mid' => '&times;', 'post' => '' ) ); ?>
+					<?php bbp_user_favorites_link( array( 'before' => '', 'favorite' => '+', 'favorited' => '&times;' ) ); ?>
 
 					<?php do_action( 'bbp_theme_after_topic_favorites_action' ); ?>
 
@@ -45,7 +45,7 @@
 
 		<?php do_action( 'bbp_theme_before_topic_title' ); ?>
 
-		<a class="bbp-topic-permalink" href="<?php bbp_topic_permalink(); ?>" title="<?php bbp_topic_title(); ?>"><?php bbp_topic_title(); ?></a>
+		<a class="bbp-topic-permalink" href="<?php bbp_topic_permalink(); ?>"><?php bbp_topic_title(); ?></a>
 
 		<?php do_action( 'bbp_theme_after_topic_title' ); ?>
 
@@ -61,7 +61,7 @@
 
 			<?php do_action( 'bbp_theme_after_topic_started_by' ); ?>
 
-			<?php if ( !bbp_is_single_forum() || ( bbp_get_topic_forum_id() != bbp_get_forum_id() ) ) : ?>
+			<?php if ( !bbp_is_single_forum() || ( bbp_get_topic_forum_id() !== bbp_get_forum_id() ) ) : ?>
 
 				<?php do_action( 'bbp_theme_before_topic_started_in' ); ?>
 
@@ -102,4 +102,4 @@
 		</p>
 	</li>
 
-</ul><!-- #topic-<?php bbp_topic_id(); ?> -->
+</ul><!-- #bbp-topic-<?php bbp_topic_id(); ?> -->

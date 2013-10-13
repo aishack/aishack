@@ -68,8 +68,9 @@ function bbp_locate_template( $template_names, $load = false, $require_once = tr
 	foreach ( (array) $template_names as $template_name ) {
 
 		// Continue if template is empty
-		if ( empty( $template_name ) )
+		if ( empty( $template_name ) ) {
 			continue;
+		}
 
 		// Trim off any slashes from the template name
 		$template_name  = ltrim( $template_name, '/' );
@@ -78,8 +79,9 @@ function bbp_locate_template( $template_names, $load = false, $require_once = tr
 		foreach ( (array) $template_locations as $template_location ) {
 
 			// Continue if $template_location is empty
-			if ( empty( $template_location ) )
+			if ( empty( $template_location ) ) {
 				continue;
+			}
 
 			// Check child theme first
 			if ( file_exists( trailingslashit( $template_location ) . $template_name ) ) {
@@ -89,9 +91,19 @@ function bbp_locate_template( $template_names, $load = false, $require_once = tr
 		}
 	}
 
+	/**
+	 * This action exists only to follow the standard bbPress coding convention,
+	 * and should not be used to short-circuit any part of the template locator.
+	 *
+	 * If you want to override a specific template part, please either filter
+	 * 'bbp_get_template_part' or add a new location to the template stack.
+	 */
+	do_action( 'bbp_locate_template', $located, $template_name, $template_names, $template_locations, $load, $require_once );
+
 	// Maybe load the template if one was located
-	if ( ( true == $load ) && !empty( $located ) )
+	if ( ( true === $load ) && !empty( $located ) ) {
 		load_template( $located, $require_once );
+	}
 
 	return $located;
 }
@@ -116,7 +128,26 @@ function bbp_register_template_stack( $location_callback = '', $priority = 10 ) 
 		return false;
 
 	// Add location callback to template stack
-	add_filter( 'bbp_template_stack', $location_callback, (int) $priority );
+	return add_filter( 'bbp_template_stack', $location_callback, (int) $priority );
+}
+
+/**
+ * Deregisters a previously registered template stack location.
+ *
+ * @since bbPress (r4652)
+ *
+ * @param string $location Callback function that returns the
+ * @param int $priority
+ * @see bbp_register_template_stack()
+ */
+function bbp_deregister_template_stack( $location_callback = '', $priority = 10 ) {
+
+	// Bail if no location, or function does not exist
+	if ( empty( $location_callback ) || ! function_exists( $location_callback ) )
+		return false;
+
+	// Remove location callback to template stack
+	return remove_filter( 'bbp_template_stack', $location_callback, (int) $priority );
 }
 
 /**
@@ -154,7 +185,7 @@ function bbp_get_template_stack() {
 
 	// Loop through 'bbp_template_stack' filters, and call callback functions
 	do {
-		foreach( (array) current( $wp_filter[$tag] ) as $the_ ) {
+		foreach ( (array) current( $wp_filter[$tag] ) as $the_ ) {
 			if ( ! is_null( $the_['function'] ) ) {
 				$args[1] = $stack;
 				$stack[] = call_user_func_array( $the_['function'], array_slice( $args, 1, (int) $the_['accepted_args'] ) );
@@ -169,6 +200,31 @@ function bbp_get_template_stack() {
 	$stack = array_unique( array_filter( $stack ) );
 
 	return (array) apply_filters( 'bbp_get_template_stack', $stack ) ;
+}
+
+/**
+ * Get a template part in an output buffer, and return it
+ *
+ * @since bbPress (r5043)
+ *
+ * @param string $slug
+ * @param string $name
+ * @return string
+ */
+function bbp_buffer_template_part( $slug, $name = null, $echo = true ) {
+	ob_start();
+
+	bbp_get_template_part( $slug, $name );
+
+	// Get the output buffer contents
+	$output = ob_get_clean();
+
+	// Echo or return the output buffer contents
+	if ( true === $echo ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 }
 
 /**
@@ -228,18 +284,18 @@ function bbp_get_template_locations( $templates = array() ) {
  * @param array $templates
  * @return array() 
  */
-function bbp_add_template_locations( $templates = array() ) {
+function bbp_add_template_stack_locations( $stacks = array() ) {
 	$retval = array();
 
 	// Get alternate locations
-	$locations = bbp_get_template_locations( $templates );
+	$locations = bbp_get_template_locations();
 
-	// Loop through locations and templates and combine
-	foreach ( (array) $locations as $location )
-		foreach ( (array) $templates as $template )
-			$retval[] = ltrim( trailingslashit( $location ) . $template, '/' );
+	// Loop through locations and stacks and combine
+	foreach ( (array) $stacks as $stack )
+		foreach ( (array) $locations as $custom_location )
+			$retval[] = untrailingslashit( trailingslashit( $stack ) . $custom_location );
 
-	return apply_filters( 'bbp_add_template_locations', array_unique( $retval ), $templates );
+	return apply_filters( 'bbp_add_template_stack_locations', array_unique( $retval ), $stacks );
 }
 
 /**
@@ -257,6 +313,7 @@ function bbp_add_template_locations( $templates = array() ) {
  * If it's a reply edit, WP_Query::bbp_is_reply_edit is set to true.
  *
  * If it's a view page, WP_Query::bbp_is_view is set to true
+ * If it's a search page, WP_Query::bbp_is_search is set to true
  *
  * @since bbPress (r2688)
  *
@@ -283,7 +340,7 @@ function bbp_parse_query( $posts_query ) {
 		return;
 
 	// Bail if filters are suppressed on this query
-	if ( true == $posts_query->get( 'suppress_filters' ) )
+	if ( true === $posts_query->get( 'suppress_filters' ) )
 		return;
 
 	// Bail if in admin
@@ -298,29 +355,31 @@ function bbp_parse_query( $posts_query ) {
 	// It is a user page - We'll also check if it is user edit
 	if ( !empty( $bbp_user ) ) {
 
-		// Not a user_id so try email and slug
-		if ( !is_numeric( $bbp_user ) ) {
+		/** Find User *********************************************************/
+
+		// Setup the default user variable
+		$the_user = false;
+
+		// If using pretty permalinks, use the email or slug
+		if ( get_option( 'permalink_structure' ) ) {
 
 			// Email was passed
 			if ( is_email( $bbp_user ) ) {
-				$bbp_user = get_user_by( 'email', $bbp_user );
+				$the_user = get_user_by( 'email', $bbp_user );
 
 			// Try nicename
 			} else {
-				$bbp_user = get_user_by( 'slug', $bbp_user );
-			}
-
-			// If we were successful, set to ID
-			if ( is_object( $bbp_user ) ) {
-				$bbp_user = $bbp_user->ID;
+				$the_user = get_user_by( 'slug', $bbp_user );
 			}
 		}
 
-		// Cast as int, just in case
-		$bbp_user = (int) $bbp_user;
+		// No user found by slug/email, so try the ID if it's numeric
+		if ( empty( $the_user ) && is_numeric( $bbp_user ) ) {
+			$the_user = get_user_by( 'id', $bbp_user );
+		}
 
 		// 404 and bail if user does not have a profile
-		if ( ! bbp_user_has_profile( $bbp_user ) ) {
+		if ( empty( $the_user->ID ) || ! bbp_user_has_profile( $the_user->ID ) ) {
 			$posts_query->set_404();
 			return;
 		}
@@ -386,22 +445,19 @@ function bbp_parse_query( $posts_query ) {
 		// Correct is_home variable
 		$posts_query->is_home = false;
 
-		// Get the user data
-		$user = get_userdata( $bbp_user );
-
 		// User is looking at their own profile
-		if ( get_current_user_id() == $user->ID ) {
+		if ( get_current_user_id() === $the_user->ID ) {
 			$posts_query->bbp_is_single_user_home = true;
 		}
 
 		// Set bbp_user_id for future reference
-		$posts_query->set( 'bbp_user_id', $user->ID );
+		$posts_query->set( 'bbp_user_id', $the_user->ID );
 
 		// Set author_name as current user's nicename to get correct posts
-		$posts_query->set( 'author_name', $user->user_nicename );
+		$posts_query->set( 'author_name', $the_user->user_nicename );
 
 		// Set the displayed user global to this user
-		bbpress()->displayed_user = $user;
+		bbpress()->displayed_user = $the_user;
 
 	// View Page
 	} elseif ( !empty( $bbp_view ) ) {
@@ -420,6 +476,20 @@ function bbp_parse_query( $posts_query ) {
 
 		// We are in a custom topic view
 		$posts_query->bbp_is_view = true;
+
+	// Search Page
+	} elseif ( isset( $posts_query->query_vars[ bbp_get_search_rewrite_id() ] ) ) {
+
+		// Check if there are search query args set
+		$search_terms = bbp_get_search_terms();
+		if ( !empty( $search_terms ) )
+			$posts_query->bbp_search_terms = $search_terms;
+
+		// Correct is_home variable
+		$posts_query->is_home = false;
+
+		// We are in a search query
+		$posts_query->bbp_is_search = true;
 
 	// Forum/Topic/Reply Edit Page
 	} elseif ( !empty( $is_edit ) ) {
@@ -464,5 +534,9 @@ function bbp_parse_query( $posts_query ) {
 		$posts_query->set( 'bbp_topic_tag',  get_query_var( 'term' )   );
 		$posts_query->set( 'post_type',      bbp_get_topic_post_type() );
 		$posts_query->set( 'posts_per_page', bbp_get_topics_per_page() );
+
+	// Do topics on forums root
+	} elseif ( is_post_type_archive( array( bbp_get_forum_post_type(), bbp_get_topic_post_type() ) ) && ( 'topics' === bbp_show_on_root() ) ) {
+		$posts_query->bbp_show_topics_on_root = true;
 	}
 }

@@ -25,10 +25,11 @@ class Red_Match {
 
 	function Red_Match( $values = '' ) {
 		if ( $values ) {
-			$obj = @unserialize( $values );
-			if ( $obj === false )
-				$this->url = $values;
-			else {
+			$this->url = $values;
+
+			$obj = maybe_unserialize( $values );
+
+			if ( is_array( $obj ) ) {
 				foreach ( $obj AS $key => $value ) {
 					$this->$key = $value;
 				}
@@ -64,8 +65,8 @@ class Red_Match {
 		return $false;
 	}
 
-	function create( $name, $data = '' ) {
-		$avail = Red_Match::available();
+	static function create( $name, $data = '' ) {
+		$avail = self::available();
 		if ( isset( $avail[strtolower( $name )] ) ) {
 			$classname = $name.'_match';
 
@@ -77,19 +78,19 @@ class Red_Match {
 		return false;
 	}
 
-	function all() {
+	static function all() {
 		$data = array();
 
-		$avail = Red_Match::available();
+		$avail = self::available();
 		foreach ( $avail AS $name => $file ) {
-			$obj = Red_Match::create( $name );
+			$obj = self::create( $name );
 			$data[$name] = $obj->name();
 		}
 
 		return $data;
 	}
 
-	function available() {
+	static function available() {
 	 	return array (
 			'url'      => 'url.php',
 			'referrer' => 'referrer.php',

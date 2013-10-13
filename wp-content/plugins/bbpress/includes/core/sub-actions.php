@@ -136,9 +136,17 @@ function bbp_widgets_init() {
  * Setup the currently logged-in user
  *
  * @since bbPress (r2695)
+ * @uses did_action() To make sure the user isn't loaded out of order
  * @uses do_action() Calls 'bbp_setup_current_user'
  */
 function bbp_setup_current_user() {
+
+	// If the current user is being setup before the "init" action has fired,
+	// strange (and difficult to debug) role/capability issues will occur.
+	if ( ! did_action( 'after_setup_theme' ) ) {
+		_doing_it_wrong( __FUNCTION__, __( 'The current user is being initialized without using $wp->init().', 'bbpress' ), '2.3' );
+	}
+
 	do_action( 'bbp_setup_current_user' );
 }
 
@@ -222,6 +230,26 @@ function bbp_enqueue_scripts() {
  */
 function bbp_add_rewrite_tags() {
 	do_action( 'bbp_add_rewrite_tags' );
+}
+
+/**
+ * Add the bbPress-specific rewrite rules
+ *
+ * @since bbPress (r4918)
+ * @uses do_action() Calls 'bbp_add_rewrite_rules'
+ */
+function bbp_add_rewrite_rules() {
+	do_action( 'bbp_add_rewrite_rules' );
+}
+
+/**
+ * Add the bbPress-specific permalink structures
+ *
+ * @since bbPress (r4918)
+ * @uses do_action() Calls 'bbp_add_permastructs'
+ */
+function bbp_add_permastructs() {
+	do_action( 'bbp_add_permastructs' );
 }
 
 /**
@@ -318,6 +346,56 @@ function bbp_after_setup_theme() {
 }
 
 /**
+ * The main action used for handling theme-side POST requests
+ *
+ * @since bbPress (r4550)
+ * @uses do_action()
+ */
+function bbp_post_request() {
+
+	// Bail if not a POST action
+	if ( ! bbp_is_post_request() )
+		return;
+
+	// Bail if no action
+	if ( empty( $_POST['action'] ) )
+		return;
+
+	// This dynamic action is probably the one you want to use. It narrows down
+	// the scope of the 'action' without needing to check it in your function.
+	do_action( 'bbp_post_request_' . $_POST['action'] );
+
+	// Use this static action if you don't mind checking the 'action' yourself.
+	do_action( 'bbp_post_request',   $_POST['action'] );
+}
+
+/**
+ * The main action used for handling theme-side GET requests
+ *
+ * @since bbPress (r4550)
+ * @uses do_action()
+ */
+function bbp_get_request() {
+
+	// Bail if not a POST action
+	if ( ! bbp_is_get_request() )
+		return;
+
+	// Bail if no action
+	if ( empty( $_GET['action'] ) )
+		return;
+
+	// This dynamic action is probably the one you want to use. It narrows down
+	// the scope of the 'action' without needing to check it in your function.
+	do_action( 'bbp_get_request_' . $_GET['action'] );
+
+	// Use this static action if you don't mind checking the 'action' yourself.
+	do_action( 'bbp_get_request',   $_GET['action'] );
+}
+
+/** Filters *******************************************************************/
+
+/**
  * Filter the plugin locale and domain.
  *
  * @since bbPress (r4213)
@@ -328,8 +406,6 @@ function bbp_after_setup_theme() {
 function bbp_plugin_locale( $locale = '', $domain = '' ) {
 	return apply_filters( 'bbp_plugin_locale', $locale, $domain );
 }
-
-/** Filters *******************************************************************/
 
 /**
  * Piggy back filter for WordPress's 'request' filter
@@ -359,6 +435,7 @@ function bbp_template_include( $template = '' ) {
  * Generate bbPress-specific rewrite rules
  *
  * @since bbPress (r2688)
+ * @deprecated since bbPress (r4918)
  * @param WP_Rewrite $wp_rewrite
  * @uses do_action() Calls 'bbp_generate_rewrite_rules' with {@link WP_Rewrite}
  */

@@ -31,49 +31,49 @@ class BBP_BuddyPress_Activity {
 	private $component = '';
 
 	/**
-	 * Forum Create Activty Action
+	 * Forum Create Activity Action
 	 *
 	 * @var string
 	 */
 	private $forum_create = '';
 
 	/**
-	 * Topic Create Activty Action
+	 * Topic Create Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_create = '';
 
 	/**
-	 * Topic Close Activty Action
+	 * Topic Close Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_close = '';
 
 	/**
-	 * Topic Edit Activty Action
+	 * Topic Edit Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_edit = '';
 
 	/**
-	 * Topic Open Activty Action
+	 * Topic Open Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_open = '';
 
 	/**
-	 * Reply Create Activty Action
+	 * Reply Create Activity Action
 	 *
 	 * @var string
 	 */
 	private $reply_create = '';
 
 	/**
-	 * Reply Edit Activty Action
+	 * Reply Edit Activity Action
 	 *
 	 * @var string
 	 */
@@ -103,7 +103,7 @@ class BBP_BuddyPress_Activity {
 	private function setup_globals() {
 
 		// The name of the BuddyPress component, used in activity streams
-		$this->component = 'bbpress';
+		$this->component    = 'bbpress';
 
 		// Forums
 		$this->forum_create = 'bbp_forum_create';
@@ -137,8 +137,8 @@ class BBP_BuddyPress_Activity {
 		add_action( 'bbp_new_reply',                     array( $this, 'reply_create'              ), 10, 5 );
 
 		// Hook into topic and reply status changes
-		add_action( 'wp_insert_post',                    array( $this, 'topic_update'              ), 10, 2 );
-		add_action( 'wp_insert_post',                    array( $this, 'reply_update'              ), 10, 2 );
+		add_action( 'edit_post',                         array( $this, 'topic_update'              ), 10, 2 );
+		add_action( 'edit_post',                         array( $this, 'reply_update'              ), 10, 2 );
 
 		// Hook into topic and reply deletion
 		add_action( 'bbp_delete_topic',                  array( $this, 'topic_delete'              ), 10, 1 );
@@ -164,27 +164,11 @@ class BBP_BuddyPress_Activity {
 	 */
 	private function setup_filters() {
 
-		/** Activity **********************************************************/
-
 		// Obey BuddyPress commenting rules
 		add_filter( 'bp_activity_can_comment',   array( $this, 'activity_can_comment'   )        );
 
 		// Link directly to the topic or reply
 		add_filter( 'bp_activity_get_permalink', array( $this, 'activity_get_permalink' ), 10, 2 );
-
-		/** Mentions **********************************************************/
-
-		// Convert mentions into links on create
-		add_filter( 'bbp_new_topic_pre_content',  'bp_activity_at_name_filter' );
-		add_filter( 'bbp_new_reply_pre_content',  'bp_activity_at_name_filter' );
-
-		// Convert mentions into links on edit
-		add_filter( 'bbp_edit_topic_pre_content', 'bp_activity_at_name_filter' );
-		add_filter( 'bbp_edit_reply_pre_content', 'bp_activity_at_name_filter' );
-
-		// Revert links into text on edit
-		add_filter( 'bbp_get_form_topic_content', array( $this, 'strip_mentions_on_edit' ) );
-		add_filter( 'bbp_get_form_reply_content', array( $this, 'strip_mentions_on_edit' ) );
 	}
 
 	/**
@@ -200,43 +184,16 @@ class BBP_BuddyPress_Activity {
 	/** Methods ***************************************************************/
 
 	/**
-	 * Strip out BuddyPress activity at-name HTML on topic/reply edit
-	 *
-	 * Copied from bp_forums_strip_mentions_on_post_edit() in case forums
-	 * component is not active or is not loaded in yet.
-	 *
-	 * @since bbPress (r3475)
-	 * @param type $content Optional
-	 * @uses bp_get_root_domain()
-	 * @uses bp_get_members_root_slug()
-	 * @return string
-	 */
-	public function strip_mentions_on_edit( $content = '' ) {
-
-		// Backwards compat for members root slug
-		if ( function_exists( 'bp_get_members_root_slug' ) ) {
-			$members_root = bp_get_members_root_slug();
-		} elseif ( defined( 'BP_MEMBERS_SLUG' ) ) {
-			$members_root = BP_MEMBERS_SLUG;
-		} else {
-			$members_root = 'members';
-		}
-
-		$pattern = "|<a href=&#039;" . bp_get_root_domain() . "/" . $members_root . "/[A-Za-z0-9-_\.]+/&#039; rel=&#039;nofollow&#039;>(@[A-Za-z0-9-_\.@]+)</a>|";
-		$content = preg_replace( $pattern, "$1", htmlspecialchars_decode( $content ) );
-
-		return $content;
-	}
-
-	/**
 	 * Register our activity actions with BuddyPress
 	 *
 	 * @since bbPress (r3395)
 	 * @uses bp_activity_set_action()
 	 */
 	public function register_activity_actions() {
-		bp_activity_set_action( $this->component, $this->topic_create, __( 'New topic created', 'bbpress' ) );
-		bp_activity_set_action( $this->component, $this->reply_create, __( 'New reply created', 'bbpress' ) );
+
+		// Sitewide activity stream items
+		bp_activity_set_action( $this->component, $this->topic_create, esc_html__( 'New forum topic', 'bbpress' ) );
+		bp_activity_set_action( $this->component, $this->reply_create, esc_html__( 'New forum reply', 'bbpress' ) );
 	}
 
 	/**
@@ -251,7 +208,7 @@ class BBP_BuddyPress_Activity {
 	 * @uses bp_activity_add()
 	 * @return type Activity ID if successful, false if not
 	 */
-	private function record_activity( $args = '' ) {
+	private function record_activity( $args = array() ) {
 
 		// Default activity args
 		$activity = bbp_parse_args( $args, array(
@@ -287,14 +244,13 @@ class BBP_BuddyPress_Activity {
 	public function delete_activity( $args = '' ) {
 
 		// Default activity args
-		$defaults = array(
+		$activity = bbp_parse_args( $args, array(
 			'item_id'           => false,
 			'component'         => $this->component,
 			'type'              => false,
 			'user_id'           => false,
 			'secondary_item_id' => false
-		);
-		$activity = bbp_parse_args( $args, $defaults, 'delete_activity' );
+		), 'delete_activity' );
 
 		// Delete the activity
 		bp_activity_delete_by_item_id( $activity );
@@ -319,7 +275,7 @@ class BBP_BuddyPress_Activity {
 
 		// Get the activity stream item, bail if it doesn't exist
 		$existing = bp_activity_get_specific( array( 'activity_ids' => $activity_id, 'show_hidden' => true, 'spam' => 'all', ) );
-		if ( empty( $existing['total'] ) || ( 1 != $existing['total'] ) )
+		if ( empty( $existing['total'] ) || ( 1 !== (int) $existing['total'] ) )
 			return null;
 
 		// Return the activity ID since we've verified the connection
@@ -395,8 +351,8 @@ class BBP_BuddyPress_Activity {
 	function activity_filter_options() {
 	?>
 
-		<option value="<?php echo $this->topic_create; ?>"><?php _e( 'Topics',  'bbpress' ); ?></option>
-		<option value="<?php echo $this->reply_create; ?>"><?php _e( 'Replies', 'bbpress' ); ?></option>
+		<option value="<?php echo $this->topic_create; ?>"><?php esc_html_e( 'Topics',  'bbpress' ); ?></option>
+		<option value="<?php echo $this->reply_create; ?>"><?php esc_html_e( 'Replies', 'bbpress' ); ?></option>
 
 	<?php
 	}
@@ -423,7 +379,7 @@ class BBP_BuddyPress_Activity {
 	 * @uses apply_filters()
 	 * @return Bail early if topic is by anonymous user
 	 */
-	public function topic_create( $topic_id, $forum_id, $anonymous_data, $topic_author_id ) {
+	public function topic_create( $topic_id = 0, $forum_id = 0, $anonymous_data = array(), $topic_author_id = 0 ) {
 
 		// Bail early if topic is by anonymous user
 		if ( !empty( $anonymous_data ) )
@@ -434,7 +390,7 @@ class BBP_BuddyPress_Activity {
 			return;
 
 		// Validate activity data
-		$user_id  = $topic_author_id;
+		$user_id  = (int) $topic_author_id;
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -447,26 +403,26 @@ class BBP_BuddyPress_Activity {
 			return;
 
 		// User link for topic author
-		$user_link  = bbp_get_user_profile_link( $user_id  );
+		$user_link = bbp_get_user_profile_link( $user_id  );
 
 		// Topic
 		$topic_permalink = bbp_get_topic_permalink( $topic_id );
 		$topic_title     = get_post_field( 'post_title',   $topic_id, 'raw' );
 		$topic_content   = get_post_field( 'post_content', $topic_id, 'raw' );
-		$topic_link      = '<a href="' . $topic_permalink . '" title="' . $topic_title . '">' . $topic_title . '</a>';
+		$topic_link      = '<a href="' . $topic_permalink . '">' . $topic_title . '</a>';
 
 		// Forum
 		$forum_permalink = bbp_get_forum_permalink( $forum_id );
 		$forum_title     = get_post_field( 'post_title', $forum_id, 'raw' );
-		$forum_link      = '<a href="' . $forum_permalink . '" title="' . $forum_title . '">' . $forum_title . '</a>';
+		$forum_link      = '<a href="' . $forum_permalink . '">' . $forum_title . '</a>';
 
 		// Activity action & text
-		$activity_text    = sprintf( __( '%1$s started the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link    );
-		$activity_action  = apply_filters( 'bbp_activity_topic_create',                $activity_text, $user_id,   $topic_id,   $forum_id      );
-		$activity_content = apply_filters( 'bbp_activity_topic_create_excerpt',        bp_create_excerpt( $topic_content ),     $topic_content );
+		$activity_text    = sprintf( esc_html__( '%1$s started the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link );
+		$activity_action  = apply_filters( 'bbp_activity_topic_create',         $activity_text, $user_id,   $topic_id,   $forum_id );
+		$activity_content = apply_filters( 'bbp_activity_topic_create_excerpt', $topic_content                                     );
 
-		// Compile the activity stream results
-		$activity = array(
+		// Compile and record the activity stream results
+		$activity_id = $this->record_activity( array(
 			'id'                => $this->get_activity_id( $topic_id ),
 			'user_id'           => $user_id,
 			'action'            => $activity_action,
@@ -477,10 +433,7 @@ class BBP_BuddyPress_Activity {
 			'secondary_item_id' => $forum_id,
 			'recorded_time'     => get_post_time( 'Y-m-d H:i:s', true, $topic_id ),
 			'hide_sitewide'     => ! bbp_is_forum_public( $forum_id, false )
-		);
-
-		// Record the activity
-		$activity_id = $this->record_activity( $activity );
+		) );
 
 		// Add the activity entry ID as a meta value to the topic
 		if ( !empty( $activity_id ) ) {
@@ -494,13 +447,13 @@ class BBP_BuddyPress_Activity {
 	 * @param int $topic_id
 	 * @uses bp_activity_delete()
 	 */
-	public function topic_delete( $topic_id ) {
+	public function topic_delete( $topic_id = 0 ) {
 
 		// Get activity ID, bail if it doesn't exist
 		if ( $activity_id = $this->get_activity_id( $topic_id ) )
 			return bp_activity_delete( array( 'id' => $activity_id ) );
 
-		return false;		
+		return false;
 	}
 
 	/**
@@ -518,10 +471,10 @@ class BBP_BuddyPress_Activity {
 	 * @uses bbp_get_topic_author_id()
 	 * @return Bail early if not a topic, or topic is by anonymous user
 	 */
-	public function topic_update( $topic_id, $post ) {
+	public function topic_update( $topic_id = 0, $post = null ) {
 
 		// Bail early if not a topic
-		if ( get_post_type( $post ) != bbp_get_topic_post_type() )
+		if ( get_post_type( $post ) !== bbp_get_topic_post_type() )
 			return;
 
 		$topic_id = bbp_get_topic_id( $topic_id );
@@ -530,8 +483,6 @@ class BBP_BuddyPress_Activity {
 		if ( bbp_is_topic_anonymous( $topic_id ) )
 			return;
 
-		$anonymous_data = array();
-
 		// Action based on new status
 		if ( in_array( $post->post_status, array( bbp_get_public_status_id(), bbp_get_closed_status_id() ) ) ) {
 
@@ -539,7 +490,7 @@ class BBP_BuddyPress_Activity {
 			$forum_id        = bbp_get_topic_forum_id( $topic_id );
 			$topic_author_id = bbp_get_topic_author_id( $topic_id );
 
-			$this->topic_create( $topic_id, $forum_id, $anonymous_data, $topic_author_id );
+			$this->topic_create( $topic_id, $forum_id, array(), $topic_author_id );
 		} else {
 			$this->topic_delete( $topic_id );
 		}
@@ -569,7 +520,7 @@ class BBP_BuddyPress_Activity {
 	 * @uses apply_filters()
 	 * @return Bail early if topic is by anonywous user
 	 */
-	public function reply_create( $reply_id, $topic_id, $forum_id, $anonymous_data, $reply_author_id ) {
+	public function reply_create( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = array(), $reply_author_id = 0 ) {
 
 		// Do not log activity of anonymous users
 		if ( !empty( $anonymous_data ) )
@@ -580,7 +531,7 @@ class BBP_BuddyPress_Activity {
 			return;
 
 		// Validate activity data
-		$user_id  = $reply_author_id;
+		$user_id  = (int) $reply_author_id;
 		$reply_id = bbp_get_reply_id( $reply_id );
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$forum_id = bbp_get_forum_id( $forum_id );
@@ -594,7 +545,7 @@ class BBP_BuddyPress_Activity {
 			return;
 
 		// Setup links for activity stream
-		$user_link  = bbp_get_user_profile_link( $user_id  );
+		$user_link = bbp_get_user_profile_link( $user_id  );
 
 		// Reply
 		$reply_url     = bbp_get_reply_url( $reply_id );
@@ -603,20 +554,20 @@ class BBP_BuddyPress_Activity {
 		// Topic
 		$topic_permalink = bbp_get_topic_permalink( $topic_id );
 		$topic_title     = get_post_field( 'post_title', $topic_id, 'raw' );
-		$topic_link      = '<a href="' . $topic_permalink . '" title="' . $topic_title . '">' . $topic_title . '</a>';
+		$topic_link      = '<a href="' . $topic_permalink . '">' . $topic_title . '</a>';
 
 		// Forum
 		$forum_permalink = bbp_get_forum_permalink( $forum_id );
 		$forum_title     = get_post_field( 'post_title', $forum_id, 'raw' );
-		$forum_link      = '<a href="' . $forum_permalink . '" title="' . $forum_title . '">' . $forum_title . '</a>';
+		$forum_link      = '<a href="' . $forum_permalink . '">' . $forum_title . '</a>';
 
 		// Activity action & text
-		$activity_text    = sprintf( __( '%1$s replied to the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link    );
-		$activity_action  = apply_filters( 'bbp_activity_reply_create',         $activity_text, $user_id,   $reply_id,   $topic_id      );
-		$activity_content = apply_filters( 'bbp_activity_reply_create_excerpt', bp_create_excerpt( $reply_content ),     $reply_content );
+		$activity_text    = sprintf( esc_html__( '%1$s replied to the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link );
+		$activity_action  = apply_filters( 'bbp_activity_reply_create',         $activity_text, $user_id, $reply_id,  $topic_id );
+		$activity_content = apply_filters( 'bbp_activity_reply_create_excerpt', $reply_content                                  );
 
-		// Compile the activity stream results
-		$activity = array(
+		// Compile and record the activity stream results
+		$activity_id = $this->record_activity( array(
 			'id'                => $this->get_activity_id( $reply_id ),
 			'user_id'           => $user_id,
 			'action'            => $activity_action,
@@ -627,10 +578,7 @@ class BBP_BuddyPress_Activity {
 			'secondary_item_id' => $topic_id,
 			'recorded_time'     => get_post_time( 'Y-m-d H:i:s', true, $reply_id ),
 			'hide_sitewide'     => ! bbp_is_forum_public( $forum_id, false )
-		);
-
-		// Record the activity
-		$activity_id = $this->record_activity( $activity );
+		) );
 
 		// Add the activity entry ID as a meta value to the reply
 		if ( !empty( $activity_id ) ) {
@@ -651,7 +599,7 @@ class BBP_BuddyPress_Activity {
 		if ( $activity_id = $this->get_activity_id( $reply_id ) )
 			return bp_activity_delete( array( 'id' => $activity_id ) );
 
-		return false;		
+		return false;
 	}
 
 	/**
@@ -673,7 +621,7 @@ class BBP_BuddyPress_Activity {
 	public function reply_update( $reply_id, $post ) {
 
 		// Bail early if not a reply
-		if ( get_post_type( $post ) != bbp_get_reply_post_type() )
+		if ( get_post_type( $post ) !== bbp_get_reply_post_type() )
 			return;
 
 		$reply_id = bbp_get_reply_id( $reply_id );
@@ -682,21 +630,18 @@ class BBP_BuddyPress_Activity {
 		if ( bbp_is_reply_anonymous( $reply_id ) )
 			return;
 
-		$anonymous_data = array();
-
 		// Action based on new status
-		if ( $post->post_status == bbp_get_public_status_id() ) {
+		if ( bbp_get_public_status_id() === $post->post_status ) {
 
 			// Validate reply data
 			$topic_id        = bbp_get_reply_topic_id( $reply_id );
 			$forum_id        = bbp_get_reply_forum_id( $reply_id );
 			$reply_author_id = bbp_get_reply_author_id( $reply_id );
 
-			$this->reply_create( $reply_id, $topic_id, $forum_id, $anonymous_data, $reply_author_id );
+			$this->reply_create( $reply_id, $topic_id, $forum_id, array(), $reply_author_id );
 		} else {
 			$this->reply_delete( $reply_id );
 		}
 	}
 }
 endif;
-

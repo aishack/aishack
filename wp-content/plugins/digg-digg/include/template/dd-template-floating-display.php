@@ -3,7 +3,7 @@ function dd_page_for_floating_display(){
 	
 	global $ddFloatDisplay,$ddFloatButtons;
 	
-	if (isset($_POST[DD_FORM_SAVE])) {
+	if (isset($_POST[DD_FORM_SAVE]) && check_admin_referer('digg_digg_floating_save','digg_digg_floating_nonce')) {
 		
 		if(isset($_POST[DD_STATUS_OPTION_DISPLAY])) $ddFloatDisplay[DD_STATUS_OPTION][DD_STATUS_OPTION_DISPLAY] = DD_DISPLAY_ON;
 		else $ddFloatDisplay[DD_STATUS_OPTION][DD_STATUS_OPTION_DISPLAY] = DD_DISPLAY_OFF;
@@ -222,6 +222,14 @@ function checkCategory(){
 						        		<input name=<?php echo DD_COMMENT_ANCHOR_OPTION; ?> type="checkbox" <?php echo ($ddFloatDisplay[DD_COMMENT_ANCHOR_OPTION][DD_COMMENT_ANCHOR_OPTION_STATUS]==DD_DISPLAY_ON) ? DD_CHECK_BOX_ON : DD_CHECK_BOX_OFF ?>>
 						        	</td>
 						        </tr>
+						        
+						        <tr valign="top">
+						        	<th scope="row">2.7 Override initial floating bar location</th>
+						        	<td>
+										Element : #<input type="text" value="<?php echo $ddFloatDisplay[DD_FLOAT_OPTION][DD_FLOAT_OPTION_INITIAL_ELEMENT] ?>" 
+											name="<?php echo DD_FLOAT_OPTION_INITIAL_ELEMENT;?>" /> (without preceding #)
+						        	</td>
+						        </tr>
 						    </table>
 							
 							<div class="submit">
@@ -370,7 +378,7 @@ function checkCategory(){
 					</div>
 					<!-- End Reset Floating Display Settings -->
 					
-					
+					<?php wp_nonce_field('digg_digg_floating_save','digg_digg_floating_nonce'); ?>
 				</form>
 				
 			</div>

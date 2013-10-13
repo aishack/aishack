@@ -76,6 +76,7 @@ class BBP_Forums_Admin {
 
 		// Contextual Help
 		add_action( 'load-edit.php',     array( $this, 'edit_help' ) );
+		add_action( 'load-post.php',     array( $this, 'new_help'  ) );
 		add_action( 'load-post-new.php', array( $this, 'new_help'  ) );
 	}
 
@@ -193,11 +194,7 @@ class BBP_Forums_Admin {
 
 		$publish_box = '<p>' . __( '<strong>Publish</strong> - You can set the terms of publishing your forum in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a forum or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a forum to be published in the future or backdate a forum.', 'bbpress' ) . '</p>';
 
-		if ( current_theme_supports( 'forum-formats' ) && forum_type_supports( 'forum', 'forum-formats' ) ) {
-			$publish_box .= '<p>' . __( '<strong>forum Format</strong> - This designates how your theme will display a specific forum. For example, you could have a <em>standard</em> blog forum with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href="http://codex.wordpress.org/Post_Formats#Supported_Formats">descriptions of each forum format</a>. Your theme could enable all or some of 10 possible formats.', 'bbpress' ) . '</p>';
-		}
-
-		if ( current_theme_supports( 'forum-thumbnails' ) && forum_type_supports( 'forum', 'thumbnail' ) ) {
+		if ( current_theme_supports( 'forum-thumbnails' ) && post_type_supports( 'forum', 'thumbnail' ) ) {
 			$publish_box .= '<p>' . __( '<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc.', 'bbpress' ) . '</p>';
 		}
 
@@ -219,14 +216,6 @@ class BBP_Forums_Admin {
 			'id'      => 'publish-box',
 			'title'   => __( 'Publish Box', 'bbpress' ),
 			'content' => $publish_box,
-		) );
-
-		get_current_screen()->add_help_tab( array(
-			'id'      => 'discussion-settings',
-			'title'   => __( 'Discussion Settings', 'bbpress' ),
-			'content' =>
-				'<p>' . __( '<strong>Send Trackbacks</strong> - Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. Enter the URL(s) you want to send trackbacks. If you link to other WordPress sites they&#8217;ll be notified automatically using pingbacks, and this field is unnecessary.', 'bbpress' ) . '</p>' .
-				'<p>' . __( '<strong>Discussion</strong> - You can turn comments and pings on or off, and if there are comments on the forum, you can see them here and moderate them.', 'bbpress' ) . '</p>'
 		) );
 
 		get_current_screen()->set_help_sidebar(
@@ -292,7 +281,7 @@ class BBP_Forums_Admin {
 			return $forum_id;
 
 		// Bail if not a post request
-		if ( 'POST' != strtoupper( $_SERVER['REQUEST_METHOD'] ) )
+		if ( ! bbp_is_post_request() )
 			return $forum_id;
 
 		// Nonce check
@@ -459,7 +448,7 @@ class BBP_Forums_Admin {
 				break;
 
 			case 'bbp_forum_created':
-				printf( __( '%1$s <br /> %2$s', 'bbpress' ),
+				printf( '%1$s <br /> %2$s',
 					get_the_date(),
 					esc_attr( get_the_time() )
 				);
@@ -469,9 +458,9 @@ class BBP_Forums_Admin {
 			case 'bbp_forum_freshness' :
 				$last_active = bbp_get_forum_last_active_time( $forum_id, false );
 				if ( !empty( $last_active ) )
-					echo $last_active;
+					echo esc_html( $last_active );
 				else
-					_e( 'No Topics', 'bbpress' );
+					esc_html_e( 'No Topics', 'bbpress' );
 
 				break;
 
@@ -491,7 +480,7 @@ class BBP_Forums_Admin {
 	 *
 	 * @param array $actions Actions
 	 * @param array $forum Forum object
-	 * @uses the_content() To output forum description
+	 * @uses bbp_forum_content() To output forum description
 	 * @return array $actions Actions
 	 */
 	public function row_actions( $actions, $forum ) {

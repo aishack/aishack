@@ -19,13 +19,25 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function bbp_admin_separator() {
 
-	// Prevent duplicate separators when no new menu items exist
-	if ( !current_user_can( 'edit_forums' ) && !current_user_can( 'edit_topics' ) && !current_user_can( 'edit_replies' ) )
-		return;
+	// Caps necessary where a separator is necessary
+	$caps = array(
+		'bbp_forums_admin',
+		'bbp_topics_admin',
+		'bbp_replies_admin',
+	);
 
-	// Prevent duplicate separators when no core menu items exist
-	if ( !current_user_can( 'manage_options' ) )
+	// Loop through caps, and look for a reason to show the separator
+	foreach ( $caps as $cap ) {
+		if ( current_user_can( $cap ) ) {
+			bbpress()->admin->show_separator = true;
+			break;
+		}
+	}
+
+	// Bail if no separator
+	if ( false === bbpress()->admin->show_separator ) {
 		return;
+	}
 
 	global $menu;
 
@@ -38,10 +50,10 @@ function bbp_admin_separator() {
  * @since bbPress (r2957)
  *
  * @param bool $menu_order Menu order
- * @return bool Always true
+ * @return mixed True if separator, false if not
  */
 function bbp_admin_custom_menu_order( $menu_order = false ) {
-	if ( !current_user_can( 'edit_forums' ) && !current_user_can( 'edit_topics' ) && !current_user_can( 'edit_replies' ) )
+	if ( false === bbpress()->admin->show_separator )
 		return $menu_order;
 
 	return true;
@@ -59,7 +71,7 @@ function bbp_admin_custom_menu_order( $menu_order = false ) {
 function bbp_admin_menu_order( $menu_order ) {
 
 	// Bail if user cannot see any top level bbPress menus
-	if ( empty( $menu_order ) || ( !current_user_can( 'edit_forums' ) && !current_user_can( 'edit_topics' ) && !current_user_can( 'edit_replies' ) ) )
+	if ( empty( $menu_order ) || ( false === bbpress()->admin->show_separator ) )
 		return $menu_order;
 
 	// Initialize our custom order array
@@ -81,7 +93,7 @@ function bbp_admin_menu_order( $menu_order ) {
 		if ( $second_sep == $item ) {
 
 			// Add our custom menus
-			foreach( $custom_menus as $custom_menu ) {
+			foreach ( $custom_menus as $custom_menu ) {
 				if ( array_search( $custom_menu, $menu_order ) ) {
 					$bbp_menu_order[] = $custom_menu;
 				}
@@ -234,10 +246,10 @@ function bbp_tools_admin_tabs( $active_tab = '' ) {
 		) );
 
 		// Loop through tabs and build navigation
-		foreach( $tabs as $tab_id => $tab_data ) {
+		foreach ( array_values( $tabs ) as $tab_data ) {
 			$is_current = (bool) ( $tab_data['name'] == $active_tab );
 			$tab_class  = $is_current ? $active_class : $idle_class;
-			$tabs_html .= '<a href="' . $tab_data['href'] . '" class="' . $tab_class . '">' . $tab_data['name'] . '</a>';
+			$tabs_html .= '<a href="' . esc_url( $tab_data['href'] ) . '" class="' . esc_attr( $tab_class ) . '">' . esc_html( $tab_data['name'] ) . '</a>';
 		}
 
 		// Output the tabs

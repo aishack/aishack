@@ -3,7 +3,7 @@
 Plugin Name: Redirection
 Plugin URI: http://urbangiraffe.com/plugins/redirection/
 Description: Manage all your 301 redirects and monitor 404 errors
-Version: 2.2.13
+Version: 2.3.4
 Author: John Godley
 Author URI: http://urbangiraffe.com
 ============================================================================================================
@@ -28,9 +28,8 @@ include dirname( __FILE__ ).'/models/module.php';
 include dirname( __FILE__ ).'/models/action.php';
 include dirname( __FILE__ ).'/models/monitor.php';
 include dirname( __FILE__ ).'/modules/wordpress.php';
-include dirname( __FILE__ ).'/modules/404.php';
 
-define( 'REDIRECTION_VERSION', '2.2' );
+define( 'REDIRECTION_VERSION', '2.3.1' );
 
 if ( class_exists( 'Redirection' ) )
 	return;
@@ -61,12 +60,10 @@ class Redirection extends Redirection_Plugin {
 			// Create a WordPress exporter and let it handle the load
 			$this->wp = new WordPress_Module();
 			$this->wp->start();
-
-			$this->error = new Error404_Module();
-			$this->error->start();
 		}
 
 		$this->monitor = new Red_Monitor( $this->get_options() );
+		$this->add_action ('template_redirect' );
 	}
 
 	function update() {
@@ -112,17 +109,29 @@ class Redirection extends Redirection_Plugin {
 			'please_wait'  => __( 'Please wait...', 'redirection' ),
 			'type'         => 1,
 			'progress'     => '<img src="'.plugin_dir_url( __FILE__ ).'/images/progress.gif" alt="loading" width="50" height="16"/>',
-		  'are_you_sure' => __( 'Are you sure?', 'redirection' ),
+		  	'are_you_sure' => __( 'Are you sure?', 'redirection' ),
 			'none_select'  => __( 'No items have been selected', 'redirection' )
 		) );
 	}
 
 	function admin_menu() {
-  	add_management_page( __( "Redirection", 'redirection' ), __( "Redirection", 'redirection' ), "administrator", basename( __FILE__ ), array( &$this, "admin_screen" ) );
+  		add_management_page( __( "Redirection", 'redirection' ), __( "Redirection", 'redirection' ), "administrator", basename( __FILE__ ), array( &$this, "admin_screen" ) );
+	}
+
+	function expire_logs() {
+		global $wpdb;
+
+		// Expire old entries
+		$options = $this->get_options();
+		if ( $options['expire'] != 0 ) {
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}redirection_logs WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY) LIMIT 1000", $options['expire'] ) );
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}redirection_404 WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY) LIMIT 1000", $options['expire'] ) );
+		}
 	}
 
 	function admin_screen() {
-	  $this->update();
+	  	$this->update();
+	  	$this->expire_logs();
 
 		// Decide what to do
 		$sub = isset( $_GET['sub'] ) ? $_GET['sub'] : '';
@@ -132,39 +141,26 @@ class Redirection extends Redirection_Plugin {
 		if ( isset($_GET['sub']) ) {
 			if ( $_GET['sub'] == 'log' )
 				return $this->admin_screen_log();
-		  elseif ( $_GET['sub'] == 'options' )
-		    return $this->admin_screen_options();
-		  elseif ( $_GET['sub'] == 'process' )
-		    return $this->admin_screen_process();
-		  elseif ( $_GET['sub'] == 'groups' )
+			elseif ( $_GET['sub'] == '404s' )
+				return $this->admin_screen_404();
+			elseif ( $_GET['sub'] == 'options' )
+				return $this->admin_screen_options();
+			elseif ( $_GET['sub'] == 'process' )
+				return $this->admin_screen_process();
+			elseif ( $_GET['sub'] == 'groups' )
 				return $this->admin_groups( isset( $_GET['id'] ) ? intval( $_GET['id'] ) : 0 );
 			elseif ( $_GET['sub'] == 'modules' )
 				return $this->admin_screen_modules();
 			elseif ( $_GET['sub'] == 'support' )
-				return $this->render_admin('support');
+				return $this->render_admin('support', array( 'options' => $this->get_options() ) );
 		}
 
 		return $this->admin_redirects( isset( $_GET['id'] ) ? intval( $_GET['id'] ) : 0 );
 	}
 
 	function admin_screen_modules() {
-		if ( isset( $_POST['create'] ) && check_admin_referer( 'redirection-module_add' ) ) {
-			$data = stripslashes_deep( $_POST );
-
-			if ( ( $module = Red_Module::create( $data ) ) ) {
-				$moduleid = 0;
-				if ( isset( $_POST['module'] ) )
-					$moduleid = intval( $_POST['module'] );
-
-				$this->render_message( __( 'Your module was successfully created', 'redirection' ) );
-				Red_Module::flush( $moduleid );
-			}
-			else
-				$this->render_error( __( 'Your module was not created - did you provide a name?', 'redirection' ) );
-		}
-
 		$options = $this->get_options();
-		$this->render_admin( 'module_list', array( 'modules' => Red_Module::get_all(), 'module_types' => Red_Module::get_types(), 'token' => $options['token'] ) );
+		$this->render_admin( 'module_list', array( 'options' => $this->get_options(), 'modules' => Red_Module::get_all(), 'module_types' => Red_Module::get_types(), 'token' => $options['token'] ) );
 	}
 
 	function get_options() {
@@ -173,7 +169,6 @@ class Redirection extends Redirection_Plugin {
 			$options = array();
 
 		$defaults = array	(
-			'lookup'            => 'http://urbangiraffe.com/map/?from=redirection&amp;ip=',
 			'support'           => false,
 			'log_redirections'  => true,
 			'log_404s'          => true,
@@ -189,8 +184,7 @@ class Redirection extends Redirection_Plugin {
 				$options[$key] = $value;
 		}
 
-		if ( $options['lookup'] == 'http://geomaplookup.cinnamonthoughts.org/?ip=' || $options['lookup'] == 'http://geomaplookup.net/?ip=' )
-			$options['lookup'] = 'http://urbangiraffe.com/map/?from=redirection&amp;ip=';
+		$options['lookup'] = 'http://geomaplookup.net/?ip=';
 
 		return $options;
 	}
@@ -198,7 +192,7 @@ class Redirection extends Redirection_Plugin {
 	function inject() {
 		$options = $this->get_options();
 
-		if ( isset($_GET['token'] ) && isset( $_GET['page'] ) && isset( $_GET['sub'] ) && $_GET['token'] == $options['token'] && $_GET['page'] == 'tools.php?page=redirection.php' && in_array( $_GET['sub'], array( 'rss', 'xml', 'csv', 'apache' ) ) ) {
+		if ( isset($_GET['token'] ) && isset( $_GET['page'] ) && isset( $_GET['sub'] ) && $_GET['token'] == $options['token'] && $_GET['page'] == 'redirection.php' && in_array( $_GET['sub'], array( 'rss', 'xml', 'csv', 'apache' ) ) ) {
 			include dirname( __FILE__ ).'/models/file_io.php';
 
 			$exporter = new Red_FileIO;
@@ -209,7 +203,6 @@ class Redirection extends Redirection_Plugin {
 
 	function admin_screen_options() {
 		if ( isset( $_POST['update'] ) && check_admin_referer( 'redirection-update_options' ) ) {
-			$options['lookup']            = stripslashes( $_POST['lookup'] );
 			$options['monitor_post']      = stripslashes( $_POST['monitor_post'] );
 //			$options['monitor_category']  = stripslashes( $_POST['monitor_category'] );
 			$options['auto_target']       = stripslashes( $_POST['auto_target'] );
@@ -257,28 +250,45 @@ class Redirection extends Redirection_Plugin {
 
 		if ( isset( $_POST['deleteall'] ) && check_admin_referer( 'redirection-process_logs' ) ) {
 			if ( isset( $_GET['module'] ) )
-				RE_Log::delete_all( array( 'module_id' => intval( $_GET['module'] ) ), new RE_Pager( $_GET, admin_url( add_query_arg( array( 'sub' => 'log' ), 'tools.php?page=redirection.php' ) ), 'created', 'DESC', 'log' ) );
+				RE_Log::delete_all( 'module', intval( $_GET['module'] ) );
 			else if (isset($_GET['group']))
-				RE_Log::delete_all( array( 'group_id' => intval( $_GET['group'] ) ), new RE_Pager( $_GET, admin_url( add_query_arg( array( 'sub' => 'log' ), 'tools.php?page=redirection.php' ) ), 'created', 'DESC', 'log' ) );
+				RE_Log::delete_all( 'group', intval( $_GET['group_id'] ) );
 			else
-				RE_Log::delete_all( array(), new RE_Pager( $_GET, admin_url( add_query_arg( array( 'sub' => 'log' ), 'tools.php?page=redirection.php' ) ), 'created', 'DESC', 'log' ) );
+				RE_Log::delete_all();
 
 			$this->render_message( __( 'Your logs have been deleted', 'redirection' ) );
 		}
 
-		$pager = new RE_Pager( $_GET, admin_url( add_query_arg( array( 'sub' => 'log' ), 'tools.php?page=redirection.php' ) ), 'created', 'DESC', 'log' );
+		$options = $this->get_options();
+
+		$table = new Redirection_Log_Table( $options );
 
 		if ( isset( $_GET['module'] ) )
-			$logs = RE_Log::get_by_module( $pager, intval( $_GET['module'] ) );
+			$table->prepare_items( 'module', intval( $_GET['module'] ) );
 		else if (isset($_GET['group']))
-			$logs = RE_Log::get_by_group( $pager, intval( $_GET['group'] ) );
+			$table->prepare_items( 'group', intval( $_GET['group'] ) );
 		else if (isset($_GET['redirect']))
-			$logs = RE_Log::get_by_redirect( $pager, intval( $_GET['redirect'] ) );
+			$table->prepare_items( 'redirect', intval( $_GET['redirect'] ) );
 		else
-			$logs = RE_Log::get( $pager );
+			$table->prepare_items();
+
+		$this->render_admin( 'log', array( 'options' => $options, 'table' => $table, 'lookup' => $options['lookup'] ) );
+	}
+
+	function admin_screen_404() {
+		include dirname( __FILE__ ).'/models/pager.php';
+
+		if ( isset( $_POST['deleteall'] ) && check_admin_referer( 'redirection-process_logs' ) ) {
+			RE_404::delete_all();
+			$this->render_message( __( 'Your logs have been deleted', 'redirection' ) );
+		}
 
 		$options = $this->get_options();
-		$this->render_admin( 'log', array( 'logs' => $logs, 'pager' => $pager, 'lookup' => $options['lookup'] ) );
+
+		$table = new Redirection_404_Table( $options );
+		$table->prepare_items( isset( $_GET['ip'] ) ? $_GET['ip'] : false );
+
+		$this->render_admin( 'log', array( 'options' => $options, 'table' => $table, 'lookup' => $options['lookup'] ) );
 	}
 
 	function admin_groups( $module ) {
@@ -299,7 +309,11 @@ class Redirection extends Redirection_Plugin {
 		$pager = new RE_Pager( $_GET, admin_url( add_query_arg( array( 'sub' => 'groups' ), 'tools.php?page=redirection.php' ) ), 'position', 'ASC' );
 		$items = Red_Group::get_all( $module, $pager );
 
-  	$this->render_admin( 'group_list', array( 'groups' => $items, 'pager' => $pager, 'modules' => Red_Module::get_for_select(), 'module' => Red_Module::get( $module ) ) );
+		$module = Red_Module::get( $module );
+		if ( $module )
+  			$this->render_admin( 'group_list', array( 'options' => $this->get_options(), 'groups' => $items, 'pager' => $pager, 'modules' => Red_Module::get_for_select(), 'module' => $module ) );
+  		else
+  			$this->render_message( __( 'Unknown module', 'redirection' ) );
 	}
 
 	function admin_redirects( $group ) {
@@ -311,7 +325,7 @@ class Redirection extends Redirection_Plugin {
 		$pager = new RE_Pager( $_GET, admin_url( add_query_arg( array(), 'tools.php?page=redirection.php' ) ), 'position', 'ASC' );
 		$items = Red_Item::get_by_group( $group, $pager );
 
-  	$this->render_admin( 'item_list', array( 'items' => $items, 'pager' => $pager, 'group' => Red_Group::get( $group ), 'groups' => Red_Group::get_for_select(), 'date_format' => get_option( 'date_format' ) ) );
+  		$this->render_admin( 'item_list', array( 'options' => $this->get_options(), 'items' => $items, 'pager' => $pager, 'group' => Red_Group::get( $group ), 'groups' => Red_Group::get_for_select(), 'date_format' => get_option( 'date_format' ) ) );
 	}
 
 	function setMatched( $match ) {
@@ -327,7 +341,7 @@ class Redirection extends Redirection_Plugin {
 		if ( file_exists( dirname( __FILE__ ).'/readme.txt' ) ) {
 			$readme = file_get_contents( dirname( __FILE__ ).'/readme.txt' );
 
-			$start = strpos( $readme, __( 'Redirection is available in' ) );
+			$start = strpos( $readme, 'Redirection is available in' );
 			$end   = strpos( $readme, '==', $start );
 			if ( $start !== false && $end !== false ) {
 				if ( preg_match_all( '/^\* (.*?) by (.*?)/m', substr( $readme, $start, $end ), $matches ) > 0 ) {
@@ -340,6 +354,46 @@ class Redirection extends Redirection_Plugin {
 
 		return $locales;
 	}
+
+	/**
+	 * Matches 404s
+	 * @return [type] [description]
+	 */
+	function template_redirect() {
+		if ( is_404() )	{
+			$options = $this->get_options();
+
+			if ( $options['log_404s'] ) {
+				$log = RE_404::create( red_get_url(), red_user_agent(), red_ip(), red_http_referrer() );
+			}
+		}
+	}
+}
+
+function red_get_url() {
+	if ( isset( $_SERVER['REQUEST_URI'] ) )
+		return $_SERVER['REQUEST_URI'];
+	return '';
+}
+
+function red_user_agent() {
+	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) )
+		return $_SERVER['HTTP_USER_AGENT'];
+	return false;
+}
+
+function red_http_referrer() {
+	if ( isset( $_SERVER['HTTP_REFERER'] ) )
+		return $_SERVER['HTTP_REFERER'];
+	return false;
+}
+
+function red_ip() {
+	if ( isset( $_SERVER['REMOTE_ADDR'] ) )
+	  return $_SERVER['REMOTE_ADDR'];
+	elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
+	  return $_SERVER['HTTP_X_FORWARDED_FOR'];
+	return '';
 }
 
 // Instantiate the plugin

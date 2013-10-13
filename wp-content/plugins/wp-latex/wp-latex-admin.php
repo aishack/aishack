@@ -64,7 +64,7 @@ class WP_LaTeX_Admin extends WP_LaTeX {
 		check_admin_referer( 'wp-latex' );
 	
 		if ( $this->update( stripslashes_deep( $_POST['wp_latex'] ) ) ) {
-			wp_redirect( add_query_arg( 'updated', '', wp_get_referer() ) );
+			wp_safe_redirect( add_query_arg( 'updated', '', wp_get_referer() ) );
 			exit;
 		}
 	}

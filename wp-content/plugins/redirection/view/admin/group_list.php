@@ -5,7 +5,7 @@
 
 	<h2><?php _e( 'Groups for module', 'redirection' ); ?>: <a href="edit.php?page=redirection.php&amp;sub=modules"><?php echo esc_html( $module->name  ) ?></a></h2>
 
-	<?php $this->render_admin( 'submenu'  ); ?>
+	<?php $this->render_admin( 'submenu', array( 'options' => $options ) ); ?>
 
 	<div id="pager" class="pager">
 		<form method="get" action="">
@@ -102,7 +102,10 @@
 			</tr>
 			<tr>
 				<th width="50"></th>
-				<td><input class="button-primary" type="submit" name="add" value="<?php _e( 'Add', 'redirection' ); ?>"/><input type="hidden" name="module_id" value="<?php echo $module->id ?>"/></td>
+				<td>
+					<input class="button-primary" type="submit" name="add" value="<?php esc_attr_e( 'Add', 'redirection' ); ?>"/>
+					<input type="hidden" name="module_id" value="<?php echo $module->id ?>"/>
+				</td>
 			</tr>
 		</table>
 	</form>

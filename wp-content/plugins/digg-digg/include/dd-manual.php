@@ -40,11 +40,6 @@ $dd_manual_code = array(
 		"Compact" => "dd_linkedin_generate('Compact')",
 		"NoCount" => "dd_linkedin_generate('NoCount')"
 	),
-	"Digg" => array(
-		"Normal" => "dd_digg_generate('Normal')",
-		"Compact" => "dd_digg_generate('Compact')",
-		"Icon" => "dd_digg_generate('Icon')"
-	),
 	"Reddit" => array(
 		"Normal" => "dd_reddit_generate('Normal')",
 		"Compact" => "dd_reddit_generate('Compact')",
@@ -89,10 +84,6 @@ $dd_manual_code = array(
 		"Normal" => "dd_delicious_generate('Normal')",
 		"Compact" => "dd_delicious_generate('Compact')"
 	),
-	"Google Buzz" => array(
-		"Normal" => "dd_gbuzz_generate('Normal')",
-		"Compact" => "dd_gbuzz_generate('Compact')"
-	),
 	"The Web Blend" => array(
 		"Normal" => "dd_thewebblend_generate('Normal')",
 		"Compact" => "dd_thewebblend_generate('Compact')"
@@ -117,6 +108,13 @@ $dd_manual_code = array(
 		"Normal" => "dd_flattr_generate('Normal','flattr_username')",
 		"Compact" => "dd_flattr_generate('Compact','flattr_username')"
 	),
+	"Pocket" => array(
+		"Normal" => "dd_pocket_generate('Normal')",
+		"Compact" => "dd_pocket_generate('Compact')"
+	),
+	"Tumblr" => array(
+		"Normal" => "dd_tumblr_generate('Normal')",
+	),
 );		
 	
 function dd_digg_generate($buttonDesign='Normal'){
@@ -134,9 +132,7 @@ function dd_linkedin_generate($buttonDesign='Normal'){
     $dd_linkedin = new DD_Linkedin();
     $dd_linkedin->constructURL($post_data['link'],$post_data['title'],$buttonDesign,$post_data['id'], false);
 	
-	$dd_linkedinJS = '<script type="text/javascript" src="' . DD_PLUGIN_URL . '/js/diggdigg-linkedin.js?ver=' . DD_VERSION . '"></script>';
-	
-	echo $dd_linkedinJS.' '.$dd_linkedin->finalURL;
+	echo $dd_linkedin->finalURL;
 }	
 
 function dd_reddit_generate($buttonDesign='Normal'){
@@ -360,6 +356,24 @@ function dd_flattr_generate($buttonDesign='Normal', $uid=''){
     $dd_flattr->constructURL($post_data['link'],$post_data['title'],$buttonDesign,$post_data['id'],false,$globalcfg);
     
 	echo $dd_flattr->finalURL;
+}
+
+function dd_pocket_generate($buttonDesign='Normal'){
+	$post_data = dd_getPostData();
+    
+    $dd_pocket = new DD_Pocket();
+    $dd_pocket->constructURL($post_data['link'],$post_data['title'],$buttonDesign,$post_data['id'],false);
+    
+	echo $dd_pocket->finalURL;
+}
+
+function dd_tumblr_generate($buttonDesign='Normal'){
+	$post_data = dd_getPostData();
+    
+    $dd_tumblr = new DD_Tumblr();
+    $dd_tumblr->constructURL($post_data['link'],$post_data['title'],$buttonDesign,$post_data['id'],false);
+    
+	echo $dd_tumblr->finalURL;
 }
 
 function dd_getPostData() {

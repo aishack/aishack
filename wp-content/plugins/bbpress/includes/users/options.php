@@ -72,7 +72,7 @@ function bbp_delete_user_options( $user_id = 0 ) {
 		return;
 
 	// Add default options
-	foreach ( bbp_get_default_user_options() as $key => $value )
+	foreach ( array_keys( bbp_get_default_user_options() ) as $key )
 		delete_user_option( $user_id, $key );
 
 	// Allow previously activated plugins to append their own options.
@@ -91,7 +91,7 @@ function bbp_delete_user_options( $user_id = 0 ) {
 function bbp_setup_user_option_filters() {
 
 	// Add filters to each bbPress option
-	foreach ( bbp_get_default_user_options() as $key => $value )
+	foreach ( array_keys( bbp_get_default_user_options() ) as $key )
 		add_filter( 'get_user_option_' . $key, 'bbp_filter_get_user_option', 10, 3 );
 
 	// Allow previously activated plugins to append their own options.
@@ -152,7 +152,7 @@ function bbp_user_topic_count( $user_id = 0, $integer = false ) {
 			return false;
 
 		$count  = (int) get_user_option( '_bbp_topic_count', $user_id );
-		$filter = ( false == $integer ) ? 'bbp_get_user_topic_count_int' : 'bbp_get_user_topic_count';
+		$filter = ( false === $integer ) ? 'bbp_get_user_topic_count_int' : 'bbp_get_user_topic_count';
 
 		return apply_filters( $filter, $count, $user_id );
 	}
@@ -190,7 +190,7 @@ function bbp_user_reply_count( $user_id = 0, $integer = false ) {
 			return false;
 
 		$count  = (int) get_user_option( '_bbp_reply_count', $user_id );
-		$filter = ( true == $integer ) ? 'bbp_get_user_topic_count_int' : 'bbp_get_user_topic_count';
+		$filter = ( true === $integer ) ? 'bbp_get_user_topic_count_int' : 'bbp_get_user_topic_count';
 
 		return apply_filters( $filter, $count, $user_id );
 	}
@@ -230,7 +230,7 @@ function bbp_user_post_count( $user_id = 0, $integer = false ) {
 		$topics  = bbp_get_user_topic_count( $user_id, true );
 		$replies = bbp_get_user_reply_count( $user_id, true );
 		$count   = (int) $topics + $replies;
-		$filter  = ( true == $integer ) ? 'bbp_get_user_post_count_int' : 'bbp_get_user_post_count';
+		$filter  = ( true === $integer ) ? 'bbp_get_user_post_count_int' : 'bbp_get_user_post_count';
 
 		return apply_filters( $filter, $count, $user_id );
 	}

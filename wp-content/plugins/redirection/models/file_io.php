@@ -6,8 +6,6 @@ class Red_FileIO
 
 	function export ($type)
 	{
-		include (dirname (__FILE__).'/../models/pager.php');
-
 		$module = Red_Module::get (intval ($_GET['module']));
 		if ($module)
 		{
@@ -15,8 +13,6 @@ class Red_FileIO
 
 			if ($type == 'rss')
 				$exporter = new Red_Rss_File ();
-			else if ($type == 'xml')
-				$exporter = new Red_Xml_File ();
 			else if ($type == 'csv')
 				$exporter = new Red_Csv_File ();
 			else if ($type == 'apache')
@@ -34,18 +30,13 @@ class Red_FileIO
 		if ( is_uploaded_file( $file['tmp_name'] ) ) {
 			$parts = pathinfo( $file['name'] );
 
-			if ( $parts['extension'] == 'xml') {
-				include dirname( __FILE__ ).'/../fileio/xml.php';
-				$importer = new Red_Xml_File();
-				$data = @file_get_contents ($file['tmp_name']);
-			}
-			elseif ( $parts['extension'] == 'csv' ) {
-				include dirname( __FILE__ ).'/../fileio/csv.php';
+			if ( $parts['extension'] == 'csv' ) {
+				include dirname( dirname( __FILE__ ) ).'/fileio/csv.php';
 				$importer = new Red_Csv_File();
 				$data = '';
 			}
 			else {
-				include dirname( __FILE__ ).'/../fileio/apache.php';
+				include dirname( dirname( __FILE__ ) ).'/fileio/apache.php';
 				$importer = new Red_Apache_File();
 				$data = @file_get_contents ($file['tmp_name']);
 			}
@@ -56,5 +47,5 @@ class Red_FileIO
 		return 0;
 	}
 
-	function load ($group, $data) { }
+	function load ($group, $data, $filename = '' ) { }
 }

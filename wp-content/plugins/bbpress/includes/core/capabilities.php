@@ -90,14 +90,11 @@ function bbp_get_caps_for_role( $role = '' ) {
 				'participate'           => true,
 				'moderate'              => true,
 				'throttle'              => true,
-				'view_trash'            => false,
+				'view_trash'            => true,
 
 				// Forum caps
 				'publish_forums'        => true,
 				'edit_forums'           => true,
-				'edit_others_forums'    => false,
-				'delete_forums'         => false,
-				'delete_others_forums'  => false,
 				'read_private_forums'   => true,
 				'read_hidden_forums'    => true,
 
@@ -132,41 +129,6 @@ function bbp_get_caps_for_role( $role = '' ) {
 
 				// Primary caps
 				'spectate'              => true,
-				'participate'           => false,
-				'moderate'              => false,
-				'throttle'              => false,
-				'view_trash'            => false,
-
-				// Forum caps
-				'publish_forums'        => false,
-				'edit_forums'           => false,
-				'edit_others_forums'    => false,
-				'delete_forums'         => false,
-				'delete_others_forums'  => false,
-				'read_private_forums'   => false,
-				'read_hidden_forums'    => false,
-
-				// Topic caps
-				'publish_topics'        => false,
-				'edit_topics'           => false,
-				'edit_others_topics'    => false,
-				'delete_topics'         => false,
-				'delete_others_topics'  => false,
-				'read_private_topics'   => false,
-
-				// Reply caps
-				'publish_replies'       => false,
-				'edit_replies'          => false,
-				'edit_others_replies'   => false,
-				'delete_replies'        => false,
-				'delete_others_replies' => false,
-				'read_private_replies'  => false,
-
-				// Topic tag caps
-				'manage_topic_tags'     => false,
-				'edit_topic_tags'       => false,
-				'delete_topic_tags'     => false,
-				'assign_topic_tags'     => false,
 			);
 
 			break;
@@ -224,39 +186,19 @@ function bbp_get_caps_for_role( $role = '' ) {
 				// Primary caps
 				'spectate'              => true,
 				'participate'           => true,
-				'moderate'              => false,
-				'throttle'              => false,
-				'view_trash'            => false,
 
 				// Forum caps
-				'publish_forums'        => false,
-				'edit_forums'           => false,
-				'edit_others_forums'    => false,
-				'delete_forums'         => false,
-				'delete_others_forums'  => false,
 				'read_private_forums'   => true,
-				'read_hidden_forums'    => false,
 
 				// Topic caps
 				'publish_topics'        => true,
 				'edit_topics'           => true,
-				'edit_others_topics'    => false,
-				'delete_topics'         => false,
-				'delete_others_topics'  => false,
-				'read_private_topics'   => false,
 
 				// Reply caps
 				'publish_replies'       => true,
 				'edit_replies'          => true,
-				'edit_others_replies'   => false,
-				'delete_replies'        => false,
-				'delete_others_replies' => false,
-				'read_private_replies'  => false,
 
 				// Topic tag caps
-				'manage_topic_tags'     => false,
-				'edit_topic_tags'       => false,
-				'delete_topic_tags'     => false,
 				'assign_topic_tags'     => true,
 			);
 
@@ -274,7 +216,7 @@ function bbp_get_caps_for_role( $role = '' ) {
 function bbp_add_caps() {
 
 	// Loop through available roles and add caps
-	foreach( bbp_get_wp_roles()->role_objects as $role ) {
+	foreach ( bbp_get_wp_roles()->role_objects as $role ) {
 		foreach ( bbp_get_caps_for_role( $role->name ) as $cap => $value ) {
 			$role->add_cap( $cap, $value );
 		}
@@ -291,7 +233,7 @@ function bbp_add_caps() {
 function bbp_remove_caps() {
 
 	// Loop through available roles and remove caps
-	foreach( bbp_get_wp_roles()->role_objects as $role ) {
+	foreach ( bbp_get_wp_roles()->role_objects as $role ) {
 		foreach ( array_keys( bbp_get_caps_for_role( $role->name ) ) as $cap ) {
 			$role->remove_cap( $cap );
 		}
@@ -318,6 +260,29 @@ function bbp_get_wp_roles() {
 	return $wp_roles;
 }
 
+/**
+ * Get the available roles minus bbPress's dynamic roles
+ *
+ * @since bbPress (r5064)
+ *
+ * @uses bbp_get_wp_roles() To load and get the $wp_roles global
+ * @return array
+ */
+function bbp_get_blog_roles() {
+
+	// Get WordPress's roles (returns $wp_roles global)
+	$wp_roles  = bbp_get_wp_roles();
+
+	// Apply the WordPress 'editable_roles' filter to let plugins ride along.
+	//
+	// We use this internally via bbp_filter_blog_editable_roles() to remove
+	// any custom bbPress roles that are added to the global.
+	$the_roles = isset( $wp_roles->roles ) ? $wp_roles->roles : false;
+	$all_roles = apply_filters( 'editable_roles', $the_roles );
+
+	return apply_filters( 'bbp_get_blog_roles', $all_roles, $wp_roles );
+}
+
 /** Forum Roles ***************************************************************/
 
 /**
@@ -326,15 +291,21 @@ function bbp_get_wp_roles() {
  * We do this to avoid adding these values to the database.
  *
  * @since bbPress (r4290)
+ *
+ * @uses bbp_get_wp_roles() To load and get the $wp_roles global
+ * @uses bbp_get_dynamic_roles() To get and add bbPress's roles to $wp_roles
+ * @return WP_Roles The main $wp_roles global
  */
 function bbp_add_forums_roles() {
 	$wp_roles = bbp_get_wp_roles();
 
-	foreach( bbp_get_dynamic_roles() as $role_id => $details ) {
+	foreach ( bbp_get_dynamic_roles() as $role_id => $details ) {
 		$wp_roles->roles[$role_id]        = $details;
-		$wp_roles->role_objects[$role_id] = new WP_Role( $details['name'], $details['capabilities'] );
+		$wp_roles->role_objects[$role_id] = new WP_Role( $role_id, $details['capabilities'] );
 		$wp_roles->role_names[$role_id]   = $details['name'];
 	}
+
+	return $wp_roles;
 }
 
 /**
@@ -363,6 +334,9 @@ function bbp_filter_user_roles_option() {
  * Because dynamic multiple roles is a new concept in WordPress, we work around
  * it here for now, knowing that improvements will come to WordPress core later.
  *
+ * Also note that if using the $wp_user_roles global non-database approach,
+ * bbPress does not have an intercept point to add its dynamic roles.
+ *
  * @see switch_to_blog()
  * @see restore_current_blog()
  * @see WP_Roles::_init()
@@ -375,7 +349,7 @@ function bbp_filter_user_roles_option() {
  * @return array Combined array of database roles and dynamic bbPress roles
  */
 function _bbp_reinit_dynamic_roles( $roles = array() ) {
-	foreach( bbp_get_dynamic_roles() as $role_id => $details ) {
+	foreach ( bbp_get_dynamic_roles() as $role_id => $details ) {
 		$roles[$role_id] = $details;
 	}
 	return $roles;
@@ -434,6 +408,21 @@ function bbp_get_dynamic_roles() {
 }
 
 /**
+ * Gets a translated role name from a role ID
+ *
+ * @since bbPress (r4792)
+ *
+ * @param string $role_id
+ * @return string Translated role name
+ */
+function bbp_get_dynamic_role_name( $role_id = '' ) {
+	$roles = bbp_get_dynamic_roles();
+	$role  = isset( $roles[$role_id] ) ? $roles[$role_id]['name'] : '';
+
+	return apply_filters( 'bbp_get_dynamic_role_name', $role, $role_id, $roles );
+}
+
+/**
  * Removes the bbPress roles from the editable roles array
  *
  * This used to use array_diff_assoc() but it randomly broke before 2.2 release.
@@ -453,7 +442,7 @@ function bbp_filter_blog_editable_roles( $all_roles = array() ) {
 		foreach ( array_keys( $all_roles ) as $wp_role ) {
 
 			// If keys match, unset
-			if ( $wp_role == $bbp_role ) {
+			if ( $wp_role === $bbp_role ) {
 				unset( $all_roles[$wp_role] );
 			}
 		}
@@ -541,5 +530,13 @@ function bbp_add_roles() {
  * @deprecated since version 2.2
  */
 function bbp_remove_roles() {
-	_doing_it_wrong( 'bbp_remove_roles', __( 'Editable forum roles no longer exist.', 'bbpress' ), '2.2' );
+
+	// Remove the bbPress roles
+	foreach ( array_keys( bbp_get_dynamic_roles() ) as $bbp_role ) {
+		remove_role( $bbp_role );
+	}
+
+	// Some early adopters may have a deprecated visitor role. It was later
+	// replaced by the Spectator role.
+	remove_role( 'bbp_visitor' );
 }

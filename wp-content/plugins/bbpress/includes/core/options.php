@@ -29,17 +29,22 @@ function bbp_get_default_options() {
 
 		/** Settings **********************************************************/
 
-		'_bbp_edit_lock'            => 5,                          // Lock post editing after 5 minutes
-		'_bbp_throttle_time'        => 10,                         // Throttle post time to 10 seconds
-		'_bbp_enable_favorites'     => 1,                          // Favorites
-		'_bbp_enable_subscriptions' => 1,                          // Subscriptions
-		'_bbp_allow_topic_tags'     => 1,                          // Topic Tags
-		'_bbp_allow_anonymous'      => 0,                          // Allow anonymous posting
-		'_bbp_allow_global_access'  => 1,                          // Users from all sites can post
-		'_bbp_use_wp_editor'        => 1,                          // Use the WordPress editor if available
-		'_bbp_use_autoembed'        => 0,                          // Allow oEmbed in topics and replies
-		'_bbp_theme_package_id'     => 'default',                  // The ID for the current theme package.
-		'_bbp_default_role'         => bbp_get_participant_role(), // Default forums role
+		'_bbp_edit_lock'              => 5,                          // Lock post editing after 5 minutes
+		'_bbp_throttle_time'          => 10,                         // Throttle post time to 10 seconds
+		'_bbp_enable_favorites'       => 1,                          // Favorites
+		'_bbp_enable_subscriptions'   => 1,                          // Subscriptions
+		'_bbp_allow_anonymous'        => 0,                          // Allow anonymous posting
+		'_bbp_allow_global_access'    => 1,                          // Users from all sites can post
+		'_bbp_allow_revisions'        => 1,                          // Allow revisions
+		'_bbp_allow_topic_tags'       => 1,                          // Allow topic tagging
+		'_bbp_allow_threaded_replies' => 0,                          // Allow threaded replies
+		'_bbp_allow_search'           => 1,                          // Allow forum-wide search
+		'_bbp_thread_replies_depth'   => 2,                          // Thread replies depth
+		'_bbp_use_wp_editor'          => 1,                          // Use the WordPress editor if available
+		'_bbp_use_autoembed'          => 0,                          // Allow oEmbed in topics and replies
+		'_bbp_theme_package_id'       => 'default',                  // The ID for the current theme package
+		'_bbp_default_role'           => bbp_get_participant_role(), // Default forums role
+		'_bbp_settings_integration'   => 0,                          // Put settings into existing admin pages
 
 		/** Per Page **********************************************************/
 
@@ -57,14 +62,14 @@ function bbp_get_default_options() {
 		'_bbp_page_for_register'    => 0,           // Page for register
 		'_bbp_page_for_lost_pass'   => 0,           // Page for lost-pass
 
-		/** Archive Slugs *****************************************************/
+		/** Forum Root ********************************************************/
 
 		'_bbp_root_slug'            => 'forums',    // Forum archive slug
-		'_bbp_topic_archive_slug'   => 'topics',    // Topic archive slug
+		'_bbp_show_on_root'         => 'forums',    // What to show on root (forums|topics)
+		'_bbp_include_root'         => 1,           // Include forum-archive before single slugs
 
 		/** Single Slugs ******************************************************/
 
-		'_bbp_include_root'         => 1,           // Include forum-archive before single slugs
 		'_bbp_forum_slug'           => 'forum',     // Forum slug
 		'_bbp_topic_slug'           => 'topic',     // Topic slug
 		'_bbp_reply_slug'           => 'reply',     // Reply slug
@@ -75,10 +80,13 @@ function bbp_get_default_options() {
 		'_bbp_user_slug'            => 'users',         // User profile slug
 		'_bbp_user_favs_slug'       => 'favorites',     // User favorites slug
 		'_bbp_user_subs_slug'       => 'subscriptions', // User subscriptions slug
+		'_bbp_topic_archive_slug'   => 'topics',        // Topic archive slug
+		'_bbp_reply_archive_slug'   => 'replies',       // Reply archive slug
 
 		/** Other Slugs *******************************************************/
 
 		'_bbp_view_slug'            => 'view',      // View slug
+		'_bbp_search_slug'          => 'search',    // Search slug
 
 		/** Topics ************************************************************/
 
@@ -220,6 +228,64 @@ function bbp_is_subscriptions_active( $default = 1 ) {
  */
 function bbp_allow_topic_tags( $default = 1 ) {
 	return (bool) apply_filters( 'bbp_allow_topic_tags', (bool) get_option( '_bbp_allow_topic_tags', $default ) );
+}
+
+/**
+ * Is forum-wide searching allowed
+ *
+ * @since bbPress (r4970)
+ * @param $default bool Optional. Default value true
+ * @uses get_option() To get the forum-wide search setting
+ * @return bool Is forum-wide searching allowed?
+ */
+function bbp_allow_search( $default = 1 ) {
+	return (bool) apply_filters( 'bbp_allow_search', (bool) get_option( '_bbp_allow_search', $default ) );
+}
+
+/**
+ * Are replies threaded
+ *
+ * @since bbPress (r4944)
+ *
+ * @param bool $default Optional. Default value true
+ * @uses apply_filters() Calls 'bbp_thread_replies' with the calculated value and
+ *                        the thread replies depth
+ * @uses get_option() To get thread replies option
+ * @return bool Are replies threaded?
+ */
+function bbp_thread_replies() {
+	$depth  = bbp_thread_replies_depth();
+	$allow  = bbp_allow_threaded_replies();
+	$retval = (bool) ( ( $depth >= 2 ) && ( true === $allow ) );
+
+	return (bool) apply_filters( 'bbp_thread_replies', $retval, $depth, $allow );
+}
+
+/**
+ * Are threaded replies allowed
+ *
+ * @since bbPress (r4964)
+ * @param $default bool Optional. Default value false
+ * @uses get_option() To get the threaded replies setting
+ * @return bool Are threaded replies allowed?
+ */
+function bbp_allow_threaded_replies( $default = 0 ) {
+	return (bool) apply_filters( '_bbp_allow_threaded_replies', (bool) get_option( '_bbp_allow_threaded_replies', $default ) );
+}
+
+/**
+ * Maximum reply thread depth
+ *
+ * @since bbPress (r4944)
+ *
+ * @param int $default Thread replies depth
+ * @uses apply_filters() Calls 'bbp_thread_replies_depth' with the option value and
+ *                       the default depth
+ * @uses get_option() To get the thread replies depth
+ * @return int Thread replies depth
+ */
+function bbp_thread_replies_depth( $default = 2 ) {
+	return (int) apply_filters( 'bbp_thread_replies_depth', (int) get_option( '_bbp_thread_replies_depth', $default ) );
 }
 
 /**
@@ -372,6 +438,18 @@ function bbp_is_akismet_active( $default = 1 ) {
 	return (bool) apply_filters( 'bbp_is_akismet_active', (bool) get_option( '_bbp_enable_akismet', $default ) );
 }
 
+/**
+ * Integrate settings into existing WordPress pages
+ *
+ * @since bbPress (r4932)
+ * @param $default bool Optional. Default value false
+ * @uses get_option() To get the admin integration setting
+ * @return bool To deeply integrate settings, or not
+ */
+function bbp_settings_integration( $default = 0 ) {
+	return (bool) apply_filters( 'bbp_settings_integration', (bool) get_option( '_bbp_settings_integration', $default ) );
+}
+
 /** Slugs *********************************************************************/
 
 /**
@@ -392,6 +470,17 @@ function bbp_get_root_slug( $default = 'forums' ) {
  */
 function bbp_include_root_slug( $default = 1 ) {
 	return (bool) apply_filters( 'bbp_include_root_slug', (bool) get_option( '_bbp_include_root', $default ) );
+}
+
+/**
+ * Return the search slug
+ *
+ * @since bbPress (r4932)
+ *
+ * @return string
+ */
+function bbp_show_on_root( $default = 'forums' ) {
+	return apply_filters( 'bbp_show_on_root', get_option( '_bbp_show_on_root', $default ) );
 }
 
 /**
@@ -427,6 +516,16 @@ function bbp_get_forum_slug( $default = 'forum' ) {;
  */
 function bbp_get_topic_archive_slug( $default = 'topics' ) {
 	return apply_filters( 'bbp_get_topic_archive_slug', get_option( '_bbp_topic_archive_slug', $default ) );
+}
+
+/**
+ * Return the reply archive slug
+ *
+ * @since bbPress (r4925)
+ * @return string
+ */
+function bbp_get_reply_archive_slug( $default = 'replies' ) {
+	return apply_filters( 'bbp_get_reply_archive_slug', get_option( '_bbp_reply_archive_slug', $default ) );
 }
 
 /**
@@ -497,6 +596,17 @@ function bbp_get_user_subscriptions_slug( $default = 'subscriptions' ) {
  */
 function bbp_get_view_slug( $default = 'view' ) {
 	return apply_filters( 'bbp_get_view_slug', bbp_maybe_get_root_slug() . get_option( '_bbp_view_slug', $default ) );
+}
+
+/**
+ * Return the search slug
+ *
+ * @since bbPress (r4579)
+ *
+ * @return string
+ */
+function bbp_get_search_slug( $default = 'search' ) {
+	return apply_filters( 'bbp_get_search_slug', bbp_maybe_get_root_slug() . get_option( '_bbp_search_slug', $default ) );
 }
 
 /** Legacy ********************************************************************/

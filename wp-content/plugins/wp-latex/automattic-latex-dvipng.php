@@ -20,6 +20,9 @@ require_once( dirname( __FILE__ ) . '/automattic-latex-wpcom.php' );
 class Automattic_Latex_DVIPNG extends Automattic_Latex_WPCOM {
 	var $_blacklist = array(
 		'^^',
+	);
+
+	var $_graylist = array(
 		'afterassignment',
 		'aftergroup',
 		'batchmode',
@@ -100,8 +103,17 @@ class Automattic_Latex_DVIPNG extends Automattic_Latex_WPCOM {
 			register_shutdown_function( array( &$this, '__destruct' ) );
 	}
 
+	// Security. Add a flag to protect the Automattic_Latex_DVIPNG destructor from being executed as a result of a unserialize() call with untrusted data.
+	function __wakeup() {
+		$this->__non_serializable_object = true;
+		$class = get_class( $this );
+		trigger_error( sprintf( "Illegal call to unserialize() for object of class '%s'", $class ), E_USER_WARNING );
+	}
+
+
 	function __destruct() {
-		$this->unlink_tmp_files();
+		if ( empty( $this->__non_serializable_object ) )
+			$this->unlink_tmp_files();
 	}
 
 	function hex2rgb( $color ) {
@@ -176,11 +188,24 @@ class Automattic_Latex_DVIPNG extends Automattic_Latex_WPCOM {
 			if ( stristr($this->latex, $bad) )
 				return new WP_Error( 'blacklist', __( 'Formula Invalid', 'automattic-latex' ) );
 
+		foreach ( $this->_graylist as $bad ) {
+			if ( preg_match( "#\\\\" . preg_quote( $bad, '#' ) . '#', $this->latex ) )
+				return new WP_Error( 'graylist', __( 'Formula Invalid', 'automattic-latex' ) );
+			$this->latex = str_replace( $bad, $bad[0] . "\\,\\!" . substr( $bad, 1 ), $this->latex );
+		}
+
 		// Force math mode
-		if ( preg_match('/(^|[^\\\\])\$/', $this->latex) )
+		// Dollar sign preceeded by an even number of slashes
+		$ends_inline_math_mode =
+			'/' .
+			'(?<!\\\\)' .      // Not preceded by a single slash
+			'(?:\\\\\\\\)*' .  // Even number of slashes
+			'(?:\$|\\\\\\))' . // Dollar sign "$" or slash-close-paren "\)"
+			'/';
+		if ( preg_match( $ends_inline_math_mode, $this->latex ) )
 			return new WP_Error( 'mathmode', __( 'You must stay in inline math mode', 'automattic-latex' ) );
 
-		if ( 2000 < strlen($latex) )
+		if ( 2000 < strlen( $this->latex ) )
 			return new WP_Error( 'length', __( 'The formula is too long', 'automattic-latex' ) );
 
 		$latex = $this->wrap();
@@ -224,11 +249,14 @@ class Automattic_Latex_DVIPNG extends Automattic_Latex_WPCOM {
 		if ( !wp_mkdir_p( dirname( $png_file ) ) )
 			return new WP_Error( 'mkdir', sprintf( __( 'Could not create subdirectory <code>%s</code>.  Check your directory permissions.', 'automattic-latex' ), dirname( $png_file ) ) );
 
+		$output_resolution = round( 100 * $this->zoom );
+
 		$dvipng_exec  = AUTOMATTIC_LATEX_DVIPNG_PATH . ' ' . escapeshellarg( $dvi_file )
 			. ' -o ' . escapeshellarg( $png_file )
 			. ' -bg ' . ( $this->bg_rgb ? escapeshellarg( "rgb $this->bg_rgb" ) : 'Transparent' )
 			. ' -fg ' . ( $this->fg_rgb ? escapeshellarg( "rgb $this->fg_rgb" ) : "'rgb 0 0 0'" )
-			. ' -T tight -D 100';
+			. ' -T tight'
+			. ' -D ' . (int) $output_resolution;
 
 		exec( "$dvipng_exec > /dev/null 2>&1", $dvipng_out, $d );
 		if ( 0 != $d )
@@ -240,19 +268,19 @@ class Automattic_Latex_DVIPNG extends Automattic_Latex_WPCOM {
 	function wrap() {
 		$string  = $this->wrapper();
 
-		$string .= "\n\begin{document}\n";
+		$string .= "\n\\begin{document}\n";
 		if ( $this->size_latex )
-			$string .= "\begin{{$this->size_latex}}\n";
+			$string .= "\\begin{{$this->size_latex}}\n";
 
 		// Force math mode and add a newline before the latex so that any indentations are all even
 		$string .=
 			( '\LaTeX' == $this->latex || '\TeX' == $this->latex || '\AmS' == $this->latex || '\AmS-\TeX' == $this->latex || '\AmS-\LaTeX' == $this->latex )
 			? $this->latex
-			: "\$\\\\[0pt]\n$this->latex\$";
+			: "\$\\\\[0pt]\n$this->latex\n\$";
 
 		if ( $this->size_latex )
-			$string .= "\n\end{{$this->size_latex}}";
-		$string .= "\n\end{document}";
+			$string .= "\n\\end{{$this->size_latex}}";
+		$string .= "\n\\end{document}";
 		return $string;
 	}
 

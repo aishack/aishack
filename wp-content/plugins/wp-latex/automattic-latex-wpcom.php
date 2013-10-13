@@ -10,6 +10,7 @@ class Automattic_Latex_WPCOM {
 	var $bg_hex;
 	var $fg_hex;
 	var $size;
+	var $zoom = 1;
 
 	var $url;
 
@@ -24,6 +25,10 @@ class Automattic_Latex_WPCOM {
 		$this->bg_hex = $this->sanitize_hex( $bg_hex );
 		$this->fg_hex = $this->sanitize_hex( $fg_hex );
 		$this->size   = (int) $size;
+	}
+
+	function set_zoom( $zoom ) {
+		$this->zoom = $zoom;
 	}
 
 	function sanitize_hex( $color ) {

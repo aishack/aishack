@@ -281,6 +281,21 @@ function bbp_has_errors() {
 	return apply_filters( 'bbp_has_errors', $has_errors, bbpress()->errors );
 }
 
+/** Mentions ******************************************************************/
+
+/**
+ * Set the pattern used for matching usernames for mentions.
+ *
+ * Moved into its own function to allow filtering of the regex pattern
+ * anywhere mentions might be used.
+ *
+ * @since bbPress (r4997)
+ * @return string Pattern to match usernames with
+ */
+function bbp_find_mentions_pattern() {
+	return apply_filters( 'bbp_find_mentions_pattern', '/[@]+([A-Za-z0-9-_\.@]+)\b/' );
+}
+
 /**
  * Searches through the content to locate usernames, designated by an @ sign.
  *
@@ -290,15 +305,16 @@ function bbp_has_errors() {
  * @return bool|array $usernames Existing usernames. False if no matches.
  */
 function bbp_find_mentions( $content = '' ) {
-	$pattern   = '/[@]+([A-Za-z0-9-_\.@]+)\b/';
+	$pattern   = bbp_find_mentions_pattern();
 	preg_match_all( $pattern, $content, $usernames );
 	$usernames = array_unique( array_filter( $usernames[1] ) );
 
 	// Bail if no usernames
-	if ( empty( $usernames ) )
-		return false;
+	if ( empty( $usernames ) ) {
+		$usernames = false;
+	}
 
-	return $usernames;
+	return apply_filters( 'bbp_find_mentions', $usernames, $pattern, $content );
 }
 
 /**
@@ -317,15 +333,15 @@ function bbp_mention_filter( $content = '' ) {
 		return $content;
 
 	// Loop through usernames and link to profiles
-	foreach( (array) $usernames as $username ) {
+	foreach ( (array) $usernames as $username ) {
 
 		// Skip if username does not exist or user is not active
-		$user_id = username_exists( $username );
-		if ( empty( $user_id ) || bbp_is_user_inactive( $user_id ) )
+		$user = get_user_by( 'slug', $username );
+		if ( empty( $user->ID ) || bbp_is_user_inactive( $user->ID ) )
 			continue;
 
 		// Replace name in content
-		$content = preg_replace( '/(@' . $username . '\b)/', "<a href='" . bbp_get_user_profile_url( $user_id ) . "' rel='nofollow' class='bbp-mention-link $username'>@$username</a>", $content );
+		$content = preg_replace( '/(@' . $username . '\b)/', sprintf( '<a href="%1$s" rel="nofollow">@%2$s</a>', bbp_get_user_profile_url( $user->ID ), $username ), $content );
 	}
 
 	// Return modified content
@@ -435,13 +451,24 @@ function bbp_get_user_rewrite_id() {
 }
 
 /**
- * Return the enique ID for all edit rewrite rules (forum|topic|reply|tag|user)
+ * Return the unique ID for all edit rewrite rules (forum|topic|reply|tag|user)
  *
  * @since bbPress (r3762)
  * @return string
  */
 function bbp_get_edit_rewrite_id() {
 	return bbpress()->edit_id;
+}
+
+/**
+ * Return the unique ID for all search rewrite rules
+ *
+ * @since bbPress (r4579)
+ *
+ * @return string
+ */
+function bbp_get_search_rewrite_id() {
+	return bbpress()->search_id;
 }
 
 /**
@@ -494,6 +521,30 @@ function bbp_get_view_rewrite_id() {
 	return bbpress()->view_id;
 }
 
+/** Rewrite Extras ************************************************************/
+
+/**
+ * Get the id used for paginated requests
+ *
+ * @since bbPress (r4926)
+ * @return string
+ */
+function bbp_get_paged_rewrite_id() {
+	return bbpress()->paged_id;
+}
+
+/**
+ * Get the slug used for paginated requests
+ *
+ * @since bbPress (r4926)
+ * @global object $wp_rewrite The WP_Rewrite object
+ * @return string
+ */
+function bbp_get_paged_slug() {
+	global $wp_rewrite;
+	return $wp_rewrite->pagination_base;
+}
+
 /**
  * Delete a blogs rewrite rules, so that they are automatically rebuilt on
  * the subsequent page load.
@@ -503,3 +554,26 @@ function bbp_get_view_rewrite_id() {
 function bbp_delete_rewrite_rules() {
 	delete_option( 'rewrite_rules' );
 }
+
+/** Requests ******************************************************************/
+
+/**
+ * Return true|false if this is a POST request
+ *
+ * @since bbPress (r4790)
+ * @return bool
+ */
+function bbp_is_post_request() {
+	return (bool) ( 'POST' === strtoupper( $_SERVER['REQUEST_METHOD'] ) );
+}
+
+/**
+ * Return true|false if this is a GET request
+ *
+ * @since bbPress (r4790)
+ * @return bool
+ */
+function bbp_is_get_request() {
+	return (bool) ( 'GET' === strtoupper( $_SERVER['REQUEST_METHOD'] ) );
+}
+
