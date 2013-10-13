@@ -337,7 +337,7 @@ function childtheme_override_index_loop()
 		}
 	?>
     </ul></div>
-	<div id="featured-divider"><span id="recent">Recent Tutorials</span></div><?php
+	<div id="featured-divider"><span id="recent">blahblah Recent Tutorials</span></div><?php
 	
 	$counter=0;
 	$post = $backup;
