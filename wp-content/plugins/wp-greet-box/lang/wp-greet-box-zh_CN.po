@@ -1,0 +1,444 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-Greet-Box 简体中文包\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-12 22:32+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: 黑白天空 <bwskyer@gmail.com>\n"
+"Language-Team: 左铅右椠-上善若水 <bwskyer@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: E:\\Project\\WordPress\\wp-greet-box\n"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:6
+msgid "Active Greeting Messages"
+msgstr "已激活的问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:9
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:43
+msgid "Referrer"
+msgstr "来源"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:10
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:44
+msgid "Icon"
+msgstr "图标"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:11
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:45
+msgid "Message"
+msgstr "信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:12
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:46
+msgid "Action"
+msgstr "行为"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:16
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:50
+msgid "Add new greeting message"
+msgstr "添加新的问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-custom.php:40
+msgid "Inactive Greeting Messages"
+msgstr "未激活的问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-exclude.php:15
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1794
+msgid "Exclusion Rules"
+msgstr "排除规则"
+
+#: E:\Project\WordPress\wp-greet-box/options-exclude.php:16
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "你不想显示问候信息的来源网址清单 (一个网址一行)"
+
+#: E:\Project\WordPress\wp-greet-box/options-exclude.php:18
+msgid "Treat each line as a regular expression"
+msgstr "用正则表达式来处理每行"
+
+#: E:\Project\WordPress\wp-greet-box/options-exclude.php:22
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:268
+msgid "Update Options"
+msgstr "更新设置"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "你所有的自定义信息也将被重置. 你确定你想要重置所有设置?"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:133
+msgid "Hide"
+msgstr "隐藏"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:138
+msgid "Show"
+msgstr "显示"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:168
+msgid "Support this plugin!"
+msgstr "支持此插件!"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:170
+msgid "Display \"Powered by WP Greet Box\" link at the bottom right corner of the greeting message"
+msgstr "在问候信息右下角显示 \"Powered by WP Greet Box\" 链接"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:174
+msgid "Do not display \"Powered by WP Greet Box\" link.  I will <a href=\"http://omninoggin.com/donate\">donate</a> and/or write about this plugin"
+msgstr "不显示 \"Powered by WP Greet Box\" 链接.  我将 <a href=\"http://omninoggin.com/donate\">捐赠</a> 和/或 写一篇关于插件的文章"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:177
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1795
+msgid "General Configuration"
+msgstr "一般配置"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:179
+msgid "Automatically show greeting message on posts"
+msgstr "自动在文章中显示问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:181
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:186
+msgid "uncheck for manual insertion"
+msgstr "不勾选请手动插入"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:184
+msgid "Automatically show greeting message on pages"
+msgstr "自动在页面中显示问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:188
+msgid "Allow users to close the greeting message"
+msgstr "允许用户关闭问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:189
+msgid "Have icon link open a new browser window (same as target=\"_blank\")"
+msgstr "点击图标链接后打开一个新的浏览器窗口 (与 target=\"_blank\" 相同)"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:190
+msgid "Position greeting message"
+msgstr "问候信息显示在"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:192
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:204
+msgid "before"
+msgstr "前"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:193
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:205
+msgid "after"
+msgstr "后"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:195
+msgid "the post/page."
+msgstr "文章/页面 (这里不好翻译, 就是问候信息的位置是在文章/页面前还是后显示)"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:196
+msgid "Related Post Options"
+msgstr "相关文章设置"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:198
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "从搜索引擎中侦测关键字从而显示相关文章"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:203
+msgid "Position related posts"
+msgstr "相关文章显示在"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:206
+msgid "the greeting message."
+msgstr "问候信息框 (这里不好翻译, 就是相关文章的位置是在信息框前还是后显示)"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:209
+msgid "Show post excerpt in related posts"
+msgstr "在相关文章中显示文章摘要"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:212
+msgid "Expand related posts by default"
+msgstr "默认展开相关文章"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:215
+msgid "Limit related posts to "
+msgstr "限制相关文章"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:215
+msgid "posts"
+msgstr "篇"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:217
+msgid "Limit related post excerpts to"
+msgstr "限制相关文章摘要"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:217
+msgid "words"
+msgstr "字"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:221
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:276
+msgid "Advanced Options"
+msgstr "高级选项"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:223
+msgid "Enable compatibility with cache plugins"
+msgstr "启用缓存插件兼容"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:223
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "勾选后, WP Greet Box 将使用 Javascript 来显示问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:226
+msgid "Show greeting message to logged in users"
+msgstr "登录用户也显示问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:229
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:232
+msgid "Enable"
+msgstr "启用"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:229
+msgid "uncheck to manually manage your own CSS"
+msgstr "不勾选请手动管理你自己的 CSS"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:232
+msgid "and"
+msgstr "和"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:232
+msgid "uncheck to manually manage your own JS"
+msgstr "不勾选请手动管理你自己的 JS"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:235
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "你的 RSS feed 网址. (替换问候信息中的 [[rss-link]] )"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:239
+msgid "Your \"Subscribe via Email\" URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "你的 \"邮箱订阅\" 网址. (替换问候信息中的 [[email-link]] )"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:243
+msgid "HTML code to display before the greeting box."
+msgstr "问候框前的 HTML 代码"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:247
+msgid "HTML code to display after the greeting box."
+msgstr "问候框后的 HTML 代码"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:251
+msgid "HTML code to display before the image in the greeting box."
+msgstr "问候框中图片前的 HTML 代码"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:255
+msgid "HTML code to display after the image in the greeting box."
+msgstr "问候框中图片后的 HTML 代码"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:259
+msgid "HTML code to display before the text in the greeting box."
+msgstr "问候框中文本前的 HTML 代码"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:263
+msgid "HTML code to display after the text in the greeting box."
+msgstr "问候框中文本后的 HTML 代码"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:272
+msgid "Upgrade Options"
+msgstr "升级设置"
+
+#: E:\Project\WordPress\wp-greet-box/options-generic.php:275
+msgid "Reset ALL Options"
+msgstr "重置所有设置"
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "你现在所有的 WP Greet Box 设置将被导入的值重写, 你确定要重新现在所有的设定么?"
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:12
+msgid "Export"
+msgstr "导出"
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:15
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "此功能将把你的 WP Greet Box 设置全部导出为一个文件."
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:17
+msgid "Export Options"
+msgstr "导出设置"
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:21
+msgid "Import"
+msgstr "导入"
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:27
+msgid "This functionality will restore your entire WP Greet Box options from a file.<br/><strong>Make sure you've done an export and backup the exported file before you try this!</strong>"
+msgstr "此功能将从一个文件中还原你全部的 WP Greet Box 设置. <br/><strong>在你使用此功能前, 请确认你曾经完成过一次导出, 而且备份了导出文件</strong>"
+
+#: E:\Project\WordPress\wp-greet-box/options-import-export.php:33
+msgid "Import Options"
+msgstr "导入设置"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:44
+msgid "WP Greet Box "
+msgstr "WP Greet Box"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:423
+msgid "<div class=\"updated fade\"><p>You are using WordPress version "
+msgstr "<div class=\"updated fade\"><p>你正在使用的 WordPress 版本"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:425
+msgid ".  WP Greet Box recommends that you use WordPress 2.7 or newer.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+msgstr ".  WP Greet Box 建议你使用  WordPress 2.7 或更高版本.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:431
+msgid "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</p></div>"
+msgstr "<div class=\"updated fade\"><p>WP Greet Box 设置已升级.</p></div>"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:683
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:722
+msgid "Activate"
+msgstr "激活"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:688
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:727
+msgid "Deactivate"
+msgstr "停用"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:702
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:741
+msgid "Edit"
+msgstr "编辑"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:742
+msgid "Are you sure you want to delete?"
+msgstr "你确定你想要删除掉?"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:742
+msgid "Delete"
+msgstr "删除"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1080
+msgid "You were searching for"
+msgstr "你在搜索"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1081
+msgid "Posts relating to"
+msgstr "文章相关"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1083
+msgid "See posts relating to your search &#187;"
+msgstr "发现与你搜索有关的文章 &#187;"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1084
+msgid "&#171; Hide related posts"
+msgstr "&#171; 隐藏相关文章"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1106
+msgid "Powered by WP Greet Box"
+msgstr "Powered by WP Greet Box"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1347
+msgid "Permanent Link to:"
+msgstr "永久链接到:"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1550
+msgid "WP Greet Box options updated."
+msgstr "WP Greet Box 设置已更新"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1554
+msgid "WP Greet Box options upgraded."
+msgstr "WP Greet Box 设置已升级"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1558
+msgid "WP Greet Box options have been reset."
+msgstr "WP Greet Box 设置已经被重置."
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1562
+msgid "WP Greet Box options imported."
+msgstr "WP Greet Box 设置已导入."
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1566
+msgid "WP Greet Box options import failed!"
+msgstr "WP Greet Box 设置导入失败!"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1570
+msgid "Did not receive any file to be imported.  WP Greet Box options import failed!"
+msgstr "导入时没有接收到任何文件. WP Greet Box 设置导入失败!"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1574
+msgid "Found syntax errors in file being imported.  WP Greet Box options import failed!"
+msgstr "导入时在文件中发现语法错误. WP Greet Box 设置导入失败!"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1663
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1699
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1730
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "继续显示欢迎信息直到用户第一次关闭它 (访问者超时设定将无效)"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1664
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1700
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1732
+msgid "Visitor Timeout (minutes)"
+msgstr "访问者超时 (分钟)"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1666
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1702
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1750
+msgid "Greeting Icon (optional)"
+msgstr "问候图标 (可选项)"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1668
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1704
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1752
+msgid "Greeting Icon Link (optional)"
+msgstr "问候图标链接 (可选项)"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1670
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1706
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1754
+msgid "Greeting message"
+msgstr "问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1674
+msgid "Add"
+msgstr "添加"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1675
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1710
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1758
+msgid "Cancel"
+msgstr "取消"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1696
+msgid "Referrer URL"
+msgstr "来源网址"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1709
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1757
+msgid "Save"
+msgstr "保存"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1791
+msgid "WP Greet Box Options"
+msgstr "WP Greet Box 选项"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1793
+msgid "Greeting Messages"
+msgstr "问候信息"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1796
+msgid "Import/Export"
+msgstr "导入/导出"
+
+#: E:\Project\WordPress\wp-greet-box/wp-greet-box.php:1797
+msgid "Documentation"
+msgstr "文档"
+
+#~ msgid ""
+#~ "WP Greet Box requires WordPress 2.6 or newer. <a href=\"http://codex."
+#~ "wordpress.org/Upgrading_WordPress\">Please update!</a>"
+#~ msgstr ""
+#~ "WP Greet Box 要求 WordPress 2.6 或更高版本. <a href=\"http://codex."
+#~ "wordpress.org/Upgrading_WordPress\">Please update!</a>"
+#~ msgid "uncheck for"
+#~ msgstr "不勾选"
+

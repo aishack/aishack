@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: addquestion.php:15
+#@ qna-forum
+msgid "You must be logged in to ask a question"
+msgstr "Vous devez être connecté pour poser une question"
+
+#: addquestion.php:19
+#@ qna-forum
+msgid "Invalid category - the category must be chosed from the drop down list"
+msgstr "Catégorie invalide - la catégorie doit être choisie dans la liste déroulante"
+
+#: addquestion.php:33
+#: addquestion.php:56
+#: addquestion.php:58
+#: askquestionform.php:39
+#: coreform.php:45
+#@ qna-forum
+msgid "Enter Question Title"
+msgstr "Question"
+
+#: addquestion.php:34
+#@ qna-forum
+msgid "You must add a question title"
+msgstr "Vous devez ajouter un titre à la question"
+
+#: addquestion.php:36
+#: addquestion.php:63
+#: addquestion.php:65
+#: askquestionform.php:46
+#: coreform.php:46
+#@ qna-forum
+msgid "Enter Your Question Here"
+msgstr "Contenu de la question"
+
+#: addquestion.php:37
+#@ qna-forum
+msgid "You must add a question"
+msgstr "Vous devez ajouter une question"
+
+#: addquestion.php:93
+#@ qna-forum
+msgid "Question awaiting moderation"
+msgstr "Question en attente de modération"
+
+#: addquestion.php:100
+#@ qna-forum
+msgid "error occured in asking question"
+msgstr "Une erreur s'est produite"
+
+#: addquestion.php:109
+#@ qna-forum
+msgid "Question added successfuly"
+msgstr "Question ajoutée avec succès !"
+
+#: addquestion.php:110
+#@ qna-forum
+msgid "A new question has been asked, answer it by visiting "
+msgstr "Une nouvelle question a été posée, répondez-y en cliquant sur le lien suivant"
+
+#: addquestion.php:110
+#@ qna-forum
+msgid "The question is:"
+msgstr "La question est la suivante:"
+
+#: coreform.php:19
+#@ qna-forum
+msgid "Please login to ask a question"
+msgstr "Veuillez vous connecter pour poser une question"
+
+#: askquestionform.php:55
+#@ qna-forum
+msgid "Use the form below to ask a question"
+msgstr " "
+
+#: coreform.php:63
+#@ qna-forum
+msgid "Category"
+msgstr "Catégorie"
+
+#: coreform.php:81
+#@ qna-forum
+msgid "Ask"
+msgstr "Envoyer"
+
+#: options-page.php:4
+#@ default
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Vous n'avez pas les droits requis pour accéder à cette page."
+
+#: querys.php:120
+#, php-format
+#@ qna-forum
+msgid "%d answer"
+msgid_plural "%d answers"
+msgstr[0] "%d réponse"
+msgstr[1] "%d réponses"
+
+#: statuses.php:38
+#@ qna-forum
+msgid "Answer"
+msgstr "Répondre"
+
+#: querys.php:128
+#@ qna-forum
+msgid "View All Questions"
+msgstr "Voir toutes les questions"
+
+#: questions.php:60
+#: questions.php:70
+#: qusers.php:144
+#@ qna-forum
+msgid "Questions"
+msgstr "Questions"
+
+#: questions.php:61
+#@ qna-forum
+msgid "Question"
+msgstr "Question"
+
+#: questions.php:62
+#@ qna-forum
+msgid "New Question"
+msgstr "Nouvelle question"
+
+#: questions.php:63
+#@ qna-forum
+msgid "Ask new question"
+msgstr "Poser une nouvelle question"
+
+#: questions.php:64
+#@ qna-forum
+msgid "change question"
+msgstr "Modifier la question"
+
+#: questions.php:65
+#@ qna-forum
+msgid "new question"
+msgstr "Nouvelle question"
+
+#: questions.php:66
+#@ qna-forum
+msgid "view question"
+msgstr "Voir la question"
+
+#: questions.php:67
+#@ qna-forum
+msgid "search question"
+msgstr "Rechercher"
+
+#: questions.php:68
+#@ qna-forum
+msgid "No Questions Found"
+msgstr "Aucune question trouvée"
+
+#: questions.php:69
+#@ qna-forum
+msgid "No questions found in trash"
+msgstr "Aucune question trouvée dans la corbeille"
+
+#: qusers.php:19
+#@ default
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: qusers.php:20
+#@ default
+msgid "User"
+msgstr "Utilisateur"
+
+#: qusers.php:21
+#@ default
+msgid "Add User"
+msgstr "Ajouter un utilisateur"
+
+#: qusers.php:22
+#@ default
+msgid "Update Profile"
+msgstr "Mettre à jour le profil"
+
+#: qusers.php:23
+#@ default
+msgid "View Profile"
+msgstr "Voir le profil"
+
+#: addquestion.php:25
+#: addquestion.php:42
+#: addquestion.php:44
+#: askquestionform.php:25
+#: coreform.php:11
+#@ qna-forum
+msgid "Enter Your Name"
+msgstr "Entrez votre nom"
+
+#: addquestion.php:26
+#@ qna-forum
+msgid "You must enter a name"
+msgstr "Vous devez indiquer votre nom"
+
+#: addquestion.php:28
+#: askquestionform.php:32
+#: coreform.php:12
+#@ qna-forum
+msgid "Enter Your Email Address"
+msgstr "Entrez votre adresse email"
+
+#: addquestion.php:29
+#@ qna-forum
+msgid "You must enter an email address"
+msgstr "Vous devez indiquer votre adresse email"
+
+#: addquestion.php:49
+#: addquestion.php:51
+#@ qna-forum
+msgid "Enter Your Email"
+msgstr "Indiquez votre email"
+
+#: addquestion.php:113
+#@ qna-forum
+msgid "Your question is awaiting moderation"
+msgstr "Votre question est en attente de modération"
+
+#: addquestion.php:113
+#@ qna-forum
+msgid "If approved you can view answers at "
+msgstr "Si elle est approuvée, vous pourrez voir les réponses à l'adresse suivante"
+
+#: addquestion.php:114
+#@ qna-forum
+msgid "A new question has been held for moderation. To approve or reject it go to"
+msgstr "Une nouvelle question est en attente de modération. Cliquez sur le lien suivant pour l’approuver ou la rejetter"
+
+#: options-page.php:272
+#: options-page.php:278
+#@ qna-forum
+msgid "Hold questions for moderation"
+msgstr "Modérer les questions"
+
+#: querys.php:60
+#@ qna-forum
+msgid "Select Category"
+msgstr "Choisir une catégorie"
+
+#: querys.php:95
+#@ qna-forum
+msgid "Login or Register"
+msgstr "Connexion ou Inscription"
+
+#: querys.php:95
+#@ qna-forum
+msgid "To see your questons or ask new one please log in"
+msgstr "Pour voir votre questions ou en poser une autre, connectez-vous"
+
+#: querys.php:121
+#@ qna-forum
+msgid "Asked by"
+msgstr "Posée par"
+
+#: querys.php:122
+#@ qna-forum
+msgid "ago in"
+msgstr "il y a"
+
+#: qusers.php:54
+#@ qna-forum
+msgid "error with user"
+msgstr "erreur avec l utilisateur"
+
+#: qusers.php:70
+#@ qna-forum
+msgid "error creating default page"
+msgstr "Erreur pendant la création de page par défaut"
+
+#: qusers.php:116
+#@ qna-forum
+msgid "A password has been emailed to you"
+msgstr "Un mot de passe vous a été envoyé par email"
+
+#: qusers.php:119
+#@ qna-forum
+msgid "Your passwords dont match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: qusers.php:122
+#@ qna-forum
+msgid "Profile Updated"
+msgstr "Profil mis à jour"
+
+#: qusers.php:129
+#@ qna-forum
+msgid "Login"
+msgstr "Connexion"
+
+#: qusers.php:129
+#@ qna-forum
+msgid "Lost your password?"
+msgstr "Mot de passe oublié ?"
+
+#: qusers.php:130
+#@ qna-forum
+msgid "Register"
+msgstr "Inscription"
+
+#: qusers.php:144
+#@ qna-forum
+msgid "Answers"
+msgstr "Réponses"
+
+#: qusers.php:148
+#@ qna-forum
+msgid "Best Answer"
+msgstr "Meilleure réponse"
+
+#: qusers.php:167
+#@ qna-forum
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: qusers.php:183
+#@ qna-forum
+msgid "Get or Change your Gravatar"
+msgstr "Obtenir ou changer votre Gravatar"
+
+#: qusers.php:185
+#@ qna-forum
+msgid "About"
+msgstr "A propos"
+
+#: qusers.php:186
+#@ qna-forum
+msgid "My Recent Questions"
+msgstr "Mes questions récentes"
+
+#: statuses.php:10
+#@ qna-forum
+msgid "spam"
+msgstr "spam"
+
+#: statuses.php:12
+#, php-format
+#@ qna-forum
+msgid "Spam <span class=\"count\">(%s)</span>"
+msgid_plural "Spamed <span class=\"count\">(%s)</span>"
+msgstr[0] "Spam <span class=\"count\">(%s)</span>"
+msgstr[1] "Spam <span class=\"count\">(%s)</span>"
+
+#: statuses.php:24
+#@ qna-forum
+msgid "Approve this question"
+msgstr "Approuver cette question"
+
+#: statuses.php:24
+#@ qna-forum
+msgid "Approve"
+msgstr "Approuver"
+
+#: statuses.php:28
+#@ qna-forum
+msgid "Mark as spam"
+msgstr "Marquer comme spam"
+
+#: statuses.php:28
+#: statuses.php:126
+#@ qna-forum
+msgid "Spam"
+msgstr "Spam"
+
+#: statuses.php:36
+#, php-format
+#@ default
+msgid "Preview &#8220;%s&#8221;"
+msgstr ""
+
+#: statuses.php:36
+#@ default
+msgid "Preview"
+msgstr ""
+
+#: statuses.php:38
+#, php-format
+#@ qna-forum
+msgid "View and Answer &#8220;%s&#8221;"
+msgstr "Voir et répondre &#8220;%s&#8221;"
+

@@ -1,0 +1,13 @@
+wp-config.php
+wp-content/uploads/*
+sitemap.xml
+sitemap.xml.gz
+robots.txt
+wp-config-sample.php
+wp-content/themes/aishack/scripts/cache/*
+wp-content/themes/aishack_responsive/scripts/cache/*
+untracked/*
+nginx.conf
+wp-content/cache
+wp-content/w3tc-config/*
+wp-content/w3-total-cache-config.php

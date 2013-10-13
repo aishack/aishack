@@ -1,0 +1,444 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Greet Box 5.5.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-03 13:07+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: jurica Zuanović <jurica.zuanovic@gmail.com>\n"
+"Language-Team: Jurica Zuanović <jurica.zuanovic@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Poedit-Language: Croatian\n"
+"X-Poedit-Country: CROATIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: options-custom.php:6
+msgid "Active Greeting Messages"
+msgstr "Aktivne Pozdravne Poruke"
+
+#: options-custom.php:9
+#: options-custom.php:43
+msgid "Referrer"
+msgstr "Referiranje"
+
+#: options-custom.php:10
+#: options-custom.php:44
+msgid "Icon"
+msgstr "Ikona"
+
+#: options-custom.php:11
+#: options-custom.php:45
+msgid "Message"
+msgstr "Poruka"
+
+#: options-custom.php:12
+#: options-custom.php:46
+msgid "Action"
+msgstr "Akcija"
+
+#: options-custom.php:16
+#: options-custom.php:50
+msgid "Add new greeting message"
+msgstr "Dodaj novu pozdravnu poruku"
+
+#: options-custom.php:40
+msgid "Inactive Greeting Messages"
+msgstr "Neaktivne Pozdravne Poruke"
+
+#: options-exclude.php:15
+#: wp-greet-box.php:1800
+msgid "Exclusion Rules"
+msgstr "Pravila Izdvajanja"
+
+#: options-exclude.php:16
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Lista referentnih URL-ova kojima ne želite pokazati pozdravnu poruku (svaka stavka u novi red)"
+
+#: options-exclude.php:18
+msgid "Treat each line as a regular expression"
+msgstr "Tretiraj svaki red kako normalni izraz"
+
+#: options-exclude.php:22
+#: options-generic.php:268
+msgid "Update Options"
+msgstr "Ažuriraj Opcije"
+
+#: options-generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Sve poruke koje ste vi stvorili također će biti vraćene izvorne postavke. Jeste li sigurni da želite vratiti sve izvorne postavke?"
+
+#: options-generic.php:133
+msgid "Hide"
+msgstr "Sakrij"
+
+#: options-generic.php:138
+msgid "Show"
+msgstr "Prikaži"
+
+#: options-generic.php:168
+msgid "Support this plugin!"
+msgstr "Podržite ovaj plugin!"
+
+#: options-generic.php:170
+msgid "Display \"Powered by WP Greet Box\" link at the bottom right corner of the greeting message"
+msgstr "Prikaži \"Pokreće WP Greet Box\" link u doljnjem desnom kutu pozdravne poruke"
+
+#: options-generic.php:174
+msgid "Do not display \"Powered by WP Greet Box\" link.  I will <a href=\"http://omninoggin.com/donate\">donate</a> and/or write about this plugin"
+msgstr "Nemoj prikazati \"Pokreće WP Greet Box\" link. <a href=\"http://omninoggin.com/donate\">Donirati ću</a> i/ili pisati o ovom pluginu"
+
+#: options-generic.php:177
+#: wp-greet-box.php:1801
+msgid "General Configuration"
+msgstr "Osnovna Konfiguracija"
+
+#: options-generic.php:179
+msgid "Automatically show greeting message on posts"
+msgstr "Automatski prikaži pozdravnu poruku u postovima"
+
+#: options-generic.php:181
+#: options-generic.php:186
+msgid "uncheck for manual insertion"
+msgstr "deselektiraj za ručno postavljanje"
+
+#: options-generic.php:184
+msgid "Automatically show greeting message on pages"
+msgstr "Automatski prikaži pozdravnu poruku na stranicama"
+
+#: options-generic.php:188
+msgid "Allow users to close the greeting message"
+msgstr "Dopusti korisnicima da zatvore pozdravnu poruku"
+
+#: options-generic.php:189
+msgid "Have icon link open a new browser window (same as target=\"_blank\")"
+msgstr "Neka link ikona otvori novi prozor preglednika (isto kao i target=\"_blank\")"
+
+#: options-generic.php:190
+msgid "Position greeting message"
+msgstr "Pozicija pozdravne poruke"
+
+#: options-generic.php:192
+#: options-generic.php:204
+msgid "before"
+msgstr "prije"
+
+#: options-generic.php:193
+#: options-generic.php:205
+msgid "after"
+msgstr "nakon"
+
+#: options-generic.php:195
+msgid "the post/page."
+msgstr "posta/stranice."
+
+#: options-generic.php:196
+msgid "Related Post Options"
+msgstr "Srodne Post Opcije"
+
+#: options-generic.php:198
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Detektiraj srodne ključne riječi sa tražilica i prikaži srodne postove"
+
+#: options-generic.php:203
+msgid "Position related posts"
+msgstr "Pozicija srodnih postova"
+
+#: options-generic.php:206
+msgid "the greeting message."
+msgstr "pozdravne poruke."
+
+#: options-generic.php:209
+msgid "Show post excerpt in related posts"
+msgstr "Prikaži sažetak posta"
+
+#: options-generic.php:212
+msgid "Expand related posts by default"
+msgstr "Proširi srodne postove kao zadano"
+
+#: options-generic.php:215
+msgid "Limit related posts to "
+msgstr "Limitiraj srodne postove na"
+
+#: options-generic.php:215
+msgid "posts"
+msgstr "post/a/ova"
+
+#: options-generic.php:217
+msgid "Limit related post excerpts to"
+msgstr "Limitiraj srodne post sažetke na"
+
+#: options-generic.php:217
+msgid "words"
+msgstr "riječi"
+
+#: options-generic.php:221
+#: options-generic.php:276
+msgid "Advanced Options"
+msgstr "Napredne Opcije"
+
+#: options-generic.php:223
+msgid "Enable compatibility with cache plugins"
+msgstr "Omogući kompatibilnost sa cache pluginovima"
+
+#: options-generic.php:223
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "Ako je uključeno, WP Greet Box koristiti će Javascript za učitavanje pozdravne poruke"
+
+#: options-generic.php:226
+msgid "Show greeting message to logged in users"
+msgstr "Prikaži pozdravnu poruku prijavljenim korisnicima"
+
+#: options-generic.php:229
+#: options-generic.php:232
+msgid "Enable"
+msgstr "Omogući"
+
+#: options-generic.php:229
+msgid "uncheck to manually manage your own CSS"
+msgstr "deselektiraj za ručno upravljenje vašim CSS"
+
+#: options-generic.php:232
+msgid "and"
+msgstr "i"
+
+#: options-generic.php:232
+msgid "uncheck to manually manage your own JS"
+msgstr "deselektiraj za ručno upravljenje vašim JS"
+
+#: options-generic.php:235
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "URL vašeg RSS kanala. (zamjeni [[rss-link]] u pozdravnoj poruci sa ovim)"
+
+#: options-generic.php:239
+msgid "Your \"Subscribe via Email\" URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "Vaš \"Pretplata putem Emaila\" URL. (zamjeni [[email-link]] u pozdravnoj poruci sa ovim)"
+
+#: options-generic.php:243
+msgid "HTML code to display before the greeting box."
+msgstr "HTML kod koji će biti prikazan prije pozdravne poruke."
+
+#: options-generic.php:247
+msgid "HTML code to display after the greeting box."
+msgstr "HTML kod koji će biti prikazan nakon pozdravne poruke."
+
+#: options-generic.php:251
+msgid "HTML code to display before the image in the greeting box."
+msgstr "HTML kod koji će biti prikazan prije slike u pozdravnoj poruci."
+
+#: options-generic.php:255
+msgid "HTML code to display after the image in the greeting box."
+msgstr "HTML kod koji će biti prikazan nakon slike u pozdravnoj poruci."
+
+#: options-generic.php:259
+msgid "HTML code to display before the text in the greeting box."
+msgstr "HTML kod koji će biti prikazan prije teksta u pozdravnoj poruci."
+
+#: options-generic.php:263
+msgid "HTML code to display after the text in the greeting box."
+msgstr "HTML kod koji će biti prikazan nakon teksta u pozdravnoj poruci."
+
+#: options-generic.php:272
+msgid "Upgrade Options"
+msgstr "Opcije Nadogradnje"
+
+#: options-generic.php:275
+msgid "Reset ALL Options"
+msgstr "Vrati SVE izvorne postavke"
+
+#: options-import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Sve vaše trenutne WP Greet Box opcije biti će prepisane uvezenim vrijednostima. Jeste li sigurni da želite prepisati sve postavke?"
+
+#: options-import-export.php:12
+msgid "Export"
+msgstr "Izvoz"
+
+#: options-import-export.php:15
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Ova funkcija će strpati sve vaše WP Greet Box opcije u jednu datoteku."
+
+#: options-import-export.php:17
+msgid "Export Options"
+msgstr "Izvoz Opcija"
+
+#: options-import-export.php:21
+msgid "Import"
+msgstr "Uvoz"
+
+#: options-import-export.php:27
+msgid "This functionality will restore your entire WP Greet Box options from a file.<br/><strong>Make sure you've done an export and backup the exported file before you try this!</strong>"
+msgstr "Ova funkcija će vratiti sve vaše WP Greet Box opcije iz datoteke.<br/><strong>Uvjerite se da ste prvo izvezli i backupirali izvoznu datoteku prije nego što napravite ovo!</strong>"
+
+#: options-import-export.php:33
+msgid "Import Options"
+msgstr "Uvezi Opcije"
+
+#: wp-greet-box.php:45
+msgid "WP Greet Box "
+msgstr "WP Greet Box "
+
+#: wp-greet-box.php:424
+msgid "<div class=\"updated fade\"><p>You are using WordPress version "
+msgstr "<div class=\"updated fade\"><p>Koristite WordPress inačicu"
+
+#: wp-greet-box.php:426
+msgid ".  WP Greet Box recommends that you use WordPress 2.7 or newer.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+msgstr ".  WP Greet Box preporučuje da koristite WordPress 2.7 ili noviji. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Molimo nadogradite!</a></p></div>"
+
+#: wp-greet-box.php:432
+msgid "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</p></div>"
+msgstr "<div class=\"updated fade\"><p>WP Greet Box opcije su nadograđene.</p></div>"
+
+#: wp-greet-box.php:689
+#: wp-greet-box.php:728
+msgid "Activate"
+msgstr "Aktiviraj"
+
+#: wp-greet-box.php:694
+#: wp-greet-box.php:733
+msgid "Deactivate"
+msgstr "Deaktiviraj"
+
+#: wp-greet-box.php:708
+#: wp-greet-box.php:747
+msgid "Edit"
+msgstr "Uredi"
+
+#: wp-greet-box.php:748
+msgid "Are you sure you want to delete?"
+msgstr "Jeste li sigurni da želite obrisati?"
+
+#: wp-greet-box.php:748
+msgid "Delete"
+msgstr "Obriši"
+
+#: wp-greet-box.php:1086
+msgid "You were searching for"
+msgstr "Tražili ste"
+
+#: wp-greet-box.php:1087
+msgid "Posts relating to"
+msgstr "Postovi srodni sa"
+
+#: wp-greet-box.php:1089
+msgid "See posts relating to your search &#187;"
+msgstr "Pogledaj postove srodne sa vašom pretragom &#187;"
+
+#: wp-greet-box.php:1090
+msgid "&#171; Hide related posts"
+msgstr "&#171; Sakrij srodne postove"
+
+#: wp-greet-box.php:1112
+msgid "Powered by"
+msgstr "Pokreće "
+
+#: wp-greet-box.php:1112
+msgid "WP Greet Box"
+msgstr "WP Greet Box"
+
+#: wp-greet-box.php:1112
+msgid "WordPress Plugin"
+msgstr "WordPress Plugin"
+
+#: wp-greet-box.php:1354
+msgid "Permanent Link to:"
+msgstr "Permanent Link do:"
+
+#: wp-greet-box.php:1556
+msgid "WP Greet Box options updated."
+msgstr "WP Greet Box opcije ažurirane"
+
+#: wp-greet-box.php:1560
+msgid "WP Greet Box options upgraded."
+msgstr "WP Greet Box opcije nadograđene."
+
+#: wp-greet-box.php:1564
+msgid "WP Greet Box options have been reset."
+msgstr "WP Greet Box opcije vraćene na prvotne postavke."
+
+#: wp-greet-box.php:1568
+msgid "WP Greet Box options imported."
+msgstr "WP Greet Box opcije su uvezene."
+
+#: wp-greet-box.php:1572
+msgid "WP Greet Box options import failed!"
+msgstr "Uvoz WP Greet Box opcija nije uspio!"
+
+#: wp-greet-box.php:1576
+msgid "Did not receive any file to be imported.  WP Greet Box options import failed!"
+msgstr "Nije primljen ni jedna datoteka za uvoz. Uvoz WP Greet Box opcija nije uspio!"
+
+#: wp-greet-box.php:1580
+msgid "Found syntax errors in file being imported.  WP Greet Box options import failed!"
+msgstr "Pronađene su greške u datoteci koja se uvozi. Uvoz WP Greet Box opcija nije uspio!"
+
+#: wp-greet-box.php:1669
+#: wp-greet-box.php:1705
+#: wp-greet-box.php:1736
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Nastavi prikazivati pozdravnu poruku dok ju korisnik prvi ne zatvori (premošćuje vremensko ograničenje za posjetitelje ako je uključeno)"
+
+#: wp-greet-box.php:1670
+#: wp-greet-box.php:1706
+#: wp-greet-box.php:1738
+msgid "Visitor Timeout (minutes)"
+msgstr "Vremensko ograničenje za posjetitelje (minute)"
+
+#: wp-greet-box.php:1672
+#: wp-greet-box.php:1708
+#: wp-greet-box.php:1756
+msgid "Greeting Icon (optional)"
+msgstr "Pozdravna Ikona (opcionalno)"
+
+#: wp-greet-box.php:1674
+#: wp-greet-box.php:1710
+#: wp-greet-box.php:1758
+msgid "Greeting Icon Link (optional)"
+msgstr "Link Pozdravne Ikone (opcionalno)"
+
+#: wp-greet-box.php:1676
+#: wp-greet-box.php:1712
+#: wp-greet-box.php:1760
+msgid "Greeting message"
+msgstr "Pozdravna poruka"
+
+#: wp-greet-box.php:1680
+msgid "Add"
+msgstr "Dodaj"
+
+#: wp-greet-box.php:1681
+#: wp-greet-box.php:1716
+#: wp-greet-box.php:1764
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: wp-greet-box.php:1702
+msgid "Referrer URL"
+msgstr "Referentni URL"
+
+#: wp-greet-box.php:1715
+#: wp-greet-box.php:1763
+msgid "Save"
+msgstr "Snimi"
+
+#: wp-greet-box.php:1797
+msgid "WP Greet Box Options"
+msgstr "WP Greet Box Opcije"
+
+#: wp-greet-box.php:1799
+msgid "Greeting Messages"
+msgstr "Pozdravne Poruke"
+
+#: wp-greet-box.php:1802
+msgid "Import/Export"
+msgstr "Uvoz/Izvoz"
+
+#: wp-greet-box.php:1803
+msgid "Documentation"
+msgstr "Dokumentacija"
+

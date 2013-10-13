@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Comment Reply Notification in italiano\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-19 16:33+0800\n"
+"PO-Revision-Date: 2008-12-19 16:33+0800\n"
+"Last-Translator: 偶爱偶家 <blog.2i2j.com@gmail.com>\n"
+"Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: D:/SVN/comment-reply-notification\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: D:/SVN/comment-reply-notification\n"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:44
+msgid "Your comment at [[blogname]] has a new reply"
+msgstr "Il tuo commento a [[blogname]] ha ricevuto una risposta"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:46
+msgid ""
+"<p><strong>[blogname]</strong>: Your comment on the post <strong>[postname]</strong> has a new reply</p>\n"
+"<p>Here is your original comment:<br />\n"
+"[pc_content]</p>\n"
+"<p>Here is the new reply:<br />\n"
+"[cc_content]</p>\n"
+"<p>You can see more information for the comment on this post here:<br />\n"
+"<a href=\"[commentlink]\">[commentlink]</a></p>\n"
+"<p><strong>Thank you for your commenting on <a href=\"[blogurl]\">[blogname]</a></strong></p>\n"
+"<p><strong>This email was sent automatically. Please don't reply to this email.</strong></p>"
+msgstr ""
+"<p><strong>[blogname]</strong> ti informa: il tuo commento al post <strong>[postname]</strong> ha ricevuto una risposta</p>\n"
+"<p>ecco il tuo commento:<br />\n"
+"[pc_content]</p>\n"
+"<p>ecco la risposta al commento:<br />\n"
+"[cc_content]</p>\n"
+"<p>Qui potrai vedere nel dettaglio il commento a questo articolo:<br />\n"
+"<a href=\"[commentlink]\">[commentlink]</a></p>\n"
+"<p><strong>Grazie per la tua cortese attenzione <a href=\"[blogurl]\">[blogname]</a></strong></p>\n"
+"<p><strong>Questa email é stata generata automaticamente, non rispondere. Grazie</strong></p>"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:246
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:248
+msgid "Notify me of follow-up comments via e-mail"
+msgstr "Informami via email sullo stato dei commenti "
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:270
+msgid "Comment Reply Notification Option"
+msgstr ""
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:270
+msgid "Comment Reply Notification"
+msgstr ""
+
+# D:/plugins/wp-thread-comment/wp-thread-comment.php:190
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:280
+msgid "Options saved"
+msgstr "Le opzioni sono state salvate"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:284
+msgid "Plugin confriguration has been reset back to default!"
+msgstr "La configurazione é stata ripristinata!"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:298
+msgid "Email notify the parent commenter when his comment was replied"
+msgstr "Invia all'autore una email di notifica quando un suo commento avrà ricevuto una risposta"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:300
+msgid "Disabled"
+msgstr "disattiva"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:302
+msgid "Replied by the author of the post or administrator ONLY"
+msgstr "SOLO per l'amministratore e per l'autore dell'articolo."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:304
+msgid "Anyone replies"
+msgstr "a tutti"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:306
+msgid "Commenter choose to do so(default checked)"
+msgstr "a discrezione del commentatore (sì predefinito)"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:308
+msgid "Commenter choose to do so(default unchecked)"
+msgstr "a discrezione del commentatore (no predefinito)"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:313
+msgid "Edit the subject of notification email"
+msgstr "Modifica l'oggetto per la email di notifica"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:317
+msgid "Use TEXT only. As a easier way, you may use the following tags: <strong>[blogname]</strong> for blog name and <strong>[postname]</strong> for comment post name"
+msgstr "Solo TESTO. Per facilitare l'operazione, utilizza i segunti tag: <strong>[blogname]</strong> per il nome del blog e <strong>[postname]</strong> per il titolo dell'articolo"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:322
+msgid "Edit Notification Message"
+msgstr "Modifica il messaggio di notifica"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:326
+msgid "Use HTML only. As a easier way, you may use the following tags: <strong>[pc_author]</strong> for parent comment author, <strong>[pc_date]</strong> for parent comment date, <strong>[pc_content]</strong> for parent comment content, <strong>[cc_author]</strong> for child comment author, <strong>[cc_date]</strong> for child comment date, <strong>[cc_url]</strong> for child comment author url, <strong>[cc_content]</strong> for child comment content, <strong>[commentlink]</strong> for parent comment link, <strong>[blogname]</strong> for blog name, <strong>[blogurl]</strong> for blog url and <strong>[postname]</strong> for post name."
+msgstr "Solo HTML. Per facilitare l'operazione, utilizza i seguenti tag: <strong>[pc_author]</strong> per l'autore del commento principale, <strong>[pc_date]</strong> per la data del commento principale, <strong>[pc_content]</strong> per il contenuto del commento principale, <strong>[cc_author]</strong> per l'autore del commento di risposta, <strong>[cc_date]</strong> per la data del commento di risposta, <strong>[cc_url]</strong> per l'URL all'autore del commento di risposta, <strong>[cc_content]</strong> per il contenuto del commento di risposta, <strong>[commentlink]</strong> per il link al commento principale, <strong>[blogname]</strong> per il nome del blog, <strong>[blogurl]</strong> per l'URL al blog ed infine <strong>[postname]</strong> per il titolo dell'articolo."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:330
+msgid "Configuration action of deactivate"
+msgstr "Configurazione di disattivazione"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:332
+msgid "Delete options after deactivate:"
+msgstr "Dopo la disattivazione, cancella le opzioni salvate:"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:335
+msgid "check box if you want to delete all of options of wp thread comment after deactivate this plugin"
+msgstr "metti il segno di spunta qualora desiderassi cancellare tutte le opzioni di wp thread comment una volta disattivato il plugin"
+
+# D:/plugins/wp-thread-comment/wp-thread-comment.php:233
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:339
+msgid "Update Options"
+msgstr "Aggiornamento opzioni"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:340
+msgid "Do you really want to reset your current configuration?"
+msgstr "Sei certo di voler ripristinare la tua attuale configurazione?"
+
+# D:/plugins/wp-thread-comment/wp-thread-comment.php:234
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:340
+msgid "Reset Options"
+msgstr "Opzioni di ripristino"
+
+#~ msgid "Click to cancel reply"
+#~ msgstr "Clicca per cancellare la risposta"
+

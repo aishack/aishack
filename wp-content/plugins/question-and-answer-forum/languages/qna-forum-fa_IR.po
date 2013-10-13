@@ -1,0 +1,315 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: najeekurd\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-03 01:26+0330\n"
+"PO-Revision-Date: 2011-08-03 02:24+0330\n"
+"Last-Translator: NajeeKurd <lordamar@gmail.com>\n"
+"Language-Team: najeekurd <lordamar@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: C:\\Users\\sna\\Documents\\Downloads\\Compressed\\question-and-answer-forum\\languages\n"
+"X-Poedit-Language: Persian\n"
+"X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
+"X-Poedit-SearchPath-0: C:\\Users\\sna\\Documents\\Downloads\\Compressed\\question-and-answer-forum\\languages\n"
+"X-Poedit-SearchPath-1: C:\\Users\\sna\\Documents\\Downloads\\Compressed\\question-and-answer-forum\n"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:16
+msgid "You must be logged in to ask a question"
+msgstr "برای ارسال پرسش باید عضو سایت باشید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:20
+msgid "Invalid category - the category must be chosed from the drop down list"
+msgstr "دسته نامعتبر - دسته باید از لیست زیر انتخاب شود"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:26
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:43
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:45
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/askquestionform.php:25
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:11
+msgid "Enter Your Name"
+msgstr "نام خود را وارد کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:27
+msgid "You must enter a name"
+msgstr "شما باید نام خود را وارد نمائید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:29
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/askquestionform.php:32
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:12
+msgid "Enter Your Email Address"
+msgstr "آدرس ایمیل خود را وارد کنید (نمایش داده نخواهد شد)"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:30
+msgid "You must enter an email address"
+msgstr "شما باید آدرس ایمیل خود را وارد کنید (ایمیل شما به هیچ وجه در سایت نمایش داده نخواهد شد)"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:34
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:57
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:59
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/askquestionform.php:39
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:45
+msgid "Enter Question Title"
+msgstr "موضوع پرسش خود را وارد کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:35
+msgid "You must add a question title"
+msgstr "شما باید یک موضوع برای پرسش خود اضافه کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:37
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:64
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:66
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/askquestionform.php:46
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:46
+msgid "Enter Your Question Here"
+msgstr "پرسش خود را این جا وارد کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:38
+msgid "You must add a question"
+msgstr "شما باید یک پرسش اضافه کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:50
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:52
+msgid "Enter Your Email"
+msgstr "ایمیل خود را وارد کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:94
+msgid "Question awaiting moderation"
+msgstr "پرسش شما بررسی خواهد شد"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:101
+msgid "error occured in asking question"
+msgstr "در ارسال سوال، مشکلی ایجاد شده است"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:110
+msgid "Question added successfuly"
+msgstr "پرسش شما با موفقیت ارسال شد"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:111
+msgid "A new question has been asked, answer it by visiting "
+msgstr "یک پرسش جدید ارسال شده است، با بازدید خود آن را پاسخ دهید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:111
+msgid "The question is:"
+msgstr "پرسش: "
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:114
+msgid "Your question is awaiting moderation"
+msgstr "پرسش شما در دست بررسی است"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:114
+msgid "If approved you can view answers at "
+msgstr "اگر تأیید می کنید، شما می توانید پاسخ را ببینید در "
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/addquestion.php:115
+msgid "A new question has been held for moderation. To approve or reject it go to"
+msgstr "پرسش شما برای مدیریت ارسال شد. برای تأیید یا انصراف آن بروید به"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/askquestionform.php:55
+msgid "Use the form below to ask a question"
+msgstr "برای ارسال پرسش از فرم زیر استفاده کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:19
+msgid "Please login to ask a question"
+msgstr "لطفا برای ارسال سوال، وارد سایت شوید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:63
+msgid "Category"
+msgstr "دسته"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/coreform.php:81
+msgid "Ask"
+msgstr "ارسال پرسش"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/options-page.php:4
+msgid "You do not have sufficient permissions to access this page."
+msgstr "شما اجازه دسترسی به این صفحه را ندارید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/options-page.php:272
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/options-page.php:278
+msgid "Hold questions for moderation"
+msgstr "پرسش را برای مدیریت نگه دارید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/querys.php:61
+msgid "Select Category"
+msgstr "یک دسته انتخاب کنید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/querys.php:96
+msgid "Login or Register"
+msgstr "ورود/عضویت"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/querys.php:96
+msgid "To see your questons or ask new one please log in"
+msgstr "برای مشاهده پرسش خود یا ارسال یک پرسش جدید، لطفا وارد سایت شوید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/querys.php:122
+msgid "Asked by"
+msgstr "نگارش توسط: "
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/querys.php:123
+msgid "ago in"
+msgstr "قبل"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/querys.php:129
+msgid "View All Questions"
+msgstr "مشاهده تمام پرسش ها"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:64
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:74
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:144
+msgid "Questions"
+msgstr "پرسش ها"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:65
+msgid "Question"
+msgstr "پرسش"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:66
+msgid "New Question"
+msgstr "پرسش جدید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:67
+msgid "Ask new question"
+msgstr "ارسال پرسش جدید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:68
+msgid "change question"
+msgstr "تغییر پرسش"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:69
+msgid "new question"
+msgstr "پرسش جدید"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:70
+msgid "view question"
+msgstr "مشاهده پرسش"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:71
+msgid "search question"
+msgstr "جستجو در میان پرسش ها"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:72
+msgid "No Questions Found"
+msgstr "پرسشی پیدا نشد"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/questions.php:73
+msgid "No questions found in trash"
+msgstr "پرسشی در زباله دان پیدا نشد"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:19
+msgid "Users"
+msgstr "کاربران"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:20
+msgid "User"
+msgstr "کاربر"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:21
+msgid "Add User"
+msgstr "اضافه کردن کاربر"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:22
+msgid "Update Profile"
+msgstr "به روزرسانی نمایه"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:23
+msgid "View Profile"
+msgstr "نمایش نمایه"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:54
+msgid "error with user"
+msgstr "خطا با کاربر"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:70
+msgid "error creating default page"
+msgstr "خطا در ساخت برگه پیشفرض"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:116
+msgid "A password has been emailed to you"
+msgstr "یک کلمه عبور برای ایمیل شما ارسال شده است"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:119
+msgid "Your passwords dont match"
+msgstr "کلمه عبور شما تطابق ندارد"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:122
+msgid "Profile Updated"
+msgstr "نمایه به روزرسانی شد"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:129
+msgid "Login"
+msgstr "ورود"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:129
+msgid "Lost your password?"
+msgstr "کلمه عبور خود را گم کرده اید؟"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:130
+msgid "Register"
+msgstr "عضویت"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:144
+msgid "Answers"
+msgstr "پاسخ ها"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:148
+msgid "Best Answer"
+msgstr "بهترین پاسخ"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:167
+msgid "Logout"
+msgstr "خروج"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:183
+msgid "Get or Change your Gravatar"
+msgstr "ارسال یا تغییر تصویر نمایه"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:185
+msgid "About"
+msgstr "درباره"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/qusers.php:186
+msgid "My Recent Questions"
+msgstr "پرسش های اخیر من"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:10
+msgid "spam"
+msgstr "هرزنامه"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:25
+msgid "Approve this question"
+msgstr "با این پرسش موافقم"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:25
+msgid "Approve"
+msgstr "موافقم"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:29
+msgid "Mark as spam"
+msgstr "نشانه گذاری به عنوان هرزنامه"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:29
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:128
+msgid "Spam"
+msgstr "هرزنامه"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:37
+#, php-format
+msgid "Preview &#8220;%s&#8221;"
+msgstr "پیش نمایش &#8220;%s&#8221;"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:37
+msgid "Preview"
+msgstr "پیش نمایش"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:39
+#, php-format
+msgid "View and Answer &#8220;%s&#8221;"
+msgstr "مشاهده و پاسخ &#8220;%s&#8221;"
+
+#: C:\Users\sna\Documents\Downloads\Compressed\question-and-answer-forum/statuses.php:39
+msgid "Answer"
+msgstr "پاسخ"
+

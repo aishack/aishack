@@ -1,0 +1,526 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wp greet box version 6.0.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-11 08:29+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Team Blogos <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_c;_e;__ngettext:1,2;__ngettext_noop:1,2;_n:1,2;_nc:1,2;_n_noop:1,2\n"
+"X-Poedit-Basepath: d:\\wordpress\\plugins\\wp-greet-box\n"
+"X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\wp-greet-box\n"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:76
+#, php-format
+msgid "You are using WordPress version %s."
+msgstr "Du bruger WordPress version %s."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:77
+#, php-format
+msgid "%s recommends that you use WordPress %s or newer."
+msgstr "%s anbefaler, at du bruger WordPress %s eller nyere."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:80
+#, php-format
+msgid "%sPlease update!%s"
+msgstr "%sOpdatér venligst!%s"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:87
+#, php-format
+msgid "%s options has been updated."
+msgstr "%s-indstillinger er blevet opdateret."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:93
+#, php-format
+msgid "%s options has been upgraded."
+msgstr "%s-instillinger er blevet opdateret."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:100
+msgid "Some option settings were missing (possibly from plugin upgrade)."
+msgstr "Nogle indstillinger manglede (muligvis pga. pluginopgradering)."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:105
+#, php-format
+msgid "%s options has been reset."
+msgstr "%s-indstillinger er blevet nulstillet."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:111
+#, php-format
+msgid "%s cache has been cleared."
+msgstr "%s-cache er blevet tømt."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:117
+#, php-format
+msgid "%s options imported."
+msgstr "%s-instillinger importeret."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:123
+#, php-format
+msgid "%s options import failed!"
+msgstr "Import af %s-indstillinger mislykkedes!"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:129
+#, php-format
+msgid "Did not receive any file to be imported. %s options import failed!"
+msgstr "Har ikke modtaget nogen fil, der skal importeres. Import af %s-indstillinger mislykkedes!"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/common.class.php:135
+#, php-format
+msgid "Found syntax errors in file being imported. %s options import failed!"
+msgstr "Fundet syntaksfejl i filen, der importeres. Import af %s-indstillinger mislykkedes!"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/wp-greet-box.class.php:171
+msgid "You were searching for"
+msgstr "Du søgte efter"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/wp-greet-box.class.php:172
+msgid "Posts relating to"
+msgstr "Indlæg relaterede til"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/wp-greet-box.class.php:174
+msgid "See posts relating to your search"
+msgstr "Se indlæg relateret til din søgning"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/wp-greet-box.class.php:175
+msgid "Hide related posts"
+msgstr "Skjul relaterede indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/wp-greet-box.class.php:213
+#, php-format
+msgid "Powered by %sWP Greet Box%s %sWordPress Plugin%s"
+msgstr "Kører med %sWP Greet Box%s %sWordPress Plugin%s"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/wp-greet-box.class.php:448
+msgid "Permanent Link to:"
+msgstr "Permanent link til:"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:12
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:6
+msgid "Referrer URL"
+msgstr "Referrer-URL"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:14
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:16
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:8
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Fortsætte med at vise velkomsthilsen, indtil brugeren lukker det første gang (tilsidesætter besøgende timeout, hvis afkrydset)"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:15
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:17
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:9
+msgid "Visitor Timeout (minutes)"
+msgstr "Besøgende-timeout (minutter)"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:17
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:20
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:11
+msgid "Greeting Icon (optional)"
+msgstr "Hilsen-ikon (valgfrit)"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:19
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:22
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:13
+msgid "Greeting Icon Link (optional)"
+msgstr "Link for hilsen-ikon (valgfrit)"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:21
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:24
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:15
+msgid "Greeting message"
+msgstr "Velkomsthilsen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:25
+msgid "Add"
+msgstr "Tilføj"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-add-form.php:26
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:28
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:20
+msgid "Cancel"
+msgstr "Annullér"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-default-row.php:12
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-message-row.php:4
+msgid "Activate"
+msgstr "Aktivér"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-default-row.php:16
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-message-row.php:8
+msgid "Deactivate"
+msgstr "Deaktivér"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-default-row.php:25
+msgid "RSS icon"
+msgstr "RSS-ikon"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-default-row.php:29
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-message-row.php:21
+msgid "loading..."
+msgstr "indlæser ..."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-default-row.php:31
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-message-row.php:23
+msgid "Edit"
+msgstr "Redigér"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form-default.php:27
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-edit-form.php:19
+msgid "Save"
+msgstr "Gem"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-message-row.php:24
+msgid "Are you sure you want to delete?"
+msgstr "Er du helt sikker på, at du vil slette?"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom-message-row.php:24
+msgid "Delete"
+msgstr "Slet"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:4
+msgid "Active Greeting Messages"
+msgstr "Aktive velkomsthilsener"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:7
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:41
+msgid "Referrer"
+msgstr "Referrer"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:8
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:42
+msgid "Icon"
+msgstr "Ikon"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:9
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:43
+msgid "Message"
+msgstr "Hilsen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:10
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:44
+msgid "Action"
+msgstr "Handling"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:14
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:48
+msgid "Add new greeting message"
+msgstr "Tilføj ny velkomsthilsen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/custom.php:38
+msgid "Inactive Greeting Messages"
+msgstr "Inaktive velkomsthilsener"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/exclude.php:3
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/header.php:6
+msgid "Exclusion Rules"
+msgstr "Udelukkelsesregler"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/exclude.php:6
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Viser liste med referral-URL&#39;er, som du ikke ønsker at vise velkomsthilsener for (linjesepareret)."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/exclude.php:11
+msgid "Treat each line as a regular expression"
+msgstr "Hver linje behandles som et <span title=\"regular expression\">regulært udtryk</span>"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/exclude.php:16
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:267
+msgid "Update Options"
+msgstr "Opdatér indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Alle dine brugerdefinerede hilsener vil også blive nulstillet. Er du sikker på, at du vil nulstille alle indstillinger?"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:90
+msgid "Hide"
+msgstr "Skjul"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:95
+msgid "Show"
+msgstr "Vis"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:103
+msgid "Support this plugin!"
+msgstr "Støt dette plugin!"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:106
+msgid "Display 'Powered by WP Greet Box' link at the bottom right corner of the greeting message"
+msgstr "Vis \"Kører med WP Greet Box\"-link i bunden af højre hjørne af hilsenen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:111
+#, php-format
+msgid "Do not display 'Powered by WP Greet Box' link.  I will %sdonate%s and/or write about this plugin"
+msgstr "Vis ikke \"Kører med WP Greet Box\"-link. Jeg vil %sdonere%s og/eller skrive om dette plugin"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:115
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/header.php:8
+msgid "General Configuration"
+msgstr "Generelle indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:118
+msgid "Enable rounded corners"
+msgstr "Aktivér afrundede hjørner"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:120
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:126
+msgid "CSS3 browsers only"
+msgstr "Kun CSS3-browsere"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:124
+msgid "Enable drop shadow"
+msgstr "Aktivér skygger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:130
+msgid "Automatically show greeting message on posts"
+msgstr "Viser automatisk velkomsthilsener på indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:132
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:138
+msgid "uncheck for manual insertion"
+msgstr "afmarkér for manuel indsættelse"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:136
+msgid "Automatically show greeting message on pages"
+msgstr "Viser automatisk velkomsthilsener på sider"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:142
+msgid "Allow users to close the greeting message"
+msgstr "Giv brugerne mulighed for at lukke velkomsthilsen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:147
+msgid "Have icon link open a new browser window (same as target='_blank')"
+msgstr "Ikon-link åbner et nyt browservindue (samme som target='_blank')"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:152
+msgid "Position greeting message"
+msgstr "Position for velkomsthilsen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:154
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:172
+msgid "before"
+msgstr "før"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:155
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:173
+msgid "after"
+msgstr "efter"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:157
+msgid "the post/page."
+msgstr "indlægget/siden"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:160
+msgid "Related Post Options"
+msgstr "Indstillinger for relaterede indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:163
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Aflæs søgeord fra søgemaskiners referrers og vis relaterede indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:170
+msgid "Position related posts"
+msgstr "Position for relaterede indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:174
+msgid "the greeting message."
+msgstr "velkomsthilsenen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:178
+msgid "Show post excerpt in related posts"
+msgstr "Vis indlægsuddrag i relaterede indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:183
+msgid "Expand related posts by default"
+msgstr "Udvid relaterede indlæg som standard"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:188
+#, php-format
+msgid "Limit related posts to %s posts"
+msgstr "Begræns releterede indlæg til %s indlæg"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:192
+#, php-format
+msgid "Limit related post excerpts to %s words"
+msgstr "Begræns uddrag af relaterede indlæg til %s ord"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:199
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:272
+msgid "Advanced Options"
+msgstr "Avancerede indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:202
+msgid "Enable compatibility with cache plugins"
+msgstr "Aktivér kompatibilitet med cache-plugins"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:203
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "Hvis markeret, vil WP Greet Box bruge Javascript til at indlæse hilsen"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:207
+msgid "Show greeting message to logged in users"
+msgstr "Vis velkomstbeskeder til brugere, der er logget ind"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:212
+msgid "Debug mode"
+msgstr "Debug-mode"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:213
+msgid "Will always show greet box regardless of settings"
+msgstr "Viser altid Greet box uanset indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:217
+#, php-format
+msgid "Enable %s"
+msgstr "Aktivér %s"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:218
+msgid "uncheck to manually manage your own CSS"
+msgstr "afmarkér for at styre din egen CSS manuelt"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:222
+#, php-format
+msgid "Enable %s and %s"
+msgstr "Aktivér %s og %s"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:223
+msgid "uncheck to manually manage your own JS"
+msgstr "afmarkér for at styre din egen JS manuelt"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:227
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "URL til din RSS-feed. (erstatter [[rss-link]] i velkomsthilsener med denne URL)"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:232
+msgid "Your 'Subscribe via Email' URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "Din 'Tilmeld dig via Email'-URL. (denne URL erstatter [[email-link]] i dine velkomsthilsener)"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:237
+msgid "HTML code to display before the greeting box."
+msgstr "HTML-kode, der skal vises før boksen med velkomsthilsen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:242
+msgid "HTML code to display after the greeting box."
+msgstr "HTML-kode, der skal vises efter boksen med velkomsthilsen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:246
+msgid "HTML code to display before the image in the greeting box."
+msgstr "HTML-kode, der skal vises før billedet i boksen med velkomsthilsen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:251
+msgid "HTML code to display after the image in the greeting box."
+msgstr "HTML-kode, der skal vises efter billedet i boksen med velkomsthilsen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:256
+msgid "HTML code to display before the text in the greeting box."
+msgstr "HTML-kode, der skal vises før teksten i boksen med velkomsthilsen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:260
+msgid "HTML code to display after the text in the greeting box."
+msgstr "HTML-kode, der skal vises efter teksten i boksen med velkomsthilsen."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:269
+msgid "Upgrade Options"
+msgstr "Opdatér indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/generic.php:271
+msgid "Reset ALL Options"
+msgstr "Nulstil ALLE indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/header.php:2
+#, php-format
+msgid "%s Options"
+msgstr "%s-indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/header.php:4
+msgid "Greeting Messages"
+msgstr "Velkomsthilsener"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/header.php:10
+msgid "Import/Export"
+msgstr "Import/Eksport"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/header.php:12
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Alle dine nuværende WP Greet Box-indstillinger vil blive overskrevet af den importerede værdi. Er du sikker på, at du vil overskrive alle indstillinger?"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:10
+msgid "Export"
+msgstr "Eksport"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:12
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Denne funktion vil gemme alle dine indstillinger for WP Greet Box i en fil."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:14
+msgid "Export Options"
+msgstr "Eksportér indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:17
+msgid "Import"
+msgstr "Import"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:21
+msgid "This functionality will restore your entire WP Greet Box options from a file."
+msgstr "Denne funktion vil gendanne alle dine WP Greet Box-indstillinger fra en fil."
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:22
+msgid "Make sure you've done an export and backup the exported file before you try this!"
+msgstr "Sørg for, at du har eksporteret WP Greet Box-indstillinger m.m. og sikkerhedskopiér den eksporterede fil, før du prøver dette!"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/import-export.php:27
+msgid "Import Options"
+msgstr "Importér indstillinger"
+
+#: d:\wordpress\plugins\wp-greet-box/includes/admin/post-options.php:9
+msgid "Disable WP Greet Box on this post/page?"
+msgstr "Deaktivér WP Greet Box i dette indlæg/på denne side?"
+
+#~ msgid "posts"
+#~ msgstr "Indlæg"
+
+#~ msgid "words"
+#~ msgstr "Ord"
+
+#~ msgid "and"
+#~ msgstr "Og"
+
+#~ msgid ""
+#~ "WP Greet Box requires WordPress 2.6 or newer. <a href=\"http://codex."
+#~ "wordpress.org/Upgrading_WordPress\">Please update!</a>"
+#~ msgstr ""
+#~ "WP Greet Box kræver at du bruger wordpress 2.6 eller nyere. <a href="
+#~ "\"http://codex.wordpress.org/Upgrading_WordPress\">Vær venlig at opdatere!"
+#~ "</a>"
+
+#~ msgid ""
+#~ ".  WP Greet Box recommends that you use WordPress 2.6 or newer.  <a href="
+#~ "\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></"
+#~ "p></div>"
+#~ msgstr ""
+#~ ".  WP Greet Box anbefaler at du bruger wordpress 2.6 eller nyere.  <a "
+#~ "href=\"http://codex.wordpress.org/Upgrading_WordPress\">Vær venlig at "
+#~ "opdatere!</a></p></div>"
+
+#~ msgid ""
+#~ "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</"
+#~ "p></div>"
+#~ msgstr ""
+#~ "<div class=\"updated fade\"><p>WP Greet Box instillinger er opdateret.</"
+#~ "p></div>"
+
+#~ msgid "WP Greet Box options updated."
+#~ msgstr "WP Greet Box instillinger opdateret."
+
+#~ msgid "WP Greet Box Options"
+#~ msgstr "WP Greet Box Valg"

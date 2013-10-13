@@ -1,0 +1,29 @@
+.question-list{
+	list-style-type: none;
+	display: block;
+	width: 95%;
+}
+.question-list-title{
+	display:block;
+	font-size:1.5em;
+	padding:2px 5px 4px 5px;
+}
+.question-list li{
+	display: block;
+	padding: 2px 5px 20px 2px;
+	border-bottom: 1px solid black;
+}
+.list-question-title{
+	font-size: 1.2em;
+	display:block;
+}
+
+.list-question-answer{
+	float: right;
+}
+.q_view_more{
+	margin: 0px 50px 2px 2px;
+	display: block;
+	text-align: right;
+	font-size: 1.2em;
+}

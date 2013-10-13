@@ -1,0 +1,436 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-greet-box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-09 13:02-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Nata Strazda <nata@epastas.lt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Lithuanian\n"
+"X-Poedit-Country: LITHUANIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: options-custom.php:6
+msgid "Active Greeting Messages"
+msgstr "Aktyvūs sveikinimo žinutes"
+
+#: options-custom.php:9
+#: options-custom.php:43
+msgid "Referrer"
+msgstr "Nuorodą"
+
+#: options-custom.php:10
+#: options-custom.php:44
+msgid "Icon"
+msgstr "Piktograma"
+
+#: options-custom.php:11
+#: options-custom.php:45
+msgid "Message"
+msgstr "Pranešimas"
+
+#: options-custom.php:12
+#: options-custom.php:46
+msgid "Action"
+msgstr "Veiksmas"
+
+#: options-custom.php:16
+#: options-custom.php:50
+msgid "Add new greeting message"
+msgstr "Pridėti naują sveikinimo pranešimą"
+
+#: options-custom.php:40
+msgid "Inactive Greeting Messages"
+msgstr "Neaktyvūs Sveikinimas žinučių"
+
+#: options-exclude.php:15
+#: wp-greet-box.php:1738
+msgid "Exclusion Rules"
+msgstr "Atskirties Taisyklės"
+
+#: options-exclude.php:16
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Sąrašas kreipimosi URL, kad nenorite rodyti sveikinimo žinutę (linija apibrėžiamas)."
+
+#: options-exclude.php:18
+msgid "Treat each line as a regular expression"
+msgstr "Gydyti kiekvieną eilutę, kaip reguliaraus išraiška"
+
+#: options-exclude.php:22
+#: options-generic.php:260
+msgid "Update Options"
+msgstr "Atnaujinti parinktys"
+
+#: options-generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Visi jūsų užsakymą pranešimus, taip pat bus naujo. Ar jūs tikrai norite atkurti visus pradinius parametrus?"
+
+#: options-generic.php:133
+msgid "Hide"
+msgstr "Paslėpti"
+
+#: options-generic.php:138
+msgid "Show"
+msgstr "Parodyti"
+
+#: options-generic.php:163
+msgid "Support this plugin!"
+msgstr "Remti šią įskiepiai!"
+
+#: options-generic.php:165
+msgid "Display \"Powered by WP Greet Box\" link at the bottom right corner of the greeting message"
+msgstr "Ekranas \ \"Powered by WP Pozdrówcie langelis \", esantį apatiniame dešiniajame kampe sveikinimo pranešimą"
+
+#: options-generic.php:169
+msgid "Do not display \"Powered by WP Greet Box\" link.  I will <a href=\"http://omninoggin.com/donate\">donate</a> and/or write about this plugin"
+msgstr "Negalima rodyti \ \"Powered by WP Pozdrówcie langelis \". Aš <a href=\"http://omninoggin.com/donate\"> dovanoti </a> ir/arba rašyti apie šį įskiepiai"
+
+#: options-generic.php:172
+#: wp-greet-box.php:1739
+msgid "General Configuration"
+msgstr "Bendrieji nustatymai"
+
+#: options-generic.php:174
+msgid "Automatically show greeting message on posts"
+msgstr "Automatiškai rodyti sveikinimo žinutę pranešimų"
+
+#: options-generic.php:176
+#: options-generic.php:181
+msgid "uncheck for"
+msgstr "nuimkite"
+
+#: options-generic.php:176
+#: options-generic.php:181
+msgid "manual insertion"
+msgstr "vadovas įdėjimo"
+
+#: options-generic.php:179
+msgid "Automatically show greeting message on pages"
+msgstr "Automatiškai rodyti puslapiuose, sveikinimo pranešimą"
+
+#: options-generic.php:183
+msgid "Allow users to close the greeting message"
+msgstr "Leisti vartotojams uždaryti sveikinimo žinutę"
+
+#: options-generic.php:184
+msgid "Have icon link open a new browser window (same as target=\"_blank\")"
+msgstr "Ar piktogramos nuorodą atidaryti naują naršyklės langą (tas pats kaip target=\"_blank\")"
+
+#: options-generic.php:185
+msgid "Position greeting message"
+msgstr "Pozicija pasisveikinimo pranešimas"
+
+#: options-generic.php:187
+#: options-generic.php:199
+msgid "before"
+msgstr "prieš"
+
+#: options-generic.php:188
+#: options-generic.php:200
+msgid "after"
+msgstr "po"
+
+#: options-generic.php:190
+msgid "the post/page."
+msgstr "po/puslapis."
+
+#: options-generic.php:191
+msgid "Related Post Options"
+msgstr "Susiję Rašyti parinktys"
+
+#: options-generic.php:193
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Aptikti raktažodžius iš paieškos sistemų nuorodas, ir rodyti Susijusios Žinutės"
+
+#: options-generic.php:198
+msgid "Position related posts"
+msgstr "Pozicija susijusių pranešimų"
+
+#: options-generic.php:201
+msgid "the greeting message."
+msgstr "sveikinimo žinutė."
+
+#: options-generic.php:204
+msgid "Show post excerpt in related posts"
+msgstr "Rodyti po ištrauka Susijusios Žinutės"
+
+#: options-generic.php:207
+msgid "Expand related posts by default"
+msgstr "Išplėsti susijusių pranešimų pagal nutylėjimą"
+
+#: options-generic.php:210
+msgid "Limit related posts to "
+msgstr "Apriboti susijusių pranešimų"
+
+#: options-generic.php:210
+msgid "posts"
+msgstr "pranešimų"
+
+#: options-generic.php:212
+msgid "Limit related post excerpts to"
+msgstr "Apriboti susijusių paštu ištraukos"
+
+#: options-generic.php:212
+msgid "words"
+msgstr "žodžiai"
+
+#: options-generic.php:216
+#: options-generic.php:268
+msgid "Advanced Options"
+msgstr "Išplėstinės parinktys"
+
+#: options-generic.php:218
+msgid "Enable compatibility with cache plugins"
+msgstr "Įjungti talpyklos įskiepių suderinamumą su"
+
+#: options-generic.php:218
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "Jei patikrinti, WP Pozdrówcie langelis Naudoti JavaScript įkelti sveikinimo pranešimą"
+
+#: options-generic.php:221
+#: options-generic.php:224
+msgid "Enable"
+msgstr "Leisti"
+
+#: options-generic.php:221
+msgid "uncheck to manually manage your own CSS"
+msgstr "Nuimkite rankiniu būdu valdyti savo CSS"
+
+#: options-generic.php:224
+msgid "and"
+msgstr "ir"
+
+#: options-generic.php:224
+msgid "uncheck to manually manage your own JS"
+msgstr "nuimkite rankiniu būdu valdyti savo JS"
+
+#: options-generic.php:227
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "Savo RSS kanalo URL adresą. (pakeičia [RSS-Link] sveikinimo laiškus su šiuo)"
+
+#: options-generic.php:231
+msgid "Your \"Subscribe via Email\" URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "Jūsų \ \"Prenumeruoti elektroniniu paštu \" URL. (pakeičia [[el-link] sveikinimo laiškus)"
+
+#: options-generic.php:235
+msgid "HTML code to display before the greeting box."
+msgstr "HTML kodas rodyti prieš sveikinimo box.greeting lauke."
+
+#: options-generic.php:239
+msgid "HTML code to display after the greeting box."
+msgstr "HTML kodas rodyti po sveikinimo lange."
+
+#: options-generic.php:243
+msgid "HTML code to display before the image in the greeting box."
+msgstr "HTML kodas rodomas prieš sveikinimo lange įvaizdį."
+
+#: options-generic.php:247
+msgid "HTML code to display after the image in the greeting box."
+msgstr "HTML kodas rodyti po sveikinimo lange įvaizdį."
+
+#: options-generic.php:251
+msgid "HTML code to display before the text in the greeting box."
+msgstr "HTML kodas rodomas prieš sveikinimo lange tekstą."
+
+#: options-generic.php:255
+msgid "HTML code to display after the text in the greeting box."
+msgstr "HTML kodas rodyti po sveikinimo lange tekstą."
+
+#: options-generic.php:264
+msgid "Upgrade Options"
+msgstr "Programos versijos naujinimo parinktys"
+
+#: options-generic.php:267
+msgid "Reset ALL Options"
+msgstr "Atstatyti Visi variantai"
+
+#: options-import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Visi jūsų dabartinę WP sveikinu langelis duomenys bus perrašyti importuojamų vertės. Ar jūs tikrai norite perrašyti visus nustatymus?"
+
+#: options-import-export.php:12
+msgid "Export"
+msgstr "Eksportas"
+
+#: options-import-export.php:15
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Ši funkcija bus iškelties visą savo WP Pozdrówcie langelis parinktis į failą."
+
+#: options-import-export.php:17
+msgid "Export Options"
+msgstr "Eksportavimo parinktys"
+
+#: options-import-export.php:21
+msgid "Import"
+msgstr "Importuoti"
+
+#: options-import-export.php:27
+msgid "This functionality will restore your entire WP Greet Box options from a file.<br/><strong>Make sure you've done an export and backup the exported file before you try this!</strong>"
+msgstr "Ši funkcija atkurti visą savo WP Pozdrówcie langelis variantų iš failo. <br/> <strong> Įsitikinkite, kad jūs padaryti eksporto ir atsarginės eksportuotą failą prieš bandant! </Strong>"
+
+#: options-import-export.php:33
+msgid "Import Options"
+msgstr "Importavimo parinkčių"
+
+#: wp-greet-box.php:52
+msgid "WP Greet Box requires WordPress 2.6 or newer. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a>"
+msgstr "WP Pozdrówcie langelis, reikia WordPress 2.6 arba naujesne versija. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\"> Prašome atnaujinti! </a>"
+
+#: wp-greet-box.php:411
+msgid "<div class=\"updated fade\"><p>You are using WordPress version "
+msgstr "<div class=\"updated fade\"> <p> Jūs naudojate WordPress versija"
+
+#: wp-greet-box.php:413
+msgid ".  WP Greet Box recommends that you use WordPress 2.6 or newer.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+msgstr ".WP Pozdrówcie langelis rekomenduoja, kad jūs naudojate WordPress 2.6 arba naujesne versija. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\"> Atnaujinkite! </a> </p> </div>"
+
+#: wp-greet-box.php:419
+msgid "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</p></div>"
+msgstr "<div class=\"updated fade\"> <p> WP Pozdrówcie langelis variantų buvo atnaujintas </p> </div>"
+
+#: wp-greet-box.php:662
+#: wp-greet-box.php:701
+msgid "Activate"
+msgstr "Aktyvinti"
+
+#: wp-greet-box.php:667
+#: wp-greet-box.php:706
+msgid "Deactivate"
+msgstr "Išjungti"
+
+#: wp-greet-box.php:681
+#: wp-greet-box.php:720
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: wp-greet-box.php:721
+msgid "Are you sure you want to delete?"
+msgstr "Ar jūs tikrai norite ištrinti?"
+
+#: wp-greet-box.php:721
+msgid "Delete"
+msgstr "Panaikinti"
+
+#: wp-greet-box.php:1051
+msgid "You were searching for"
+msgstr "Jūs ieškojo"
+
+#: wp-greet-box.php:1052
+msgid "Posts relating to"
+msgstr "Pranešimų, susijusių su"
+
+#: wp-greet-box.php:1054
+msgid "See posts relating to your search &#187;"
+msgstr "Pranešimų, susijusių su jūsų paiešką &#187;"
+
+#: wp-greet-box.php:1055
+msgid "&#171; Hide related posts"
+msgstr "&#171;  Slėpti Susijusios Žinutės"
+
+#: wp-greet-box.php:1077
+msgid "Powered by WP Greet Box"
+msgstr "Powered by WP Pozdrówcie langelis"
+
+#: wp-greet-box.php:1311
+msgid "Permanent Link to:"
+msgstr "Nuolatinė nuoroda į:"
+
+#: wp-greet-box.php:1494
+msgid "WP Greet Box options updated."
+msgstr "WP Greet Box galimybių atnaujinti."
+
+#: wp-greet-box.php:1498
+msgid "WP Greet Box options upgraded."
+msgstr "WP Greet Box galimybių modernizuotos."
+
+#: wp-greet-box.php:1502
+msgid "WP Greet Box options have been reset."
+msgstr "WP Greet Box variantų buvo atstatyti."
+
+#: wp-greet-box.php:1506
+msgid "WP Greet Box options imported."
+msgstr "WP Greet Box galimybių importuojami."
+
+#: wp-greet-box.php:1510
+msgid "WP Greet Box options import failed!"
+msgstr "WP Greet Box galimybių importo nepavyko!"
+
+#: wp-greet-box.php:1514
+msgid "Did not receive any file to be imported.  WP Greet Box options import failed!"
+msgstr "Negavo jokių failą būti importuojami. WP Pozdrówcie langelis galimybių importo nepavyko!"
+
+#: wp-greet-box.php:1518
+msgid "Found syntax errors in file being imported.  WP Greet Box options import failed!"
+msgstr "Rasta sintaksės klaidų faile yra importuojama. WP Pozdrówcie langelis galimybių importo nepavyko!"
+
+#: wp-greet-box.php:1607
+#: wp-greet-box.php:1643
+#: wp-greet-box.php:1674
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Toliau rodoma sveikinimo pranešimą, kol vartotojas pirmą kartą užsidaro (peržiūrėjimo lankytojas timeout, jei tikrinamas)"
+
+#: wp-greet-box.php:1608
+#: wp-greet-box.php:1644
+#: wp-greet-box.php:1676
+msgid "Visitor Timeout (minutes)"
+msgstr "Lankytojas Timeout (min)"
+
+#: wp-greet-box.php:1610
+#: wp-greet-box.php:1646
+#: wp-greet-box.php:1694
+msgid "Greeting Icon (optional)"
+msgstr "Sveikinimas Piktograma (nebūtina)"
+
+#: wp-greet-box.php:1612
+#: wp-greet-box.php:1648
+#: wp-greet-box.php:1696
+msgid "Greeting Icon Link (optional)"
+msgstr "Sveikinimas Ikona nuorodą (pasirinktina)"
+
+#: wp-greet-box.php:1614
+#: wp-greet-box.php:1650
+#: wp-greet-box.php:1698
+msgid "Greeting message"
+msgstr "Sveikinimas pranešimą"
+
+#: wp-greet-box.php:1618
+msgid "Add"
+msgstr "Papildyti"
+
+#: wp-greet-box.php:1619
+#: wp-greet-box.php:1654
+#: wp-greet-box.php:1702
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: wp-greet-box.php:1640
+msgid "Referrer URL"
+msgstr "URL adresas"
+
+#: wp-greet-box.php:1653
+#: wp-greet-box.php:1701
+msgid "Save"
+msgstr "Sutaupyti"
+
+#: wp-greet-box.php:1735
+msgid "WP Greet Box Options"
+msgstr "WP Pozdrówcie langelis parinktys"
+
+#: wp-greet-box.php:1737
+msgid "Greeting Messages"
+msgstr "Sveikinimas žinutės"
+
+#: wp-greet-box.php:1740
+msgid "Import/Export"
+msgstr "Importas / Eksportas"
+
+#: wp-greet-box.php:1741
+msgid "Documentation"
+msgstr "Dokumentacija"
+

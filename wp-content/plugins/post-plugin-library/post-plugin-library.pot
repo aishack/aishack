@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Rob Marsh, SJ
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/post-plugin-library\n"
+"POT-Creation-Date: 2008-09-13 11:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin_common_functions.php:120
+msgid "Available Tags"
+msgstr ""
+
+#: admin_common_functions.php:200
+msgid ""
+"This option takes you to my site where you can inform me of any issues \r\n"
+"\tyou are having with this plugin. It also passes along useful debugging "
+"information such as \r\n"
+"\twhich versions of WordPress, PHP, and MySQL you are using, as well as the "
+"current \r\n"
+"\tplugin settings."
+msgstr ""
+
+#: admin_common_functions.php:204
+msgid "File Report"
+msgstr ""
+
+#: admin_common_functions.php:235
+msgid "The plugin and all its settings have been completely removed"
+msgstr ""
+
+#: admin_common_functions.php:243
+msgid ""
+"Deactivating a plugin from the Plugins page usually leaves all the plugin's"
+"\r\n"
+"\tsettings intact. Often this is the desired behaviour as you can then "
+"choose to reactivate the plugin \r\n"
+"\tand all your settings will still be in place. If, however, you want to "
+"remove this plugin \r\n"
+"\tcompletely, along with all its settings and tables, you can do so by "
+"pressing the button below."
+msgstr ""
+
+#: admin_common_functions.php:249
+msgid "Remove Plugin"
+msgstr ""
+
+#: admin_common_functions.php:282
+msgid "Number of posts to show:"
+msgstr ""
+
+#: admin_common_functions.php:291
+msgid "Number of posts to skip:"
+msgstr ""
+
+#: admin_common_functions.php:300
+msgid "Omit the current post?"
+msgstr ""
+
+#: admin_common_functions.php:314
+msgid "Show just the current post?"
+msgstr ""
+
+#: admin_common_functions.php:328
+msgid "Show password-protected posts?"
+msgstr ""
+
+#: admin_common_functions.php:342
+msgid "Show static pages?"
+msgstr ""
+
+#: admin_common_functions.php:357
+msgid "Show attachments?"
+msgstr ""
+
+#: admin_common_functions.php:371
+msgid "Match the current post's author?"
+msgstr ""
+
+#: admin_common_functions.php:385
+msgid "Match the current post's category?"
+msgstr ""
+
+#: admin_common_functions.php:400
+msgid "Match the current post's tags?"
+msgstr ""
+
+#: admin_common_functions.php:415
+msgid "Default display if no matches:"
+msgstr ""
+
+#: admin_common_functions.php:424
+msgid "Show nothing if no matches?"
+msgstr ""
+
+#: admin_common_functions.php:438
+msgid "Text and codes before the list:"
+msgstr ""
+
+#: admin_common_functions.php:447
+msgid "Text and codes after the list:"
+msgstr ""
+
+#: admin_common_functions.php:456
+msgid "Output template:"
+msgstr ""
+
+#: admin_common_functions.php:465
+msgid "Text and codes between items:"
+msgstr ""
+
+#: admin_common_functions.php:475
+msgid ""
+"Match posts with tags:<br />(a,b matches posts with either tag, a+b only "
+"matches posts with both tags)"
+msgstr ""
+
+#: admin_common_functions.php:484
+msgid "Posts to exclude:"
+msgstr ""
+
+#: admin_common_functions.php:485 admin_common_functions.php:494
+msgid "comma-separated IDs"
+msgstr ""
+
+#: admin_common_functions.php:493
+msgid "Posts to include:"
+msgstr ""
+
+#: admin_common_functions.php:503
+msgid "Authors to exclude/include:"
+msgstr ""
+
+#: admin_common_functions.php:537
+msgid "Categories to exclude/include:"
+msgstr ""
+
+#: admin_common_functions.php:593
+msgid "Other plugins' tags to remove from snippet:"
+msgstr ""
+
+#: admin_common_functions.php:596
+msgid "opening"
+msgstr ""
+
+#: admin_common_functions.php:596
+msgid "closing"
+msgstr ""
+
+#: admin_common_functions.php:607
+msgid "Ignore posts :"
+msgstr ""
+
+#: admin_common_functions.php:635
+msgid "Display posts that are:"
+msgstr ""
+
+#: admin_common_functions.php:675
+msgid "Match posts by custom field:"
+msgstr ""
+
+#: admin_common_functions.php:706
+msgid "Output after post:"
+msgstr ""
+
+#: admin_common_functions.php:729
+msgid "Output in RSS feeds:"
+msgstr ""
+
+#: admin_common_functions.php:751
+msgid "Output in widget:"
+msgstr ""
+
+#: admin_common_functions.php:774
+msgid ""
+"Add Similar Posts to feeds? (DEPRECATED! This setting will be removed in the "
+"next major release - use the placement settings instead)"
+msgstr ""
+
+#: admin_common_functions.php:788
+msgid "Output in content:<br />(<em>via</em> special tags)"
+msgstr ""
+
+#: admin_common_functions.php:810
+msgid "Sort Output By:<br />leave blank for default order"
+msgstr ""
+
+#: admin_common_functions.php:878
+msgid "Select output by custom field:"
+msgstr ""
+
+#: admin_common_functions.php:911
+msgid "Maximum number of words to use for match:"
+msgstr ""
+
+#: admin_common_functions.php:920
+msgid "Extract terms to match by:"
+msgstr ""
+
+#: admin_common_functions.php:934
+msgid "Relative importance of:"
+msgstr ""
+
+#: admin_common_functions.php:949
+msgid "Look for manual links in custom field?"
+msgstr ""
+
+#: admin_common_functions.php:965
+msgid "Type of comment to show:"
+msgstr ""
+
+#: admin_common_functions.php:980
+msgid "Type of grouping:"
+msgstr ""
+
+#: admin_common_functions.php:996
+msgid "Group title template:"
+msgstr ""
+
+#: admin_common_functions.php:1005
+msgid "Omit comments by the post author?"
+msgstr ""
+
+#: admin_common_functions.php:1019
+msgid "Omit comments by registered users?"
+msgstr ""
+
+#: admin_common_functions.php:1033
+msgid "Order by date of last edit rather than date of creation?"
+msgstr ""
+
+#: admin_common_functions.php:1055
+msgid "Visit plugin homepage"
+msgstr ""
+
+#: output_tags.php:384
+msgid " at "
+msgstr ""
+
+#: output_tags.php:424
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#. Plugin Name of an extension
+msgid "Post-Plugin Library"
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://rmarsh.com/plugins/post-plugin-library/"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"Does nothing by itself but supplies common code for the <a "
+"href=\"http://rmarsh.com/plugins/similar-posts/\">Similar Posts</a>, <a "
+"href=\"http://rmarsh.com/plugins/recent-posts/\">Recent Posts</a>, <a "
+"href=\"http://rmarsh.com/plugins/random-posts/\">Random Posts</a>, and <a "
+"href=\"http://rmarsh.com/plugins/recent-comments/\">Recent Comments</a> "
+"plugins. Make sure you have the latest version of this plugin."
+msgstr ""
+
+#. Author of an extension
+msgid "Rob Marsh, SJ"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://rmarsh.com/"
+msgstr ""

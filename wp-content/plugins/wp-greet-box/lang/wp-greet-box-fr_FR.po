@@ -1,0 +1,461 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-greet-box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-24 00:22-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: The Alien <thealien@ramenetascience.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\\.\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: options-custom.php:6
+msgid "Active Greeting Messages"
+msgstr "Messages de Salutation actifs"
+
+#: options-custom.php:9
+#: options-custom.php:43
+msgid "Referrer"
+msgstr "Référant"
+
+#: options-custom.php:10
+#: options-custom.php:44
+msgid "Icon"
+msgstr "Icône"
+
+#: options-custom.php:11
+#: options-custom.php:45
+msgid "Message"
+msgstr "Message"
+
+#: options-custom.php:12
+#: options-custom.php:46
+msgid "Action"
+msgstr "Action"
+
+#: options-custom.php:16
+#: options-custom.php:50
+msgid "Add new greeting message"
+msgstr "Ajouter un message de salutation"
+
+#: options-custom.php:40
+msgid "Inactive Greeting Messages"
+msgstr "Messages de Salutation inactifs"
+
+#: options-exclude.php:15
+#: wp-greet-box.php:1835
+msgid "Exclusion Rules"
+msgstr "Règles d'Exclusions"
+
+#: options-exclude.php:16
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Lister les URLS référentes pour lesquelles vous ne voulez pas voir apparaître un message de salutation (séparez en allant à la ligne)"
+
+#: options-exclude.php:18
+msgid "Treat each line as a regular expression"
+msgstr "Traîtez chaque ligne comme une expression régulière"
+
+#: options-exclude.php:22
+#: options-generic.php:225
+msgid "Update Options"
+msgstr "Mettre à jour les options"
+
+#: options-generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Toutes vos options personnalisées seront réinitallsées. Etes-vous sure de vouloir tout réinitialiser ?"
+
+#: options-generic.php:97
+msgid "Hide"
+msgstr "Cacher"
+
+#: options-generic.php:102
+msgid "Show"
+msgstr "Montrer"
+
+#: options-generic.php:112
+msgid "Support this plugin!"
+msgstr "Supportez ce plugin!"
+
+#: options-generic.php:114
+msgid "Display \"Powered by WP Greet Box\" link at the bottom right corner of the greeting message"
+msgstr "Afficher le lien \"Powered by WP Greet Box\" dans le coin inférieur droit du message de salutation"
+
+#: options-generic.php:118
+msgid "Do not display \"Powered by WP Greet Box\" link.  I will <a href=\"http://omninoggin.com/donate\">donate</a> and/or write about this plugin"
+msgstr "Ne pas afficher le lien \"Powered by WP Greet Box\". Je ferais un <a href=\"http://omninoggin.com/donate\">don</a> et/ou écrirais à propos de ce plugin"
+
+#: options-generic.php:121
+#: wp-greet-box.php:1836
+msgid "General Configuration"
+msgstr "Configuration Générale"
+
+#: options-generic.php:123
+msgid "Enable rounded corners"
+msgstr "Activer angles arrondis"
+
+#: options-generic.php:125
+#: options-generic.php:130
+msgid "CSS3 browsers only"
+msgstr "Navigateurs CSS3 uniquement"
+
+#: options-generic.php:128
+msgid "Enable drop shadow"
+msgstr "Activer l'ombre portée"
+
+#: options-generic.php:133
+msgid "Automatically show greeting message on posts"
+msgstr "Montrer automatiquement les messages de salutations sur les articles"
+
+#: options-generic.php:135
+#: options-generic.php:140
+msgid "uncheck for manual insertion"
+msgstr "Décochez pour une insertion manuelle"
+
+#: options-generic.php:138
+msgid "Automatically show greeting message on pages"
+msgstr "Montrer automatiquement les messges de salutation sur les pages"
+
+#: options-generic.php:142
+msgid "Allow users to close the greeting message"
+msgstr "Autoriser les utilisateurs à fermer les messages de salutation"
+
+#: options-generic.php:143
+msgid "Have icon link open a new browser window (same as target=\"_blank\")"
+msgstr "Avoir un lien d'icône ouvrant une nouvelle page de navigateur (identique à target=\"_blank\")"
+
+#: options-generic.php:144
+msgid "Position greeting message"
+msgstr "Position du message de salutation"
+
+#: options-generic.php:146
+#: options-generic.php:158
+msgid "before"
+msgstr "avant"
+
+#: options-generic.php:147
+#: options-generic.php:159
+msgid "after"
+msgstr "après"
+
+#: options-generic.php:149
+msgid "the post/page."
+msgstr "l'article/la page."
+
+#: options-generic.php:150
+msgid "Related Post Options"
+msgstr "Options article concerné"
+
+#: options-generic.php:152
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Détecte les mots-clefs depuis les moteurs de recherche réferrants et affiche les articles concernés."
+
+#: options-generic.php:157
+msgid "Position related posts"
+msgstr "Postion des acticles concernés"
+
+#: options-generic.php:160
+msgid "the greeting message."
+msgstr "Le message de salutation."
+
+#: options-generic.php:163
+msgid "Show post excerpt in related posts"
+msgstr "Montre un extrait d'article dans les articles concernés"
+
+#: options-generic.php:166
+msgid "Expand related posts by default"
+msgstr "Développer les articles liés par défaut"
+
+#: options-generic.php:169
+msgid "Limit related posts to "
+msgstr "Limiter les articles liés à"
+
+#: options-generic.php:169
+msgid "posts"
+msgstr "articles"
+
+#: options-generic.php:171
+msgid "Limit related post excerpts to"
+msgstr "Limiter l'extrait de l'artice concerné à"
+
+#: options-generic.php:171
+msgid "words"
+msgstr "mots"
+
+#: options-generic.php:175
+#: options-generic.php:233
+msgid "Advanced Options"
+msgstr "Options Avancées"
+
+#: options-generic.php:177
+msgid "Enable compatibility with cache plugins"
+msgstr "Activer la compatibilité avec les plugins de cache"
+
+#: options-generic.php:177
+msgid "If checked, JavaScript will be used to load the greeting message"
+msgstr "Si coché, WP Greet Box utilisera le Javascript pour charger le message de salutation"
+
+#: options-generic.php:180
+msgid "Show greeting message to logged in users"
+msgstr "Montrer le message de salutation aux utilisateurs loggés"
+
+#: options-generic.php:183
+#: options-generic.php:186
+msgid "Enable"
+msgstr "Activer"
+
+#: options-generic.php:183
+msgid "uncheck to manually manage your own CSS"
+msgstr "Décochez pour gérer vous meme votre propre CSS"
+
+#: options-generic.php:186
+msgid "and"
+msgstr "et"
+
+#: options-generic.php:186
+msgid "uncheck to manually manage your own JS"
+msgstr "Décochez pour gérer manuellement votre propre JS"
+
+#: options-generic.php:189
+msgid "Enable debug mode"
+msgstr "Activer le mode de débogage"
+
+#: options-generic.php:189
+msgid "always display greeting messages, ignoring most rules, for debugging purposes"
+msgstr "Toujours afficher les messages d'accueil, en ignorant la plupart des règles, à des fins de débogage"
+
+#: options-generic.php:192
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "Votre URL RSS feed. (remplace [[rss-link]] dans les messages de salutation)"
+
+#: options-generic.php:196
+msgid "Your \"Subscribe via Email\" URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "Votre URL de \"Souscription par Email\" . (remplce [[email-link]] dans les messages de salutation)"
+
+#: options-generic.php:200
+msgid "HTML code to display before the greeting box."
+msgstr "Code HTML à afficher avant la boîte de salutation."
+
+#: options-generic.php:204
+msgid "HTML code to display after the greeting box."
+msgstr "Code HTML à afficher après la boîte de salutation."
+
+#: options-generic.php:208
+msgid "HTML code to display before the image in the greeting box."
+msgstr "Code HTML à afficher avant l'image de la boîte de salutation."
+
+#: options-generic.php:212
+msgid "HTML code to display after the image in the greeting box."
+msgstr "Code HTML à afficher après l'image de la boîte de salutation."
+
+#: options-generic.php:216
+msgid "HTML code to display before the text in the greeting box."
+msgstr "Code HTML à afficher avant le message dans la boite de salutation."
+
+#: options-generic.php:220
+msgid "HTML code to display after the text in the greeting box."
+msgstr "Code HTML à afficher après le texte dans la boite de salutation."
+
+#: options-generic.php:229
+msgid "Upgrade Options"
+msgstr "Options de Mises à Jour"
+
+#: options-generic.php:232
+msgid "Reset ALL Options"
+msgstr "Réinitialiser TOUTES les Options"
+
+#: options-import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Toutes vos options actuelles de WP Greet Box seront écrasées par les valeurs importées. Etes vous sure de vouloir écraser toutes les options ?"
+
+#: options-import-export.php:12
+msgid "Export"
+msgstr "Exporter"
+
+#: options-import-export.php:15
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Cette fonction sauvegardera toutes vos options WP Greet Box dans un fichier."
+
+#: options-import-export.php:17
+msgid "Export Options"
+msgstr "Exporter les Options"
+
+#: options-import-export.php:21
+msgid "Import"
+msgstr "Importer"
+
+#: options-import-export.php:27
+msgid "This functionality will restore your entire WP Greet Box options from a file.<br/><strong>Make sure you've done an export and backup the exported file before you try this!</strong>"
+msgstr "Cette fonction restaurera l'ensemble des options de WP Greet Box depuis un fichier.<br/><strong>Assurez-vous d'avoir effectué une export et une restauration du fichier exporté avant d'essayer ceci!</strong>"
+
+#: options-import-export.php:33
+msgid "Import Options"
+msgstr "Importer les Options"
+
+#: wp-greet-box.php:45
+msgid "WP Greet Box "
+msgstr "WP Greet Box "
+
+#: wp-greet-box.php:427
+msgid "<div class=\"updated fade\"><p>You are using WordPress version "
+msgstr "<div class=\"updated fade\"><p> Vous utilisez la version WordPress"
+
+#: wp-greet-box.php:429
+msgid ".  WP Greet Box recommends that you use WordPress 2.7 or newer.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+msgstr ".  WP Greet Box recommande d'utiliser WordPress 2.7 ou supérieur.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Mettez à jour!</a></p></div>"
+
+#: wp-greet-box.php:435
+msgid "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</p></div>"
+msgstr "<div class=\"updated fade\"><p>Les options de WP Greet Box ont été mises à jour.</p></div>"
+
+#: wp-greet-box.php:692
+#: wp-greet-box.php:731
+msgid "Activate"
+msgstr "Activer"
+
+#: wp-greet-box.php:697
+#: wp-greet-box.php:736
+msgid "Deactivate"
+msgstr "Désactiver"
+
+#: wp-greet-box.php:711
+#: wp-greet-box.php:750
+msgid "Edit"
+msgstr "Editer"
+
+#: wp-greet-box.php:751
+msgid "Are you sure you want to delete?"
+msgstr "Etes-vous sr de vouloir supprimer ?"
+
+#: wp-greet-box.php:751
+msgid "Delete"
+msgstr "Supprimer"
+
+#: wp-greet-box.php:1101
+msgid "You were searching for"
+msgstr "Vous recherchiez pour"
+
+#: wp-greet-box.php:1102
+msgid "Posts relating to"
+msgstr "Articles concernant "
+
+#: wp-greet-box.php:1104
+msgid "See posts relating to your search &#187;"
+msgstr "Voir les articles relatifs à votre recherche &#187;"
+
+#: wp-greet-box.php:1105
+msgid "&#171; Hide related posts"
+msgstr "&#171; Cacher les articles liés"
+
+#: wp-greet-box.php:1143
+msgid "Powered by"
+msgstr "Propulsé par"
+
+#: wp-greet-box.php:1143
+msgid "WP Greet Box"
+msgstr "WP Greet Box"
+
+#: wp-greet-box.php:1143
+msgid "WordPress Plugin"
+msgstr "Plugin WordPress"
+
+#: wp-greet-box.php:1389
+msgid "Permanent Link to:"
+msgstr "Lien permanent à"
+
+#: wp-greet-box.php:1591
+msgid "WP Greet Box options updated."
+msgstr "Options WP Greet Box misent à jour."
+
+#: wp-greet-box.php:1595
+msgid "WP Greet Box options upgraded."
+msgstr "Options WP Greet Box misent à jour."
+
+#: wp-greet-box.php:1599
+msgid "WP Greet Box options have been reset."
+msgstr "Les options de WP Greet Box on été réinitialisées."
+
+#: wp-greet-box.php:1603
+msgid "WP Greet Box options imported."
+msgstr "Options de WP Greet Box importées"
+
+#: wp-greet-box.php:1607
+msgid "WP Greet Box options import failed!"
+msgstr "L'import des Options de WP Greet Box a échoué!"
+
+#: wp-greet-box.php:1611
+msgid "Did not receive any file to be imported.  WP Greet Box options import failed!"
+msgstr "Aucun fichier n'a été trouvé pour être importé.  L'importation des options de WP Greet Box a échoué!"
+
+#: wp-greet-box.php:1615
+msgid "Found syntax errors in file being imported.  WP Greet Box options import failed!"
+msgstr "Des erreurs des syntaxe ont été trouvées dans le fichier importé. L'importation des options de WP Greet Box a échoué!"
+
+#: wp-greet-box.php:1704
+#: wp-greet-box.php:1740
+#: wp-greet-box.php:1771
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Continuer à afficher le message de salutation jusqu'à ce que l'utilisateur le ferme d'abord (dépasse le temps d'inactivité du visiteur si cochez)"
+
+#: wp-greet-box.php:1705
+#: wp-greet-box.php:1741
+#: wp-greet-box.php:1773
+msgid "Visitor Timeout (minutes)"
+msgstr "Temps d'inactivité du visiteur (minutes)"
+
+#: wp-greet-box.php:1707
+#: wp-greet-box.php:1743
+#: wp-greet-box.php:1791
+msgid "Greeting Icon (optional)"
+msgstr "Icône de Salutation (optionnelle)"
+
+#: wp-greet-box.php:1709
+#: wp-greet-box.php:1745
+#: wp-greet-box.php:1793
+msgid "Greeting Icon Link (optional)"
+msgstr "Lien de l'Icône de Salutation (optionel)"
+
+#: wp-greet-box.php:1711
+#: wp-greet-box.php:1747
+#: wp-greet-box.php:1795
+msgid "Greeting message"
+msgstr "Message de salutation"
+
+#: wp-greet-box.php:1715
+msgid "Add"
+msgstr "Ajouter"
+
+#: wp-greet-box.php:1716
+#: wp-greet-box.php:1751
+#: wp-greet-box.php:1799
+msgid "Cancel"
+msgstr "Annuler"
+
+#: wp-greet-box.php:1737
+msgid "Referrer URL"
+msgstr "URL du Référant"
+
+#: wp-greet-box.php:1750
+#: wp-greet-box.php:1798
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: wp-greet-box.php:1832
+msgid "WP Greet Box Options"
+msgstr "Options de WP Greet Box"
+
+#: wp-greet-box.php:1834
+msgid "Greeting Messages"
+msgstr "Messages de Salutation"
+
+#: wp-greet-box.php:1837
+msgid "Import/Export"
+msgstr "Importer/Exporter"
+
+#: wp-greet-box.php:1838
+msgid "Documentation"
+msgstr "Documentation"
+

@@ -1,0 +1,436 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-greet-box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-09 13:02-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: FatCow <zhr@tut.by>\n"
+"Language-Team: Marcis G. <by.marcis@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: options-custom.php:6
+msgid "Active Greeting Messages"
+msgstr "Актыўнае Greeting паведамленне"
+
+#: options-custom.php:9
+#: options-custom.php:43
+msgid "Referrer"
+msgstr "Referrer"
+
+#: options-custom.php:10
+#: options-custom.php:44
+msgid "Icon"
+msgstr "Абразок"
+
+#: options-custom.php:11
+#: options-custom.php:45
+msgid "Message"
+msgstr "Паведамленне"
+
+#: options-custom.php:12
+#: options-custom.php:46
+msgid "Action"
+msgstr "Дзеянне"
+
+#: options-custom.php:16
+#: options-custom.php:50
+msgid "Add new greeting message"
+msgstr "Дадаць новае прывітанне"
+
+#: options-custom.php:40
+msgid "Inactive Greeting Messages"
+msgstr "Неактыўныя прывітанне"
+
+#: options-exclude.php:15
+#: wp-greet-box.php:1738
+msgid "Exclusion Rules"
+msgstr "Кіравала выключэнні"
+
+#: options-exclude.php:16
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Спіс рэферал-URL, якія не павінны адлюстроўваць прывітанне."
+
+#: options-exclude.php:18
+msgid "Treat each line as a regular expression"
+msgstr "Чытаць кожную лінію як рэгулярны выраз"
+
+#: options-exclude.php:22
+#: options-generic.php:260
+msgid "Update Options"
+msgstr "Абнавіць налады"
+
+#: options-generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Усе вашы паведамленні таксама будуць скінуты. Вы ўпэўнены, што жадаеце зрабіць гэта?"
+
+#: options-generic.php:133
+msgid "Hide"
+msgstr "Схаваць"
+
+#: options-generic.php:138
+msgid "Show"
+msgstr "Паказаць"
+
+#: options-generic.php:163
+msgid "Support this plugin!"
+msgstr "Падтрымаць гэту ўбудову!"
+
+#: options-generic.php:165
+msgid "Display \"Powered by WP Greet Box\" link at the bottom right corner of the greeting message"
+msgstr "Паказваць спасылку \"Powered by WP Greet Box\" у правым ніжнім куце акна прывітання "
+
+#: options-generic.php:169
+msgid "Do not display \"Powered by WP Greet Box\" link.  I will <a href=\"http://omninoggin.com/donate\">donate</a> and/or write about this plugin"
+msgstr "Не адлюстроўваць спасылку \"Powered by WP Greet Box\".  Я <a href=\"http://omninoggin.com/donate\">ахвярую</a> і/ці напішу пра гэту ўбудову"
+
+#: options-generic.php:172
+#: wp-greet-box.php:1739
+msgid "General Configuration"
+msgstr "Галоўныя налады"
+
+#: options-generic.php:174
+msgid "Automatically show greeting message on posts"
+msgstr "Аўтаматычна паказваць віншавальныя пасланні ў пасце "
+
+#: options-generic.php:176
+#: options-generic.php:181
+msgid "uncheck for"
+msgstr "зняць адзнаку для"
+
+#: options-generic.php:176
+#: options-generic.php:181
+msgid "manual insertion"
+msgstr "ручная ўстаўка"
+
+#: options-generic.php:179
+msgid "Automatically show greeting message on pages"
+msgstr "Аўтаматычна паказваць віншавальныя пасланні на старонках"
+
+#: options-generic.php:183
+msgid "Allow users to close the greeting message"
+msgstr "Дазваляць карыстачам зачыняць віншавальнае паведамленне"
+
+#: options-generic.php:184
+msgid "Have icon link open a new browser window (same as target=\"_blank\")"
+msgstr "Па націску на значокоткроется новае акно браўзара (гэтак жа, як target=\"_blank\")"
+
+#: options-generic.php:185
+msgid "Position greeting message"
+msgstr "Размяшчэнне віншавання"
+
+#: options-generic.php:187
+#: options-generic.php:199
+msgid "before"
+msgstr "да"
+
+#: options-generic.php:188
+#: options-generic.php:200
+msgid "after"
+msgstr "пасля"
+
+#: options-generic.php:190
+msgid "the post/page."
+msgstr "паста/старонкі"
+
+#: options-generic.php:191
+msgid "Related Post Options"
+msgstr "Налады Related Post"
+
+#: options-generic.php:193
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Вызначыць ключавыя словы з рефереров  пошукавых сістэм і адлюстроўваць адпаведныя пасады"
+
+#: options-generic.php:198
+msgid "Position related posts"
+msgstr "Пазіцыя адпаведных пастоў"
+
+#: options-generic.php:201
+msgid "the greeting message."
+msgstr "віншаванне (я)."
+
+#: options-generic.php:204
+msgid "Show post excerpt in related posts"
+msgstr "Паказваць выняткі ў злучаных пастах"
+
+#: options-generic.php:207
+msgid "Expand related posts by default"
+msgstr "Разгортваць злучаныя пасты па змаўчанні"
+
+#: options-generic.php:210
+msgid "Limit related posts to "
+msgstr "Абмежаваць злучаныя пасты"
+
+#: options-generic.php:210
+msgid "posts"
+msgstr "пастоў"
+
+#: options-generic.php:212
+msgid "Limit related post excerpts to"
+msgstr "Абмежаваць вытрымку злучаных пастоў да"
+
+#: options-generic.php:212
+msgid "words"
+msgstr "слоў"
+
+#: options-generic.php:216
+#: options-generic.php:268
+msgid "Advanced Options"
+msgstr "Пашыраныя налады"
+
+#: options-generic.php:218
+msgid "Enable compatibility with cache plugins"
+msgstr "Уключыць сумяшчальнасць убудовы з кэшам"
+
+#: options-generic.php:218
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "Калі адзначана, WP Greet Box будзе выкарыстоўваць Javascript для загрузкі віншавальных паведамленняў"
+
+#: options-generic.php:221
+#: options-generic.php:224
+msgid "Enable"
+msgstr "Уключыць"
+
+#: options-generic.php:221
+msgid "uncheck to manually manage your own CSS"
+msgstr "зняць для ручной налады CSS"
+
+#: options-generic.php:224
+msgid "and"
+msgstr "і"
+
+#: options-generic.php:224
+msgid "uncheck to manually manage your own JS"
+msgstr "зняць для ручной налады JS"
+
+#: options-generic.php:227
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "Ваш URL RSS-канала. (замяняе [[RSS-спасылкі]] у віншавальных паведамленнях)"
+
+#: options-generic.php:231
+msgid "Your \"Subscribe via Email\" URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "Ваша спасылка на \"Падпіска па Email\". (замяняе [[email-link]] у віншаваннях)"
+
+#: options-generic.php:235
+msgid "HTML code to display before the greeting box."
+msgstr "HTML-код, які адлюстроўваецца да віншавання."
+
+#: options-generic.php:239
+msgid "HTML code to display after the greeting box."
+msgstr "HTML-код, які адлюстроўваецца пасля віншавання."
+
+#: options-generic.php:243
+msgid "HTML code to display before the image in the greeting box."
+msgstr "HTML-код, які адлюстроўваецца да малюнка ў віншаванні."
+
+#: options-generic.php:247
+msgid "HTML code to display after the image in the greeting box."
+msgstr "HTML-код, які адлюстроўваецца пасля малюнка ў віншаванні."
+
+#: options-generic.php:251
+msgid "HTML code to display before the text in the greeting box."
+msgstr "HTML-код, які адлюстроўваецца да тэксту ў віншаванні."
+
+#: options-generic.php:255
+msgid "HTML code to display after the text in the greeting box."
+msgstr "HTML-код, які адлюстроўваецца да тэксту ў віншаванні."
+
+#: options-generic.php:264
+msgid "Upgrade Options"
+msgstr "Абнавіць налады"
+
+#: options-generic.php:267
+msgid "Reset ALL Options"
+msgstr "Скінуць УСЕ налады"
+
+#: options-import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Усе вашы бягучыя налады WP Greet Box будуць перазапісаны на імпартуемыя. Вы ўпэўнены, што жадаеце перапісаць усе налады?"
+
+#: options-import-export.php:12
+msgid "Export"
+msgstr "Экспарт"
+
+#: options-import-export.php:15
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Гэта функцыя зробіць здымак вашых налад WP Greet Box у файл."
+
+#: options-import-export.php:17
+msgid "Export Options"
+msgstr "Экспарт налад"
+
+#: options-import-export.php:21
+msgid "Import"
+msgstr "Імпарт"
+
+#: options-import-export.php:27
+msgid "This functionality will restore your entire WP Greet Box options from a file.<br/><strong>Make sure you've done an export and backup the exported file before you try this!</strong>"
+msgstr "Гэта функцыя зробіць аднаўленне вашых налад WP Greet Box з файла.<br/><strong>Пераканаецеся, што вы зрабілі экспарт і рэзервовае капіяванне экспартуемага файла, перш чым вы паспрабуеце гэта зрабіць!</strong>"
+
+#: options-import-export.php:33
+msgid "Import Options"
+msgstr "Імпарт налад"
+
+#: wp-greet-box.php:52
+msgid "WP Greet Box requires WordPress 2.6 or newer. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a>"
+msgstr "WP Greet Box патрабуе WordPress 2.6 ці навей. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Абновіцеся!</a>"
+
+#: wp-greet-box.php:411
+msgid "<div class=\"updated fade\"><p>You are using WordPress version "
+msgstr "<div class=\"updated fade\"><p>Вы выкарыстоўваеце версію WordPress"
+
+#: wp-greet-box.php:413
+msgid ".  WP Greet Box recommends that you use WordPress 2.6 or newer.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+msgstr ". WP Greet Box патрабуе WordPress 2.6 ці навей. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Абновіцеся!</a></p></div>"
+
+#: wp-greet-box.php:419
+msgid "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</p></div>"
+msgstr "<div class=\"updated fade\"><p>Налады WP Greet Box былі абноўлены.</p></div>"
+
+#: wp-greet-box.php:662
+#: wp-greet-box.php:701
+msgid "Activate"
+msgstr "Актывацыя"
+
+#: wp-greet-box.php:667
+#: wp-greet-box.php:706
+msgid "Deactivate"
+msgstr "Дэактывацыя"
+
+#: wp-greet-box.php:681
+#: wp-greet-box.php:720
+msgid "Edit"
+msgstr "Рэдагаваць"
+
+#: wp-greet-box.php:721
+msgid "Are you sure you want to delete?"
+msgstr "Вы ўпэўнены, што жадаеце выдаліць?"
+
+#: wp-greet-box.php:721
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: wp-greet-box.php:1051
+msgid "You were searching for"
+msgstr "Вы шукалі"
+
+#: wp-greet-box.php:1052
+msgid "Posts relating to"
+msgstr "Пост злучаны з"
+
+#: wp-greet-box.php:1054
+msgid "See posts relating to your search &#187;"
+msgstr "Гл. пасты, злучаныя з пошукам &#187;"
+
+#: wp-greet-box.php:1055
+msgid "&#171; Hide related posts"
+msgstr "&#171; Схаваць злучаныя пасты"
+
+#: wp-greet-box.php:1077
+msgid "Powered by WP Greet Box"
+msgstr "Powered by WP Greet Box"
+
+#: wp-greet-box.php:1311
+msgid "Permanent Link to:"
+msgstr "Сталая спасылка на:"
+
+#: wp-greet-box.php:1494
+msgid "WP Greet Box options updated."
+msgstr "Налады WP Greet Box абноўлены."
+
+#: wp-greet-box.php:1498
+msgid "WP Greet Box options upgraded."
+msgstr "Налады WP Greet Box абноўлены."
+
+#: wp-greet-box.php:1502
+msgid "WP Greet Box options have been reset."
+msgstr "Налады WP Greet Box скінуты."
+
+#: wp-greet-box.php:1506
+msgid "WP Greet Box options imported."
+msgstr "Налады WP Greet Box імпартаваны."
+
+#: wp-greet-box.php:1510
+msgid "WP Greet Box options import failed!"
+msgstr "Імпарт налад WP Greet Box завершаны няўдала."
+
+#: wp-greet-box.php:1514
+msgid "Did not receive any file to be imported.  WP Greet Box options import failed!"
+msgstr "Не атрыманы файлы, якія павінны быць імпартаваны. Памылка імпарту налад WP Greet Box!"
+
+#: wp-greet-box.php:1518
+msgid "Found syntax errors in file being imported.  WP Greet Box options import failed!"
+msgstr "Знойдзены памылкі ў сінтаксісе файла імпарту. Памылка імпарту налад WP Greet Box!"
+
+#: wp-greet-box.php:1607
+#: wp-greet-box.php:1643
+#: wp-greet-box.php:1674
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Працягвайце паказваць прывітанне датуль, пакуль першы карыстач не зачыніць яго (таймаўт перавызначае наведвальнік пры праверцы)"
+
+#: wp-greet-box.php:1608
+#: wp-greet-box.php:1644
+#: wp-greet-box.php:1676
+msgid "Visitor Timeout (minutes)"
+msgstr "Таймаўт госця (у хвілінах)"
+
+#: wp-greet-box.php:1610
+#: wp-greet-box.php:1646
+#: wp-greet-box.php:1694
+msgid "Greeting Icon (optional)"
+msgstr "Віншавальны абразок (апцыянальна)"
+
+#: wp-greet-box.php:1612
+#: wp-greet-box.php:1648
+#: wp-greet-box.php:1696
+msgid "Greeting Icon Link (optional)"
+msgstr "Спасылка на віншавальны абразок (апцыянальна)"
+
+#: wp-greet-box.php:1614
+#: wp-greet-box.php:1650
+#: wp-greet-box.php:1698
+msgid "Greeting message"
+msgstr "Віншавальнае паведамленне"
+
+#: wp-greet-box.php:1618
+msgid "Add"
+msgstr "Дадаць"
+
+#: wp-greet-box.php:1619
+#: wp-greet-box.php:1654
+#: wp-greet-box.php:1702
+msgid "Cancel"
+msgstr "Адмена"
+
+#: wp-greet-box.php:1640
+msgid "Referrer URL"
+msgstr "Referrer URL"
+
+#: wp-greet-box.php:1653
+#: wp-greet-box.php:1701
+msgid "Save"
+msgstr "Захаваць"
+
+#: wp-greet-box.php:1735
+msgid "WP Greet Box Options"
+msgstr "Налады WP Greet Box"
+
+#: wp-greet-box.php:1737
+msgid "Greeting Messages"
+msgstr "Віншавальныя паведамленні"
+
+#: wp-greet-box.php:1740
+msgid "Import/Export"
+msgstr "Імпарт/Экспарт"
+
+#: wp-greet-box.php:1741
+msgid "Documentation"
+msgstr "Дакументацыя"
+

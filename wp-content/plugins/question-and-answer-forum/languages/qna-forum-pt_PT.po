@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Question and Answer Forum v2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-06-04 20:04-0000\n"
+"Last-Translator: \n"
+"Language-Team: http://www.infoservicos.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: PORTUGAL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ qna-forum
+#: addquestion.php:15
+msgid "You must be logged in to ask a question"
+msgstr "Deve ter sessão iniciada para perguntar."
+
+#@ qna-forum
+#: addquestion.php:19
+msgid "Invalid category - the category must be chosed from the drop down list"
+msgstr "Categoría inválida. - Deve selecionar uma categoria a partir do menu"
+
+#@ qna-forum
+#: addquestion.php:22
+#: addquestion.php:31
+#: addquestion.php:33
+#: askquestionform.php:29
+#: coreform.php:6
+#: coreform.php:7
+msgid "Enter Question Title"
+msgstr "Título da pregunta"
+
+#@ qna-forum
+#: addquestion.php:23
+msgid "You must add a question title"
+msgstr "Deve adicionar um título para a a pergunta"
+
+#@ qna-forum
+#: addquestion.php:25
+#: addquestion.php:38
+#: addquestion.php:40
+#: askquestionform.php:36
+#: coreform.php:8
+msgid "Enter Your Question Here"
+msgstr "Introduza a sua pergunta aqui"
+
+#@ qna-forum
+#: addquestion.php:26
+msgid "You must add a question"
+msgstr "Deve adicionar uma pergunta"
+
+#@ qna-forum
+#: addquestion.php:62
+msgid "Question awaiting moderation"
+msgstr "A sua pergunta aguarda moderação"
+
+#@ qna-forum
+#: addquestion.php:71
+msgid "error occured in asking question"
+msgstr "Ocorreu um erro ao colocar a sua pergunta..."
+
+#@ qna-forum
+#: addquestion.php:76
+msgid "Question added successfuly"
+msgstr "A sua pergunta foi adicionada com sucesso"
+
+#@ qna-forum
+#: addquestion.php:79
+msgid "A new question has been asked, answer it by visiting "
+msgstr "Foi publicada uma nova questão. Responda visitando "
+
+#@ qna-forum
+#: addquestion.php:80
+msgid "The question is:"
+msgstr "A pergunta é:"
+
+#@ qna-forum
+#: askquestionform.php:5
+msgid "Please login to ask a question"
+msgstr "Por favor, inicíe sessão para poder colocar uma pergunta"
+
+#@ qna-forum
+#: askquestionform.php:51
+msgid "Use the form below to ask a question"
+msgstr " Utilize o seguinte formulário para colocar uma pergunta"
+
+#@ qna-forum
+#: coreform.php:11
+msgid "Category"
+msgstr "Categoría"
+
+#@ qna-forum
+#: coreform.php:29
+msgid "Ask"
+msgstr "Pergunta"
+
+#@ default
+#: options-page.php:4
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Não tem permissão para aceder a esta página."
+
+#@ qna-forum
+#: querys.php:86
+#, php-format
+msgid "%d answer"
+msgid_plural "%d answers"
+msgstr[0] "%d resposta"
+msgstr[1] "%d respostas"
+
+#@ qna-forum
+#: querys.php:87
+msgid "Answer"
+msgstr "Responder"
+
+#@ qna-forum
+#: querys.php:93
+msgid "View All Questions"
+msgstr "Ver todas as perguntas"
+
+#@ qna-forum
+#@ default
+#: questions.php:54
+#: questions.php:64
+msgid "Questions"
+msgstr "Perguntas"
+
+#@ qna-forum
+#: questions.php:55
+msgid "Question"
+msgstr "Pergunta"
+
+#@ qna-forum
+#: questions.php:56
+msgid "New Question"
+msgstr "Nova  pergunta"
+
+#@ qna-forum
+#: questions.php:57
+msgid "Ask new question"
+msgstr "Fazer outra pergunta"
+
+#@ qna-forum
+#: questions.php:58
+msgid "change question"
+msgstr "Mudar pergunta"
+
+#@ qna-forum
+#: questions.php:59
+msgid "new question"
+msgstr "nova pergunta"
+
+#@ qna-forum
+#: questions.php:60
+msgid "view question"
+msgstr "Ver a pergunta"
+
+#@ qna-forum
+#: questions.php:61
+msgid "search question"
+msgstr "procurar pergunta"
+
+#@ qna-forum
+#: questions.php:62
+msgid "No Questions Found"
+msgstr "Não foram encontradas perguntas"
+
+#@ qna-forum
+#: questions.php:63
+msgid "No questions found in trash"
+msgstr "Não foram encontradas perguntas no lixo"
+
+#@ default
+#: qusers.php:17
+msgid "Users"
+msgstr "Utilizadores"
+
+#@ default
+#: qusers.php:18
+msgid "User"
+msgstr "Utilizador"
+
+#@ default
+#: qusers.php:19
+msgid "Add User"
+msgstr "Adicionar Utilizador"
+
+#@ default
+#: qusers.php:20
+msgid "Update Profile"
+msgstr "Atualizar perfil"
+
+#@ default
+#: qusers.php:21
+msgid "View Profile"
+msgstr "Ver perfil"
+

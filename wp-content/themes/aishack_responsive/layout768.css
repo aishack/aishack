@@ -1,0 +1,186 @@
+@media only screen and (min-width: 768px) {
+
+/* TOP LEVEL LAYOUT
+   This includes stuff like laying out the major
+   divs (#main, #footer, etc)
+*/
+
+/** main content **/
+#main {
+    width: 768px;
+    padding-top: 0px;
+    margin-top: 0px;
+    overflow: visible;
+}
+
+#main #container {
+    width: 445px;
+    float: left;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+
+#main #container #content {
+    width: 425px;
+}
+
+/* the sidebar */
+#main #primary {
+    width: 275px;
+    padding-top:0px;
+    padding-left:0px;
+    border-style:none;
+    margin-top:0px;
+    overflow:visible;
+    float: right;
+    clear: none;
+}
+
+
+/** The footer **/
+#footer {
+}
+
+#footer #subsidiary {
+    width: 768px;
+}
+
+#footer #siteinfo {
+    width: 768px;
+}
+
+/** The header **/
+#header {
+    height: 89px;
+}
+
+#header #branding {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 14px;
+    width: 768px;
+}
+
+#header #blog-title {
+    height: 54px;
+    float: left;
+    width: 140px;
+}
+
+#header #blog-title span a {
+    display: block;
+    width: 150px;
+    height: 50px;
+}
+
+#header #blog-description {
+    display: none;
+}
+
+#header #topnav {
+    float: right;
+    padding-top: 18px;
+}
+
+#header #topnav li
+{
+    float:left;
+    list-style:none;
+    margin-right:10px;
+}
+
+#header #topnav li > a {
+    padding:8px;
+    font-size:1em;
+}
+#header #topnav li.searchitem {
+    display: block;
+}
+
+#header #topnav input#s {
+    padding: 6px 12px;
+    height:12px;
+    line-height:100%;
+    width:125px;
+    padding-right:25px;
+}
+
+#header #topnav #searchsubmit {
+    display:none;
+}
+
+#header #crumbs {
+    clear:both;
+    margin:0 auto;
+    height:33px;
+    width:940px;
+    padding-top:5px;
+    padding-left:50px;
+}
+
+#header #crumbs ul {
+    float:left;
+    height:22px;
+    margin-bottom:0px;
+}
+
+#header #crumbs li {
+    padding-left:5px;
+    padding-right:20px;
+    height:22px;
+}
+
+#header #crumbs li.home {
+    padding-right:10px;
+}
+
+#header #crumbs li.lastcrumb {
+    padding-right:10px;
+}
+
+#header #crumbs li.home a {
+    text-indent:-9999px;
+    width:16px;
+    height:16px;
+    display:block;
+    margin-top:2px;
+}
+
+#header #crumbs li.home a span {
+    display:none;
+}
+
+#additional #downloads
+{
+    width:95%;
+    padding:10px;
+    float:left;
+}
+
+#additional #summary
+{
+    padding:10px;
+    float:left;
+    width:95%;
+}
+
+#content .post-image-featured {
+    margin-top:-10px;
+    margin-left:-10px;
+    width: 445px;
+}
+
+#featured ul {
+    margin-top: 3px;
+    margin-left: 0px;
+}
+
+#featured #controls {
+    top:5px;
+}
+
+
+}
+
+

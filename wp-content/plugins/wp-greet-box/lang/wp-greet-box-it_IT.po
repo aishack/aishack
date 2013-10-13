@@ -1,0 +1,543 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Greet Box in italiano\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-10 15:21-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Gianni Diurno (aka gidibao) <gidibao[at]gmail[dot]com>\n"
+"Language-Team: Gianni Diurno | gidibao.net <gidibao[at]gmail[dot]com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/common.class.php:76
+#, php-format
+msgid "You are using WordPress version %s."
+msgstr "Stai utilizzando la versione %s di WordPress."
+
+#: includes/common.class.php:77
+#, php-format
+msgid "%s recommends that you use WordPress %s or newer."
+msgstr "%s si raccomenda l'utilizzo di WordPress %s o superiore."
+
+#: includes/common.class.php:80
+#, php-format
+msgid "%sPlease update!%s"
+msgstr "%sAggiorna!%s"
+
+#: includes/common.class.php:87
+#, php-format
+msgid "%s options has been updated."
+msgstr "%s le opzioni sono state aggiornate."
+
+#: includes/common.class.php:93
+#, php-format
+msgid "%s options has been upgraded."
+msgstr "%s le opzioni sono state aggiornate alla superiore."
+
+#: includes/common.class.php:100
+msgid "Some option settings were missing (possibly from plugin upgrade)."
+msgstr "Mancano alcune opzioni di impostazione (causa aggiornamento)."
+
+#: includes/common.class.php:105
+#, php-format
+msgid "%s options has been reset."
+msgstr "%s le opzioni sono state ripristinate."
+
+#: includes/common.class.php:111
+#, php-format
+msgid "%s cache has been cleared."
+msgstr "%s la cache é stata svuotata."
+
+#: includes/common.class.php:117
+#, php-format
+msgid "%s options imported."
+msgstr "%s le opzioni sono state importate."
+
+#: includes/common.class.php:123
+#, php-format
+msgid "%s options import failed!"
+msgstr "%s la importazione delle opzioni é fallita!"
+
+#: includes/common.class.php:129
+#, php-format
+msgid "Did not receive any file to be imported. %s options import failed!"
+msgstr "Non é stato ricevuto alcun file che possa essere importato. %s l'importazione delle opzioni é fallita!"
+
+#: includes/common.class.php:135
+#, php-format
+msgid "Found syntax errors in file being imported. %s options import failed!"
+msgstr "E' stato riscontrato un errore di sintassi nel file di importazione. %s l'importazione delle opzioni di WP Greet Box non é avvenuta!"
+
+#: includes/wp-greet-box.class.php:171
+msgid "You were searching for"
+msgstr "Stavi cercando"
+
+#: includes/wp-greet-box.class.php:172
+msgid "Posts relating to"
+msgstr "Articoli correlati per"
+
+#: includes/wp-greet-box.class.php:174
+msgid "See posts relating to your search"
+msgstr "Visualizza articoli correlati alla tua ricerca"
+
+#: includes/wp-greet-box.class.php:175
+msgid "Hide related posts"
+msgstr "Nascondi articoli correlati"
+
+#: includes/wp-greet-box.class.php:213
+#, php-format
+msgid "Powered by %sWP Greet Box%s %sWordPress Plugin%s"
+msgstr "Powered by %sWP Greet Box%s %sWordPress Plugin%s"
+
+#: includes/wp-greet-box.class.php:448
+msgid "Permanent Link to:"
+msgstr "Permanent Link a:"
+
+#: includes/admin/custom-add-form.php:12
+#: includes/admin/custom-edit-form.php:6
+msgid "Referrer URL"
+msgstr "URL referente"
+
+#: includes/admin/custom-add-form.php:14
+#: includes/admin/custom-edit-form-default.php:16
+#: includes/admin/custom-edit-form.php:8
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Mostra il messaggio di benvenuto sino a quando l'utente non lo chiuderà (se attivo, escluderà il timeout visitatore)"
+
+#: includes/admin/custom-add-form.php:15
+#: includes/admin/custom-edit-form-default.php:17
+#: includes/admin/custom-edit-form.php:9
+msgid "Visitor Timeout (minutes)"
+msgstr "Timeout visitatore (minuti)"
+
+#: includes/admin/custom-add-form.php:17
+#: includes/admin/custom-edit-form-default.php:20
+#: includes/admin/custom-edit-form.php:11
+msgid "Greeting Icon (optional)"
+msgstr "Icona di benvenuto (facoltativa)"
+
+#: includes/admin/custom-add-form.php:19
+#: includes/admin/custom-edit-form-default.php:22
+#: includes/admin/custom-edit-form.php:13
+msgid "Greeting Icon Link (optional)"
+msgstr "Link icona di benvenuto (facoltativo)"
+
+#: includes/admin/custom-add-form.php:21
+#: includes/admin/custom-edit-form-default.php:24
+#: includes/admin/custom-edit-form.php:15
+msgid "Greeting message"
+msgstr "Messaggio di benvenuto"
+
+#: includes/admin/custom-add-form.php:25
+msgid "Add"
+msgstr "Aggiungi"
+
+#: includes/admin/custom-add-form.php:26
+#: includes/admin/custom-edit-form-default.php:28
+#: includes/admin/custom-edit-form.php:20
+msgid "Cancel"
+msgstr "Annulla"
+
+#: includes/admin/custom-default-row.php:12
+#: includes/admin/custom-message-row.php:4
+msgid "Activate"
+msgstr "Attiva"
+
+#: includes/admin/custom-default-row.php:16
+#: includes/admin/custom-message-row.php:8
+msgid "Deactivate"
+msgstr "Disattiva"
+
+#: includes/admin/custom-default-row.php:25
+msgid "RSS icon"
+msgstr "Icona RSS"
+
+#: includes/admin/custom-default-row.php:29
+#: includes/admin/custom-message-row.php:21
+msgid "loading..."
+msgstr "loading..."
+
+#: includes/admin/custom-default-row.php:31
+#: includes/admin/custom-message-row.php:23
+msgid "Edit"
+msgstr "Modifica"
+
+#: includes/admin/custom-edit-form-default.php:27
+#: includes/admin/custom-edit-form.php:19
+msgid "Save"
+msgstr "Salva"
+
+#: includes/admin/custom-message-row.php:24
+msgid "Are you sure you want to delete?"
+msgstr "Sei certo di volere procedere?"
+
+#: includes/admin/custom-message-row.php:24
+msgid "Delete"
+msgstr "Cancella"
+
+#: includes/admin/custom.php:4
+msgid "Active Greeting Messages"
+msgstr "Attiva i messaggi di benvenuto"
+
+#: includes/admin/custom.php:7
+#: includes/admin/custom.php:41
+msgid "Referrer"
+msgstr "Referente"
+
+#: includes/admin/custom.php:8
+#: includes/admin/custom.php:42
+msgid "Icon"
+msgstr "Icona"
+
+#: includes/admin/custom.php:9
+#: includes/admin/custom.php:43
+msgid "Message"
+msgstr "Messaggio"
+
+#: includes/admin/custom.php:10
+#: includes/admin/custom.php:44
+msgid "Action"
+msgstr "Azione"
+
+#: includes/admin/custom.php:14
+#: includes/admin/custom.php:48
+msgid "Add new greeting message"
+msgstr "Aggiungi un nuovo messaggio di benvenuto"
+
+#: includes/admin/custom.php:38
+msgid "Inactive Greeting Messages"
+msgstr "Messaggi di benvenuto inattivi"
+
+#: includes/admin/exclude.php:3
+#: includes/admin/header.php:6
+msgid "Exclusion Rules"
+msgstr "Regole di esclusione"
+
+#: includes/admin/exclude.php:6
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Lista degli URL referenti per i quali non desideri sia mostrato un messaggio di benvenuto (uno per linea)."
+
+#: includes/admin/exclude.php:11
+msgid "Treat each line as a regular expression"
+msgstr "Considera ogni linea come espressione regolare"
+
+#: includes/admin/exclude.php:16
+#: includes/admin/generic.php:267
+msgid "Update Options"
+msgstr "Aggiorna le opzioni"
+
+#: includes/admin/generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Tutti i messaggi personalizzati verranno azzerati. Sei certo di volere ripristinare tutte le impostazioni?"
+
+#: includes/admin/generic.php:90
+msgid "Hide"
+msgstr "Nascondi"
+
+#: includes/admin/generic.php:95
+msgid "Show"
+msgstr "Mostra"
+
+#: includes/admin/generic.php:103
+msgid "Support this plugin!"
+msgstr "Sostieni questo plugin!"
+
+#: includes/admin/generic.php:106
+msgid "Display 'Powered by WP Greet Box' link at the bottom right corner of the greeting message"
+msgstr "Mostra in basso alla destra del messaggio di benvenuto il link 'Powered by WP Greet Box'"
+
+#: includes/admin/generic.php:111
+#, php-format
+msgid "Do not display 'Powered by WP Greet Box' link.  I will %sdonate%s and/or write about this plugin"
+msgstr "Non mostrare 'Powered by WP Greet Box'.  Effettuerò una %sdonazione%s e/o scriverò un articolo sul plugin"
+
+#: includes/admin/generic.php:115
+#: includes/admin/header.php:8
+msgid "General Configuration"
+msgstr "Configurazione generale"
+
+#: includes/admin/generic.php:118
+msgid "Enable rounded corners"
+msgstr "Abilita angoli arrotondati"
+
+#: includes/admin/generic.php:120
+#: includes/admin/generic.php:126
+msgid "CSS3 browsers only"
+msgstr "solo per browser CSS3"
+
+#: includes/admin/generic.php:124
+msgid "Enable drop shadow"
+msgstr "Attiva effetto ombratura"
+
+#: includes/admin/generic.php:130
+msgid "Automatically show greeting message on posts"
+msgstr "Mostra in automatico il messaggio di benvenuto negli articoli"
+
+#: includes/admin/generic.php:132
+#: includes/admin/generic.php:138
+msgid "uncheck for manual insertion"
+msgstr "deseleziona per inserimento manuale"
+
+#: includes/admin/generic.php:136
+msgid "Automatically show greeting message on pages"
+msgstr "Mostra in automatico il messaggio di benvenuto nelle pagine"
+
+#: includes/admin/generic.php:142
+msgid "Allow users to close the greeting message"
+msgstr "Permetti a tutti gli utenti di chiudere il messaggio di benvenuto"
+
+#: includes/admin/generic.php:147
+msgid "Have icon link open a new browser window (same as target='_blank')"
+msgstr "Icona con link di apertura in una nuova finestra del browser (equivalente attributo target='_blank')"
+
+#: includes/admin/generic.php:152
+msgid "Position greeting message"
+msgstr "Posiziona il messaggio di benvenuto"
+
+#: includes/admin/generic.php:154
+#: includes/admin/generic.php:172
+msgid "before"
+msgstr "sopra"
+
+#: includes/admin/generic.php:155
+#: includes/admin/generic.php:173
+msgid "after"
+msgstr "sotto"
+
+#: includes/admin/generic.php:157
+msgid "the post/page."
+msgstr "articolo/pagina."
+
+#: includes/admin/generic.php:160
+msgid "Related Post Options"
+msgstr "Opzione articoli correlati"
+
+#: includes/admin/generic.php:163
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Rileva le relative keyword presenti nei motori di ricerca e mostra gli articoli correlati"
+
+#: includes/admin/generic.php:170
+msgid "Position related posts"
+msgstr "Posiziona gli articoli correlati"
+
+#: includes/admin/generic.php:174
+msgid "the greeting message."
+msgstr "il messaggio di benvenuto."
+
+#: includes/admin/generic.php:178
+msgid "Show post excerpt in related posts"
+msgstr "Mostra il riassunto per gli articoli correlati"
+
+#: includes/admin/generic.php:183
+msgid "Expand related posts by default"
+msgstr "Espandi gli articoli correlati (predefinita)"
+
+#: includes/admin/generic.php:188
+#, php-format
+msgid "Limit related posts to %s posts"
+msgstr "Limita il numero dei correlati a %s articoli"
+
+#: includes/admin/generic.php:192
+#, php-format
+msgid "Limit related post excerpts to %s words"
+msgstr "Limita il riassunto dei correlati a %s parole"
+
+#: includes/admin/generic.php:199
+#: includes/admin/generic.php:272
+msgid "Advanced Options"
+msgstr "Opzioni avanzate"
+
+#: includes/admin/generic.php:202
+msgid "Enable compatibility with cache plugins"
+msgstr "Abilita la compatibilità con i plugin per la cache"
+
+#: includes/admin/generic.php:203
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "qualora l'opzione venisse attivata, WP Greet Box utilizzerà un Javascript per caricare il messaggio di benvenuto"
+
+#: includes/admin/generic.php:207
+msgid "Show greeting message to logged in users"
+msgstr "Mostra il messaggio agli utenti collegati"
+
+#: includes/admin/generic.php:212
+msgid "Debug mode"
+msgstr "Modalità debug"
+
+#: includes/admin/generic.php:213
+msgid "Will always show greet box regardless of settings"
+msgstr "verrà aempre mostrato il messaggio di benvenuto indipendentemente dalle impostazioni"
+
+#: includes/admin/generic.php:217
+#, php-format
+msgid "Enable %s"
+msgstr "Attiva %s"
+
+#: includes/admin/generic.php:218
+msgid "uncheck to manually manage your own CSS"
+msgstr "de-seleziona per gestire manualmente il tuo CSS personale"
+
+#: includes/admin/generic.php:222
+#, php-format
+msgid "Enable %s and %s"
+msgstr "Attiva %s e %s"
+
+#: includes/admin/generic.php:223
+msgid "uncheck to manually manage your own JS"
+msgstr "de-seleziona per gestire manualmente il tuo JS"
+
+#: includes/admin/generic.php:227
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "URL del tuo feed RSS. (sostituisce [[rss-link]] con dei messaggi di benvenuto come questo)"
+
+#: includes/admin/generic.php:232
+msgid "Your 'Subscribe via Email' URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "URL del tuo 'Abbonati via Email'. (sostituisce [[email-link]] con dei messaggi di benvenuto come questo)"
+
+#: includes/admin/generic.php:237
+msgid "HTML code to display before the greeting box."
+msgstr "Codice HTML da mostrare prima della casella di benvenuto."
+
+#: includes/admin/generic.php:242
+msgid "HTML code to display after the greeting box."
+msgstr "Codice HTML da mostrare a seguire la casella di benvenuto."
+
+#: includes/admin/generic.php:246
+msgid "HTML code to display before the image in the greeting box."
+msgstr "Codice HTML da mostrare prima della immagine nella casella di benvenuto."
+
+#: includes/admin/generic.php:251
+msgid "HTML code to display after the image in the greeting box."
+msgstr "Codice HTML da mostrare a seguire l'immagine nella casella di benvenuto."
+
+#: includes/admin/generic.php:256
+msgid "HTML code to display before the text in the greeting box."
+msgstr "Codice HTML da mostrare prima del testo nella casella di benvenuto."
+
+#: includes/admin/generic.php:260
+msgid "HTML code to display after the text in the greeting box."
+msgstr "Codice HTML da mostrare dopo il testo nella casella di benvenuto."
+
+#: includes/admin/generic.php:269
+msgid "Upgrade Options"
+msgstr "Potenzia le opzioni"
+
+#: includes/admin/generic.php:271
+msgid "Reset ALL Options"
+msgstr "Ripristina TUTTE le opzioni"
+
+#: includes/admin/header.php:2
+#, php-format
+msgid "%s Options"
+msgstr "%s Opzioni"
+
+#: includes/admin/header.php:4
+msgid "Greeting Messages"
+msgstr "Messaggi di benvenuto"
+
+#: includes/admin/header.php:10
+msgid "Import/Export"
+msgstr "Importa/Esporta"
+
+#: includes/admin/header.php:12
+msgid "Documentation"
+msgstr "Documentazione"
+
+#: includes/admin/import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Tutte le attuali impostazioni di WP Greet Box verranno sovrascritte con i valori importati.  Sei certo di volere sovrascrivere tutte le impostazioni?"
+
+#: includes/admin/import-export.php:10
+msgid "Export"
+msgstr "Esporta"
+
+#: includes/admin/import-export.php:12
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Questa funzione inserirà in un file tutti i dati relativi alle impostazioni di WP Greet Box."
+
+#: includes/admin/import-export.php:14
+msgid "Export Options"
+msgstr "Esporta le opzioni"
+
+#: includes/admin/import-export.php:17
+msgid "Import"
+msgstr "Importa"
+
+#: includes/admin/import-export.php:21
+msgid "This functionality will restore your entire WP Greet Box options from a file."
+msgstr "Questa funzione inserirà in un file tutti i dati relativi alle impostazioni di WP Greet Box."
+
+#: includes/admin/import-export.php:22
+msgid "Make sure you've done an export and backup the exported file before you try this!"
+msgstr "Assicurati di avere creato un file di esportazione (e relativo backup) prima di procedere!"
+
+#: includes/admin/import-export.php:27
+msgid "Import Options"
+msgstr "Importa le opzioni"
+
+#: includes/admin/post-options.php:9
+msgid "Disable WP Greet Box on this post/page?"
+msgstr "Vuoi disattivare WP Greet Box  per questo articolo/pagina?"
+
+#~ msgid "Enable %s and %s (uncheck to manually manage your own JS)"
+#~ msgstr "Attiva %s e %s (de-seleziona per gestire manualmente il tuo JS)"
+
+#~ msgid "posts"
+#~ msgstr "articoli"
+
+#~ msgid "words"
+#~ msgstr "parole"
+
+#~ msgid "and"
+#~ msgstr "e"
+
+#~ msgid ""
+#~ "always display greeting messages, ignoring most rules, for debugging "
+#~ "purposes"
+#~ msgstr "mostra sempre i messaggi di benvenuto (debugging)"
+
+#~ msgid "WP Greet Box "
+#~ msgstr "WP Greet Box "
+
+#~ msgid ""
+#~ ".  WP Greet Box recommends that you use WordPress 2.7 or newer.  <a href="
+#~ "\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></"
+#~ "p></div>"
+#~ msgstr ""
+#~ ".  WP Greet Box deve essere utilizzato con WordPress 2.7 o superiore.  <a "
+#~ "href=\"http://codex.wordpress.org/Upgrading_WordPress\">Aggiorna!</a></"
+#~ "p></div>"
+
+#~ msgid ""
+#~ "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</"
+#~ "p></div>"
+#~ msgstr ""
+#~ "<div class=\"updated fade\"><p>Le opzioni di WP Greet Box sono state "
+#~ "potenziate.</p></div>"
+
+#~ msgid "Powered by"
+#~ msgstr "Powered by"
+
+#~ msgid "WP Greet Box"
+#~ msgstr "WP Greet Box"
+
+#~ msgid "WordPress Plugin"
+#~ msgstr "WordPress Plugin"
+
+#~ msgid "WP Greet Box Options"
+#~ msgstr "Opzioni WP Greet Box"
+
+#~ msgid "uncheck for"
+#~ msgstr "de-selezione per"
+
+#~ msgid ""
+#~ "WP Greet Box requires WordPress 2.6 or newer. <a href=\"http://codex."
+#~ "wordpress.org/Upgrading_WordPress\">Please update!</a>"
+#~ msgstr ""
+#~ "WP Greet Box funziona con WordPress 2.6 o superiore. <a href=\"http://"
+#~ "codex.wordpress.org/Upgrading_WordPress\">Aggiorna!</a>"

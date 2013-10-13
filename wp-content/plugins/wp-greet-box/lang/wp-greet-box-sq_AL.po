@@ -1,0 +1,534 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Greet Box ne Shqip\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-09 13:02-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Romeo Shuka | http://www.romeolab.com/ <webmaster@romeolab.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Shqip\n"
+"X-Poedit-Country: ALBANIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: options-custom.php:6
+#@ wp-greet-box
+msgid "Active Greeting Messages"
+msgstr "Aktivizo mesazhet e përshëndetjes"
+
+#: options-custom.php:9
+#: options-custom.php:43
+#@ wp-greet-box
+msgid "Referrer"
+msgstr "Referuesi"
+
+#: options-custom.php:10
+#: options-custom.php:44
+#@ wp-greet-box
+msgid "Icon"
+msgstr "Ikona"
+
+#: options-custom.php:11
+#: options-custom.php:45
+#@ wp-greet-box
+msgid "Message"
+msgstr "Mesazhi"
+
+#: options-custom.php:12
+#: options-custom.php:46
+#@ wp-greet-box
+msgid "Action"
+msgstr "Aksioni"
+
+#: options-custom.php:16
+#: options-custom.php:50
+#@ wp-greet-box
+msgid "Add new greeting message"
+msgstr "Shto një mesazh të ri mirëseardhjeje"
+
+#: options-custom.php:40
+#@ wp-greet-box
+msgid "Inactive Greeting Messages"
+msgstr "Mesazhet e mirëseardhjes inaktive"
+
+#: options-exclude.php:15
+#: wp-greet-box.php:1794
+#@ wp-greet-box
+msgid "Exclusion Rules"
+msgstr "Rregulla përjashtimi"
+
+#: options-exclude.php:16
+#@ wp-greet-box
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr "Lista e URL-ve referuese për të cilat nuk dëshiron që të shfaqet mesazhi i mirëseardhjes (një për rrjesht)"
+
+#: options-exclude.php:18
+#@ wp-greet-box
+msgid "Treat each line as a regular expression"
+msgstr "Llogarit secilin rrjesht si një shprehje të rregullt"
+
+#: options-exclude.php:22
+#: options-generic.php:268
+#@ wp-greet-box
+msgid "Update Options"
+msgstr "Azhorno opsionet"
+
+#: options-generic.php:3
+#@ wp-greet-box
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr "Të gjithë mesazhet e personalizuar do të fshihen. Je i sigurtë që kërkon të kthesh opsionet e fillimit?"
+
+#: options-generic.php:133
+#@ wp-greet-box
+msgid "Hide"
+msgstr "Fsheh"
+
+#: options-generic.php:138
+#@ wp-greet-box
+msgid "Show"
+msgstr "Trego"
+
+#: options-generic.php:168
+#@ wp-greet-box
+msgid "Support this plugin!"
+msgstr "Mbështet këtë plugin!"
+
+#: options-generic.php:170
+#@ wp-greet-box
+msgid "Display \"Powered by WP Greet Box\" link at the bottom right corner of the greeting message"
+msgstr "Trego poshtë djathtas mesazhit të mirëseardhjes linkun \"Powered by WP Greet Box\""
+
+#: options-generic.php:174
+#@ wp-greet-box
+msgid "Do not display \"Powered by WP Greet Box\" link.  I will <a href=\"http://omninoggin.com/donate\">donate</a> and/or write about this plugin"
+msgstr "Mos trego linkun \"Powered by WP Greet Box\".  Do të bëj  <a href=\"http://omninoggin.com/donate\">një dhurim parash</a> edhe/ose do të shkruaj një artikull mbi këtë plugin"
+
+#: options-generic.php:177
+#: wp-greet-box.php:1795
+#@ wp-greet-box
+msgid "General Configuration"
+msgstr "Konfigurimi gjeneral"
+
+#: options-generic.php:179
+#@ wp-greet-box
+msgid "Automatically show greeting message on posts"
+msgstr "Trego automatikisht mesazhin e mirëseardhjes në artikujt"
+
+#: options-generic.php:184
+#@ wp-greet-box
+msgid "Automatically show greeting message on pages"
+msgstr "Trego mesazhin e mirëseardhjes në faqet"
+
+#: options-generic.php:188
+#@ wp-greet-box
+msgid "Allow users to close the greeting message"
+msgstr "Jepi mundësinë përdoruesve të mbyllin mesazhin e mirëseardhjes"
+
+#: options-generic.php:189
+#@ wp-greet-box
+msgid "Have icon link open a new browser window (same as target=\"_blank\")"
+msgstr "Ikona me linkun hapës në një dritare të re të shfletuesit (njësoj si atributi target=\"_blank\")"
+
+#: options-generic.php:190
+#@ wp-greet-box
+msgid "Position greeting message"
+msgstr "Pozicioni i mesazhit të mirëseardhjes"
+
+#: options-generic.php:192
+#: options-generic.php:204
+#@ wp-greet-box
+msgid "before"
+msgstr "sipër"
+
+#: options-generic.php:193
+#: options-generic.php:205
+#@ wp-greet-box
+msgid "after"
+msgstr "poshtë"
+
+#: options-generic.php:195
+#@ wp-greet-box
+msgid "the post/page."
+msgstr "artikull/faqe"
+
+#: options-generic.php:196
+#@ wp-greet-box
+msgid "Related Post Options"
+msgstr "Opsionet e artikujve të ngjashëm"
+
+#: options-generic.php:198
+#@ wp-greet-box
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr "Ndiq fjalët kyce prezente në motorrët e kërkimit edhe trego artikujt e ngjashëm"
+
+#: options-generic.php:203
+#@ wp-greet-box
+msgid "Position related posts"
+msgstr "Pozicioni i artikujve të ngjashëm"
+
+#: options-generic.php:206
+#@ wp-greet-box
+msgid "the greeting message."
+msgstr "mesazhi i mirëseardhjes."
+
+#: options-generic.php:209
+#@ wp-greet-box
+msgid "Show post excerpt in related posts"
+msgstr "Trego përmbledhjen për artikujt e ngjashëm"
+
+#: options-generic.php:212
+#@ wp-greet-box
+msgid "Expand related posts by default"
+msgstr "Përhap artikujt e ngjashëm (default)"
+
+#: options-generic.php:215
+#@ wp-greet-box
+msgid "Limit related posts to "
+msgstr "Kufizo numrin e artikujve të ngjashëm në"
+
+#: options-generic.php:215
+#@ wp-greet-box
+msgid "posts"
+msgstr "artikuj"
+
+#: options-generic.php:217
+#@ wp-greet-box
+msgid "Limit related post excerpts to"
+msgstr "Kufizo përmbajtjen e artikujve të ngjashëm në"
+
+#: options-generic.php:217
+#@ wp-greet-box
+msgid "words"
+msgstr "fjalë"
+
+#: options-generic.php:221
+#: options-generic.php:276
+#@ wp-greet-box
+msgid "Advanced Options"
+msgstr "Opsione të avancuara"
+
+#: options-generic.php:223
+#@ wp-greet-box
+msgid "Enable compatibility with cache plugins"
+msgstr "Aktivizo pajtueshmërine më pluginet e cache"
+
+#: options-generic.php:223
+#@ wp-greet-box
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr "nëse opsioni është i aktivizuar, do të përdoret Javascript për të hapur mesazhin e mirëseardhjes"
+
+#: options-generic.php:229
+#: options-generic.php:232
+#@ wp-greet-box
+msgid "Enable"
+msgstr "Aktivizo"
+
+#: options-generic.php:229
+#@ wp-greet-box
+msgid "uncheck to manually manage your own CSS"
+msgstr "c'selekto për të menaxhuar manualisht CSS tënde personale"
+
+#: options-generic.php:232
+#@ wp-greet-box
+msgid "and"
+msgstr "dhe"
+
+#: options-generic.php:232
+#@ wp-greet-box
+msgid "uncheck to manually manage your own JS"
+msgstr "c'selekto për të menaxhuar manualisht JS tënde"
+
+#: options-generic.php:235
+#@ wp-greet-box
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr "URL-ja e RSS feed-it tënd. (zëvendëson [[rss-link]] në mesazhet e mirëseardhjes me këtë këtu)"
+
+#: options-generic.php:239
+#@ wp-greet-box
+msgid "Your \"Subscribe via Email\" URL. (replaces [[email-link]] in greeting messages this)"
+msgstr "URL-ja e \"Abonohu me Emaill\". (zëvendëson [[email-link]] me mesazhe mirëseardhjeje si ky)"
+
+#: options-generic.php:243
+#@ wp-greet-box
+msgid "HTML code to display before the greeting box."
+msgstr "Kodi HTML për tu treguar përpara mesazhit të mirëseardhjes."
+
+#: options-generic.php:247
+#@ wp-greet-box
+msgid "HTML code to display after the greeting box."
+msgstr "Kodi HTML për tu treguar mbas mesazhit të mirëseardhjes."
+
+#: options-generic.php:251
+#@ wp-greet-box
+msgid "HTML code to display before the image in the greeting box."
+msgstr "Kodi HTML për tu treguar përpara imazhit të mesazhit të mirëseardhjes."
+
+#: options-generic.php:255
+#@ wp-greet-box
+msgid "HTML code to display after the image in the greeting box."
+msgstr "Kodi HTML për tu treguar pas imazhit të mesazhit të mirëseardhjes."
+
+#: options-generic.php:259
+#@ wp-greet-box
+msgid "HTML code to display before the text in the greeting box."
+msgstr "Kodi HTML për tu treguar para tekstit të mesazhit të mirëseardhjes."
+
+#: options-generic.php:263
+#@ wp-greet-box
+msgid "HTML code to display after the text in the greeting box."
+msgstr "Kodi HTML për tu treguar pas tekstit të mesazhit të mirëseardhjes."
+
+#: options-generic.php:272
+#@ wp-greet-box
+msgid "Upgrade Options"
+msgstr "Azhorno opsionet"
+
+#: options-generic.php:275
+#@ wp-greet-box
+msgid "Reset ALL Options"
+msgstr "Rikthe të GJITHA opsionet"
+
+#: options-import-export.php:3
+#@ wp-greet-box
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr "Të gjithë opsionet e vendosura të WP Greet Box do të mbishkruhen me vlera të importuara. Je i sigurte që don të mbishkruash impostimet?"
+
+#: options-import-export.php:12
+#@ wp-greet-box
+msgid "Export"
+msgstr "Eksporto"
+
+#: options-import-export.php:15
+#@ wp-greet-box
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr "Ky funksion do të vendosi në një dokument të gjithë data e WP Greet Box në një dokument."
+
+#: options-import-export.php:17
+#@ wp-greet-box
+msgid "Export Options"
+msgstr "Eksporto opsionet"
+
+#: options-import-export.php:21
+#@ wp-greet-box
+msgid "Import"
+msgstr "Importo"
+
+#: options-import-export.php:27
+#@ wp-greet-box
+msgid "This functionality will restore your entire WP Greet Box options from a file.<br/><strong>Make sure you've done an export and backup the exported file before you try this!</strong>"
+msgstr "Ky funksion do të rikthej të gjithë opsionet e WP Greet Box. <br/><strong>Sigurohu që ti ke eksportuar apo ke bër Backup përpara se të vazhdosh!</strong>"
+
+#: options-import-export.php:33
+#@ wp-greet-box
+msgid "Import Options"
+msgstr "Importo opsionet"
+
+#: wp-greet-box.php:423
+#@ wp-greet-box
+msgid "<div class=\"updated fade\"><p>You are using WordPress version "
+msgstr "<div class=\"updated fade\"><p>Jeni duke përdor versionin e Wordpress"
+
+#: wp-greet-box.php:431
+#@ wp-greet-box
+msgid "<div class=\"updated fade\"><p>WP Greet Box options have been upgraded.</p></div>"
+msgstr "<div class=\"updated fade\"><p>Opsionet e WP Greet Box u azhornuan.</p></div>"
+
+#: wp-greet-box.php:683
+#: wp-greet-box.php:722
+#@ wp-greet-box
+msgid "Activate"
+msgstr "Aktivizo"
+
+#: wp-greet-box.php:688
+#: wp-greet-box.php:727
+#@ wp-greet-box
+msgid "Deactivate"
+msgstr "C'aktivizo"
+
+#: wp-greet-box.php:702
+#: wp-greet-box.php:741
+#@ wp-greet-box
+msgid "Edit"
+msgstr "Ndrysho"
+
+#: wp-greet-box.php:742
+#@ wp-greet-box
+msgid "Are you sure you want to delete?"
+msgstr "Jeni i sigurt që doni ta fshini?"
+
+#: wp-greet-box.php:742
+#@ wp-greet-box
+msgid "Delete"
+msgstr "Fshi"
+
+#: wp-greet-box.php:1080
+#@ wp-greet-box
+msgid "You were searching for"
+msgstr "Po kërkonit"
+
+#: wp-greet-box.php:1081
+#@ wp-greet-box
+msgid "Posts relating to"
+msgstr "Artikuj të ngjashëm për"
+
+#: wp-greet-box.php:1083
+#@ wp-greet-box
+msgid "See posts relating to your search &#187;"
+msgstr "Shiko artikujt e ngjashëm të kërkimit tuaj &#187;"
+
+#: wp-greet-box.php:1084
+#@ wp-greet-box
+msgid "&#171; Hide related posts"
+msgstr "&#171; Fshih artikujt e ngjashëm"
+
+#: wp-greet-box.php:1106
+#@ wp-greet-box
+msgid "Powered by WP Greet Box"
+msgstr "Powered by WP Greet Box"
+
+#: wp-greet-box.php:1347
+msgid "Permanent Link to:"
+msgstr "Link permanent tek:"
+
+#: wp-greet-box.php:1550
+#@ wp-greet-box
+msgid "WP Greet Box options updated."
+msgstr "Opsionet e WP Greet Box u azhornuan."
+
+#: wp-greet-box.php:1554
+#@ wp-greet-box
+msgid "WP Greet Box options upgraded."
+msgstr "Opsionet e WP Greet Box u përditësuan."
+
+#: wp-greet-box.php:1558
+#@ wp-greet-box
+msgid "WP Greet Box options have been reset."
+msgstr "Opsionet e WP Greet Box u rivendosën."
+
+#: wp-greet-box.php:1562
+#@ wp-greet-box
+msgid "WP Greet Box options imported."
+msgstr "Opsionet e WP Greet Box u importuan."
+
+#: wp-greet-box.php:1566
+#@ wp-greet-box
+msgid "WP Greet Box options import failed!"
+msgstr "Nuk ishte e mundur importimi i opsioneve tëi WP Greet Box."
+
+#: wp-greet-box.php:1570
+#@ wp-greet-box
+msgid "Did not receive any file to be imported.  WP Greet Box options import failed!"
+msgstr "Nuk është marr asnjë dokument për tu importuar. Importi i opsioneve për WP Greet Box dështoi!"
+
+#: wp-greet-box.php:1574
+#@ wp-greet-box
+msgid "Found syntax errors in file being imported.  WP Greet Box options import failed!"
+msgstr "U gjënd një gabim sintakse në dokumentin e importuar. Importimi i opsioneve të WP Greet Box dështoi!"
+
+#: wp-greet-box.php:1663
+#: wp-greet-box.php:1699
+#: wp-greet-box.php:1730
+#@ wp-greet-box
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr "Trego mesazhin e mirëseardhjes gjersa personi nuk do ta mbyll (nëse është aktiv do të mbishkruaj timeout-in për vizitorët)"
+
+#: wp-greet-box.php:1664
+#: wp-greet-box.php:1700
+#: wp-greet-box.php:1732
+#@ wp-greet-box
+msgid "Visitor Timeout (minutes)"
+msgstr "Timeout e vizituesit (minuta)"
+
+#: wp-greet-box.php:1666
+#: wp-greet-box.php:1702
+#: wp-greet-box.php:1750
+#@ wp-greet-box
+msgid "Greeting Icon (optional)"
+msgstr "Ikona e mirëseardhjes (fakoltative)"
+
+#: wp-greet-box.php:1668
+#: wp-greet-box.php:1704
+#: wp-greet-box.php:1752
+#@ wp-greet-box
+msgid "Greeting Icon Link (optional)"
+msgstr "Ikona link e mirëseardhjes (fakoltative)"
+
+#: wp-greet-box.php:1670
+#: wp-greet-box.php:1706
+#: wp-greet-box.php:1754
+#@ wp-greet-box
+msgid "Greeting message"
+msgstr "Mesazhi i mirëseardhjes"
+
+#: wp-greet-box.php:1674
+#@ wp-greet-box
+msgid "Add"
+msgstr "Shto"
+
+#: wp-greet-box.php:1675
+#: wp-greet-box.php:1710
+#: wp-greet-box.php:1758
+#@ wp-greet-box
+msgid "Cancel"
+msgstr "Fshi"
+
+#: wp-greet-box.php:1696
+#@ wp-greet-box
+msgid "Referrer URL"
+msgstr "URL-ja referuese"
+
+#: wp-greet-box.php:1709
+#: wp-greet-box.php:1757
+#@ wp-greet-box
+msgid "Save"
+msgstr "Ruaj"
+
+#: wp-greet-box.php:1791
+#@ wp-greet-box
+msgid "WP Greet Box Options"
+msgstr "Opsionet e  WP Greet Box"
+
+#: wp-greet-box.php:1793
+#@ wp-greet-box
+msgid "Greeting Messages"
+msgstr "Mesazhi i mirëseardhjes"
+
+#: wp-greet-box.php:1796
+#@ wp-greet-box
+msgid "Import/Export"
+msgstr "Importo/Eksporto"
+
+#: wp-greet-box.php:1797
+#@ wp-greet-box
+msgid "Documentation"
+msgstr "Ndihma"
+
+#: options-generic.php:181
+#: options-generic.php:186
+#@ wp-greet-box
+msgid "uncheck for manual insertion"
+msgstr "hiq për vendosje manuale"
+
+#: options-generic.php:226
+#@ wp-greet-box
+msgid "Show greeting message to logged in users"
+msgstr "Trego mesazhin e mirëseardhjes tek personat e identifikuar"
+
+#: wp-greet-box.php:44
+#@ wp-greet-box
+msgid "WP Greet Box  requires WordPress 2.7 or newer. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a>"
+msgstr "WP Greet Box kërkon Wordpress 2.7 ose më të ri. <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Ju lutem azhornoni!</a>"
+
+#: wp-greet-box.php:425
+#@ wp-greet-box
+msgid ".  WP Greet Box recommends that you use WordPress 2.7 or newer.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Please update!</a></p></div>"
+msgstr ".  WP Greet Box ju këshillon që të përdorni WordPress 2.7 ose më të ri.  <a href=\"http://codex.wordpress.org/Upgrading_WordPress\">Ju lutem azhornoni!</a></p></div>"
+

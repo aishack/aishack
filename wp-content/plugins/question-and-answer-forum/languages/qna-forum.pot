@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: question-and-answer-forum\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-22 13:04+0200\n"
+"PO-Revision-Date: 2011-06-22 13:21+0200\n"
+"Last-Translator: Yuriy Petrovskiy <yuriy.petrovskiy@gmail.com>\n"
+"Language-Team: Yuriy Petrovskiy <yuriy.petrovskiy@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n\n"
+"X-Poedit-Basepath: C:\\WebServers\\home\\urology.com.ua\\www\\wp-content\\plugins\\question-and-answer-forum\\\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: UKRAINE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11) ? 1 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 2 : 0);\n"
+"X-Poedit-SearchPath-0: C:\\WebServers\\home\\urology.com.ua\\www\\wp-content\\plugins\\question-and-answer-forum\n"
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:15
+msgid "You must be logged in to ask a question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:19
+msgid "Invalid category - the category must be chosed from the drop down list"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:22
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:31
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:33
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/askquestionform.php:29
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/coreform.php:6
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/coreform.php:7
+msgid "Enter Question Title"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:23
+msgid "You must add a question title"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:25
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:38
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:40
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/askquestionform.php:36
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/coreform.php:8
+msgid "Enter Your Question Here"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:26
+msgid "You must add a question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:62
+msgid "Question awaiting moderation"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:71
+msgid "error occured in asking question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:76
+msgid "Question added successfuly"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:79
+#, fuzzy
+msgid "A new question has been asked, answer it by visiting "
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/addquestion.php:80
+msgid "The question is:"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/askquestionform.php:5
+msgid "Please login to ask a question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/askquestionform.php:51
+msgid "Use the form below to ask a question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/coreform.php:11
+msgid "Category"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/coreform.php:29
+msgid "Ask"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/options-page.php:4
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/querys.php:86
+#, php-format
+msgid "%d answer"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/querys.php:87
+msgid "Answer"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/querys.php:93
+msgid "View All Questions"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:56
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:66
+msgid "Questions"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:57
+msgid "Question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:58
+msgid "New Question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:59
+msgid "Ask new question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:60
+msgid "change question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:61
+msgid "new question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:62
+msgid "view question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:63
+msgid "search question"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:64
+msgid "No Questions Found"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/questions.php:65
+msgid "No questions found in trash"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/qusers.php:17
+msgid "Users"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/qusers.php:18
+msgid "User"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/qusers.php:19
+msgid "Add User"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/qusers.php:20
+msgid "Update Profile"
+msgstr ""
+
+#: C:\WebServers\home\urology.com.ua\www\wp-content\plugins\question-and-answer-forum/qusers.php:21
+msgid "View Profile"
+msgstr ""

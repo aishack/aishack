@@ -1,0 +1,137 @@
+dl { margin-left: 3em }
+
+.wpgb_add_bar {
+  background:#f6f6f6;
+  float:left;
+  margin:0 0 1px 0;
+  padding:5px;
+  width:750px;
+}
+
+.wpgb_add_bar a {
+  float:right;
+  margin:0 15px 0 0;
+}
+
+.wpgb_add_form {
+  color:#333;
+  background:#fff;
+  float:left;
+  padding:10px;
+  width:740px;
+}
+
+.wpgb_column_action {
+  float:left;
+  padding:0 0 0 10px;
+  text-align:right;
+  width:200px;
+}
+
+.wpgb_column_icon {
+  float:left;
+  padding:0 10px;
+  width:60px;
+}
+
+.wpgb_column_referrer {
+  float:left;
+  padding:0 10px 0 0;
+  width:100px;
+}
+
+.wpgb_column_message {
+  float:left;
+  padding:0 10px;
+  width:300px;
+}
+
+.wpgb_fieldset {
+  border:1px solid #ccc;
+  margin:10px;
+  padding:20px;
+}
+
+.wpgb_fieldset_alt {
+  background:#f6f6f6;
+}
+
+.wpgb_focusable:focus {
+  background-color: #ffc;
+}
+
+.wpgb_header {
+  background:#333;
+  color:#dbdbdb;
+  float:left;
+  font-size:14px;
+  font-weight:bold;
+  padding:10px 20px;
+  width:720px;
+}
+
+.wpgb_loading {
+  display:none;
+  float:left;
+  width:16px;
+  margin:0 5px 0 0;
+  padding:0 5px;
+}
+
+.wpgb_message_active {
+  background:#e7f7d3;
+  float:left;
+  padding:10px;
+  margin:0 0 1px 0;
+  width:740px;
+}
+
+.wpgb_message_inactive {
+  background:#f6f6f6;
+  float:left;
+  margin:0 0 1px 0;
+  padding:10px;
+  width:740px;
+}
+
+.wpgb_message_row {
+  float:left;
+  padding:0 10px;
+  width:720px;
+}
+
+.wpgb_message_view {
+  color:#333;
+  background:#fff;
+  float:left;
+  padding:10px;
+  width:720px;
+}
+
+.wpgb_new_wrapper {
+  background:#f6f6f6;
+  color:#333;
+  float:left;
+  font-size:14px;
+  font-weight:bold;
+  margin:0 0 20px 0;
+  padding:10px 20px;
+  width:910px;
+}
+
+.wpgb_wide {
+  width:720px;
+}
+
+.omni_admin_content {
+  width:1055px;
+}
+
+.omni_admin_main {
+  background-color:#f6f6f6;
+  border:1px solid #ccc;
+  float:left;
+  margin:10px;
+  padding:10px;
+  width:760px;
+}

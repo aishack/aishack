@@ -1,0 +1,631 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-greet-box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-05 02:17-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Thaya Kareeson <thaya.kareeson@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../.\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin.class.php:72
+#: includes/admin.class.php:78
+#: includes/admin.class.php:259
+msgid "Hello there! If you are new here, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to the RSS feed</strong></a> for updates on this topic."
+msgstr ""
+
+#: includes/admin.class.php:88
+msgid "Hello fellow <strong>Delicious</strong> user! Feel free to <a href=\"http://delicious.com/save?jump=yes&url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it!"
+msgstr ""
+
+#: includes/admin.class.php:97
+msgid "Hello fellow <strong>Digger</strong>! If you like this article, please help me out by giving me some <a href=\"http://digg.com/submit?url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>digg love</strong></a>!"
+msgstr ""
+
+#: includes/admin.class.php:106
+msgid "Welcome <strong>Googler</strong>! If you find this page useful, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to the RSS feed</strong></a> for updates on this topic."
+msgstr ""
+
+#: includes/admin.class.php:115
+msgid "Hello fellow <strong>Stumbler</strong>! Don't forget to <a href=\"http://www.stumbleupon.com/submit?url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>give me a thumbs up</strong></a> and <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to the RSS feed</strong></a> if you like this page!"
+msgstr ""
+
+#: includes/admin.class.php:124
+msgid "Hello fellow <strong>Technorati</strong> user! Don't forget to <a href=\"http://technorati.com/faves?add=[[escaped-permalink]]\" rel=\"nofollow\"><strong>favorite this blog</strong></a> if you like it!"
+msgstr ""
+
+#: includes/admin.class.php:133
+msgid "Hello fellow <strong>Twitter</strong> user! Don't forget to <a href=\"http://twitthis.com/twit?url=[[escaped-permalink]]\" rel=\"nofollow\"><strong>Twit this post</strong></a> if you like it, or <a href=\"http://twitter.com/\" rel=\"nofollow\"><strong>follow me</strong></a> on Twitter if you find me interesting."
+msgstr ""
+
+#: includes/admin.class.php:142
+msgid "Welcome fellow <strong>Yahooligan</strong>! If you find this page useful, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to the RSS feed</strong></a> for updates on this topic."
+msgstr ""
+
+#: includes/admin.class.php:151
+msgid "Hello there <strong>Live</strong>-ly searcher! If you find this page useful, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to the RSS feed</strong></a> for updates on this topic."
+msgstr ""
+
+#: includes/admin.class.php:160
+msgid "Hello there fellow <strong>Blinklist</strong> user! Feel free to <strong><a href=\"http://blinklist.com/blink?u=[[escaped-permalink]]&t=[[title]]\" rel=\"nofollow\">bookmark this page</a></strong> for future reference if you like it!"
+msgstr ""
+
+#: includes/admin.class.php:169
+msgid "Hello there <stong>Blogmarks</strong> user! Feel free to <a href=\"http://blogmarks.net/my/new.php?mini=1&url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it!"
+msgstr ""
+
+#: includes/admin.class.php:178
+msgid "Hello there <strong>Diigo</strong> user! Feel free to <a href=\"http://secure.diigo.com/post?url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it!"
+msgstr ""
+
+#: includes/admin.class.php:187
+msgid "Hello there <strong>Facebook</strong> friend! If you like this article, please help spread the word by <a href=\"http://www.facebook.com/share.php?u=[[escaped-permalink]]\" rel=\"nofollow\"><strong>sharing this post</strong></a> with your friends."
+msgstr ""
+
+#: includes/admin.class.php:196
+msgid "Hello there <strong>Furl</strong> user! Please feel free to <a href=\"http://www.furl.net/items/new?r=&v=1&c=&u=[[escaped-permalink]]&t=[[escaped-title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it."
+msgstr ""
+
+#: includes/admin.class.php:205
+msgid "Hello there <strong>Magnolia</strong> user! Please feel free to <a href=\"http://ma.gnolia.com/bookmarklet/add?url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it."
+msgstr ""
+
+#: includes/admin.class.php:214
+msgid "Hello there <strong>Mister Wong</strong> user! Please feel free to <a href=\"http://www.mister-wong.com/index.php?action=addurl&bm_url=[[escaped-permalink]]&bm_description=[[title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it."
+msgstr ""
+
+#: includes/admin.class.php:223
+msgid "Hello there friend of <strong>MySpace</strong>! If you like this article, please help spread the word by <a href=\"http://www.myspace.com/Modules/PostTo/Pages/?l=3&u=[[escaped-permalink]]&t=[[title]]\" rel=\"nofollow\"><strong>sharing this post</strong></a> with your friends."
+msgstr ""
+
+#: includes/admin.class.php:232
+msgid "Hello there <strong>Newsvine</strong> user! If you find this article useful, please remember to <a href=\"http://www.newsvine.com/_tools/seed?popoff=0&u=[[escaped-permalink]]\" rel=\"nofollow\"><strong>vote for this article</strong></a> on Newsvine."
+msgstr ""
+
+#: includes/admin.class.php:241
+msgid "Hello there fellow <strong>Reddit</strong> user! If you like this article, please remember to <a href=\"http://www.reddit.com/submit?url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>vote for this article</strong></a> on Reddit."
+msgstr ""
+
+#: includes/admin.class.php:250
+msgid "Hello there <strong>Simpy</strong> user! Please feel free to <a href=\"http://www.simpy.com/simpy/LinkAdd.do?href=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>bookmark this page</strong></a> for future reference if you like it."
+msgstr ""
+
+#: includes/admin.class.php:268
+msgid "Hello there <strong>Netvibes</strong> user! If you find this article useful, then you should consider <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribing to the RSS feed</strong></a> in your feed reader."
+msgstr ""
+
+#: includes/admin.class.php:277
+msgid "Hello there <strong>YouTuber</strong>! If you like my videos, feel free to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a> for more of my video updates."
+msgstr ""
+
+#: includes/admin.class.php:286
+msgid "Hello there <strong>Flickr</strong> user! If you like my photo, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a> to receive regular photo updates."
+msgstr ""
+
+#: includes/admin.class.php:295
+msgid "Hello there <strong>WordPress</strong> lover! If you are new here, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a> to receive regular WordPress updates."
+msgstr ""
+
+#: includes/admin.class.php:304
+msgid "Hello there <strong>Tumblr</strong> user! If you are new here, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a> to receive regular updates."
+msgstr ""
+
+#: includes/admin.class.php:313
+msgid "Hello there <strong>FriendFeed</strong> user! If you are new here, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a>. Also, feel free to <a href=\"http://friendfeed.com\" rel=\"nofollow\"><strong>follow me</strong></a> on FriendFeed."
+msgstr ""
+
+#: includes/admin.class.php:322
+msgid "Hello there fellow <strong>Plurker</strong>! If you are new here, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a>. Also, feel free to <a href=\"http://plurk.com\" rel=\"nofollow\"><strong>follow me</strong></a> on Plurk."
+msgstr ""
+
+#: includes/admin.class.php:331
+msgid "Hello there <strong>LinkedIn</strong> user! If you are new here, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to my RSS feed</strong></a> for more updates on this topic or read more about me on the <a href=\"/about\" rel=\"nofollow\"><strong>about page</strong></a>."
+msgstr ""
+
+#: includes/admin.class.php:340
+msgid "Hello there <strong>Bing</strong> decision maker! If you find this page interesting, you might want to <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribe to the RSS feed</strong></a> for updates on this topic."
+msgstr ""
+
+#: includes/admin.class.php:349
+msgid "Hello there <strong>Wikio</strong> user! If you find this article useful, then you should consider <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribing to the RSS feed</strong></a> in your feed reader."
+msgstr ""
+
+#: includes/admin.class.php:358
+msgid "Hello there <strong>Scoopeo</strong> user! If you find this article useful, then you should consider <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribing to the RSS feed</strong></a> in your feed reader."
+msgstr ""
+
+#: includes/admin.class.php:367
+msgid "Hello there <strong>Designrfix</strong> reader! If you find this article useful, then you should consider <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribing to the RSS feed</strong></a> in your feed reader."
+msgstr ""
+
+#: includes/admin.class.php:376
+msgid "Hello there <strong>Web Design News</strong> reader! If you find this article useful, then you should consider <a href=\"[[rss-link]]\" rel=\"nofollow\"><strong>subscribing to the RSS feed</strong></a> in your feed reader."
+msgstr ""
+
+#: includes/admin.class.php:385
+msgid "Hello there <strong>DZone</strong> user! If you think this is a fresh link, then you should consider <a href=\"http://www.dzone.com/links/add.html?noDupe=true&description=&url=[[escaped-permalink]]&title=[[title]]\" rel=\"nofollow\"><strong>voting up this post</strong></a> on DZone."
+msgstr ""
+
+#: includes/common.class.php:78
+#, php-format
+msgid "You are using WordPress version %s."
+msgstr ""
+
+#: includes/common.class.php:79
+#, php-format
+msgid "%s recommends that you use WordPress %s or newer."
+msgstr ""
+
+#: includes/common.class.php:82
+#, php-format
+msgid "%sPlease update!%s"
+msgstr ""
+
+#: includes/common.class.php:89
+#, php-format
+msgid "%s options has been updated."
+msgstr ""
+
+#: includes/common.class.php:95
+#, php-format
+msgid "%s options has been upgraded."
+msgstr ""
+
+#: includes/common.class.php:102
+msgid "Some option settings were missing (possibly from plugin upgrade)."
+msgstr ""
+
+#: includes/common.class.php:107
+#, php-format
+msgid "%s options has been reset."
+msgstr ""
+
+#: includes/common.class.php:113
+#, php-format
+msgid "%s cache has been cleared."
+msgstr ""
+
+#: includes/common.class.php:119
+#, php-format
+msgid "%s options imported."
+msgstr ""
+
+#: includes/common.class.php:125
+#, php-format
+msgid "%s options import failed!"
+msgstr ""
+
+#: includes/common.class.php:131
+#, php-format
+msgid "Did not receive any file to be imported. %s options import failed!"
+msgstr ""
+
+#: includes/common.class.php:137
+#, php-format
+msgid "Found syntax errors in file being imported. %s options import failed!"
+msgstr ""
+
+#: includes/common.class.php:142
+msgid "Please enter a valid API key!"
+msgstr ""
+
+#: includes/wp-greet-box.class.php:171
+msgid "You were searching for"
+msgstr ""
+
+#: includes/wp-greet-box.class.php:172
+msgid "Posts relating to"
+msgstr ""
+
+#: includes/wp-greet-box.class.php:174
+msgid "See posts relating to your search"
+msgstr ""
+
+#: includes/wp-greet-box.class.php:175
+msgid "Hide related posts"
+msgstr ""
+
+#: includes/wp-greet-box.class.php:213
+#, php-format
+msgid "Powered by %sWP Greet Box%s %sWordPress Plugin%s"
+msgstr ""
+
+#: includes/wp-greet-box.class.php:448
+msgid "Permanent Link to:"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:12
+#: includes/admin/custom-edit-form.php:6
+msgid "Referrer URL"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:14
+#: includes/admin/custom-edit-form-default.php:16
+#: includes/admin/custom-edit-form.php:8
+msgid "Continue to display greeting message until user first closes it (overrides visitor timeout if checked)"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:15
+#: includes/admin/custom-edit-form-default.php:17
+#: includes/admin/custom-edit-form.php:9
+msgid "Visitor Timeout (minutes)"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:17
+#: includes/admin/custom-edit-form-default.php:20
+#: includes/admin/custom-edit-form.php:11
+msgid "Greeting Icon (optional)"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:19
+#: includes/admin/custom-edit-form-default.php:22
+#: includes/admin/custom-edit-form.php:13
+msgid "Greeting Icon Link (optional)"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:21
+#: includes/admin/custom-edit-form-default.php:24
+#: includes/admin/custom-edit-form.php:15
+msgid "Greeting message"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:25
+msgid "Add"
+msgstr ""
+
+#: includes/admin/custom-add-form.php:26
+#: includes/admin/custom-edit-form-default.php:28
+#: includes/admin/custom-edit-form.php:20
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin/custom-default-row.php:12
+#: includes/admin/custom-message-row.php:4
+msgid "Activate"
+msgstr ""
+
+#: includes/admin/custom-default-row.php:16
+#: includes/admin/custom-message-row.php:8
+msgid "Deactivate"
+msgstr ""
+
+#: includes/admin/custom-default-row.php:25
+msgid "RSS icon"
+msgstr ""
+
+#: includes/admin/custom-default-row.php:29
+#: includes/admin/custom-message-row.php:21
+msgid "loading..."
+msgstr ""
+
+#: includes/admin/custom-default-row.php:31
+#: includes/admin/custom-message-row.php:23
+msgid "Edit"
+msgstr ""
+
+#: includes/admin/custom-edit-form-default.php:27
+#: includes/admin/custom-edit-form.php:19
+msgid "Save"
+msgstr ""
+
+#: includes/admin/custom-message-row.php:24
+msgid "Are you sure you want to delete?"
+msgstr ""
+
+#: includes/admin/custom-message-row.php:24
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/custom.php:4
+msgid "Active Greeting Messages"
+msgstr ""
+
+#: includes/admin/custom.php:7
+#: includes/admin/custom.php:41
+msgid "Referrer"
+msgstr ""
+
+#: includes/admin/custom.php:8
+#: includes/admin/custom.php:42
+msgid "Icon"
+msgstr ""
+
+#: includes/admin/custom.php:9
+#: includes/admin/custom.php:43
+msgid "Message"
+msgstr ""
+
+#: includes/admin/custom.php:10
+#: includes/admin/custom.php:44
+msgid "Action"
+msgstr ""
+
+#: includes/admin/custom.php:14
+#: includes/admin/custom.php:48
+msgid "Add new greeting message"
+msgstr ""
+
+#: includes/admin/custom.php:38
+msgid "Inactive Greeting Messages"
+msgstr ""
+
+#: includes/admin/exclude.php:3
+#: includes/admin/header.php:6
+msgid "Exclusion Rules"
+msgstr ""
+
+#: includes/admin/exclude.php:6
+msgid "List referral URLs that you do not want to show a greeting message to (line delimited)."
+msgstr ""
+
+#: includes/admin/exclude.php:11
+msgid "Treat each line as a regular expression"
+msgstr ""
+
+#: includes/admin/exclude.php:16
+#: includes/admin/generic.php:273
+msgid "Update Options"
+msgstr ""
+
+#: includes/admin/generic.php:3
+msgid "All of your custom messages will also be reset.  Are you sure you want to reset all settings?"
+msgstr ""
+
+#: includes/admin/generic.php:90
+msgid "Hide"
+msgstr ""
+
+#: includes/admin/generic.php:95
+msgid "Show"
+msgstr ""
+
+#: includes/admin/generic.php:103
+msgid "Support this plugin!"
+msgstr ""
+
+#: includes/admin/generic.php:106
+msgid "Display 'Powered by WP Greet Box' link at the bottom right corner of the greeting message"
+msgstr ""
+
+#: includes/admin/generic.php:111
+#, php-format
+msgid "Do not display 'Powered by WP Greet Box' link.  I will %sdonate%s and/or write about this plugin"
+msgstr ""
+
+#: includes/admin/generic.php:115
+#: includes/admin/header.php:8
+msgid "General Configuration"
+msgstr ""
+
+#: includes/admin/generic.php:118
+msgid "Enable rounded corners"
+msgstr ""
+
+#: includes/admin/generic.php:120
+#: includes/admin/generic.php:126
+msgid "CSS3 browsers only"
+msgstr ""
+
+#: includes/admin/generic.php:124
+msgid "Enable drop shadow"
+msgstr ""
+
+#: includes/admin/generic.php:130
+msgid "Automatically show greeting message on posts"
+msgstr ""
+
+#: includes/admin/generic.php:132
+#: includes/admin/generic.php:138
+#: includes/admin/generic.php:144
+msgid "uncheck for manual insertion"
+msgstr ""
+
+#: includes/admin/generic.php:136
+msgid "Automatically show greeting message on pages"
+msgstr ""
+
+#: includes/admin/generic.php:142
+msgid "Automatically show greeting message on homepage"
+msgstr ""
+
+#: includes/admin/generic.php:148
+msgid "Allow users to close the greeting message"
+msgstr ""
+
+#: includes/admin/generic.php:153
+msgid "Have icon link open a new browser window (same as target='_blank')"
+msgstr ""
+
+#: includes/admin/generic.php:158
+msgid "Position greeting message"
+msgstr ""
+
+#: includes/admin/generic.php:160
+#: includes/admin/generic.php:178
+msgid "before"
+msgstr ""
+
+#: includes/admin/generic.php:161
+#: includes/admin/generic.php:179
+msgid "after"
+msgstr ""
+
+#: includes/admin/generic.php:163
+msgid "the post/page."
+msgstr ""
+
+#: includes/admin/generic.php:166
+msgid "Related Post Options"
+msgstr ""
+
+#: includes/admin/generic.php:169
+msgid "Detect keywords from search engines referrers and display related posts"
+msgstr ""
+
+#: includes/admin/generic.php:176
+msgid "Position related posts"
+msgstr ""
+
+#: includes/admin/generic.php:180
+msgid "the greeting message."
+msgstr ""
+
+#: includes/admin/generic.php:184
+msgid "Show post excerpt in related posts"
+msgstr ""
+
+#: includes/admin/generic.php:189
+msgid "Expand related posts by default"
+msgstr ""
+
+#: includes/admin/generic.php:194
+#, php-format
+msgid "Limit related posts to %s posts"
+msgstr ""
+
+#: includes/admin/generic.php:198
+#, php-format
+msgid "Limit related post excerpts to %s words"
+msgstr ""
+
+#: includes/admin/generic.php:205
+#: includes/admin/generic.php:278
+msgid "Advanced Options"
+msgstr ""
+
+#: includes/admin/generic.php:208
+msgid "Enable compatibility with cache plugins"
+msgstr ""
+
+#: includes/admin/generic.php:209
+msgid "If check, WP Greet Box will use Javascript to load the greeting message"
+msgstr ""
+
+#: includes/admin/generic.php:213
+msgid "Show greeting message to logged in users"
+msgstr ""
+
+#: includes/admin/generic.php:218
+msgid "Debug mode"
+msgstr ""
+
+#: includes/admin/generic.php:219
+msgid "Will always show greet box regardless of settings"
+msgstr ""
+
+#: includes/admin/generic.php:223
+#, php-format
+msgid "Enable %s"
+msgstr ""
+
+#: includes/admin/generic.php:224
+msgid "uncheck to manually manage your own CSS"
+msgstr ""
+
+#: includes/admin/generic.php:228
+#, php-format
+msgid "Enable %s and %s"
+msgstr ""
+
+#: includes/admin/generic.php:229
+msgid "uncheck to manually manage your own JS"
+msgstr ""
+
+#: includes/admin/generic.php:233
+msgid "Your RSS feed URL. (replaces [[rss-link]] in greeting messages with this)"
+msgstr ""
+
+#: includes/admin/generic.php:238
+msgid "Your 'Subscribe via Email' URL. (replaces [[email-link]] in greeting messages this)"
+msgstr ""
+
+#: includes/admin/generic.php:243
+msgid "HTML code to display before the greeting box."
+msgstr ""
+
+#: includes/admin/generic.php:248
+msgid "HTML code to display after the greeting box."
+msgstr ""
+
+#: includes/admin/generic.php:252
+msgid "HTML code to display before the image in the greeting box."
+msgstr ""
+
+#: includes/admin/generic.php:257
+msgid "HTML code to display after the image in the greeting box."
+msgstr ""
+
+#: includes/admin/generic.php:262
+msgid "HTML code to display before the text in the greeting box."
+msgstr ""
+
+#: includes/admin/generic.php:266
+msgid "HTML code to display after the text in the greeting box."
+msgstr ""
+
+#: includes/admin/generic.php:275
+msgid "Upgrade Options"
+msgstr ""
+
+#: includes/admin/generic.php:277
+msgid "Reset ALL Options"
+msgstr ""
+
+#: includes/admin/header.php:2
+#, php-format
+msgid "%s Options"
+msgstr ""
+
+#: includes/admin/header.php:4
+msgid "Greeting Messages"
+msgstr ""
+
+#: includes/admin/header.php:10
+msgid "Import/Export"
+msgstr ""
+
+#: includes/admin/header.php:12
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/import-export.php:3
+msgid "All of your current WP Greet Box options will be overwritten by the imported value.  Are you sure you want to overwrite all settings?"
+msgstr ""
+
+#: includes/admin/import-export.php:10
+msgid "Export"
+msgstr ""
+
+#: includes/admin/import-export.php:12
+msgid "This functionality will dump your entire WP Greet Box options into a file."
+msgstr ""
+
+#: includes/admin/import-export.php:14
+msgid "Export Options"
+msgstr ""
+
+#: includes/admin/import-export.php:17
+msgid "Import"
+msgstr ""
+
+#: includes/admin/import-export.php:21
+msgid "This functionality will restore your entire WP Greet Box options from a file."
+msgstr ""
+
+#: includes/admin/import-export.php:22
+msgid "Make sure you've done an export and backup the exported file before you try this!"
+msgstr ""
+
+#: includes/admin/import-export.php:27
+msgid "Import Options"
+msgstr ""
+
+#: includes/admin/post-options.php:9
+msgid "Disable WP Greet Box on this post/page?"
+msgstr ""
+

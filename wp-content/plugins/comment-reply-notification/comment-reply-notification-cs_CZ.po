@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Comment Reply Notification\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-19 16:35+0800\n"
+"PO-Revision-Date: 2008-12-19 16:35+0800\n"
+"Last-Translator: 偶爱偶家 <blog.2i2j.com@gmail.com>\n"
+"Language-Team: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: D:/SVN/comment-reply-notification\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: D:/SVN/comment-reply-notification\n"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:44
+msgid "Your comment at [[blogname]] has a new reply"
+msgstr "K vašemu komentáři k [[blogname]] byla přidána odpověď"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:46
+msgid ""
+"<p><strong>[blogname]</strong>: Your comment on the post <strong>[postname]</strong> has a new reply</p>\n"
+"<p>Here is your original comment:<br />\n"
+"[pc_content]</p>\n"
+"<p>Here is the new reply:<br />\n"
+"[cc_content]</p>\n"
+"<p>You can see more information for the comment on this post here:<br />\n"
+"<a href=\"[commentlink]\">[commentlink]</a></p>\n"
+"<p><strong>Thank you for your commenting on <a href=\"[blogurl]\">[blogname]</a></strong></p>\n"
+"<p><strong>This email was sent automatically. Please don't reply to this email.</strong></p>"
+msgstr ""
+"<p><strong>[blogname]</strong> informuje: k vašemu komentáři k příspěvku <strong>[postname]</strong> byla připojena odpověď</p>\n"
+"<p>zde je Váš komentář:<br />\n"
+"[pc_content]</p>\n"
+"<p>zde je odpověď:<br />\n"
+"[cc_content]</p>\n"
+"<p>Detaily příspěvku naleznete zde:<br />\n"
+"<a href=\"[commentlink]\">[commentlink]</a></p>\n"
+"<p><strong>Děkujeme za Váš zájem o <a href=\"[blogurl]\">[blogname]</a></strong></p>\n"
+"<p><strong>Toto je automaticky generovaná zpráva. Prosím neodpovídejte na ni.</strong></p>"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:246
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:248
+msgid "Notify me of follow-up comments via e-mail"
+msgstr ""
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:270
+msgid "Comment Reply Notification Option"
+msgstr ""
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:270
+msgid "Comment Reply Notification"
+msgstr ""
+
+# D:/plugins/wp-thread-comment/wp-thread-comment.php:190
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:280
+msgid "Options saved"
+msgstr "Konfigurace uložena"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:284
+msgid "Plugin confriguration has been reset back to default!"
+msgstr "Konfigurace byla resetována!"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:298
+msgid "Email notify the parent commenter when his comment was replied"
+msgstr "Informovat emailem autora nadřazeného komentáře pokud je ke komentáři vložena odpověď."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:300
+msgid "Disabled"
+msgstr "Zakázáno"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:302
+msgid "Replied by the author of the post or administrator ONLY"
+msgstr "Odpovědi POUZE od autora příspěvku nebo administrátora."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:304
+msgid "Anyone replies"
+msgstr "Odpověď od kohokoli."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:306
+msgid "Commenter choose to do so(default checked)"
+msgstr ""
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:308
+msgid "Commenter choose to do so(default unchecked)"
+msgstr ""
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:313
+msgid "Edit the subject of notification email"
+msgstr "Změnit předmět informačního emailu"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:317
+msgid "Use TEXT only. As a easier way, you may use the following tags: <strong>[blogname]</strong> for blog name and <strong>[postname]</strong> for comment post name"
+msgstr "Použít pouze TEXT. Pro zjednodušení můžete požít tyto značky: <strong>[blogname]</strong> pro jméno blogu a <strong>[postname]</strong> pro jméno příspěvku."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:322
+msgid "Edit Notification Message"
+msgstr "Změnit informační zprávu"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:326
+msgid "Use HTML only. As a easier way, you may use the following tags: <strong>[pc_author]</strong> for parent comment author, <strong>[pc_date]</strong> for parent comment date, <strong>[pc_content]</strong> for parent comment content, <strong>[cc_author]</strong> for child comment author, <strong>[cc_date]</strong> for child comment date, <strong>[cc_url]</strong> for child comment author url, <strong>[cc_content]</strong> for child comment content, <strong>[commentlink]</strong> for parent comment link, <strong>[blogname]</strong> for blog name, <strong>[blogurl]</strong> for blog url and <strong>[postname]</strong> for post name."
+msgstr "Použít pouze HTML. Pro zjednodušení můžete použít tyto značky:<strong>[pc_author]</strong> pro autora nadřazeného komentáře, <strong>[pc_date]</strong> pro datum nadřazeného komentáře, <strong>[pc_content]</strong> pro obsah nadřazeného komentáře, <strong>[cc_author]</strong> pro autora podřazeného komentáře, <strong>[cc_date]</strong> pro datum podřazeného komentáře, <strong>[cc_url]</strong> pro url autora podřazeného komentáře, <strong>[cc_content]</strong> pro obsah podřazeného komentáře, <strong>[commentlink]</strong> pro link na nadřazený komentář, <strong>[blogname]</strong> pro jméno blogu, <strong>[blogurl]</strong> pro url blogu a <strong>[postname]</strong> pro název příspěvku."
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:330
+msgid "Configuration action of deactivate"
+msgstr "Konfigurační akce při deaktivaci"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:332
+msgid "Delete options after deactivate:"
+msgstr "Vmazat nastavení po deaktivaci:"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:335
+msgid "check box if you want to delete all of options of wp thread comment after deactivate this plugin"
+msgstr "zatrhněte tuto volbu pokud chcete vymazat všechna nastavení po deaktivaci tohoto pluginu"
+
+# D:/plugins/wp-thread-comment/wp-thread-comment.php:233
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:339
+msgid "Update Options"
+msgstr "Aktualizovat nastavení"
+
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:340
+msgid "Do you really want to reset your current configuration?"
+msgstr "Opravdu chcete zrušit Vaši současnou konfiguraci?"
+
+# D:/plugins/wp-thread-comment/wp-thread-comment.php:234
+#: D:/SVN/comment-reply-notification/comment-reply-notification.php:340
+msgid "Reset Options"
+msgstr "Resetovat nastavení"
+
+#~ msgid "Click to cancel reply"
+#~ msgstr "Zrušit odpověď"
+
