@@ -479,7 +479,7 @@ function childtheme_override_postfooter() {
 	if(is_single())
 	{
 		?>
-		<p class="github-issues">Issues? Suggestions? Visit the <a href="https://github.com/liquidmetal/aishack/issues" target="_blank" rel="nofollow">Github issue tracker for AI Shack</a></p>
+		<p class="github-issues">Issues? Suggestions? Visit the <a href="https://github.com/liquidmetal/aishack/issues/new?body=<?php echo urlencode('Related page: '.get_permalink());?>" target="_blank" rel="nofollow">Github issue tracker for AI Shack</a></p>
     	<div class="post-divider"><span class="uplink">Back to top</span></div>
 	    <?php
 	}
