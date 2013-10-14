@@ -707,4 +707,12 @@ add_action('thematic_header', 'aishack_crumbs', 9);
 //add_action('thematic_belowpost', 'aishack_belowpost');
 add_action('wp_head', 'aishack_header_scripts');
 add_action('wp_footer', 'aishack_footer_scripts');
+
+
+// Shortcodes
+function get_git_rev_abbrev() {
+	return exec('git rev-parse --short HEAD');
+}
+
+add_shortcode('git-abbrev-rev', 'get_git_rev_abbrev');
 ?>
