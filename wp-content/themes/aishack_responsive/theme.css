@@ -875,3 +875,11 @@ img.latex {
     font-size: 0.8em;
     font-style: none;
 }
+
+.github-issues {
+  background:url(images/github-logo.png) no-repeat 0px 2px transparent;
+  font-weight: bold;
+  display: block;
+  padding-left: 24px;
+  margin-left: 10px;
+}

@@ -479,6 +479,7 @@ function childtheme_override_postfooter() {
 	if(is_single())
 	{
 		?>
+		<p class="github-issues">Issues? Suggestions? Visit the <a href="https://github.com/liquidmetal/aishack/issues" target="_blank" rel="nofollow">Github issue tracker for AI Shack</a></p>
     	<div class="post-divider"><span class="uplink">Back to top</span></div>
 	    <?php
 	}
@@ -496,7 +497,6 @@ function childtheme_override_postfooter() {
 		$summary = get_post_custom_values('summary');
 		
 		?>
-        
         <?php if(count($downloads)>0 || count($summary)>0) { ?>
         	<div id="additional"><div id="downloads"><h3><span id="downloadpackage"></span>Downloads</h3><ul><?php
 		
