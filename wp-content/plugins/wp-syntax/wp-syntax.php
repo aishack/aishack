@@ -282,7 +282,7 @@ if ( ! class_exists( 'WP_Syntax' ) ) {
 			$caption = self::caption( $match[5] );
 			$code = self::trimCode( $match[6] );
 
-			if ( $escaped == 'true' ) $code = htmlspecialchars_decode( $code );
+			if ( $escaped != 'false' ) $code = htmlspecialchars_decode( $code );
 
 			$geshi = new GeSHi( $code, $language );
 			$geshi->enable_keyword_links( FALSE );
