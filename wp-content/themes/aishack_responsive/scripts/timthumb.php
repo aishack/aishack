@@ -32,6 +32,7 @@ $allowedSites = array (
 	'img.youtube.com',
 	'upload.wikimedia.org',
 	'www.aishack.in',
+	'test.aishack.in'
 );
 
 // STOP MODIFYING HERE!
