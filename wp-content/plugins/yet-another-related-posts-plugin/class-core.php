@@ -119,7 +119,7 @@ class YARPP {
 				)
 			),
 			'require_tax' => array(), // new in 3.5
-			'optin' => true, // new in 4, default on 4.0.7
+			'optin' => false, // new in 4, default on 4.0.7
 			'thumbnails_heading' => __('Related posts:','yarpp'), // new in 4
 			'thumbnails_default' => plugins_url( 'default.png', __FILE__ ), // new in 4
 			'rss_thumbnails_heading' => __('Related posts:','yarpp'), // new in 4

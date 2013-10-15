@@ -6,7 +6,7 @@ Plugin URI: http://yarpp.org/
 Tags: related, posts, post, pages, page, RSS, feed, feeds, YARPP
 Requires at least: 3.3
 Tested up to: 3.6.1
-Stable tag: 4.0.7
+Stable tag: 4.0.8
 License: GPLv2 or later
 
 Display a list of related entries on your site and feeds based on a unique algorithm. Now with thumbnail support built-in!
@@ -214,7 +214,7 @@ Developers can call YARPP's powerful relatedness algorithm from anywhere in thei
 
 Options which are not specified will default to those specified in the YARPP settings page. Additionally, if you are using the builtin template rather than specifying a custom template file in `template`, the following arguments can be used to override the various parts of the builtin template: `before_title`, `after_title`, `before_post`, `after_post`, `before_related`, `after_related`, `no_results`, `excerpt_length`.
 
-If you need to use related entries programmatically or to know whether they exist, you can use the functions `yarpp_get_related($args, $reference_ID)` and `yarpp_related_exist($args, $reference_ID)`. `yarpp_get_related` returns an array of `post` objects, just like the WordPress function `get_posts`. `yarpp_related_exist` returns a boolean for whether any such related entries exist. For each function, `$args` takes the same arguments as those shown for `yarpp_related` above, except for the various display and template options.
+If you need to use related entries programmatically or to know whether they exist, you can use the functions `yarpp_get_related($args, $reference_ID)`  and  `yarpp_related_exist($args, $reference_ID)`. `yarpp_get_related` returns an array of `post` objects, just like the WordPress function `get_posts`. `yarpp_related_exist` returns a boolean for whether any such related entries exist. For each function, `$args` takes the same arguments as those shown for `yarpp_related` above, except for the various display and template options.
 
 Note that custom YARPP queries using the functions mentioned here are *not* cached in the built-in YARPP caching system. Thus, if you notice any performance hits, you may need to write your own code to cache the results.
 
@@ -273,6 +273,9 @@ YARPP is currently localized in the following languages:
 * Uzbek (`uz_UZ`) by Ali Safarov of [comfi.com](http://www.comfi.com/)
 
 == Changelog ==
+
+= 4.0.8 =
+* The recent 4.0.7 YARPP update included a settings modification to opt in users to our tracking pixel by default. By doing so, our intent was to use this expanded information to better understand the geographic reach of the popular plugin. We have been made aware that this change infringed upon the WordPress guidelines. We apologize for the issue and have remedied the situation in update 4.0.8. Going forward, we would really appreciate your input to help us continue to improve the product. We are primarily looking for country, domain, and date installed information. Please help us make YARPP better by opting in to this information and by filling out our quick, [5 question survey](http://www.surveymonkey.com/s/Z278L88). Thank you.
 
 = 4.0.7 =
 * [Bugfix](https://wordpress.org/support/topic/orderby-error): Now more robust against certain custom options.
