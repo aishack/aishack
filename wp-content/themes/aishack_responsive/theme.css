@@ -225,7 +225,9 @@ a:visited {
     margin-right:0px !important;
 }
 
-
+#content .post-image {
+    margin-bottom: 20px;
+}
 
 #content .post-image-multiple {
     float: left;
