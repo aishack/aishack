@@ -1,0 +1,15 @@
+
+
+[test]
+nose
+unittest2
+pycrypto
+mock
+pyjwt
+
+[signedtoken]
+pycrypto
+pyjwt
+
+[rsa]
+pycrypto
