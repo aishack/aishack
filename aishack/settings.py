@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'aishack',
     'social.apps.django_app.default',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
