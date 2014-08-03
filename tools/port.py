@@ -3,7 +3,7 @@
 # A quite tool to convert data from the wordpress table (already ported to
 # sqlite in output.db) into an md file with frontmatter
 
-import sqlite3, sys
+import sqlite3, sys, re
 from html2text import HTML2Text
 
 if len(sys.argv) == 1:
@@ -64,13 +64,26 @@ def find_category_name(id):
 
 def generate_file_name(title):
     ret = title.lower()
+    ret = re.sub(r'[\?\!-_+:()]', '', ret)
     ret = '-'.join(ret.split(' '))
     ret = ret.replace('/', '-')
 
     return ret.encode('ascii', 'ignore')
 
+def handle_images(content):
+    """
+    Converts old wordpress images into the new link format
+    """
+    content = content.replace('http://aishack.in/', '/')
+    content = content.replace('http://www.aishack.in/', '/')
+    content = re.sub(r'/wp-content/uploads/[0-9]{4}/[0-9]{2}/', '/static/img/tut/', content)
+
+    return content
+
+
 h2t = HTML2Text()
 h2t.body_width = 0
+counter = 1
 for result in allResults:
     if result[_index_status] != 'publish':
         continue
@@ -79,6 +92,7 @@ for result in allResults:
     html = html.replace('\\r', '')
     html = html.replace('\\"', '"')
     html = html.replace("\\'", "'")
+    html = handle_images(html)
     output = h2t.handle(html)
 
     # Fetch what category this belongs to
@@ -94,3 +108,4 @@ for result in allResults:
     f.write('---\n')
     f.write(output.encode('utf8'))
     f.close()
+    counter += 1
