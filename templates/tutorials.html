@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if tutorial %}
+        {{ tutorial | safe }}
+    {% else %}
+        <h2>Tutorials</h2>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        {{ user.first_name }}
+        {{ user.email }}
+    {% endif %}
+{% endblock %}

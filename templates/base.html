@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang='env'>
+    <head>
+        <meta charset="utf8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Utkarsh Sinha">
+        <link rel="shortcut icon" href="{% static 'img/fav.gif' %}" />
+        <title>{{ SITE_TITLE }}</title>
+
+        <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}' />
+        <link rel="stylesheet" href='{% static "css/custom.css" %}' />
+    </head>
+    <body>
+        <div class='container'>
+            {% include "includes/nav.html" %}
+
+            <div class="row">
+                <div class="col-md-9">
+                    {% include "includes/crumbs.html" %}
+                    {% block content %}{% endblock %}
+                </div>
+                {% include "includes/sidebar.html" %}
+            </div>
+        </div>
+        <div class='container footer'>
+            {% include "includes/footer.html" %}
+        </div>
+        <script src='{% static "js/jquery-1.11.1.min.js" %}'></script>
+        <script src='{% static "js/bootstrap.min.js" %}'></script>
+        <script src='{% static "js/custom.js" %}'></script>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>You're already logged in!</p>
+    {% else %}
+        <a href="{% url "social:begin" "google" %}">Login with Google</a>
+    {% endif %}
+{% endblock %}

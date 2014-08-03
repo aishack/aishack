@@ -6,15 +6,27 @@ import settings
 # Custom modules
 from aishack import views
 
-# Uncomment the next two lines to enable the admin
-# from django.contrib import admin
-# admin.autodiscover()
+# Enable admin mode
+from django.contrib import admin
+from django.contrib.auth.views import login, logout
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'aishack.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
+
+    # Added for python-social-auth
+    url('', include('social.apps.django_app.urls', namespace='social')),
+
+    # login url in case you don't have JS working
+    url(r'^logout/$', logout),
+
     url(r'^$', views.index),
+    url(r'^tutorials/$', views.tutorials),
+    url(r'^tutorials/(?P<slug>[a-zA-Z0-9-]+)/$', views.tutorials),
+    url(r'^contribute/$', views.contribute),
+    url(r'^about/$', views.about),
 ) + static(settings.STATIC_URL)
