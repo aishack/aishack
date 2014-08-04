@@ -31,6 +31,7 @@ class Track(models.Model):
     This table contains information about tutorial tracks
     """
     title = models.CharField(max_length=256, unique=True)
+    tutorials = models.ManyToManyField(Tutorial, through='TrackTutorials')
 
     def __unicode__(self):
         return self.title
@@ -41,6 +42,7 @@ class TrackTutorials(models.Model):
     """
     track    = models.ForeignKey("Track")
     tutorial = models.ForeignKey("Tutorial")
+    order    = models.IntegerField(default=0)
 
 
 class Quiz(models.Model):
