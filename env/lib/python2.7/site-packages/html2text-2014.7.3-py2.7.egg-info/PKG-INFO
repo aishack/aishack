@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: html2text
+Version: 2014.7.3
+Summary: Turn HTML into equivalent Markdown-structured text.
+Home-page: https://github.com/Alir3z4/html2text/
+Author: Alireza Savand
+Author-email: alireza.savand@gmail.com
+License: GNU GPL 3
+Description: UNKNOWN
+Platform: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.4
+Classifier: Programming Language :: Python :: 2.5
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
