@@ -3,7 +3,7 @@
 # A quite tool to convert data from the wordpress table (already ported to
 # sqlite in output.db) into an md file with frontmatter
 
-import sqlite3, sys, re
+import sqlite3, sys, re, urllib
 from html2text import HTML2Text
 
 if len(sys.argv) == 1:
@@ -80,6 +80,24 @@ def handle_images(content):
 
     return content
 
+def handle_latex(content):
+    """
+    Parses latex markdown into html
+    """
+    regex = re.compile(ur'.*?(\[latex\].*?\[/latex\]).*')
+    content = content.replace('\r', '')
+
+    m = regex.findall(content, re.DOTALL)
+    if not m:
+        return content
+
+    for match in m:
+        formula = urllib.quote(match[7:-8].encode('ascii', 'ignore').decode('string_escape'))
+        wp_img = '<img class="latex" src="http://s0.wp.com/latex.php?latex=%s&bg=ffffff&fg=000&s=0" />' % formula
+
+        content = content.replace(match, wp_img)
+
+    return content
 
 h2t = HTML2Text()
 h2t.body_width = 0
@@ -93,6 +111,7 @@ for result in allResults:
     html = html.replace('\\"', '"')
     html = html.replace("\\'", "'")
     html = handle_images(html)
+    html = handle_latex(html)
     output = h2t.handle(html)
 
     # Fetch what category this belongs to
