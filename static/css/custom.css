@@ -13,5 +13,11 @@ nav .glyphicon-margin {
     margin: 0 auto;
 }
 
+.img-pulled-right {
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 .footer {
 }
