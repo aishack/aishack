@@ -88,15 +88,42 @@ def handle_latex(content):
     regex = re.compile(ur'.*?(\[latex\].*?\[/latex\]).*')
     content = content.replace('\r', '')
 
-    m = regex.findall(content, re.DOTALL)
+    m = regex.findall(content, re.DOTALL + re.UNICODE)
     if not m:
         return content
 
-    for match in m:
-        formula = urllib.quote(match[7:-8].encode('ascii', 'ignore').decode('string_escape'))
-        wp_img = '<img class="latex" src="http://s0.wp.com/latex.php?latex=%s&bg=ffffff&fg=000&s=0" />' % formula
+    while m:
+        for match in m:
+            formula = urllib.quote(match[7:-8].encode('ascii', 'ignore').decode('string_escape'))
+            wp_img = '<img class="latex" src="http://s0.wp.com/latex.php?latex=%s&bg=ffffff&fg=000&s=0" />' % formula
 
-        content = content.replace(match, wp_img)
+            content = content.replace(match, wp_img)
+
+        m = regex.findall(content, re.DOTALL + re.UNICODE)
+
+    return content
+
+def handle_caption(content):
+    # Finds the general area
+    regex = re.compile(ur'.*?(\[caption .*?\[/caption\])')
+
+    # Finds the actual caption
+    regexcaption = re.compile(ur'.*?caption=\"(.*?)\".*?')
+
+    # Used for matching contents
+    regexcontent = re.compile(ur'^\[caption .*?\](.*?)\[/caption\]')
+    
+    content = content.replace('\r', '')
+
+    m = regex.findall(content, re.DOTALL + re.UNICODE)
+    while m:
+        for match in m:
+            thecaption = regexcaption.findall(match)[0]
+            thecontent = regexcontent.findall(match)[0]
+
+            content = content.replace(match, '<br/><br/>%s<br/>:    %s<br/><br/>' % (thecontent, thecaption))
+
+        m = regex.findall(content, re.DOTALL + re.UNICODE)
 
     return content
 
@@ -112,7 +139,9 @@ for result in allResults:
     html = html.replace('\\"', '"')
     html = html.replace("\\'", "'")
     html = handle_links(html)
+
     html = handle_latex(html)
+    html = handle_caption(html)
     output = h2t.handle(html)
 
     # Fetch what category this belongs to
