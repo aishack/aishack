@@ -50,6 +50,12 @@ figcaption {
     margin: 0 auto;
 }
 
+.tut-post-image {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
 .tut-success {
     color: #3c763d;
     border-color: #d6e9c6;
@@ -86,14 +92,13 @@ figcaption {
     padding-left: 64px;
 }
 
-
 .codehilite { background-color: #f9f9f9 }
 .codehilite .c { color: #586E75 } /* Comment */
 .codehilite .err { color: #93A1A1 } /* Error */
 .codehilite .g { color: #93A1A1 } /* Generic */
 .codehilite .k { color: #859900 } /* Keyword */
 .codehilite .l { color: #93A1A1 } /* Literal */
-.codehilite .n { color: #93A1A1 } /* Name */
+.codehilite .n { color: #596666 } /* Name */
 .codehilite .o { color: #859900 } /* Operator */
 .codehilite .x { color: #CB4B16 } /* Other */
 .codehilite .p { color: #93A1A1 } /* Punctuation */

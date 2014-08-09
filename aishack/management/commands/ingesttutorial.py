@@ -57,8 +57,9 @@ class Command(BaseCommand):
         if 'date' in frontmatter:
             frontmatter['date'] = datetime.strptime(frontmatter['date'], '%Y-%m-%d %H:%M:%S')
 
+        counter += 1
         content_lines = ''.join(lines[counter+1:])
-        html = markdown.markdown(content_lines.decode('utf8'), extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite'])
+        html = markdown.markdown(content_lines.decode('utf8'), extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
 
         return (frontmatter, html)
 
@@ -108,6 +109,9 @@ class Command(BaseCommand):
             # Print information just for info
             self.print_frontmatter(frontmatter)
             self.stdout.write('Parsing markdown successful!')
+
+            if frontmatter['category'] == 'Uncategorized':
+                raise CommandError("No category specified")
 
             # Get this into the django model
             try:

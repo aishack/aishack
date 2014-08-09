@@ -1,6 +1,18 @@
 <ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/">Tutorials</a></li>
-    <li><a href="/">OpenCV</a></li>
-    <li><a href="/">Memory management in C++</a></li>
+    <li><a href="/"><span class='glyphicon glyphicon-home'></span></a></li>
+    {% ifequal current_page 'tutorials' %}
+        <li><a href="/tutorials">Tutorials</a></li>
+        {% if tutorial.category %}
+            <li><a href='/tutorials/{{category_slug}}'>{{tutorial.category}}</a></li>
+        {% endif %}
+        {% if tutorial.slug %}
+            <li><a href='/tutorials/{{tutorial.slug}}'>{{tutorial.title}}</a></li>
+        {% endif %}
+    {% endifequal %}
+    {% ifequal current_page 'contribute' %}
+        <li><a href='/contribute'>Contribute</a></li>
+    {% endifequal %}
+    {% ifequal current_page 'about' %}
+        <li><a href='/about'>About</a></li>
+    {% endifequal %}
 </ol>

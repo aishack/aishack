@@ -2,7 +2,12 @@
 
 {% block content %}
     {% if tutorial %}
-        {{ tutorial | safe }}
+        {% if tutorial.post_image %}
+            <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
+        {% endif %}
+        <h2> {{tutorial.title}} </h2>
+        <hr />
+        {{ tutorial.content | safe }}
 
         <hr />
         {# author bio #}
@@ -13,10 +18,10 @@
         </div>
     {% else %}
         <h2>Tutorials</h2>
-    {% endif %}
-
-    {% if user.is_authenticated %}
-        {{ user.first_name }}
-        {{ user.email }}
+        {% for tut in tutorials %}
+            <ul>
+                <li><a href="/tutorials/{{tut.slug}}">{{ tut.title }}</a></li>
+            </ul>
+        {% endfor %}
     {% endif %}
 {% endblock %}

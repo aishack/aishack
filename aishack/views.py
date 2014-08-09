@@ -31,13 +31,15 @@ def tutorials(request, slug=None):
         # This section defines what happens if a tutorial slug is mentioned
         tutorial = Tutorial.objects.get(slug=slug)
         author = AishackUser.objects.get(user=tutorial.author)
-        context.update({'tutorial': tutorial.content,
+        context.update({'tutorial': tutorial,
+                        'page_title': tutorial.title,
                         'author': author.user,
+                        'category_slug': str(tutorial.category.title).decode('ascii', 'ignore').lower().replace(' ', '_'),
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author})
     else:
         # This section defines what happens if the url is just /tutorials/
-        pass
+        context.update({'tutorials': Tutorial.objects.all()})
 
     return render(request, "tutorials.html", context)
 
