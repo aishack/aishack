@@ -53,3 +53,12 @@ class Quiz(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class AishackUser(models.Model):
+    """
+    Extending the base User class for more attributes
+    """
+    user      = models.OneToOneField(User, primary_key=True)
+    short_bio = models.CharField(max_length=256, blank=True)
+    bio       = models.TextField(max_length=2048, blank=True)
+    website   = models.URLField(blank=True)
