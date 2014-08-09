@@ -58,7 +58,7 @@ class Command(BaseCommand):
             frontmatter['date'] = datetime.strptime(frontmatter['date'], '%Y-%m-%d %H:%M:%S')
 
         content_lines = ''.join(lines[counter+1:])
-        html = markdown.markdown(content_lines.decode('utf8'), extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions'])
+        html = markdown.markdown(content_lines.decode('utf8'), extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite'])
 
         return (frontmatter, html)
 
