@@ -3,10 +3,12 @@ from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render
 import datetime, os
+from hashlib import md5
 
 from django.contrib.auth import logout
 
-from aishack.models import Tutorial
+from aishack.models import Tutorial, AishackUser
+from django.contrib.auth.models import User
 
 import utils, settings
 
@@ -28,7 +30,11 @@ def tutorials(request, slug=None):
     if slug:
         # This section defines what happens if a tutorial slug is mentioned
         tutorial = Tutorial.objects.get(slug=slug)
-        context.update({'tutorial': tutorial.content})
+        author = AishackUser.objects.get(user=tutorial.author)
+        context.update({'tutorial': tutorial.content,
+                        'author': author.user,
+                        'author_email_md5': md5(author.user.email).hexdigest(),
+                        'aishackuser': author})
     else:
         # This section defines what happens if the url is just /tutorials/
         pass
