@@ -70,13 +70,14 @@ def generate_file_name(title):
 
     return ret.encode('ascii', 'ignore')
 
-def handle_images(content):
+def handle_links(content):
     """
     Converts old wordpress images into the new link format
     """
     content = content.replace('http://aishack.in/', '/')
     content = content.replace('http://www.aishack.in/', '/')
     content = re.sub(r'/wp-content/uploads/[0-9]{4}/[0-9]{2}/', '/static/img/tut/', content)
+    content = re.sub(r'/[0-9]{4}/[0-9]{2}/', '/tutorials/', content)
 
     return content
 
@@ -110,7 +111,7 @@ for result in allResults:
     html = html.replace('\\r', '')
     html = html.replace('\\"', '"')
     html = html.replace("\\'", "'")
-    html = handle_images(html)
+    html = handle_links(html)
     html = handle_latex(html)
     output = h2t.handle(html)
 
