@@ -127,6 +127,27 @@ def handle_caption(content):
 
     return content
 
+def handle_newline(content):
+    content = content.replace('\r', '')
+    regex = re.compile(r'(\n.*?\n\n)')
+
+    m = regex.findall(content)
+    while m:
+        for match in m:
+            content = content.replace(match, '<p>%s</p>' % match[1:-2])
+        m = regex.findall(content)
+    return content
+
+def cleanup_extrawhitespaces(content):
+    old_content = content
+    content = content.replace('\n\n\n', '\n\n')
+
+    while content != old_content:
+        old_content = content
+        content = content.replace('\n\n\n', '\n\n')
+
+    return content
+
 h2t = HTML2Text()
 h2t.body_width = 0
 counter = 1
@@ -140,9 +161,15 @@ for result in allResults:
     html = html.replace("\\'", "'")
     html = handle_links(html)
 
+    if result[_index_title] == 'The Canny Edge Detector':
+        import pdb; pdb.set_trace()
+    html = handle_newline(html)
     html = handle_latex(html)
     html = handle_caption(html)
     output = h2t.handle(html)
+
+    # Clean up the markdown output
+    output = cleanup_extrawhitespaces(output)
 
     # Fetch what category this belongs to
 
