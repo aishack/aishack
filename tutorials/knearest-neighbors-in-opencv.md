@@ -74,7 +74,7 @@ Next, we read values from both files:
     
         fseek(fp2, 0x08, SEEK_SET);
 
-We'll get to the readFlippedInteger function a little later. If you're on an Intel machine (which is little endian), you need to use it. If you're on some other high-endian processor, you can simply read using fread.
+We'll get to the `readFlippedInteger` function a little later. If you're on an Intel machine (which is little endian), you need to use it. If you're on some other high-endian processor, you can simply read using fread.
 
 Labels start at byte 8, so we also skip the first two integers (thus, 8 bytes) in fp2.
 
@@ -116,6 +116,7 @@ With all images and labels in the RAM, we can load these into the K-Nearest Neig
 And then, we can print out the maximum value of k. And we close both files. 
     
     
+    :::c++
         printf("Maximum k: %d", knn.get_max_k());  
     
         fclose(fp);

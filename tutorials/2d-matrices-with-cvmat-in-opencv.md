@@ -12,7 +12,7 @@ post_image: "/static/img/tut/post-opencv.jpg"
 
 Creating a 2D matrix is very simple. You use the cvCreateMat function. It has the following prototype. The _rows _and _cols _parameters are self explanatory. And to create a 1D matrix, you set either _cols_=1 (a column matrix) or _rows_=1 (a row matrix).
 
-The _type _parameter lets you choose from the large variety of formats. There's a large number of predefined constants to help you remember. Their general form is: CV_<bitdepth>(S|U|F)C<numchannels>. 
+The _type_ parameter lets you choose from the large variety of formats. There's a large number of predefined constants to help you remember. Their general form is: CV_<bitdepth>(S|U|F)C<numchannels>. 
     
     :::c++
     CvMat* cvCreateMat (int rows, int cols, int type);

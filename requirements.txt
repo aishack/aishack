@@ -1,6 +1,7 @@
 Django==1.6.5
 Logbook==0.7.0
 Markdown==2.4.1
+Pygments==1.6
 South==1.0
 # html2text==2014.7.3 - git'added a custom version
 oauthlib==0.6.3
