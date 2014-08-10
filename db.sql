@@ -33,6 +33,13 @@ INSERT INTO "django_admin_log" VALUES(20,'2014-08-10 06:17:55.325918',1,7,'36','
 INSERT INTO "django_admin_log" VALUES(21,'2014-08-10 06:37:07.157116',1,8,'6','Machine learning',1,'');
 INSERT INTO "django_admin_log" VALUES(22,'2014-08-10 06:53:23.639412',1,7,'43','Noise Models',3,'');
 INSERT INTO "django_admin_log" VALUES(23,'2014-08-10 06:55:24.888978',1,7,'43','Noise Models',3,'');
+INSERT INTO "django_admin_log" VALUES(24,'2014-08-10 13:37:24.142077',1,4,'3','vito',2,'Changed is_superuser and is_staff.');
+INSERT INTO "django_admin_log" VALUES(25,'2014-08-10 13:40:18.396716',1,4,'3','vito',2,'Added aishack user "AishackUser object".');
+INSERT INTO "django_admin_log" VALUES(26,'2014-08-10 15:33:47.982603',1,4,'4','bhargav',2,'Added aishack user "AishackUser object".');
+INSERT INTO "django_admin_log" VALUES(27,'2014-08-10 15:36:34.219088',1,4,'4','bhargav',2,'Changed short_bio for aishack user "AishackUser object".');
+INSERT INTO "django_admin_log" VALUES(28,'2014-08-10 15:53:30.595143',1,8,'7','Robotics',1,'');
+INSERT INTO "django_admin_log" VALUES(29,'2014-08-10 16:32:14.573724',1,8,'8','Reviews',1,'');
+INSERT INTO "django_admin_log" VALUES(30,'2014-08-10 16:48:22.129456',1,7,'107','The OpenCV 2 Computer Vision Application Programming Cookbook',3,'');
 CREATE TABLE "auth_permission" (
     "id" integer NOT NULL PRIMARY KEY,
     "name" varchar(50) NOT NULL,
@@ -125,6 +132,8 @@ CREATE TABLE "auth_user" (
 );
 INSERT INTO "auth_user" VALUES(1,'pbkdf2_sha256$12000$eDLZzXTu28mI$ZUG21MW/w8tY1d1hUqIeT9BINdZX2i7uWiFegINz2Yc=','2014-08-03 17:31:26',1,'utkarsh','Utkarsh','Sinha','sinha.utkarsh1990@gmail.com',1,1,'2014-08-03 16:59:41');
 INSERT INTO "auth_user" VALUES(2,'pbkdf2_sha256$12000$DwsQBeX2HHqy$5gDdKPIDMlV+oDKn+rn+bj6csAOffbFL1h2Ep204FPw=','2014-08-09 16:18:47',0,'shervin','','','shervin.emami@gmail.com',0,1,'2014-08-09 16:18:47');
+INSERT INTO "auth_user" VALUES(3,'pbkdf2_sha256$12000$ARuOZgLzy4BR$SNuoXEPMDvGBdTEiFmolqC6TP/bsLjM6/q8EKp564jg=','2014-08-10 13:37:11',0,'vito','','','vito.macchia@polito.it',0,1,'2014-08-10 13:37:11');
+INSERT INTO "auth_user" VALUES(4,'pbkdf2_sha256$12000$oKjlxqvzPygJ$9IoGeotLd3oX4nK2J2dZT6QUSYttnfU7GLWmN31kC+M=','2014-08-10 15:31:42',1,'bhargav','','','bhargav.abhimanyu@gmail.com',1,1,'2014-08-10 15:31:42');
 CREATE TABLE "django_content_type" (
     "id" integer NOT NULL PRIMARY KEY,
     "name" varchar(100) NOT NULL,
@@ -153,7 +162,7 @@ CREATE TABLE "django_session" (
     "session_data" text NOT NULL,
     "expire_date" datetime NOT NULL
 );
-INSERT INTO "django_session" VALUES('pwmvqnkrvujixi94nvjb0jdpyhjxc9li','ZGQ4YzQ3YzFiOGE0OThiNjAyN2U0NDI2MTk5YjEyMGRlNzI3MDY2NTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MSwiX21lc3NhZ2VzIjoiW1tcIl9fanNvbl9tZXNzYWdlXCIsMCwyNSxcIlN1Y2Nlc3NmdWxseSBkZWxldGVkIDEgdHV0b3JpYWwuXCJdLFtcIl9fanNvbl9tZXNzYWdlXCIsMCwyNSxcIlN1Y2Nlc3NmdWxseSBkZWxldGVkIDEgdHV0b3JpYWwuXCJdXSJ9','2014-08-24 06:55:25.214832');
+INSERT INTO "django_session" VALUES('pwmvqnkrvujixi94nvjb0jdpyhjxc9li','MjM5ODUzYWJjOWMwY2NhY2Y3MTcxM2FhMmQyNmZjYTk1ODI3YzUxNDp7Il9tZXNzYWdlcyI6IltbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJTdWNjZXNzZnVsbHkgZGVsZXRlZCAxIHR1dG9yaWFsLlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJTdWNjZXNzZnVsbHkgZGVsZXRlZCAxIHR1dG9yaWFsLlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJUaGUgdXNlciBcXFwidml0b1xcXCIgd2FzIGNoYW5nZWQgc3VjY2Vzc2Z1bGx5LlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJUaGUgdXNlciBcXFwidml0b1xcXCIgd2FzIGNoYW5nZWQgc3VjY2Vzc2Z1bGx5LlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJUaGUgdXNlciBcXFwiYmhhcmdhdlxcXCIgd2FzIGNoYW5nZWQgc3VjY2Vzc2Z1bGx5LlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJUaGUgdXNlciBcXFwiYmhhcmdhdlxcXCIgd2FzIGNoYW5nZWQgc3VjY2Vzc2Z1bGx5LlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJUaGUgY2F0ZWdvcnkgXFxcIlJvYm90aWNzXFxcIiB3YXMgYWRkZWQgc3VjY2Vzc2Z1bGx5LlwiXSxbXCJfX2pzb25fbWVzc2FnZVwiLDAsMjUsXCJUaGUgY2F0ZWdvcnkgXFxcIlJldmlld3NcXFwiIHdhcyBhZGRlZCBzdWNjZXNzZnVsbHkuXCJdLFtcIl9fanNvbl9tZXNzYWdlXCIsMCwyNSxcIlN1Y2Nlc3NmdWxseSBkZWxldGVkIDEgdHV0b3JpYWwuXCJdXSIsIl9hdXRoX3VzZXJfaWQiOjEsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=','2014-08-24 16:48:22.418637');
 CREATE TABLE "social_auth_usersocialauth" (
     "id" integer NOT NULL PRIMARY KEY,
     "user_id" integer NOT NULL REFERENCES "auth_user" ("id"),
@@ -202,6 +211,8 @@ INSERT INTO "aishack_category" VALUES(3,'OpenCV','');
 INSERT INTO "aishack_category" VALUES(4,'Electronics','');
 INSERT INTO "aishack_category" VALUES(5,'General','');
 INSERT INTO "aishack_category" VALUES(6,'Machine learning','');
+INSERT INTO "aishack_category" VALUES(7,'Robotics','');
+INSERT INTO "aishack_category" VALUES(8,'Reviews','');
 CREATE TABLE "aishack_track" ("id" integer NOT NULL PRIMARY KEY, "title" varchar(256) NOT NULL UNIQUE);
 CREATE TABLE "aishack_quiz" ("id" integer NOT NULL PRIMARY KEY, "title" varchar(128) NOT NULL);
 CREATE TABLE "aishack_tutorial" ("title" varchar(128) NOT NULL UNIQUE, "excerpt" varchar(512) NOT NULL, "id" integer PRIMARY KEY, "content" text NOT NULL, "post_image" varchar(256) NOT NULL, "date" date NOT NULL, "author_id" integer NOT NULL, "category_id" integer NOT NULL, "slug" varchar(128) NOT NULL UNIQUE);
@@ -5327,10 +5338,2673 @@ INSERT INTO "aishack_tutorial" VALUES('Image convolution examples','',62,'<p>A c
 <p><img alt="The result of applying the laplacian of gaussian operator" src="/static/img/tut/conv-laplacian-of-gaussian-result.jpg" /></p>
 <h2>Summary</h2>
 <p>You got to know about some important operations that can be approximated using an image convolution. You learned the exact convolution kernels used and also saw an example of how each operator modifies an image. I hope this helped!</p>','/static/img/tut/post-convolutions.jpg','2010-08-16',1,2,'image-convolution-examples');
+INSERT INTO "aishack_tutorial" VALUES('Mathematical Morphology','',63,'<p>I''m sure you''ve studied morphology in Biology. Well, that was biological morphology. This is mathematical morphology. This was one tool that I always knew about, but never really used it. For some reason, I thought this was only for some funky effects (the name "erode" mislead me). These operations that I''m about to explain are super useful! Hopefully, you''ll appreciate what these tools can do! </p>
+<h2>What is mathematical morphology?</h2>
+<p>Mathematical morphology is a technique used not only on images, but also on graphs, meshes, and anything else that has a spatial nature to it.</p>
+<p>You have two things when working with morphology: </p>
+<ul>
+<li>The image</li>
+<li>The structuring element</li>
+</ul>
+<p>The structuring element is much smaller than the image (sometimes, its 3x3 in size, but can be bigger and rectangular). This structuring element slides over the image and transforms it.</p>
+<p>The structuring element creates new pixelsor erases them. Based on this, two basic operations are defined: <strong>dilation</strong> and <strong>erosion</strong>. </p>
+<h2>Dilation</h2>
+<p>In this operation, new pixels are marked white. The structuring element slides over the source image. Whenever the anchor pixel of the structuring element is at a white pixel in the source, the structuring element "leaves an impression". These pictures should clarify things.</p>
+<p><img alt="The structuring element and the source image" src="/static/img/tut/morphology_dilation_1.jpg" /></p>
+<p>I''ll take you through the entire sliding process and we''ll see he four pixels in the center dilate.</p>
+<p><img alt="The first step of sliding" src="/static/img/tut/morphology_dilation_2.jpg" /></p>
+<p>The structuring element starts its sliding thingy from the top left. At the anchor pixel, the color is black. So nothing happens.</p>
+<p><img alt="The second step" src="/static/img/tut/morphology_dilation_3.jpg" /></p>
+<p>The second position. Again, the color at the anchor pixel is black. So, nothing happens. Now fast forward.</p>
+<p><img alt="Nothing happens here either" src="/static/img/tut/morphology_dilation_4.jpg" /></p>
+<p>Nothing happens here either. Fast forward again:</p>
+<p><img alt="Finally, a change in the image" src="/static/img/tut/morphology_dilation_5.jpg" /></p>
+<p>We got some action! The anchor pixel has a white. The structuring element will convert all its pixels into white in the image and move to the next pixel: </p>
+<p><img alt="After the first change" src="/static/img/tut/morphology_dilation_6.jpg" /></p>
+<p>Again, a white pixel. So the changes are made:</p>
+<p><img alt="The second change" src="/static/img/tut/morphology_dilation_7.jpg" /></p>
+<p>The second change is made. Now we have a situation. The pixel at the anchor point is white here. Should another change be made? If yes, things would get weird. You''d have to create white pixels for everything pixel on the right. </p>
+<p>So instead of checking in this intermediate image, only the source image is checked. In the source image, the pixel under the anchor point is black. So no changes are done.</p>
+<p>Similarly if we continue the processing, this is the result obtained: </p>
+<p><img alt="The final result of dilation with the cross shaped structuring element" src="/static/img/tut/morphology_dilation_8.jpg" /></p>
+<p>This is the dilation of the source image I showed above. </p>
+<h2>Erosion</h2>
+<p>This works in the reverse direction of dilation. Whenever the structuring element is on top of a shape the same as itself, it leaves that point alone. Otherwise sets all pixels in it to black.</p>
+<p>Again, pictures would make things easier. The structuring element is the same cross. And the source image now is the result of the example (the dilated square). </p>
+<p><img alt="Starting the erosion" src="/static/img/tut/morphology_erosion_1.jpg" /></p>
+<p>The erosion starts at the top left corner. All pixels that are white in the structuring element are black. So all non-white pixels are marked as black. They''re already black, so not much of a difference. Lets fast forward to where it hits the central plus.</p>
+<p><img alt="Turning some pixels black" src="/static/img/tut/morphology_erosion_2.jpg" /></p>
+<p>Again, not all non-black pixels of the structuring element are white in the source. So they''re all marked black. The element moves foward:</p>
+<p><img alt="Some more white removal" src="/static/img/tut/morphology_erosion_3.jpg" /></p>
+<p>Again, not all expected pixels are white. So they''re all marked as black. The procedure continues like this: </p>
+<p><img alt="Sweeping some more white as the structuring element does more erosion" src="/static/img/tut/morphology_erosion_4.jpg" /></p>
+<p><img alt="Clearing up the top row" src="/static/img/tut/morphology_erosion_5.jpg" /></p>
+<p><img alt="Reaching the next row to erode" src="/static/img/tut/morphology_erosion_6.jpg" /></p>
+<p>The next step is tricky. Do you clear out some more pixels? Or do you create a white spot? The answer is: you create a white pixel. Why? Because in the source image, there exists a "plus". So the entire structuring element is "present" at this location. So you mark the anchor point as a white.</p>
+<p><img alt="Finally, morphological erosion generates a pixel" src="/static/img/tut/morphology_erosion_7.jpg" /></p>
+<p>Similarly, for the next pixel:</p>
+<p><img alt="Creating another pixel through erosion" src="/static/img/tut/morphology_erosion_8.jpg" /></p>
+<p>See that little protrusion on the right? That will be erased in the next step. Following these rules, you''ll end up with this as your result:</p>
+<h2><img alt="The final result of erosion with a cross shaped structuring element" src="/static/img/tut/morphology_erosion_9.jpg" />Erosion is NOT the inverse of Dilation</h2>
+<p>In the above examples, dilating the square produced a plus. And eroding a plus produced a square. This is just by chance. In general, eroding and dilating produces an image different from the original. Here''s an example:</p>
+<p><img alt="Dilation and erosion are not inverse functions of each other" src="/static/img/tut/morphology-non-commutative1.jpg" /></p>
+<p>I''ve added an extra white pixel and changed the anchor point. All the results change drastically.</p>
+<p>Not just that, even the order of operations matters. Eroding and dilating is not the same as dilating and eroding. If you''re familiar with math, these are not commutative operators. In a sense. Well, ok. No math.</p>
+<h2>Summary</h2>
+<p>Dilation creates new white pixels in an image. Erosion deletes white pixels in an image. The creation and deletion depends on structuring element. The element is a lot smaller than the image itself.</p>
+<p>In future posts, we''ll look at some more advanced stuff. How to make use of this seemingly useless erosion, dilation and structuring elements.</p>','/static/img/tut/post-mathematical-morphology.jpg','2010-07-12',1,2,'mathematical-morphology');
+INSERT INTO "aishack_tutorial" VALUES('Mathematical Morphology - Composite Operations','',64,'<p>Mathematical morphology isn''t only about <a href="/tutorials/mathematical-morphology/">erosion and dilation</a>. Those are just the fundamentals which you use to build more complex operations.</p>
+<p>These composite operations are made up of two or more basic operations, like dilation, erosion and image arithmetic. And these operations produce characteristic outputs that can help you out during image analysis.</p>
+<h2>Morphological Opening</h2>
+<p>Opening an image is achieved by first eroding an image and then dilating it. Opening removes any narrow "connections" between two regions. Here''s an example:</p>
+<p><img alt="Morphological Opening: See the narrow white paths vanish?" src="/static/img/tut/morphology-opening.jpg" /></p>
+<h2>Morphological Closing</h2>
+<p>Closing an image is done by first dilating the image and then eroding it. The order is the reverse of opening. Closing fills up any narrow black regions in the image. Here''s an example:</p>
+<p><img alt="Closing an image: See how the narrow blacks fill up?" src="/static/img/tut/morphology-closing.jpg" /></p>
+<h2>Morphological Gradient</h2>
+<p>The morphological gradient is the difference between the dilation and the erosion of the image. Thus, you have three basic operations being used.</p>
+<p>This gradient is used to find boundaries or edges in an image. You should apply some filtering before calculating the gradient because it is very sensitive to noise.</p>
+<p>Here''s an example of the gradient in action:</p>
+<p><img alt="Morphological Gradient: Note that this highlights all the edges" src="/static/img/tut/morphology-gradient.jpg" /></p>
+<h2>Top hat</h2>
+<p>The top hat is the difference of the source image and the opening of the source image. It highlights the narrow pathways between different regions.</p>
+<p>Here''s an example:</p>
+<p><img alt="Top Hat: Highlights the narrow paths between the &quot;islands&quot;" src="/static/img/tut/morphology-tophat.jpg" /></p>
+<h2>Black hat</h2>
+<p>The black hat is the difference between the closing of an image and the image itself. This highlights the narrow black regions in the image.</p>
+<p>Here''s an example:</p>
+<p><img alt="Black Hat: Highlights the narrow black regions in the image" src="/static/img/tut/morphology-blackhat.jpg" /></p>
+<h2>The structuring element</h2>
+<p>In each of the above examples, I''ve used a standard 3x3 square as the structuring element (with an anchor point at the center). You can choose whatever structuring element you want. You''ll get different results based on whatever structuring element you choose.</p>
+<h2>Summary</h2>
+<p>You learned about some interesting composite operations that can be done with just the basic erosion and dilation. With these, you can improve your segmented images (get rid of that pesky noise).</p>
+<p>These operations form the basis for even more complex operations. Things like generating a skeleton of the object. We''ll look at those in a later post.</p>','/static/img/tut/post-morphology-composite.jpg','2010-07-13',1,2,'mathematical-morphology-composite-operations');
+INSERT INTO "aishack_tutorial" VALUES('Using OpenCV on Windows','',65,'<p>Hi! I''ve put together a few short articles that will get you started with your first step in using OpenCV on Windows! By the end of this tutorial, you''ll be proficient at:</p>
+<ul>
+<li>Setting up a project for OpenCV</li>
+<li>Loading images</li>
+<li>Manipulate images (increase contrast, some funky effects, etc)</li>
+<li>Capture images from your camera (and apply the above effects too)</li>
+<li>Create simple user interfaces with HighGUI</li>
+</ul>
+<p>That''s a lot of stuff! So lets get started right now! </p>
+<h2>The tutorials</h2>
+<p>This is a series of tutorials. Here''s the entire list of tutorials: </p>
+<p><img alt="Lesson 01" src="/static/img/tut/using-opencv-thumb-tut1.jpg" />
+<strong><a href="/tutorials/why-opencv/">Why OpenCV?</a></strong> This article talks about why to choose OpenCV over Matlab. Update: I found a <a href="/tutorials/opencv-vs-vxl-vs-lti-performance-test/">comparison of OpenCV against other vision libraries</a>.</p>
+<p><img alt="" src="/static/img/tut/using-opencv-thumb-tut2.jpg" />
+<strong><a href="/tutorials/installing-and-getting-opencv-running/">Installing and getting OpenCV running</a></strong> Here you''ll learn how to setup your IDE to recognize OpenCV.</p>
+<p><img alt="" src="/static/img/tut/using-opencv-thumb-tut3.jpg" />
+<strong><a href="/tutorials/hello-world-with-images/">Hello, World! with images</a></strong> Your very first OpenCV project! You''ll load an image and display it on screen.</p>
+<p><img alt="" src="/static/img/tut/using-opencv-thumb-tut4.jpg" />
+<strong><a href="/tutorials/filtering-images/">Filtering images</a></strong> Do some weird effects on your images! This is a fun lesson!</p>
+<p><img alt="" src="/static/img/tut/using-opencv-thumb-tut5.jpg" />
+<strong><a href="/tutorials/capturing-images/">Capturing images</a></strong> Using OpenCV''s inbuilt capabilities to get live video from your camera. Update: Feeling adventerous? Try <a href="/tutorials/capturing-images-with-directx/">capturing with DirectX</a> (works on any camera).</p>
+<p><img alt="" src="/static/img/tut/using-opencv-thumb-tut6.jpg" />
+<strong><a href="/tutorials/highgui-creating-interfaces/">HighGUI: Creating Interfaces</a></strong> Learn the basics of creating an interface and detecting events from trackbars and windows.</p>
+<h2>What exactly is OpenCV?</h2>
+<p>This might sound obvious, but just to be clear, OpenCV is a library of functions. OpenCV is NOT a piece of software that you run and process images. You need to write code.</p>
+<p>You can download Microsoft''s Visual Studio Express Edition (for free). It is one superb IDE. Go <a href="http://www.microsoft.com/express/Windows/">get Visual Studio Express here</a>! You need to download the Visual C++ 2010 Express. </p>
+<p>Also, OpenCV is not some executable file that you double click and it''ll start working. It is pure code, library files and DLL files. When you write your own code, you "link" to these library files to access the OpenCV functions.</p>
+<p>Again, this might sound obvious, but just to be sure I put this up. </p>
+<h2>Summary</h2>
+<p>After you''ve been through this tutorial, you''ll know how to go about using OpenCV on a Windows box! Enjoy!</p>','/static/img/tut/post-opencv-windows.jpg','2010-07-13',1,3,'using-opencv-on-windows');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 5)','',66,'<p>Key points generated in <a href="/tutorials/sift-step-3-finding-key-points/">the previous step</a> produce a lot of key points. Some of them lie along an edge, or they don''t have enough contrast. In both cases, they are not useful as features. So we get rid of them. The approach is similar to the one used in <a href="/tutorials/harris-corner-detector/">the Harris Corner Detector</a> for removing edge features. For low contrast features, we simply check their intensities. </p>
+<h2>Removing low contrast features</h2>
+<p>This is simple. If the magnitude of the intensity (i.e., without sign) at the current pixel in the DoG image (that is being checked for minima/maxima) is less than a certain value, it is rejected.</p>
+<p>Because we have subpixel keypoints (we used the Taylor expansion to refine keypoints), we again need to use the taylor expansion to get the intensity value at subpixel locations. If it''s magnitude is less than a certain value, we reject the keypoint. </p>
+<h2>Removing edges</h2>
+<p>The idea is to calculate two gradients at the keypoint. Both perpendicular to each other. Based on the image around the keypoint, three possibilities exist. The image around the keypoint can be:</p>
+<div class="codehilite"><pre><span class="o">*</span> <span class="o">**</span><span class="n">A</span> <span class="n">flat</span> <span class="n">region</span><span class="o">:**</span> <span class="n">If</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="k">case</span><span class="p">,</span> <span class="n">both</span> <span class="n">gradients</span> <span class="n">will</span> <span class="n">be</span> <span class="n">small</span><span class="p">.</span>
+<span class="o">*</span> <span class="o">**</span><span class="n">An</span> <span class="n">edge</span><span class="o">:**</span> <span class="n">Here</span><span class="p">,</span> <span class="n">one</span> <span class="n">gradient</span> <span class="n">will</span> <span class="n">be</span> <span class="n">big</span> <span class="p">(</span><span class="n">perpendicular</span> <span class="n">to</span> <span class="n">the</span> <span class="n">edge</span><span class="p">)</span> <span class="n">and</span> <span class="n">the</span> <span class="n">other</span> <span class="n">will</span> <span class="n">be</span> <span class="n">small</span> <span class="p">(</span><span class="n">along</span> <span class="n">the</span> <span class="n">edge</span><span class="p">)</span>
+<span class="o">*</span> <span class="o">**</span><span class="n">A</span> <span class="s">&quot;corner&quot;</span><span class="o">:**</span> <span class="n">Here</span><span class="p">,</span> <span class="n">both</span> <span class="n">gradients</span> <span class="n">will</span> <span class="n">be</span> <span class="n">big</span><span class="p">.</span>
+</pre></div>
+
+
+<p>Corners are great keypoints. So we want just corners. If both gradients are big enough, we let it pass as a key point. Otherwise, it is rejected. </p>
+<p>Mathematically, this is achieved by the Hessian Matrix. Using this matrix, you can easily check if a point is a corner or not.</p>
+<p>If you''re interested in the math, first check the posts on <a href="/tutorials/harris-corner-detector/">the Harris corner detector</a>. A lot of the same math used used in SIFT. In the Harris Corner Detector, two eigenvalues are calculated. In SIFT, efficiency is increased by just calculating the ratio of these two eigenvalues. You never need to calculate the actual eigenvalues.</p>
+<h2>Example</h2>
+<p>Here''s a visual example of what happens in this step:</p>
+<p><img alt="" src="/static/img/tut/sift-tests.jpg" /></p>
+<p>Both extrema images go through the two tests: the contrast test and the edge test. They reject a few keypoints (sometimes a lot) and thus, we''re left with a lower number of keypoints to deal with. </p>
+<h2>Summary</h2>
+<p>In this step, the number of keypoints was reduced. This helps increase efficiency and also the robustness of the algorithm. Keypoints are rejected if they had a low contrast or if they were located on an edge.</p>
+<p>In the next step we''ll assign an orientation to all the keypoints that passed both tests.</p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-elimate-low-contrast');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 7)','',67,'<p>Now for the final step of SIFT. Till now, we had <a href="/tutorials/sift-step-5-assigning-keypoint-orientation/">scale and rotation invariance</a>. Now we create a fingerprint for each keypoint. This is to identify a keypoint. If an eye is a keypoint, then using this fingerprint, we''ll be able to distinguish it from other keypoints, like ears, noses, fingers, etc. </p>
+<h2>The idea</h2>
+<p>We want to generate a very unique fingerprint for the keypoint. It should be easy to calculate. We also want it to be relatively lenient when it is being compared against other keypoints. Things are never EXACTLY same when comparing two different images.</p>
+<p>To do this, a 16x16 window around the keypoint. This 16x16 window is broken into sixteen 4x4 windows. 
+<img alt="" src="/static/img/tut/sift-fingerprint.jpg" /></p>
+<p>Within each 4x4 window, gradient magnitudes and orientations are calculated. These orientations are put into an 8 bin <a href="/tutorials/histograms-from-simplest-to-the-most-complex/">histogram</a>. </p>
+<p><img alt="" src="/static/img/tut/sift-4x4.jpg" />Any gradient orientation in the range 0-44 degrees add to the first bin. 45-89 add to the next bin. And so on.And (as always) the amount added to the bin depends on the magnitude of the gradient.</p>
+<p>Unlike the past, the amount added also depends on the distance from the keypoint. So gradients that are far away from the keypoint will add smaller values to the histogram. </p>
+<p>This is done using a "gaussian weighting function". This function simply generates a gradient (it''s like a 2D bell curve). You multiple it with the magnitude of orientations, and you get a weighted thingy. The farther away, the lesser the magnutide.</p>
+<p><img alt="" src="/static/img/tut/sift-gaussian-4x4-weighting1.jpg" /></p>
+<p>Doing this for all 16 pixels, you would''ve "compiled" 16 totally random orientations into 8 predetermined bins. You do this for all sixteen 4x4 regions. So you end up with 4x4x8 = 128 numbers. Once you have all 128 numbers, you normalize them (just like you would normalize a vector in school, divide by root of sum of squares). These 128 numbers form the "feature vector". This keypoint is uniquely identified by this feature vector.</p>
+<p>You might have seen that in the pictures above, the keypoint lies "in between". It does not lie exactly on a pixel. That''s because it does not. The 16x16 window takes orientations and magnitudes of the image "in-between" pixels. So you need to interpolate the image to generate orientation and magnitude data "in between" pixels. </p>
+<h2>Problems</h2>
+<p>This feature vector introduces a few complications. We need to get rid of them before finalizing the fingerprint. </p>
+<ol>
+<li><strong>Rotation dependence</strong> The feature vector uses gradient orientations. Clearly, if you rotate the image, everything changes. All gradient orientations also change. To achieve rotation independence, the keypoint''s rotation is subtracted from each orientation. Thus each gradient orientation is relative to the keypoint''s orientation.</li>
+<li><strong>Illumination dependence</strong> If we threshold numbers that are big, we can achieve achieve illumination independence. So, any number (of the 128) greater than 0.2 is changed to 0.2. This resultant feature vector is normalized again. And now you have an illumination independent feature vector!</li>
+</ol>
+<h2>Summary</h2>
+<p>You take a 16x16 window of "in-between" pixels around the keypoint. You split that window into sixteen 4x4 windows. From each 4x4 window you generate a histogram of 8 bins. Each bin corresponding to 0-44 degrees, 45-89 degrees, etc. Gradient orientations from the 4x4 are put into these bins. This is done for all 4x4 blocks. Finally, you normalize the 128 values you get.</p>
+<p>To solve a few problems, you subtract the keypoint''s orientation and also threshold the value of each element of the feature vector to 0.2 (and normalize again).</p>
+<h2>The End!</h2>
+<p>Once you have the features, you go play with them! I''ll get to that in a later post(or posts :P). Read up on how <a href="/tutorials/the-hough-transform/">the hough transform</a> works. It will be used a lot.</p>
+<p>Next, I''ll try and explain an implementation of SIFT in OpenCV. Finally, some code! :D Though theory is :-<sub></sub></p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-features');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 1)','',68,'<p>Matching features across different images in a common problem in computer vision. When all images are similar in nature (same scale, orientation, etc) <a href="/tutorials/harris-corner-detector/">simple corner detectors</a> can work. But when you have images of different scales and rotations, you need to use the Scale Invariant Feature Transform. </p>
+<h2>Why care about SIFT</h2>
+<p>SIFT isn''t just scale invariant. You can change the following, and still get good results: </p>
+<ul>
+<li>Scale (duh)</li>
+<li>Rotation</li>
+<li>Illumination</li>
+<li>Viewpoint</li>
+</ul>
+<p>Here''s an example. We''re looking for these:</p>
+<p><img alt="" src="/static/img/tut/sift-objects.jpg" /></p>
+<p>And we want to find these objects in this scene: </p>
+<p><img alt="" src="/static/img/tut/sift-scene.jpg" /></p>
+<p>Here''s the result: </p>
+<p><img alt="" src="/static/img/tut/sift-result.jpg" /></p>
+<p>Now that''s some real robust image matching going on. The big rectangles mark matched images. The smaller squares are for individual features in those regions. Note how the big rectangles are skewed. They follow the orientation and perspective of the object in the scene. </p>
+<h2>The algorithm</h2>
+<p>SIFT is quite an involved algorithm. It has a lot going on and can become confusing, So I''ve split up the entire algorithm into multiple parts. Here''s an outline of what happens in SIFT. </p>
+<ol>
+<li><strong><a href="/tutorials/sift-step-1-constructing-a-scale-space/">Constructing a scale space</a></strong> This is the initial preparation. You create internal representations of the original image to ensure scale invariance. This is done by generating a "scale space".</li>
+<li><strong><a href="/tutorials/sift-step-2-laplacian-of-gaussian-approximation/">LoG Approximation</a></strong> The Laplacian of Gaussian is great for finding interesting points (or key points) in an image. But it''s computationally expensive. So we cheat and approximate it using the representation created earlier.</li>
+<li><strong><a href="/tutorials/sift-step-3-finding-key-points/">Finding keypoints</a></strong> With the super fast approximation, we now try to find key points. These are maxima and minima in the Difference of Gaussian image we calculate in step 2</li>
+<li><strong><a href="/tutorials/sift-step-4-eliminate-edges-and-low-contrast-regions/">Get rid of bad key points</a></strong> Edges and low contrast regions are bad keypoints. Eliminating these makes the algorithm efficient and robust. A technique similar to <a href="/tutorials/interesting-windows-in-the-harris-corner-detector/">the Harris Corner Detector</a> is used here.</li>
+<li><strong><a href="/tutorials/sift-step-5-assigning-keypoint-orientation/">Assigning an orientation to the keypoints</a></strong> An orientation is calculated for each key point. Any further calculations are done relative to this orientation. This effectively cancels out the effect of orientation, making it rotation invariant.</li>
+<li><strong><a href="/tutorials/sift-step-6-generate-sift-features/">Generate SIFT features</a></strong> Finally, with scale and rotation invariance in place, one more representation is generated. This helps uniquely identify features. Lets say you have 50,000 features. With this representation, you can easily identify the feature you''re looking for (say, a particular eye, or a sign board).
+That was an overview of the entire algorithm. Over the next few days, I''ll go through each step in detail. Finally, I''ll show you how to <strong><a href="/tutorials/implementing-sift-in-opencv/">implement SIFT in OpenCV</a></strong>! </li>
+</ol>
+<h2>What do I do with SIFT features?</h2>
+<p>After you run through the algorithm, you''ll have SIFT features for your image. Once you have these, you can do whatever you want.</p>
+<p>Track images, detect and identify objects (which can be partly hidden as well), or whatever you can think of. We''ll get into this later as well.</p>
+<p>But the catch is, this algorithm is patented.</p>
+<blockquote>
+<p>.&lt;</p>
+</blockquote>
+<p>So, it''s good enough for academic purposes. But if you''re looking to make something commercial, look for something else! [Thanks to aLu for pointing out SURF is patented too]</p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-introduction');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 6)','',69,'<p>After <a href="/tutorials/sift-step-4-eliminate-edges-and-low-contrast-regions/">step 4</a>, we have legitimate key points. They''ve been tested to be stable. We already know the scale at which the keypoint was detected (it''s the same as the scale of the blurred image). So we have scale invariance. The next thing is to assign an orientation to each keypoint. This orientation provides rotation invariance. The more invariance you have the better it is. :P </p>
+<h2>The idea</h2>
+<p>The idea is to collect gradient directions and magnitudes around each keypoint. Then we figure out the most prominent orientation(s) in that region. And we assign this orientation(s) to the keypoint.</p>
+<p>Any later calculations are done relative to this orientation. This ensures rotation invariance. </p>
+<p><img alt="" src="/static/img/tut/sift-a-keypoint.jpg" /></p>
+<p>The size of the "orientation collection region" around the keypoint depends on it''s scale. The bigger the scale, the bigger the collection region. </p>
+<h2>The details</h2>
+<p>Now for the little details about collecting orientations.</p>
+<p><img alt="" src="/static/img/tut/sift-orientation-window.jpg" /></p>
+<p>Gradient magnitudes and orientations are calculated using these formulae:</p>
+<p><img alt="" src="/static/img/tut/sift-orientation-eqns.jpg" /></p>
+<p>The magnitude and orientation is calculated for all pixels around the keypoint. Then, A <a href="/tutorials/histograms-from-simplest-to-the-most-complex/">histogram</a> is created for this.</p>
+<p>In this histogram, the 360 degrees of orientation are broken into 36 bins (each 10 degrees). Lets say the gradient direction at a certain point (in the "orientation collection region") is 18.759 degrees, then it will go into the 10-19 degree bin. And the "amount" that is added to the bin is proportional to the magnitude of gradient at that point. </p>
+<p>Once you''ve done this for all pixels around the keypoint, the histogram will have a peak at some point.</p>
+<p>Above, you see the histogram peaks at 20-29 degrees. So, the keypoint is assigned orientation 3 (the third bin)</p>
+<p>Also, any peaks above 80% of the highest peak are converted into a new keypoint. This new keypoint has the same location and scale as the original. But it''s orientation is equal to the other peak.</p>
+<p>So, orientation can split up one keypoint into multiple keypoints.</p>
+<p><img alt="" src="/static/img/tut/sift-orientation-histogram.jpg" /></p>
+<h2>The Technical Details</h2>
+<p><strong>Magnitudes</strong></p>
+<p>Saw the gradient magnitude image above? In SIFT, you need to blur it by an amount of 1.5*sigma. </p>
+<p><strong>Size of the window</strong></p>
+<p>The window size, or the "orientation collection region", is equal to the size of the kernel for Gaussian Blur of amount 1.5*sigma.</p>
+<h2>Summary</h2>
+<p>To assign an orientation we use a histogram and a small region around it. Using the histogram, the most prominent gradient orientation(s) are identified. If there is only one peak, it is assigned to the keypoint. If there are multiple peaks above the 80% mark, they are all converted into a new keypoint (with their respective orientations).</p>
+<p>Next, we generate a highly distinctive "fingerprint" for each keypoint. Here''s a little teaser. This fingerprint, or "feature vector", has 128 different numbers.</p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-keypoint-orientation');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 4)','',70,'<p>Up till now, we have <a href="/tutorials/sift-step-1-constructing-a-scale-space/">generated a scale space</a> and used the scale space to <a href="/tutorials/sift-step-3-finding-key-points/">calculate the Difference of Gaussians</a>. Those are then used to calculate Laplacian of Gaussian approximations that is scale invariant. I told you that they produce great key points. Here''s how it''s done!</p>
+<p>Finding key points is a two part process </p>
+<ol>
+<li>Locate maxima/minima in DoG images</li>
+<li>Find subpixel maxima/minima</li>
+</ol>
+<h2>Locate maxima/minima in DoG images</h2>
+<p>The first step is to coarsely locate the maxima and minima. This is simple. You iterate through each pixel and check all it''s neighbours. The check is done within the current image, and also the one above and below it. Something like this:</p>
+<p><img alt="" src="/static/img/tut/sift-maxima-idea.jpg" /></p>
+<p>X marks the current pixel. The green circles mark the neighbours. This way, a total of 26 checks are made. <strong>X is marked as a "key point" if it is the greatest or least of all 26 neighbours.</strong></p>
+<p>Usually, a non-maxima or non-minima position won''t have to go through all 26 checks. A few initial checks will usually sufficient to discard it. </p>
+<p>Note that keypoints are not detected in the lowermost and topmost scales. There simply aren''t enough neighbours to do the comparison. So simply skip them!</p>
+<p>Once this is done, the marked points are the approximate maxima and minima. They are "approximate" because the maxima/minima almost never lies exactly on a pixel. It lies somewhere between the pixel. But we simply cannot access data "between" pixels. So, we must mathematically locate the subpixel location.</p>
+<p>Here''s what I mean:</p>
+<p><img alt="" src="/static/img/tut/sift-maxima-subpixel.jpg" /></p>
+<p>The red crosses mark pixels in the image. But the actual extreme point is the green one. </p>
+<h2>Find subpixel maxima/minima</h2>
+<p>Using the available pixel data, subpixel values are generated. This is done by the Taylor expansion of the image around the approximate key point.</p>
+<p>Mathematically, it''s like this: </p>
+<p><img alt="" src="/static/img/tut/sift-dog-taylor1.jpg" /></p>
+<p>We can easily find the extreme points of this equation (differentiate and equate to zero). On solving, we''ll get subpixel key point locations. These subpixel values increase chances of matching and stability of the algorithm.</p>
+<h2>Example</h2>
+<p>Here''s a result I got from the example image I''ve been using till now:</p>
+<p><img alt="" src="/static/img/tut/sift-maxima-detector.jpg" />The author of SIFT recommends generating two such extrema images. So, you need exactly 4 DoG images. To generate 4 DoG images, you need 5 Gaussian blurred images. Hence the 5 level of blurs in each octave.</p>
+<p>In the image, I''ve shown just one octave. This is done for all octaves. Also, this image just shows the first part of keypoint detection. The Taylor series part has been skipped.</p>
+<h2>Summary</h2>
+<p>Here, we detected the maxima and minima in the DoG images generated in the previous step. This is done by comparing neighbouring pixels in the current scale, the scale "above" and the scale "below".</p>
+<p>Next, we''ll reject some keypoints detected here. This is because they either don''t have enough contrast or they lie on an edge</p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-keypoints');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 3)','',71,'<p>In the previous step , we <a href="/tutorials/sift-step-1-constructing-a-scale-space/">created the scale space of the image</a>. The idea was to blur an image progressively, shrink it, blur the small image progressively and so on. Now we use those blurred images to generate another set of images, the Difference of Gaussians (DoG). These DoG images are a great for finding out interesting key points in the image.</p>
+<h2>Laplacian of Gaussian</h2>
+<p>The Laplacian of Gaussian (LoG) operation goes like this. You take an image, and blur it a little. And then, you calculate second order derivatives on it (or, the "laplacian"). This locates edges and corners on the image. These edges and corners are good for finding keypoints.</p>
+<p>But the second order derivative is extremely sensitive to noise. The blur smoothes it out the noise and stabilizes the second order derivative.</p>
+<p>The problem is, calculating all those second order derivatives is computationally intensive. So we cheat a bit. </p>
+<h2>The Con</h2>
+<p>To generate Laplacian of Guassian images quickly, we use the scale space. We calculate the difference between two consecutive scales. Or, the Difference of Gaussians. Here''s how:</p>
+<p><img alt="" src="/static/img/tut/sift-dog-idea.jpg" /></p>
+<p>These Difference of Gaussian images are approximately equivalent to the Laplacian of Gaussian. And we''ve replaced a computationally intensive process with a simple subtraction (fast and efficient). Awesome!</p>
+<p>These DoG images comes with another little goodie. These approximations are also "scale invariant". What does that mean? </p>
+<h2>The Benefits</h2>
+<p>Just the Laplacian of Gaussian images aren''t great. They are not scale invariant. That is, they depend on the amount of blur you do. This is because of the Gaussian expression. (Don''t panic ;) )</p>
+<p><img alt="" src="/static/img/tut/sift-gaussian-operator.jpg" /></p>
+<p>See the σ<sup>2</sup> in the demonimator? That''s the scale. If we somehow get rid of it, we''ll have true scale independence. So, if the laplacian of a gaussian is represented like this:</p>
+<p><img alt="" src="/static/img/tut/laplacianofgaussian.jpg" /></p>
+<p>Then the scale invariant laplacian of gaussian would look like this:</p>
+<p><img alt="" src="/static/img/tut/scale-invariant-log.jpg" /></p>
+<p>But all these complexities are taken care of by the Difference of Gaussian operation. The resultant images after the DoG operation are already multiplied by the σ<sup>2</sup>. Great eh!</p>
+<p>Oh! And it has also been proved that this scale invariant thingy produces much better trackable points! Even better!</p>
+<h2>Side effects</h2>
+<p>You can''t have benefits without side effects &gt;.&lt;</p>
+<p>You know the DoG result is multiplied with σ<sup>2</sup>. But it''s also multiplied by another number. That number is (k-1). This is the k we discussed in <a href="/tutorials/sift-step-1-constructing-a-scale-space/">the previous step</a>.</p>
+<p>But we''ll just be looking for the <em>location</em> of the maximums and minimums in the images. We''ll never check the actual values at those locations. So, this additional factor won''t be a problem to us. (Even if you multiply throughout by some constant, the maxima and minima stay at the same location)</p>
+<h2>Example</h2>
+<p>Here''s a gigantic image to demonstrate how this difference of Gaussians works.</p>
+<p><img alt="" src="/static/img/tut/sift-dog-images.jpg" /></p>
+<p>In the image, I''ve done the subtraction for just one octave. The same thing is done for all octaves. This generates DoG images of multiple sizes.</p>
+<h2>Summary</h2>
+<p>Two consecutive images in an octave are picked and one is subtracted from the other. Then the next consecutive pair is taken, and the process repeats. This is done for all octaves. The resulting images are an approximation of scale invariant laplacian of gaussian (which is good for detecting keypoints). There are a few "drawbacks" due to the approximation, but they won''t affect the algorithm.</p>
+<p>Next, we''ll actually find some interesting keypoints. Maxima and Minima. Or, Maximums and Minimums of the image.</p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-log-approximation');
+INSERT INTO "aishack_tutorial" VALUES('SIFT: Scale Invariant Feature Transform (part 2)','',72,'<p>Real world objects are meaningful only at a certain scale. You might see a sugar cube perfectly on a table. But if looking at the entire milky way, then it simply does not exist. This multi-scale nature of objects is quite common in nature. And a scale space attempts to replicate this concept on digital images.</p>
+<h2>Scale spaces</h2>
+<p>Do you want to look at a leaf or the entire tree? If it''s a tree, get rid of some detail from the image (like the leaves, twigs, etc) intentionally.</p>
+<p>While getting rid of these details, you must ensure that you do not introduce new false details. The only way to do that is with the Gaussian Blur (it was proved mathematically, under several reasonable assumptions).</p>
+<p>So to create a scale space, you take the original image and generate progressively blurred out images. Here''s an example: </p>
+<p><img alt="" src="/static/img/tut/sift-scalespace.jpg" /></p>
+<p>Look at how the cat''s helmet loses detail. So do it''s whiskers. </p>
+<h2>Scale spaces in SIFT</h2>
+<p>SIFT takes scale spaces to the next level. You take the original image, and generate progressively blurred out images. Then, you resize the original image to half size. And you generate blurred out images again. And you keep repeating.</p>
+<p>Here''s what it would look like in SIFT: </p>
+<p><img alt="" src="/static/img/tut/sift-octaves.jpg" /></p>
+<p>Images of the same size (vertical) form an octave. Above are four octaves. Each octave has 5 images. The individual images are formed because of the increasing "scale" (the amount of blur). </p>
+<h2>The technical details</h2>
+<p>Now that you know things the intuitive way, I''ll get into a few technical details.</p>
+<p><strong>Octaves and Scales</strong></p>
+<p>The number of octaves and scale depends on the size of the original image. While programming SIFT, you''ll have to decide for yourself how many octaves and scales you want. However, the creator of SIFT suggests that 4 octaves and 5 blur levels are ideal for the algorithm.</p>
+<p><strong>The first octave</strong></p>
+<p>If the original image is doubled in size and antialiased a bit (by blurring it) then the algorithm produces more four times more keypoints. The more the keypoints, the better!</p>
+<p><strong>Blurring</strong></p>
+<p>Mathematically, "blurring" is referred to as the convolution of the gaussian operator and the image. Gaussian blur has a particular expression or "operator" that is applied to each pixel. What results is the blurred image.</p>
+<p><img alt="" src="/static/img/tut/sift-convolution.jpg" /></p>
+<p>The symbols: </p>
+<ul>
+<li>L is a blurred image</li>
+<li>G is the Gaussian Blur operator</li>
+<li>I is an image</li>
+<li>x,y are the location coordinates</li>
+<li>σ is the "scale" parameter. Think of it as the amount of blur. Greater the value, greater the blur.</li>
+<li>The * is the convolution operation in x and y. It "applies" gaussian blur G onto the image I.</li>
+</ul>
+<p><img alt="" src="/static/img/tut/sift-gaussian-operator.jpg" /></p>
+<p>This is the actual Gaussian Blur operator. </p>
+<p><strong>Amount of blurring</strong></p>
+<p>The amount of blurring in each image is important. It goes like this. Assume the amount of blur in a particular image is σ. Then, the amount of blur in the next image will be k*σ. Here k is whatever constant you choose. </p>
+<p><img alt="" src="/static/img/tut/sift-abs-sigma-matrix.jpg" /></p>
+<p>This is a table of σ''s for my current example. See how each σ differs by a factor sqrt(2) from the previous one. </p>
+<h2>Summary</h2>
+<p>In the first step of SIFT, you generate several octaves of the original image. Each octave''s image size is half the previous one. Within an octave, images are progressively blurred using the Gaussian Blur operator.</p>
+<p>In the next step, we''ll use all these octaves to generate Difference of Gaussian images.</p>','/static/img/tut/post-sift.jpg','2010-05-14',1,2,'sift-scale-invariant-feature-transform-scale-space');
+INSERT INTO "aishack_tutorial" VALUES('Implementing SIFT in OpenCV','',73,'<p>Okay, now for the coding. I''m assuming you know how SIFT works (if not, check <a href="/tutorials/sift-scale-invariant-feature-transform/">SIFT: Scale Invariant Feature Transform</a>. It''s a series of posts on the SIFT algorithm). I''ll be using C++ and classes to keep things neat and object oriented. OpenCV doesn''t come with inbuilt functions for SIFT, so we''ll be creating our own functions. My code here is based on code by Jun Liu. He implemented SIFT with VXL (another vision library like OpenCV). </p>
+<h2>The Code</h2>
+<p>You can download the code at the bottom. Download and have a look at it before going through this post..</p>
+<p>In the code, I''ve added a lot of comments throughout. With those comments and knowledge of the algorithm, you should be able to understand what the code does pretty easily. </p>
+<p><strong>SIFT.h and SIFT.cpp</strong></p>
+<p>These two files implement a class: SIFT. Through this class you do everything. Load the image to work on, get descriptors, etc. </p>
+<p>The class has a simple interface. You create a new object and call DoSift(). Every step will be done for you! Everything is well explained in the code with comments, so have a look there. It would take another week of posts to explain each line of code, so I''m not doing that. The comments should be enough.</p>
+<p><strong>Descriptor.h</strong></p>
+<p>This class just holds a keypoint''s fingerprint. It can store the location of the keypoint and the feature vector.</p>
+<p><strong>KeyPoint.h</strong></p>
+<p>This class holds the keypoint information: location (x, y), scale, magnitude and orientation.</p>
+<p><strong>MySIFT.cpp</strong></p>
+<p>The small main function in the file uses the SIFT class. It''s just a little demo of how things work. </p>
+<h2>A learning aid</h2>
+<p>At several key locations in code, you''ll notice commented code. Something like this:</p>
+<p><img alt="" src="/static/img/tut/sift-code-commented.jpg" /> </p>
+<p>Uncomment there lines. You''ll get physical files that you can use to examine the scale space, difference of gaussians, extrema, etc. That way you''ll actually get a sense of what''s going on (Again, I''m not going into the details of what there are. I''ve already covered these in the series <a href="/tutorials/sift-scale-invariant-feature-transform/">SIFT: Scale Invariant Feature Transform</a>) I''ll leave it up to you to find these commented blocks (assignment worth 10%?). </p>
+<h2>Fin</h2>
+<p>Over the last week I''ve talked about how the algorithm works. And finally, implemented the code. So I guess this marks an end for the series! Sometime in the future, we''ll pick up the topic of matching SIFT features in different images.</p>
+<p>Anyway, if you''ve got any questions or suggestions about the code, let me know - <strong>leave a comment below</strong>! </p>
+<h2>Other articles in the series</h2>
+<ol>
+<li><a href="/tutorials/sift-scale-invariant-feature-transform/">SIFT: Scale Invariant Feature Transform</a></li>
+<li><a href="/tutorials/sift-step-1-constructing-a-scale-space/">Step 1: Constructing a scale space</a></li>
+<li><a href="/tutorials/sift-step-2-laplacian-of-gaussian-approximation/">Step 2: Laplacian of Gaussian approximation</a></li>
+<li><a href="/tutorials/sift-step-3-finding-key-points/">Step 3: Finding Keypoints</a></li>
+<li><a href="/tutorials/sift-step-4-eliminate-edges-and-low-contrast-regions/">Step 4: Eliminate edges and low contrast regions</a></li>
+<li><a href="/tutorials/sift-step-5-assigning-keypoint-orientation/">Step 5: Assign an orientation to the keypoints</a></li>
+<li><a href="''/tutorials/sift-step-6-generate-sift-features/">Step 6: Generate SIFT features</a></li>
+<li><strong>Implementing SIFT in OpenCV</strong></li>
+</ol>','/static/img/tut/post-sift.jpg','2010-07-02',1,3,'implementing-sift-in-opencv');
+INSERT INTO "aishack_tutorial" VALUES('Tracking colored objects in OpenCV','',74,'<p>If you''re new to image processing, you''ll enjoy this project. What we''ll attempt to achieve in this tutorial is tracking the location of a coloured object in an image. In our case, it''ll be a yellow colored ball. Once we''re finished, we''ll have something like this: Looks great right? So lets dive right in! </p>
+<h2>Creating the project</h2>
+<p>First, create a Win32 console application. Choose any name you like, and accept the default wizard options. You''ll get an empty project with a main function. First, add these header files to the code: </p>
+<div class="codehilite"><pre><span class="cp">#include &quot;cv.h&quot;</span>
+<span class="cp">#include &quot;highgui.h&quot;</span>
+</pre></div>
+
+
+<p>Next, add the library files to the project. Go to Project &gt; Properties &gt; Configuration &gt; Linker &gt; Input and write cv.lib cxcore.lib cvaux.lib highgui.lib in Additional Dependencies.</p>
+<p>If you have any problems with setting this up, I suggest you go through <a href="/tutorials/using-opencv-on-windows/">Using OpenCV with Window</a>. </p>
+<h2>The plan of action</h2>
+<p>Before diving right into the code, its always a good idea to put a little insight into what we''re doing. Our program flow should go something like this: </p>
+<ul>
+<li>Get an image from the camera</li>
+<li>Figure out where the yellow ball is</li>
+<li>Add the current position to an array of some sort</li>
+</ul>
+<p>To get an image from the camera, we''ll use code from <a href="/tutorials/capturing-images/">Capturing Images</a>, that is, we''ll use inbuilt OpenCV functions that let you access camera.</p>
+<p>For figuring out where the ball is, we''ll first threshold the image and use zero order and first order moments.</p>
+<p>To keep a track of where the ball has been, we''ll use another image. We''ll keep drawing wherever the ball goes, and combine this image with the original frame. That way, we''ll get a "scribble" like effect. You''ll see what I mean when we implement it in code. </p>
+<h2>The dive into code</h2>
+<p>We''ll start off by writing the thresholding function: </p>
+<div class="codehilite"><pre><span class="n">IplImage</span><span class="o">*</span> <span class="nf">GetThresholdedImage</span><span class="p">(</span><span class="n">IplImage</span><span class="o">*</span> <span class="n">img</span><span class="p">)</span>
+<span class="p">{</span>
+</pre></div>
+
+
+<p>This function will take an image, and return a binary image (where yellow will be white and the rest will be black). Here''s a sample of what might be a scenario:</p>
+<p><img alt="Thresholding with the Hue-Saturation-Value channels" src="/static/img/tut/hsv-thresholding.jpg" /></p>
+<p>To achieve this thresholding, we''ll be using the HSV colour space, instead of the more common RGB colour space. In HSV, each "tint" of colour is assigned a particular number (the Hue). The "amount" of colour is assigned another number (the Saturation) and the brightness of the colour is assigned another number (the Intensity or Value).</p>
+<p>This gives us the advantage of having a single number (hue) for the yellow ball despite multiple shades of yellow (all the way from dark yellow to a bright yellow). For more information you might want to read up <a href="/tutorials/color-spaces/">Colour spaces - Grayscale, RGB, HSV and Y''CrCb</a>.</p>
+<p>Back to the code now. Firstly, we convert the image into an HSV image: </p>
+<div class="codehilite"><pre>    <span class="c1">// Convert the image into an HSV image</span>
+    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgHSV</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">cvGetSize</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">cvCvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">imgHSV</span><span class="p">,</span> <span class="n">CV_BGR2HSV</span><span class="p">);</span>
+</pre></div>
+
+
+<p>We keep the original image (img) intact, for future uses. The image is originally stored in the BGR format, so we convert BGR into HSV.</p>
+<p>Now, create a new image that will hold the threholded image (which will be returned). </p>
+<div class="codehilite"><pre>    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgThreshed</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">cvGetSize</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Now we do the actual thresholding:</p>
+<div class="codehilite"><pre>    <span class="n">cvInRangeS</span><span class="p">(</span><span class="n">imgHSV</span><span class="p">,</span> <span class="n">cvScalar</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">cvScalar</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">imgThreshed</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Here, imgHSV is the reference image. And the two cvScalars represent the lower and upper bound of values that are yellowish in colour. (These bounds should work in almost all conditions. If they don''t, try experimenting with the last two values).</p>
+<p>Consider any pixel. If all three values of that pixel (H, S and V, in that order) like within the stated ranges, imgThreshed gets a value of 255 at that corresponding pixel. This is repeated for all pixels. So what you finally get is a thresholded image.</p>
+<p>And finally, release the temporary HSV image and return this thresholded image: </p>
+<div class="codehilite"><pre>    <span class="n">cvReleaseImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">imgHSV</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">imgThreshed</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>That finishes up our thresholding function.</p>
+<p>Next we''ll get to the main function: </p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+</pre></div>
+
+
+<p>First, we initialize the capturing device. If we don''t get a device, we simply exit... no questions asked. </p>
+<div class="codehilite"><pre>    <span class="c1">// Initialize capturing live feed from the camera</span>
+    <span class="n">CvCapture</span><span class="o">*</span> <span class="n">capture</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">capture</span> <span class="o">=</span> <span class="n">cvCaptureFromCAM</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// Couldn&#39;t get a device? Throw an error and quit</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">capture</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Could not initialize capturing...&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>And then we setup windows that will display the live images: </p>
+<div class="codehilite"><pre>    <span class="c1">// The two windows we&#39;ll be using</span>
+    <span class="n">cvNamedWindow</span><span class="p">(</span><span class="s">&quot;video&quot;</span><span class="p">);</span>
+    <span class="n">cvNamedWindow</span><span class="p">(</span><span class="s">&quot;thresh&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>video will display the actual output of the program (like the one you saw in the video at the top of this image). thresh will display the thresholded image, just to aid debugging if its needed.</p>
+<p>Now we initialize the image that will hold the "scribble" data. </p>
+<div class="codehilite"><pre>    <span class="c1">// This image holds the &quot;scribble&quot; data...</span>
+    <span class="c1">// the tracked positions of the ball</span>
+    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgScribble</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</pre></div>
+
+
+<p>We''ll keep updating imgScribble with appropriate lines. And we''ll add this image to the current frame.. and we''ll get the final output. Here''s a possible situation:</p>
+<p><img alt="A sample of the tracking being done" src="/static/img/tut/tracking-coloured-objects-sample.jpg" /></p>
+<p>I hope it makes sense.</p>
+<p>Moving on, we create an infinite loop (we''re working on a realtime project here): </p>
+<div class="codehilite"><pre>    <span class="c1">// An infinite loop</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Will hold a frame captured from the camera</span>
+        <span class="n">IplImage</span><span class="o">*</span> <span class="n">frame</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">cvQueryFrame</span><span class="p">(</span><span class="n">capture</span><span class="p">);</span>
+</pre></div>
+
+
+<p>We capture a frame from the camera, and store it in frame.</p>
+<p>Just in case, if we won''t get a frame, we simply quit. </p>
+<div class="codehilite"><pre>        <span class="c1">// If we couldn&#39;t grab a frame... quit</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">frame</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+</pre></div>
+
+
+<p>If you noticed, we just created imgScribble. We didn''t allocate any memory to it. The first frame would be a good place to do so. And to determine if its the first frame, we can check if imgScribble is currently NULL or not: </p>
+<div class="codehilite"><pre>        <span class="c1">// If this is the first frame, we need to initialize it</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">imgScribble</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">imgScribble</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">cvGetSize</span><span class="p">(</span><span class="n">frame</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+
+
+<p>If the code reaches this far, we''re sure that a frame was captured, and the imgScribble is a valid image. So we get down to business, and generate the thresholded image using the function we wrote above: </p>
+<div class="codehilite"><pre>        <span class="c1">// Holds the yellow thresholded image (yellow = white, rest = black)</span>
+        <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgYellowThresh</span> <span class="o">=</span> <span class="n">GetThresholdedImage</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Now imgYellowThresh holds a binary image similar to the ones shown above. Now we use mathematics based calculations to figure out the position of the yellow ball.</p>
+<p>NOTE: I''m assuming that there will be only one yellow object on screen. If you have multiple objects, this code won''t work. </p>
+<div class="codehilite"><pre>        <span class="c1">// Calculate the moments to estimate the position of the ball</span>
+        <span class="n">CvMoments</span> <span class="o">*</span><span class="n">moments</span> <span class="o">=</span> <span class="p">(</span><span class="n">CvMoments</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">CvMoments</span><span class="p">));</span>
+
+        <span class="n">cvMoments</span><span class="p">(</span><span class="n">imgYellowThresh</span><span class="p">,</span> <span class="n">moments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="c1">// The actual moment values</span>
+        <span class="kt">double</span> <span class="n">moment10</span> <span class="o">=</span> <span class="n">cvGetSpatialMoment</span><span class="p">(</span><span class="n">moments</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">moment01</span> <span class="o">=</span> <span class="n">cvGetSpatialMoment</span><span class="p">(</span><span class="n">moments</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="kt">double</span> <span class="n">area</span> <span class="o">=</span> <span class="n">cvGetCentralMoment</span><span class="p">(</span><span class="n">moments</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+
+<p>You first allocate memory to the moments structure, and then you calculate the various moments. And then using the moments structure, you calculate the two first order moments (moment10 and moment01) and the zeroth order moment (area).</p>
+<p>Dividing moment10 by area gives the X coordinate of the yellow ball, and similarly, dividing moment01 by area gives the Y coordinate.</p>
+<p>Now, we need some mechanism to be able to store the previous position. We do that using static variables: </p>
+<div class="codehilite"><pre>        <span class="c1">// Holding the last and current ball positions</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="n">posX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="kt">int</span> <span class="n">posY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">lastX</span> <span class="o">=</span> <span class="n">posX</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">lastY</span> <span class="o">=</span> <span class="n">posY</span><span class="p">;</span>
+
+        <span class="n">posX</span> <span class="o">=</span> <span class="n">moment10</span><span class="o">/</span><span class="n">area</span><span class="p">;</span>
+        <span class="n">posY</span> <span class="o">=</span> <span class="n">moment01</span><span class="o">/</span><span class="n">area</span><span class="p">;</span>
+</pre></div>
+
+
+<p>The current position of the ball is stored in posX and posY, and the previous location is stored in lastX and lastY.</p>
+<p>We''ll just print out the current position for debugging purposes: </p>
+<div class="codehilite"><pre>        <span class="c1">// Print it out for debugging purposes</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;position (%d,%d)&quot;</span><span class="p">,</span> <span class="n">posX</span><span class="p">,</span> <span class="n">posY</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Now, we do some scribbling: </p>
+<div class="codehilite"><pre>        <span class="c1">// We want to draw a line only if its a valid position</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">lastX</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">lastY</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">posX</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">posY</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Draw a yellow line from the previous point to the current point</span>
+            <span class="n">cvLine</span><span class="p">(</span><span class="n">imgScribble</span><span class="p">,</span> <span class="n">cvPoint</span><span class="p">(</span><span class="n">posX</span><span class="p">,</span> <span class="n">posY</span><span class="p">),</span> <span class="n">cvPoint</span><span class="p">(</span><span class="n">lastX</span><span class="p">,</span> <span class="n">lastY</span><span class="p">),</span> <span class="n">cvScalar</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="mi">5</span><span class="p">);</span>
+
+        <span class="p">}</span>
+</pre></div>
+
+
+<p>We simply create a line from the previous point to the current point, of yellow colour and a width of 5 pixels.</p>
+<p>The if condition prevents any invalid points from being drawn on the screen. (Just try taking the yellow object out of the screen once the program is done... you''ll see what I mean).</p>
+<p>Once all of this processing is over, we combine the scribble and the captured frame: </p>
+<div class="codehilite"><pre>        <span class="c1">// Add the scribbling image and the frame...</span>
+        <span class="n">cvAdd</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">imgScribble</span><span class="p">,</span> <span class="n">frame</span><span class="p">);</span>
+        <span class="n">cvShowImage</span><span class="p">(</span><span class="s">&quot;thresh&quot;</span><span class="p">,</span> <span class="n">imgYellowThresh</span><span class="p">);</span>
+        <span class="n">cvShowImage</span><span class="p">(</span><span class="s">&quot;video&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">);</span>
+</pre></div>
+
+
+<p>After displaying the images, we check if a key was pressed: </p>
+<div class="codehilite"><pre>        <span class="c1">// Wait for a keypress</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cvWaitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// If pressed, break out of the loop</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+</pre></div>
+
+
+<p>If a key was pressed, break out of the loop.</p>
+<p>And finally, we release the thresholded image. We don''t want to accumulate multiple thresholded images... </p>
+<div class="codehilite"><pre>        <span class="c1">// Release the thresholded image+moments... we need no memory leaks.. please</span>
+        <span class="n">cvReleaseImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">imgYellowThresh</span><span class="p">);</span>
+        <span class="k">delete</span> <span class="n">moments</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>And finally, once the loop gets over, we release the camera so that other program can use it: </p>
+<div class="codehilite"><pre>    <span class="c1">// We&#39;re done using the camera. Other applications can now use it</span>
+    <span class="n">cvReleaseCapture</span><span class="p">(</span><span class="o">&amp;</span><span class="n">capture</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Thats it! Try running the program now, it should work, just like in the video! </p>
+<h2>Tracking different colors</h2>
+<p>If you want to try some different color, you''ll have to figure out it''s hue. There are two ways to do that. First - hit and trial. Go through all possible values and you''ll hopefully end up getting a good value.</p>
+<p>The other method requires using some photo manipulation software (MS Paint will do). Open the color selection palette. Go through the colors and you should see a text box labeled Hue. </p>
+<p><img alt="The color selection dialog box" src="/static/img/tut/color_selection.jpg" /></p>
+<p>Go through all possible Hues to find the range of values. For example, in MS Paint, it is 0-239. But OpenCV''s hue values range from 0-179. So you need to scale any hue value you take from MS Paint (multiple the hue from MS Paint by 180/240). </p>
+<h2>Wrap up</h2>
+<p>Hope you learned something from this little project!</p>','/static/img/tut/post-tracking.jpg','2010-07-19',1,3,'tracking-colored-objects-in-opencv');
+INSERT INTO "aishack_tutorial" VALUES('Integral images in OpenCV','',75,'<h2>Introduction</h2>
+<p>An integral image lets you calculate summations over image subregions. Rapidly.These summations are useful in many applications, like calculating HAAR wavelets. These are used in face recognition and other similar algorithms. </p>
+<h2>How it works</h2>
+<p>Suppose an image is <em>w</em> pixels wide and <em>h</em> pixels high. Then the integral of this will be <em>w+1</em> pixels wide and <em>h+1</em> pixels high. The first row and column of the integral image are all zeros.</p>
+<p>All other pixels have a value equal to the sum of all pixels before it. </p>
+<p><img alt="" src="/static/img/tut/integral-example-new.jpg" /></p>
+<p>See the integral in the above image? Every pixel is the summation of the pixels before it (above and to the left).</p>
+<p>Now, to calculate the summation of the pixels in the black box, you take the corresponding box in the integral. You sum as follows: (Bottom right + top left - top right - bottom left).</p>
+<p>So for the 3,5,4,1 box, the calculations would go like this: (30+0-17-0 = 13). For the 4,1 box, it would be (0+15-10-0 = 5).</p>
+<p>This way, you can calculate summations in rectangular regions rapidly. </p>
+<h2>More than just summations!</h2>
+<p>With the basic idea in mind, you can extend it to more types of summations. You can calculate the sum of squares. You can rotate the image by 45 degrees and then do the summations. Then, you can calculate the totals in any arbitrary rectangular region that is upright or tilted at 45 degrees.</p>
+<p>You can calculate summations on irregular areas too (only those with 90 degree corners though). Not just that, you can do super fast blurs, approximate gradients and compute means and standard deviations very fast. </p>
+<h2>Calculating Integral Images in OpenCV</h2>
+<p>OpenCV comes with a predefined function to calculate an integral image. </p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="nf">cvIntegral</span><span class="p">(</span><span class="k">const</span> <span class="n">CvArr</span><span class="o">*</span> <span class="n">image</span><span class="p">,</span>
+                <span class="n">CvArr</span><span class="o">*</span> <span class="n">sum</span><span class="p">,</span>
+                <span class="n">CvArr</span><span class="o">*</span> <span class="n">sqsum</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span>
+                <span class="n">CvArr</span><span class="o">*</span> <span class="n">tilted_sum</span><span class="o">=</span><span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The parameters are, as always, self explanatory: </p>
+<ul>
+<li><code>image</code>: the source image</li>
+<li><code>sum</code>: the sum summation integral image</li>
+<li><code>sqsum</code>: the square sum integral image</li>
+<li><code>tiled_sum</code>: <em>image</em> is rotated by 45 degrees and then its integral is calculated</li>
+</ul>
+<h2>Summary</h2>
+<p>Calculating integral images is trivial. But they let you do more complex stuff (like blurring, HAAR wavelets, etc) super fast. And <code>cvIntegral</code> in OpenCV calculates integral images for you.</p>','','2010-07-21',1,3,'integral-images-in-opencv');
+INSERT INTO "aishack_tutorial" VALUES('Two major physical defects in cameras','',76,'<h2>Distortions!</h2>
+<p>The lens distortions in cameras are because of manufacturing. It is easy to manufacture a spherical lens. The more mathematically accurate parabolic lens is tough to manufacture. Also, positioning a lens accurately is difficult. So, two major distortions are caused because of this: 1) Radial distortion 2) Tangential distortion </p>
+<h2>Radial distortion</h2>
+<p>This distortion is caused by the spherical shape of the lens. Light passing through the center of the lens undergoes almost no refraction. So it has almost no radial distortion. Light going through the edges goes through severe bending. So the periphery of the lens causes the most radial distortion.</p>
+<figure><img alt="Radial distorion or fish eye distortion" src="/static/img/tut/lens-radial-distortion-example.jpg" /><figcaption>
+<p>Radial distortion</p>
+</figcaption>
+</figure>
+<h2>Tangential distortion</h2>
+<p>When the lens is not parallel to the imaging plane (the CCD, etc) a tangential distortion is produced.</p>
+<figure><img alt="Tangential distortion in a camera" src="/static/img/tut/lens-tangential-distortion.jpg" /><figcaption>
+<p>Tangential distortion</p>
+</figcaption>
+</figure>
+<p>Because of this, you get a weird image. In the image below, I''m not sure if you see the distortion. But the CCD plane''s top seems to be towards the viewer:</p>
+<figure><img alt="An example of tangential distortion" src="/static/img/tut/lens-tangential-distortion-example.jpg" /><figcaption>
+<p>Sample tangential distortion</p>
+</figcaption>
+</figure>
+<h2>Other distortions</h2>
+<p>Yes, these aren''t the only distortions that occur. You can have discolouring distortions. You can have colour splitting distortions. You can have blurring.</p>
+<p>But usually, lens and camera manufacturers have been able to remove those to a large extent. Even on cheap camras. Thus they don''t cause a lot of problem. So we won''t be talking about those.</p>
+<h2>Why bother about distortions?</h2>
+<p>You might think, why even worry about these distortions? The camera is still able to detect colour and take action accordingly.</p>
+<p>But suppose you have two objects in your scene. And you want to calculate the distance between them. If you use the distorted image, you''ll get a wrong distance. And so you''ll take wrong actions (maybe moving the robot too little or too much). Not good.</p>
+<p>So fixing these distortions is important. </p>
+<h2>Fixing these distortions</h2>
+<p>Like I said earlier, these distortions are produced due to physical flaws in the lens. So to correct them, you have two options: </p>
+<ul>
+<li>Buy a more expensive lens/camera</li>
+<li>Do something in software</li>
+</ul>
+<p>I don''t know about you, but I prefer the second one. :P It is possible to correct these distortions in software. We''ll take a look at that next.</p>','/static/img/tut/post-camera-defects.jpg','2010-07-23',1,2,'two-major-physical-defects-in-cameras');
+INSERT INTO "aishack_tutorial" VALUES('Calibrating a camera: Theory','',77,'<h2>Calibration</h2>
+<p>Why calibrate your camera? After calibration, you can use your camera to do real world measurements. It establishes a relation between pixels and real world dimensions. Also, you can remove <a href="/tutorials/two-major-physical-defects-in-cameras/">distortions caused by a camera''s physical flaws</a>. The goal of calibration is to estimate the following: </p>
+<ol>
+<li>Focal length of lens along X axis</li>
+<li>Focal length of lens along Y axis</li>
+<li>Lens displacement along X axis</li>
+<li>Lens displacement along Y axis</li>
+<li>3 numbers that describe radial distortion</li>
+<li>2 numbers that describe tangential distortion</li>
+<li>The position of the camera in the real world (x, y and z)</li>
+<li>The orientation of the camera in the real world (around the x, y and z axis)</li>
+</ol>
+<p>That''s a lot of things that calibration establishes. Variables 1-4 constitute <em>intrinsic parameters</em>. Variables 5 and 6 are the <em>distortion parameters</em>. And variables 7 and 8 are the <em>extrinsic parameters</em>.</p>
+<h2>Calibrating with chessboards</h2>
+<p>One standard procedure to calculate all the unknowns above, or simply calibrating a camera, is to use a chessboard pattern. It looks like this:</p>
+<p><img alt="A chessboard pattern" src="/static/img/tut/calib-chessboard-1.jpg" /></p>
+<p>Remember that this is just an algorithm. They designed it using a chessboard. They could have done it using something else too.. a box or even a rubber duck. But a chessboard certain properties that makes it good for calibrating purposes: </p>
+<ul>
+<li>It is a plane. You don''t need to deal with "depth".</li>
+<li>There exist points on this plane that you can identify uniquely.</li>
+<li>You can extract these points very easily.</li>
+<li>These points physically lie in straight lines, no matter how they appear on camera.</li>
+</ul>
+<h2>Posing the chessboard</h2>
+<p>You take several pictures of the chessboard. Each picture in a different orientation. These orientations should vary a lot. Or you might get a bad estimate of the various parameters. A possible chessboard orientation could be like this:</p>
+<p><img alt="Multiple views of the chessboard" src="/static/img/tut/calib-chessboards-many.jpg" /></p>
+<p>From all those images, you solve several equations. The result is the best estimate for all the unknowns we were looking for. This solving produces what is known as a homography. A homography is a matrix that connects the image-coordinates (pixels) and the real world coordinates (meters, centimeters, etc).</p>
+<p>I won''t go into its math right now, but just know that multiplying the homography with the position of a point in actual plane (chessboard) produces its image coordinates. And multiplying the image coordinates by the matrix inverse produces actual plane coordinates. </p>
+<h2>After calibration</h2>
+<p>Once you''re done with solving all the equations and you have a result, you can fix distortions in the image and make actual measurements. Calibration is also needed for stereo vision. </p>
+<h2>Summary</h2>
+<p>You got an overview of how one particular method of camera calibration works. OpenCV comes with several functions that help you implement this. But there are minor points that need to be taken care of. We''ll implement it next.</p>','/static/img/tut/post-camera-calibration.jpg','2010-07-26',1,2,'calibrating-a-camera-theory');
+INSERT INTO "aishack_tutorial" VALUES('Calibrating & Undistorting with OpenCV in C++ (Oh yeah)','',78,'<p>I''ve already talked about <a href="/tutorials/two-major-physical-defects-in-cameras/">camera distortions</a> and <a href="/tutorials/calibrating-a-camera-theory/">calibrating a camera</a>. Now we''ll actually implement it. And we''ll do it in C++. Why? Because it''s a lot more easier and make much more sense. No more stupid CV_MAT_ELEM macros. And things will just work. But, I won''t talk about how the C++ is working. Figure it out yourself ;) </p>
+<h2>The setup</h2>
+<p>The first thing we need for this is the latest version of OpenCV. If you''re using 1.0 or 1.1pre or any of those, you need to get the latest version. It has the C++ interface. Previous version simply do not have it. Go <a href="http://sourceforge.net/projects/opencvlibrary/">download the most recent version at sourceforge</a>.</p>
+<p>Once you have it, <a href="/tutorials/installing-and-configuring-opencv-2-0-on-windows/">follow these instructions</a> if you use Visual Studio. If not, check around the OpenCV wiki, and you should see where you can find instructions for your IDE. </p>
+<h2>Onto the project</h2>
+<p>Once you have your IDE or whatever environment setup, start by creating a new project. Include the standard OpenCV headers: </p>
+<div class="codehilite"><pre><span class="cp">#include &lt;cv.h&gt;</span>
+<span class="cp">#include &lt;highgui.h&gt;</span>
+</pre></div>
+
+
+<p>We''ll include the OpenCV namespace so we can use its functions directly (without a cv:: everytime): </p>
+<div class="codehilite"><pre><span class="k">using</span> <span class="k">namespace</span> <span class="n">cv</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Now the main function. We create some variables. The number of boards you want to capture, the number of internal corners horizontally and the number of internal corners vertically (That''s just how the algorithm works). </p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">numBoards</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numCornersHor</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numCornersVer</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Then, we get these values from the user: </p>
+<div class="codehilite"><pre>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enter number of corners along width: &quot;</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">numCornersHor</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enter number of corners along height: &quot;</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">numCornersVer</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enter number of boards: &quot;</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">numBoards</span><span class="p">);</span>
+</pre></div>
+
+
+<p>We also create some additional variables that we''ll be using later on. </p>
+<div class="codehilite"><pre>    <span class="kt">int</span> <span class="n">numSquares</span> <span class="o">=</span> <span class="n">numCornersHor</span> <span class="o">*</span> <span class="n">numCornersVer</span><span class="p">;</span>
+    <span class="n">Size</span> <span class="n">board_sz</span> <span class="o">=</span> <span class="n">Size</span><span class="p">(</span><span class="n">numCornersHor</span><span class="p">,</span> <span class="n">numCornersVer</span><span class="p">);</span>
+</pre></div>
+
+
+<p>See the Size? That''s OpenCV in C++. Next, we create a camera capture. We want live feed for out calibration! </p>
+<div class="codehilite"><pre>    <span class="n">VideoCapture</span> <span class="n">capture</span> <span class="o">=</span> <span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Next, we''ll create a list of objectpoints and imagepoints. </p>
+<div class="codehilite"><pre>    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point3f</span><span class="o">&gt;&gt;</span> <span class="n">object_points</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point2f</span><span class="o">&gt;&gt;</span> <span class="n">image_points</span><span class="p">;</span>
+</pre></div>
+
+
+<p>What do these mean? For those unfamiliar with C++, a "vector" is a list. This list contains items of the type mentioned within the angular brackets &lt; &gt; (it''s called generic programming). So, we''re creating a list of list of 3D points (Point3f) and a list of list of 2D points (Point2f).</p>
+<p><em>object_points</em> is the physical position of the corners (in 3D space). This has to be measured by us. [write relationg between each list item and list''s eh you get the point]</p>
+<p><em>image_points</em> is the location of the corners on in the image (in 2 dimensions). Once the program has actual physical locations and locations on the image, it can calculate the relation between the two.</p>
+<p>And because we''ll use a chessboard, these points have a definite relations between them (they lie on straight lines and on squares). So the "expected" - "actual" relation can be used to correct the distortions in the image.</p>
+<p>Next, we create a list of corners. This will temporarily hold the current snapshot''s chessboard corners. We also declare a variable that will keep a track of successfully capturing a chessboard and saving it into the lists we declared above. </p>
+<div class="codehilite"><pre>    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point2f</span><span class="o">&gt;</span> <span class="n">corners</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">successes</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Then we create two images and get the first snapshot from the camera: </p>
+<div class="codehilite"><pre>    <span class="n">Mat</span> <span class="n">image</span><span class="p">;</span>
+    <span class="n">Mat</span> <span class="n">gray_image</span><span class="p">;</span>
+    <span class="n">capture</span> <span class="o">&gt;&gt;</span> <span class="n">image</span><span class="p">;</span>
+</pre></div>
+
+
+<p>The &gt;&gt; is the C++ interface at work again!</p>
+<p>Next, we do a little hack with <em>object_points</em>. Ideally, it should contain the physical position of each corner. The most intuitive way would be to measure distances "from" the camera lens. That is, the camera is the origin and the chessboard has been displaced. </p>
+<p><img alt="Chessboards displaced around a camera in calibration" src="/static/img/tut/calib-camera-centered1.jpg" /></p>
+<p>Usually, it''s done the other way round. The chessboard is considered the origin of the world. So, it is the camera that is moving around, taking different shots of the camera. So, you can set the chessboard on some place (like the XY plane, of ir you like, the XZ plane). </p>
+<p><img alt="Camera being displaced around the chessboard" src="/static/img/tut/calib-chessboard-centered.jpg" /></p>
+<p>Mathematically, it makes no difference which convention you choose. But it''s easier for us and computationally faster in the second case. We just assign a constant position to each vertex.</p>
+<p>And we do that next: </p>
+<div class="codehilite"><pre>    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point3f</span><span class="o">&gt;</span> <span class="n">obj</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">numSquares</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">obj</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Point3f</span><span class="p">(</span><span class="n">j</span><span class="o">/</span><span class="n">numCornersHor</span><span class="p">,</span> <span class="n">j</span><span class="o">%</span><span class="n">numCornersHor</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">));</span>
+</pre></div>
+
+
+<p>This creates a list of coordinates (0,0,0), (0,1,0), (0,2,0)...(1,4,0)... so on. Each corresponds to a particular vertex.</p>
+<p>An important point here is that you''re essentially setting up the units of calibration. Suppose the squares in your chessboards were 30mm in size, and you supplied these coordinates as (0,0,0), (0, 30, 0), etc, you''d get all unknowns in millimeters. </p>
+<p>We''re not really concerned with the physical dimensions, so we used a random unit system.</p>
+<p>Now, for the loop. As long as the number of successful entries has been less than the number required, we keep looping: </p>
+<div class="codehilite"><pre>    <span class="k">while</span><span class="p">(</span><span class="n">successes</span><span class="o">&lt;</span><span class="n">numBoards</span><span class="p">)</span>
+    <span class="p">{</span>
+</pre></div>
+
+
+<p>Next, we convert the image into a grayscale image: </p>
+<div class="codehilite"><pre>        <span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">gray_image</span><span class="p">,</span> <span class="n">CV_BGR2GRAY</span><span class="p">);</span>
+</pre></div>
+
+
+<p>And we''re here. The key functions:</p>
+<div class="codehilite"><pre>        <span class="kt">bool</span> <span class="n">found</span> <span class="o">=</span> <span class="n">findChessboardCorners</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">board_sz</span><span class="p">,</span> <span class="n">corners</span><span class="p">,</span> <span class="n">CV_CALIB_CB_ADAPTIVE_THRESH</span> <span class="o">|</span> <span class="n">CV_CALIB_CB_FILTER_QUADS</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">found</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">cornerSubPix</span><span class="p">(</span><span class="n">gray_image</span><span class="p">,</span> <span class="n">corners</span><span class="p">,</span> <span class="n">Size</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">Size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">TermCriteria</span><span class="p">(</span><span class="n">CV_TERMCRIT_EPS</span> <span class="o">|</span> <span class="n">CV_TERMCRIT_ITER</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
+            <span class="n">drawChessboardCorners</span><span class="p">(</span><span class="n">gray_image</span><span class="p">,</span> <span class="n">board_sz</span><span class="p">,</span> <span class="n">corners</span><span class="p">,</span> <span class="n">found</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+
+
+<p>The <code>findChessboardCorners</code> does exactly what it says. It looks for <em>board_sz</em> sized corners in image. If it detects such a pattern, their pixel locations are stored in <em>corners</em> and <em>found</em> becomes non-zero. The flags in the last parameter are used to improve the chances of detecting the corners. Check the OpenCV documentation for details about the three flags that can be used.</p>
+<p>If corners are detected, they are further refined. <a href="/tutorials/subpixel-corners-increasing-accuracy/">Subpixel corners</a> are calculated from the grayscale image. This is an iterative process, so you need to provide a termination criteria (number of iterations, amount of error allowed, etc). </p>
+<p>Also, if corners are detected, they''re drawn onto the screen using the handy _drawChessboardCorners _function!</p>
+<p>Next we update the display the images and grab another frame. We also try to capture a key:</p>
+<div class="codehilite"><pre>        <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;win1&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+        <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;win2&quot;</span><span class="p">,</span> <span class="n">gray_image</span><span class="p">);</span>
+
+        <span class="n">capture</span> <span class="o">&gt;&gt;</span> <span class="n">image</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>If escape is pressed, we quit. No questions asked. If corners were found and space bar was pressed, we store the results into the lists. And if we reach the required number of snaps, we break the while loop too: </p>
+<div class="codehilite"><pre>        <span class="k">if</span><span class="p">(</span><span class="n">key</span><span class="o">==</span><span class="mi">27</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">key</span><span class="o">==</span><span class="sc">&#39; &#39;</span> <span class="o">&amp;&amp;</span> <span class="n">found</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">image_points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">corners</span><span class="p">);</span>
+            <span class="n">object_points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Snap stored!&quot;</span><span class="p">);</span>
+
+            <span class="n">successes</span><span class="o">++</span><span class="p">;</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">successes</span><span class="o">&gt;=</span><span class="n">numBoards</span><span class="p">)</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>Next, we get ready to do the calibration. We declare variables that will hold the unknowns: </p>
+<div class="codehilite"><pre>    <span class="n">Mat</span> <span class="n">intrinsic</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">CV_32FC1</span><span class="p">);</span>
+    <span class="n">Mat</span> <span class="n">distCoeffs</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Mat</span><span class="o">&gt;</span> <span class="n">rvecs</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Mat</span><span class="o">&gt;</span> <span class="n">tvecs</span><span class="p">;</span>
+</pre></div>
+
+
+<p>We modify the intrinsic matrix with whatever we do know. The camera''s aspect ratio is 1 (that''s usually the case... If not, change it as required). </p>
+<div class="codehilite"><pre>    <span class="n">intrinsic</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">intrinsic</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Elements (0,0) and (1,1) are the focal lengths along the X and Y axis.</p>
+<p>And finally, the calibration:</p>
+<div class="codehilite"><pre>    <span class="n">calibrateCamera</span><span class="p">(</span><span class="n">object_points</span><span class="p">,</span> <span class="n">image_points</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">intrinsic</span><span class="p">,</span> <span class="n">distCoeffs</span><span class="p">,</span> <span class="n">rvecs</span><span class="p">,</span> <span class="n">tvecs</span><span class="p">);</span>
+</pre></div>
+
+
+<p>After this statement, you''ll have the intrinsic matrix, distortion coefficients and the rotation+translation vectors. The intrinsic matrix and distortion coefficients are a property of the camera and lens. So as long as you use the same lens (ie you don''t change it, or change its focal length, like in zoom lenses etc) you can reuse them. In fact, you can save them to a file if you want and skip the entire chessboard circus!</p>
+<p>Note: The calibrateCamera function converts all matrices into 64F format even if you initialize it to 32F. Thanks to <a href="/tutorials/calibrating-undistorting-with-opencv-in-c-oh-yeah/comment-page-1/#comment-1971">Michael Koval</a>!</p>
+<p>Now that we have the distortion coefficients, we can undistort the images. Here''s a small loop that will do this: </p>
+<div class="codehilite"><pre>    <span class="n">Mat</span> <span class="n">imageUndistorted</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">capture</span> <span class="o">&gt;&gt;</span> <span class="n">image</span><span class="p">;</span>
+        <span class="n">undistort</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">imageUndistorted</span><span class="p">,</span> <span class="n">intrinsic</span><span class="p">,</span> <span class="n">distCoeffs</span><span class="p">);</span>
+
+        <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;win1&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+        <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;win2&quot;</span><span class="p">,</span> <span class="n">imageUndistorted</span><span class="p">);</span>
+        <span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>And finally we''ll release the camera and quit!</p>
+<div class="codehilite"><pre>    <span class="n">capture</span><span class="p">.</span><span class="n">release</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>My results</h2>
+<p>I ran this program on a low quality webcam. I used a hand-made chessboard pattern and used 20 chessboard positions to calibrate. Here''s an undistort I did:</p>
+<p><img alt="A result I got from undistortion" src="/static/img/tut/calib-my-results.jpg" /></p>
+<h2>Make your own chessboard!</h2>
+<p>If you''re not working at some university, its very likely you don''t have a chessboard pattern that will work perfectly. You need an asymmetric chessboard: 5x6 or a 7x8 or27x3.</p>
+<p>So make one yourself. Take a piece of paper and draw on it with a marker. Paste it on some cardboard. I made mine from a small notebook page. It''s a 5x4 chessboard. Not very big, but it works. Here''s what it looks like: </p>
+<p><img alt="My chessboard pattern" src="/static/img/tut/calib-myboard.jpg" /></p>
+<p>You can even see the lines from the notebook. :| But the inner corners are detected pretty well. You''ll definitely want a better one if you work with higher resolutions.</p>
+<p>If you''re looking for precision, get it printed. Here''s a picture that you can print on an A4 size paper at 300dpi (its PNG and around 35kb in size). </p>
+<p><img alt="" src="/static/img/tut/calib-checkerboard-320px.png" /></p>
+<p><em>(click for a full size version: A4 at 300dpi)</em></p>
+<h2>Bad calibration</h2>
+<p>A bad calibration is very much possible. Here''s what I got in one of my attempts: </p>
+<p><img alt="Bad calibration example" src="/static/img/tut/calib-bad-calibration.jpg" /></p>
+<p>Yes the image on the left is the original, and the one on the right is "undistorted".</p>
+<p>Hopefully you won''t get such results. The key is calibrate with the chessboard everywhere on the screen. It should not be "biased" toward some corner or region. </p>
+<h2>Summary</h2>
+<p>Hope you''ve learned how to calibrate your cameras with OpenCV and how to undistort images taken from them. With OpenCV, you don''t need to know what goes on underneath while being able to fully utilize the calibration and undistortion.</p>','/static/img/tut/post-camera-calibration-undistort.jpg','2010-07-28',1,2,'calibrating-undistorting-with-opencv-in-c-oh-yeah');
+INSERT INTO "aishack_tutorial" VALUES('OpenCV''s C++ interface','',79,'<h2>From C to C++</h2>
+<p>Since version 2.0 OpenCV introduced, in its new C++ API, the type cv::Mat, or simply Mat, to replace both C types CvMat and IplImage. Though both C structures are still supported, I''ll highly recommend that you shift to C++. Why?</p>
+<p>Here''s why. Mat uniforms the concepts of matrix and image. In fact, they''re the same thing in the end! Mat also adds some nice features such as the reference counter, that can be a great help. It takes off the burden of micromanaging memory yourself. </p>
+<p>Other than this, you get some clean looking code too. Code that just makes sense.</p>
+<h2>Introducing Mat</h2>
+<p>Before being able to use the C++ interface, you must "include" the OpenCV namespace. This is done by writing the following statement <em>after</em> the all #include statements: </p>
+<div class="codehilite"><pre><span class="k">using</span> <span class="k">namespace</span> <span class="n">cv</span><span class="p">;</span>
+</pre></div>
+
+
+<p>If you don''t write this, you''ll have to use cv:: to get access to things in this namespace, like cv::Mat.</p>
+<p>The new Mat type supports matrix algebra in a “Matlab” style, for instance: </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">A</span><span class="o">=</span><span class="n">Mat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">CV_32FC1</span><span class="p">);</span>
+<span class="n">Mat</span> <span class="n">B</span><span class="o">=</span><span class="n">Mat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">CV_32FC1</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="c1">//code for initialization of A and B</span>
+<span class="p">...</span>
+<span class="n">Mat</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">B</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Here C will be a Mat object representing a matrix of size 3x3, whose elements have been multiplied by the scalar (number) 2. This way of writing matrix algebra operations is much simpler and intuitive than using call to functions such as cvGEMM(...). And so it is inverting matrices using their method inv() or transposing them by using t(). </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">inv</span><span class="p">();</span> <span class="c1">//Now C is its own inverse matrix</span>
+<span class="n">Mat</span> <span class="n">D</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">t</span><span class="p">();</span> <span class="c1">//D is the transposed matrix of A</span>
+</pre></div>
+
+
+<p>This brief introduction should be enough to understand why it is convenient to learn the new C++ interface. </p>
+<h2>Internal structure</h2>
+<p>The Mat is the same as the old IplImage and CvMat structures. The "origin" is the top-left corner. Row and column numbers start from zero.</p>
+<p><img alt="A C++ Matrix" src="/static/img/tut/cpp-mat.jpg" />The counter variable i varies from 0 to m-1. Similarly, the counter variable j varies from 0 to n-1. </p>
+<h2>Matrix declaration</h2>
+<p>A matrix can be built in various formats. Defining this format is necessary (unlike other languages like Matlab or Python). The matrix can have one, two, three or four channels.</p>
+<p>The most simple way to create a matrix is: </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">type</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The parameters are simple. <em>rows</em> and _cols _are the number of rows and columns in the matrix. _type _is the format of the matrix.</p>
+<p>If you''re creating an image, a more intuitive method of creating a Mat is: </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">(</span><span class="n">Size</span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">),</span> <span class="n">type</span><span class="p">);</span>
+</pre></div>
+
+
+<p>And if you want to duplicate the size of another image, you can use: </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">type</span><span class="p">);</span>
+</pre></div>
+
+
+<p>type defines the number of bytes allocated for each element in the matrix. Check <a href="/tutorials/2d-matrices-with-cvmat-in-opencv/">2D matrices with CvMat in OpenCV</a> for constants you can use here. Yes, constants remain the same for the C and C++ interface. </p>
+<h2>Accessing elements</h2>
+<p>Accessing each pixel or element in a <strong>single channel </strong>Mat is trivial. You use the <em>at</em> method to access the value at a particular position (i, j). </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">a</span><span class="o">=</span> <span class="n">Mat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">CV_32FC1</span><span class="p">);</span>
+<span class="kt">float</span> <span class="n">elem_a</span><span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">);</span> <span class="c1">//access element aij, with i from 0 to rows-1 and j from 0 to cols-1</span>
+</pre></div>
+
+
+<p>Instead of specifying the position with i and j, you can use a <em>Point</em> object: </p>
+<div class="codehilite"><pre><span class="n">Point</span> <span class="n">p</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+<span class="kt">float</span> <span class="n">elem_a</span><span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//Warning: y ranges from 0 to rows-1 and x from 0 to cols-1</span>
+</pre></div>
+
+
+<p>If you''re dealing with a <strong>multi-channel</strong> Mat, things are a little more complex. But still easier than the CV_MAT_ELEM or CV_IMAGE_ELEM macros. You must use the <em>ptr</em> method to obtain a pointer to a particular row. Then you use the [] to access a particular pixel in a particular channel: </p>
+<div class="codehilite"><pre><span class="n">type</span> <span class="n">elem</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="n">N</span><span class="o">~</span><span class="n">c</span><span class="o">~*</span><span class="n">j</span><span class="o">+</span><span class="n">c</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Here''s what everything means: </p>
+<ul>
+<li>type: The datatype (float, int, uchar, etc)</li>
+<li>i: The row you''re interested in</li>
+<li>N<sub>c</sub>: The number of channels</li>
+<li>j: The column you''re interested in</li>
+<li>c: The channel you''re interested in (varies from 0 to 3)</li>
+</ul>
+<p>This could be done for single channel image too, but offset will be always 0 and N<sub>c</sub> always 1. </p>
+<h2>Reshaping</h2>
+<p>Reshaping is playing around with the number of channels and the number of rows. Say we have a Nx1 matrix with Nc channels and we need to convert it into a NxNc matrix with 1 channel only. A simple reshape will help you accomplish this. </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">a</span><span class="o">=</span> <span class="n">Mat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">CV_32FC3</span><span class="p">);</span> <span class="c1">//a is 4x1, 3 channels</span>
+<span class="n">Mat</span> <span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//b is 4x3, 1 channel</span>
+</pre></div>
+
+
+<p>Where would this be useful? Suppose you have a list of _Point _objects... something like this: </p>
+<div class="codehilite"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point3f</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span> <span class="c1">//suppose it is already full</span>
+</pre></div>
+
+
+<p>Suppose the list is already full with such points: </p>
+<div class="codehilite"><pre><span class="p">[(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z0</span><span class="p">)]</span>
+<span class="p">[(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">)]</span>
+<span class="p">[(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span><span class="p">)]</span>
+<span class="p">[(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z3</span><span class="p">)]</span>
+<span class="p">[(...,</span> <span class="p">...,</span> <span class="p">...)]</span>
+</pre></div>
+
+
+<p>You can "import" this list a matrix like this: </p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">m1</span><span class="o">=</span><span class="n">Mat</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span> <span class="c1">//boolean value true is necessary in order to copy data from v to m1</span>
+</pre></div>
+
+
+<p>If the boolean was not explicitly set to true, the matrix would only point to the list. It wouldn''t be a true copy (i.e., duplication of data in memory).</p>
+<p>So m1 has some rows (equal to <em>v.size()</em> ), exactly one column and three channels. You can reshape this matrix into a matrix with <em>v.size()</em> rows, 3 columns and one channel. </p>
+<p><img alt="The reshape operation" src="/static/img/tut/cpp-reshape.jpg" /></p>
+<p>Now, you can use use this reshaped matrix in algebraic equations (see above). This is often necessary when dealing with homogeneous coordinates. </p>
+<h2>Some equivalents</h2>
+<p>Here''s a list of C code and its equivalent in C++. It should help you port your code from C to C++ </p>
+<ul>
+<li><em>CvSize</em> -&gt; <em>Size</em></li>
+<li><em>CvVideoCapture</em> -&gt; <em>VideoCapture</em></li>
+<li><em>IplImage, CvMat</em> -&gt; <em>Mat</em></li>
+<li><em>cvQueryFrame </em>-&gt;<em> &gt;&gt; </em>(operator)</li>
+<li><em>cvShowImage -&gt; imshow</em></li>
+<li><em>cvLoadImage -&gt; imread</em></li>
+</ul>
+<p>You might want to check the previous post, <a href="/tutorials/calibrating-undistorting-with-opencv-in-c-oh-yeah/">Calibration and undistortions with the C++ interface</a>. It takes you through a working example.</p>
+<h2>Summary</h2>
+<p>Now you know a bit about how to get started with the C++ interface. It might take a little getting used to. But in the end, you''ll be in possession of a powerful API :P </p>
+<p><em>The author is <strong>Vito Macchia</strong>. He graduated with a Master''s degree in Computer Engineering at Politecnico di Torino in 2009. He works as a Research Assistant at Politecnico di Torino at the Robotics Research Group (www.polito.it/LabRob). His main research interests are computer vision, omnidirectional and stereo cameras and mobile robotics. He also dabbles around with artificial intelligence, bayesian filters and control techniques.</em></p>','/static/img/tut/post-opencv-cpp.jpg','2010-07-30',3,3,'opencvs-c-interface');
+INSERT INTO "aishack_tutorial" VALUES('Scanning QR Codes (part 1)','',80,'<p>These days, you can see QR codes almost everywhere. You see them at stores, on products, on screens. So one day, I was curious how the gears are put together to read QR codes. I ended up reading the ISO/IEC 18004 standard. It''s a very robust and detailed documentation on how QR codes are supposed to work. I''ve put up a link in the downloads section below if you''re interested. This is a multipart series - we''ll be creating a QR code reader from scratch in OpenCV. Sure, there are a lot of libraries that do this - but making your own is so awesome. Don''t you agree? </p>
+<h2>Anatomy of a QR code</h2>
+<p>A QR code is made up of four main parts: </p>
+<ol>
+<li>Finder patterns: These are the big black/white/black squares on the three corners on the QR code. These help identify the presence of a QR code in an image and it''s orientation. These are made such that they can be detected really fast.</li>
+<li>Alignment patterns: These are smaller than finder patterns and help straighten out a QR codes drawn on a curved surface. The larger a code, the more alignment patterns it''ll have.</li>
+<li>Timing pattern: These are alternating black/white modules on the QR code. The idea is to help figure out the data grid accurately.</li>
+<li>The actual data: The blacks/whites form bits. Groups of 8 such modules makes one byte. You could combine 16 modules to get unicode data.</li>
+</ol>
+<p><img alt="" src="/static/img/tut/qr-intro.jpg" /></p>
+<p><span class="tut-success">A ''module'' is one square on the QR code. So an alignment pattern is 5 modules wide - one module is black, one is white, next is black, then white and finally black.</span></p>
+<h2>How to detect a QR code</h2>
+<p>Detecting a QR code revolves around identifying finder patterns. The key idea is that there''s a ratio in the number of black/white/black/white/black. And this ratio remains the same no matter what angle you look at it.</p>
+<p><img alt="" src="/static/img/tut/qr-finder-pattern.jpg" /></p>
+<p>In the above picture, you''ll see that each of the red lines has roughly the same ratio. It does not depend on the angle. Once you''ve ''identified'' such a ratio, you need to confirm what you see is a finder pattern or not. You do this by checking along the horizontal and vertical axes. If it''s the same ratio, you know you''ve found a finder pattern.</p>
+<p>Once you have 3 finder patterns, everything is relatively simple. You extract the QR code and fix the perspective. Then you can extract each bit and figure out what the data means. </p>
+<h2>Error correction</h2>
+<p>QR codes can be really <a href="http://www.qrcartist.com/qr-code-art-gallery/">artistic</a>. They can ''sacrifice'' a few bits of data to make it look a lot better. They store redundant copies of bits to compensate for the sacrificed bits. Of course, this reduces the total capacity - but it makes the code look a nice and still be readable by all scanners.</p>
+<p>QR uses the Reed-Solomon error correction code to do this. It supports multiple ''levels'' of error correction (7%, 15%, 25%, 30%). If 30% of the bits are damaged (soiled, washed out, faded, replaced by art) you can still ''read'' the QR. </p>
+<h2>What we''ll make</h2>
+<p>We''ll make a basic QR code reader. We won''t cover identifying curved QR codes (with the alignment markers). Nor would we really go into a lot of detail with the various formats/versions of QR. Once you have a code where you''ve recognized the orientation, the timing, you can make it work with all versions/formats really easily. So I''ll leave that part to you. We won''t cover error correction either. That wasn''t quite the point of this series.</p>
+<p>Or as authors often write, "this is beyond the scope of this text book". So get the latest version of OpenCV and make sure you''ve got everything setup just right!</p>','/static/img/tut/post-qr-code.jpg','2012-02-03',1,3,'scanning-qr-codes-1');
+INSERT INTO "aishack_tutorial" VALUES('Scanning QR Codes (part 2)','',81,'<h2>The loop</h2>
+<p>Let’s get started with the project. Create a file named main.cpp and add the following code to it:</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;vector&gt;</span>
+<span class="cp">#include &lt;opencv2/highgui/highgui.hpp&gt;</span>
+<span class="cp">#include &lt;opencv2/imgproc/imgproc.hpp&gt;</span>
+<span class="cp">#include &quot;qrReader.h&quot;</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">cv</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+</pre></div>
+
+
+<p>Now, for this project, we’ll make a class that tries to identify a QR code in any image you give to it. We’ll name it, hmm, qrReader. Till now, we’ve just included the basic stuff – namespaces, opencv headers, vector, etc.</p>
+<p>Next, we try to get a hold on the camera and create an instance of our class.</p>
+<div class="codehilite"><pre><span class="n">cv</span><span class="o">::</span><span class="n">VideoCapture</span> <span class="n">capture</span> <span class="o">=</span> <span class="n">VideoCapture</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">qrReader</span> <span class="n">qr</span> <span class="o">=</span> <span class="n">qrReader</span><span class="p">();</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">capture</span><span class="p">.</span><span class="n">isOpened</span><span class="p">())</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Unable to open camera&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Now, we create a simple loop that takes in images from the camera and passes them onto the QR code detecting class. It starts with declaring a few images and the loop:</p>
+<div class="codehilite"><pre><span class="n">Mat</span> <span class="n">image</span><span class="p">;</span>
+<span class="n">Mat</span> <span class="n">imgBW</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="p">{</span>
+</pre></div>
+
+
+<p>Then, you grab an image from the camera:</p>
+<div class="codehilite"><pre>    <span class="n">capture</span> <span class="o">&gt;&gt;</span> <span class="n">image</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Then you convert the image into a gray scale image and threshold it:</p>
+<div class="codehilite"><pre>    <span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">imgBW</span><span class="p">,</span> <span class="n">CV_BGR2GRAY</span><span class="p">);</span>
+    <span class="n">threshold</span><span class="p">(</span><span class="n">imgBW</span><span class="p">,</span> <span class="n">imgBW</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">THRESH_BINARY</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Now, you do the actual finding. If a code was actually found, draw it!</p>
+<div class="codehilite"><pre>    <span class="kt">bool</span> <span class="n">found</span> <span class="o">=</span> <span class="n">qr</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">imgBW</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">found</span><span class="p">)</span>
+        <span class="n">qr</span><span class="p">.</span><span class="n">drawFinders</span><span class="p">(</span><span class="n">imgBW</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Finally, so whatever we got and wait for sometime:</p>
+<div class="codehilite"><pre>    <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;image&quot;</span><span class="p">,</span> <span class="n">imgBW</span><span class="p">);</span>
+    <span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>And end the main function:</p>
+<div class="codehilite"><pre><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+
+<p>}</p>
+<h2>The qrcode reader class</h2>
+<p>Lets create the basic declaration of the class.</p>
+<h2>The state logic</h2>
+<p>The finder patterns have the 1:1:3:1:1 ratio. This is the key to detecting them. Here’s how it works: The code goes through every row and keeps a track of the number of white/black pixels it encounters. It also keeps a track of the order in which they’re found. Whenever it finds something in the expected order, it assumes it found  finder pattern.</p>
+<p>The code can be in 5 states.</p>
+<ul>
+<li>State 0: Inside black pixels / looking for the first black pixel</li>
+<li>State 1: Inside white pixels</li>
+<li>State 2: Inside black pixels</li>
+<li>State 3: Inside white pixels</li>
+<li>State 4: Inside black pixels</li>
+</ul>
+<p>So how do you move from one state to the other? You might recall a finite state automata from your CS class. I’ll describe something similar to it.</p>
+<p>We’ll add more checks to ensure it actually is a finder patter in a later post.</p>
+<p>The implementation</p>
+<p>Create a new file: qrreader.cpp. We’ll include the header file and create a blank constructor/destructor:</p>
+<div class="codehilite"><pre><span class="cp">#include &quot;qrReader.h&quot;</span>
+
+<span class="n">qrReader</span><span class="o">::</span><span class="n">qrReader</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//ctor</span>
+<span class="p">}</span>
+
+<span class="n">qrReader</span><span class="o">::~</span><span class="n">qrReader</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//dtor</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now, we create the function that does the actual detection:</p>
+<div class="codehilite"><pre><span class="kt">bool</span> <span class="n">qrReader</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">Mat</span> <span class="n">img</span><span class="p">)</span>
+<span class="p">{</span>
+</pre></div>
+
+
+<p>This function takes in an image to scan and returns true if it found a QR code. You can use the class functions to access information about most recent QR code (location, orientation, etc).</p>
+<p>Earlier, I mentioned the the detector goes through each line. You could do that, but it turns out that scanning every third line makes it work quite as too. So I’ve introduced a new variable skipRows that you can tweak:</p>
+<div class="codehilite"><pre>    <span class="kt">int</span> <span class="n">skipRows</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Now, we initialize an array that maintains the state data and create a variable that keeps track of the current state. We also create a loop that iterates through the image.</p>
+<div class="codehilite"><pre>    <span class="kt">int</span> <span class="n">stateCount</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">currentState</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">row</span><span class="o">=</span><span class="n">skipRows</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">row</span><span class="o">&lt;</span><span class="n">img</span><span class="p">.</span><span class="n">rows</span><span class="p">;</span> <span class="n">row</span><span class="o">+=</span><span class="n">skipRows</span><span class="p">)</span>
+    <span class="p">{</span>
+</pre></div>
+
+
+<p>Now, we initialize stateCount to zero and set the current state to zero. This is because you check if a row has the finder pattern. You need to erase state data from the previous rows.</p>
+<div class="codehilite"><pre>        <span class="n">stateCount</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">stateCount</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">stateCount</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">stateCount</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">stateCount</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">currentState</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Next, get a pointer to the current row’s raw pixels and start iterating across it:</p>
+<div class="codehilite"><pre>        <span class="n">uchar</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="n">uchar</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">col</span><span class="o">&lt;</span><span class="n">img</span><span class="p">.</span><span class="n">cols</span><span class="p">;</span> <span class="n">col</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+</pre></div>
+
+
+<p>Now, we check if we’re at a black pixel. If we are and the state is one of being inside a white (state 1 and state 3), we move to the next state. And for either case (being inside white or black), we increment the stateCount of the ‘current’ state:</p>
+<div class="codehilite"><pre>            <span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">128</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// We&#39;re at a black pixel</span>
+                <span class="k">if</span><span class="p">((</span><span class="n">currentState</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">// We were counting white pixels</span>
+                    <span class="c1">// So change the state now</span>
+
+                    <span class="c1">// W-&gt;B transition</span>
+                    <span class="n">currentState</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="c1">// Works for boths W-&gt;B and B-&gt;B</span>
+                <span class="n">stateCount</span><span class="p">[</span><span class="n">currentState</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+</pre></div>
+
+
+<p>Now, if we’re at a white pixel:</p>
+<div class="codehilite"><pre>            <span class="k">else</span>
+            <span class="p">{</span>
+</pre></div>
+
+
+<p>If we were counting white pixels, simply increment the stateCount of the correct state:</p>
+<div class="codehilite"><pre>                <span class="c1">// We got to a white pixel...</span>
+                <span class="k">if</span><span class="p">((</span><span class="n">currentState</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">// W-&gt;W change</span>
+                    <span class="n">stateCount</span><span class="p">[</span><span class="n">currentState</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+</pre></div>
+
+
+<p>If not, we need to check some conditions. This is slightly tricky:</p>
+<div class="codehilite"><pre>                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="c1">// ...but, we were counting black pixels</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">currentState</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span>
+                    <span class="p">{</span>
+</pre></div>
+
+
+<p>So what we do is, check if the ratio is what we expected – 1:1:3:1:1</p>
+<div class="codehilite"><pre>                        <span class="c1">// We found the &#39;white&#39; area AFTER the finder patter</span>
+                        <span class="c1">// Do processing for it here</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">checkRatio</span><span class="p">(</span><span class="n">stateCount</span><span class="p">))</span>
+                        <span class="p">{</span>
+</pre></div>
+
+
+<p>And you know that you’re at a possible finder pattern. More checks need to be done to ensure this is an actual finder pattern. We’ll do that in the next post. So, for now, I’ll just leave a comment:</p>
+<div class="codehilite"><pre>                        <span class="c1">// This is where we do some more checks</span>
+                        <span class="p">}</span>
+</pre></div>
+
+
+<p>We could also check if we found all the three finder patterns. If we did, return a true. But we’ll do that in the next part. But, if the ratio isn’t right, we need to do the switch I mentioned earlier:</p>
+<div class="codehilite"><pre>                        <span class="k">else</span>
+                        <span class="p">{</span>
+                            <span class="n">currentState</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+                            <span class="n">stateCount</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">stateCount</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+                            <span class="n">stateCount</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">stateCount</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+                            <span class="n">stateCount</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">stateCount</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+                            <span class="n">stateCount</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                            <span class="n">stateCount</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                            <span class="k">continue</span><span class="p">;</span>
+                        <span class="p">}</span>
+</pre></div>
+
+
+<p>And other than that, here’s what we gotta do:</p>
+<div class="codehilite"><pre>                        <span class="n">currentState</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                        <span class="n">stateCount</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                        <span class="n">stateCount</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                        <span class="n">stateCount</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                        <span class="n">stateCount</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                        <span class="n">stateCount</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span>
+                    <span class="p">{</span>
+                        <span class="c1">// We still haven&#39;t go &#39;out&#39; of the finder pattern yet</span>
+                        <span class="c1">// So increment the state</span>
+                        <span class="c1">// B-&gt;W transition</span>
+                        <span class="n">currentState</span><span class="o">++</span><span class="p">;</span>
+                        <span class="n">stateCount</span><span class="p">[</span><span class="n">currentState</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+                    <span class="p">}</span>
+</pre></div>
+
+
+<p>Now, close all the loops and return ‘false’:</p>
+<div class="codehilite"><pre>                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now for how we check the ratio:</p>
+<div class="codehilite"><pre><span class="kt">bool</span> <span class="n">qrReader</span><span class="o">::</span><span class="n">checkRatio</span><span class="p">(</span><span class="kt">int</span> <span class="n">stateCount</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">totalFinderSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">stateCount</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">totalFinderSize</span> <span class="o">+=</span> <span class="n">count</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">totalFinderSize</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+
+    <span class="c1">// Calculate the size of one module</span>
+    <span class="kt">int</span> <span class="n">moduleSize</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">totalFinderSize</span> <span class="o">/</span> <span class="mf">7.0</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">maxVariance</span> <span class="o">=</span> <span class="n">moduleSize</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">retVal</span><span class="o">=</span> <span class="p">((</span><span class="n">abs</span><span class="p">(</span><span class="n">moduleSize</span> <span class="o">-</span> <span class="p">(</span><span class="n">stateCount</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="n">maxVariance</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">moduleSize</span> <span class="o">-</span> <span class="p">(</span><span class="n">stateCount</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="n">maxVariance</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">moduleSize</span> <span class="o">-</span> <span class="p">(</span><span class="n">stateCount</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">*</span><span class="n">maxVariance</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">moduleSize</span> <span class="o">-</span> <span class="p">(</span><span class="n">stateCount</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="n">maxVariance</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">moduleSize</span> <span class="o">-</span> <span class="p">(</span><span class="n">stateCount</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="n">maxVariance</span><span class="p">));</span>
+
+    <span class="k">return</span> <span class="n">retVal</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now this is interesting. We calculate the total ‘width’ of the pattern (totalFinderCount) in terms of pixels. If we ever encounter a ‘count’ that’s zero (meaning a white or black patch that didn’t exist), we’re sure that this isn’t a valid finder pattern. So just return a false. If the width of the pattern is less than seven, we’re sure it can’t be a valid pattern either.</p>
+<p>Then we calculate the approximate module size based on our current observations. This module size can be quite off the actual module size (because you can tilted patterns will make the module size ‘appear’ larger than they actually are). So we need to tolerate quite a big variation range. For this function, it is half of the approximate module (maxVariance).</p>
+<p>So the difference between the approximate module size and actual counts (stateCount) should be less than this maximum variance. Since the middle area is made up of three modules – it needs to be withing thrice this maximum variance. If it is, there’s a good chance this might be a finder pattern.</p>
+<p>We’ll add more checks in the next post.</p>','/static/img/tut/post-qr-code.jpg','2012-02-03',1,3,'scanning-qr-codes-2');
+INSERT INTO "aishack_tutorial" VALUES('K-Means clustering','',82,'<p>K-Means is a clustering algorithm. That means you can "group" points based on their neighbourhood. When a lot of points a near by, you mark them as one cluster. With K-means, you can find good center points for these clusters.</p>
+<p>This "clustering" is not limited to two dimensions. You can have points in 3 dimensions. Or any number of dimensions you want.</p>
+<p><img alt="Clusters in a dataset" src="/static/img/tut/kmeans-example.jpg" /></p>
+<p>In the above image, every non-white pixel is a data point. Some experiment/algorithm/something produced them. You can see the points have been grouped into four clusters. That''s "clustering" in action.</p>
+<h2>K-means algorithm</h2>
+<p>You must supply two things to the algorithm: </p>
+<ul>
+<li>The data points themselves</li>
+<li>K - The number of clusters</li>
+</ul>
+<p>So, you should know the number of clusters before hand. This might be a problem in some situations, but there are hacks to use K-means when you don''t know the number of clusters.</p>
+<p>After the algorithm finishes, it produces these outputs: </p>
+<ul>
+<li>A label for each data point</li>
+<li>The center for each label</li>
+</ul>
+<p>A label can be considered as "assigning a group". For example, in the above image you can see four "labels". Each label is displayed with a different colour. All yellow points could have the label 0, orange could have label 1, etc.</p>
+<p>Now into the algorithm. </p>
+<figure><img alt="A dataset ready to be clustered" src="/static/img/tut/kmeans-example-1.jpg" /><figcaption>
+<p>A dataset ready to be clustered</p>
+</figcaption>
+</figure>
+<h3>Step 0: Get the dataset</h3>
+<p>As an example, I''ll be using the data points on the left. We''ll assume K=5. And it''s apparent that this dataset has 5 clusters: three spaced out and two almost merging.</p>
+<figure><img alt="Randomly assigned centers" src="/static/img/tut/kmeans-example-2.jpg" /><figcaption>
+<p>Randomly assign centers</p>
+</figcaption>
+</figure>
+<h3>Step 1: Assign random centers</h3>
+<p>The first step is to randomly assign K centers. I''ve marked them as red points in the image. Note how they are all concentrated in the two "almost merging" clusters.</p>
+<p>These centers are just an initial guess. The algorithm will iteratively correct itself. Finally, these centers will coincide with the actual center of each cluster.</p>
+<figure><img alt="Each center claims its data points" src="/static/img/tut/kmeans-example-3.jpg" /><figcaption>
+<p>Each center claims its datapoints</p>
+</figcaption>
+</figure>
+<h3>Step 3: "Own" datapoints</h3>
+<p>Each datapoint checks which center it is closest to. So, it "belongs" to that particular center. Thus, all centers "own" some number of points.</p>
+<figure><img alt="Shifting the centers" src="/static/img/tut/kmeans-example-4.jpg" /><figcaption>
+<p>Shifting the centers</p>
+</figcaption>
+</figure>
+<h3>Step 4: Shift the centers</h3>
+<p>Each center uses the points it "owns" to calculate a new center. Then, it shifts itself to that center.</p>
+<p>If the centers actually shifted, you again go to Step 3. If not, then the centers are the final result. You proceed to the next step</p>
+<figure><img alt="Iterating again" src="/static/img/tut/kmeans-example-5.jpg" /><figcaption>
+<p>Iterating again</p>
+</figcaption>
+</figure>
+<h3>Step 5: The end!</h3>
+<p>Now that the centers do not move, you can use the centers.</p>
+<p><strong>Note</strong>: These centers might <em>not</em> be what you expect. If the initial random guess is really weird, you might end up with bad centers! (we''ll see how to get over this)</p>
+<h2>Problems &amp; Solutions</h2>
+<p>We''ve encountered two problems up till now. </p>
+<h3>Not knowing the value of K</h3>
+<p>There is no way of knowing the number of clusters with K-means. So what you can do is start with K=1. Then increase the value of K (up till a certain upper limit). Usually, the <strong>variance </strong>(the summation of square of distance from "owner" center for each point) will decrease rapidly. After a certain point, it will decrease slowly. When you see such behaviour, you know you''ve overshot the K-value. </p>
+<h3>Bad initial guess</h3>
+<p>If your initial guess is bad, you cannot expect the algorithm to work well. Here''s a possible scenario:</p>
+<p><img alt="A really bad initial guess" src="/static/img/tut/kmeans-bad-initial-guess.jpg" /></p>
+<p>The best way is to run K-means on several random initial guesses. Then, pick the final centers which have the least variance.</p>
+<p>Another trick is to pick centers in a certain manner: </p>
+<ol>
+<li>Place the first center on a data point</li>
+<li>Place the second center on a datapoint that is farthest from the first</li>
+<li>Place the third center on a data point that is farthest from the first and second</li>
+<li>So on...</li>
+</ol>
+<h2>Summary</h2>
+<p>You learned how the K-means algorithm works. We also looked at two problems common to the K-means algorithm, and also their solutions. Hope you found this useful!</p>','/static/img/tut/post-kmeans-clustering.jpg','2010-07-29',1,6,'kmeans-clustering');
+INSERT INTO "aishack_tutorial" VALUES('K-Means clustering in OpenCV','',83,'<p>K-Means is an algorithm to detect clusters in a given set of points. It does this without you supervising or correcting the results. It works with any number of dimensions as well (that is, it works on a plane, 3D space, 4D space and any other finite dimensional spaces). And OpenCV comes with this algorithm built right into it! </p>
+<h2>K-means with OpenCV''s C++ interface</h2>
+<p>The function you need to call to execute the algorithm is: </p>
+<div class="codehilite"><pre><span class="kt">double</span> <span class="n">kmeans</span><span class="p">(</span><span class="k">const</span> <span class="n">Mat</span><span class="o">&amp;</span> <span class="n">samples</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">clusterCount</span><span class="p">,</span>
+              <span class="n">Mat</span><span class="o">&amp;</span> <span class="n">labels</span><span class="p">,</span>
+              <span class="n">TermCriteria</span> <span class="n">termcrit</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">attempts</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span>
+              <span class="n">Mat</span><span class="o">*</span> <span class="n">centers</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This function is in the <em>cv</em> namespace. So you can use it by <em>cv::kmeans</em> or by simply including the <em>cv</em> namespace. If you know how K-means works, the parameters should be self explanatory. </p>
+<h3>Parameters</h3>
+<ul>
+<li><code>samples</code>: <em>(input)</em> The actual data points that you need to cluster. It should contain exactly one point per row. That is, if you have 50 points in a 2D plane, then you should have a matrix with 50 rows and 2 columns.</li>
+<li><code>clusterCount</code>: <em>(input)</em> The number of clusters in the data points.</li>
+<li><code>labels</code>: <em>(output)</em> Returns the cluster each point belongs to. It can also be used to indicate the initial guess for each point.</li>
+<li><code>termcrit</code>: <em>(input)</em> This is an iterative algorithm. So you need to specify the termination criteria (number of iterations &amp; desired accuracy)</li>
+<li><code>attempts</code>: <em>(input)</em> The number of times the algorithm is run with different center placements</li>
+<li><code>flags</code>: <em>(input)</em> Possible values include: <ul>
+<li><code>KMEANS_RANDOM_CENTER</code>: Centers are generated randomly</li>
+<li><code>KMEANS_PP_CENTER</code>: Uses the kmeans++ center initialization</li>
+<li><code>KMEANS_USE_INITIAL_LABELS</code>: The first iteration uses the supplied <em>labels</em> to calculate centers. Later iterations use random or semi-random centers (use the above two flags for that).</li>
+</ul>
+</li>
+<li><code>centers</code>: <em>(output)</em> This matrix holds the center of each cluster.</li>
+</ul>
+<h3>Returns</h3>
+<p>The function returns the compactness of the final clustering. What is compactness? It''s a measure of how good the labeling was done. The smaller the better.</p>
+<p>When <em>attempts</em> is 1, the value returned is the compactness of the only iteration that happened. If <em>attempts</em> is more than 1, the final labeling returned is the one with the least compactness. </p>
+<h2>K-means with OpenCV''s C interface</h2>
+<p>The C equivalent of the k-means function is: </p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="n">cvKMeans2</span><span class="p">(</span><span class="k">const</span> <span class="n">CvArr</span><span class="o">*</span> <span class="n">samples</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">nclusters</span><span class="p">,</span>
+              <span class="n">CvArr</span><span class="o">*</span> <span class="n">labels</span><span class="p">,</span>
+              <span class="n">CvTermCriteria</span> <span class="n">termcrit</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">attempts</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+              <span class="n">CvRNG</span><span class="o">*</span> <span class="n">rng</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">CvArr</span><span class="o">*</span> <span class="n">centers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="kt">double</span><span class="o">*</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The parameters are similar to the C++ interface. </p>
+<h3>Parameters</h3>
+<ul>
+<li><code>samples</code>: <em>(input)</em> The actual data points that you need to cluster. It should contain exactly one point per row.</li>
+<li><code>nclusters</code>: <em>(input)</em> The number of clusters in the data points.</li>
+<li><code>labels</code>: <em>(output)</em> Returns the cluster each point belongs to. It can also be used to indicate the initial guess for each point.</li>
+<li><code>termcrit</code>: <em>(input)</em> This is an iterative algorithm. So you need to specify the termination criteria (number of iterations &amp; desired accuracy)</li>
+<li><code>attempts</code>: <em>(input)</em> The number of times the algorithm is run with different center placements</li>
+<li><code>rng</code>: (input) A random number generate used to generate the initial guess. Puts you in total control of what''s happening.</li>
+<li><code>flags</code>: <em>(input)</em> Possible values include: <ul>
+<li><code>0</code>: (the number 0) Centers are generated randomly</li>
+<li><code>KMEANS_USE_INITIAL_LABELS</code>: The first iteration uses the supplied <em>labels</em> to calculate centers. Later iterations use random or semi-random centers (use the above two flags for that).</li>
+</ul>
+</li>
+<li><code>centers</code>: <em>(output)</em> This matrix holds the center of each cluster.</li>
+<li><code>compactness</code>: <em>(output)</em> Holds the compactness of the best labeling scheme.</li>
+</ul>
+<p>If you''re still using the C interface, I highly recommend you shift to the more intuitive and no-more-tears <a href="/tutorials/opencvs-c-interface/">C++ interface</a>! </p>
+<h2>Summary</h2>
+<p>You got to know how to run K-means without writing any code! You got to know about the C++ and C functions that you can use to execute K-Means on your data sets.</p>','/static/img/tut/post-kmeans-clustering.jpg','2010-08-10',1,3,'kmeans-clustering-in-opencv');
+INSERT INTO "aishack_tutorial" VALUES('Linear separability','',84,'<p>Linear separability is an important concept in neural networks. The idea is to check if you can separate points in an n-dimensional space using only n-1 dimensions. Lost it? Here''s a simpler explanation. </p>
+<h2>One Dimension</h2>
+<p>Lets say you''re on a number line. You take any two numbers. Now, there are two possibilities: </p>
+<ol>
+<li>You choose two different numbers</li>
+<li>You choose the same number</li>
+</ol>
+<p>If you choose two different numbers, you can always find another number between them. This number "separates" the two numbers you chose.</p>
+<figure><img alt="One dimensional separability" src="/static/img/tut/linear-sep-1d.jpg" /><figcaption>
+<p>One dimensional separability</p>
+</figcaption>
+</figure>
+<p>So, you say that these two numbers are "linearly separable".</p>
+<p>But, if both numbers are the same, you simply cannot separate them. They''re the same. So, they''re "linearly inseparable". (Not just linearly, they''re aren''t separable at all. You cannot separate something from itself) </p>
+<h2>Two Dimensions</h2>
+<p>On extending this idea to two dimensions, some more possibilities come into existence. Consider the following:</p>
+<figure><img alt="Two classes of points" src="/static/img/tut/dictomizer-and.jpg" /><figcaption>
+<p>Two classes of points</p>
+</figcaption>
+</figure>
+<p>Here, we''re like to seperate the point (1,1) from the other points. You can see that there exists a line that does this. In fact, there exist infinite such lines. So, these two "classes" of points are linearly separable. The first class consists of the point (1,1) and the other class has (0,1), (1,0) and (0,0).</p>
+<p>Now consider this: </p>
+<figure><img alt="Linearly inseparable" src="/static/img/tut/dictomizer-xor.jpg" /><figcaption>
+<p>Linearly inseparable</p>
+</figcaption>
+</figure>
+<p>In this case, you just cannot use one single line to separate the two classes (one containing the black points and one containing the red points). So, they are linearly inseparable.</p>
+<h2>Three dimensions</h2>
+<p>Extending the above example to three dimensions. You need a plane for separating the two classes.</p>
+<figure><img alt="Linear separability in 3D space" src="/static/img/tut/linear-sep-3d.jpg" /><figcaption>
+<p>Linear separability in 3D space</p>
+</figcaption>
+</figure>
+<p>The dashed plane separates the red point from the other blue points. So its linearly separable. If bottom right point on the opposite side was red too, it would become linearly inseparable . </p>
+<h2>Extending to n dimensions</h2>
+<p>Things go up to a lot of dimensions in neural networks. So to separate classes in n-dimensions, you need an n-1 dimensional "hyperplane". </p>
+<h2>Summary</h2>
+<p>So hopefully, you''ve understood how linear separability works. You''ll be seeing this again and again in several other articles related to neural networks.</p>','/static/img/tut/post-linear-separability.jpg','2010-07-24',1,6,'linear-separability');
+INSERT INTO "aishack_tutorial" VALUES('Solving for intersection of lines efficiently','',85,'<p>One of the most common tasks done with lines is detecting their intersection. For some reason, not many people know how to do that on a computer. In this post, I assume you have some lines. You got them from some algorithm, or the user supplied them, or whatever. And you want to find the intersection of these lines. </p>
+<h2>Step 1: Converting lines to Ax + By = C</h2>
+<p>Ideally, the lines should be in the form Ax + By = C. But usually, that is not the case. But it is simple enough to convert it into this form. This is done using the two point form of the line.</p>
+<p><img alt="" src="/static/img/tut/two-point-line-form.jpg" /></p>
+<p>We can generate two points on the line using the given form, And then plug those points into the above equation. And thus you''ll get the equation in the form we want.</p>
+<p>Rearranging the two-point equation, we get: (just try and understand them... they''re not as horrible as they seem :P) </p>
+<p>On opening the brackets on the right hand, we get:</p>
+<p><img alt="" src="/static/img/tut/two-point-expanded-1.jpg" /></p>
+<p>And multiplying by (x<sub>1</sub>-x<sub>2</sub>) and rearranging, we get:</p>
+<p><img alt="" src="/static/img/tut/two-point-fully-expanded.jpg" /></p>
+<p>Compare this to Ax + By = C... and you''ll see that we have our equation! </p>
+<ul>
+<li>A = y<sub>2</sub> - y<sub>1</sub></li>
+<li>B = x<sub>1</sub> - x<sub>2</sub></li>
+<li>C = B<em>y<sub>1</sub> + A</em>x<sub>1</sub></li>
+</ul>
+<p>So, convert all your lines into this form, and we''re ready for step 2. Actually figuring out intersection points. </p>
+<h2>Step 2: Solving for intersection</h2>
+<p>Right now, we have several lines in the form Ax + By = C. So "solving for intersection" is just solving a set of equations: </p>
+<p>A<sub>1</sub>x + B<sub>1</sub>y = C<sub>1</sub> A<sub>2</sub>x + B<sub>2</sub>y = C<sub>2</sub></p>
+<p>To solve, multiply the first equation with B<sub>2</sub> and the second with B<sub>1</sub>. Then you end up with: </p>
+<p>A<sub>1</sub>B<sub>2</sub>x + B<sub>1</sub>B<sub>2</sub>y = B<sub>2</sub>C<sub>1</sub> A<sub>2</sub>B<sub>1</sub>x + B<sub>1</sub>B<sub>2</sub>y = B<sub>1</sub>C<sub>2</sub></p>
+<p>Subtract the second equation from the first and you get: </p>
+<p>A<sub>1</sub>B<sub>2</sub>x - A<sub>2</sub>B<sub>1</sub>x = B<sub>2</sub>C<sub>1 - </sub>B<sub>1</sub>C<sub>2</sub></p>
+<p>And thus, we get the x coordinate of intersection: </p>
+<p>x = (B<sub>2</sub>C<sub>1 - </sub>B<sub>1</sub>C<sub>2</sub>) / det</p>
+<p>Where det = A<sub>1</sub>B<sub>2</sub> - A<sub>2</sub>B<sub>1</sub></p>
+<p>Similarly, you can derive an equation for y. And finally, we arrive at these results: </p>
+<ul>
+<li>x = (B<sub>2</sub>C<sub>1</sub> - B<sub>1</sub>C<sub>2</sub>) / det</li>
+<li>y = (A<sub>1</sub>C<sub>2</sub> - A<sub>2</sub>C<sub>1</sub>) / det</li>
+</ul>
+<p>If det = 0, then the lines are parallel (so you cannot calculate x and y) </p>
+<h2>Conclusion</h2>
+<p>Translate the equations in bullet lists into a program. And you have a program that solves for intersection of lines!</p>','/static/img/tut/post-solve-intersection.jpg','2010-04-02',1,6,'solving-for-intersection-of-lines-efficiently');
+INSERT INTO "aishack_tutorial" VALUES('Converting lines from normal to slope-intercept form','',86,'<p>Several algorithms return lines in the normal form (like <a href="/tutorials/the-hough-transform/">The Hough transform</a>) while other algorithms may require these lines in another format (like drawing a line on screen). The slop-intercept form of lines is widely known, and you can easily convert a line in slope-intercept form to other forms. So knowing how to efficiently do the conversion of parameters is a must! Here I''ll show you one way to do this. But just in case, here''s a brief review of the normal and slope-intercept forms.<img alt="" src="/static/img/tut/hough_p0.jpg" /></p>
+<h2>The normal form</h2>
+<p>The normal form of a line uses two parameters: p and θ to describe the line. Here, p is the length of the perpendicular from the origin to the line. And θ is the angle between this perpendicular and the x-axis.</p>
+<p>The line equation with these parameters is:</p>
+<div class="codehilite"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">cos</span><span class="err">θ</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="err">θ</span>
+</pre></div>
+
+
+<h2>The slope-intercept form</h2>
+<p>This form of the line uses m and c as the parameters. m is the slope of the line (the tan of the angle between the line and the x-axis). And c is the position on the y-axis where the line intersects it.</p>
+<p>The line equation with these parameters is:</p>
+<div class="codehilite"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+
+
+<h2>The conversion</h2>
+<p>We''ll start with the line equation in normal form: </p>
+<div class="codehilite"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">cos</span><span class="err">θ</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="err">θ</span>
+</pre></div>
+
+
+<p>Rearranging the equation, we get this: </p>
+<div class="codehilite"><pre><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">cos</span><span class="err">θ</span> <span class="o">+</span> <span class="n">p</span> <span class="o">=</span><span class="err"> </span> <span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="err">θ</span>
+</pre></div>
+
+
+<p>and dividing by sinθ we get: </p>
+<div class="codehilite"><pre><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">cot</span><span class="err">θ</span> <span class="o">+</span> <span class="n">p</span><span class="o">*</span><span class="n">cosec</span><span class="err">θ</span> <span class="o">=</span><span class="err"> </span> <span class="n">y</span>
+</pre></div>
+
+
+<p>or, </p>
+<div class="codehilite"><pre><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">cot</span><span class="err">θ</span> <span class="o">+</span> <span class="n">p</span><span class="o">*</span><span class="n">cosec</span><span class="err">θ</span>
+</pre></div>
+
+
+<p>and there you have the line in slope intercept form! Let me make it more explicit: </p>
+<div class="codehilite"><pre><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">cot</span><span class="err">θ</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">cosec</span><span class="err">θ</span><span class="p">)</span>
+</pre></div>
+
+
+<p><em>-cotθ</em> is the slope of the line, and <em>p*cosecθ</em> is the intercept.</p>
+<p>Thus, we can summarize the conversion as: </p>
+<div class="codehilite"><pre><span class="n">m</span> <span class="o">=</span> <span class="o">-</span><span class="n">cot</span><span class="err">θ</span> <span class="n">c</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">cosec</span><span class="err">θ</span>
+</pre></div>
+
+
+<p>Doing these calculations, you''ll have your line in slope-intercept form instead of the normal form! Great!</p>','/static/img/tut/post-slope-normal.jpg','2010-03-30',1,6,'converting-lines-from-normal-to-slopeintercept-form');
+INSERT INTO "aishack_tutorial" VALUES('7 unique neural network architectures','',87,'<p>They way you interconnect neurons plays an extremely important role. In fact, researchers try to find new architectures that can be used for many purposes. I''ll talk about a few architectures over here. </p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/mcculloch-pitts1-150x150.gif" /></span></p>
+<h3>The dictomizer</h3>
+<p>You''ve already seen this one. It consists of a single neuron, and can classify between two different sets. Nothing fancy here. Just one single neuron does the job. The "learning" is simple to implement. There are no "feedback" connections (it''s output is not recycled).</p>
+<p><span class="clearfix">   </span></p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/multicategory_neurons.jpg" /></span></p>
+<h3>Multicategory Classifier</h3>
+<p>Suppose you have more than two classes. Like "human", "animal" or "neither of the above". Then you use multiple neurons (corresponding to each separating line). Again, the input is not recycled. The learning in this case is simple too. And it is quite similar to the previous case.</p>
+<p><span class="clearfix">   </span></p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/feedforward_architecture.jpg" /></span></p>
+<h3>Multilayer feedforward networks</h3>
+<p>Here, several neurons are arranged in "layers". The output of one layer is the input for the next one. Learning for these networks is not as obvious as the previous networks. In fact, training these networks became possible only two decades back using the back-propagation algorithm!</p>
+<p><span class="clearfix">   </span></p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/architecture_hopfield.jpg" /></span></p>
+<h3>Hopfield networks</h3>
+<p>This network is an example of a single layer-feedback network. That is, the output of a neuron is recycled as the input for other neurons. This has many applications, as we will see later on. This is a "single layer" of neurons. For two layered Hopfield networks, things become way too complex.</p>
+<p><span class="clearfix">   </span></p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/architecture_associative.jpg" /></span></p>
+<h3>Associative memories</h3>
+<p>These are similar to the hopfield network, except that they mimic human memories. You "remind" it of a partial memory, and it''ll give you the complete memory.</p>
+<p><span class="clearfix">   </span></p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/architecture_hamnet.jpg" /></span></p>
+<p>Hamming &amp; MAXNET</p>
+<p>These networks help in classification (just like the dictomizer/multicategory classifier), but using another technique. We''ll go into the details of this network pretty late. This network can be used in unsupervised learning as well.</p>
+<p><span class="clearfix">   </span></p>
+<p><span class="pull-right"><img alt="" src="/static/img/tut/architecture_unsuervised.jpg" /></span></p>
+<p>Unsupervised learning</p>
+<p>All previous networks require supervised learning. That is, you give the network an input, and the expected output. The network then adapts accordingly. In this network, no expected output is required. The network "learns" on itself. As impossible as it may sound, it is possible :)</p>
+<p>We''ll go through each of the above networks in detail. Also working through some math to figure things out. And even working on how to implement these networks in code.</p>','/static/img/tut/post-neural-types.jpg','2009-12-03',1,6,'7-unique-neural-network-architectures');
+INSERT INTO "aishack_tutorial" VALUES('Dictomizer examples: AND/OR gates','',88,'<p>Now that you know how a dictomizer works, we''ll work on some more examples. I''ll leave the mathematical calculates for you. <strong>Make sure you do them!</strong></p>
+<h3>AND gate</h3>
+<p>We''ll create a 2 input AND gate.</p>
+<p>Since there are two inputs, we can assume this to be a 2 dimensional Cartesian plane. Something like this: </p>
+<p><img alt="" src="/static/img/tut/dictomizer-and.jpg" />The black points belong to one class (for them the output is 0). And the red point belongs to another class (the output is 1).</p>
+<p>So we know the inputs and the output. </p>
+<p>All thats left to find is the weights and the threshold value T. Then, we''d have a hardwired neuron to do the AND operation.</p>
+<p>We notice that one single line is sufficient to do this classification. There exist infinitely many lines that do separate the black points from the red one. But any ONE will be sufficient for us.</p>
+<p>So, only one single neuron is needed to do this "classification". And the weights of inputs for that single neuron will be equal to the coefficients of the separating line.</p>
+<p>I leave this up to you. Take any random line that separates the black and the red points. Then find it''s equation. Then you''ll have the weights (the coefficients of x and y) and the thershold value T (the constant in the line''s equation). Here''s a sample neuron hardwired to do this task:</p>
+<p><img alt="" src="/static/img/tut/dictomizer-example-and.jpg" /></p>
+<h3>OR gate</h3>
+<p>We''ll try creating a 3-input OR gate. Now, in this case, we''ll have to consider a 3-D Cartesian space (because we have 3 inputs).</p>
+<p>Now I want you to imagine a cube. Each edge is 1 unit in length. So, the various vertices of the cube will be (0,0,0) or a (1,0,1), or a (1,1,1). So, all possible inputs will be covered if we assume a 3D cube. </p>
+<p>Next I want you to imagine the OR operation at the vertices. Only the (0,0,0) input will give an output of 0 (o OR o OR o = 0). Any other vertex will have atleast one input that is non zero.</p>
+<p>So, only (0,0,0) belongs to one class. All other vertices belong to another class. Now try imagining a plane that separated (0,0,0) from the rest of the vertices. </p>
+<p>The coefficients of x, y, and z in this plane''s equation will be the weights of the 3 inputs. And the constant will be the threshold T. Again, there exist infinitely many planes that do the job. But only one is sufficient. So we need a single neuron.</p>
+<p>You should be able to workout on your own from here :)</p>
+<h3>The XOR gate</h3>
+<p>Dictomizers are not the answer to all your problems. Here''s an example that simply is NOT possible with a single neuron dictomizer.</p>
+<p><img alt="" src="/static/img/tut/dictomizer-xor.jpg" /></p>
+<p>You simply cannot find one single line that separates the red points from the black points. You need at least two lines. This means you need two neurons. We''ll get to this example at a later stage. When we''ve done multi-neuron neural networks.</p>','/static/img/tut/post-dictomizer-example.jpg','2009-11-30',1,6,'dictomizer-examples-andor-gates');
+INSERT INTO "aishack_tutorial" VALUES('A single neuron Dictomizer','',89,'<p>Okay, so we''ll get into actually using a neural network right now! The idea is to create what is called a "dictomizer". </p>
+<p>A dictomizer can differentiate between two "classes" of things. For example, checking if something is "human" or "not human". Or maybe checking if a book is "printed" or "hand written".</p>
+<p>The examples I just gave are really complex. So we''ll start off with something simple. The opening image at the top is what we''ll try to create. We won''t go into "learning". We''ll just "hardwire" the neural network to differentiate between two classes. </p>
+<h2>Working through an example</h2>
+<p>The red squares on the cartesian plane (the graph) for one "class", and the black circles form another class. Now, for each point, we have two inputs. The X coordinate, and the Y coordinate. So that fixes the number of inputs in our neural network.</p>
+<p>Next, we just need to differentiate between two classes. So just a zero/one output is sufficient. Thus, the output is set to either a zero or a one. </p>
+<p>Next we need to set the weights of each input. This is the key idea. This is what all future posts will be based on.</p>
+<p><img alt="" src="/static/img/tut/dictomizer_neuron1.jpg" /></p>
+<p>Consider the above picture. The inputs x1 and x2 are the coordinates of the point. These inputs go into the "processing unit" where they are summed up based on their weights (which we need to figure out). This sum is taken through a mathematical function (which we need to figure out as well). And then it thresholded with a value T. And then we get the final output.</p>
+<p>Now, multiple things will happen at once. This is the overall operation that we''re doing: </p>
+<ul>
+<li>f(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2)</sub> &lt; T then the output is 0</li>
+<li>f(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub>) &gt;= T then the output is 1</li>
+</ul>
+<p>Here, f is the mathematical function. Now, if we rearrange these equations, </p>
+<ul>
+<li>f(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2)</sub> -T &lt; 0 then the output is 0</li>
+<li>f(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub>) - T&gt;= 0 then the output is 1</li>
+</ul>
+<p>Now, if we use f(x) = x, then these look like equations of a line (ax + by - c = 0): </p>
+<ul>
+<li>w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> - T&lt; 0 then the output is 0</li>
+<li>w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> - T&gt;= 0 then the output is 1</li>
+</ul>
+<p>This is the equation of the blue line in the opening image. So now you can use geometry to figure out the equation of the blue line. And the coefficients of x and y will be weights. And the constant will be the threshold value T. </p>
+<h2>Higher dimensions</h2>
+<p>This example was just for a 2 dimensional input (that is, there were two inputs). You can similarly have higher dimensions. 3D. 4D. 29D. You name it. It might get geometrically hard to visualize a 29D input, but yes, it can happen. It''ll just have a 28D "hyperplane" (just like the 2D case had a 1D line).</p>
+<p>These higher dimensions are used in more complex dictomizers. Like the examples I gave initially. You can give certain parameters like "distance between eyes", "length of nose", "height", "weight", "number of bones", "number of limbs", "number of teeth", and "skin surface area". These inputs can be used to check if the given object is "human" or "not human". This would be a 8D neural network. </p>
+<h2>More examples</h2>
+<p>Next, we''ll work on some more concrete examples. We''ll create the OR/AND gates using just a single neuron.</p>','/static/img/tut/post-neuron-dictomizer.jpg','2009-11-27',1,6,'a-single-neuron-dictomizer');
+INSERT INTO "aishack_tutorial" VALUES('The modern artificial neuron','',90,'<p>Modern artificial neurons have been derived from <a href="/tutorials/first-artificial-neurons-mcculloch-pitts-model/">McCulloch-Pitts model</a>, but with some changes. These changes allow us to create physical neural networks (using resistors, opamps, etc) relatively easily. Plus, these changes make the neurons much more versatile and can adapt to a wider range of applications. </p>
+<h2>The changes</h2>
+<p>I assume you''ve gone through the post on <a href="/tutorials/first-artificial-neurons-mcculloch-pitts-model/">McCulloch-Pitts model</a>. So I relate the 3 changes that were made to make the modern neuron. </p>
+<h3>Change 1: The inputs</h3>
+<p>In the McCulloch-Pitts model, the input could either be a zero or a one. In modern neurons, the inputs can take any value. It can be zero/one, or a decimal number. </p>
+<h3>Change 2: The weights</h3>
+<p>In the original model, weights could be either a +1 or a -1, representing the excitatory or inhibitory inputs. In modern neurons, the idea of "excitatory" or "inhibitory" has been done away with. The weight is just a numeric value, which can have any value. This weight is just used to calculate the weighted-sum.</p>
+<p>And changing these weights is what causes "learning" in neurons. We''ll get to know about this later on.</p>
+<h3>Change 3: Processing</h3>
+<p>In the original model, the neuron did no "processing". It just calculated the weighted sum, and then checked if the value is less than some pre-decided T or not. If it was, the output was made zero. Otherwise, it was made one.</p>
+<p>In the new model, the neuron first calculates the weighted sum. And then takes this sum through a function. This function is called the "activation function". We''ll go through some commonly used activation function in a later post. For now, just know that the sum is taken through a function (I mean a mathematical function, like sin(sum), etc).</p>
+<p>And then the answer of this operation is checked if it is greater than T or not. This is optional though. </p>
+<h2>Architectures</h2>
+<p>So now you know what a modern neuron does. If gets multiple inputs. Then it calculates the weighted sum of the inputs. Then it takes the sum through a mathematical function. And then optionally "thresholds" this sum (checks if it is less than T or not).</p>
+<p>How is this useful, you ask? A single neuron itself isn''t of much use. But with several neurons, we can create interesting things. You can create classifiers, predictors, recognizers, memories, and what not. </p>
+<p>To do this, you need to arrange the several neurons in a certain fashion. You can''t just say "Ok, I''ll take 500 neurons, and connect them like this". A lot of research has been done on this topic to create useful neural networks. The way you interconnect neurons is called an architecture.</p>
+<p>There exist several architectures. We''ll go in detail with a lot of architectures, and create some really interesting things! Things that learn on their own. And things that "understand" what they''re doing. And we''ll also talk about how to make a particular architecture learn (each one has a different way).</p>','/static/img/tut/post-modern-neuron.jpg','2009-11-24',1,6,'the-modern-artificial-neuron');
+INSERT INTO "aishack_tutorial" VALUES('First artificial neurons: The McCulloch-Pitts model','',91,'<p>The McCulloch-Pitts model was an extremely simple artificial neuron. The inputs could be either a zero or a one. And the output was a zero or a one. And each input could be either excitatory or inhibitory. </p>
+<p>Now the whole point was to sum the inputs. If an input is one, and is excitatory in nature, it added one. If it was one, and was inhibitory, it subtracted one from the sum. This is done for all inputs, and a final sum is calculated.</p>
+<p>Now, if this final sum is less than some value (which you decide, say T), then the output is zero. Otherwise, the output is a one. </p>
+<p>Here is a graphical representation of the McCulloch-Pitts model</p>
+<p><img alt="" src="/static/img/tut/mcculloch-pitts.gif" /></p>
+<p>In the figure, I represented things with named variables. The variables w<sub>1</sub>, w<sub>2</sub> and w<sub>3</sub> indicate which input is excitatory, and which one is inhibitory. These are called "weights". So, in this model, if a weight is 1, it is an excitatory input. If it is -1, it is an inhibitory input. </p>
+<p>x<sub>1</sub>, x<sub>2</sub>, and x<sub>3</sub> represent the inputs. There could be more (or less) inputs if required. And accordingly, there would be more ''w''s to indicate if that particular input is excitatory or inhibitory.</p>
+<p>Now, if you think about it, you can calculate the sum using the ''x''s and ''w''s... something like this: </p>
+<p>sum = x<sub>1</sub>w<sub>1</sub> + x<sub>2</sub>w<sub>2</sub> + x<sub>3</sub>w<sub>3</sub> + ...</p>
+<p>This is what is called a ''weighted sum''. </p>
+<p>Now that the sum has been calculated, we check if sum &lt; T or not. If it is, then the output is made zero. Otherwise, it is made a one.</p>
+<p>Now, using this simple neuron model, we can create some interesting things. Here are a few examples: </p>
+<h3>NOR Gate</h3>
+<p><img alt="" src="/static/img/tut/norgate.gif" /></p>
+<p>The figure above is a 3 input NOR gate. A NOR gate gives you an output of 1 only when all inputs are zero (in this case, x<sub>1</sub>, x<sub>2</sub> and x<sub>3</sub>) You can try the different possible cases of inputs (they can be either zero or one).</p>
+<p>Note that this example uses two neurons. The first neurons receives the inputs you give. The second neuron works upon the output of the first neuron. It has no clue what the initial inputs were.</p>
+<h3>NAND Gate</h3>
+<p><img alt="" src="/static/img/tut/nandgate.gif" />This figure shows how to create a 3-input NAND gate with these neurons. A NAND gate gives a zero only when all inputs are 1. This neuron needs 4 neurons. The output of the first three is the input for the fourth neuron. If you try the different combinations of inputs.</p>
+<p>The McCulloch-Pitts model is no longer used. These NOR and NAND gates already have extremely efficient circuits. So its pointless to redo the same thing, with less efficient models. The point is to use the "interconnections" and the advantages it has.</p>
+<p>It has been replaced by more advanced neurons. The inputs can have decimal values. So can the weights. And the neurons actaully process the sum instead of just checking if it is less than or not.</p>','/static/img/tut/post-first-neuron.jpg','2009-11-21',1,6,'first-artificial-neurons-the-mccullochpitts-model');
+INSERT INTO "aishack_tutorial" VALUES('All about biological neurons','',92,'<p>Artificial neural networks are inspired from biological ones. So it makes sense to know a bit about biological neural networks as well.</p>
+<p>You brain is a neural network. One really really complex neural network. It has 10<sup>11</sup> neurons. And each of these neurons is connected to approximately 10<sup>4</sup> other neurons. These interconnected neurons use electrical pulses to "communicate" with each other.</p>
+<p><img alt="" src="/static/img/tut/biological-neuron.jpg" /></p>
+<p>Above is a highly simplified diagram of a neuron. In the <strong>center</strong>, is the cell body. This houses the actual organelles of the nerve cell. To the <strong>left</strong> of the diagram are incoming connections. The diagram shows only a few of them, but in physical neurons, the count is usually in thousands. And to the <strong>right</strong> of the diagram is <em>axon</em>, the output of the neuron. </p>
+<h4>The Output</h4>
+<p>The output of the neuron is an electrical voltage. And this voltage is decided by the cell body, based on the inputs it receives. This output goes to several other nerve cells, where it acts as an input. Thus, this single neuron can "contribute" to controlling several other neurons. </p>
+<h4>The Inputs</h4>
+<p>Now let''s talk about the inputs into the nerve cell. The nerve cell has several <em>dendrites</em>. These dendrites gather information from the axon of other nerve cells. The way in which an electrical pulse is transferred from an axon to a dendrite is interesting.</p>
+<p>The point of contact of the axon and the dendrite is called a <em>synapse</em>. It is at the synapse that the electrical pulse actually jumps from the axon to the dendrite. This happens by means of a complex chemical reaction.</p>
+<p>The details of the chemical reaction are irrelevant to understanding neural networks, so I''ll skip that part. But the consequences of the reaction are enormous. That is what makes neural networks flexible.</p>
+<p>Okay, so here''s the consequence: the reaction can occur at different "rates". Thus, the "amount" of signal that reaches the dendrite can be controlled. For example, if the signal coming from an axon is 5mV, and the synapse reaction doesn''t happen quickly, the signal might get reduced to, say, 1mV. It might even happen the other way. The signal might get amplified to 15mV.</p>
+<p>As you learn, you change the rates. And thus you change the outputs of your neurons. That is the reason why doing something for the first time is tough. You literally aren''t wired to do that task.</p>
+<h4>The Cell Body</h4>
+<p>Up till now, we''ve talked about the outputs and the inputs. Now a bit about the cell body. The cell body is the thing that decides when to fire an electrical pulse (through the axon) or not. How does it do that?</p>
+<p>By "summing up" the inputs. This happens because all the inputs are electrical voltages, and they all merge at a single point. So, if the total input (after passing and getting amplified/reduced through the synapse) is greater than some particular value, the cell fires an event. Again, this happens through a complex chemical reaction.</p>
+<p>Once the cell fires, it must restore its chemical equilibrium (and prepare for future signals). So the neuron remains inactive for a small amount of time (called the <em>refractory period</em>). Thus several neurons may remain inactive at any given time while several others are active. </p>
+<h4>Towards artificial neurons</h4>
+<p>The artificial neural networks we''ll talk about will have highly simplified neurons. They obviously won''t have the chemical reactions. But they will bear a lot of similarity to the neuron we just got to know. Including the "variable" input thingy (magnified/reduced signal strength).</p>','/static/img/tut/post-biological-neurons.jpg','2009-11-18',1,6,'all-about-biological-neurons');
+INSERT INTO "aishack_tutorial" VALUES('Obstacle avoidance with the Bug-1 algorithm','',93,'<p>Obstacle avoidance is an indispensable behavior in mobile robots. If a robot has no sensors, it’s a blind robot. If it has proximity sensors but still it keeps hitting whatever comes in its way, then it’s a ‘’brainless’’ robot. Imagine an ant or any insect walking on the ground. The insect is heading towards a particular direction and it encounters an obstacle in its way. What the insect does is, it circumnavigates the obstacle until motion in the initial direction is no more obstructed. The situation is very similar to a car at a cross road. To go straight from a traffic crossing, the car has to circumnavigate the cross-road circle and go straight. </p>
+<h2>Assumptions and initialization</h2>
+<p>Essentially, the Bug-1 algorithm formalizes the “common sense” idea of moving towards the goal and going around obstacles. Certain assumptions have to be made while implementing the Bug-1 algorithm, they are: </p>
+<ol>
+<li>The robot is assumed to be a point with perfect positioning (no positioning error)</li>
+<li>The robot is equipped with a contact sensor that can detect an obstacle boundary if the robot “touches” it.</li>
+<li>The robot can also measure the distance d(p, q) between any two points p and q.</li>
+<li>Finally, assume that the workspace is bounded. That is, we''re not working in infinite space.
+We assume the following symbols: </li>
+<li>q<sub>start</sub>: start point</li>
+<li>q<sub>goal</sub>: target point
+Let q<sub>L</sub><sup>0</sup> =q<sub>start</sub> m-line - line segment that connects q<sub>L</sub><sup>i</sup> to q<sub>goal</sub>. Initially i = 0 </li>
+</ol>
+<h2>The Bug-1 Algorithm</h2>
+<p>The Bug1 algorithm exhibits two behaviors: </p>
+<ul>
+<li>Motion to goal</li>
+<li>Boundary following</li>
+</ul>
+<p>During motion-to-goal, the robot moves along the m-line toward q<sub>goal</sub> until it either encounters the goal or an obstacle. If the robot encounters an obstacle, let q<sub>H1</sub> be the point where the robot first encounters an obstacle and call this point a hit point. The robot then circumnavigates the obstacle until it returns to q<sub>H1</sub>.</p>
+<p><img alt="The obstacle avoidance algorithm in action" src="/static/img/tut/obstacle-avoid-possible-path.jpg" /></p>
+<p>Then, the robot determines the closest point to the goal on the perimeter of the obstacle and traverses to this point. This point is called a leave point and is labeled q<sub>L1</sub>. From q<sub>L1</sub>, the robot heads straight toward the goal again, i.e., it re-invokes the motion-to-goal behavior.</p>
+<p>If the line that connects q<sub>L1</sub> and the goal intersects the current obstacle, then there is no path to the goal; note that this intersection would occur immediately “after” leaving q<sub>L1</sub> . </p>
+<p><img alt="Obstacles make a goal impossible to reach!" src="/static/img/tut/obstacle-avoid-impossible-target.jpg" /></p>
+<p>Otherwise, the index i is incremented and this procedure is then repeated for q<sub>Li</sub> and q<sub>Hi</sub> until the goal is reached or the planner determines that the robot cannot reach the goal. Finally, if the line to the goal “grazes” an obstacle, the robot need not invoke a boundary following behavior, but rather continues onward towards the goal. </p>
+<p>Here''s a pseudo code implementation of this algorithm:</p>
+<p><em>Input:</em> A point robot with a tactile sensor 
+<em>Output:</em> A path to the qgoal or a conclusion no such path exists </p>
+<div class="codehilite"><pre><span class="k">while</span> <span class="n">Forever</span> <span class="k">do</span>
+    <span class="n">repeat</span>
+    <span class="n">From</span> <span class="n">qLi</span><span class="err">−</span><span class="mi">1</span><span class="p">,</span> <span class="n">move</span> <span class="n">toward</span> <span class="n">qgoal</span><span class="p">.</span>
+    <span class="n">until</span> <span class="n">qgoal</span> <span class="n">is</span> <span class="n">reached</span> <span class="n">or</span> <span class="n">an</span> <span class="n">obstacle</span> <span class="n">is</span> <span class="n">encountered</span> <span class="n">at</span> <span class="n">qHi</span> <span class="p">.</span>
+    <span class="k">if</span> <span class="n">Goal</span> <span class="n">is</span> <span class="n">reached</span> <span class="n">then</span>
+        <span class="n">Exit</span>
+    <span class="n">end</span> <span class="k">if</span>
+
+    <span class="n">repeat</span>
+    <span class="n">Follow</span> <span class="n">the</span> <span class="n">obstacle</span> <span class="n">boundary</span><span class="p">.</span>
+    <span class="n">until</span> <span class="n">qgoal</span> <span class="n">is</span> <span class="n">reached</span> <span class="n">or</span> <span class="n">qHi</span> <span class="n">is</span> <span class="n">re</span><span class="o">-</span><span class="n">encountered</span><span class="p">.</span>
+        <span class="n">Determine</span> <span class="n">the</span> <span class="n">point</span> <span class="n">qLi</span> <span class="n">on</span> <span class="n">the</span> <span class="n">perimeter</span> <span class="n">that</span> <span class="n">has</span> <span class="n">the</span> <span class="n">shortest</span> <span class="n">distance</span> <span class="n">to</span> <span class="n">the</span> <span class="n">goal</span><span class="p">.</span>
+        <span class="n">Go</span> <span class="n">to</span> <span class="n">qLi</span> <span class="p">.</span>
+        <span class="k">if</span> <span class="n">the</span> <span class="n">robot</span> <span class="n">were</span> <span class="n">to</span> <span class="n">move</span> <span class="n">toward</span> <span class="n">the</span> <span class="n">goal</span> <span class="n">then</span>
+            <span class="n">Conclude</span> <span class="n">qgoal</span> <span class="n">is</span> <span class="n">not</span> <span class="n">reachable</span> <span class="n">and</span> <span class="n">exit</span><span class="p">.</span>
+        <span class="n">end</span> <span class="k">if</span>
+<span class="n">end</span> <span class="k">while</span>
+</pre></div>
+
+
+<p><em>(adopted from: <a href="http://www.amazon.com/gp/product/0262033275?ie=UTF8&amp;tag=aish04-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033275">Principles of Robot Motion: Theory, Algorithms, and Implementations (Intelligent Robotics and Autonomous Agents)</a><img alt="" src="http://www.assoc-amazon.com/e/ir?t=aish04-20&amp;l=as2&amp;o=1&amp;a=0262033275" />)</em></p>
+<h2>Summary</h2>
+<p>You learned about a very basic obstacle avoidance algorithm. The idea is to navigate the entire circumference of the obstacle and figure out the best position to leave towards the goal. Then, the robot moves to this best leaving position and goes towards the object. It is easy to determine if an object is unreachable by this method or not. </p>','/static/img/tut/post-obstacle-avoidance.jpg','2010-08-24',4,6,'obstacle-avoidance-with-the-bug-algorithm');
+INSERT INTO "aishack_tutorial" VALUES('What exactly is a Neural Network?','',94,'<p>Today, computers are greatly evolved machines. They run at blindingly fast processor speeds of around 3 GHz. That too with multiple cores. They can do calculations, perform mathematical manipulations, forecast weather, guide missles with pin point accuracy. Something which humans simply cannot do at such high speeds. </p>
+<p>But there are tasks that humans can do really fast. And today''s computers can''t even compete with humans. Tell a human to drive a car. He''ll do all the complex "calculations" inside his head, and drive the car perfectly. But to train a computer to drive a car is a mammoth challenge in itself. Infact, the US Military organizes a competition to create such a computer every year (called the DARPA challenge). And these computers don''t run in traffic jammed lanes... they move in relatively free and wide tracks.</p>
+<p>Another example would be vision, or audio recognition. Humans, or even animals, can easily recognize patterns. Doesn''t you dog come to you when you call out its name? </p>
+<p>So, where does the semiconductor technology fail?</p>
+<p>No one knows the answer for sure as of now. But a possible answer might be, because humans do "calculations" in a fundamentally different way than computers do. </p>
+<p>Computers are made up of transistors, chips, etc. Humans, on the other hand, use their brains.</p>
+<p>The brain is a network of neurons. A lot of them. Billions of them. And their interconnections is what makes the brain so powerful at such cognition tasks. </p>
+<p>So the scientists and experimenters decided to try and simulate the brain artificially. No they did not use billions of neurons. They used only a few. Maybe a few hundreds, or maybe a couple of thousands. And they found that they could actually do tasks they couldn''t with proper "computer programs".</p>
+<p>They could recognize handwritten characters, interpret vision, without using a 3 GHz + 12GB RAM computer! This was amazing. They HAD to name this something!! Because this was based on the brain''s neural interconnection, they decided to call the thing a "Neural Network". </p>
+<p>And the best thing about these neural networks is their simplicity. You don''t need to dabble with probability or differential equations just to recognize characters. Simple mathematical operations are sufficient to make the neural network "learn" complex tasks.</p>
+<p>One reminder though. Biology still does not know exactly what goes on in the brain. The artificial "brains" or neural networks created are only crude approximations of how the brain actually functions. Once biology unlocks the secrets of how the brain actually works, humans just might be able to combine the computational speed of computers and the ability of neural networks to do complex tasks.</p>','/static/img/tut/post-neural-network.jpg','2009-11-15',1,6,'what-exactly-is-a-neural-network');
+INSERT INTO "aishack_tutorial" VALUES('Mathematical Morphology in OpenCV','',95,'<h2>Introduction</h2>
+<p>All the operations I talked about in the post <a href="/tutorials/mathematical-morphology/">Mathematical Morphology</a> can be easily implemented in OpenCV. It even supports <a href="/tutorials/mathematical-morphology-%e2%80%93-composite-operations/">several advanced morphological operations</a>, right out of the box! So lets begin with, creating a custom structuring element. </p>
+<h2>Creating a structuring element</h2>
+<p>There''s a dedicated function that creates structuring elements. It lets you create standard structuring elements very easily. Creating custom elements is also easy. </p>
+<div class="codehilite"><pre><span class="n">IplConvKernel</span><span class="o">*</span> <span class="nf">cvCreateStructuringElementEx</span><span class="p">(</span><span class="kt">int</span> <span class="n">cols</span><span class="p">,</span>
+                                            <span class="kt">int</span> <span class="n">rows</span><span class="p">,</span>
+                                            <span class="kt">int</span> <span class="n">anchor_x</span><span class="p">,</span>
+                                            <span class="kt">int</span> <span class="n">anchor_y</span><span class="p">,</span>
+                                            <span class="kt">int</span> <span class="n">shape</span><span class="p">,</span>
+                                            <span class="kt">int</span><span class="o">*</span> <span class="n">values</span><span class="o">=</span><span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Most of the parameters are quite self explanatory.</p>
+<p><em>cols</em> and <em>rows</em> is the number of columns and rows in the structuring element </p>
+<p><em>anchor_x</em> and <em>anchor_y</em> point to the anchor pixel. The pixel that is checked for when the transformation should be made or not.</p>
+<p><em>shape</em> lets you choose from three standard structuring elements. Or, if you want, you can set it to use a custom structuring element: </p>
+<ul>
+<li>CV_SHAPE_RECT</li>
+<li>CV_SHAPE_CROSS</li>
+<li>CV_SHAPE_ELLIPSE</li>
+<li>CV_SHAPE_CUSTOM</li>
+</ul>
+<p><img alt="A 3x3 cross structuring element" src="/static/img/tut/morphology-cross-3x3.jpg" /></p>
+<p>If you set <em>shape</em> to <em>CV_SHAPE_CUSTOM</em>, you must somehow supply the custom element. This is done using <em>values</em>. This parameter is used only if <em>shape</em> is set to custom. </p>
+<p><em>values</em> should be a 2D matrix, corresponding to the structuring element itself.</p>
+<p>If values is NULL (and <em>shape</em> is custom), then all points in the structuring element will be considered nonzero (a rows*cols sized rectangle). </p>
+<h2>Dilation</h2>
+<p>This operation is the basic building block of morphology. So there''s a function dedicated for this. </p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="nf">cvDilate</span><span class="p">(</span><span class="k">const</span> <span class="n">CvArr</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span>
+              <span class="n">CvArr</span><span class="o">*</span> <span class="n">dst</span><span class="p">,</span>
+              <span class="n">IplConvKernel</span><span class="o">*</span> <span class="n">element</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The function takes four parameters: </p>
+<ul>
+<li><em>src</em>: The image you want to dilate</li>
+<li><em>dst</em>: This is where the dilated image is stored</li>
+<li><em>element</em>: (optional) The structuring element (use cvCreateStructuringElementEx to create one). If not specified, a 3x3 square is used.</li>
+<li><em>iterations</em>: (optional) Number of times you want to dilate <em>src</em>. If not specified, this is set to 1.</li>
+</ul>
+<p>This operation is in-place. You can use the same image as <em>src</em> and <em>dst</em>. </p>
+<h2>Erosion</h2>
+<p>Erosion is also a basic function of morphology. There''s a function dedicated for this as well: </p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="nf">cvErode</span><span class="p">(</span><span class="k">const</span> <span class="n">CvArr</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span>
+             <span class="n">CvArr</span><span class="o">*</span> <span class="n">dst</span><span class="p">,</span>
+             <span class="n">IplConvKernel</span><span class="o">*</span> <span class="n">element</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span>
+             <span class="kt">int</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The parameters are the same as dilation. Just that you perform an erosion instead of dilation. </p>
+<ul>
+<li><em>src</em>: The image you want to erode</li>
+<li><em>dst</em>: This is where the eroded image is stored</li>
+<li><em>element</em>: (optional) The structuring element (use cvCreateStructuringElementEx to create one). If not specified, a 3x3 square is used.</li>
+<li><em>iterations</em>: (optional) Number of times you want to erode <em>src</em>. If not specified, this is set to 1.</li>
+</ul>
+<p>This is also an in-place operation. <em>src</em> and <em>dst</em> can point to the same image. </p>
+<h2>Composite Operations</h2>
+<p>OpenCV has a function that lets you do composite morphological operations as well. These operations include: </p>
+<ol>
+<li>Opening</li>
+<li>Closing</li>
+<li>Morphological Gradient</li>
+<li>Top Hat</li>
+<li>Black Hat</li>
+</ol>
+<p>The one function that lets you do all this is: </p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="nf">cvMorphologyEx</span><span class="p">(</span><span class="k">const</span> <span class="n">CvArr</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span>
+                    <span class="n">CvArr</span><span class="o">*</span> <span class="n">dst</span><span class="p">,</span>
+                    <span class="n">CvArr</span><span class="o">*</span> <span class="n">temp</span><span class="p">,</span>
+                    <span class="n">IplConvKernel</span><span class="o">*</span> <span class="n">element</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">operation</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Again, the parameters are very similar to cvDilate and cvErode (<em><em>sigh</em></em>, morphology is so monotonous :P) </p>
+<ul>
+<li><em>src</em>: The image you want to work on</li>
+<li><em>dst</em>: This is where the final result is stored</li>
+<li><em>element</em>: (optional) The structuring element (use cvCreateStructuringElementEx to create one). If not specified, a 3x3 square is used.</li>
+<li>operation: This is the only parameter that differs from the previous functions. Its possible values are: <ul>
+<li>CV_MOP_OPEN</li>
+<li>CV_MOP_CLOSE</li>
+<li>CV_MOP_GRADIENT</li>
+<li>CV_MOP_TOPHAT</li>
+<li>CV_MOP_BLACKHAT
+If you''re not sure what each of these means, have a look at these articles. </li>
+</ul>
+</li>
+<li><em>iterations</em>: (optional) Number of iterations. If not specified, this is set to 1.</li>
+</ul>
+<h2>Other operations</h2>
+<p>If you want to do other operations, you must write your own code. Mostly you''ll have to do the following tasks in some order: </p>
+<ul>
+<li>Subtract/add images</li>
+<li>Multiply an image by a scalar</li>
+<li>Erode/dilate</li>
+<li>Create a custom structuring element</li>
+</ul>
+<p>You already know how these are done! So you''re ready to take on any composite operation in mathematical morphology that you can think of! </p>
+<h2>Summary</h2>
+<p>OpenCV lets you perform several morphological operations very easily. You can even write your own morphological functions through OpenCV without any problems!</p>','/static/img/tut/post-morphology-opencv.jpg','2010-07-14',1,3,'mathematical-morphology-in-opencv');
+INSERT INTO "aishack_tutorial" VALUES('Pulse Width Modulators','',96,'<p>Pulse Width Modulators, also called PWMs, are relatively new in the world of electronics. Before PWMs, usually a variable resistance (a rheostat) was used to control the voltage applied to a motor, bulb, etc. But this was inefficient because energy was wasted.</p>
+<figure><img alt="Pulses generated by a PWM" src="/static/img/tut/pwm1.jpg" /><figcaption>
+<p>Pulses generated by a PWM</p>
+</figcaption>
+</figure>
+<p>A PWM solves this problem. With it, you can apply analog voltages using only digital means. Have a look at the signal on the right.</p>
+<p>This is the kind of output generated by a PWM. There are two key properties associatedwith a PWM: </p>
+<ol>
+<li><strong>Period: </strong>The amount of time between two consecutive highs. This is usually measured in Hz (as a frequency). Example: A 500 Hz PWM.</li>
+<li><strong>Duty cycle: </strong>The amount of time a high remains a high. This is usually measured as a percentage. Example: The duty cycle is 50% the entire time period.</li>
+</ol>
+<p>The PWM has several uses today. I''ll go over two briefly.</p>
+<h2>Power control with PWMs</h2>
+<p>A pulse width modulator can be used to control the amount of power that is supplied. And it''s as simple as changing the duty cycle.</p>
+<p>Say a motor is connected to a PWM. The PWM can be made to generate the following two signal. When will the motor run faster?</p>
+<figure><img alt="Comparing the duty cycle of two PWMs" src="/static/img/tut/pwm2.jpg" /><figcaption>
+<p>Comparing the duty cucle of two PWMs</p>
+</figcaption>
+</figure>
+<p>Of course, the signal below. It has a greater duty cycle. More power is delivered to the motor. So it will rotate faster. When a PWM''s signal is applied to an analog component, it behaves as if an equivalent constant voltage is applied on it. That is, analog components cannot distinguish voltage from a rheostat and a PWM. </p>
+<h2>Communication with PWMs</h2>
+<p>No, I''m not talking about talking. I''m talking about sending certain bytes of data from one chip to another. You know how important this is, right? You want faster RAMs, faster processors, lesser "lag" when you click a button. This is where you''re trying to increase the speed of communication.</p>
+<figure><img alt="Give me your data... FAST" src="/static/img/tut/speed.jpg" /><figcaption>
+<p>Give me your data... FAST</p>
+</figcaption>
+</figure>
+<p>I won''t go into extreme details, but here''s the idea. You want to send things as "bits". And you also want the other chip to know when you go on to the next bit.</p>
+<p>To do this, you need two PWMs. One to indicate when you''re going to send the next bit, and one to indicate the actual bits: </p>
+<figure><img alt="Communication with two signals" src="/static/img/tut/communication.jpg" /><figcaption>
+<p>Communication with two signals</p>
+</figcaption>
+</figure>
+<p>The <em>clock</em> maintains the timing. On every rising edge, the next bit is sent out. This way, two chips can talk to each other over 3 wires (one clock, one from chip A to B, and one from chip B to A). </p>
+<h2>How to create a PWM</h2>
+<p>There are two major ways.</p>
+<p><strong>Use a microcontroller</strong></p>
+<p>Microcontrollers come with physical PWMs. They have actual silicon dedicated to PWMs. So they''re quite efficient and easy to use.</p>
+<p><strong>Create a circuit</strong> You can create your own circuit. Some chips like the 555 timer IC can help you make these pulses easily! </p>
+<h2>Summary</h2>
+<p>Pulse Width Modulators (PWMs) are extremely useful things. They can control power, help in communication, etc. To create one, you either need a microcontroller or a custom built circuit.</p>','/static/img/tut/post-pulse-width-modulators.jpg','2010-07-08',1,4,'pulse-width-modulators');
+INSERT INTO "aishack_tutorial" VALUES('Identification tags in competitions','',97,'<p>Vision based competitions require that you track robots and objects in real time. Whether its a ball or block that you need to place in the correct position, you need to identify the robot''s exact position and orientation to decide the timeline of events in the near future. Here are a few ways to efficiently identify robots with the minimal overhead in vision. That is, with the least number of colors, track the maximum number of robots </p>
+<h2>Two markers</h2>
+<p>This is probably the most basic orientation tag. It looks like this:</p>
+<p><img alt="A two marker identification tag" src="/static/img/tut/robot-id-1.jpg" /></p>
+<p>Remember that this is a <strong>top down view</strong> of the robot. </p>
+<p>You assume one color to be the "front" and the other to be the "back". This way, you know exactly where the robot is and also the vector where it is pointing.</p>
+<p>With this configuration, you need two colours to identify one robot. One for the front and one for the back. So if you''re going to track multiple robots, you should go for some other technique. It works best only if you have exactly one robot to track.</p>
+<h2>Three markers</h2>
+<p>With three markers, you get a little more tracking capability. Here''s one possible arrangement:</p>
+<p><img alt="A three colour configuration" src="/static/img/tut/robot-id-2.jpg" /></p>
+<p>To track this robot, you need to find the centroid of the triangle (the location of the robot). For the orientation, create a line on the two blue markers. Then drop a perpendicular from the red marker. This perpendicular will tell you the direction of the robot.</p>
+<p>With this configuration, you can track some more robots. For example, with just two colours you can track atleast two robots. The first robot has two blue markers and the second robot has two red markers.</p>
+<h2>Four markers</h2>
+<p>This is probably the most robust of all tracking methods and is used by several RoboCup teams for their soccer teams. It looks somewhat like a butterfly:</p>
+<p><img alt="The butterflyish identification and orientation tag used in RoboCup" src="/static/img/tut/robot-id-3.jpg" /></p>
+<p>With this system, you can identify a single robot with just one color. If all markers were blue, you could calculate the position of the robot and also the orientation (because of the asymmetry of the placement of markers). This is super efficient!</p>
+<p>And if you put in one color (say red and blue) you can track even more robots with just two colors! Neat! </p>
+<h2>Fancy systems</h2>
+<p>I''ve seen some more systems being used to track robots. Here I''ll list a few of them to get your creative juices flowing!</p>
+<p><img alt="The databit based system" src="/static/img/tut/robot-id-4.jpg" /></p>
+<p>Here the lone marker points to the front end of the robot. The three markers at the rear end mark the robot''s ID. With this system you can track upto 8 robots with just two colors. Think of the back side as a binary digit. 000 = robot#1, and so on.</p>
+<p><img alt="A weird looking one" src="/static/img/tut/robot-id-5.jpg" /></p>
+<p>Here''s a weird one. The "front" is marked by "nothing". Its empty. The robot number is marked by the three quarter circles. The location of the robot is marked by the central circle. </p>
+<h2>Summary</h2>
+<p>You got to see a lot of different identification tags. Go implement some in your own robots!</p>','/static/img/tut/post-identification-tags.jpg','2010-07-15',1,7,'identification-tags-in-competitions');
+INSERT INTO "aishack_tutorial" VALUES('The three motors you''ll ever use in robotics','',98,'<p>Robotics makes great use of motors. They rotate and do things you expect your robot to do. Pot a ball, hold a can or salute you! Here''s a list of three different types of motors that you''ll use when creating your robot. These three motors cover a HUGE variety of requirements: speed, torque, accuracy, etc.</p>
+<h2>The DC Motor</h2>
+<p>The most used motor ever. You supply power, it turns. Your reverse the polarity and it turns in the opposite direction.If you''re getting started with robotics, chances are you''ll encounter these a lot!</p>
+<p>There are lots of flavours of DC motors available: brushed, brushless, homopolar, etc. You''ll usually use the brushed DC motor and in some cases the brushless DC motor (if you want extremely high efficiency).</p>
+<p>Pros about DC motors: </p>
+<ol>
+<li>They have high speeds</li>
+<li>Can produce high torques (with appropriate gears)</li>
+<li>Very simple to use!</li>
+</ol>
+<p>Cons of DC motors: </p>
+<ol>
+<li>Very inaccurate</li>
+<li>Do not stop immediately due to inertia</li>
+<li>They can actually burn out.</li>
+</ol>
+<h2>The Stepper Motor</h2>
+<p>Steppers are also a type of DC motor. Controlling these is not as  trivial as powering them. You need to power multiple coils in a synchronized manner to create rotational motion.</p>
+<p>Pros about Steppers: </p>
+<ol>
+<li>Very accurate</li>
+<li>Available for different levels of accuracies (from 45 degrees to 0.1 degrees)</li>
+</ol>
+<p>Cons of Stepper motors: </p>
+<ol>
+<li>Slow</li>
+<li>Low torque</li>
+<li>Using them is complex</li>
+</ol>
+<h2>The Servo Motor</h2>
+<p>Servos don''t produce rotational motion. They usually produce linear motion. These are used in humanoid robots.</p>
+<p>Pros about Servos: </p>
+<ol>
+<li>Decent accuracy</li>
+<li>High torque</li>
+</ol>
+<p>Cons of Servos </p>
+<ol>
+<li>Very expensive</li>
+<li>Using them is complex</li>
+</ol>','/static/img/tut/post-three-motors.jpg','2010-07-16',1,7,'the-three-motors-youll-ever-use-in-robotics');
+INSERT INTO "aishack_tutorial" VALUES('Robocup soccer rules for the Small Sized League (SSL)','',99,'<h2>What is robocup?</h2>
+<p>The RoboCup Small Sized League is a team based competition. You must create a team of robots that can play soccer/football/whatever you call it. Your team will compete against another team of robots. There must be no human intervention during the match. Everything is autonomous. Everything depends on artificial intelligence. You might want to go check YouTube for a few videos of matches! </p>
+<h2>The field</h2>
+<figure><img alt="The dimensions of the RoboCup arena" src="/static/img/tut/robocup-arena-300x219.jpg" /><figcaption>
+<p>The dimensions of the RoboCup arena</p>
+</figcaption>
+</figure>
+<ul>
+<li>The entire field should be <strong>flat</strong>.</li>
+<li>The playing surface is <strong>green felt mat</strong> or carpet.</li>
+<li>All markings on the field are 10mm wide</li>
+<li>The walls of the goal are 20mm thick and are anchored securely to the surface.</li>
+<li>A <strong>mounting bar</strong> runs across the midline of the field, 4 meters above the surface.</li>
+<li>A set of <strong>shared cameras</strong> are mounted on this bar.</li>
+<li>Teams must access these cameras though <strong>SSL-Vision</strong>, a community maintained software.</li>
+<li>Teams cannot mount their own cameras or any other equipment.</li>
+<li><strong>No commercial advertising</strong> can be put on any part of the field.</li>
+</ul>
+<h2>The balls</h2>
+<figure><img alt="A standard orange golf ball" src="/static/img/tut/robocup-ball.jpg" /><figcaption>
+<p>A standard orange golf ball</p>
+</figcaption>
+</figure>
+<ul>
+<li>The ball is a <strong>standard orange golf ball</strong>.</li>
+<li>It is spherical.</li>
+<li>It is orange in color.</li>
+<li>It is approximately 46g in mass</li>
+<li>It is approximately 43mm in diameter</li>
+</ul>
+<h2>The robotic equipment</h2>
+<ul>
+<li>A single robot can be up to <strong>180mm</strong> in diameter and up to <strong>150mm</strong> in height.</li>
+<li>A robot must use wireless communication only. <strong>Bluetooth</strong> is not allowed.</li>
+<li>Each team can have <strong>at most 5 robots</strong> on the field.</li>
+<li>Robots can be interchanged, but only when the game is not going on.</li>
+<li>There are no limits to the number of interchanges.</li>
+<li>The robot top must have a certain minimum area.</li>
+<li>You must follow the <strong>standard pattern</strong> for recognizing robots.</li>
+<li><strong>Kicking devices</strong> are permitted</li>
+</ul>
+<figure><img alt="The minimum top area of a robot" src="/static/img/tut/robocup-minimum-top.jpg" /><figcaption>
+<p>The minimum top area of a robot</p>
+</figcaption>
+</figure>
+<figure><img alt="The standard pattern for Robocup SSL" src="/static/img/tut/robocup-butterfly.jpg" /><figcaption>
+<p>The standard pattern for RoboCup SSL</p>
+</figcaption>
+</figure>
+<h2>Gameplay</h2>
+<ul>
+<li>A match consists of 2 equal periods of 10 minutes each.</li>
+<li>The halftime cannot exceed 5 minutes.</li>
+<li>Extra time me be allowed in the event of a draw.</li>
+<li>Four timeouts for a total of 5 minutes are allowed for each team.</li>
+<li>A referee controls the game.</li>
+<li>The referee sends out signals are communicated through a computer. Ethernet and serial ports can be used to connect to this computer.</li>
+</ul>
+<h2>Special kicks</h2>
+<p>Standard rules from the real games are followed on several occasions: </p>
+<ul>
+<li>Free kicks</li>
+<li>Penalty Kicks</li>
+<li>Throw ins</li>
+<li>Goal kicks</li>
+<li>Corner kicks</li>
+</ul>
+<h2>Want a more detailed version?</h2>
+<p>I''ve just touched on the key rules. If you want to now all the little details (like when is a ball considered "out of play", or the 80/20 law for dribbling the ball, etc) you should download <a href="http://small-size.informatik.uni-bremen.de/_media/rules:ssl-rules-2010.pdf">the entire rules and regulations document</a> from the official robocup website.</p>','/static/img/tut/post-identification-tags.jpg','2010-07-20',1,7,'robocup-soccer-rules-for-the-small-sized-league-ssl');
+INSERT INTO "aishack_tutorial" VALUES('L293D: An H-Bridge','',100,'<h2>H-what?</h2>
+<p>An H-Bridge is nothing but an electronic circuit. Using such a circuit, you can supply current in two directions. Thats it. The L293D is an H-Bridge with two possible outputs. Meaning, you can connect two things to it... and you can control the direction of current flow in both.</p>
+<p>Lets say you have a DC motor, as in the diagram below: </p>
+<figure><img alt="An H-Bridge in terms of switches" src="/static/img/tut/h-bridge-motor.png" /><figcaption>
+<p>An H-Bridge in terms of switches</p>
+</figcaption>
+</figure>
+<p>If you close both S1 and S2, you''ll short circuit the entire thing. Same goes with S3 and S4. Such a condition, in technical terms, is called a shoot through. So we won''t consider shoot throughs.</p>
+<p>Now, if you close switches S1 and S4, current flows through the motor from left to right. If you close S3 and S2, current flows from right to left. In these two conditions, the direction of rotation is different.</p>
+<p>This is exactly whats needed in most robotics projects using differential drive wheels. But having physical switches would be very inconvenient. You''d need more motors to close and open switches. And to control those motors you''d need even more switches. Ah well. You probably get the point.</p>
+<p>So what the researchers made was an electronically controlled switch: a transistor. And people used those transistors and made circuits similar to the one shown above. The only difference was that instead of physical switches, they had electronic switches. </p>
+<h2>The L293D</h2>
+<p>The L293D is an H-Bridge. Here''s the pin-out diagram of the chip:</p>
+<figure><img alt="The pins on an L293D chip" src="/static/img/tut/l293d-pinout.jpg" /><figcaption>
+<p>The pins on an L293D chip</p>
+</figcaption>
+</figure>
+<p>As I had mentioned earlier, you get two output ports with the L293D. In the above pinout diagram, the left and right sides denote the two outputs. The OUTPUT1 / OUTPUT2 pair forms one output and OUTPUT3 / OUTPUT4 froms another pair. Current can flow through these pairs as dictated by the INPUT1 / INPUT2 and INPUT3 / INPUT4 pairs.</p>
+<p><strong>V<sub>ss</sub></strong> is the logical voltage supply for a 1. For example, if you connect it to a 5V supply, 5 volts into any of the INPUTs would mean a logical 1. However, if you connect it to a 36V supply, the same 5 volts into any INPUT would mean a logical 0. </p>
+<p>How did that happen? Well, you can roughly consider Vss/2 as the "threshold" for a logical 1. If a voltage is above Vss/2, then its a 1... otherwise its a 0. So for the 36V case... if any INPUT is given a voltage greater than 18V, only then will it be considered a logical 1.</p>
+<p><strong>V<sub>s</sub></strong> is the actual voltage that needs to be output. This has nothing to do with the logical 0s and 1s. </p>
+<p><strong>GND</strong> represents grounds. These are needed for the multiple solid state switches that are burned into the IC.</p>
+<p><strong>ENABLE</strong> pins enable/disable the corresponding sides. Putting a logical 1 into ENABLE1 would enable INPUT1/INPUT2 and OUTPUT1/OUTPUT2. Similarly, ENABLE2 would enable the other two input and output pins. A logical 0 disables the corresponding side.</p>
+<h2>Notice the D?</h2>
+<p>The name of the chip has a D in it... notice that? That indicates the presence of a diode for each OUTPUTx pin.</p>
+<p>Whenever the direction of current changes, the device connected across the OUTPUT pins will resist the change. And this results in a back current. The diodes make sure that no back-current damages the circuit inside the chip or before the chip.</p>
+<p>You could do without the diodes too (use an L293B in that case). But its recommended that you use the one with diodes, unless you know what you''re doing. </p>
+<h2>Okay, so how do I make it work?</h2>
+<p>Now that you know what each pin does, explaining how to make the chip work will be easy.</p>
+<p>Lets say you put a logical 1 into INPUT1. Then the chip will simply put Vs volts into OUTPUT1. Similarly, if you put a logical 0 into INPUT1, the chip will ground OUTPUT1. </p>
+<p>Same thing with others. Putting a logical 1 into INPUTx will put Vs volts in OUTPUTx. And putting a 0 grounds the corresponding pin.</p>
+<p>One word of caution though. You can use a maximum of 0.5A of current over each OUTPUTx pin. Use a bit more and you risk fusing the chip. </p>
+<h2>Conclusion</h2>
+<p>Well that it! You now know how the chip functions. You can now use it for any purpose, be it robotics or not!</p>','/static/img/tut/post-l293d.jpg','2010-07-22',1,4,'l293d-an-hbridge');
+INSERT INTO "aishack_tutorial" VALUES('How servo motors work?','',101,'<h2>What is a servo?</h2>
+<p>A servo is a small motor that you can position at any angle very accurately. It contains internal circuits that will automatically maintain that particular angle. However, you cannot do full revolutions with a servo. You are restricted to a certain range, usually from 180-270 degrees. Servos are very powerful for their sizes. There exist servos that provide a torque of 4kg-cm from a 50 gram servo!</p>
+<p>Servos are often used in small sized humanoid robots (not Asimo). Space is a constraint, but you need a lot of power to move without increasing the weight. </p>
+<h2>Positioning a servo</h2>
+<p>A servo has three wires. Two are for power (usually coloured black or brown for ground and red for the positive terminal). The third wire is for signals to position the servo.</p>
+<p>The signal wire expects input from a <a href="/tutorials/pulse-width-modulators/">pulse width modulator</a>.  The period should be 20 milliseconds long and the duty cycle "encodes" the position of the motor. </p>
+<p>If the duty cycle is 1 millisecond, the servo is positioned at 0 degrees. If the duty cycle is 2 milliseconds, the servo is positioned at the maximum possible angle (180 degrees, 270 degrees, or whatever is the maximum limit).</p>
+<figure><img alt="Positioning the servo" src="/static/img/tut/servo-position-pulses.jpg" /><figcaption>
+<p>Positioning the servo</p>
+</figcaption>
+</figure>
+<h2>Internals of a servo</h2>
+<p>A servo contains a normal DC motor. This motor is connected to a potentiometer (or a variable resistance) through gears. As the motor rotates, the potentiometer''s resistance changes. So the circuit can measure exactly what direction the motor''s shaft is pointing.</p>
+<p>When the shaft of the motor is at the desired position, power supply to the motor is stopped. If not, the motor is turned in the appropriate direction. </p>
+<p>The desired position is sent in through the signal wire. As long as the signal wire has a position, the servo will ensure that the motor''s shaft remains at the correct position.</p>
+<p>Also, the speed with which the motor turns is proportional to the difference between its actual position and desired position. So if the motor is near the desired position, it will turn slow. Otherwise it will turn fast. This is called proportional control. </p>
+<figure><img alt="The internal components of a servo" src="/static/img/tut/how-servo-works-1.jpg" /><figcaption>
+<p>The internal components of a servo</p>
+</figcaption>
+</figure>
+<p>Now for the electronics part. The circuit contains a chip, M51660L (or another proprietary chip of the manufacturer). This chip compares the error in positioning the motor.</p>
+<p>The chip contains a timer that produces pulse signals from the potentiometer. These signals are similar to the ones you supply. These two pulse signals (the ones you are sending and the ones generated by the potentiometer) are fed into a pulse width comparator. This comparator produces the signals indicating which direction the motor should turn in. These are fed into an H-bridge (<a href="/tutorials/l293d-an-h-bridge/">a big H Bridge - L293D</a>) to drive the motor.</p>
+<p>All of this is contained within the chip. Only a few extra components like resistors and capacitors are required.</p>
+<figure><img alt="The servo control circuit" src="/static/img/tut/servo-control-circuit.jpg" /><figcaption>
+<p>The servo control circuit</p>
+</figcaption>
+</figure>
+<h2>Summary</h2>
+<p>You learned about how to control a servo motor and how its internal circuit works. You even got to know how to start building your own controller if you ever wanted to.</p>','/static/img/tut/post-servo-motors.jpg','2010-07-31',1,4,'how-servo-motors-work');
+INSERT INTO "aishack_tutorial" VALUES('Simple motor driver circuit','',102,'<h2>Components used</h2>
+<p>For this project, we''ll be using the following components: </p>
+<ul>
+<li>One L293D H Bridge</li>
+<li>One 7805 voltage regulator</li>
+<li>One 7812 voltage regulator</li>
+<li>Four capacitors, around 10uF</li>
+<li>Two DC motors
+The H-Bridge is the key component. To power this chip, we use the two voltage regulators. The 7805 is used for generating logic voltages (5V = logical 1). The 7812 will actually power the motors. </li>
+</ul>
+<h2>The schematic</h2>
+<p>Okay, so lets begin with the circuit now. I''ll assume that you have a soldering iron and a PCB... or you can get it done by someone. </p>
+<h3>Step 1: The power supply</h3>
+<p>We''ll first work on the power supply for the motors and the chip. For that, we''ll be using the two voltage regulator ICs. Ideally, you could connect a circuit like this:</p>
+<figure><img alt="Power supply setup" src="/static/img/tut/l293d_power_supply.gif" /><figcaption>
+<p>Power supply setup</p>
+</figcaption>
+</figure>
+<p>The two thick lines on the left are the main DC power supply (probably from some battery source or maybe a DC adapter). Once the power is routed through this circuit, you get a 5 volt potential difference across the ground and the line marked +5V. And you get 12 volts potential difference across the +12V line and ground.</p>
+<p>However, there are always fluctuations in the input lines. To minimize these, we add capacitors across the input terminals and the output terminals. So the final power supply circuit for our project would be like this:</p>
+<figure><img alt="Power supply with capacitors added" src="/static/img/tut/l293d_power_supply_caps.gif" /><figcaption>
+<p>Power supply with capacitors added</p>
+</figcaption>
+</figure>
+<h2>Step 2: Connecting power to the L293D</h2>
+<p>There are a total of 8 pins on the L293D that relate to power. Four ground pins, three pins that need the +5V and one pin that needs the +12V supply.</p>
+<p>Doing the 4 ground connections might be messy if you''re making this circuit for the first time. Anyway, here''s why we''re doing all these connections: </p>
+<figure><img alt="Power supply connections into the L293D" src="/static/img/tut/l293d_power_connections.gif" /><figcaption>
+<p>Power supply connections into the L293D</p>
+</figcaption>
+</figure>
+<p>The four grounds have to connected to ground. No questions asked. Without that, the chip won''t function.</p>
+<p>The Vs is connected to +12V because we''ll be running our DC motors at this voltage.</p>
+<p>We put a +5V into Vss because thats the standard voltage for a logical 1. Based on this voltage, the L293D will decide if a given voltage input is a logical 1 or a logical 0.</p>
+<p>ENABLE1 and ENABLE2 are connected to +5V because we will be using both sides of the chip. We we put a logical 1 into these pins. </p>
+<h3>Step 3: Connecting the outputs</h3>
+<p>Our outputs are motors. So we simply connect the two terminals of the motors across OUTPU1/OUTPUT2 and OUTPUT3/OUTPUT4. As simple as that.</p>
+<figure><img alt="Connecting motors to the L293D" src="/static/img/tut/l293d_motor_connections.gif" /><figcaption>
+<p>Connecting motors to the L293D</p>
+</figcaption>
+</figure>
+<h3>Step 4: Connecting the input pins</h3>
+<p>The only thing that now remains is connecting the INPUTx pins. These pins connect to whatever "controller" you have. If you have a microcontroller or a microcontroller, these four wires go there. If you want to have it computer controller, they go into the parallel port of the computer, or probably even the serial port. Or if you want, you could go a step further and even use some wireless transmitter to wirelessly control the two motors.</p>
+<figure><img alt="Connecting input pins" src="/static/img/tut/l293d_input_connections.gif" /><figcaption>
+<p>Connecting input pins</p>
+</figcaption>
+</figure>
+<h2>You''re done!</h2>
+<p>With these connections done, you''ve completed the motor driver. Now based on the input you give, the motors will turn in different directions. Based on the connections you made to the motor and how you mounted the motor on your project, you''ll have to figure out on your own when the motors turn forward or when the motors turn backward. Simple hit and trial experiments will be enough for this. </p>
+<h2>Braking</h2>
+<p>Here''s an interesting bit. Something that makes this circuit work great for making differential drive based robots.</p>
+<p>Consider this: If INPUT1 is logical 1 and INPUT2 is logical 0, the motor on the left of the schematic will rotate. This is normal functioning of the chip.</p>
+<p>If you suddnely set INPUT1 to logical 1 and INPUT2 to logical 1 too, you''re short circuiting the internal connections (technically: a shoot through)! But because the motor was previously in motion, it will oppose this sudden change. And in doing so, the motors will BRAKE. They''ll stop suddenly.</p>
+<p>However, simply turning the power supply off would cause the motor to go on rolling for sometime before it stops.</p>
+<p><span class="tut-success">If you want to stop a motor, set both INPUTs to a 1. And the motor will stop immediately.</span></p>
+<h2>Conclusion</h2>
+<p>Here you learned about creating a motor driver. Now that you can control two motors, you can build a lot of things: robots, face-any-direction-webcam, etc etc. See you next time!</p>','/static/img/tut/post-motor-driver.jpg','2010-08-03',1,4,'simple-motor-driver-circuit');
+INSERT INTO "aishack_tutorial" VALUES('Cropping robotics arena boundaries','',103,'<p>Most image processing or computer vision based robotics competitions have a visually distinct arena boundary. You might want to exclude whatever is outside this boundary. Maybe to avoid detecting colors in that area. Or, maybe to prevent motion detection in those regions. Here''s a simple technique that should work perfectly in any image processing based competition! </p>
+<h2>The idea</h2>
+<p>The main assumption is you can detect the arena boundary. Obviously. If you cannot detect the boundary, you just cannot crop it. Anyway, here''s what I plan on doing. We''ll remove the area outside the thick white boundary in the image below:</p>
+<figure><img alt="The G.O.A.L. Arena" src="/static/img/tut/goal_arena.jpg" /><figcaption>
+<p>The robot football arena</p>
+</figcaption>
+</figure>
+<p>We take this image, and discard any information outside the boundary. After all processing, it would look like this:</p>
+<figure><img alt="" src="/static/img/tut/arena-cropped.jpg" /><figcaption>
+<p>The cropped arena, near perfect!</p>
+</figcaption>
+</figure>
+<h2>How its done</h2>
+<p>The technique might need to be modified slightly, based on how you get your boundary on the arena. However, the key ideas will remain the same. </p>
+<h3>Step 1: Extract the whites</h3>
+<p>We need the white boundaries. So we extract everything that is white. This is done by ANDing all three channels of the image. What you get is something like this:</p>
+<p><img alt="" src="/static/img/tut/arena-whtes.jpg" /></p>
+<h2>Step 2: Clean up</h2>
+<p>There''s a lot of stray unwanted white in the result we get. So filters need to be applied to get rid of these stray white pixels. In this case, the opening morphological operation (erosion followed by a dilation) does the trick. Here''s the output after opening the image:</p>
+<p><img alt="" src="/static/img/tut/arena-whites-opened.jpg" /></p>
+<h3>Step 3: Thresholding</h3>
+<p>This is yet another step for cleaning up the image. We''ll keep pixels only above a certain value. This value depends on the histogram you have for you image (based on lighting conditions, surface material, etc). After thresholding, the output looks something like this:</p>
+<p><img alt="" src="/static/img/tut/arena-whites-threshold.jpg" /></p>
+<h3>Step 4: The hough transform</h3>
+<p>Now we do the hough transform and find lines in the thresholded image. Here''s a peek of all the lines that are detected: </p>
+<p><img alt="" src="/static/img/tut/arena-detected-lines.jpg" /></p>
+<h3>Step 5: Generating single boundaries</h3>
+<p>Using all those lines, we generate a single boundary for each side of the arena. This is done by "averaging" these lines together. Here''s what you get then:</p>
+<p><img alt="" src="/static/img/tut/arena-lines-averaged.jpg" /></p>
+<h3>Step 6: Calculating intersections</h3>
+<p>These are lines, not line segments. So we calculate the four corners of the arena (marked green) by solving for their intersection. And get ready for the final step.</p>
+<p><img alt="" src="/static/img/tut/arena-corners.jpg" /></p>
+<h3>Step 7: Generate a mask</h3>
+<p>With the four points in hand, we can easily generate a mask that covers the entire arena. Something like this:</p>
+<p><img alt="" src="/static/img/tut/arena-mask.jpg" /></p>
+<h2>Done!</h2>
+<p>The above series of steps needs to be done only once (ie if the camera remains still). So, to get the cropped image, all you need to do is AND the mask with the original image! It''s super efficient and gets the job done pretty decently! The output you get looks like this: </p>
+<p><img alt="" src="/static/img/tut/arena-cropped.jpg" /></p>
+<p>In the next article, we''ll get into how to implement this with OpenCV.</p>','/static/img/tut/post-cropping-robotics-arena.jpg','2010-04-05',1,3,'cropping-robotics-arena-boundaries');
+INSERT INTO "aishack_tutorial" VALUES('Cropping robotics arena boundaries: Implementation','',104,'<p>In the previous article, Cropping robotics arena boundaries, I talked about the steps involved in getting rid of everything beyond the arena boundary. In this article, I''ll go into the coding aspects. We''ll start by loading the image into memory, and then go through each step in detail. By the end, you''ll have a working program that crops the arena awesomely :P! I''ll be using OpenCV for the image processing part. Though I''m sure OpenCV specific commands should have equivalents in other image processing libraries as well.</p>
+<h2>Juggling code</h2>
+<p>I assume you have OpenCV install (check <a href="/tutorials/installing-and-configuring-opencv-2-0-on-windows/">OpenCV 2.0 on Windows</a> or the more detailed <a href="/tutorials/installing-and-getting-opencv-running/">Installing and getting OpenCV running</a>). I''ll be using Visual Studio 2008 for this project. But it should translate without many changes for other IDE''s as well.</p>
+<p>Start Visual Studio and create a new project. Choose Visual C++ &gt; Win32 &gt; Win32 Console Application as the project type and name it whatever you want. Click OK and then accept all default settings by clicking Finish.</p>
+<p>You''ll have a blank skeleton project ready. We''ll start by including the main OpenCV headers </p>
+<div class="codehilite"><pre><span class="c1">// ArenaCrop.cpp : Defines the entry point for the console application.</span>
+<span class="c1">//</span>
+<span class="cp">#include &quot;stdafx.h&quot;</span>
+</pre></div>
+
+
+<p>Just below the stdafx.h line, add these lines: </p>
+<div class="codehilite"><pre><span class="cp">#include &lt;cv.h&gt;</span>
+<span class="cp">#include &lt;highgui.h&gt;</span>
+<span class="cp">#include &lt;math.h&gt;</span>
+</pre></div>
+
+
+<p>We''ve included OpenCV''s headers and mathematical functions as well. Next, we get to the main() function: </p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+</pre></div>
+
+
+<p>The first thing to do is get the image of the arena, and save its size in a variable: </p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">IplImage</span><span class="o">*</span> <span class="n">img</span> <span class="o">=</span> <span class="n">cvLoadImage</span><span class="p">(</span><span class="s">&quot;C:</span><span class="se">\\\\</span><span class="s">goal_arena.jpg&quot;</span><span class="p">);</span>
+    <span class="n">CvSize</span> <span class="n">imgSize</span> <span class="o">=</span> <span class="n">cvGetSize</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Now we''ll create several other images that we''ll be using during the processing:</p>
+<div class="codehilite"><pre>    <span class="n">IplImage</span><span class="o">*</span> <span class="n">detected</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">imgSize</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgBlue</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">imgSize</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgGreen</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">imgSize</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgRed</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">imgSize</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p><em>detected</em> will store the "white" parts of the arena. And the images <em>imgBlue</em>, <em>imgGreen</em> and <em>imgRed</em> hold the three channels of the arena. Note that all these images are single channel images.</p>
+<p>The cvSplit function will separate the loaded image (<em>img</em>) into its channels and store them in the three parameters given. </p>
+<div class="codehilite"><pre>    <span class="n">cvSplit</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">imgBlue</span><span class="p">,</span> <span class="n">imgGreen</span><span class="p">,</span> <span class="n">imgRed</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<p>With individual channels, we can easily detect the white parts of the image like this: </p>
+<div class="codehilite"><pre>    <span class="n">cvAnd</span><span class="p">(</span><span class="n">imgGreen</span><span class="p">,</span> <span class="n">imgBlue</span><span class="p">,</span> <span class="n">detected</span><span class="p">);</span>
+    <span class="n">cvAnd</span><span class="p">(</span><span class="n">detected</span><span class="p">,</span> <span class="n">imgRed</span><span class="p">,</span> <span class="n">detected</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This ANDs the first two parameters and stores it in the third parameter. The results from this aren''t great. There are lots of unwanted pixels that make it through. Here''s a picture of whats stored in detected after the ANDing is done:</p>
+<p><img alt="" src="/static/img/tut/arena-whtes.jpg" /></p>
+<p>We need to get rid of all that noise. So, we open the image (morphological opening) and then threshold <em>detected</em>.</p>
+<div class="codehilite"><pre>    <span class="n">cvErode</span><span class="p">(</span><span class="n">detected</span><span class="p">,</span> <span class="n">detected</span><span class="p">);</span>
+    <span class="n">cvDilate</span><span class="p">(</span><span class="n">detected</span><span class="p">,</span> <span class="n">detected</span><span class="p">);</span>    <span class="c1">// Opening</span>
+
+    <span class="n">cvThreshold</span><span class="p">(</span><span class="n">detected</span><span class="p">,</span> <span class="n">detected</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">CV_THRESH_BINARY</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Opening is an erosion followed by a dilation. And you can <a href="/tutorials/thresholding/">read about thresholding</a>, its just keeping pixels above a certain value, and trashing the rest. Here''s what it looks like after this is done:</p>
+<p><img alt="" src="/static/img/tut/arena-whites-threshold.jpg" /></p>
+<p>Now we get to the juice of the tutorial. We''ll use an inbuilt function to do a <a href="/tutorials/the-hough-transform/">hough transform</a> on <em>detected</em> and get a list of lines: </p>
+<div class="codehilite"><pre>    <span class="n">CvMat</span><span class="o">*</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">cvCreateMat</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">CV_32FC2</span><span class="p">);</span>
+    <span class="n">cvHoughLines2</span><span class="p">(</span><span class="n">detected</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">CV_HOUGH_STANDARD</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The <em>lines</em> matrix is a two channeled, floating matrix with 100 rows and 1 column. We''ll store the parameters returned by the hough transform (the p and θ of the lines in normal form) in this matrix. And we cannot store more than 100 lines in the matrix. This might vary in your case. I use a 320x240 image, so it works fine for me. If you use a bigger image (1280x720 :O ) then you might need a lot more rows in the matrix.</p>
+<p>The function cvHoughLines2 actually the hough transform on <em>detected</em> and stores the results in <em>lines</em>. CV_HOUGH_STANDARD ensures that the function does the classical hough transform. The classical hough transform returns lines instead of line segments. If you check the result we  get after thresholding, you''ll see we have short line segments. But we''re interested in infinite lines. So we choose the standard hough transform.</p>
+<p>The 1 and 0.001 are the accuracy of the values of p and θ respectively. p is in pixels, so we set it to 1. θ is in radians, which is extremely sensitive. So we set its accuracy to 0.001. You can increase precision if you want, but that would increase run time.</p>
+<p>The 100 is a kind of selection criteria. If a line gets a score of greater than 100, the function adds it to <em>lines</em>. Otherwise, the line is assumed to be part of noise and ignored. Read more about <a href="/tutorials/the-hough-transform/">The Hough Transform</a> and you''ll get to know what this is.</p>
+<p>Once the hough transform is done, we''re ready to sort through the list of lines we get. </p>
+<h2>How to sort through lines</h2>
+<p>Before we get to the code that does this, let me explain how we''ll go about doing that. For each ;line, the matrix has two parameters (p and θ). Based on their values, we can roughly estimate if it is a top boundary, a left boundary, a right boundary or a bottom boundary. How do you do that? Here''s how:</p>
+<p>Always, the top left point is (0, 0). So that''s the origin. The parameter values are relative to this point: </p>
+<ul>
+<li>p &gt; image''s height/2 AND θ is around 0 degrees: this line is a right boundary</li>
+<li>p &gt; image''s height/2 AND θ is around 90 degrees: this line is a bottom boundary</li>
+<li>p &lt; image''s height/2 AND θ is around 0 degrees: this line is a top boundary</li>
+<li>p &lt; image''s height/2 AND θ is around 90 degrees: this line is a left boundary</li>
+</ul>
+<p>These pictures should explain you why the above conditions hold:</p>
+<p><img alt="" src="/static/img/tut/arena-right-edge.jpg" /></p>
+<p>The red line has been returned by the hough transform. You can see the θ is almost zero, and p is quite long. So we can conclude this particular line belongs to the right edge. Try figuring out the conditions for the other boundaries yourself:</p>
+<p><img alt="" src="/static/img/tut/arena-all-edges.jpg" /></p>
+<p>The next important thing we need to do is merge several lines. Why? The "lines" in the thresholded image are thick. So the hough transform might return several lines for every boundary. So we need a "mechanism" to calculate a single line from all those lines. </p>
+<p>This is done by averaging two points of the lines. Again, a graphic should serve to explain the idea better:</p>
+<p><img alt="" src="/static/img/tut/arena-averaging-points.jpg" /></p>
+<p>All the red lines have been categorized as at belonging near the top edge. So, summing the x and y coordinates and dividing by the number of points, we get the averaged top edge... represented by the black line.</p>
+<p>With these two ideas, we''re ready to proceed with coding! </p>
+<h2>Back to coding</h2>
+<p>Okay, so where were we?</p>
+<p>We had called cvHoughLines2 and now we need to sort the lines, and generate single boundary lines. We''ve written code till here: </p>
+<div class="codehilite"><pre>    <span class="n">CvMat</span><span class="o">*</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">cvCreateMat</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">CV_32FC2</span><span class="p">);</span>
+    <span class="n">cvHoughLines2</span><span class="p">(</span><span class="n">detected</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">CV_HOUGH_STANDARD</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The next thing we do is, declare several variables: </p>
+<div class="codehilite"><pre>    <span class="n">CvPoint</span> <span class="n">left1</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">CvPoint</span> <span class="n">left2</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">CvPoint</span> <span class="n">right1</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">CvPoint</span> <span class="n">right2</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">CvPoint</span> <span class="n">top1</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">CvPoint</span> <span class="n">top2</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">CvPoint</span> <span class="n">bottom1</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">CvPoint</span> <span class="n">bottom2</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">numLines</span> <span class="o">=</span> <span class="n">lines</span><span class="o">-&gt;</span><span class="n">rows</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numTop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numBottom</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numLeft</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numRight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+
+<p>We''re creating variables to hold the endpoints of the lines for the averaging thingy. <em>numLines _stores the number of lines, and _numTop</em>, <em>numBottom</em>, _numLeft _and _numRight _store the number of lines for each edge (yes, each boundary can have different number of lines)</p>
+<p>Next we look at each line: </p>
+<div class="codehilite"><pre>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">numLines</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+</pre></div>
+
+
+<p>And we get the two parameters for the current line: </p>
+<div class="codehilite"><pre>        <span class="n">CvScalar</span> <span class="n">dat</span> <span class="o">=</span> <span class="n">cvGet1D</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">rho</span> <span class="o">=</span> <span class="n">dat</span><span class="p">.</span><span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="kt">double</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">dat</span><span class="p">.</span><span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</pre></div>
+
+
+<p>The value of <em>rho</em> is in pixels, and <em>theta</em> is in radians. If <em>theta</em> is zero, it means the line is exactly vertical. This causes some problems with the averaging process (infinites). So we simply ignore these lines: </p>
+<div class="codehilite"><pre>        <span class="k">if</span><span class="p">(</span><span class="n">theta</span><span class="o">==</span><span class="mf">0.0</span><span class="p">)</span>
+            <span class="k">continue</span><span class="p">;</span>
+</pre></div>
+
+
+<p>If not, we can approximate this line. So we convert the angle from radians to degrees, and generate two points on the line.</p>
+<div class="codehilite"><pre>        <span class="kt">double</span> <span class="n">degrees</span> <span class="o">=</span> <span class="n">theta</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="p">(</span><span class="mf">3.1412</span><span class="p">);</span>
+
+        <span class="n">CvPoint</span> <span class="n">pt1</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">rho</span><span class="o">/</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">));</span>
+        <span class="n">CvPoint</span> <span class="n">pt2</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">(</span><span class="n">img</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">img</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">/</span><span class="n">tan</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">+</span> <span class="n">rho</span><span class="o">/</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">));</span>
+</pre></div>
+
+
+<p>We generate the two points by using the normal-form equation of line: </p>
+<div class="codehilite"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">cos</span><span class="err">θ</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="err">θ</span>
+</pre></div>
+
+
+<p>We know p and θ, and we want to generate two x''s and y''s. We do that by setting x=0 and x=image''s width, and then calculating the value of y.</p>
+<p>Now, we get to the "categorization part. We''ll figure out which edge the line is closest too. And do the averaging thingy there itself. </p>
+<div class="codehilite"><pre>        <span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">50</span><span class="p">)</span>
+        <span class="p">{</span>
+</pre></div>
+
+
+<p>We check if the absolute value of rho is less than 50. If it is, the current line is either the top edge or the left edge. We figure this out using a condition on the angle: </p>
+<div class="codehilite"><pre>            <span class="k">if</span><span class="p">(</span><span class="n">degrees</span><span class="o">&gt;</span><span class="mi">45</span> <span class="o">&amp;&amp;</span> <span class="n">degrees</span><span class="o">&lt;</span><span class="mi">135</span><span class="p">)</span>
+            <span class="p">{</span>
+</pre></div>
+
+
+<p>If the angle is around 90 degrees, it''s the top edge. So we sum up the two points we generated into top1 and top2.</p>
+<div class="codehilite"><pre>                <span class="n">numTop</span><span class="o">++</span><span class="p">;</span>
+
+                <span class="c1">// The line is vertical and near the top</span>
+                <span class="n">top1</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+                <span class="n">top1</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+                <span class="n">top2</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+                <span class="n">top2</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="p">}</span>
+</pre></div>
+
+
+<p>Otherwise, the line is a left edge: </p>
+<div class="codehilite"><pre>            <span class="k">else</span>
+            <span class="p">{</span>
+
+                <span class="n">numLeft</span><span class="o">++</span><span class="p">;</span>
+
+                <span class="c1">// The line is vertical and near the left</span>
+                <span class="n">left1</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+                <span class="n">left1</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+                <span class="n">left2</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+                <span class="n">left2</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+
+
+<p>If the absolute of rho is not less than 50, it has to be either the right edge of the bottom edge. </p>
+<div class="codehilite"><pre>        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="c1">// We&#39;re in the right portion</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">degrees</span><span class="o">&gt;</span><span class="mi">45</span> <span class="o">&amp;&amp;</span> <span class="n">degrees</span><span class="o">&lt;</span><span class="mi">135</span><span class="p">)</span>
+            <span class="p">{</span>
+
+                <span class="n">numBottom</span><span class="o">++</span><span class="p">;</span>
+
+                <span class="c1">//The line is horizontal and near the bottom</span>
+                <span class="n">bottom1</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+                <span class="n">bottom1</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+                <span class="n">bottom2</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+                <span class="n">bottom2</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+
+                <span class="n">numRight</span><span class="o">++</span><span class="p">;</span>
+
+                <span class="c1">// The line is vertical and near the right</span>
+                <span class="n">right1</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+                <span class="n">right1</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+                <span class="n">right2</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+                <span class="n">right2</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="n">pt2</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>Well, up till now we''ve just added the x and y coordinates. Now is the time to divide them by the number of points. </p>
+<div class="codehilite"><pre>    <span class="n">left1</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numLeft</span><span class="p">;</span>
+    <span class="n">left1</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numLeft</span><span class="p">;</span>
+    <span class="n">left2</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numLeft</span><span class="p">;</span>
+
+    <span class="n">left2</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numLeft</span><span class="p">;</span>
+
+    <span class="n">right1</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numRight</span><span class="p">;</span>
+    <span class="n">right1</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numRight</span><span class="p">;</span>
+    <span class="n">right2</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numRight</span><span class="p">;</span>
+
+    <span class="n">right2</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numRight</span><span class="p">;</span>
+
+    <span class="n">top1</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numTop</span><span class="p">;</span>
+    <span class="n">top1</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numTop</span><span class="p">;</span>
+    <span class="n">top2</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numTop</span><span class="p">;</span>
+
+    <span class="n">top2</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numTop</span><span class="p">;</span>
+
+    <span class="n">bottom1</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numBottom</span><span class="p">;</span>
+    <span class="n">bottom1</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numBottom</span><span class="p">;</span>
+    <span class="n">bottom2</span><span class="p">.</span><span class="n">x</span><span class="o">/=</span><span class="n">numBottom</span><span class="p">;</span>
+    <span class="n">bottom2</span><span class="p">.</span><span class="n">y</span><span class="o">/=</span><span class="n">numBottom</span><span class="p">;</span>
+</pre></div>
+
+
+<p>You see we can''t just divide each by numLines/4. Each boundary has a different number of lines. After the division, we have two points on a single line for each edge! You can draw these lines onto the original image (<em>img</em>): </p>
+<div class="codehilite"><pre>    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">left1</span><span class="p">,</span> <span class="n">left2</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">right1</span><span class="p">,</span> <span class="n">right2</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">top1</span><span class="p">,</span> <span class="n">top2</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bottom1</span><span class="p">,</span> <span class="n">bottom2</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>After this, <em>img</em> looks something like this:</p>
+<p><img alt="" src="/static/img/tut/arena-lines-averaged.jpg" /></p>
+<p>Now, we solve for intersection of these lines. I won''t go into the details here (this article has already turned massive). Thought, you might want to <a href="/tutorials/solving-for-intersection-of-lines-efficiently/">read about solving for intersection of lines</a>. Here''s the entire code that does it: </p>
+<div class="codehilite"><pre>    <span class="c1">// Next, we need to figure out the four intersection points</span>
+    <span class="kt">double</span> <span class="n">leftA</span> <span class="o">=</span> <span class="n">left2</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">left1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">leftB</span> <span class="o">=</span> <span class="n">left1</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">left2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">leftC</span> <span class="o">=</span> <span class="n">leftA</span><span class="o">*</span><span class="n">left1</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">leftB</span><span class="o">*</span><span class="n">left1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">rightA</span> <span class="o">=</span> <span class="n">right2</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">right1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">rightB</span> <span class="o">=</span> <span class="n">right1</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">right2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">rightC</span> <span class="o">=</span> <span class="n">rightA</span><span class="o">*</span><span class="n">right1</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">rightB</span><span class="o">*</span><span class="n">right1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">topA</span> <span class="o">=</span> <span class="n">top2</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">top1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">topB</span> <span class="o">=</span> <span class="n">top1</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">top2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">topC</span> <span class="o">=</span> <span class="n">topA</span><span class="o">*</span><span class="n">top1</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">topB</span><span class="o">*</span><span class="n">top1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">bottomA</span> <span class="o">=</span> <span class="n">bottom2</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">bottom1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">bottomB</span> <span class="o">=</span> <span class="n">bottom1</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">bottom2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">bottomC</span> <span class="o">=</span> <span class="n">bottomA</span><span class="o">*</span><span class="n">bottom1</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">bottomB</span><span class="o">*</span><span class="n">bottom1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="c1">// Intersection of left and top</span>
+    <span class="kt">double</span> <span class="n">detTopLeft</span> <span class="o">=</span> <span class="n">leftA</span><span class="o">*</span><span class="n">topB</span> <span class="o">-</span> <span class="n">leftB</span><span class="o">*</span><span class="n">topA</span><span class="p">;</span>
+
+    <span class="n">CvPoint</span> <span class="n">ptTopLeft</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">((</span><span class="n">topB</span><span class="o">*</span><span class="n">leftC</span> <span class="o">-</span> <span class="n">leftB</span><span class="o">*</span><span class="n">topC</span><span class="p">)</span><span class="o">/</span><span class="n">detTopLeft</span><span class="p">,</span> <span class="p">(</span><span class="n">leftA</span><span class="o">*</span><span class="n">topC</span> <span class="o">-</span> <span class="n">topA</span><span class="o">*</span><span class="n">leftC</span><span class="p">)</span><span class="o">/</span><span class="n">detTopLeft</span><span class="p">);</span>
+
+    <span class="c1">// Intersection of top and right</span>
+    <span class="kt">double</span> <span class="n">detTopRight</span> <span class="o">=</span> <span class="n">rightA</span><span class="o">*</span><span class="n">topB</span> <span class="o">-</span> <span class="n">rightB</span><span class="o">*</span><span class="n">topA</span><span class="p">;</span>
+
+    <span class="n">CvPoint</span> <span class="n">ptTopRight</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">((</span><span class="n">topB</span><span class="o">*</span><span class="n">rightC</span><span class="o">-</span><span class="n">rightB</span><span class="o">*</span><span class="n">topC</span><span class="p">)</span><span class="o">/</span><span class="n">detTopRight</span><span class="p">,</span> <span class="p">(</span><span class="n">rightA</span><span class="o">*</span><span class="n">topC</span><span class="o">-</span><span class="n">topA</span><span class="o">*</span><span class="n">rightC</span><span class="p">)</span><span class="o">/</span><span class="n">detTopRight</span><span class="p">);</span>
+
+    <span class="c1">// Intersection of right and bottom</span>
+    <span class="kt">double</span> <span class="n">detBottomRight</span> <span class="o">=</span> <span class="n">rightA</span><span class="o">*</span><span class="n">bottomB</span> <span class="o">-</span> <span class="n">rightB</span><span class="o">*</span><span class="n">bottomA</span><span class="p">;</span>
+
+    <span class="n">CvPoint</span> <span class="n">ptBottomRight</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">((</span><span class="n">bottomB</span><span class="o">*</span><span class="n">rightC</span><span class="o">-</span><span class="n">rightB</span><span class="o">*</span><span class="n">bottomC</span><span class="p">)</span><span class="o">/</span><span class="n">detBottomRight</span><span class="p">,</span> <span class="p">(</span><span class="n">rightA</span><span class="o">*</span><span class="n">bottomC</span><span class="o">-</span><span class="n">bottomA</span><span class="o">*</span><span class="n">rightC</span><span class="p">)</span><span class="o">/</span><span class="n">detBottomRight</span><span class="p">);</span>
+
+    <span class="c1">// Intersection of bottom and left</span>
+    <span class="kt">double</span> <span class="n">detBottomLeft</span> <span class="o">=</span> <span class="n">leftA</span><span class="o">*</span><span class="n">bottomB</span><span class="o">-</span><span class="n">leftB</span><span class="o">*</span><span class="n">bottomA</span><span class="p">;</span>
+    <span class="n">CvPoint</span> <span class="n">ptBottomLeft</span> <span class="o">=</span> <span class="n">cvPoint</span><span class="p">((</span><span class="n">bottomB</span><span class="o">*</span><span class="n">leftC</span><span class="o">-</span><span class="n">leftB</span><span class="o">*</span><span class="n">bottomC</span><span class="p">)</span><span class="o">/</span><span class="n">detBottomLeft</span><span class="p">,</span> <span class="p">(</span><span class="n">leftA</span><span class="o">*</span><span class="n">bottomC</span><span class="o">-</span><span class="n">bottomA</span><span class="o">*</span><span class="n">leftC</span><span class="p">)</span><span class="o">/</span><span class="n">detBottomLeft</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The basic idea is to solve the two line equations simultaneously. In the article on <a href="/tutorials/solving-for-intersection-of-lines-efficiently/">Solving for intersection of lines</a> I talk about A, B and C. We calculate these constants for each line (topA, topB, topC, etc) and then use those to determine the intersection points.</p>
+<p>The intersections are stored in <em>ptTopLeft</em>, <em>ptTopRight</em>, <em>ptBottomRight _and _ptBottomLeft</em>. You can render the intersections on the original image: </p>
+<div class="codehilite"><pre>    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ptTopLeft</span><span class="p">,</span> <span class="n">ptTopLeft</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ptTopRight</span><span class="p">,</span> <span class="n">ptTopRight</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ptBottomRight</span><span class="p">,</span> <span class="n">ptBottomRight</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">cvLine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ptBottomLeft</span><span class="p">,</span> <span class="n">ptBottomLeft</span><span class="p">,</span> <span class="n">CV_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This adds green points at the corners of the arena.</p>
+<p>Now we''re ready to generate the actual mask. To do this, we create a new image: </p>
+<div class="codehilite"><pre>    <span class="n">IplImage</span><span class="o">*</span> <span class="n">imgMask</span> <span class="o">=</span> <span class="n">cvCreateImage</span><span class="p">(</span><span class="n">imgSize</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">cvZero</span><span class="p">(</span><span class="n">imgMask</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The cvZero ensures that the entire image is completely black. Next, we use the cvFillConvexPoly command to create a filled polygon with the corner points we just found. </p>
+<div class="codehilite"><pre>    <span class="n">CvPoint</span><span class="o">*</span> <span class="n">pts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CvPoint</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="n">pts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptTopLeft</span><span class="p">;</span>
+    <span class="n">pts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptTopRight</span><span class="p">;</span>
+    <span class="n">pts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptBottomRight</span><span class="p">;</span>
+    <span class="n">pts</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptBottomLeft</span><span class="p">;</span>
+    <span class="n">cvFillConvexPoly</span><span class="p">(</span><span class="n">imgMask</span><span class="p">,</span> <span class="n">pts</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cvScalar</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">));</span>
+</pre></div>
+
+
+<p>This command expects an array of points. So we had to create one. This function takes 4 parameters. The first is the image to draw to (<em>imgMask</em> in this case). <em>pts</em> is the actual array of points. You also need to supply the number of points (in this case, 4). And finally, the color to fill with.</p>
+<p>After doing this, you''ll get a mask that looks something like this: </p>
+<p><img alt="" src="/static/img/tut/arena-mask.jpg" /></p>
+<p>We''ll do the final touch:</p>
+<div class="codehilite"><pre>    <span class="n">cvAnd</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">imgMask</span><span class="p">,</span> <span class="n">img</span><span class="p">);</span>
+
+    <span class="n">cvNamedWindow</span><span class="p">(</span><span class="s">&quot;Original&quot;</span><span class="p">);</span>
+
+    <span class="n">cvNamedWindow</span><span class="p">(</span><span class="s">&quot;Detected&quot;</span><span class="p">);</span>
+
+    <span class="n">cvShowImage</span><span class="p">(</span><span class="s">&quot;Original&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">);</span>
+    <span class="n">cvShowImage</span><span class="p">(</span><span class="s">&quot;Detected&quot;</span><span class="p">,</span> <span class="n">detected</span><span class="p">);</span>
+
+    <span class="n">cvWaitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The AND imposes the mask onto the original image. Thus, eliminating anything that''s outside the arena boundary.</p>
+<p><img alt="" src="/static/img/tut/arena-cropped.jpg" /></p>
+<p>That''s a pretty good result in my opinion. The lines don''t have to perfectly straight, or parallel to the edges. They might even curve a bit. Even then the algorithm will work. Interesting! </p>
+<h2>Done!</h2>
+<p>And there you have it. How it''s done. In extreme detail. This was one HUGE articles... it''s around 2200 words. Massive. I hope you liked it, and learned a bit as well.</p>','/static/img/tut/post-cropping-robotics-arena.jpg','2010-04-08',1,3,'cropping-robotics-arena-boundaries-implementation');
+INSERT INTO "aishack_tutorial" VALUES('Learning OpenCV: Computer Vision using the OpenCV Library','',105,'<h2>Vital information</h2>
+<ul>
+<li><strong>Authors: </strong>Gary Bradasky, Adrian Kaehler</li>
+<li><strong>Language:</strong> English</li>
+<li><strong>ISBN-10:</strong> 0596516134</li>
+<li><strong>ISBN-13:</strong> 978-0596516130</li>
+<li><strong>Publisher:</strong> O''Reilly Media; 1st edition (September 24, 2008)</li>
+<li>Paperback with 555 pages</li>
+</ul>
+<h2>My review</h2>
+<p><a href="http://www.amazon.com/gp/product/0596516134?ie=UTF8&amp;tag=aish04-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596516134">Learning OpenCV</a><img alt="" src="http://www.assoc-amazon.com/e/ir?t=aish04-20&amp;l=as2&amp;o=1&amp;a=0596516134" /> is one of those books if you''re getting started with computer vision and OpenCV. The book has been written by the creators of OpenCV themselves, so you can''t have a better source to learn from. Obviously, the book goes into great detail about how to use OpenCV, its functions and the various little nuisances that you need to know.</p>
+<p>Apart from this, the book goes in extreme detail when explaining how various vision algorithms work! Complete with understandable math! So not only do you learn to use OpenCV, you even learn a lot of key concepts and how computer vision works! That, I think, is the best thing about the book!</p>
+<p>The book is made up of 14 chapters: </p>
+<ol>
+<li>Overview</li>
+<li>Introduction to OpenCV</li>
+<li>Getting to know OpenCV</li>
+<li>HighGUI</li>
+<li>Image Processing</li>
+<li>Image Transforms</li>
+<li>Histograms and Matching</li>
+<li>Contours</li>
+<li>Image Parts and Segmentation</li>
+<li>Tracking and Motion</li>
+<li>Camera Models and Calibration</li>
+<li>Projection and 3D Vision</li>
+<li>Machine Learning</li>
+<li>OpenCV''s Future</li>
+</ol>
+<p>The first three chapters take you through the installation procedure and tell you about the basics of OpenCV. Stuff like what each data member of IplImage means, doing some generic manipulations with matrices, drawing lines, circles, fonts, etc. The basic stuff.</p>
+<p>Chapter 4 takes you through HighGUI. Things like reading images, creating windows and writing videos from within your application. </p>
+<p>The real stuff starts from chapter 5. You''re presented some algorithms and techniques fundamental to image processing and computer vision. Flood fill, morphological operations, image pyramids, etc are all covered here.</p>
+<p>Chapter 6 takes you through convolutions and deals with gradients, Sobel, Canny, Hough, DFT, DCT, integral images, etc. </p>
+<p>Chapter 7 and 8 are about histograms, template matching and contours. They''ve got some solid explanations in these chapters. Plus, they''ve got an explanation about how CvSeq works (the linked list of OpenCV). Chapter 9 deals with image segmentation.</p>
+<p>Chapter 10 onwards is advanced stuff: corners, optical flow, estimators, correcting camera distortions. All of these culminate to stereo vision in chapter 12.</p>
+<p>Chapter 13 is about machine learning. k-Means, HAAR Classifiers, Binary decision trees, etc.</p>
+<p>Chapter 14 talks some really advanced stuff. The authors just give you a hint about whats possible and what can happen in OpenCV''s future. This chapter makes for a very inspirational/motivational chapter as the book ends! :)</p>
+<p>The authors mention three ways of making your way though the book </p>
+<ul>
+<li>The grab bag (read 1-3, and then read whatever you want)</li>
+<li>Good progress (read 2 chapters a week)</li>
+<li>The sprint (read as fast as you can :P)</li>
+</ul>
+<p>I''ve personally used the grab bag "method". It''s great to be able to know a few things and be able to read anything in the entire book!</p>','','2010-07-05',1,8,'learning-opencv-computer-vision-using-the-opencv-library');
+INSERT INTO "aishack_tutorial" VALUES('OpenCV vs VXL vs LTI: Performance Test','',106,'<p>I recently read this comparison of four vision libraries: OpenCV, VXL, LTI and OpenCV with IPP. It was in the book Learning <a href="http://www.amazon.com/gp/product/0596516134?ie=UTF8&amp;tag=aish04-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596516134">Learning OpenCV: Computer Vision with the OpenCV Library</a><img alt="" src="http://www.assoc-amazon.com/e/ir?t=aish04-20&amp;l=as2&amp;o=1&amp;a=0596516134" />, authored by the creators of OpenCV themselves. For those who aren''t familiar with these libraries, here''s a brief introduction. </p>
+<h2>VXL</h2>
+<p>VXL stands for Vision something Library. It is a C++ library that implements several common computer vision algorithms and related functionality. The idea is to replace the ''X'' with one of the several letters: </p>
+<ul>
+<li>VGL = Vision Geometry Library</li>
+<li>VIL = Vision Image processing Library</li>
+<li>VNL = Vision Numerics Library</li>
+<li>VSL = Vision Streaming Library</li>
+<li>There are several other libraries as well</li>
+</ul>
+<h2>LTI</h2>
+<p>LTI-Lib is another object oriented library for computer vision. It has also been implemented in C++. It also includes classes that encapsulate multithreading, synchronization, serial port access, etc. And it ensures you don''t have to deal with changing operating systems or hardware. </p>
+<h2>OpenCV</h2>
+<p>Yet another computer vision library. It includes over 500 functions for various commonly used algorithms. It also comes with a machine learning library and a portable window creation library. With version 2.0, OpenCV comes with a C++ interface as well. Before 2.0, it was only the C interface. </p>
+<h2>OpenCV + IPP</h2>
+<p>OpenCV developers were friendly with the Intel Performance Primitives team. So, OpenCV makes use of IPP code (which is hand tuned and extremely optimized code) to speed up execution. And this, as you''ll see, gives a substantial boost to its execution speed. </p>
+<h2>The comparison</h2>
+<p>The machine used was a Pentium M 1.7GHz. Four tests were done: </p>
+<ol>
+<li>2D DFT: Forward fourier transform of a 512x512 image</li>
+<li>Resize: 512x512 to a 384x384 image, bilinear interpolation. An 8-bit, 3 channeled image was used</li>
+<li>Optical flow: 520 points were tracked with a 41x41 window and 4 pyramid levels</li>
+<li>Neural net: the mushroom benchmark of FANN</li>
+</ol>
+<p>The results were like this (I''ve tried my best to replicate the chart as best as possible):</p>
+<figure><img alt="The OpenCV vs VXL vs LTI comparison chart" src="/static/img/tut/VXL_LTI_VC_comparison.jpg" /><figcaption>
+<p>The opencv vs VXL vs LTI comparison chart</p>
+</figcaption>
+</figure>
+<p>Hmm. It can''t get simpler. If you want to do your computer vision thing super fast, you <em>must</em> use OpenCV. If possible, Go for OpenCV+IPP. If something doesn''t work fast enough, there are only two possibilities: </p>
+<ol>
+<li>You don''t know how to use it (doing template matching on a 3000x3000 image)</li>
+<li>The algorithm itself is slow and current technology can''t make it go faster (like SIFT)</li>
+</ol>
+<p>If you can think of other possibilities, please leave a comment and let me know :P Anyway, in either case, the algorithm will work even slower on other vision libraries.</p>
+<p><span class="tut-success">Whatever vision task you have, choose OpenCV :D This (probably) only applies to desktops/laptops. If you''re using it on mobile, you can probably reconsider :)</span></p>
+<p><strong>Note:</strong> OpenCV does NOT depend on IPP in any way. But, if it detects IPP on a particular system, it will automatically make use of it.</p>','/static/img/tut/post-opencv-comparison.jpg','2010-07-10',1,3,'opencv-vs-vxl-vs-lti-performance-test');
+INSERT INTO "aishack_tutorial" VALUES('The OpenCV 2 Computer Vision Application Programming Cookbook','',107,'<p>The good people at Packt Publishing sent me a copy of <a href="http://www.amazon.com/gp/product/1849513244/ref=as_li_ss_tl?ie=UTF8&amp;tag=aish04-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399373&amp;creativeASIN=1849513244">OpenCV 2 Computer Vision Application Programming Cookbook</a><img alt="" src="http://www.assoc-amazon.com/e/ir?t=&amp;l=as2&amp;o=1&amp;a=1849513244&amp;camp=217145&amp;creative=399373" /><img alt="" src="https://www.assoc-amazon.com/e/ir?t=aish04-20&amp;l=ur2&amp;o=1" />, by <a href="http://www.site.uottawa.ca/~laganier">Robert</a> <a href="http://www.laganiere.name/">Laganiere</a>. I''ve been reading it for a few days now, and here''s my take on the book - this book covers a lot of practical problems coders face when writing a computer vision application! </p>
+<p>The first chapter deals with installing and using OpenCV with Microsoft Visual C++ and Qt. The Qt part is in-depth - a step by step guide to making an OpenCV + Qt GUI app (right down to signals and slots).</p>
+<p><img alt="" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&amp;Format=_SL160_&amp;ASIN=1849513244&amp;MarketPlace=US&amp;ID=AsinImage&amp;WS=1&amp;tag=aish04-20&amp;ServiceVersion=20070822" /><img alt="" src="http://www.assoc-amazon.com/e/ir?t=&amp;l=as2&amp;o=1&amp;a=1849513244&amp;camp=217145&amp;creative=399373" /></p>
+<p>The book makes extensive use of the new C++ interface of OpenCV. You''ll learn quite a bit of it. For example, you''ll learn how to use iterators to go through each pixel (instead of having two loops - one for ''y'' another for ''x''). You''ll find lots of code snippets that use some neat C++ interface tricks.</p>
+<p>The book also talks about a few coding patterns relevant to vision based applications. Patterns are solutions to certain problems faced by a lot of software developers. An example might be the Undo-redo problem. How would you implement that? Well, lots of people have worked on this problem (think Apple, Microsoft, OpenOffice, etc). And the pattern used to write undo/redo engines is the Memento pattern.</p>
+<p>Then it goes through image filters, extracting lines, contours and <a href="http://www.packtpub.com/sites/default/files/3241-chpater-5-transforming-images-with-morphological-operations.pdf?utm_source=packtpub&amp;utm_medium=free&amp;utm_campaign=pdf">morphological transforms</a> (yes, that''s a free chapter from the book). The last three chapters are cover interest points (Harris, FAST and SURF features), camera calibration stuff (homography matrix, fundamental matrix, etc) and video processing (optical flow, mixture of Gaussians).</p>
+<p>They have some theory included as well, but it can be a little unsatisfying at certain points. They have references to relevant papers or articles though. You can get a rigorous mathematical description there.</p>
+<p>Overall, you''ll learn some new things from the book. You''ll get acquiainted to using object oriented mechanisms to make your computer vision life easier and modular. Robert''s background with object oriented programming really comse out in the book! And if you write code, FAST (no puns), then, <a href="http://www.amazon.com/gp/product/1849513244/ref=as_li_ss_tl?ie=UTF8&amp;tag=aish04-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399373&amp;creativeASIN=1849513244">this cookbook</a><img alt="" src="http://www.assoc-amazon.com/e/ir?t=&amp;l=as2&amp;o=1&amp;a=1849513244&amp;camp=217145&amp;creative=399373" /> might just be for you!</p>','/static/img/tut/post-review-opencv-cookbook.jpg','2011-06-16',1,8,'the-opencv-computer-vision-application-programming-cookbook');
+INSERT INTO "aishack_tutorial" VALUES('Community Core Vision: An app for simple vision stuff','',108,'<p>Community Core Vision (or CCV) is a computer vision application developed for multi-touch tables (like <a href="http://www.youtube.com/watch?v=Zxk_WywMTzc">Microsoft Surface</a>). It uses OpenFrameworks as the "creative" framework and OpenGL for rendering the GUI. And, of course, OpenCV for the vision part. </p>
+<h2>The intended use</h2>
+<p>The application is intended for use with touch tables. How? Well, touch tables have lasers the produce infrared light on the surface of the table. You you put your finger on the table, you block this light. In fact, you reflect this light to the bottom side of the table. This is captured by a high speed infrared camera. The application is supposed to receive this reflected-infrared-image.</p>
+<figure><img alt="Fingers from an infrared camera" src="/static/img/tut/ccv-fingers1.jpg" /><figcaption>
+<p>Fingers from an infrared camera</p>
+</figcaption>
+</figure>
+<p>You have a few filters that you can tweak to track fingers accurately. You can subtract backgrounds, blur the image, do a high pass filter and amplify the result. The results look something like this:</p>
+<figure><img alt="Fingers being tracked in CCV" src="/static/img/tut/ccv-fingers-tracked.jpg" /><figcaption>
+<p>Fingers being tracked in CCV</p>
+</figcaption>
+</figure>
+<p>Once you have an accurate track, you can transfer the position of each finger through TUIO, Flash XML or Binary TCP. You can connect to this application and receive information about each finger (ID, position, displacement and acceleration).</p>
+<p>Your application can then take intelligent decisions based on this data.</p>
+<h2>A possible use</h2>
+<p>Instead of touch tables, we can use this to track objects. But the background subtraction makes this application very versatile. You can detect pretty much anything. Here''s a sample track I did on myself:</p>
+<figure><img alt="Tracking a human in CCV" src="/static/img/tut/ccv-human-tracking.jpg" /><figcaption>
+<p>Tracking a human in CCV</p>
+</figcaption>
+</figure>
+<p>See how useful the application can be? Here''s a list of problems that this application just might solve: </p>
+<ul>
+<li>Car detection on a road (an empty road as the background)</li>
+<li>Pedestrian detection</li>
+<li>Detecting coloured objects (you''ll probably need to change the source a bit)</li>
+</ul>
+<h2>Summary</h2>
+<p>Try out Community Core Vision. It might help you solve the problem you''re working on. Try it out. And leave a comment or let me know if you come up with an interesting use of this app!</p>','/static/img/tut/post-review-community-core-vision.jpg','2010-08-13',1,8,'community-core-vision-an-app-for-simple-vision-stuff');
 CREATE TABLE "aishack_tracktutorials" ("order" integer NOT NULL, "tutorial_id" integer NOT NULL, "id" integer PRIMARY KEY, "track_id" integer NOT NULL);
 CREATE TABLE "aishack_aishackuser" ("website" varchar(200) NOT NULL, "short_bio" varchar(256) NOT NULL, "user_id" integer PRIMARY KEY, "bio" text NOT NULL);
 INSERT INTO "aishack_aishackuser" VALUES('http://utkarshsinha.com/','<b>Utkarsh Sinha</b> created AI Shack in 2010 and has since been working on computer vision and related fields as a hobby! Currently he works as a writer of software in Bangalore, India.',1,'');
 INSERT INTO "aishack_aishackuser" VALUES('','<strong>Shervin Emami</strong> has a Masters in Robotics Engineering and has worked in robotics, computer vision and electronics for over 13 years. He was born in Iran, grew up in Australia and has worked in USA, Abu Dhabi and Philippines.',2,'');
+INSERT INTO "aishack_aishackuser" VALUES('','<strong>Vito Macchia</strong> graduated with a Master''s degree in Computer Engineering at Politecnico di Torino in 2009. He works as a Research Assistant at <a href="www.polito.it/LabRob" target="_blank">www.polito.it/LabRob</a>.',3,'');
+INSERT INTO "aishack_aishackuser" VALUES('','<b>Abhimanyu Bhargava</b> is a graduate in mechanical engineering. His research interests include soft computing, motion planning, kinematics/dynamics of robotic manipulators and control systems. He enjoys robotics and is awestruck by human capabilities.',4,'');
 CREATE INDEX "django_admin_log_6340c63c" ON "django_admin_log" ("user_id");
 CREATE INDEX "django_admin_log_37ef4eb4" ON "django_admin_log" ("content_type_id");
 CREATE INDEX "auth_permission_37ef4eb4" ON "auth_permission" ("content_type_id");
