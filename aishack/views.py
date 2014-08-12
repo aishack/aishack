@@ -7,7 +7,7 @@ from hashlib import md5
 
 from django.contrib.auth import logout
 
-from aishack.models import Tutorial, AishackUser
+from aishack.models import Tutorial, AishackUser, Track
 from django.contrib.auth.models import User
 
 import utils, settings
@@ -19,6 +19,19 @@ def index(request):
     context = utils.get_global_context()
     context.update({'current_page': 'home'})
     return render(request, "index.html", context)
+
+def track(request, slug=None):
+    """
+    The tracks home page
+    """
+    context = utils.get_global_context()
+
+    if slug:
+        track = Track.objects.get(slug=slug)
+        context.update({'track': track})
+        context.update({'tutorials': track.tutorials})
+
+    return render(request, 'track.html', context)
 
 def tutorials(request, slug=None):
     """
@@ -38,6 +51,10 @@ def tutorials(request, slug=None):
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author})
     else:
+        # Fetch all the tracks
+        tracks = Track.objects.all()
+        context.update({'tracks': tracks})
+
         # This section defines what happens if the url is just /tutorials/
         context.update({'tutorials': Tutorial.objects.all()})
 

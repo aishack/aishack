@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if tutorial %}
-        {% if tutorial.post_image %}
-            <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
-        {% endif %}
-        <h2> {{tutorial.title}} </h2>
+    {% if track %}
+        <h2> {{track.title}} </h2>
         <hr />
-        {{ tutorial.content | safe }}
+        {{ track.description | safe }}
+
+        <table class='table table-striped table-hover'>
+            <tr><th></th><th>Tutorial</th><th>Read</th></tr>
+        {% for tut in track.tutorials.all %}
+            <tr><td></td><td>{{ forloop.counter }}. <a href='/tutorial/{{tut.slug}}'>{{ tut.title }}</a></td><td><a href='/tutorial/{{ tut.slug }}'>Read</a>
+        {% endfor %}
+        </table>
 
         <hr />
-        {# author bio #}
-        <div class='well'>
-            <div class='col-sm-2'>{% if aishackuser.website %}<a href='{{ aishackuser.website }}' target='_blank'>{% endif %}<img class='img-circle' src='http://gravatar.com/avatar/{{ author_email_md5 }}?size=80px' />{% if aishackuser.website %} </a>{% endif %}</div>
-            <div class='col-sm-10'>{{ aishackuser.short_bio | safe }}</div>
-            <div class='clearfix'></div>
-        </div>
     {% else %}
-        <h2>Tutorials</h2>
+        <h2>Tracks</h2>
         Tutorial tracks
-        {% for track in tracks %}
+        {% for track in tracks.all %}
             <div class='clearfix'>
                 <div class='thumbnail pull-left'>
                     <a href='/track/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>

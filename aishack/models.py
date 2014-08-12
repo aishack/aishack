@@ -12,7 +12,7 @@ class Tutorial(models.Model):
     date           = models.DateField()
     category       = models.ForeignKey('Category')
     slug           = models.CharField(max_length=128, unique=True)
-    post_image     = models.URLField(max_length=256)
+    post_image     = models.CharField(max_length=256)
     excerpt        = models.CharField(max_length=512)
     author         = models.ForeignKey(User)
 
@@ -30,8 +30,12 @@ class Track(models.Model):
     """
     This table contains information about tutorial tracks
     """
-    title = models.CharField(max_length=256, unique=True)
+    title     = models.CharField(max_length=256, unique=True)
     tutorials = models.ManyToManyField(Tutorial, through='TrackTutorials')
+    thumbnail = models.CharField(max_length=255, blank=True)
+    slug      = models.CharField(max_length=128, unique=True)
+    excerpt   = models.CharField(max_length=255)
+    description = models.CharField(max_length=1024)
 
     def __unicode__(self):
         return self.title
