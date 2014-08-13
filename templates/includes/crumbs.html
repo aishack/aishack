@@ -9,6 +9,12 @@
             <li><a href='/tutorials/{{tutorial.slug}}'>{{tutorial.title}}</a></li>
         {% endif %}
     {% endifequal %}
+    {% ifequal current_page 'track' %}
+        <li><a href="/tracks">Tracks</a></li>
+        {% if track %}
+            <li><a href='/tracks/{{track.slug}}'>{{track.title}}</a></li>
+        {% endif %}
+    {% endifequal %}
     {% ifequal current_page 'contribute' %}
         <li><a href='/contribute'>Contribute</a></li>
     {% endifequal %}

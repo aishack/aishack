@@ -22,11 +22,11 @@
         {% for track in tracks %}
             <div class='clearfix'>
                 <div class='thumbnail pull-left'>
-                    <a href='/track/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>
+                    <a href='/tracks/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>
                 </div>
 
                     <div class='caption'>
-                        <h4><a href='/track/{{track.slug}}'>{{track.title}}</a></h4>
+                        <h4><a href='/tracks/{{track.slug}}'>{{track.title}}</a></h4>
                         <p>{{track.excerpt | safe}}</p>
                     </div>
             </div>

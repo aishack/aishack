@@ -20,18 +20,19 @@ def index(request):
     context.update({'current_page': 'home'})
     return render(request, "index.html", context)
 
-def track(request, slug=None):
+def tracks(request, slug=None):
     """
     The tracks home page
     """
     context = utils.get_global_context()
+    context.update({'current_page': 'track'})
 
     if slug:
         track = Track.objects.get(slug=slug)
         context.update({'track': track})
         context.update({'tutorials': track.tutorials})
 
-    return render(request, 'track.html', context)
+    return render(request, 'tracks.html', context)
 
 def tutorials(request, slug=None):
     """

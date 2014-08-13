@@ -29,6 +29,6 @@ urlpatterns = patterns('',
     url(r'^tutorials/(?P<slug>[a-zA-Z0-9-]+)/$', views.tutorials),
     url(r'^contribute/$', views.contribute),
     url(r'^about/$', views.about),
-    url(r'^track/$', views.track),
-    url(r'^track/(?P<slug>[a-xzA-Z0-9-]+)/$', views.track),
+    url(r'^tracks/$', views.tracks),
+    url(r'^tracks/(?P<slug>[a-xzA-Z0-9-]+)/$', views.tracks),
 ) + static(settings.STATIC_URL)
