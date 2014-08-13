@@ -8,7 +8,7 @@
 
         <table class='table table-striped table-hover'>
             <tr><th></th><th>Tutorial</th><th>Read</th></tr>
-        {% for tut in track.tutorials.all %}
+        {% for tut in tutorials %}
             <tr><td></td><td>{{ forloop.counter }}. <a href='/tutorials/{{tut.slug}}'>{{ tut.title }}</a></td><td><a href='/tutorials/{{ tut.slug }}'>Read</a>
         {% endfor %}
         </table>

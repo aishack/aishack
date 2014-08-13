@@ -7,7 +7,7 @@ from hashlib import md5
 
 from django.contrib.auth import logout
 
-from aishack.models import Tutorial, AishackUser, Track
+from aishack.models import Tutorial, AishackUser, Track, TutorialRead
 from django.contrib.auth.models import User
 
 import utils, settings
@@ -30,7 +30,25 @@ def tracks(request, slug=None):
     if slug:
         track = Track.objects.get(slug=slug)
         context.update({'track': track})
-        context.update({'tutorials': track.tutorials})
+
+        list_of_tutorials = track.tutorials.all()
+        context.update({'tutorials': list_of_tutorials})
+
+        if request.user.is_authenticated():
+            aishack_user = AishackUser.objects.get(user=request.user)
+            tuts_read = aishack_user.tutorials_read.all()
+            list_read = []
+            for tut in list_of_tutorials:
+                for read in tuts_read:
+                    if tut.slug == read.slug:
+                        list_read.append(True)
+                        break
+                else:
+                    list_read.append(False)
+        else:
+            list_read = [False] * len(list_of_tutorials)
+        context.update({'tutorials_read': list_read})
+
 
     return render(request, 'tracks.html', context)
 
@@ -51,6 +69,11 @@ def tutorials(request, slug=None):
                         'category_slug': str(tutorial.category.title).decode('ascii', 'ignore').lower().replace(' ', '_'),
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author})
+
+        if request.user.is_authenticated():
+            aishack_user = utils.get_aishack_user(request.user)
+            m = TutorialRead(tutorial=tutorial, user=aishack_user)
+            m.save()
     else:
         # Fetch all the tracks
         tracks = Track.objects.all()

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from aishack.models import Tutorial, Track, TrackTutorials, Category, AishackUser
+from aishack.models import Tutorial, Track, TrackTutorials, Category, AishackUser, TutorialRead
 from django.contrib.auth.models import User
 
 class TrackTutorialsInline(admin.TabularInline):
@@ -13,6 +13,7 @@ class TrackAdmin(admin.ModelAdmin):
 admin.site.register(Tutorial)
 admin.site.register(Track, TrackAdmin)
 admin.site.register(TrackTutorials)
+admin.site.register(TutorialRead)
 admin.site.register(Category)
 
 # Custom attributes on the user

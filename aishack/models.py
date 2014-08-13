@@ -40,15 +40,6 @@ class Track(models.Model):
     def __unicode__(self):
         return self.title
 
-class TrackTutorials(models.Model):
-    """
-    This table stores which tutorials belong to which tracks
-    """
-    track    = models.ForeignKey("Track")
-    tutorial = models.ForeignKey("Tutorial")
-    order    = models.IntegerField(default=0)
-
-
 class Quiz(models.Model):
     """
     This table holds information about quizzes hosted on the website
@@ -66,3 +57,25 @@ class AishackUser(models.Model):
     short_bio = models.CharField(max_length=256, blank=True)
     bio       = models.TextField(max_length=2048, blank=True)
     website   = models.URLField(blank=True)
+    tutorials_read = models.ManyToManyField(Tutorial, through='TutorialRead')
+
+    def __unicode__(self):
+        return self.user.username
+
+class TutorialRead(models.Model):
+    """
+    This table holds information about what all tutorials a user has read
+    """
+    user     = models.ForeignKey('AishackUser')
+    tutorial = models.ForeignKey('Tutorial')
+    date     = models.DateField(auto_now_add=True)
+
+class TrackTutorials(models.Model):
+    """
+    This table stores which tutorials belong to which tracks
+    """
+    track    = models.ForeignKey("Track")
+    tutorial = models.ForeignKey("Tutorial")
+    order    = models.IntegerField(default=0)
+
+

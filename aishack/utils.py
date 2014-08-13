@@ -3,8 +3,15 @@ import settings
 
 import markdown
 
+from aishack.models import AishackUser
+from django.contrib.auth.models import User
+
 def get_global_context():
     return {'SITE_TITLE': settings.SITE_TITLE}
+
+def get_aishack_user(user):
+    aishack_user = AishackUser.objects.get(user=user)
+    return aishack_user
 
 def read_tutorial_file(slug):
     """
