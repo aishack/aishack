@@ -92,6 +92,10 @@ figcaption {
     padding-left: 64px;
 }
 
+.tooltip {
+    width: 30em;
+}
+
 .codehilite { background-color: #f9f9f9 }
 .codehilite .c { color: #586E75 } /* Comment */
 .codehilite .err { color: #93A1A1 } /* Error */

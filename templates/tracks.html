@@ -4,6 +4,8 @@
     {% if track %}
         <h2> {{track.title}} </h2>
         <hr />
+        <div class='pull-right'><a href='#' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></div>
+
         {{ track.description | safe }}
 
         <table class='table table-striped table-hover'>
