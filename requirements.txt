@@ -3,7 +3,9 @@ Logbook==0.7.0
 Markdown==2.4.1
 Pygments==1.6
 South==1.0
-# html2text==2014.7.3 - git'added a custom version
+django-haystack==2.2.0
+elasticsearch==1.2.0
+# html2text==2014.7.3
 oauthlib==0.6.3
 python-openid==2.2.5
 python-social-auth==0.1.26
@@ -11,5 +13,6 @@ redis==2.10.1
 requests==2.3.0
 requests-oauthlib==0.4.1
 six==1.7.3
+urllib3==1.9
 verlib==0.1
 wsgiref==0.1.2
