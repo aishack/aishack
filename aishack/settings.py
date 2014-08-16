@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'aishack',
     'social.apps.django_app.default',
     'south',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,3 +111,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # site specific settings
 SITE_TITLE = "AI Shack"
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200',
+        'INDEX_NAME': 'aishack_haystack',
+    }
+}

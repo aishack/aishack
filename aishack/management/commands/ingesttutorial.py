@@ -59,9 +59,10 @@ class Command(BaseCommand):
 
         counter += 1
         content_lines = ''.join(lines[counter+1:])
-        html = markdown.markdown(content_lines.decode('utf8'), extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
+        md = content_lines.decode('utf8')
+        html = markdown.markdown(md, extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
 
-        return (frontmatter, html)
+        return (frontmatter, html, md)
 
     def print_frontmatter(self, fm):
         for key, value in fm.items():
@@ -100,8 +101,9 @@ class Command(BaseCommand):
             raise CommandError("Please specify a tutorial.md file to ingest")
 
         for md in args:
+            print'\n\nProcessing: %s' % md
             # frontmatter is a dict, content is html
-            frontmatter, content = self.read_tutorial_file(md)
+            frontmatter, content, content_md = self.read_tutorial_file(md)
 
             # Ensure all the required frontmatter exists
             self.confirm_frontmatter(frontmatter)
@@ -140,6 +142,7 @@ class Command(BaseCommand):
                 tutorial.slug       = slug
                 tutorial.post_image = frontmatter['post_image']
                 tutorial.content    = content
+                tutorial.content_md = content_md
                 tutorial.author     = user
 
                 # Run the UPDATE query

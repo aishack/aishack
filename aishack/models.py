@@ -9,6 +9,7 @@ class Tutorial(models.Model):
     """
     title          = models.CharField(max_length=128, unique=True)
     content        = models.TextField()
+    content_md     = models.TextField()
     date           = models.DateField()
     category       = models.ForeignKey('Category')
     slug           = models.CharField(max_length=128, unique=True)
@@ -77,5 +78,3 @@ class TrackTutorials(models.Model):
     track    = models.ForeignKey("Track")
     tutorial = models.ForeignKey("Tutorial")
     order    = models.IntegerField(default=0)
-
-

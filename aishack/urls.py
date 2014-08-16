@@ -31,4 +31,7 @@ urlpatterns = patterns('',
     url(r'^about/$', views.about),
     url(r'^tracks/$', views.tracks),
     url(r'^tracks/(?P<slug>[a-xzA-Z0-9-]+)/$', views.tracks),
+
+    # Elasticsearch
+    (r'^search/', include('haystack.urls')),
 ) + static(settings.STATIC_URL)
