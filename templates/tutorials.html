@@ -19,10 +19,14 @@
             <div class='clearfix'></div>
         </div>
 
-        {% more_like_this tutorial as related_content %}
-        {% for tut in related_content %}
-            <a href='/tutorials/{{tut.object.slug}}'>{{ tut.object.title }}</a>
-        {% endfor %}
+        <div class='row'>
+            {% for tut in related_tuts %}
+                <div class='col-md-4'>
+                    <img class='img-responsive' src='{{tut.post_image}}' />
+                    <p><a href='/tutorials/{{tut.slug}}'>{{ tut.title }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
         <h2>Tutorials</h2>
         Tutorial tracks

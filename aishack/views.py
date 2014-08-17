@@ -56,6 +56,8 @@ def tutorials(request, slug=None):
     """
     The tutorials home page
     """
+    _num_related = 3
+
     context = utils.get_global_context()
     context.update({'current_page': 'tutorials'})
 
@@ -74,6 +76,33 @@ def tutorials(request, slug=None):
             aishack_user = utils.get_aishack_user(request.user)
             m = TutorialRead(tutorial=tutorial, user=aishack_user)
             m.save()
+
+            # The user is logged in - update the related list based on which tutorials have
+            # already been read
+            related_list = []
+            for tut in tutorial.related.all():
+                all_read = aishack_user.tutorials_read.all()
+
+                for t in all_read:
+                    if tut.pk == t.pk:
+                        break
+                else:
+                    related_list.append(tut)
+
+                    if len(related_list) == _num_related:
+                        break
+
+            # Maybe the visitor has read everything?
+            # TODO
+            if len(related_list) < _num_related:
+                # fetch three random indices
+
+                related_list.append(0)
+        else:
+            # The user isn't logged in - display the pre-processed related tutorials
+            related_list = tutorial.related.all()[0:3]
+
+        context.update({'related_tuts': related_list})
     else:
         # Fetch all the tracks
         tracks = Track.objects.all()
