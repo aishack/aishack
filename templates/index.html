@@ -1,1 +1,39 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<div class='row'>
+<div class='col-md-12'>
+<div id="carousel-featured" class='carousel slide' data-ride='carousel'>
+    <!-- indicators -->
+    <ol class='carousel-indicators'>
+        <li data-target='#carousel-featured' data-slide-to='0' class='active'></li>
+        <li data-target='#carousel-featured' data-slide-to='1'></li>
+        <li data-target='#carousel-featured' data-slide-to='2'></li>
+    </ol>
+
+    <!-- wrapper for slides -->
+    <div class='carousel-inner'>
+        {% for tut in featured %}
+            <div class='item {% if forloop.first %}active{% endif %}'>
+                <img src='{{tut.post_image}}' alt='' />
+                <div class='carousel-caption'>
+                    <h3>{{ tut.title }}</h3>
+                    {% if tut.excerpt %}<p>{{ tut.excerpt }}</p>{% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- controls -->
+    <a class='left carousel-control' href='#carousel-featured' role='button' data-slide='prev'>
+        <span class='glyphicon glyphicon-chevron-left'></span>
+    </a>
+    <a class='right carousel-control' href='#carousel-featured' role='button' data-slide='next'>
+        <span class='glyphicon glyphicon-chevron-right'></span>
+    </a>
+</div>
+</div>
+</div>
+
+{% endblock %}

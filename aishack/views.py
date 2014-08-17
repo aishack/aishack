@@ -18,6 +18,11 @@ def index(request):
     """
     context = utils.get_global_context()
     context.update({'current_page': 'home'})
+
+    # Fetch the first three featured tutorials
+    featured_tutorials = Tutorial.objects.filter(featured=True)
+    context.update({'featured': featured_tutorials})
+
     return render(request, "index.html", context)
 
 def tracks(request, slug=None):
