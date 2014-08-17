@@ -57,6 +57,11 @@ class Command(BaseCommand):
         if 'date' in frontmatter:
             frontmatter['date'] = datetime.strptime(frontmatter['date'], '%Y-%m-%d %H:%M:%S')
 
+        if 'featured' in frontmatter:
+            frontmatter['featured'] = True if frontmatter['featured'] == 'true' else False
+        else:
+            frontmatter['featured'] = False
+
         counter += 1
         content_lines = ''.join(lines[counter+1:])
         md = content_lines.decode('utf8')
@@ -144,6 +149,7 @@ class Command(BaseCommand):
                 tutorial.content    = content
                 tutorial.content_md = content_md
                 tutorial.author     = user
+                tutorial.featured   = frontmatter['featured']
 
                 # Run the UPDATE query
                 tutorial.save()
@@ -158,7 +164,8 @@ class Command(BaseCommand):
                                     author      = user,
                                     slug        = slug,
                                     post_image  = frontmatter['post_image'],
-                                    content     = content)
+                                    content     = content,
+                                    featured    = frontmatter['featured'])
 
                 # Run the INSERT query
                 tutorial.save()
