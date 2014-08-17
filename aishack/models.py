@@ -17,6 +17,7 @@ class Tutorial(models.Model):
     excerpt        = models.CharField(max_length=512, blank=True)
     author         = models.ForeignKey(User)
     related        = models.ManyToManyField('self', blank=True)
+    featured       = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.title
