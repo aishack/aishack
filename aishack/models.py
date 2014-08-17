@@ -14,8 +14,9 @@ class Tutorial(models.Model):
     category       = models.ForeignKey('Category')
     slug           = models.CharField(max_length=128, unique=True)
     post_image     = models.CharField(max_length=256)
-    excerpt        = models.CharField(max_length=512)
+    excerpt        = models.CharField(max_length=512, blank=True)
     author         = models.ForeignKey(User)
+    related        = models.ManyToManyField('self', blank=True)
 
     def __unicode__(self):
         return self.title

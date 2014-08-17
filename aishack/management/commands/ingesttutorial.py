@@ -166,3 +166,5 @@ class Command(BaseCommand):
 
             # Clear the cache for this particular tutorial (if it already existed there)
             # TODO
+
+        self.stdout.write('NOTE: Please remember to update the related tutorials. That is done with:\npython manage.py update_related_tutorials')
