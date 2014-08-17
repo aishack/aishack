@@ -13,7 +13,7 @@ class Tutorial(models.Model):
     date           = models.DateField()
     category       = models.ForeignKey('Category')
     slug           = models.CharField(max_length=128, unique=True)
-    post_image     = models.CharField(max_length=256)
+    post_image     = models.ImageField(upload_to='/static/img/tut/', max_length=256)
     excerpt        = models.CharField(max_length=512, blank=True)
     author         = models.ForeignKey(User)
     related        = models.ManyToManyField('self', blank=True)
