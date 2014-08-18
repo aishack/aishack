@@ -36,4 +36,19 @@
 </div>
 </div>
 
+<hr/>
+
+<div class='row'>
+    {% for tut in recent_tutorials %}
+        <div class='col-md-4'>
+            <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_image}}" class='img-responsive'/></a>
+            <a href='/tutorials/{{tut.slug}}/'><h4>{{ tut.title }}</h4></a>
+            <p>{{tut.excerpt}}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<hr/>
+<p>AI Shack is a place to learn about the latest artificial intelligence technology. You'll find in depth tutorials on specific techniques - like canny edge detection or how to setup a neural network</p>
+
 {% endblock %}

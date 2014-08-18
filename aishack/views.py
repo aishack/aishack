@@ -23,6 +23,10 @@ def index(request):
     featured_tutorials = Tutorial.objects.filter(featured=True)
     context.update({'featured': featured_tutorials})
 
+    # Fetch the 3 recent tutorials
+    recent_tutorials = Tutorial.objects.all().order_by('-date')[:3]
+    context.update({'recent_tutorials': recent_tutorials})
+
     return render(request, "index.html", context)
 
 def tracks(request, slug=None):
