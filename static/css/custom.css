@@ -9,7 +9,7 @@ nav .glyphicon-margin {
     }
 }
 
-.container {
+.pad-bottom {
     padding-bottom: 3em;
 }
 
@@ -203,6 +203,11 @@ figcaption {
 
 body {
     margin: 0;
+}
+
+.header-top {
+    margin: 0;
+    padding: 0;
 }
 
 .footer-bottom {
