@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load highlight %}
+{% load get_range %}
 
 {% block content %}
     <h2>Search</h2>
@@ -26,9 +27,23 @@
 
             {% if page.has_previous or page.has_next %}
                 <div>
-                    {% if page.has_previous %}<a href="?q={{ query}}&amp;page={{ page.previous_page_number}}">{% endif %}&laquo; Previous {% if page.has_previous %}</a><{% endif %}
-                    |
-                    {% if page.has_next %}<a href="?q={{ query}}&amp;page={{ page.next_page_number}}">{% endif %}&raquo; Next {% if page.has_next %}</a><{% endif %}
+                    <ul class='pagination'>
+                        {% if page.has_previous %}
+                            <li><a href='/search?q={{query}}&amp;page={{page.previous_page_number}}'>&laquo;</a></li>
+                        {% else %}
+                            <li class='disabled'><a href='#'>&laquo;</a></li>
+                        {% endif %}
+
+                        {% for num in page.paginator.num_pages|get_range %}
+                            <li {% ifequal forloop.counter page.number %}class='active'{%endifequal%}><a href="/search?q={{query}}&amp;page={{forloop.counter}}">{{forloop.counter}}</a></li>
+                        {% endfor %}
+
+                        {% if page.has_next %}
+                            <li><a href='/search?q={{query}}&amp;page={{page.next_page_number}}'>&raquo;</a></li>
+                        {% else %}
+                            <li class='disabled'><a href='#'>&raquo;</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             {% endif %}
         {% else %}
