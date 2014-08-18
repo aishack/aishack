@@ -7,8 +7,15 @@
         </div>
     {% endif %}
     <div class='panel panel-default'>
-        <div class='panel-heading'>You might be intersted in</div>
-        <div class='panel-body'>More stuff here</div>
+        <div class='panel-heading'>Search</div>
+        <div class='panel-body'>
+            <form class='form-inline' role='form' method='get' action='/search'>
+                <div class='form-group has-feedback'>
+                    <input type='text' class='form-control' placeholder='Search' name='q' id='search-term'>
+                    <span class='glyphicon glyphicon-search from-control-feedback'></span>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <div class="col-md-4 visible-xs visible-sm hidden-md hidden-lg sidebar-bottom">

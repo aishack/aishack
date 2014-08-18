@@ -188,3 +188,9 @@ figcaption {
     bottom: -10px !important;
     background: rgba(0,0,0,0.4);
 }
+
+.form-group > .glyphicon {
+    left: -28px;
+    top: 4px;
+    opacity: 0.5;
+}
