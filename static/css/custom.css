@@ -23,9 +23,6 @@ nav .glyphicon-margin {
     margin-bottom: 0.5em;
 }
 
-.footer {
-}
-
 .facebook-liker-nopadding {
     padding: 0px;
 }
@@ -197,4 +194,27 @@ figcaption {
     left: -28px;
     top: 4px;
     opacity: 0.5;
+}
+
+.siteinfo {
+    padding-top: 20px; 
+    color: #ccc;
+}
+
+body {
+    margin: 0;
+}
+
+.footer-bottom {
+    margin: 0px;
+    padding: 0 0;
+    background: #303030 url(/static/img/bg-footer.jpg) repeat-x;
+}
+
+.logo-footer {
+}
+
+.siteinfo p.creator {
+    padding-top: 2em;
+    text-align: right;
 }
