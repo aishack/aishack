@@ -25,10 +25,13 @@
                     <a href='/tracks/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>
                 </div>
 
-                    <div class='caption'>
-                        <h4><a href='/tracks/{{track.slug}}'>{{track.title}}</a></h4>
-                        <p>{{track.excerpt | safe}}</p>
-                    </div>
+                <div class='caption'>
+                    <h4><a href='/tracks/{{track.slug}}'>{{track.title}}</a></h4>
+                    <p>{{track.excerpt | safe}}</p>
+                    {% if track in tracks_following %}
+                        <p>Following</p>
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
     {% endif %}

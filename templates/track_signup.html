@@ -12,7 +12,11 @@
 
         <h2> {{track.title}} </h2>
         <hr />
-        <div class='pull-right'><a href='#' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></div>
+        {% if already_signedup %}
+            <div class='pull-right'><a href='#' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-default'>Withdraw</button></a></div>
+        {% else %}
+            <div class='pull-right'><a href='/tracks/signup/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></div>
+        {% endif %}
 
         {{ track.description | safe }}
 

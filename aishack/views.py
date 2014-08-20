@@ -37,6 +37,7 @@ def track_signup(request, slug=None):
     """
     context = utils.get_global_context()
     track = None
+    already_signedup = False
 
     if not request.user.is_authenticated():
         # Show an error message to the user
@@ -60,12 +61,14 @@ def track_signup(request, slug=None):
         for t in aishack_user.tracks_following.all():
             if t == track:
                 # User already signed up
+                already_signedup = True
                 context.update({'success': 'You are already signed up for this track!'})
                 break
         else:
             # User didn't sign up yet
             ut = UserTrack(user=aishack_user, track=track)
             ut.save()
+            already_signedup = True
             context.update({'success': 'Signup successful!'})
     else:
         # Fetch all the tracks
@@ -75,7 +78,7 @@ def track_signup(request, slug=None):
         # This section defines what happens if the url is just /tutorials/
         context.update({'tutorials': Tutorial.objects.all()})
 
-
+    context.update({'already_signedup': already_signedup})
     return render(request, 'track_signup.html', context)
 
 def tracks(request, slug=None):
@@ -107,9 +110,16 @@ def tracks(request, slug=None):
             list_read = [False] * len(list_of_tutorials)
         context.update({'tutorials_read': list_read})
     else:
+        # Fetch tracks the user is following
+        if request.user.is_authenticated():
+            aishack_user = AishackUser.objects.get(user=request.user)
+            tracks_following = aishack_user.tracks_following.all()
+        else:
+            tracks_following = []
+
         # Fetch all the tracks
         tracks = Track.objects.all()
-        context.update({'tracks': tracks})
+        context.update({'tracks': tracks, 'tracks_following': tracks_following})
 
     return render(request, 'tracks.html', context)
 
@@ -165,12 +175,20 @@ def tutorials(request, slug=None):
 
         context.update({'related_tuts': related_list})
     else:
+        # Fetch tracks the user is following
+        if request.user.is_authenticated():
+            aishack_user = AishackUser.objects.get(user=request.user)
+            tracks_following = aishack_user.tracks_following.all()
+        else:
+            tracks_following = []
+
         # Fetch all the tracks
         tracks = Track.objects.all()
-        context.update({'tracks': tracks})
+        context.update({'tracks': tracks, 'tracks_following': tracks_following})
 
         # This section defines what happens if the url is just /tutorials/
         context.update({'tutorials': Tutorial.objects.all()})
+
 
     return render(request, "tutorials.html", context)
 
