@@ -1,4 +1,5 @@
 from django.http import Http404, HttpResponse
+from django import shortcuts
 from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render
@@ -47,10 +48,7 @@ def track_signup(request, slug=None):
     else:
         # Fetch the appropriate objects
         aishack_user = AishackUser.objects.get(user=request.user)
-        try:
-            track = Track.objects.get(slug=slug)
-        except exceptions.ObjectDoesNotExist, e:
-            context.update({'warning': 'What track are you trying to sign up for?'})
+        track = shortcuts.get_object_or_404(Track, slug=slug)
             
     if track:
         # A valid track was supplied 
@@ -88,7 +86,7 @@ def tracks(request, slug=None):
     context.update({'current_page': 'track'})
 
     if slug:
-        track = Track.objects.get(slug=slug)
+        track = shortcuts.get_object_or_404(Track, slug=slug)
         context.update({'track': track})
 
         list_of_tutorials = track.tutorials.all()
@@ -126,7 +124,7 @@ def tutorials(request, slug=None):
 
     if slug:
         # This section defines what happens if a tutorial slug is mentioned
-        tutorial = Tutorial.objects.get(slug=slug)
+        tutorial = shortcuts.get_object_or_404(Tutorial, slug=slug)
         author = AishackUser.objects.get(user=tutorial.author)
         context.update({'tutorial': tutorial,
                         'page_title': tutorial.title,
