@@ -61,6 +61,7 @@ class AishackUser(models.Model):
     bio       = models.TextField(max_length=2048, blank=True)
     website   = models.URLField(blank=True)
     tutorials_read = models.ManyToManyField(Tutorial, through='TutorialRead')
+    tracks_following = models.ManyToManyField(Track, through='UserTrack')
 
     def __unicode__(self):
         return self.user.username
@@ -80,3 +81,11 @@ class TrackTutorials(models.Model):
     track    = models.ForeignKey("Track")
     tutorial = models.ForeignKey("Tutorial")
     order    = models.IntegerField(default=0)
+
+class UserTrack(models.Model):
+    """
+    This table holds which tracks a user has signed up for
+    """
+    user        = models.ForeignKey('AishackUser')
+    track       = models.ForeignKey('Track')
+    signup_date = models.DateField(auto_now_add=True)
