@@ -4,11 +4,17 @@
     {% if track %}
         <h2> {{track.title}} </h2>
         <hr />
+        <div class='pull-right'>
         {% if track_followed %}
-            <div class='pull-right'><a href='/tracks/withdraw/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Withdraw</button></a></div>
+            {% if track_completed %}
+                <a href='/tracks/certificate/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-success'>Completed!</button></a>
+            {% else %}
+                <a href='/tracks/withdraw/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-default'>Withdraw</button></a>
+            {% endif %}
         {% else %}
-            <div class='pull-right'><a href='/tracks/signup/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></div>
+            <a href='/tracks/signup/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a>
         {% endif %}
+        </div>
 
         {{ track.description | safe }}
 

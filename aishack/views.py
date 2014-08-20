@@ -87,6 +87,7 @@ def tracks(request, slug=None):
     context.update({'tutorials': list_of_tutorials})
 
     track_followed = False
+    track_completed = False
     if request.user.is_authenticated():
         aishack_user = AishackUser.objects.get(user=request.user)
         tuts_read = aishack_user.tutorials_read.all()
@@ -100,12 +101,21 @@ def tracks(request, slug=None):
                 list_read.append(False)
 
         track_followed = track in aishack_user.tracks_following.all()
+        tuts_read = aishack_user.tutorials_read.all()
 
         # TODO insert logic for completed track here
+        for tut in track.tutorials.all():
+            if tut not in tuts_read:
+                track_completed = False
+                break
+        else:
+            track_completed = True
     else:
         list_read = [False] * len(list_of_tutorials)
 
-    context.update({'tutorials_read': list_read, 'track_followed': track_followed})
+    context.update({'tutorials_read': list_read, 
+                    'track_followed': track_followed,
+                    'track_completed': track_completed})
     return render(request, 'tracks.html', context)
 
 def tutorials(request, slug=None):
