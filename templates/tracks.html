@@ -4,7 +4,11 @@
     {% if track %}
         <h2> {{track.title}} </h2>
         <hr />
-        <div class='pull-right'><a href='/tracks/signup/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></div>
+        {% if track_followed %}
+            <div class='pull-right'><a href='/tracks/withdraw/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Withdraw</button></a></div>
+        {% else %}
+            <div class='pull-right'><a href='/tracks/signup/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></div>
+        {% endif %}
 
         {{ track.description | safe }}
 
@@ -16,23 +20,5 @@
         </table>
 
         <hr />
-    {% else %}
-        <h2>Tracks</h2>
-        Tutorial tracks
-        {% for track in tracks.all %}
-            <div class='clearfix'>
-                <div class='thumbnail pull-left'>
-                    <a href='/tracks/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>
-                </div>
-
-                <div class='caption'>
-                    <h4><a href='/tracks/{{track.slug}}'>{{track.title}}</a></h4>
-                    <p>{{track.excerpt | safe}}</p>
-                    {% if track in tracks_following %}
-                        <p>Following</p>
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
     {% endif %}
 {% endblock %}
