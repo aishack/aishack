@@ -2,12 +2,13 @@ from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render
+from django.core import exceptions
 import datetime, os
 from hashlib import md5
 
 from django.contrib.auth import logout
 
-from aishack.models import Tutorial, AishackUser, Track, TutorialRead
+from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack
 from django.contrib.auth.models import User
 
 import utils, settings
@@ -28,6 +29,56 @@ def index(request):
     context.update({'recent_tutorials': recent_tutorials})
 
     return render(request, "index.html", context)
+
+def track_signup(request, slug=None):
+    """
+    Url to get user to signup for a track
+    """
+    context = utils.get_global_context()
+    track = None
+
+    if not request.user.is_authenticated():
+        # Show an error message to the user
+        context.update({'warning': 'You need to be sign in to follow tracks. You get the added advantage of tracking your progress!'})
+    elif not slug:
+        # Show an error message - need to pass a slug about which track
+        # to sign up for
+        context.update({'warning': 'What track are you trying to sign up for?'})
+    else:
+        # Fetch the appropriate objects
+        aishack_user = AishackUser.objects.get(user=request.user)
+        try:
+            track = Track.objects.get(slug=slug)
+        except exceptions.ObjectDoesNotExist, e:
+            context.update({'warning': 'What track are you trying to sign up for?'})
+            
+    if track:
+        # A valid track was supplied 
+
+        list_of_tutorials = track.tutorials.all()
+        context.update({'tutorials': list_of_tutorials, 'track': track})
+
+        # Confirm if the user hasn't already signed up
+        for t in aishack_user.tracks_following.all():
+            if t == track:
+                # User already signed up
+                context.update({'success': 'You are already signed up for this track!'})
+                break
+        else:
+            # User didn't sign up yet
+            ut = UserTrack(user=aishack_user, track=track)
+            ut.save()
+            context.update({'success': 'Signup successful!'})
+    else:
+        # Fetch all the tracks
+        tracks = Track.objects.all()
+        context.update({'tracks': tracks})
+
+        # This section defines what happens if the url is just /tutorials/
+        context.update({'tutorials': Tutorial.objects.all()})
+
+
+    return render(request, 'track_signup.html', context)
 
 def tracks(request, slug=None):
     """
@@ -57,7 +108,10 @@ def tracks(request, slug=None):
         else:
             list_read = [False] * len(list_of_tutorials)
         context.update({'tutorials_read': list_read})
-
+    else:
+        # Fetch all the tracks
+        tracks = Track.objects.all()
+        context.update({'tracks': tracks})
 
     return render(request, 'tracks.html', context)
 
