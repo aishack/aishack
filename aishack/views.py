@@ -187,7 +187,32 @@ def tutorials(request, slug=None):
         context.update({'tracks': tracks, 'tracks_following': tracks_following})
 
         # This section defines what happens if the url is just /tutorials/
-        context.update({'tutorials': Tutorial.objects.all()})
+        tuts = Tutorial.objects.all().order_by('-date')
+        tutorials_to_display = []
+
+        tuts_without_extras = tuts[:]
+        for tut in tuts:
+            series = tut.series
+            if not series:
+                continue
+
+            series = series.tutorials.all()
+            if tut.slug != series[0].slug:
+                tuts_without_extras = tuts_without_extras.exclude(slug=tut.slug)
+
+        for tut in tuts_without_extras:
+            series = []
+            if tut.series:
+                series = tut.series.tutorials.all()
+
+            tup = (tut, None)
+            if series:
+                tup = (tut, tut.series)
+
+            tutorials_to_display.append(tup)
+                
+
+        context.update({'tutorials_to_display': tutorials_to_display})
 
 
     return render(request, "tutorials.html", context)

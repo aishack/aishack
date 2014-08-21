@@ -47,10 +47,20 @@
                 </div>
             </div>
         {% endfor %}
-        {% for tut in tutorials reversed %}
-            <ul>
+        <ul>
+        {% for tut, series in tutorials_to_display %}
+            {% if series %}
+                <li>
+                    <a href="/tutorials/{{tut.slug}}">{{ series.name }}</a>
+                    <span class='glyphicon glyphicon-list-alt'></span>
+                    {% for s in series.tutorials.all %}
+                        <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
+                    {% endfor %}
+                </li>
+            {% else %}
                 <li><a href="/tutorials/{{tut.slug}}">{{ tut.title }}</a></li>
-            </ul>
+            {% endif %}
         {% endfor %}
+        </ul>
     {% endif %}
 {% endblock %}

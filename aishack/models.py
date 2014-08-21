@@ -19,9 +19,22 @@ class Tutorial(models.Model):
     related        = models.ManyToManyField('self', blank=True)
     featured       = models.BooleanField(default=False)
     read_count     = models.BigIntegerField(default=0)
+    series         = models.ForeignKey('TutorialSeries', default=None, blank=True, null=True)
 
     def __unicode__(self):
         return self.title
+
+class TutorialSeries(models.Model):
+    name      = models.CharField(default="", blank=True, max_length=256)
+    tutorials = models.ManyToManyField(Tutorial, through='TutorialSeriesOrder')
+
+    def __unicode__(self):
+        return self.name
+
+class TutorialSeriesOrder(models.Model):
+    series   = models.ForeignKey('TutorialSeries')
+    tutorial = models.ForeignKey('Tutorial')
+    order    = models.IntegerField(default=0)
 
 class Category(models.Model):
     title = models.CharField(max_length=256, unique=True)
