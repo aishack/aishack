@@ -88,6 +88,7 @@ def tracks(request, slug=None):
 
     track_followed = False
     track_completed = False
+    tuts_read = []
     if request.user.is_authenticated():
         aishack_user = AishackUser.objects.get(user=request.user)
         tuts_read = aishack_user.tutorials_read.all()
@@ -113,7 +114,7 @@ def tracks(request, slug=None):
     else:
         list_read = [False] * len(list_of_tutorials)
 
-    context.update({'tutorials_read': list_read, 
+    context.update({'tutorials_read': tuts_read, 
                     'track_followed': track_followed,
                     'track_completed': track_completed})
     return render(request, 'tracks.html', context)
@@ -142,6 +143,10 @@ def tutorials(request, slug=None):
             aishack_user = utils.get_aishack_user(request.user)
             m = TutorialRead(tutorial=tutorial, user=aishack_user)
             m.save()
+
+            # Increment the read counter
+            tutorial.read_count = tutorial.read_count + 1
+            tutorial.save()
 
             # The user is logged in - update the related list based on which tutorials have
             # already been read
