@@ -3,11 +3,13 @@ import settings
 
 import markdown
 
-from aishack.models import AishackUser
+from aishack.models import AishackUser, Tutorial
 from django.contrib.auth.models import User
 
 def get_global_context():
-    return {'SITE_TITLE': settings.SITE_TITLE}
+    popular_tutorials = Tutorial.objects.all().order_by('-read_count')[0:5]
+    return {'SITE_TITLE': settings.SITE_TITLE,
+            'POPULAR_TUTORIALS': popular_tutorials}
 
 def get_aishack_user(user):
     aishack_user = AishackUser.objects.get(user=user)

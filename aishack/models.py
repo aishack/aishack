@@ -18,6 +18,7 @@ class Tutorial(models.Model):
     author         = models.ForeignKey(User)
     related        = models.ManyToManyField('self', blank=True)
     featured       = models.BooleanField(default=False)
+    read_count     = models.BigIntegerField(default=0)
 
     def __unicode__(self):
         return self.title
