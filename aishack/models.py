@@ -65,6 +65,13 @@ class Track(models.Model):
     excerpt   = models.CharField(max_length=255)
     description = models.CharField(max_length=1024)
 
+    def tutorial_list(self):
+        """
+        Helper function to fetch an ordered list of tutorials in this track
+        """
+        return [orderobj.tutorial for orderobj in TrackTutorials.objects.filter(track=self).order_by('order')]
+
+
     def __unicode__(self):
         return self.title
 
@@ -87,6 +94,13 @@ class AishackUser(models.Model):
     website   = models.URLField(blank=True)
     tutorials_read = models.ManyToManyField(Tutorial, through='TutorialRead')
     tracks_following = models.ManyToManyField(Track, through='UserTrack')
+
+    def tutorials_read_list(self):
+        """
+        Helper function to fetch an ordered list of tutorials read by the user
+        """
+        return [orderobj.tutorial for orderobj in TutorialRead.objects.filter(user=self).order_by('date')]
+
 
     def __unicode__(self):
         return self.user.username

@@ -212,3 +212,46 @@ def about(request):
 def login(request):
     context = utils.get_global_context()
     return render(request, "login.html", context)
+
+def profile(request, username=None):
+    if not username:
+        # Try to fetch information about the current user
+        if not request.user.is_authenticated():
+            return redirect('/')
+
+        user = AishackUser.objects.get(user=request.user)
+    else:
+        userobj = shortcuts.get_object_or_404(User, username=username)
+        user = AishackUser.objects.get(user=userobj)
+
+    context = utils.get_global_context()
+
+    # Find the list of tutorials read
+    tutorials_read = user.tutorials_read_list()
+
+    tracks_following = user.tracks_following.all()
+    tracks_completed = []
+    for track in tracks_following:
+        tuts = track.tutorial_list()
+
+        for tut in tuts:
+            if tut not in tutorials_read:
+                break
+        else:
+            tracks_completed.append(track)
+
+    tutorials_written = Tutorial.objects.filter(author=user.user)
+
+    context.update({'user': user,
+                    'tutorials_read_count': len(tutorials_read),
+                    'tutorials_read': tutorials_read,
+                    'tracks_following': tracks_following,
+                    'tracks_following_count': len(tracks_following),
+                    'tracks_completed': tracks_completed,
+                    'tracks_completed_count': len(tracks_completed),
+                    'tutorials_written': tutorials_written,
+                    'tutorials_written_count': len(tutorials_written),
+                    'current_page': 'profile',
+                    'user_email_md5': md5(user.user.email).hexdigest()})
+
+    return render(request, 'profile.html', context)

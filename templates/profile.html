@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{user.user.first_name}} {{user.user.last_name}}</h2>
+
+    <div class='row'>
+        <div class='col-md-2'>
+            <img class='img-circle' src='http://gravatar.com/avatar/{{user_email_md5}}?size=80px' />
+        </div>
+        <div class='col-md-10'>
+            <p>{{ user.short_bio | striptags }}</p>
+        </div>
+    </div>
+    <hr />
+
+    {% if user.bio %}
+        <div class='row'>
+            <div class='col-md-12'>
+                {{ user.bio }}
+            </div>
+        </div>
+        <hr />
+    {% endif %}
+
+    {% if tutorials_written_count %}
+        <p>{{user.user.first_name}} has written <strong>{{ tutorials_written_count }} tutorials</strong><p>
+        <ul>
+        {% for tut in tutorials_written %}
+            <li><a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if tutorials_read_count %}
+        <p>{{user.user.first_name}} has read <strong>{{ tutorials_read_count }} tutorials</strong>
+            {% if tracks_completed_count %}
+                and completed <strong>{{ tracks_completed_count }} tracks</strong>
+            {% endif %}
+        </p>
+
+        {% if tracks_following %}
+            <p>Tracks following</p>
+            <ul>
+                {% for track in tracks_following %}
+                    <li><a href='/tracks/{{track.slug}}/'>{{track.title}}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+        <p>Tutorials read:</p>
+        <ul>
+        {% for tut in tutorials_read %}
+            <li><a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a></li>
+        {% endfor %}
+        </ul>
+
+    {% endif %}
+
+{% endblock %}
