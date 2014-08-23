@@ -28,8 +28,7 @@ def index(request):
     context.update({'featured': featured_tutorials})
 
     # Fetch the 3 recent tutorials
-    recent_tutorials = Tutorial.objects.all().order_by('-date')[:3]
-    context.update({'recent_tutorials': recent_tutorials})
+    context.update({'recent_tutorials': utils.fetch_tutorials(3)})
 
     return render(request, "index.html", context)
 
@@ -187,33 +186,10 @@ def tutorials(request, slug=None):
         context.update({'tracks': tracks, 'tracks_following': tracks_following})
 
         # This section defines what happens if the url is just /tutorials/
-        tuts = Tutorial.objects.all().order_by('-date')
-        tutorials_to_display = []
-
-        tuts_without_extras = tuts[:]
-        for tut in tuts:
-            series = tut.series
-            if not series:
-                continue
-
-            series = series.tutorials.all()
-            if tut.slug != series[0].slug:
-                tuts_without_extras = tuts_without_extras.exclude(slug=tut.slug)
-
-        for tut in tuts_without_extras:
-            series = []
-            if tut.series:
-                series = tut.series.tutorials.all()
-
-            tup = (tut, None)
-            if series:
-                tup = (tut, tut.series)
-
-            tutorials_to_display.append(tup)
-                
-
+        # fetch_tutorials discards tutorials that are part of a series and only
+        # returns the first part (along with a list of parts in the series)
+        tutorials_to_display = utils.fetch_tutorials()
         context.update({'tutorials_to_display': tutorials_to_display})
-
 
     return render(request, "tutorials.html", context)
 

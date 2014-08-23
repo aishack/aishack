@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
+series: "SuDoKu Grabber in OpenCV"
+part: 5
 ---
 
 In the previous article ([Detecting a SuDoKu puzzle in an Image, Part 3](/tutorials/detecting-a-sudoku-puzzle-in-an-image-part-3/)), we created the DigitRecognizer class.It had functions for training and classifying images as digits. We also put some pre-processing code to ensure the image is at the center. Now, we'll combine it with our existing program. We'll also use the merged lines we created earlier. 

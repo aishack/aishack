@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-qr-code.jpg"
+series: "Scanning QR Codes"
+part: 1
 ---
 These days, you can see QR codes almost everywhere. You see them at stores, on products, on screens. So one day, I was curious how the gears are put together to read QR codes. I ended up reading the ISO/IEC 18004 standard. It's a very robust and detailed documentation on how QR codes are supposed to work. I've put up a link in the downloads section below if you're interested. This is a multipart series - we'll be creating a QR code reader from scratch in OpenCV. Sure, there are a lot of libraries that do this - but making your own is so awesome. Don't you agree? 
 

@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: ""
+series: "Color spaces"
+part: 1
 ---
 
 

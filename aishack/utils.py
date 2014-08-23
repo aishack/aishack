@@ -60,3 +60,37 @@ def read_tutorial_file(slug):
     html = markdown.markdown(content_lines.decode('utf8'))
 
     return (frontmatter, html)
+
+def fetch_tutorials(num=None):
+    """
+    Returns tutorials by combining multiple part tutorials into a single element
+    """
+    # This section defines what happens if the url is just /tutorials/
+    tuts = Tutorial.objects.all().order_by('-date')
+    tutorials_to_display = []
+
+    tuts_without_extras = tuts[:]
+    for tut in tuts:
+        series = tut.series
+        if not series:
+            continue
+
+        series = series.tutorial_list()
+        if tut.slug != series[0].slug:
+            tuts_without_extras = tuts_without_extras.exclude(slug=tut.slug)
+
+    for tut in tuts_without_extras:
+        series = []
+        if tut.series:
+            series = tut.series.tutorial_list()
+
+        tup = (tut, None)
+        if series:
+            tup = (tut, tut.series)
+
+        tutorials_to_display.append(tup)
+
+        if num and len(tutorials_to_display) == num:
+            break
+
+    return tutorials_to_display

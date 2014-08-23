@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: ""
+series: "Color spaces"
+part: 2
 ---
 
 Like I said on the [previous article](/tutorials/color-spaces), some colour spaces are good for some purposes. Other are good for other purposes.

@@ -11,13 +11,13 @@ from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 
-from aishack.models import Tutorial, Category
+from aishack.models import Tutorial, Category, TutorialSeries, TutorialSeriesOrder
 
 class Command(BaseCommand):
     help = "Ingest a tutorial markdown file into the database"
     args = "<md>"
 
-    def read_tutorial_file(self, md):
+    def read_tutorial_file(self, md, series=False):
         if not os.path.exists(md):
             raise CommandError("File doesn't exist: %s" % md)
 
@@ -61,6 +61,10 @@ class Command(BaseCommand):
             frontmatter['featured'] = True if frontmatter['featured'] == 'true' else False
         else:
             frontmatter['featured'] = False
+
+        # There is a second command to parse through series data
+        if 'part' in frontmatter:
+            frontmatter['part'] = int(frontmatter['part'])
 
         counter += 1
         content_lines = ''.join(lines[counter+1:])
@@ -126,6 +130,7 @@ class Command(BaseCommand):
             except Category.DoesNotExist, e:
                 raise CommandError("Category doesn't exist: %s" % frontmatter['category'])
 
+
             # Get the author
             try:
                 user = User.objects.get(email=frontmatter['author'])
@@ -150,10 +155,8 @@ class Command(BaseCommand):
                 tutorial.content_md = content_md
                 tutorial.author     = user
                 tutorial.featured   = frontmatter['featured']
+                tutorial.series     = None
 
-                # Run the UPDATE query
-                tutorial.save()
-                self.stdout.write('Tutorial update successful!')
             except Tutorial.DoesNotExist, e:
                 self.stdout.write('Tutorial does not exist - trying to create it')
                 # It doesn't exist yet - create the tutorial object
@@ -167,11 +170,30 @@ class Command(BaseCommand):
                                     content     = content,
                                     featured    = frontmatter['featured'])
 
-                # Run the INSERT query
-                tutorial.save()
-                self.stdout.write('Tutorial insert successful!')
+            if 'series' in frontmatter:
+                try:
+                    series = TutorialSeries.objects.get(name=frontmatter['series'])
+                except TutorialSeries.DoesNotExist, e:
+                    self.stdout.write('Series "%s" does not exist' % frontmatter['series'])
+                    # Create a new tutorial series
+                    series = TutorialSeries(name=frontmatter['series'])
+                    series.save()
+
+                tuts = series.tutorials.all()
+                if tutorial not in tuts:
+                    order = TutorialSeriesOrder(series=series, tutorial=tutorial, order=frontmatter['part'])
+                    order.save()
+
+                tutorial.series = series
+
+            # Run the INSERT/UPDATE query
+            tutorial.save()
+            self.stdout.write('Tutorial update successful!')
 
             # Clear the cache for this particular tutorial (if it already existed there)
             # TODO
 
-        self.stdout.write('NOTE: Please remember to update the related tutorials. That is done with:\npython manage.py update_related_tutorials')
+
+        self.stdout.write('Next steps:')
+        self.stdout.write(' * python mange.py parse_series')
+        self.stdout.write(' * python mange.py update_related_tutorials')

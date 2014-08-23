@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
+series: "SuDoKu Grabber in OpenCV"
+part: 4
 ---
 Okay, so we've detected the SuDoKu grid in the previous parts. Now, we'll try and recognize the digits already present in the image. To do that, we'll use a simple recognition technique: the k-Nearest Neighbors algorithm. 
 

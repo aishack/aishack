@@ -53,7 +53,7 @@
                 <li>
                     <a href="/tutorials/{{tut.slug}}">{{ series.name }}</a>
                     <span class='glyphicon glyphicon-list-alt'></span>
-                    {% for s in series.tutorials.all %}
+                    {% for s in series.tutorial_list %}
                         <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
                     {% endfor %}
                 </li>

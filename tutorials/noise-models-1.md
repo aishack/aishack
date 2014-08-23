@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-noise.jpg"
+series: "Noise Models"
+part: 1
 ---
 
 ## Models?! Where?!?!!

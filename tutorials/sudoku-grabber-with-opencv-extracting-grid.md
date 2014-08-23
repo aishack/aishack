@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
+series: "SuDoKu Grabber in OpenCV"
+part: 3
 ---
 
 In [the last post](/tutorials/detecting-a-sudoku-puzzle-in-an-image-part-1/), we had found some lines. But the numerous lines were not good enough for detecting the location of the puzzle. So we'll do some math today and find out exactly where the puzzle is. We'll also un-distort the puzzle so we have a perfect top-down view of the sudoku puzzle. 

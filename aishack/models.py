@@ -28,6 +28,14 @@ class TutorialSeries(models.Model):
     name      = models.CharField(default="", blank=True, max_length=256)
     tutorials = models.ManyToManyField(Tutorial, through='TutorialSeriesOrder')
 
+    def tutorial_list(self):
+        """
+        Helper function to fetch an ordered list of tutorials in this series
+        Apparently, Django has no support for something like this - needs to be
+        done by hand.
+        """
+        return [orderobj.tutorial for orderobj in TutorialSeriesOrder.objects.filter(series=self).order_by('order')]
+
     def __unicode__(self):
         return self.name
 
@@ -35,6 +43,9 @@ class TutorialSeriesOrder(models.Model):
     series   = models.ForeignKey('TutorialSeries')
     tutorial = models.ForeignKey('Tutorial')
     order    = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ('order',)
 
 class Category(models.Model):
     title = models.CharField(max_length=256, unique=True)

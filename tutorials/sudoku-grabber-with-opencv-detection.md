@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
+series: "SuDoKu Grabber in OpenCV"
+part: 2
 ---
 In this post,we 'll look at detecting a SuDoKu puzzle. This include all preprocessing done on the image: filtering the image to ensure we're not affected too much by noise. Also, segmenting the image is dealt with here. I've used a weird segmentation approach, so you might want to have a look at that. By the end of this post, you'll have several possible lines that describe the puzzle grid.
 

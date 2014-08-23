@@ -40,10 +40,10 @@
 <hr/>
 <h3>Recent tutorials</h3>
 <div class='row'>
-    {% for tut in recent_tutorials %}
+    {% for tut, series in recent_tutorials %}
         <div class='col-md-4'>
             <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_image}}" class='img-responsive'/></a>
-            <a href='/tutorials/{{tut.slug}}/'><h4>{{ tut.title }}</h4></a>
+            <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
             <p>{{tut.excerpt}}</p>
         </div>
     {% endfor %}

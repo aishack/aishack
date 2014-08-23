@@ -6,6 +6,8 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
 featured: true
+series: "SuDoKu Grabber in OpenCV"
+part: 1
 ---
 Here's an interesting project that I'll be taking your over the next few days. We'll create an app that can recognize a SuDoKu puzzle from a picture taken by a camera (maybe on a phone). We'll be going over a lot of stuff: geometric transformations, character recognition, logic, etc. This post is an overview of how things will work for the SuDoKu grabber! 
 

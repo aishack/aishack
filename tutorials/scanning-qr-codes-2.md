@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-qr-code.jpg"
+series: "Scanning QR Codes"
+part: 2
 ---
 
 ## The loop
