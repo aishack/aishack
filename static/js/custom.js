@@ -9,4 +9,10 @@ $(document).ready(function() {
     $('.carousel').carousel();
 
     $('.to-top').click(gotoTop);
+
+    $.fn.editable.defaults.mode = 'inline';
+    $('#first_name').editable();
+    $('#last_name').editable();
+    $('#short_bio').editable();
+    $('#bio').editable();
 });

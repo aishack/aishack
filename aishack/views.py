@@ -242,7 +242,7 @@ def profile(request, username=None):
 
     tutorials_written = Tutorial.objects.filter(author=user.user)
 
-    context.update({'user': user,
+    context.update({'aishackuser': user,
                     'tutorials_read_count': len(tutorials_read),
                     'tutorials_read': tutorials_read,
                     'tracks_following': tracks_following,
@@ -255,3 +255,24 @@ def profile(request, username=None):
                     'user_email_md5': md5(user.user.email).hexdigest()})
 
     return render(request, 'profile.html', context)
+
+def profile_edit(request):
+    """
+    AJAX requests are sent here
+    """
+
+    if request.method != 'POST':
+        raise Http404()
+
+    params = request.POST
+
+    key = params['name']
+    value = params['value']
+    if key == 'short_bio':
+        print 'something here'
+    elif key == 'website':
+        print 'something here'
+    elif key == 'bio':
+        print 'something here'
+
+    return HttpResponse('')

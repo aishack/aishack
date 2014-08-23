@@ -34,6 +34,7 @@ urlpatterns = patterns('',
     url(r'^tracks/signup/(?P<slug>[a-zA-Z0-9-]+)/$', views.track_signup),
     url(r'^tracks/(?P<slug>[a-zA-Z0-9-]+)/$', views.tracks),
     url(r'^profile/$', views.profile),
+    url(r'^profile/edit/$', views.profile_edit),
     url(r'^profile/(?P<username>[a-zA-Z0-9-]+)/$', views.profile),
 
     # Elasticsearch

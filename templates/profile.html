@@ -1,29 +1,50 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block content %}
-    <h2>{{user.user.first_name}} {{user.user.last_name}}</h2>
+    <h2>
+        {% ifequal aishackuser.user user %}
+            <a href='#' id='first_name' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-emptytext="Firstname" data-title='First name'>{{ aishackuser.user.first_name | striptags }}</a>
+            <a href='#' id='last_name' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-emptytext="Lastname" data-title='Last name'>{{ aishackuser.user.last_name | striptags }}</a>
+        {% else %}
+            {{ aishackuser.user.first_name | striptags }} {{ aishackuser.user.last_name | striptags }}
+        {% endifequal %} 
+    </h2>
 
     <div class='row'>
         <div class='col-md-2'>
             <img class='img-circle' src='http://gravatar.com/avatar/{{user_email_md5}}?size=80px' />
         </div>
         <div class='col-md-10'>
-            <p>{{ user.short_bio | striptags }}</p>
+            <p>
+            {% ifequal aishackuser.user user %}
+                <a href='#' id='short_bio' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='textarea' data-pk='1' data-url='/profile/edit/' data-title='Short bio here'>{{ aishackuser.short_bio | striptags }}</a>
+            {% else %}
+                {{ aishackuser.short_bio | striptags }}
+            {% endifequal %}
+            </p>
         </div>
     </div>
     <hr />
 
-    {% if user.bio %}
-        <div class='row'>
-            <div class='col-md-12'>
-                {{ user.bio }}
-            </div>
+    <div class='row'>
+        <div class='col-md-12'>
+        {% ifequal aishackuser.user user %}
+            <a href='#' id='bio' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='textarea' data-pk='1' data-url='/profile/edit/' data-emptytext="Your bio here" data-title='Short bio here'>{{ aishackuser.bio | striptags }}</a>
+            <hr />
+        {% else %}
+            {% if aishackuser.bio %}
+                {{ aishackuser.bio }}
+                <hr />
+            {% endif %}
+        {% endifequal %}
+
         </div>
-        <hr />
-    {% endif %}
+    </div>
 
     {% if tutorials_written_count %}
-        <p>{{user.user.first_name}} has written <strong>{{ tutorials_written_count }} tutorials</strong><p>
+        <p>{{aishackuser.user.first_name}} has written <strong>{{ tutorials_written_count }} tutorials</strong><p>
         <ul>
         {% for tut in tutorials_written %}
             <li><a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a></li>
@@ -32,7 +53,7 @@
     {% endif %}
 
     {% if tutorials_read_count %}
-        <p>{{user.user.first_name}} has read <strong>{{ tutorials_read_count }} tutorials</strong>
+        <p>{{aishackuser.user.first_name}} has read <strong>{{ tutorials_read_count }} tutorials</strong>
             {% if tracks_completed_count %}
                 and completed <strong>{{ tracks_completed_count }} tracks</strong>
             {% endif %}
@@ -56,5 +77,9 @@
         </ul>
 
     {% endif %}
+
+    <script>
+    </script>
+
 
 {% endblock %}
