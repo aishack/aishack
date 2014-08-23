@@ -9,6 +9,22 @@
         <hr />
         {{ tutorial.content | safe }}
 
+        {% if tutorial.series %}
+            <hr />
+            <p>This tutorial is part of a series called <strong>{{ tutorial.series.name }}</strong>:</p>
+            <ol>
+                {% for tut in tutorial.series.tutorial_list %}
+                    <li>
+                        {% ifequal tut tutorial %}
+                            <strong>{{tut.title}}</strong>
+                        {% else %}
+                            <a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a>
+                        {% endifequal %}
+                    </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+
         <hr />
 
         {# related posts #}
