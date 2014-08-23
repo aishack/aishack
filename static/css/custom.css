@@ -210,6 +210,20 @@ body {
     background: #303030 url(/static/img/bg-footer.jpg) repeat-x;
 }
 
+.footer-bottom .to-top {
+    background: url(/static/img/sprite-top.png) no-repeat 0 0;
+    border-image: none;
+    display: block;
+    width: 48px;
+    height: 43px;
+    border: none;
+    margin-top: 12px;
+}
+
+.footer-bottom .to-top:hover {
+    background: url(/static/img/sprite-top.png) no-repeat 0 -43px;
+}
+
 .logo-footer {
 }
 
