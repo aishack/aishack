@@ -5,7 +5,7 @@ function gotoTop() {
 }
 
 $(document).ready(function() {
-    $("#btn-signup").tooltip({placement: 'right', title: 'Signup, track your progress, take quizzes.'});
+    $("#btn-signup").tooltip({placement: 'top', title: 'Signup, track your progress, take quizzes.'});
     $('.carousel').carousel();
 
     $('.to-top').click(gotoTop);

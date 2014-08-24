@@ -12,7 +12,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.contrib.sitemaps import Sitemap
 
-from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack
+from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack, TrackTutorials
 from django.contrib.auth.models import User
 
 import utils, settings
@@ -130,7 +130,21 @@ def tutorials(request, slug=None):
         # This section defines what happens if a tutorial slug is mentioned
         tutorial = shortcuts.get_object_or_404(Tutorial, slug=slug)
         author = AishackUser.objects.get(user=tutorial.author)
+
+        # Check with track this tutorial belongs to
+        tt = TrackTutorials.objects.filter(tutorial=tutorial)
+        if tt:
+            track = tt[0].track
+        else:
+            # Just pick the first one
+            track = None
+
+        track_length = len(track.tutorial_list())
         context.update({'tutorial': tutorial,
+                        'track': track,
+                        'track_length': track_length,
+                        'tuts_in_track_read': 0,
+                        'tuts_in_track_read_percent': 0,
                         'page_title': tutorial.title,
                         'author': author.user,
                         'category_slug': str(tutorial.category.title).decode('ascii', 'ignore').lower().replace(' ', '_'),
@@ -161,11 +175,27 @@ def tutorials(request, slug=None):
                     if len(related_list) == _num_related:
                         break
 
+            # Check if the user has signed up for the track
+            tuts_read = aishack_user.tutorials_read.all()
+            if track in aishack_user.tracks_following.all():
+                tuts_in_track = track.tutorials.all()
+                track_tuts_read = []
+
+                tuts_in_track_read = 0
+                for tut in tuts_in_track:
+                    if tut in tuts_read:
+                        tuts_in_track_read += 1
+                        track_tuts_read.append(tut)
+
+                context.update({'track_following': True,
+                                'tuts_in_track_read': tuts_in_track_read,
+                                'tuts_in_track_read_percent': tuts_in_track_read*100/track_length,
+                                'track_tuts_read': track_tuts_read})
+
             # Maybe the visitor has read everything?
             # TODO
             if len(related_list) < _num_related:
                 # fetch three random indices
-
                 related_list.append(0)
         else:
             # The user isn't logged in - display the pre-processed related tutorials
