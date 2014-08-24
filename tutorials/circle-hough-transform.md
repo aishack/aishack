@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform-circle.jpg"
+track: "Image processing algorithms (level 2)"
+track_order: 9
 ---
 Here I'll tell you how to detect circles (which are quite important in computer vision application) using a technique similar to the standard Hough transform. This article assumes you know how the Hough transform works, or you've understood the previous articles in this series (The Hough Transform). 
 

@@ -81,7 +81,7 @@ def tracks(request, slug=None):
     track = shortcuts.get_object_or_404(Track, slug=slug)
     context.update({'track': track})
 
-    list_of_tutorials = track.tutorials.all()
+    list_of_tutorials = track.tutorial_list()
     context.update({'tutorials': list_of_tutorials})
 
     track_followed = False
@@ -135,11 +135,12 @@ def tutorials(request, slug=None):
         tt = TrackTutorials.objects.filter(tutorial=tutorial)
         if tt:
             track = tt[0].track
+            track_length = len(track.tutorial_list())
         else:
             # Just pick the first one
             track = None
+            track_length = 0
 
-        track_length = len(track.tutorial_list())
         context.update({'tutorial': tutorial,
                         'track': track,
                         'track_length': track_length,

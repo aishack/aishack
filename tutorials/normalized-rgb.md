@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-normalized-rgb.jpg"
+track: "Image processing algorithms (level 1)"
+track_order: 2
 ---
 
 ## What is normalized RGB?

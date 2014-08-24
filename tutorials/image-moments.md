@@ -5,6 +5,8 @@ excerpt: "Image moments help identify certain key characteristics in images - li
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-image-moments.png"
+track: "Image processing algorithms (level 2)"
+track_order: 3
 ---
 An Image moment is a number calculated using a certain formula. Understand what that formula means might be hard at first. In fact, I got a lot of questions about moments from [the tracking tutorial](/tutorials/tracking-colored-objects-in-opencv) I did long back. So, here it is - an explanation of what moments area! 
 

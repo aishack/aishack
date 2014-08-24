@@ -5,6 +5,10 @@ excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-convolutions.jpg"
+series: "Convolutions"
+part: 1
+track: "Image processing algorithms (level 2)"
+track_order: 1
 ---
 Convolutions is a technique for general signal processing. People studying electrical/electronics will tell you the near infinite sleepless nights these convolutions have given them. Entire books have been written on this topic. And the questions and theorems that need to be proved are [insurmountable]. But for computer vision, we'll just deal with some simple things. 
 

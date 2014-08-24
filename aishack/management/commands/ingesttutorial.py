@@ -11,7 +11,7 @@ from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 
-from aishack.models import Tutorial, Category, TutorialSeries, TutorialSeriesOrder
+from aishack.models import Tutorial, Category, TutorialSeries, TutorialSeriesOrder, Track, TrackTutorials
 
 class Command(BaseCommand):
     help = "Ingest a tutorial markdown file into the database"
@@ -66,6 +66,9 @@ class Command(BaseCommand):
         if 'part' in frontmatter:
             frontmatter['part'] = int(frontmatter['part'])
 
+        if 'track_order' in frontmatter:
+            frontmatter['track_order'] = int(frontmatter['track_order'])
+
         counter += 1
         content_lines = ''.join(lines[counter+1:])
         md = content_lines.decode('utf8')
@@ -109,6 +112,7 @@ class Command(BaseCommand):
         if len(args) == 0:
             raise CommandError("Please specify a tutorial.md file to ingest")
 
+        import pdb; pdb.set_trace()
         for md in args:
             print'\n\nProcessing: %s' % md
             # frontmatter is a dict, content is html
@@ -170,6 +174,10 @@ class Command(BaseCommand):
                                     content     = content,
                                     featured    = frontmatter['featured'])
 
+            # Run the INSERT/UPDATE query
+            tutorial.save()
+            self.stdout.write('Tutorial update successful!')
+
             if 'series' in frontmatter:
                 try:
                     series = TutorialSeries.objects.get(name=frontmatter['series'])
@@ -185,10 +193,22 @@ class Command(BaseCommand):
                     order.save()
 
                 tutorial.series = series
+                tutorial.save()
 
-            # Run the INSERT/UPDATE query
-            tutorial.save()
-            self.stdout.write('Tutorial update successful!')
+            if 'track' in frontmatter:
+                try:
+                    track = Track.objects.get(title=frontmatter['track'])
+                except Track.DoesNotExist, e:
+                    self.stdout.write('Track "%s" does not exist' % frontmatter['track'])
+
+                    track = Track(title=frontmatter['track'])
+                    track.save()
+
+                tuts = track.tutorial_list()
+                if tutorial not in tuts:
+                    order = TrackTutorials(track=track, tutorial=tutorial, order=frontmatter['track_order'])
+                    order.save()
+
 
             # Clear the cache for this particular tutorial (if it already existed there)
             # TODO

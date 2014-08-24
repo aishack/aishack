@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hello-world.jpg"
+track: "OpenCV Basics"
+track_part: 3
 ---
 
 

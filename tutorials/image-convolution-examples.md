@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-convolutions.jpg"
+series: "Convolutions"
+part: 2
 ---
 A convolution is very useful for signal processing in general. There is a lot of complex mathematical theory available for convolutions. For digital image processing, you don't have to understand all of that. You can use a [simple matrix as an image convolution kernel](/tutorials/convolutions/) and do some interesting things! 
 
