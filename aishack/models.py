@@ -21,6 +21,9 @@ class Tutorial(models.Model):
     read_count     = models.BigIntegerField(default=0)
     series         = models.ForeignKey('TutorialSeries', default=None, blank=True, null=True)
 
+    def get_absolute_url(self):
+        return '/tutorials/%s/' % self.slug
+
     def __unicode__(self):
         return self.title
 

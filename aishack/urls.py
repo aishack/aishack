@@ -9,7 +9,15 @@ from aishack import views
 # Enable admin mode
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
+
 admin.autodiscover()
+
+# Sitemaps
+from django.contrib.sitemaps.views import sitemap
+from aishack.views import AishackSitemap
+sitemaps = {
+    'aishack': AishackSitemap()
+}
 
 urlpatterns = patterns('',
     # Examples:
@@ -36,6 +44,9 @@ urlpatterns = patterns('',
     url(r'^profile/$', views.profile),
     url(r'^profile/edit/$', views.profile_edit),
     url(r'^profile/(?P<username>[a-zA-Z0-9-]+)/$', views.profile),
+
+    # sitemap
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # Elasticsearch
     (r'^search/', include('haystack.urls')),

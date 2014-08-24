@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'south',
     'haystack',
     'django.contrib.humanize',
+    'django.contrib.sitemaps',
 )
 
 MIDDLEWARE_CLASSES = (

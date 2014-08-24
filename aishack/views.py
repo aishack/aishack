@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth import logout
 from django.contrib import messages
+from django.contrib.sitemaps import Sitemap
 
 from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack
 from django.contrib.auth.models import User
@@ -292,3 +293,15 @@ def profile_edit(request):
         aishackuser.user.save()
 
     return HttpResponse('')
+
+######
+# Setup sitemaps for the website
+class AishackSitemap(Sitemap):
+    changefreq = 'daily'
+    priority = 0.5
+
+    def items(self):
+        return Tutorial.objects.all()
+
+    def lastmod(self, obj):
+        return obj.date
