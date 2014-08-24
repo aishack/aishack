@@ -1,10 +1,12 @@
 ---
-title: "SIFT: Scale Invariant Feature Transform (part 6)"
+title: "SIFT: Keypoint orientations"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
+series: "SIFT: Theory and Practice"
+part: 6
 ---
 
 After [step 4](/tutorials/sift-step-4-eliminate-edges-and-low-contrast-regions/), we have legitimate key points. They've been tested to be stable. We already know the scale at which the keypoint was detected (it's the same as the scale of the blurred image). So we have scale invariance. The next thing is to assign an orientation to each keypoint. This orientation provides rotation invariance. The more invariance you have the better it is. :P 

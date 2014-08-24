@@ -1,10 +1,12 @@
 ---
-title: "SIFT: Scale Invariant Feature Transform (part 3)
+title: "SIFT: LoG approximations"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
+series: "SIFT: Theory and Practice"
+part: 3
 ---
 
 In the previous step , we [created the scale space of the image](/tutorials/sift-step-1-constructing-a-scale-space/). The idea was to blur an image progressively, shrink it, blur the small image progressively and so on. Now we use those blurred images to generate another set of images, the Difference of Gaussians (DoG). These DoG images are a great for finding out interesting key points in the image.

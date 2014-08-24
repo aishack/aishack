@@ -1,10 +1,12 @@
 ---
-title: "SIFT: Scale Invariant Feature Transform (part 4)"
+title: "SIFT: Finding keypoints"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
+series: "SIFT: Theory and Practice"
+part: 4
 ---
 
 Up till now, we have [generated a scale space](/tutorials/sift-step-1-constructing-a-scale-space/) and used the scale space to [calculate the Difference of Gaussians](/tutorials/sift-step-3-finding-key-points/). Those are then used to calculate Laplacian of Gaussian approximations that is scale invariant. I told you that they produce great key points. Here's how it's done!

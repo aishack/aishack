@@ -141,7 +141,7 @@ class Command(BaseCommand):
 
             try:
                 # If something with that title already exists, update that instead
-                tutorial = Tutorial.objects.get(title=frontmatter['title'])
+                tutorial = Tutorial.objects.get(slug=slug)
 
                 self.stdout.write('Tutorial already exists')
 
@@ -179,7 +179,7 @@ class Command(BaseCommand):
                     series = TutorialSeries(name=frontmatter['series'])
                     series.save()
 
-                tuts = series.tutorials.all()
+                tuts = series.tutorial_list()
                 if tutorial not in tuts:
                     order = TutorialSeriesOrder(series=series, tutorial=tutorial, order=frontmatter['part'])
                     order.save()

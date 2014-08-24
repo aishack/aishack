@@ -5,6 +5,8 @@ excerpt: ""
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/canny-edge-detector.jpg"
+series: "The Canny Edge Detector"
+part: 2
 ---
 Here's an interesting article - we'll implement canny edges. We won't use any prepackaged functions. I'll be using OpenCV for this article, but I'm sure translating it to some other computer vision package won't be difficult.
 

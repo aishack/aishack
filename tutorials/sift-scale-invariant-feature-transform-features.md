@@ -1,10 +1,12 @@
 ---
-title: "SIFT: Scale Invariant Feature Transform (part 7)"
+title: "SIFT: Generating a feature"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
+series: "SIFT: Theory and Practice"
+part: 7
 ---
 
 Now for the final step of SIFT. Till now, we had [scale and rotation invariance](/tutorials/sift-step-5-assigning-keypoint-orientation/). Now we create a fingerprint for each keypoint. This is to identify a keypoint. If an eye is a keypoint, then using this fingerprint, we'll be able to distinguish it from other keypoints, like ears, noses, fingers, etc. 

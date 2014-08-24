@@ -1,11 +1,13 @@
 ---
-title: "SIFT: Scale Invariant Feature Transform (part 1)"
+title: "SIFT: Introduction"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
 featured: true
+series: "SIFT: Theory and Practice"
+part: 1
 ---
 Matching features across different images in a common problem in computer vision. When all images are similar in nature (same scale, orientation, etc) [simple corner detectors](/tutorials/harris-corner-detector/) can work. But when you have images of different scales and rotations, you need to use the Scale Invariant Feature Transform. 
 

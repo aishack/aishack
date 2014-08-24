@@ -1,10 +1,12 @@
 ---
-title: "SIFT: Scale Invariant Feature Transform (part 2)"
+title: "SIFT: The scale space"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
+series: "SIFT: Theory and Practice"
+part: 2
 ---
 
 Real world objects are meaningful only at a certain scale. You might see a sugar cube perfectly on a table. But if looking at the entire milky way, then it simply does not exist. This multi-scale nature of objects is quite common in nature. And a scale space attempts to replicate this concept on digital images.
