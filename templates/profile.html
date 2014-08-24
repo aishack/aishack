@@ -6,8 +6,8 @@
 {% block content %}
     <h2>
         {% ifequal aishackuser.user user %}
-            <a href='#' id='first_name' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-emptytext="Firstname" data-title='First name'>{{ aishackuser.user.first_name | striptags }}</a>
-            <a href='#' id='last_name' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-emptytext="Lastname" data-title='Last name'>{{ aishackuser.user.last_name | striptags }}</a>
+            <a href='#' id='first_name' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-pk='3' data-emptytext="Firstname" data-title='First name'>{{ aishackuser.user.first_name | striptags }}</a>
+            <a href='#' id='last_name' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-pk='4' data-emptytext="Lastname" data-title='Last name'>{{ aishackuser.user.last_name | striptags }}</a>
         {% else %}
             {{ aishackuser.user.first_name | striptags }} {{ aishackuser.user.last_name | striptags }}
         {% endifequal %} 
@@ -21,7 +21,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     {% ifequal aishackuser.user user %}
-                        <a href='#' id='website' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-emptytext="website" data-title='Website'>{{ aishackuser.user.website | striptags }} </a> &middot; 
+                        <a href='#' id='website' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-pk='2' data-emptytext="website" data-title='Website'>{{ aishackuser.website | striptags }}</a> &middot; 
                     {% else %}
                         {% if aishackuser.website %}
                             {{ aishackuser.website %} &middot; 
@@ -44,7 +44,7 @@
     <div class='row'>
         <div class='col-md-12'>
         {% ifequal aishackuser.user user %}
-            <a href='#' id='bio' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='textarea' data-pk='1' data-url='/profile/edit/' data-emptytext="Your bio here" data-title='Short bio here'>{{ aishackuser.bio | striptags }}</a>
+            <a href='#' id='bio' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='textarea' data-pk='5' data-url='/profile/edit/' data-emptytext="Your bio here" data-title='Short bio here'>{{ aishackuser.bio | striptags }}</a>
             <hr />
         {% else %}
             {% if aishackuser.bio %}

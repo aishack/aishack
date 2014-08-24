@@ -259,18 +259,36 @@ def profile_edit(request):
     AJAX requests are sent here
     """
 
+    # Support only get requests
     if request.method != 'POST':
         raise Http404()
 
+    # Confirm if the user is logged in
+    if not request.user.is_authenticated():
+        raise Http404()
+
+    # Fetch the parameters
     params = request.POST
+
+    # aishackuser
+    aishackuser = utils.get_aishack_user(request.user)
 
     key = params['name']
     value = params['value']
     if key == 'short_bio':
-        print 'something here'
+        aishackuser.short_bio = value
+        aishackuser.save()
     elif key == 'website':
-        print 'something here'
+        aishackuser.website = value
+        aishackuser.save()
     elif key == 'bio':
-        print 'something here'
+        aishackuser.bio = value
+        aishackuser.save()
+    elif key == 'first_name':
+        aishackuser.user.first_name = value
+        aishackuser.user.save()
+    elif key == 'last_name':
+        aishackuser.user.last_name = value
+        aishackuser.user.save()
 
     return HttpResponse('')
