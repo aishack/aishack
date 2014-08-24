@@ -20,15 +20,13 @@ def index(request):
     """
     The home page
     """
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     context.update({'current_page': 'home'})
 
     # Fetch the first three featured tutorials
-    featured_tutorials = Tutorial.objects.filter(featured=True)
-    context.update({'featured': featured_tutorials})
-
     # Fetch the 3 recent tutorials
-    context.update({'recent_tutorials': utils.fetch_tutorials(3)})
+    featured_tutorials = Tutorial.objects.filter(featured=True)
+    context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(3)})
 
     return render(request, "index.html", context)
 
@@ -36,7 +34,7 @@ def track_signup(request, slug=None):
     """
     Url to get user to signup for a track
     """
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     track = None
     already_signedup = False
 
@@ -75,7 +73,7 @@ def tracks(request, slug=None):
         # No slug? redirect to all tutorials
         return redirect('/tutorials/')
 
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     context.update({'current_page': 'track'})
 
     # We do have a slug
@@ -124,7 +122,7 @@ def tutorials(request, slug=None):
     """
     _num_related = 3
 
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     context.update({'current_page': 'tutorials'})
 
     if slug:
@@ -197,7 +195,7 @@ def contribute(request):
     """
     The tutorials home page
     """
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     context.update({'current_page': 'contribute'})
     return render(request, "contribute.html", context)
 
@@ -205,12 +203,12 @@ def about(request):
     """
     The tutorials home page
     """
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     context.update({'current_page': 'about'})
     return render(request, "about.html", context)
 
 def login(request):
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
     return render(request, "login.html", context)
 
 def profile(request, username=None):
@@ -224,7 +222,7 @@ def profile(request, username=None):
         userobj = shortcuts.get_object_or_404(User, username=username)
         user = AishackUser.objects.get(user=userobj)
 
-    context = utils.get_global_context()
+    context = utils.get_global_context(request)
 
     # Find the list of tutorials read
     tutorials_read = user.tutorials_read_list()
@@ -252,7 +250,7 @@ def profile(request, username=None):
                     'tutorials_written': tutorials_written,
                     'tutorials_written_count': len(tutorials_written),
                     'current_page': 'profile',
-                    'user_email_md5': md5(user.user.email).hexdigest()})
+                    'profile_email_md5': md5(user.user.email).hexdigest()})
 
     return render(request, 'profile.html', context)
 

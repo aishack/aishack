@@ -1,15 +1,22 @@
 #!/usr/bin/python
 import settings
 
-import markdown
+import markdown, hashlib
 
 from aishack.models import AishackUser, Tutorial
 from django.contrib.auth.models import User
 
-def get_global_context():
-    popular_tutorials = Tutorial.objects.all().order_by('-read_count')[0:5]
-    return {'SITE_TITLE': settings.SITE_TITLE,
+def get_global_context(request):
+    popular_tutorials = [tut[0] for tut in fetch_tutorials(5)]
+
+    ret = {'SITE_TITLE': settings.SITE_TITLE,
             'POPULAR_TUTORIALS': popular_tutorials}
+
+    if request.user.is_authenticated():
+        ret.update({'user_email_md5': hashlib.md5(request.user.email).hexdigest()})
+
+    return ret
+
 
 def get_aishack_user(user):
     aishack_user = AishackUser.objects.get(user=user)

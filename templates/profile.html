@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load staticfiles %}
+{% load humanize %}
 
 {% block content %}
     <h2>
@@ -14,9 +15,21 @@
 
     <div class='row'>
         <div class='col-md-2'>
-            <img class='img-circle' src='http://gravatar.com/avatar/{{user_email_md5}}?size=80px' />
+            <img class='img-circle' src='http://gravatar.com/avatar/{{profile_email_md5}}?size=80px' />
         </div>
         <div class='col-md-10'>
+            <div class='row'>
+                <div class='col-md-12'>
+                    {% ifequal aishackuser.user user %}
+                        <a href='#' id='website' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='text' data-url='/profile/edit/' data-emptytext="website" data-title='Website'>{{ aishackuser.user.website | striptags }} </a> &middot; 
+                    {% else %}
+                        {% if aishackuser.website %}
+                            {{ aishackuser.website %} &middot; 
+                        {% endif %}
+                    {% endifequal %}
+                    Joined <span title="{{aishackuser.user.date_joined}}">{{ aishackuser.user.date_joined | naturaltime }}</span>
+                </div>
+            </div>
             <p>
             {% ifequal aishackuser.user user %}
                 <a href='#' id='short_bio' data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}" data-type='textarea' data-pk='1' data-url='/profile/edit/' data-title='Short bio here'>{{ aishackuser.short_bio | striptags }}</a>

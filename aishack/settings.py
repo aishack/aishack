@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'south',
     'haystack',
+    'django.contrib.humanize',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -15,4 +15,5 @@ $(document).ready(function() {
     $('#last_name').editable();
     $('#short_bio').editable();
     $('#bio').editable();
+    $('#website').editable();
 });
