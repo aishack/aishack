@@ -45,6 +45,7 @@
             <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_image}}" class='img-responsive'/></a>
             <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
             <p>{{tut.excerpt}}</p>
+            <a href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
         </div>
     {% endfor %}
 </div>

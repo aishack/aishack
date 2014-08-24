@@ -1,7 +1,7 @@
 ---
 title: "Image Moments"
 date: "2011-06-21 12:04:56"
-excerpt: ""
+excerpt: "Image moments help identify certain key characteristics in images - like the center, area of white pixels, etc. We'll look at how these are calculated mathematically."
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-image-moments.png"

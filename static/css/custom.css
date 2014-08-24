@@ -239,3 +239,7 @@ body {
 .form-search .form-control {
     width: 100%;
 }
+
+img.user-gravatar {
+    margin-top: -4px;
+}
