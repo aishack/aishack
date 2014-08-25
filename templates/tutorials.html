@@ -47,22 +47,29 @@
 
     {% else %}
         <h2>Tutorials</h2>
-        Tutorial tracks
+        <p>Here is a listing of all the tutorials on this AI Shack</p>
+        <h3>Tracks</h3>
+        <p>Tracks are a series of tutorials put together in a logical order</p>
         {% for track in tracks %}
             <div class='clearfix'>
-                <div class='thumbnail pull-left'>
+                <div class='row'>
+                <div class='col-md-2'>
                     <a href='/tracks/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>
+                    <hr/>
                 </div>
 
-                <div class='caption'>
+                <div class='caption col-md-10'>
                     <h4><a href='/tracks/{{track.slug}}'>{{track.title}}</a></h4>
                     <p>{{track.excerpt | safe}}</p>
                     {% if track in tracks_following %}
                         <p>Following</p>
                     {% endif %}
                 </div>
+                </div>
             </div>
         {% endfor %}
+        <h3>Tutorials</h3>
+        <p>There are individual tutorials - pick and choose whichever you like!</p>
         <ul>
         {% for tut, series in tutorials_to_display %}
             {% if series %}

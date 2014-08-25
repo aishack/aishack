@@ -1,7 +1,9 @@
+{% load staticfiles %}
+
 <div class="row">
     <div class='col-md-5'>
         <div class='panel panel-default'>
-            <div class='panel-heading'>Like!</div>
+            <div class='panel-heading'>AI Shack on Facebook</div>
             <div class='facebook-liker-nopadding panel-body'>
                 <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Faishack&amp;width=360&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px; height:258px;" allowTransparency="true"></iframe>
             </div>
@@ -9,14 +11,30 @@
     </div>
     <div class='col-md-3'>
         <div class='panel panel-default'>
-            <div class='panel-heading'>More</div>
-            <div class='panel-body'>Stuff goes here</div>
+            <div class='panel-heading'><span class='glyphicon glyphicon-user'></span> Contact</div>
+            <div class='panel-body'><p>You can contact me through the internet over the following channels:</p>
+            <ul class='list-unstyled'>
+                <li><img src='{% static "/static/img/ico-facebook.png" %}' /> <a href='http://facebook.com/aishack/' target='_blank'>Facebook</a></li>
+                <li><img src='{% static "/static/img/ico-twitter.png" %}' /> <a href='http://twitter.com/aishack' target='_blank'>Twitter</a></li>
+                <li><img src='{% static "/static/img/ico-github.png" %}' /> <a href='http://github.com/aishack' target='_blank'>Github</a></li>
+                <li><img src='{% static "/static/img/ico-email.png" %}' /> <a href='mailto:utkarsh@utkarshsinha.com'>Email</a></li>
+            </ul>
+            </div>
         </div>
     </div>
     <div class='col-md-4'>
         <div class='panel panel-default'>
-            <div class='panel-heading'>Stuff</div>
-            <div class='panel-body'>More stuff</div>
+            <div class='panel-heading'><span class='glyphicon glyphicon-question-sign'></span> Where to start?</div>
+            <div class='panel-body'>
+                <p>So you want to get started with AI but you're not sure where. Here are some links to get you started:</p>
+                <ul>
+                    <li><a href='/tracks/opencv-basics/'>Get started with OpenCV</a></li>
+                    <li><a href='/tutorials/tracking-colored-objects-in-opencv'>Track a specific color on video</a></li>
+                    <li><a href='/tracks/image-processing-algorithms-level-1'>Learn basic image processing algorithms</a></li>
+                    <li><a href='/tutorials/a-single-neuron-dictomizer'>How to build artificial neurons?</a></li>
+                    <li><a href='http://github.com/aishack'>Look at some source code</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
