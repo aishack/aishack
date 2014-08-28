@@ -12,4 +12,4 @@ installsoftware:
 	sudo yum localinstall /tmp/elasticsearch.rpm
 
 installextras:
-	cp aishack/extras/ env/ -rvL
+	cp aishack/extras/* env/ -rvL
