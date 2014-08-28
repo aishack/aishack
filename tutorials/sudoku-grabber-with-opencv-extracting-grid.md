@@ -9,7 +9,7 @@ series: "SuDoKu Grabber in OpenCV"
 part: 3
 ---
 
-In [the last post](/tutorials/detecting-a-sudoku-puzzle-in-an-image-part-1/), we had found some lines. But the numerous lines were not good enough for detecting the location of the puzzle. So we'll do some math today and find out exactly where the puzzle is. We'll also un-distort the puzzle so we have a perfect top-down view of the sudoku puzzle. 
+In [the last post](/tutorials/sudoku-grabber-with-opencv-detection/), we had found some lines. But the numerous lines were not good enough for detecting the location of the puzzle. So we'll do some math today and find out exactly where the puzzle is. We'll also un-distort the puzzle so we have a perfect top-down view of the sudoku puzzle. 
 
 ## Merging lines
 
@@ -32,7 +32,7 @@ We'll write another function to fuse lines together.  Start off by:
         for(current=lines->begin();current!=lines->end();current++)
         {
 
-The iterator helps traverse the array list. Each element of the list contains 2 things: rho and theta (the [normal form](/tutorials/converting-lines-from-normal-to-slope-intercept-form/) of a line).
+The iterator helps traverse the array list. Each element of the list contains 2 things: rho and theta (the [normal form](/tutorials/converting-lines-from-normal-to-slopeintercept-form/) of a line).
 
 During the merging process, certain lines will fuse together. So, we'll need to mark lines that have been fused (so they aren't considered for other things). This is done by setting the rho to zero and theta to -100 (an impossible value). So whenever we encounter such a line, we simply skip it: 
     
@@ -74,7 +74,7 @@ With these two values, we find two points on the line:;
 
 If the is horizontal (theta is around 90 degrees), we find a point at the extreme left (x=0) and one at the extreme right (x=img.width). If not, we find a point at the extreme top (y=0) and one at extreme bottom (y=img.height).
 
-All the calculations are done based on the [normal form](/tutorials/converting-lines-from-normal-to-slope-intercept-form/) of a line.
+All the calculations are done based on the [normal form](/tutorials/converting-lines-from-normal-to-slopeintercept-form/) of a line.
 
 Next, we start iterating over the lines again: 
     
@@ -188,7 +188,7 @@ The initial values of each edge is initially set to a ridiculous value. This wil
             if(p==0 && theta==-100)
                 continue;
 
-We store the rho and theta values. If we encounter a "merged" line, we simply skip it. Now we use the [normal form](/tutorials/converting-lines-from-normal-to-slope-intercept-form/) of line to calculate the x and y intercepts (the place where the lines intersects the X and Y axis) 
+We store the rho and theta values. If we encounter a "merged" line, we simply skip it. Now we use the [normal form](/tutorials/converting-lines-from-normal-to-slopeintercept-form/) of line to calculate the x and y intercepts (the place where the lines intersects the X and Y axis) 
     
     
     :::c++

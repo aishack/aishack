@@ -9,7 +9,7 @@ series: "SIFT: Theory and Practice"
 part: 3
 ---
 
-In the previous step , we [created the scale space of the image](/tutorials/sift-step-1-constructing-a-scale-space/). The idea was to blur an image progressively, shrink it, blur the small image progressively and so on. Now we use those blurred images to generate another set of images, the Difference of Gaussians (DoG). These DoG images are a great for finding out interesting key points in the image.
+In the previous step , we [created the scale space of the image](/tutorials/sift-scale-invariant-feature-transform-scale-space/). The idea was to blur an image progressively, shrink it, blur the small image progressively and so on. Now we use those blurred images to generate another set of images, the Difference of Gaussians (DoG). These DoG images are a great for finding out interesting key points in the image.
 
 ## Laplacian of Gaussian
 
@@ -51,7 +51,7 @@ Oh! And it has also been proved that this scale invariant thingy produces much b
 
 You can't have benefits without side effects >.<
 
-You know the DoG result is multiplied with σ^2^. But it's also multiplied by another number. That number is (k-1). This is the k we discussed in [the previous step](/tutorials/sift-step-1-constructing-a-scale-space/).
+You know the DoG result is multiplied with σ^2^. But it's also multiplied by another number. That number is (k-1). This is the k we discussed in [the previous step](/tutorials/sift-scale-invariant-feature-transform-scale-space/).
 
 But we'll just be looking for the _location_ of the maximums and minimums in the images. We'll never check the actual values at those locations. So, this additional factor won't be a problem to us. (Even if you multiply throughout by some constant, the maxima and minima stay at the same location)
 

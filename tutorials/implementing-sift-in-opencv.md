@@ -6,7 +6,7 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
 ---
-Okay, now for the coding. I'm assuming you know how SIFT works (if not, check [SIFT: Scale Invariant Feature Transform](/tutorials/sift-scale-invariant-feature-transform/). It's a series of posts on the SIFT algorithm). I'll be using C++ and classes to keep things neat and object oriented. OpenCV doesn't come with inbuilt functions for SIFT, so we'll be creating our own functions. My code here is based on code by Jun Liu. He implemented SIFT with VXL (another vision library like OpenCV). 
+Okay, now for the coding. I'm assuming you know how SIFT works (if not, check [SIFT: Scale Invariant Feature Transform](/tutorials/sift-scale-invariant-feature-transform-introduction/). It's a series of posts on the SIFT algorithm). I'll be using C++ and classes to keep things neat and object oriented. OpenCV doesn't come with inbuilt functions for SIFT, so we'll be creating our own functions. My code here is based on code by Jun Liu. He implemented SIFT with VXL (another vision library like OpenCV). 
 
 ## The Code
 
@@ -38,7 +38,7 @@ At several key locations in code, you'll notice commented code. Something like t
 
 ![](/static/img/tut/sift-code-commented.jpg) 
 
-Uncomment there lines. You'll get physical files that you can use to examine the scale space, difference of gaussians, extrema, etc. That way you'll actually get a sense of what's going on (Again, I'm not going into the details of what there are. I've already covered these in the series [SIFT: Scale Invariant Feature Transform](/tutorials/sift-scale-invariant-feature-transform/)) I'll leave it up to you to find these commented blocks (assignment worth 10%?). 
+Uncomment there lines. You'll get physical files that you can use to examine the scale space, difference of gaussians, extrema, etc. That way you'll actually get a sense of what's going on (Again, I'm not going into the details of what there are. I've already covered these in the series [SIFT: Scale Invariant Feature Transform](/tutorials/sift-scale-invariant-feature-transform-introduction/)) I'll leave it up to you to find these commented blocks (assignment worth 10%?). 
 
 ## Fin
 
@@ -46,13 +46,13 @@ Over the last week I've talked about how the algorithm works. And finally, imple
 
 Anyway, if you've got any questions or suggestions about the code, let me know - **leave a comment below**! 
 
-## Other articles in the series
+## The theory series
 
-  1. [SIFT: Scale Invariant Feature Transform](/tutorials/sift-scale-invariant-feature-transform/)
-  2. [Step 1: Constructing a scale space](/tutorials/sift-step-1-constructing-a-scale-space/)
-  3. [Step 2: Laplacian of Gaussian approximation](/tutorials/sift-step-2-laplacian-of-gaussian-approximation/)
-  4. [Step 3: Finding Keypoints](/tutorials/sift-step-3-finding-key-points/)
-  5. [Step 4: Eliminate edges and low contrast regions](/tutorials/sift-step-4-eliminate-edges-and-low-contrast-regions/)
-  6. [Step 5: Assign an orientation to the keypoints](/tutorials/sift-step-5-assigning-keypoint-orientation/)
-  7. [Step 6: Generate SIFT features]('/tutorials/sift-step-6-generate-sift-features/)
+  1. [SIFT: Scale Invariant Feature Transform](/tutorials/sift-scale-invariant-feature-transform-introduction/)
+  2. [Step 1: Constructing a scale space](/tutorials/sift-scale-invariant-feature-transform-scale-space/)
+  3. [Step 2: Laplacian of Gaussian approximation](/tutorials/sift-scale-invariant-feature-transform-log-approximation/)
+  4. [Step 3: Finding Keypoints](/tutorials/sift-scale-invariant-feature-transform-keypoints/)
+  5. [Step 4: Eliminate edges and low contrast regions](/tutorials/sift-scale-invariant-feature-transform-eliminate-low-contrast/)
+  6. [Step 5: Assign an orientation to the keypoints](/tutorials/sift-scale-invariant-feature-transform-keypoint-orientation/)
+  7. [Step 6: Generate SIFT features](/tutorials/sift-scale-invariant-feature-transform-features/)
   8. **Implementing SIFT in OpenCV**

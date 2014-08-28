@@ -42,7 +42,7 @@ Next, we create and initialize a histogram:
         CvHistogram *hist = cvCreateHist(1, &numBins, CV_HIST_ARRAY, ranges, 1);
         cvClearHist(hist);
 
-Here, we're creating a uniform 1-D histogram with 256 bins. We supply the range as 0-255. The [cvCreateHist function](/tutorials/histograms-with-inbuilt-functions-of-opencv/) automatically divides this range into 256 bins.
+Here, we're creating a uniform 1-D histogram with 256 bins. We supply the range as 0-255. The [cvCreateHist function](/tutorials/histograms-with-functions-of-opencv/) automatically divides this range into 256 bins.
 
 Next, we split the original colour image into its channels. We allocate memory and use the cvSplit function to break it into constituent channels: 
     

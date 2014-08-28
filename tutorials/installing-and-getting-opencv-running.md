@@ -14,7 +14,7 @@ track_part: 2
 
 The first thing to do is get OpenCV. You can download it from its [sourceforge.net page](http://sourceforge.net/project/showfiles.php?group_id=22870). Make sure you download the latest version and the correct one for your platform.
 
-**Update**: OpenCV 2.0 is now available. This post works for OpenCV 1.0. Check [how to install OpenCV 2.0](/tutorials/installing-and-configuring-opencv-2-0-on-windows/). 
+**Update**: OpenCV 2.0 is now available. This post works for OpenCV 1.0. Check [how to install OpenCV 2.0](/tutorials/installing-and-configuring-opencv-2-on-windows/). 
 
 ## Telling your IDE about OpenCV
 

@@ -10,7 +10,7 @@ In the previous article, Cropping robotics arena boundaries, I talked about the 
 
 ## Juggling code
 
-I assume you have OpenCV install (check [OpenCV 2.0 on Windows](/tutorials/installing-and-configuring-opencv-2-0-on-windows/) or the more detailed [Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)). I'll be using Visual Studio 2008 for this project. But it should translate without many changes for other IDE's as well.
+I assume you have OpenCV install (check [OpenCV 2.0 on Windows](/tutorials/installing-and-configuring-opencv-2-on-windows/) or the more detailed [Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)). I'll be using Visual Studio 2008 for this project. But it should translate without many changes for other IDE's as well.
 
 Start Visual Studio and create a new project. Choose Visual C++ > Win32 > Win32 Console Application as the project type and name it whatever you want. Click OK and then accept all default settings by clicking Finish.
 
@@ -87,7 +87,7 @@ Opening is an erosion followed by a dilation. And you can [read about thresholdi
 
 ![](/static/img/tut/arena-whites-threshold.jpg)
 
-Now we get to the juice of the tutorial. We'll use an inbuilt function to do a [hough transform](/tutorials/the-hough-transform/) on _detected_ and get a list of lines: 
+Now we get to the juice of the tutorial. We'll use an inbuilt function to do a [hough transform](/tutorials/the-hough-transform-basics/) on _detected_ and get a list of lines: 
     
     
     :::c++
@@ -100,7 +100,7 @@ The function cvHoughLines2 actually the hough transform on _detected_ and stores
 
 The 1 and 0.001 are the accuracy of the values of p and θ respectively. p is in pixels, so we set it to 1. θ is in radians, which is extremely sensitive. So we set its accuracy to 0.001. You can increase precision if you want, but that would increase run time.
 
-The 100 is a kind of selection criteria. If a line gets a score of greater than 100, the function adds it to _lines_. Otherwise, the line is assumed to be part of noise and ignored. Read more about [The Hough Transform](/tutorials/the-hough-transform/) and you'll get to know what this is.
+The 100 is a kind of selection criteria. If a line gets a score of greater than 100, the function adds it to _lines_. Otherwise, the line is assumed to be part of noise and ignored. Read more about [The Hough Transform](/tutorials/the-hough-transform-basics/) and you'll get to know what this is.
 
 Once the hough transform is done, we're ready to sort through the list of lines we get. 
 

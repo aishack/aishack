@@ -11,12 +11,12 @@
         <div class='clearfix pull-right'>
         {% if track_followed %}
             {% if track_completed %}
-                <a href='/tracks/certificate/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-success'>Completed!</button></a>
+                <a href='/tracks/certificate/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-success'>Completed!</button></a>
             {% else %}
-                <a href='/tracks/withdraw/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-default'>Withdraw</button></a>
+                <a href='/tracks/withdraw/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-default'>Withdraw</button></a>
             {% endif %}
         {% else %}
-            <a href='/tracks/signup/{{track.slug}}' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a>
+            <a href='/tracks/signup/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a>
         {% endif %}
         </div>
 
@@ -29,7 +29,7 @@
         {% for tut in tutorials %}
             <tr>
                 <td>{% if tut in tutorials_read %}<span class='glyphicon glyphicon-ok'></span>{% else %}&nbsp;{% endif %}</td>
-                <td>{{ forloop.counter }}. <a href='/tutorials/{{tut.slug}}'>{{ tut.title }}</a></td>
+                <td>{{ forloop.counter }}. <a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></td>
         {% endfor %}
         </table>
 

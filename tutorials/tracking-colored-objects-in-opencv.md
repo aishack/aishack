@@ -49,7 +49,7 @@ This function will take an image, and return a binary image (where yellow will b
 
 To achieve this thresholding, we'll be using the HSV colour space, instead of the more common RGB colour space. In HSV, each "tint" of colour is assigned a particular number (the Hue). The "amount" of colour is assigned another number (the Saturation) and the brightness of the colour is assigned another number (the Intensity or Value).
 
-This gives us the advantage of having a single number (hue) for the yellow ball despite multiple shades of yellow (all the way from dark yellow to a bright yellow). For more information you might want to read up [Colour spaces - Grayscale, RGB, HSV and Y'CrCb](/tutorials/color-spaces/).
+This gives us the advantage of having a single number (hue) for the yellow ball despite multiple shades of yellow (all the way from dark yellow to a bright yellow). For more information you might want to read up [Colour spaces - Grayscale, RGB, HSV and Y'CrCb](/tutorials/color-spaces-1/).
 
 Back to the code now. Firstly, we convert the image into an HSV image: 
     

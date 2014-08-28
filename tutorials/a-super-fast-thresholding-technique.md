@@ -70,7 +70,7 @@ This way, you can do up to 32 colors simultaneously. That's a LOT of colors!
 
 I did a quick test to verify the paper - I used a custom function that takes an image, goes through each pixel, does the 6 comparisons and marks the pixels as foreground if necessary. Competing against this function was [the standard threshold function of OpenCV](/tutorials/thresholding/).
 
-Thanks for Shervin Emami for [the timing macros](/tutorials/timing-macros-in-c/)! You might find them useful as well.
+Thanks for Shervin Emami for [the timing macros](/tutorials/timing-macros/)! You might find them useful as well.
 
 The results were obvious: 
 

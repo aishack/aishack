@@ -26,7 +26,7 @@ _method_ is either CV_HOUGH_STANDARD, CV_HOUGH_PROBABILISTIC, or CV_HOUGH_MULTI_
 
 _rho_ and _theta_ set the desired accuracy of the transform. _rho_ is in pixels and _theta_ is in radians. The smaller the value, the better the transform will be... but it'll also take more time. Usually, values 1 and 0.01 should be sufficient.
 
-_threshold_ determines which lines are returned. Each line has a particular number of "votes". This parameter sets the minimum number of "votes" in order to qualify as a potential line. You might want to read about [The Hough Transform](/tutorials/the-hough-transform/) for more information on this.
+_threshold_ determines which lines are returned. Each line has a particular number of "votes". This parameter sets the minimum number of "votes" in order to qualify as a potential line. You might want to read about [The Hough Transform](/tutorials/the-hough-transform-basics/) for more information on this.
 
 _param1_ and _param2_ are used by the different transforms. 
 

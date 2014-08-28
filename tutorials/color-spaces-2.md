@@ -9,7 +9,7 @@ series: "Color spaces"
 part: 2
 ---
 
-Like I said on the [previous article](/tutorials/color-spaces), some colour spaces are good for some purposes. Other are good for other purposes.
+Like I said on the [previous article](/tutorials/color-spaces-1/), some colour spaces are good for some purposes. Other are good for other purposes.
 
 RGB is good for humans. We can intuitively use it, and generate any colour we want. 
 

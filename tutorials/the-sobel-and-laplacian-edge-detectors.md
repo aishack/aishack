@@ -8,7 +8,7 @@ post_image: "/static/img/tut/post-sobel-laplacian.jpg"
 track: "Image processing algorithms (level 2)"
 track_order: 2
 ---
-Detecting edges is one of the fundamental operations you can do in image processing. It helps you reduce the amount of data (pixels) to process and maintains the "structural" aspect of the image. We'll look at two  commonly used edge detection schemes - the gradient based edge detector and the laplacian based edge detector. Both of them work with [convolutions](/tutorials/convolutions) and achieve the same end goal - finding edges. 
+Detecting edges is one of the fundamental operations you can do in image processing. It helps you reduce the amount of data (pixels) to process and maintains the "structural" aspect of the image. We'll look at two  commonly used edge detection schemes - the gradient based edge detector and the laplacian based edge detector. Both of them work with [convolutions](/tutorials/convolutions/) and achieve the same end goal - finding edges. 
 
 ## Relating edges and derivatives
 

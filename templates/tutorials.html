@@ -33,7 +33,7 @@
             {% for tut in related_tuts %}
                 <div class='col-md-4'>
                     <img class='img-responsive' src='{{tut.post_image}}' />
-                    <p><a href='/tutorials/{{tut.slug}}'>{{ tut.title }}</a></p>
+                    <p><a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></p>
                 </div>
             {% endfor %}
         </div>
@@ -54,12 +54,12 @@
             <div class='clearfix'>
                 <div class='row'>
                 <div class='col-md-2'>
-                    <a href='/tracks/{{track.slug}}'><img src='{{track.thumbnail}}' /></a>
+                    <a href='/tracks/{{track.slug}}/'><img src='{{track.thumbnail}}' /></a>
                     <hr/>
                 </div>
 
                 <div class='caption col-md-10'>
-                    <h4><a href='/tracks/{{track.slug}}'>{{track.title}}</a></h4>
+                    <h4><a href='/tracks/{{track.slug}}/'>{{track.title}}</a></h4>
                     <p>{{track.excerpt | safe}}</p>
                     {% if track in tracks_following %}
                         <p>Following</p>
@@ -74,14 +74,14 @@
         {% for tut, series in tutorials_to_display %}
             {% if series %}
                 <li>
-                    <a href="/tutorials/{{tut.slug}}">{{ series.name }}</a>
+                    <a href="/tutorials/{{tut.slug}}/">{{ series.name }}</a>
                     <span class='glyphicon glyphicon-list-alt'></span>
                     {% for s in series.tutorial_list %}
                         <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
                     {% endfor %}
                 </li>
             {% else %}
-                <li><a href="/tutorials/{{tut.slug}}">{{ tut.title }}</a></li>
+                <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
             {% endif %}
         {% endfor %}
         </ul>

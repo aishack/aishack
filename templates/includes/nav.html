@@ -16,9 +16,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li {% ifequal current_page "home" %}class="active"{% endifequal %}><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li {% ifequal current_page "tutorials" %}class="active"{% endifequal %}><a href="/tutorials"><span class="glyphicon glyphicon-th glyphicon-margin"></span>Tutorials</a></li>
-        <li {% ifequal current_page "contribute" %}class="active"{% endifequal %}><a href="/contribute"><span class="glyphicon glyphicon-pencil glyphicon-margin"></span>Contribute</a></li>
-        <li {% ifequal current_page "about" %}class="active"{% endifequal %}><a href="/about">About</a></li>
+        <li {% ifequal current_page "tutorials" %}class="active"{% endifequal %}><a href="/tutorials/"><span class="glyphicon glyphicon-th glyphicon-margin"></span>Tutorials</a></li>
+        <li {% ifequal current_page "contribute" %}class="active"{% endifequal %}><a href="/contribute/"><span class="glyphicon glyphicon-pencil glyphicon-margin"></span>Contribute</a></li>
+        <li {% ifequal current_page "about" %}class="active"{% endifequal %}><a href="/about/">About</a></li>
         {% if user.is_authenticated %}
             <li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='/profile/'l><img class='img-circle user-gravatar' src='http://gravatar.com/avatar/{{user_email_md5}}?size=24px' /> {{ user.first_name }}<span class='caret'></span></a>
               <ul class='dropdown-menu' role='menu'>

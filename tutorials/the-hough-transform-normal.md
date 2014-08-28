@@ -10,7 +10,7 @@ track_order: 8
 ---
 ## The flaw
 
-The Hough transform described in [the previous article](/tutorials/the-hough-transform/) has an obvious flaw. The value of m (slope) tends to infinity for vertical lines. So you need infinite memory to be able to store the mc space. Not good. 
+The Hough transform described in [the previous article](/tutorials/the-hough-transform-basics/) has an obvious flaw. The value of m (slope) tends to infinity for vertical lines. So you need infinite memory to be able to store the mc space. Not good. 
 
 ## The solution
 

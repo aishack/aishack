@@ -9,7 +9,7 @@ series: "SIFT: Theory and Practice"
 part: 7
 ---
 
-Now for the final step of SIFT. Till now, we had [scale and rotation invariance](/tutorials/sift-step-5-assigning-keypoint-orientation/). Now we create a fingerprint for each keypoint. This is to identify a keypoint. If an eye is a keypoint, then using this fingerprint, we'll be able to distinguish it from other keypoints, like ears, noses, fingers, etc. 
+Now for the final step of SIFT. Till now, we had [scale and rotation invariance](/tutorials/sift-scale-invariant-feature-transform-keypoint-orientation/). Now we create a fingerprint for each keypoint. This is to identify a keypoint. If an eye is a keypoint, then using this fingerprint, we'll be able to distinguish it from other keypoints, like ears, noses, fingers, etc. 
 
 ## The idea
 
@@ -47,6 +47,6 @@ To solve a few problems, you subtract the keypoint's orientation and also thresh
 
 ## The End!
 
-Once you have the features, you go play with them! I'll get to that in a later post(or posts :P). Read up on how [the hough transform](/tutorials/the-hough-transform/) works. It will be used a lot.
+Once you have the features, you go play with them! I'll get to that in a later post(or posts :P). Read up on how [the hough transform](/tutorials/the-hough-transform-basics/) works. It will be used a lot.
 
 Next, I'll try and explain an implementation of SIFT in OpenCV. Finally, some code! :D Though theory is :-~~

@@ -9,7 +9,7 @@ series: "SIFT: Theory and Practice"
 part: 4
 ---
 
-Up till now, we have [generated a scale space](/tutorials/sift-step-1-constructing-a-scale-space/) and used the scale space to [calculate the Difference of Gaussians](/tutorials/sift-step-3-finding-key-points/). Those are then used to calculate Laplacian of Gaussian approximations that is scale invariant. I told you that they produce great key points. Here's how it's done!
+Up till now, we have [generated a scale space](/tutorials/sift-scale-invariant-feature-transform-scale-space/) and used the scale space to [calculate the Difference of Gaussians](/tutorials/sift-scale-invariant-feature-transform-keypoints/). Those are then used to calculate Laplacian of Gaussian approximations that is scale invariant. I told you that they produce great key points. Here's how it's done!
 
 Finding key points is a two part process 
 

@@ -9,7 +9,7 @@ series: "SIFT: Theory and Practice"
 part: 5
 ---
 
-Key points generated in [the previous step](/tutorials/sift-step-3-finding-key-points/) produce a lot of key points. Some of them lie along an edge, or they don't have enough contrast. In both cases, they are not useful as features. So we get rid of them. The approach is similar to the one used in [the Harris Corner Detector](/tutorials/harris-corner-detector/) for removing edge features. For low contrast features, we simply check their intensities. 
+Key points generated in [the previous step](/tutorials/sift-scale-invariant-feature-transform-keypoints/) produce a lot of key points. Some of them lie along an edge, or they don't have enough contrast. In both cases, they are not useful as features. So we get rid of them. The approach is similar to the one used in [the Harris Corner Detector](/tutorials/harris-corner-detector/) for removing edge features. For low contrast features, we simply check their intensities. 
 
 ## Removing low contrast features
 

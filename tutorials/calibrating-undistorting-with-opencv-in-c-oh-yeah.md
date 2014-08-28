@@ -12,7 +12,7 @@ I've already talked about [camera distortions](/tutorials/two-major-physical-def
 
 The first thing we need for this is the latest version of OpenCV. If you're using 1.0 or 1.1pre or any of those, you need to get the latest version. It has the C++ interface. Previous version simply do not have it. Go [download the most recent version at sourceforge](http://sourceforge.net/projects/opencvlibrary/).
 
-Once you have it, [follow these instructions](/tutorials/installing-and-configuring-opencv-2-0-on-windows/) if you use Visual Studio. If not, check around the OpenCV wiki, and you should see where you can find instructions for your IDE. 
+Once you have it, [follow these instructions](/tutorials/installing-and-configuring-opencv-2-on-windows/) if you use Visual Studio. If not, check around the OpenCV wiki, and you should see where you can find instructions for your IDE. 
 
 ## Onto the project
 
@@ -209,7 +209,7 @@ And finally, the calibration:
 
 After this statement, you'll have the intrinsic matrix, distortion coefficients and the rotation+translation vectors. The intrinsic matrix and distortion coefficients are a property of the camera and lens. So as long as you use the same lens (ie you don't change it, or change its focal length, like in zoom lenses etc) you can reuse them. In fact, you can save them to a file if you want and skip the entire chessboard circus!
 
-Note: The calibrateCamera function converts all matrices into 64F format even if you initialize it to 32F. Thanks to [Michael Koval](/tutorials/calibrating-undistorting-with-opencv-in-c-oh-yeah/comment-page-1/#comment-1971)!
+Note: The calibrateCamera function converts all matrices into 64F format even if you initialize it to 32F. Thanks to Michael Koval!
 
 Now that we have the distortion coefficients, we can undistort the images. Here's a small loop that will do this: 
     

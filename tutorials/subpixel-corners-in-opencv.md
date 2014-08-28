@@ -6,7 +6,7 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-subpixel-corners.jpg"
 ---
-OpenCV comes with a function to help you find subpixel corners. It uses [the dot product technique](/tutorials/subpixel-corners-increasing-accuracy/) to refine corners detected by other techniques, like [the Shi-Tomasi corner detector](/tutorials/the-shi-tomasi-corner-detector/). The function works iteratively, refining the corners till a termination criteria is reached. 
+OpenCV comes with a function to help you find subpixel corners. It uses [the dot product technique](/tutorials/subpixel-corners-increasing-accuracy/) to refine corners detected by other techniques, like [the Shi-Tomasi corner detector](/tutorials/the-shitomasi-corner-detector/). The function works iteratively, refining the corners till a termination criteria is reached. 
 
 ## Refining corners to subpixel level
 

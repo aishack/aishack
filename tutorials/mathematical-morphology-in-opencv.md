@@ -10,7 +10,7 @@ post_image: "/static/img/tut/post-morphology-opencv.jpg"
 
 ## Introduction
 
-All the operations I talked about in the post [Mathematical Morphology](/tutorials/mathematical-morphology/) can be easily implemented in OpenCV. It even supports [several advanced morphological operations](/tutorials/mathematical-morphology-%e2%80%93-composite-operations/), right out of the box! So lets begin with, creating a custom structuring element. 
+All the operations I talked about in the post [Mathematical Morphology](/tutorials/mathematical-morphology/) can be easily implemented in OpenCV. It even supports [several advanced morphological operations](/tutorials/mathematical-morphology-composite-operations/), right out of the box! So lets begin with, creating a custom structuring element. 
 
 ## Creating a structuring element
 

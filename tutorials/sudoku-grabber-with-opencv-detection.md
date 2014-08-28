@@ -165,7 +165,7 @@ Because we had dilated the image earlier, we'll "restore" it a bit by eroding it
 
 ## Detecting lines
 
-At this point, we have a single blob. Now its time to find lines. This is done with the [Hough transform](/tutorials/the-hough-transform/). OpenCV comes with it. So a line of code is all that's needed: 
+At this point, we have a single blob. Now its time to find lines. This is done with the [Hough transform](/tutorials/the-hough-transform-basics/). OpenCV comes with it. So a line of code is all that's needed: 
     
     
     :::c++

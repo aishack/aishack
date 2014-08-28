@@ -1,28 +1,28 @@
 <ol class="breadcrumb">
     <li><a href="/"><span class='glyphicon glyphicon-home'></span></a></li>
     {% ifequal current_page 'tutorials' %}
-        <li><a href="/tutorials">Tutorials</a></li>
+        <li><a href="/tutorials/">Tutorials</a></li>
         {% if tutorial.category %}
-            <li><a href='/tutorials/{{category_slug}}'>{{tutorial.category}}</a></li>
+            <li><a href='/tutorials/{{category_slug}}/'>{{tutorial.category}}</a></li>
         {% endif %}
         {% if tutorial.slug %}
-            <li><a href='/tutorials/{{tutorial.slug}}'>{{tutorial.title}}</a></li>
+            <li><a href='/tutorials/{{tutorial.slug}}/'>{{tutorial.title}}</a></li>
         {% endif %}
     {% endifequal %}
     {% ifequal current_page 'track' %}
-        <li><a href="/tracks">Tracks</a></li>
+        <li><a href="/tracks/">Tracks</a></li>
         {% if track %}
-            <li><a href='/tracks/{{track.slug}}'>{{track.title}}</a></li>
+            <li><a href='/tracks/{{track.slug}}/'>{{track.title}}</a></li>
         {% endif %}
     {% endifequal %}
     {% ifequal current_page 'contribute' %}
-        <li><a href='/contribute'>Contribute</a></li>
+        <li><a href='/contribute/'>Contribute</a></li>
     {% endifequal %}
     {% ifequal current_page 'about' %}
-        <li><a href='/about'>About</a></li>
+        <li><a href='/about/'>About</a></li>
     {% endifequal %}
 
     {% ifequal current_page 'profile' %}
-        <li><a href='/profile'>Profile</a></li>
+        <li><a href='/profile/'>Profile</a></li>
     {% endifequal %}
 </ol>

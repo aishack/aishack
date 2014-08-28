@@ -6,7 +6,7 @@ category: "Machine learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-slope-normal.jpg"
 ---
-Several algorithms return lines in the normal form (like [The Hough transform](/tutorials/the-hough-transform/)) while other algorithms may require these lines in another format (like drawing a line on screen). The slop-intercept form of lines is widely known, and you can easily convert a line in slope-intercept form to other forms. So knowing how to efficiently do the conversion of parameters is a must! Here I'll show you one way to do this. But just in case, here's a brief review of the normal and slope-intercept forms.![](/static/img/tut/hough_p0.jpg)
+Several algorithms return lines in the normal form (like [The Hough transform](/tutorials/the-hough-transform-basics/)) while other algorithms may require these lines in another format (like drawing a line on screen). The slop-intercept form of lines is widely known, and you can easily convert a line in slope-intercept form to other forms. So knowing how to efficiently do the conversion of parameters is a must! Here I'll show you one way to do this. But just in case, here's a brief review of the normal and slope-intercept forms.![](/static/img/tut/hough_p0.jpg)
 
 ## The normal form
 

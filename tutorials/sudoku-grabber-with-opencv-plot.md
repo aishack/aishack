@@ -56,7 +56,7 @@ This looks great! Next we detect lines in this noise-free image!
 
 ### Step 3: Locating the puzzle
 
-We can use the [Hough transform](/tutorials/the-hough-transform/) to get lines in this image. It returns lines in mathematical terms. So after this step, we'll know exactly where a lines lies... and not just the pixels where it lies.
+We can use the [Hough transform](/tutorials/the-hough-transform-basics/) to get lines in this image. It returns lines in mathematical terms. So after this step, we'll know exactly where a lines lies... and not just the pixels where it lies.
 
 ![Grid lines detected on the puzzles borders](/static/img/tut/sudoku-detect-lines.jpg)
 : Grid lines detected

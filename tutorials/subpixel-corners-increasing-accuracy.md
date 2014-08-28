@@ -16,7 +16,7 @@ Here's a picture of a square. I've zoomed in a lot, so you can see individual pi
 
 You can see that the corner does not lie on a single pixel. The corner is "spread out" (In fact, in real life situations, it's almost impossible to get corners to lie on exact pixels).
 
-So, with a corner detection algorithm like [the Shi-Tomasi corner detector](../tutorials/the-shi-tomasi-corner-detector/) or [the Harris corner detector](/tutorials/harris-corner-detector/), you will end up with a corner like (56, 120). But, scientists and other people want a corner like (56.768, 120.1432). 
+So, with a corner detection algorithm like [the Shi-Tomasi corner detector](../tutorials/the-shitomasi-corner-detector/) or [the Harris corner detector](/tutorials/harris-corner-detector/), you will end up with a corner like (56, 120). But, scientists and other people want a corner like (56.768, 120.1432). 
 
 This is subpixel accuracy. You cannot access pixel (56.768, 120.1432), yet you have determined that the corner lies precisely at this point.
 
@@ -89,4 +89,4 @@ The key idea in generating several equations. To do this, the dot product is use
 
 There also exist other techniques to get subpixel corners. Like iterative algorithms that try to minimize error, etc. But we won't go into those right now.
 
-OpenCV uses this technique to refine corner positions calculated by other techniques (like the [Shi-Tomasi corner detector](/tutorials/the-shi-tomasi-corner-detector/) or the [Harris corner detector](/tutorials/harris-corner-detector/)).
+OpenCV uses this technique to refine corner positions calculated by other techniques (like the [Shi-Tomasi corner detector](/tutorials/the-shitomasi-corner-detector/) or the [Harris corner detector](/tutorials/harris-corner-detector/)).
