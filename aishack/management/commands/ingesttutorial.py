@@ -112,7 +112,6 @@ class Command(BaseCommand):
         if len(args) == 0:
             raise CommandError("Please specify a tutorial.md file to ingest")
 
-        import pdb; pdb.set_trace()
         for md in args:
             print'\n\nProcessing: %s' % md
             # frontmatter is a dict, content is html
