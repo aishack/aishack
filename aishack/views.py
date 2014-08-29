@@ -12,7 +12,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.contrib.sitemaps import Sitemap
 
-from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack, TrackTutorials
+from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack, TrackTutorials, Category
 from django.contrib.auth.models import User
 
 import utils, settings
@@ -148,7 +148,7 @@ def tutorials(request, slug=None):
                         'tuts_in_track_read_percent': 0,
                         'page_title': tutorial.title,
                         'author': author.user,
-                        'category_slug': str(tutorial.category.title).decode('ascii', 'ignore').lower().replace(' ', '_'),
+                        'category_slug': tutorial.category.slug,
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author})
 
@@ -324,6 +324,15 @@ def profile_edit(request):
         aishackuser.user.save()
 
     return HttpResponse('')
+
+def category(request, slug):
+    category = shortcuts.get_object_or_404(Category, slug=slug)
+    tutorials = Tutorial.objects.filter(category=category)
+
+    context = utils.get_global_context(request)
+    context.update({'current_page': 'category', 'category': category, 'tutorials': tutorials})
+
+    return render(request, 'category.html', context)
 
 ######
 # Setup sitemaps for the website

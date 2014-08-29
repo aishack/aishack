@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{category.title}}</h2>
+    <p>{{category.desc}}</p>
+    <hr/>
+    <h3>Tutorials</h3>
+    <ul>
+    {% for tut in tutorials %}
+        <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
