@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 from aishack.models import Tutorial, Category, TutorialSeries, TutorialSeriesOrder, Track, TrackTutorials
 
 class Command(BaseCommand):
-    help = "Ingest a track markdown file into the database"
+    help = "Ingest a category markdown file into the database"
     args = "<md>"
 
     def read_track_file(self, md, series=False):
@@ -70,7 +70,7 @@ class Command(BaseCommand):
         Ensures the following keys exist in the front matter dictionary: title, post_image
         excerpt, date, category
         """
-        for key in ['title', 'thumbnail', 'excerpt']:
+        for key in ['title']:
             if key not in fm:
                 raise CommandError("No '%s' found in frontmatter" % key)
 
@@ -113,27 +113,23 @@ class Command(BaseCommand):
 
             try:
                 # If something with that title already exists, update that instead
-                track = Track.objects.get(slug=slug)
+                category = Category.objects.get(slug=slug)
 
-                self.stdout.write('Track already exists')
+                self.stdout.write('Category already exists')
 
-                track.title      = frontmatter['title']
-                track.excerpt    = frontmatter['excerpt']
-                track.slug       = slug
-                track.thumbnail = frontmatter['thumbnail']
-                track.description= content
+                category.title      = frontmatter['title']
+                category.slug          = slug
+                category.description   = content
 
-            except Track.DoesNotExist, e:
-                self.stdout.write('Track does not exist - trying to create it')
+            except Category.DoesNotExist, e:
+                self.stdout.write('Category does not exist - trying to create it')
                 # It doesn't exist yet - create the track object
-                track = Track(title       = frontmatter['title'],
-                              excerpt     = frontmatter['excerpt'],
-                              slug        = slug,
-                              thumbnail   = frontmatter['thumbnail'],
-                              description = content)
+                category = Category(title       = frontmatter['title'],
+                                    slug        = slug,
+                                    description = content)
 
             # Run the INSERT/UPDATE query
-            track.save()
-            self.stdout.write('Track update successful!')
+            category.save()
+            self.stdout.write('Category update successful!')
 
-        self.stdout.write('Next steps:')
+        self.stdout.write('Done.')
