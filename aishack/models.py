@@ -126,6 +126,9 @@ class TutorialRead(models.Model):
     tutorial = models.ForeignKey('Tutorial')
     date     = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return "%s read '%s' on %s" % (self.user.user.username, self.tutorial.title, self.date)
+
 class TrackTutorials(models.Model):
     """
     This table stores which tutorials belong to which tracks
