@@ -37,6 +37,8 @@ class Command(BaseCommand):
         unprocessed = set()
         broken = {}
         processed = set()
+        img_unprocessed = set()
+        img_processed = set()
         for url in root:
             for child in url:
                 if child.tag == '{http://www.sitemaps.org/schemas/sitemap/0.9}loc':
@@ -58,11 +60,24 @@ class Command(BaseCommand):
                 broken[origin] = broken.get(origin, [])
                 broken[origin].append(current)
 
-            new_links = self.parse_links(response.content)
+            new_links, img_links = self.parse_links(response.content)
             for link in new_links:
                 if link not in processed and link not in [x[1] for x in unprocessed]:
-                    print ' added %s' % link
                     unprocessed.add( (link, current) )
+
+            for img in img_links:
+                if img not in img_processed:
+                    # Ignore specific external images
+                    if ('http://gravatar.com/avatar' in img or
+                       'http://s0.wp.com/latex.php' in img or
+                       'assoc-amazon.com' in img):
+                       continue
+
+                    if not os.path.exists('/work/aishack/%s' % img):
+                        broken[origin] = broken.get(origin, [])
+                        broken[origin].append(img)
+
+                    img_processed.add(img)
 
             count += 1
 
@@ -72,7 +87,7 @@ class Command(BaseCommand):
             self.stdout.write('    %s' % origin)
             for l in links:
                 self.stdout.write('      %s' % l)
-    
+
     def parse_links(self, content):
         """
         Parses a given piece of content and returns a set of links
@@ -81,6 +96,7 @@ class Command(BaseCommand):
 
         soup = BeautifulSoup(content)
         all_a = [x['href'] for x in soup.findAll('a')]
+        all_img = [x['src'] for x in soup.findAll('img') if x['src']]
 
         for x in all_a:
             # Special exception for /tracks/signup/... - that URL always redirects
@@ -89,4 +105,4 @@ class Command(BaseCommand):
 
             ret.add(x)
 
-        return ret
+        return ret, all_img
