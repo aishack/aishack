@@ -20,7 +20,11 @@ def get_global_context(request):
 
 
 def get_aishack_user(user):
-    aishack_user = AishackUser.objects.get(user=user)
+    try:
+        aishack_user = AishackUser.objects.get(user=user)
+    except AishackUser.DoesNotExist, e:
+        aishack_user = AishackUser(user=user)
+        aishack_user.save()
     return aishack_user
 
 def read_tutorial_file(slug):

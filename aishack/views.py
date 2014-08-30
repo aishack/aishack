@@ -51,7 +51,7 @@ def track_signup(request, slug=None):
     track = shortcuts.get_object_or_404(Track, slug=slug)
     list_of_tutorials = track.tutorials.all()
 
-    aishack_user = AishackUser.objects.get(user=request.user)
+    aishack_user = utils.get_aishack_user(request.user)
 
     # Confirm if the user hasn't already signed up
     for t in aishack_user.tracks_following.all():
@@ -88,7 +88,7 @@ def tracks(request, slug=None):
     track_completed = False
     tuts_read = []
     if request.user.is_authenticated():
-        aishack_user = AishackUser.objects.get(user=request.user)
+        aishack_user = utils.get_aishack_user(request.user)
         tuts_read = aishack_user.tutorials_read.all()
         list_read = []
         for tut in list_of_tutorials:
@@ -129,7 +129,7 @@ def tutorials(request, slug=None):
     if slug:
         # This section defines what happens if a tutorial slug is mentioned
         tutorial = shortcuts.get_object_or_404(Tutorial, slug=slug)
-        author = AishackUser.objects.get(user=tutorial.author)
+        author = utils.get_aishack_user(tutorial.author)
 
         # Check with track this tutorial belongs to
         tt = TrackTutorials.objects.filter(tutorial=tutorial)
@@ -206,7 +206,7 @@ def tutorials(request, slug=None):
     else:
         # Fetch tracks the user is following
         if request.user.is_authenticated():
-            aishack_user = AishackUser.objects.get(user=request.user)
+            aishack_user = utils.get_aishack_user(request.user)
             tracks_following = aishack_user.tracks_following.all()
         else:
             tracks_following = []
@@ -249,10 +249,10 @@ def profile(request, username=None):
         if not request.user.is_authenticated():
             return redirect('/')
 
-        user = AishackUser.objects.get(user=request.user)
+        user = utils.get_aishack_user(request.user)
     else:
         userobj = shortcuts.get_object_or_404(User, username=username)
-        user = AishackUser.objects.get(user=userobj)
+        user = utils.get_aishack_user(userobj)
 
     context = utils.get_global_context(request)
 
