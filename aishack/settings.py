@@ -17,12 +17,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ui2@gva*)yeqcsdo%e2(-50^ngnv-sxrmen=xn#g+wc@lhy^#j'
+SECRET_KEY = 'asflha;sldfasl;r7w04u8wordfhl;jasdhpo8ejr5f;sdfltg895m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -125,4 +125,4 @@ HAYSTACK_CONNECTIONS = {
 ############################################
 # django-social-auth settings
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '258831081234-pvbv8atnveljcmmr5a9pgdv1kj0pqt2m.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'haha!'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'TsO_Jpq8Lywpz5tEg883iWIz'
