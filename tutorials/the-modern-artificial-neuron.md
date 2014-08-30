@@ -2,7 +2,7 @@
 title: "The modern artificial neuron"
 date: "2009-11-24 11:45:14"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-modern-neuron.jpg"
 ---

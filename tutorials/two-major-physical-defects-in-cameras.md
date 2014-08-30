@@ -2,7 +2,7 @@
 title: "Two major physical defects in cameras"
 date: "2010-07-23 23:51:44"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-camera-defects.jpg"
 ---

@@ -31,7 +31,7 @@
         {% else %}
             <li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='/login/'><span class='glyphicon glyphicon-user glyphicon-margin'></span>Login<span class='caret'></span></a>
               <ul class='dropdown-menu' role='menu'>
-                <li><a href='{% url "social:begin" "google" %}?next={{ request.path }}'><img src='{% static "img/google-icon-sm.png" %}' class='glyphicon-margin' />Login with Google</a></li>
+                <li><a href='{% url "social:begin" "google-oauth2" %}?next={{ request.path }}'><img src='{% static "img/google-icon-sm.png" %}' class='glyphicon-margin' />Login with Google</a></li>
                 <li class='divider'></li>
                 <li><a href='#' />Why login?</a></li>
               </ul>

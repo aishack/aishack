@@ -2,7 +2,7 @@
 title: "Harris Corner Detector"
 date: "2010-04-26 16:04:14"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
 ---

@@ -2,7 +2,7 @@
 title: "The Sobel and Laplacian Edge Detectors"
 date: "2011-04-24 14:48:50"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sobel-laplacian.jpg"
 track: "Image processing algorithms (level 2)"

@@ -2,7 +2,7 @@
 title: "Corner Detection in OpenCV"
 date: "2010-05-05 23:23:59"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
 ---

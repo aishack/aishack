@@ -2,7 +2,7 @@
 title: "Subpixel Corners: Increasing accuracy"
 date: "2010-05-08 20:20:46"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-subpixel-corners.jpg"
 ---

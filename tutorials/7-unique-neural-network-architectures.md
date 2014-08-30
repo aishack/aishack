@@ -2,7 +2,7 @@
 title: "7 unique neural network architectures"
 date: "2009-12-03 11:46:41"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-neural-types.jpg"
 ---

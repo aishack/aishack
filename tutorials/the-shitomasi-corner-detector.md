@@ -2,7 +2,7 @@
 title: "The Shi-Tomasi Corner Detector"
 date: "2010-05-02 21:52:01"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
 ---

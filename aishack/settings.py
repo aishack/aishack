@@ -97,8 +97,7 @@ TEMPLATE_DIRS = (
 
 ## python-social-auth
 AUTHENTICATION_BACKENDS = (
-    'social.backends.open_id.OpenIdAuth',
-    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -121,3 +120,8 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'aishack_haystack',
     }
 }
+
+############################################
+# django-social-auth settings
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '258831081234-pvbv8atnveljcmmr5a9pgdv1kj0pqt2m.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'haha!'

@@ -2,7 +2,7 @@
 title: "Color spaces 2"
 date: "2010-01-03 19:53:34"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: ""
 series: "Color spaces"

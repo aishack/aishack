@@ -2,7 +2,7 @@
 title: "The Hough Transform: Basics"
 date: "2010-03-06 12:01:45"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform.jpg"
 track: "Image processing algorithms (level 2)"

@@ -2,7 +2,7 @@
 title: "Calibrating a camera: Theory"
 date: "2010-07-26 23:43:04"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-camera-calibration.jpg"
 ---

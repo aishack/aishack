@@ -2,7 +2,7 @@
 title: "K-Means clustering"
 date: "2010-07-29 23:42:40"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-kmeans-clustering.jpg"
 track: "Image processing algorithms (level 2)"

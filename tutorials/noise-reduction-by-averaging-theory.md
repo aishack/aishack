@@ -2,7 +2,7 @@
 title: "Noise reduction by Averaging: Theory"
 date: "2010-01-15 23:02:29"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-noise-reduction-averaging.jpg"
 track: "Image processing algorithms (level 1)"

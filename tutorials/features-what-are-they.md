@@ -2,7 +2,7 @@
 title: "Features: What are they?"
 date: "2010-04-23 05:23:04"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
 ---

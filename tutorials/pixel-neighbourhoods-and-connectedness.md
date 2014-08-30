@@ -2,7 +2,7 @@
 title: "Pixel neighbourhoods and connectedness"
 date: "2010-03-15 15:57:01"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-pixel-neighbor.jpg"
 track: "Image processing algorithms (level 2)"

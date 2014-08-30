@@ -2,7 +2,7 @@
 title: "Circle Hough Transform"
 date: "2010-03-12 18:16:28"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform-circle.jpg"
 track: "Image processing algorithms (level 2)"

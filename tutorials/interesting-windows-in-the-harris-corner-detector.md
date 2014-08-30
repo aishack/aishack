@@ -2,7 +2,7 @@
 title: "Interesting windows in the Harris Corner Detector"
 date: "2010-04-29 13:21:27"
 excerpt: "The \"score\" calculated for each pixel in the Harris Corner Detector is based on the two eigenvalues of a matrix. The expression to calculate it is not arbitrary, but based on observations of how the expression varies with different eigenvalues. Here's a graphical explanation of how its done."
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
 ---

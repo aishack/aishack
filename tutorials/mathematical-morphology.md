@@ -2,7 +2,7 @@
 title: "Mathematical Morphology"
 date: "2010-07-12 23:26:56"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-mathematical-morphology.jpg"
 track: "Image processing algorithms (level 1)"

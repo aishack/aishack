@@ -2,7 +2,7 @@
 title: "K-Nearest Neighbours: Classify (recognize) things"
 date: "2010-10-01 19:27:27"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-knearest.jpg"
 ---

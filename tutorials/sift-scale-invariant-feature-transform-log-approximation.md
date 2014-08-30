@@ -2,7 +2,7 @@
 title: "SIFT: LoG approximations"
 date: "2010-05-14 22:22:09"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"
 series: "SIFT: Theory and Practice"

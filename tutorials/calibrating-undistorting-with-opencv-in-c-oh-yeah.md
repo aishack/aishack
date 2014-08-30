@@ -2,7 +2,7 @@
 title: "Calibrating & Undistorting with OpenCV in C++ (Oh yeah)"
 date: "2010-07-28 23:59:36"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-camera-calibration-undistort.jpg"
 ---

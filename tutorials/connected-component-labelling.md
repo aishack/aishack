@@ -2,7 +2,7 @@
 title: "Connected Component Labelling"
 date: "2010-03-18 16:18:54"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-connected-components.jpg"
 track: "Image processing algorithms (level 2)"

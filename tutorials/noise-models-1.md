@@ -2,7 +2,7 @@
 title: "Noise Models (part 1)"
 date: "2010-01-09 21:35:57"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-noise.jpg"
 series: "Noise Models"

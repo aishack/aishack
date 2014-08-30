@@ -2,7 +2,7 @@
 title: "The Canny Edge Detector"
 date: "2011-06-28 11:11:23"
 excerpt: "An in-depth exploration of how the famous Canny edge detection system works. We'll implement our own after going through the theory."
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/canny-edge-detector.jpg"
 series: "The Canny Edge Detector"

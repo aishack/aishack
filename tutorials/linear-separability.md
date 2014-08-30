@@ -2,7 +2,7 @@
 title: "Linear separability"
 date: "2010-07-24 23:49:52"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-linear-separability.jpg"
 ---

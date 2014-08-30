@@ -2,7 +2,7 @@
 title: "First artificial neurons: The McCulloch-Pitts model"
 date: "2009-11-21 11:37:08"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-first-neuron.jpg"
 ---

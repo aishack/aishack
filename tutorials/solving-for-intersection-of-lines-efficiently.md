@@ -2,7 +2,7 @@
 title: "Solving for intersection of lines efficiently"
 date: "2010-04-02 16:08:11"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-solve-intersection.jpg"
 ---

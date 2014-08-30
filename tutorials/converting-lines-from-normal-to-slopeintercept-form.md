@@ -2,7 +2,7 @@
 title: "Converting lines from normal to slope-intercept form"
 date: "2010-03-30 15:31:17"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-slope-normal.jpg"
 ---

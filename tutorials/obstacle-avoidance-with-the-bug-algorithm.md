@@ -2,7 +2,7 @@
 title: "Obstacle avoidance with the Bug-1 algorithm"
 date: "2010-08-24 17:46:14"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "bhargav.abhimanyu@gmail.com"
 post_image: "/static/img/tut/post-obstacle-avoidance.jpg"
 ---

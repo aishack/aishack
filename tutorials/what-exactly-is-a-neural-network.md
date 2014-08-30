@@ -2,7 +2,7 @@
 title: "What exactly is a Neural Network?"
 date: "2009-11-15 15:24:07"
 excerpt: ""
-category: "Machine learning"
+category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-neural-network.jpg"
 ---

@@ -2,7 +2,7 @@
 title: "A super fast thresholding technique"
 date: "2011-05-31 20:56:54"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-superfast-thresholding.jpg"
 ---

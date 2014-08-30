@@ -2,7 +2,7 @@
 title: "Image convolution examples"
 date: "2010-08-16 19:53:17"
 excerpt: ""
-category: "Computer vision"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-convolutions.jpg"
 series: "Convolutions"
