@@ -45,10 +45,14 @@ urlpatterns = patterns('',
     url(r'^profile/$', views.profile),
     url(r'^profile/edit/$', views.profile_edit),
     url(r'^profile/(?P<username>[a-zA-Z0-9-]+)/$', views.profile),
+    url(r'^why\-login/$', views.whylogin),
 
     # sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # Elasticsearch
     (r'^search/', include('haystack.urls')),
-) + static(settings.STATIC_URL)
+)
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.STATIC_URL)

@@ -334,6 +334,11 @@ def category(request, slug):
 
     return render(request, 'category.html', context)
 
+def whylogin(request):
+    context = utils.get_global_context(request)
+    context.update({'current_page': 'why-login'})
+    return render(request, 'why-login.html', context)
+
 ######
 # Setup sitemaps for the website
 class AishackSitemap(Sitemap):
