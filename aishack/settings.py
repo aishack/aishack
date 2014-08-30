@@ -21,11 +21,9 @@ SECRET_KEY = 'asflha;sldfasl;r7w04u8wordfhl;jasdhpo8ejr5f;sdfltg895m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['.aishack.in', '127.0.0.1', 'localhost']
 
 TEMPLATE_DEBUG = False
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
