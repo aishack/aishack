@@ -60,12 +60,8 @@
         <div class='panel-heading'>Popular tutorials</div>
         <div class='panel-body'>
             <table class='table'>
-            {% for tut, series in POPULAR_TUTORIALS %}
-                {% if series %}
-                    <tr><td><a href='/tutorials/{{tut.slug}}/'>{{series.name}}</a></td></tr>
-                {% else %}
+            {% for tut in POPULAR_TUTORIALS %}
                     <tr><td><a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a></td></tr>
-                {% endif %}
             {% endfor %}
             </table>
         </div>

@@ -135,7 +135,7 @@ def tutorials(request, slug=None):
         tt = TrackTutorials.objects.filter(tutorial=tutorial)
         if tt:
             track = tt[0].track
-            track_length = len(track.tutorial_list())
+            track_length = track.tutorial_count()
         else:
             # Just pick the first one
             track = None
@@ -152,14 +152,14 @@ def tutorials(request, slug=None):
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author})
 
+        # Increment the read counter
+        tutorial.read_count = tutorial.read_count + 1
+        tutorial.save(update_fields=['read_count'])
+
         if request.user.is_authenticated():
             aishack_user = utils.get_aishack_user(request.user)
             m = TutorialRead(tutorial=tutorial, user=aishack_user)
             m.save()
-
-            # Increment the read counter
-            tutorial.read_count = tutorial.read_count + 1
-            tutorial.save()
 
             # The user is logged in - update the related list based on which tutorials have
             # already been read

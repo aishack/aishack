@@ -73,11 +73,17 @@ class Track(models.Model):
     excerpt   = models.CharField(max_length=255)
     description = models.CharField(max_length=1024)
 
-    def tutorial_list(self):
+    def tutorial_count(self):
+        return TrackTutorials.objects.filter(track=self).values('tutorial_id').count()
+
+    def tutorial_list(self, fields=None):
         """
         Helper function to fetch an ordered list of tutorials in this track
         """
-        return [orderobj.tutorial for orderobj in TrackTutorials.objects.filter(track=self).order_by('order')]
+        if fields:
+            return [Tutorial.objects.filter(pk=orderobj.tutorial_id).values(*fields) for orderobj in TrackTutorials.objects.filter(track=self).order_by('order')]
+        else:
+            return [orderobj.tutorial for orderobj in TrackTutorials.objects.filter(track=self).order_by('order')]
 
     def __unicode__(self):
         return self.title

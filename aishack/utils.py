@@ -7,7 +7,8 @@ from aishack.models import AishackUser, Tutorial, TutorialSeries
 from django.contrib.auth.models import User
 
 def get_global_context(request):
-    popular_tutorials = fetch_tutorials(5)
+    #popular_tutorials = fetch_tutorials(5)
+    popular_tutorials = fetch_popular_tutorials(5)
 
     ret = {'SITE_TITLE': settings.SITE_TITLE,
             'POPULAR_TUTORIALS': popular_tutorials}
@@ -117,3 +118,7 @@ def fetch_tutorials(num=None, want_series=True):
             break
 
     return tutorials_to_display
+
+def fetch_popular_tutorials(num=None):
+    tuts = list(Tutorial.objects.order_by('-read_count').values('series_id', 'title', 'slug')[0:num])
+    return tuts
