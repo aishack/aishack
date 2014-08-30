@@ -34,9 +34,6 @@ deactivate () {
     # Self destruct!
         unset -f deactivate
     fi
-
-    unalias 'pm'
-    unalias 'pmi'
 }
 
 # unset irrelevant variables
@@ -81,7 +78,3 @@ alias pydoc="python -m pydoc"
 if [ -n "$BASH" -o -n "$ZSH_VERSION" ] ; then
     hash -r 2>/dev/null
 fi
-
-# [usinha] Added custom aliases
-alias pm='python manage.py'
-alias pmi='python manage.py ingesttutorial'
