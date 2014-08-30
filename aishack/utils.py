@@ -3,11 +3,11 @@ import settings
 
 import markdown, hashlib
 
-from aishack.models import AishackUser, Tutorial
+from aishack.models import AishackUser, Tutorial, TutorialSeries
 from django.contrib.auth.models import User
 
 def get_global_context(request):
-    popular_tutorials = [tut[0] for tut in fetch_tutorials(5)]
+    popular_tutorials = fetch_tutorials(5)
 
     ret = {'SITE_TITLE': settings.SITE_TITLE,
             'POPULAR_TUTORIALS': popular_tutorials}
@@ -68,32 +68,48 @@ def read_tutorial_file(slug):
 
     return (frontmatter, html)
 
-def fetch_tutorials(num=None):
+def fetch_tutorials(num=None, want_series=True):
     """
     Returns tutorials by combining multiple part tutorials into a single element
     """
     # This section defines what happens if the url is just /tutorials/
-    tuts = Tutorial.objects.all().order_by('-date')
+    tuts = list(Tutorial.objects.all().order_by('-date').values('slug', 'series', 'title', 'series_id'))
     tutorials_to_display = []
 
     tuts_without_extras = tuts[:]
+    count = len(tuts_without_extras)
+
+    ## Cache series information for performance
+
+    # Holds the first of a tutorial series
+    series_first = {}
+    # series_parts = {}
+    series = {}
+
     for tut in tuts:
-        series = tut.series
-        if not series:
+        series_id = tut['series_id']
+        if not series_id:
             continue
 
-        series = series.tutorial_list()
-        if tut.slug != series[0].slug:
-            tuts_without_extras = tuts_without_extras.exclude(slug=tut.slug)
+        if series_id not in series: 
+            # Calculate only the first tutorial here - that results in fewer queries
+            # Evaluate the entire tutorial list later on
+            series[series_id] = TutorialSeries.objects.get(pk=series_id)
+            series_first[series_id] = series[series_id].first_tutorial()
+
+        if tut['slug'] != series_first[series_id].slug:
+            tuts_without_extras.remove(tut)
+            count -= 1
 
     for tut in tuts_without_extras:
-        series = []
-        if tut.series:
-            series = tut.series.tutorial_list()
+        series_id = tut['series_id']
+        # if series_id:
+        #     if series_id not in series_parts:
+        #         series_parts[series_id] = series[series_id].tutorial_list()
 
         tup = (tut, None)
-        if series:
-            tup = (tut, tut.series)
+        if want_series and series_id in series:
+            tup = (tut, series[series_id])
 
         tutorials_to_display.append(tup)
 

@@ -39,6 +39,9 @@ class TutorialSeries(models.Model):
         """
         return [orderobj.tutorial for orderobj in TutorialSeriesOrder.objects.filter(series=self).order_by('order')]
 
+    def first_tutorial(self):
+        return TutorialSeriesOrder.objects.get(series=self, order=1).tutorial
+
     def __unicode__(self):
         return self.name
 
@@ -75,7 +78,6 @@ class Track(models.Model):
         Helper function to fetch an ordered list of tutorials in this track
         """
         return [orderobj.tutorial for orderobj in TrackTutorials.objects.filter(track=self).order_by('order')]
-
 
     def __unicode__(self):
         return self.title
