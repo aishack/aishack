@@ -218,6 +218,7 @@ body {
     height: 43px;
     border: none;
     margin-top: 12px;
+    cursor: pointer;
 }
 
 .footer-bottom .to-top:hover {

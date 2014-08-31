@@ -58,3 +58,9 @@
 </div>
 
 {% endblock %}
+
+{% block inlinejs %}
+    $(document).ready(function() {
+        $('.carousel').carousel();
+    });
+{% endblock %}
