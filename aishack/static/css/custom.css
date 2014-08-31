@@ -211,7 +211,7 @@ body {
 }
 
 .footer-bottom .to-top {
-    background: url(/static/img/sprite-top.png) no-repeat 0 0;
+    background: url(/static/img/sprites.png) no-repeat 0 0;
     border-image: none;
     display: block;
     width: 48px;
@@ -222,7 +222,7 @@ body {
 }
 
 .footer-bottom .to-top:hover {
-    background: url(/static/img/sprite-top.png) no-repeat 0 -43px;
+    background: url(/static/img/sprites.png) no-repeat 0 -43px;
 }
 
 .logo-footer {
