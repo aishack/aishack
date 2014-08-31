@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><img src='{% static "/static/img/site-logo.png" %}' /> <strong>{{ SITE_TITLE }}</strong></a>
+      <a class="navbar-brand" href="/"><span class='pull-left site-logo'></span> <strong>{{ SITE_TITLE }}</strong></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +31,7 @@
         {% else %}
             <li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='/login/'><span class='glyphicon glyphicon-user glyphicon-margin'></span>Login<span class='caret'></span></a>
               <ul class='dropdown-menu' role='menu'>
-                <li><a href='{% url "social:begin" "google-oauth2" %}?next={{ request.path }}'><img src='{% static "img/google-icon-sm.png" %}' class='glyphicon-margin' />Login with Google</a></li>
+                <li><a href='{% url "social:begin" "google-oauth2" %}?next={{ request.path }}'><span class='ico ico-google'></span>Login with Google</a></li>
                 <li class='divider'></li>
                 <li><a href='/why-login/' />Why login?</a></li>
               </ul>

@@ -232,14 +232,44 @@ body {
     text-align: right;
 }
 
-.navbar-brand img {
-    margin-top: -15px;
-}
-
 .form-search .form-control {
     width: 100%;
 }
 
 img.user-gravatar {
     margin-top: -8px;
+}
+
+.ico {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+.ico-facebook {
+    background: url(/static/img/sprites.png) no-repeat -48px 0px;
+}
+
+.ico-twitter {
+    background: url(/static/img/sprites.png) no-repeat -48px -16px;
+}
+
+.ico-github {
+    background: url(/static/img/sprites.png) no-repeat -48px -32px;
+}
+
+.ico-email {
+    background: url(/static/img/sprites.png) no-repeat -48px -62px;
+}
+
+.ico-google {
+    background: url(/static/img/sprites.png) no-repeat -48px -78px;
+}
+
+.site-logo {
+    background: url(/static/img/sprites.png) no-repeat -61px -182px;
+    height: 48px;
+    width: 48px;
+    display: inline-block;
+    margin-top: -14px;
 }
