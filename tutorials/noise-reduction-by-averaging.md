@@ -6,7 +6,7 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-noise-reduction-averaging.jpg"
 track: "Image processing algorithms (level 1)"
-track_order: 8
+track_part: 8
 ---
 
 ## What?! Averaging? You mean blurring?

@@ -94,8 +94,8 @@ class Command(BaseCommand):
         if 'part' in frontmatter:
             frontmatter['part'] = int(frontmatter['part'])
 
-        if 'track_order' in frontmatter:
-            frontmatter['track_order'] = int(frontmatter['track_order'])
+        if 'track_part' in frontmatter:
+            frontmatter['track_part'] = int(frontmatter['track_part'])
 
         counter += 1
         content_lines = ''.join(lines[counter+1:])
@@ -241,7 +241,7 @@ class Command(BaseCommand):
 
                 tuts = track.tutorial_list()
                 if tutorial not in tuts:
-                    order = TrackTutorials(track=track, tutorial=tutorial, order=frontmatter['track_order'])
+                    order = TrackTutorials(track=track, tutorial=tutorial, order=frontmatter['track_part'])
                     order.save()
 
 

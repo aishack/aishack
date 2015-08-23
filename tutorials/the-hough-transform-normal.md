@@ -6,7 +6,7 @@ category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform.jpg"
 track: "Image processing algorithms (level 2)"
-track_order: 8
+track_part: 8
 ---
 ## The flaw
 

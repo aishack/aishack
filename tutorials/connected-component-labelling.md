@@ -6,7 +6,7 @@ category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-connected-components.jpg"
 track: "Image processing algorithms (level 2)"
-track_order: 5
+track_part: 5
 ---
 One common problem encountered in image analysis is to figure out which parts of an object are "connected", physically. That is, irrespective of the colour. Here's an example: 
 

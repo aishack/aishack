@@ -6,7 +6,7 @@ category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-mathematical-morphology.jpg"
 track: "Image processing algorithms (level 1)"
-track_order: 6
+track_part: 6
 ---
 I'm sure you've studied morphology in Biology. Well, that was biological morphology. This is mathematical morphology. This was one tool that I always knew about, but never really used it. For some reason, I thought this was only for some funky effects (the name "erode" mislead me). These operations that I'm about to explain are super useful! Hopefully, you'll appreciate what these tools can do! 
 

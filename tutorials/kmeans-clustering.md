@@ -6,7 +6,7 @@ category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-kmeans-clustering.jpg"
 track: "Image processing algorithms (level 2)"
-track_order: 10
+track_part: 10
 ---
 K-Means is a clustering algorithm. That means you can "group" points based on their neighbourhood. When a lot of points a near by, you mark them as one cluster. With K-means, you can find good center points for these clusters.
 

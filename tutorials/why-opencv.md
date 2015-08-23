@@ -7,7 +7,7 @@ author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-why-opencv.jpg"
 featured: true
 track: "OpenCV Basics"
-track_order: 1
+track_part: 1
 ---
 
 Okay. You've landed on this page means you're interested in image processing. You probably have some ideas about image processing and probably even some experience. If you've used Matlab, you might hate this sudden change from the relatively easy Matlab to the tough C/C++. There are a couple of why to prefer OpenCV over Matlab. 

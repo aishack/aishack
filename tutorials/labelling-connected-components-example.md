@@ -6,7 +6,7 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-connected-components.jpg"
 track: "Image processing algorithms (level 2)"
-track_order: 6
+track_part: 6
 ---
 We'll go through an example for [Labelling connected components](/tutorials/connected-component-labelling/) algorithm. I assume you know how the algorithm works (if not, check [Labelling connected components](../tutorials/connected-component-labelling/)) and also how the union-find data structure works. We'll work on a binary image to keep things simple. Suppose the binary image is the following: 
 
