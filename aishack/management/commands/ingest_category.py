@@ -117,16 +117,16 @@ class Command(BaseCommand):
 
                 self.stdout.write('Category already exists')
 
-                category.title      = frontmatter['title']
-                category.slug          = slug
-                category.description   = content
+                category.title   = frontmatter['title']
+                category.slug    = slug
+                category.desc    = content
 
             except Category.DoesNotExist, e:
                 self.stdout.write('Category does not exist - trying to create it')
                 # It doesn't exist yet - create the track object
-                category = Category(title       = frontmatter['title'],
-                                    slug        = slug,
-                                    description = content)
+                category = Category(title = frontmatter['title'],
+                                    slug  = slug,
+                                    desc  = content)
 
             # Run the INSERT/UPDATE query
             category.save()
