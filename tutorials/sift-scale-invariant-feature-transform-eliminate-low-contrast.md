@@ -21,9 +21,9 @@ Because we have subpixel keypoints (we used the Taylor expansion to refine keypo
 
 The idea is to calculate two gradients at the keypoint. Both perpendicular to each other. Based on the image around the keypoint, three possibilities exist. The image around the keypoint can be:
 
-    * **A flat region:** If this is the case, both gradients will be small.
-    * **An edge:** Here, one gradient will be big (perpendicular to the edge) and the other will be small (along the edge)
-    * **A "corner":** Here, both gradients will be big.
+* **A flat region:** If this is the case, both gradients will be small.
+* **An edge:** Here, one gradient will be big (perpendicular to the edge) and the other will be small (along the edge)
+* **A "corner":** Here, both gradients will be big.
 
 Corners are great keypoints. So we want just corners. If both gradients are big enough, we let it pass as a key point. Otherwise, it is rejected. 
 
