@@ -13,3 +13,5 @@ wp-content/w3-total-cache-config.php
 web.archive.org/*
 *.pyc
 env/lib
+node_modules
+
