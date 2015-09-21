@@ -44,7 +44,7 @@ module.exports = function(grunt) {
     uglify: {
         my_target: {
             files: {
-                './aishack/static/js/output.min.js': jsFiles
+                './aishack/static/js/bundle.min.js': jsFiles
             }
         }
     },
