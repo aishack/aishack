@@ -348,11 +348,6 @@ figcaption {
   background: rgba(0, 0, 0, 0.4);
 }
 
-.siteinfo {
-  padding-top: 20px;
-  color: #ccc;
-}
-
 body {
   margin: 0;
 }
@@ -365,7 +360,9 @@ body {
 .footer-bottom {
   margin: 0px;
   padding: 0 0;
-  background: #303030 url(/static/img/bg-footer.jpg) repeat-x;
+  background: #f9f9f9;
+  border-top: solid 1px #e9e9e9;
+  margin-top: 2em;
   .to-top {
     background: url(/static/img/sprites.png) no-repeat 0 0;
     border-image: none;
@@ -379,14 +376,14 @@ body {
       background: url(/static/img/sprites.png) no-repeat 0 -43px;
     }
   }
+  p.creator {
+    padding-top: 1.5em;
+    text-align: left;
+  }
 }
+
 
 .logo-footer {}
-
-.siteinfo p.creator {
-  padding-top: 2em;
-  text-align: right;
-}
 
 .form-search .form-control {
   width: 100%;
@@ -429,4 +426,31 @@ img.user-gravatar {
   display: inline-block;
   margin-top: -8px;
   margin-right: 8px;
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
+.footer {
+    font-size: 1em;
+    border-top: solid #d9d9d9 1px;
+    padding-top: 2em;
+    h4 {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    p {
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+
+    .getting-started {
+        ul {
+            list-style-type: none;
+            padding-left: 1em;
+        }
+    }
 }

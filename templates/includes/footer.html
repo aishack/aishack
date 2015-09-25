@@ -1,7 +1,37 @@
 {% load staticfiles %}
 
-<div class="row">
-    <div class='col-md-5'>
+<div class="row footer">
+    <div class='col-md-4'>
+        <img src='/static/img/logo-footer-left.png' class='pull-left logo'/>
+        <h4>About AI Shack</h4>
+        <p>Learn about the latest in AI technology with in-depth tutorials on vision and learning!</p>
+        <a class='pull-right' href='/about/'>More...</a>
+        <a href="https://twitter.com/aishack" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @aishack</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+    <div class='col-md-4 getting-started'>
+        <h4>Get started</h4>
+        <ul>
+            <li><a href='/tracks/opencv-basics/'>Get started with OpenCV</a></li>
+            <li><a href='/tutorials/tracking-colored-objects-in-opencv/'>Track a specific color on video</a></li>
+            <li><a href='/tracks/image-processing-algorithms-level-1/'>Learn basic image processing algorithms</a></li>
+            <li><a href='/tutorials/a-single-neuron-dictomizer/'>How to build artificial neurons?</a></li>
+            <li><a href='http://github.com/aishack/'>Look at some source code</a></li>
+        </ul>
+    </div>
+    <div class='col-md-4'>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="fb-page" data-href="https://www.facebook.com/aishack" data-width="300" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/aishack"><a href="https://www.facebook.com/aishack">AI Shack</a></blockquote></div></div>
+        </div>
+    <!--div class='col-md-5'>
         <div class='panel panel-default'>
             <div class='panel-heading'>AI Shack on Facebook</div>
             <div class='facebook-liker-nopadding panel-body'>
@@ -36,5 +66,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div-->
 </div>
