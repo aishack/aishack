@@ -27,7 +27,7 @@ def index(request):
     # Fetch the first three featured tutorials
     # Fetch the 3 recent tutorials
     featured_tutorials = Tutorial.objects.filter(featured=True)
-    context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(13)})
+    context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(8)})
 
     return render(request, "index.html", context)
 
