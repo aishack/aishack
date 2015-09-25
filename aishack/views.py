@@ -339,6 +339,17 @@ def whylogin(request):
     context.update({'current_page': 'why-login'})
     return render(request, 'why-login.html', context)
 
+def opencvbook(request):
+    context = utils.get_global_context(request)
+    context.update({'current_page': 'opencv-blueprints'})
+    return render(request, 'opencv-blueprints.html', context);
+
+def visionscrolls(request):
+    context = utils.get_global_context(request)
+    context.update({'current_page': 'vision-scrolls'})
+    return render(request, 'vision-scrolls.html', context);
+
+
 ######
 # Setup sitemaps for the website
 class AishackSitemap(Sitemap):

@@ -46,6 +46,8 @@ urlpatterns = patterns('',
     url(r'^profile/edit/$', views.profile_edit),
     url(r'^profile/(?P<username>[a-zA-Z0-9-]+)/$', views.profile),
     url(r'^why-login/$', views.whylogin),
+    url(r'^opencv-blueprints/$', views.opencvbook),
+    url(r'^vision-scrolls/$', views.visionscrolls),
 
     # sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
