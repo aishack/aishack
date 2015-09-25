@@ -1,7 +1,7 @@
 ---
 title: "K-Nearest Neighbors in OpenCV"
 date: "2010-10-05 21:13:23"
-excerpt: ""
+excerpt: "Learn how to implement K-Nearest in OpenCV. We use the MNIST database of handwritten numbers."
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-knearest-opencv.jpg"

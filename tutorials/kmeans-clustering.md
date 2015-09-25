@@ -1,7 +1,7 @@
 ---
 title: "K-Means clustering"
 date: "2010-07-29 23:42:40"
-excerpt: ""
+excerpt: "A quick introduction to what the K-Means clustering algorithm does and how its performance compares to it's inputs."
 category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-kmeans-clustering.jpg"

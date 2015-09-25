@@ -1,7 +1,7 @@
 ---
 title: "SuDoKu Grabber with OpenCV: The Plot"
 date: "2010-08-25 16:41:50"
-excerpt: ""
+excerpt: "I decided to write a quick and fun project. The idea is simple - capture an image, identify the sudoku grid + digits and then solve the puzzle!"
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"

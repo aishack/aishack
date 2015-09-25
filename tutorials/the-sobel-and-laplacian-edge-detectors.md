@@ -1,7 +1,7 @@
 ---
 title: "The Sobel and Laplacian Edge Detectors"
 date: "2011-04-24 14:48:50"
-excerpt: ""
+excerpt: "Edge detection is a fundamental image processing operation. Learn about how to calculate derivatives and find edges in your images using simple matrix operations."
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sobel-laplacian.jpg"

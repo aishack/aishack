@@ -1,7 +1,7 @@
 ---
 title: "Timing macros in C/C++"
 date: "2010-08-19 16:18:20"
-excerpt: ""
+excerpt: "Some quick macros to help profile your OpenCV code."
 category: "General"
 author: "shervin.emami@gmail.com"
 post_image: "/static/img/tut/post-timing-macros.jpg"

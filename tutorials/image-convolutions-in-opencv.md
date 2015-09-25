@@ -1,7 +1,7 @@
 ---
 title: "Image Convolutions in OpenCV"
 date: "2010-08-20 16:58:05"
-excerpt: ""
+excerpt: "Learn how to run convolutions in OpenCV."
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-convolutions.jpg"

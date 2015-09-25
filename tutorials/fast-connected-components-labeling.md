@@ -1,7 +1,7 @@
 ---
 title: "Fast connected components labeling"
 date: "2010-08-18 16:27:35"
-excerpt: ""
+excerpt: "Learn about a technique to speed up labelling connected components in your image. Very useful if you're considering segmentation on multi-megapixel images."
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-connected-components.jpg"
