@@ -40,7 +40,7 @@
 <hr/>
 <h3>Recent tutorials</h3>
 <div class='row'>
-    {% for tut, series in recent_tutorials %}
+    {% for tut, series in recent_tutorials|slice:":3" %}
         <div class='col-md-4'>
             <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_image}}" class='img-responsive'/></a>
             <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
@@ -51,6 +51,19 @@
 </div>
 
 <hr/>
+<div class='row home-new-tuts'>
+    <div class='col-md-12'>
+        {% for tut, series in recent_tutorials|slice:"4:" %}
+            <div class='summary'>
+                <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
+                <p>{{tut.excerpt}}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<a href='/tutorials/'><button class='pull-right btn btn-default'>View all tutorials</button></a>
+
 
 {% endblock %}
 

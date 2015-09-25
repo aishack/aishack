@@ -459,3 +459,13 @@ img.user-gravatar {
 .breadcrumb {
     border-radius: 0px;
 }
+
+.home-new-tuts {
+    .summary {
+        border-bottom: solid 1px #d9d9d9;
+    }
+
+    .summary:last-of-type {
+        border-bottom: none;
+    }
+}
