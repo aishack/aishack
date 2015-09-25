@@ -377,8 +377,9 @@ body {
     }
   }
   p.creator {
-    padding-top: 1.5em;
-    text-align: left;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    text-align: center;
   }
 }
 
@@ -453,4 +454,8 @@ img.user-gravatar {
             padding-left: 1em;
         }
     }
+}
+
+.breadcrumb {
+    border-radius: 0px;
 }
