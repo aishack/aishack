@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import settings
+import settings, knobs
 
 import markdown, hashlib
 
@@ -11,7 +11,10 @@ def get_global_context(request):
     popular_tutorials = fetch_popular_tutorials(5)
 
     ret = {'SITE_TITLE': settings.SITE_TITLE,
-            'POPULAR_TUTORIALS': popular_tutorials}
+            'POPULAR_TUTORIALS': popular_tutorials,
+            'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
+            'knob_show_vision_scrolls': knobs.show_vision_scrolls
+        }
 
     if request.user.is_authenticated():
         ret.update({'user_email_md5': hashlib.md5(request.user.email).hexdigest()})
