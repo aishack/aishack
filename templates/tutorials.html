@@ -6,6 +6,7 @@
             <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
         {% endif %}
         <h2> {{tutorial.title}} </h2>
+       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='595px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
         {{ tutorial.content | safe }}
 
@@ -26,17 +27,21 @@
         {% endif %}
 
         <hr />
+       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='595px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+        <hr />
 
         {# related posts #}
-        <p><strong>Related posts</strong></p>
-        <div class='row'>
-            {% for tut in related_tuts %}
-                <div class='col-md-4'>
-                    <img class='img-responsive' src='{{tut.post_image}}' />
-                    <p><a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></p>
-                </div>
-            {% endfor %}
-        </div>
+        {% if related_tuts %}
+            <p><strong>Related posts</strong></p>
+            <div class='row'>
+                {% for tut in related_tuts %}
+                    <div class='col-md-4'>
+                        <img class='img-responsive' src='{{tut.post_image}}' />
+                        <p><a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
 
         {# author bio #}
         <div class='well'>
