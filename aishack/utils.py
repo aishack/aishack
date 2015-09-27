@@ -13,7 +13,8 @@ def get_global_context(request):
     ret = {'SITE_TITLE': settings.SITE_TITLE,
             'POPULAR_TUTORIALS': popular_tutorials,
             'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
-            'knob_show_vision_scrolls': knobs.show_vision_scrolls
+            'knob_show_vision_scrolls': knobs.show_vision_scrolls,
+            'title_keywords': knobs.title_keywords,
         }
 
     if request.user.is_authenticated():
