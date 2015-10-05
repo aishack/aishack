@@ -2,19 +2,20 @@
 
 {% block content %}
 
-<div class='row'>
+<div class='row featured'>
 <div class='col-md-12'>
 <h3>Featured tutorials</h3>
     <div class='row'>
         {% for tut in featured %}
             <div class='col-md-4'>
                 <div class='item {% if forloop.first %}active{% endif %}'>
-                    <a href='/tutorials/{{tut.slug}}'><img src='{{tut.post_thumb}}' alt='' /></a>
+                    <a href='/tutorials/{{tut.slug}}'><img class='thumb pull-left' src='{{tut.post_thumb}}' alt='' /></a>
                     <div class=''>
                         <a href='/tutorials/{{tut.slug}}'><h4>{{ tut.title }}</h4></a>
                         <p>{{ tut.excerpt }}</p>
-                        <a href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
+                        <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
                     </div>
+                    <div class='clear-fix'></div>
                 </div>
             </div>
         {% endfor %}

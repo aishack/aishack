@@ -480,3 +480,34 @@ img.user-gravatar {
     height: 64px;
     margin-right: 10px;
 }
+
+.featured {
+    .thumb {
+        height: 80px;
+        width: 80px;
+        margin-right: 10px;
+    }
+    
+    .read-more {
+        float: right;
+    }
+    .clear-fix {
+        clear: both;
+    }
+}
+
+@media(min-width: 992px) {
+    .featured { 
+        .thumb {
+            width: 100%;
+            height: 100%;
+            margin-right: 0px;
+        }
+
+        .read-more {
+            float: none;
+        }
+    }
+}
+
+
