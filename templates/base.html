@@ -14,7 +14,7 @@
         <!-- for use while sharing -->
         <meta name='title' content='{{ meta_title }}'>
         <meta name="description" content="{{ meta_description }}" />
-        <link rel='image_src' href='{{ meta_thumb }}' />
+        <link rel='image_src' href='{{request.build_absolute_uri }}{{ meta_thumb }}' />
     </head>
     <body>
         <div class='container-fluid header-top'>
