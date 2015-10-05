@@ -5,6 +5,7 @@ excerpt: "I decided to write a quick and fun project. The idea is simple - captu
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
+thumb_pull: "left"
 featured: true
 series: "SuDoKu Grabber in OpenCV"
 part: 1

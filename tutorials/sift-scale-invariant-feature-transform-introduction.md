@@ -1,7 +1,7 @@
 ---
 title: "SIFT: Introduction"
 date: "2010-05-14 22:22:09"
-excerpt: ""
+excerpt: "Learn how the famous SIFT keypoint detector works in the background. This paper led a mini revolution in the world of computer vision!"
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sift.jpg"

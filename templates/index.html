@@ -5,34 +5,20 @@
 <div class='row'>
 <div class='col-md-12'>
 <h3>Featured tutorials</h3>
-<div id="carousel-featured" class='carousel slide' data-ride='carousel'>
-    <!-- indicators -->
-    <ol class='carousel-indicators'>
-        <li data-target='#carousel-featured' data-slide-to='0' class='active'></li>
-        <li data-target='#carousel-featured' data-slide-to='1'></li>
-        <li data-target='#carousel-featured' data-slide-to='2'></li>
-    </ol>
-
-    <!-- wrapper for slides -->
-    <div class='carousel-inner'>
+    <div class='row'>
         {% for tut in featured %}
-            <div class='item {% if forloop.first %}active{% endif %}'>
-                <a href='/tutorials/{{tut.slug}}'><img src='{{tut.post_image}}' alt='' /></a>
-                <div class='carousel-caption'>
-                    <h4>{{ tut.title }}</h4>
+            <div class='col-md-4'>
+                <div class='item {% if forloop.first %}active{% endif %}'>
+                    <a href='/tutorials/{{tut.slug}}'><img src='{{tut.post_thumb}}' alt='' /></a>
+                    <div class=''>
+                        <a href='/tutorials/{{tut.slug}}'><h4>{{ tut.title }}</h4></a>
+                        <p>{{ tut.excerpt }}</p>
+                        <a href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
+                    </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-
-    <!-- controls -->
-    <a class='left carousel-control' href='#carousel-featured' role='button' data-slide='prev'>
-        <span class='glyphicon glyphicon-chevron-left'></span>
-    </a>
-    <a class='right carousel-control' href='#carousel-featured' role='button' data-slide='next'>
-        <span class='glyphicon glyphicon-chevron-right'></span>
-    </a>
-</div>
 </div>
 </div>
 
@@ -67,7 +53,4 @@
 {% endblock %}
 
 {% block inlinejs %}
-    $(document).ready(function() {
-        $('.carousel').carousel();
-    });
 {% endblock %}

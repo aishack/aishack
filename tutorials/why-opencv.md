@@ -1,7 +1,7 @@
 ---
 title: "Why OpenCV?"
 date: "2010-02-01 15:07:24"
-excerpt: ""
+excerpt: "If you come from the land of Matlab, you might need some convincing to switch to the much harder programming language - C++. This article tries to do just that!"
 category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-why-opencv.jpg"
