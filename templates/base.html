@@ -5,12 +5,16 @@
         <meta charset="utf8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="author" content="Utkarsh Sinha">
         <link rel="shortcut icon" href="{% static 'img/fav.gif' %}" />
         <title>{% if page_title %} {{ page_title }} - {% endif %}{{ SITE_TITLE }} - {{ title_keywords }}</title>
         <link rel="stylesheet" href='{% static "css/styles.min.css" %}' />
+
+        <!-- for use while sharing -->
+        <meta name='title' content='{{ meta_title }}'>
+        <meta name="description" content="{{ meta_description }}" />
+        <link rel='image_src' href='{{ meta_thumb }}' />
     </head>
     <body>
         <div class='container-fluid header-top'>

@@ -152,6 +152,12 @@ def tutorials(request, slug=None):
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author})
 
+        context.update({
+            'meta_title': tutorial.title, 
+            'meta_description': tutorial.excerpt,
+            'meta_thumb': tutorial.post_thumb,
+        })
+
         # Increment the read counter
         tutorial.read_count = tutorial.read_count + 1
         tutorial.save(update_fields=['read_count'])

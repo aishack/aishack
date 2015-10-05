@@ -15,6 +15,9 @@ def get_global_context(request):
             'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
             'knob_show_vision_scrolls': knobs.show_vision_scrolls,
             'title_keywords': knobs.title_keywords,
+            'meta_title': settings.SITE_TITLE, 
+            'meta_description': knobs.title_keywords,
+            'meta_thumb': '/static/img/logo-footer-left.png',
         }
 
     if request.user.is_authenticated():
