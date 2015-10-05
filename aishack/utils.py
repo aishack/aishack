@@ -82,7 +82,7 @@ def fetch_tutorials(num=None, want_series=True):
     Returns tutorials by combining multiple part tutorials into a single element
     """
     # This section defines what happens if the url is just /tutorials/
-    tuts = list(Tutorial.objects.all().order_by('-date').values('post_image', 'slug', 'series', 'title', 'series_id', 'excerpt'))
+    tuts = list(Tutorial.objects.all().order_by('-date').values('post_image', 'post_thumb', 'slug', 'series', 'title', 'series_id', 'excerpt', 'category'))
     tutorials_to_display = []
 
     tuts_without_extras = tuts[:]

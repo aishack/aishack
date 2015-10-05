@@ -5,6 +5,7 @@ excerpt: "An in-depth exploration of how the famous Canny edge detection system 
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/canny-edge-detector.jpg"
+thumb_pull: "right"
 series: "The Canny Edge Detector"
 part: 1
 ---

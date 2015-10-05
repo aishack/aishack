@@ -13,6 +13,8 @@ from django.contrib.auth.models import User
 
 from aishack.models import Tutorial, Category, TutorialSeries, TutorialSeriesOrder, Track, TrackTutorials
 
+from PIL import Image
+
 # Do not use these words in the URL slugs - they're bad for SEO
 stop_words = ["a", "about", "above", "across", "after", "again", "against", "all", "almost", "alone", "along", "already", "also", "although", "always", "among", "an", "and", "another", "any", "anybody", "anyone", "anything", "anywhere", "are", "area", "areas", "around", "as", "ask", "asked", "asking", "asks", "at", "away",
     "b", "back", "backed", "backing", "backs", "be", "became", "because", "become", "becomes", "been", "before", "began", "behind", "being", "beings", "best", "better", "between", "big", "both", "but", "by",
@@ -44,6 +46,7 @@ stop_words = ["a", "about", "above", "across", "after", "again", "against", "all
 class Command(BaseCommand):
     help = "Ingest a tutorial markdown file into the database"
     args = "<md>"
+    can_import_settings = True
 
     def read_tutorial_file(self, md, series=False):
         if not os.path.exists(md):
@@ -208,6 +211,37 @@ class Command(BaseCommand):
                                     post_image  = frontmatter['post_image'],
                                     content     = content,
                                     featured    = frontmatter['featured'])
+
+            # Try and create square thumbnails
+            if frontmatter['post_image']:
+                from django.conf import settings
+                fp = settings.STATIC_ROOT.replace(settings.STATIC_URL, '')
+                filepath = os.path.join(fp, frontmatter['post_image'][1:])
+                im = Image.open(filepath)
+                (width, height) = im.size
+
+                upper = 0
+                lower = height
+                left = 0
+                right = 0
+
+                if 'thumb_pull' in frontmatter and frontmatter['thumb_pull'] == 'right':
+                    left = width - height
+                    right = width
+                elif 'thumb_pull' in frontmatter and frontmatter['thumb_pull'] == 'left':
+                    left = 0
+                    right = height
+                else:
+                    left = (width - height) / 2
+                    right = (width + height) / 2
+                
+                thumb = im.crop((left, upper, right, lower))
+
+                parts = filepath.split(os.sep)[-1].split('.')
+                small_filepath = os.path.join(settings.STATIC_ROOT, 'thumb', '.'.join(parts))
+                thumb.load()
+                thumb.save(small_filepath)
+                tutorial.post_thumb = '%s/%s' % (settings.STATIC_URL, small_filepath.split(settings.STATIC_URL)[1])
 
             # Run the INSERT/UPDATE query
             tutorial.save()
