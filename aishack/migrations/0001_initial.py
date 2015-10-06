@@ -1,108 +1,180 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+from django.conf import settings
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Tutorial'
-        db.create_table(u'aishack_tutorial', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=128)),
-            ('content', self.gf('django.db.models.fields.TextField')()),
-            ('date', self.gf('django.db.models.fields.DateField')()),
-            ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['aishack.Category'])),
-            ('slug', self.gf('django.db.models.fields.CharField')(unique=True, max_length=128)),
-            ('post_image', self.gf('django.db.models.fields.URLField')(max_length=256)),
-            ('excerpt', self.gf('django.db.models.fields.CharField')(max_length=512)),
-        ))
-        db.send_create_signal(u'aishack', ['Tutorial'])
+    dependencies = [
+        ('auth', '0001_initial'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
-        # Adding model 'Category'
-        db.create_table(u'aishack_category', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=256)),
-            ('desc', self.gf('django.db.models.fields.CharField')(max_length=1024)),
-        ))
-        db.send_create_signal(u'aishack', ['Category'])
-
-        # Adding model 'Track'
-        db.create_table(u'aishack_track', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=256)),
-        ))
-        db.send_create_signal(u'aishack', ['Track'])
-
-        # Adding model 'TrackTutorials'
-        db.create_table(u'aishack_tracktutorials', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('track', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['aishack.Track'])),
-            ('tutorial', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['aishack.Tutorial'])),
-        ))
-        db.send_create_signal(u'aishack', ['TrackTutorials'])
-
-        # Adding model 'Quiz'
-        db.create_table(u'aishack_quiz', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=128)),
-        ))
-        db.send_create_signal(u'aishack', ['Quiz'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'Tutorial'
-        db.delete_table(u'aishack_tutorial')
-
-        # Deleting model 'Category'
-        db.delete_table(u'aishack_category')
-
-        # Deleting model 'Track'
-        db.delete_table(u'aishack_track')
-
-        # Deleting model 'TrackTutorials'
-        db.delete_table(u'aishack_tracktutorials')
-
-        # Deleting model 'Quiz'
-        db.delete_table(u'aishack_quiz')
-
-
-    models = {
-        u'aishack.category': {
-            'Meta': {'object_name': 'Category'},
-            'desc': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '256'})
-        },
-        u'aishack.quiz': {
-            'Meta': {'object_name': 'Quiz'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
-        },
-        u'aishack.track': {
-            'Meta': {'object_name': 'Track'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '256'})
-        },
-        u'aishack.tracktutorials': {
-            'Meta': {'object_name': 'TrackTutorials'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'track': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['aishack.Track']"}),
-            'tutorial': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['aishack.Tutorial']"})
-        },
-        u'aishack.tutorial': {
-            'Meta': {'object_name': 'Tutorial'},
-            'category': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['aishack.Category']"}),
-            'content': ('django.db.models.fields.TextField', [], {}),
-            'date': ('django.db.models.fields.DateField', [], {}),
-            'excerpt': ('django.db.models.fields.CharField', [], {'max_length': '512'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'post_image': ('django.db.models.fields.URLField', [], {'max_length': '256'}),
-            'slug': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'}),
-            'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'})
-        }
-    }
-
-    complete_apps = ['aishack']
+    operations = [
+        migrations.CreateModel(
+            name='AishackUser',
+            fields=[
+                ('user', models.OneToOneField(primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('short_bio', models.CharField(max_length=256, blank=True)),
+                ('bio', models.TextField(max_length=2048, blank=True)),
+                ('website', models.URLField(blank=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Category',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(unique=True, max_length=256)),
+                ('desc', models.CharField(max_length=1024, blank=True)),
+                ('slug', models.SlugField()),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Quiz',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=128)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Track',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(unique=True, max_length=256)),
+                ('thumbnail', models.CharField(max_length=255, blank=True)),
+                ('slug', models.CharField(unique=True, max_length=128)),
+                ('excerpt', models.CharField(max_length=255)),
+                ('description', models.CharField(max_length=1024)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TrackTutorials',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('order', models.IntegerField(default=0)),
+                ('track', models.ForeignKey(to='aishack.Track')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Tutorial',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(unique=True, max_length=128)),
+                ('content', models.TextField()),
+                ('content_md', models.TextField()),
+                ('date', models.DateField()),
+                ('slug', models.CharField(unique=True, max_length=128)),
+                ('post_image', models.ImageField(max_length=256, upload_to=b'/static/img/tut/')),
+                ('post_thumb', models.ImageField(max_length=256, null=True, upload_to=b'/static/thumb/')),
+                ('excerpt', models.CharField(max_length=512, blank=True)),
+                ('featured', models.BooleanField(default=False)),
+                ('read_count', models.BigIntegerField(default=0)),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('category', models.ForeignKey(to='aishack.Category')),
+                ('related', models.ManyToManyField(related_name='related_rel_+', to='aishack.Tutorial', blank=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TutorialRead',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('date', models.DateField(auto_now_add=True)),
+                ('tutorial', models.ForeignKey(to='aishack.Tutorial')),
+                ('user', models.ForeignKey(to='aishack.AishackUser')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TutorialSeries',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(default=b'', max_length=256, blank=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TutorialSeriesOrder',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('order', models.IntegerField(default=0)),
+                ('series', models.ForeignKey(to='aishack.TutorialSeries')),
+                ('tutorial', models.ForeignKey(to='aishack.Tutorial')),
+            ],
+            options={
+                'ordering': ('order',),
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='UserTrack',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('signup_date', models.DateField(auto_now_add=True)),
+                ('track', models.ForeignKey(to='aishack.Track')),
+                ('user', models.ForeignKey(to='aishack.AishackUser')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='tutorialseries',
+            name='tutorials',
+            field=models.ManyToManyField(to='aishack.Tutorial', through='aishack.TutorialSeriesOrder'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='tutorial',
+            name='series',
+            field=models.ForeignKey(default=None, blank=True, to='aishack.TutorialSeries', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='tracktutorials',
+            name='tutorial',
+            field=models.ForeignKey(to='aishack.Tutorial'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='track',
+            name='tutorials',
+            field=models.ManyToManyField(to='aishack.Tutorial', through='aishack.TrackTutorials'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='aishackuser',
+            name='tracks_following',
+            field=models.ManyToManyField(to='aishack.Track', through='aishack.UserTrack'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='aishackuser',
+            name='tutorials_read',
+            field=models.ManyToManyField(to='aishack.Tutorial', through='aishack.TutorialRead'),
+            preserve_default=True,
+        ),
+    ]

@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'aishack',
     'social.apps.django_app.default',
-    'south',
+    #'south',
     'haystack',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
