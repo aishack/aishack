@@ -2,8 +2,15 @@
 
 {% load staticfiles %}
 {% block content %}
-<h2>OpenCV Blueprints</h2>
-<h3>Highlights</h3>
+
+<div class='clearfix jumbotron'>
+    <img class='pull-left img-rounded img-responsive img-margin' src='/static/img/opencv-blueprints.jpg' />
+    <h1>OpenCV 3 Blueprints</h1>
+    <p>Build important vision applications with OpenCV 3. Kick start your computer vision projects with this power-packed book.</p>
+    <a class='pull-right' href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints'><img src='/static/img/buy-now.png' /></a>
+</div>
+<hr/>
+<h2>Highlights</h2>
 <ul>
     <li>Select and configure camera systems to see invisible light, fast motion, and distant objects</li>
     <li>Build a “camera trap”, as used by nature photographers, and process photos to create beautiful effects</li>
@@ -13,17 +20,132 @@
     <li>Create a person identification and registration system based on biometric properties of that person, such as their fingerprint, iris, and face</li>
     <li>Fuse data from videos and gyroscopes to stabilize videos shot from your mobile phone and create hyperlapse style videos</li>
 </ul>
-    <p><a href='https://www.packtpub.com/application-development/opencv-3-blueprints' target='_blank'>Get your copy today!</a></p>
+    <p>I'm sold, I want to<a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'><img src='/static/img/buy-now-small.png' /></a></p>
+    <hr/>
 
-    <h3>In depth overview</h3>
+    <h2>In depth</h2>
 
-    <p>Computer vision is becoming accessible to a large audience of software developers who can leverage mature libraries such as OpenCV. However, as they move beyond their first experiments in computer vision, developers may struggle to ensure that their solutions are sufficiently well optimized, well trained, robust, and adaptive in real-world conditions. With sufficient knowledge of OpenCV, these developers will have enough confidence to go about creating projects in the field of computer vision.</p>
+    <p>Computer vision is becoming accessible to a large audience of software developers who can leverage mature libraries such as OpenCV. However, developers may struggle to ensure that their solutions are sufficiently well optimized, well trained, robust, and adaptive in real-world conditions. This book provides exactly that.</p>
 
-    <p>This book will help you tackle increasingly challenging computer vision problems that you may face in your careers. It makes use of OpenCV 3 to work around some interesting projects. Inside these pages, you will find practical and innovative approaches that are battle-tested in the authors’ industry experience and research. Each chapter covers the theory and practice of multiple complementary approaches so that you will be able to choose wisely in your future projects. You will also gain insights into the architecture and algorithms that underpin OpenCV’s functionality.</p>
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/camera-eye.png' />
+        <h3>Getting more out of your camera</h3>
+        <p>Squeezing pixels out of your camera - this chapter covers and compares kinds of cameras for different jobs. By the end, you'll know in fine detail what makes camera systems work and how you can exploit them for maximum performance.</p>
+        <p>Questions like how do we see <strong>fast changes</strong> in a scene, how do we <strong>see through the dark</strong> and how to <strong>purchase good lenses</strong> will be answered.</p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr />
+    </div>
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/camera-trap.png' />
+        <h3>Build a camera trap</h3>
+        <p>Noticed how nature photographers have the perfect HDR shots of animals in the wild? In this chapter, you build a system that can let you do exactly that. Whether it is deer in your backyard or red pandas on your next hiking trip, you'll be able to capture amazing photographs.</p>
+        <p>These <strong>automated systems</strong> can be deployed wherever you go and let you capture <strong>National Geographic style photographs</strong> without safety concerns.</p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr />
+    </div>
+    <hr/>
 
-    <p>We begin by taking a critical look at inputs in order to decide which kinds of light, cameras, lenses, and image formats are best suited to a given purpose. We proceed to consider the finer aspects of computational photography as we build an automated camera to assist nature photographers. You will gain a deep understanding of some of the most widely applicable and reliable techniques in object detection, feature selection, tracking, and even biometric recognition. We will also build Android projects in which we explore the complexities of camera motion: first in panoramic image stitching and then in video stabilization.</p>
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/facial-expressions.png' />
+        <h3>Recognize facial expressions</h3>
+        <p>As computer vision matures, understanding humans seems to be the next logical step. In this chapter, you learn about various machine learning and computer vision techniques to <strong>recognize if a person is happy, sad, disgusted</strong>, etc.</p>
+        <p>Humans can do this instinctively - after reading this chapter, you can get your CPU to achieve the same results!</p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr />
+    </div>
+    <hr/>
 
-    <p>By the end of the book, you will have a much richer understanding of imaging, motion, machine learning, and the architecture of computer vision libraries and applications!</p>
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/panorama-ndk.png' />
+        <h3>Panoramas on the Android NDK</h3>
+        <p>Learn how to build panoramas using OpenCV's android port. This is one classic application for mobile vision systems whether on robots or on a consumer device. In this chapter, you'll learn about the details of Android, JNI and using OpenCV on such platforms.</p>
+        <p><strong>A must if you're getting started with mobile app development and OpenCV.</strong></p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr/>
+    </div>
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/pedestrian-gpu.png' />
+        <h3>Object detection</h3>
+        <p>This chapter talks about the Viola-Jones cascade classifier in depth. Not just training new classifiers but how to collect data is also covered. <strong>Rotation invariance</strong> in HAAR classifiers - something not supported by OpenCV at the moment - is also described and solved!</p>
+        <p>Later, we look at how to integrate the <strong>GPU</strong> into this operation and how it affects performance.</p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr/>
+    </div>
+    <hr/>
 
-    <p><a href='https://www.packtpub.com/application-development/opencv-3-blueprints' target='_blank'>Get your copy today!</a></p>
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/biometrics.png' />
+        <h3>Biometric authentication</h3>
+        <p>If you were to build a biometric authentication system, how would you go about it? This chapter deals with face recognition, <strong>fingerprints</strong> and <strong>iris recognition</strong>. Also learn about the various machine learning techniqes - k-nearest, SVMs, neural networks and PCA.</p>
+        <p>This chapter is packed - 'nuff said!</p>
+        <p>&nbsp;</p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr/>
+    </div>
+
+    <div class='col-md-10 col-md-offset-1 clearfix'>
+        <img class='pull-right' src='/static/img/video-stabilization.png' />
+        <h3>Gyroscopic video stabilization</h3>
+        <p>Use a phone's gyroscope to stabilize a video. Using just feature points is not enough in real-life situations. Complement your feature points with <strong>motion data from the real-world</strong>. The chapter talks about acquiring two streams of data (video and motion) and processing them in synchronicity.</p>
+        <p>By the end, you'll be able to create <strong>Instagram's Hyperlapse</strong> style videos just with OpenCV!</p>
+        <p><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'>I'm sold, let me get a copy</a></p>
+        <hr/>
+    </div>
+    <div class='col-md-10'>
+        <h2>Meet the authors</h2>
+
+        <div class='clearfix authors'>
+            <div style='width:45%' class='pull-left'>
+                <div class='clearfix'>
+                    <img class='pull-left img-margin' src='/static/img/author-joe.png' />
+                    <h4><a href='http://nummist.com' target='_blank'>Joseph Howse</a></h4>
+                    <p>Joseph heads Nummist Media, which specializes in software development consulting for computer vision applications. </p>
+                </div>
+                <div class='clearfix'>
+                    <img class='pull-left img-margin' src='/static/img/author-steven.png' />
+                    <h4><a href='https://stevenputtemans.github.io/' target='_blank'>Steven Puttermans</a></h4>
+                    <p>Steven is pursuing a PhD from KU Leuven, where he focusses on combining computer vision with artificial intelligence.</p>
+                </div>
+            </div>
+            <div style='width:45%' class='pull-right'>
+                <div class='clearfix'>
+                    <img class='pull-right' src='/static/img/author-quan.png' />
+                    <h4><a href='http://quan404.com' target='_blank'>Quan Hua</a></h4>
+                    <p>Quan lives in Vietnam and has a specialization in computer vision. He works at a robotics startup using computer vision.</p>
+                </div>
+                <div class='pull-right' class='clearfix'>
+                    <img class='pull-right' src='/static/img/author-utk.png' />
+                    <h4><a href='http://utkarshsinha.com' target='_blank'>Utkarsh Sinha</a></h4>
+                    <p>Utkarsh is currently pursuing a Masters in Computer Vision from Carnegie Mellon. He authors this website as well</p>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class='clearfix'>
+            <p>By the end of the book, you will have <strong>a much richer understanding of imaging, motion, machine learning, and the architecture of computer vision libraries and applications!</strong></p>
+            <p class='pull-right'><a href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints' target='_blank'><img src='/static/img/buy-now-small.png' /></a></p>
+        </div>
+
+    <hr/>
+    <h2>What others are saying</h2>
+        <div class='clearfix'>
+            <p>Here's what folks who have bought this book are claiming!</p>
+
+            <div class='clearfix col-md-6 col-md-offset-3'>
+                <div class='callout top-right'><p>If someone is really able to help you understand Image Processing, it is Utkarsh Sinha (AI Shack). I am sure this book will help us a lot in creating OpenCV 3 applications. See also his tutorial website: <a href='/' target='_blank'>http://aishack.in/</a></p></div>
+            <p class='pull-right'>Ruud van Munster</p>
+
+            <div class='callout top-right'><p>I'm loving OpenCV for Secret Agents. The projects are somehow simultaneously practical and ridiculous. Fantastic!</p></div>
+            <p class='pull-right'>Tony Arkles</p>
+            </div>
+        </div>
+
+    <hr/>
+
+    <h2>Become an expert at computer vision</h2>
+    <p>Check out the <strong>ebook</strong> and <strong>paperback</strong> editions of the book.</p>
+    <a class='pull-right' href='http://www.amazon.com/OpenCV-Blueprints-Joseph-Howse/dp/1784399752/ref=sr_1_fkmr0_1?ie=UTF8&qid=1447141255&sr=8-1-fkmr0&keywords=opencv+3+blueprints'><img src='/static/img/buy-now.png' /></a>
+
+
+</div>
 {% endblock %}

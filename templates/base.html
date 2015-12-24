@@ -28,13 +28,19 @@
         <div class='container pad-bottom'>
 
             <div class="row">
-                <div class="col-md-8">
+                {% ifnotequal nosidebar 1 %}
+                    <div class="col-md-8">
+                {% else %}
+                    <div class="col-md-12">
+                {% endifnotequal %}
                     {% ifnotequal current_page 'home' %}
                         {% include "includes/crumbs.html" %}
                     {% endifnotequal %}
                     {% block content %}{% endblock %}
                 </div>
-                {% include "includes/sidebar.html" %}
+                {% ifnotequal nosidebar 1 %}
+                    {% include "includes/sidebar.html" %}
+                {% endifnotequal %}
             </div>
         </div>
         <div class='container'>

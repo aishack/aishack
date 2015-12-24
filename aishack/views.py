@@ -347,7 +347,7 @@ def whylogin(request):
 
 def opencvbook(request):
     context = utils.get_global_context(request)
-    context.update({'current_page': 'opencv-blueprints'})
+    context.update({'current_page': 'opencv-blueprints', 'nosidebar': 1})
     return render(request, 'opencv-blueprints.html', context);
 
 def visionscrolls(request):
