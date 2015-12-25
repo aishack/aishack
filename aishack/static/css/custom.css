@@ -401,6 +401,9 @@ img.user-gravatar {
 .img-margin {
   margin-right: 1em; }
 
+.img-margin-left {
+  margin-left: 1em; }
+
 body {
   font-family: Helvetica;
   font-size: 13px; }
