@@ -26,6 +26,18 @@
             </ol>
         {% endif %}
 
+        {# Show the book banner #}
+        {% if knob_show_opencv_blueprints_banner_per_tutorial %}
+            <hr />
+            <div class='clearfix'>
+                <a href='/opencv-blueprints'><img class='pull-left' src='/static/img/book-banner.png' /></a>
+                <h2><strong><a href='/opencv-blueprints'>OpenCV 3 Blueprints</a></strong></h2>
+                <p>Learn how to identify <strong>face expressions</strong>, <strong>fingerprints</strong>, setup automated <strong>camera traps</strong>, stabilize mobile video with <strong>gyroscopes</strong> and use the <strong>Android NDK</strong></p>
+                <p>The book is packed with the fundamentals of computer vision and will get you started on just the right track.</p>
+                <p><a class ='btn btn-primary pull-right' href='/opencv-blueprints'>Learn more about the book</a></p>
+            </div>
+        {% endif %}
+
         <hr />
        <div class="fb-like" data-href="http://facebook.com/aishack" data-width='595px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />

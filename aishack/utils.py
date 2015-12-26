@@ -14,6 +14,7 @@ def get_global_context(request):
             'POPULAR_TUTORIALS': popular_tutorials,
             'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
             'knob_show_vision_scrolls': knobs.show_vision_scrolls,
+            'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
             'title_keywords': knobs.title_keywords,
             'meta_title': settings.SITE_TITLE, 
             'meta_description': knobs.title_keywords,
