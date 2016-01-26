@@ -2,7 +2,7 @@
 title: "Labelling connected components - Example"
 date: "2010-03-21 18:44:53"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-connected-components.jpg"
 track: "Image processing algorithms (level 2)"

@@ -1,4 +1,4 @@
 ---
 title: "General"
 ---
-Some info here
+Things that don't fit anywhere else go here!

@@ -26,20 +26,9 @@
             </ol>
         {% endif %}
 
-        {# Show the book banner #}
-        {% if knob_show_opencv_blueprints_banner_per_tutorial %}
-            <hr />
-            <div class='clearfix'>
-                <a href='/opencv-blueprints'><img class='pull-left' src='/static/img/book-banner.png' /></a>
-                <h2><strong><a href='/opencv-blueprints'>OpenCV 3 Blueprints</a></strong></h2>
-                <p>Learn how to identify <strong>face expressions</strong>, <strong>fingerprints</strong>, setup automated <strong>camera traps</strong>, stabilize mobile video with <strong>gyroscopes</strong> and use the <strong>Android NDK</strong></p>
-                <p>The book is packed with the fundamentals of computer vision and will get you started on just the right track.</p>
-                <p><a class ='btn btn-primary pull-right' href='/opencv-blueprints'>Learn more about the book</a></p>
-            </div>
-        {% endif %}
-
         {# related posts #}
         {% if related_tuts %}
+            <hr/>
             <p><strong>Related posts</strong></p>
             <div class='row'>
                 {% for tut in related_tuts %}
@@ -54,6 +43,18 @@
         <hr />
        <div class="fb-like" data-href="http://facebook.com/aishack" data-width='595px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
+
+        {# Show the book banner #}
+        {% if knob_show_opencv_blueprints_banner_per_tutorial %}
+            <hr />
+            <div class='clearfix'>
+                <a href='/opencv-blueprints'><img class='pull-left' src='/static/img/book-banner.png' /></a>
+                <h2><strong><a href='/opencv-blueprints'>OpenCV 3 Blueprints</a></strong></h2>
+                <p>Learn how to identify <strong>face expressions</strong>, <strong>fingerprints</strong>, setup automated <strong>camera traps</strong>, stabilize mobile video with <strong>gyroscopes</strong> and use the <strong>Android NDK</strong></p>
+                <p>The book is packed with the fundamentals of computer vision and will get you started on just the right track.</p>
+                <p><a class ='btn btn-primary pull-right' href='/opencv-blueprints'>Learn more about the book</a></p>
+            </div>
+        {% endif %}
 
         {# author bio #}
         <div class='well'>
@@ -88,18 +89,23 @@
         <h3>Tutorials</h3>
         <p>There are individual tutorials - pick and choose whichever you like!</p>
         <ul>
-        {% for tut, series in tutorials_to_display %}
-            {% if series %}
-                <li>
-                    <a href="/tutorials/{{tut.slug}}/">{{ series.name }}</a>
-                    <span class='glyphicon glyphicon-list-alt'></span>
-                    {% for s in series.tutorial_list %}
-                        <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
-                    {% endfor %}
-                </li>
-            {% else %}
-                <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
-            {% endif %}
+        {% for category, items in tutorials_to_display.items %}
+            <h4>{{category.title}}</h4>
+            {{category.desc | safe}}
+            {% for tut, series in items %}
+                {% if series %}
+                    <li>
+                        <a href="/tutorials/{{tut.slug}}/">{{ series.name }}</a>
+                        <span class='glyphicon glyphicon-list-alt'></span>
+                        {% for s in series.tutorial_list %}
+                            <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
+                        {% endfor %}
+                    </li>
+                {% else %}
+                    <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+            <hr/>
         {% endfor %}
         </ul>
     {% endif %}

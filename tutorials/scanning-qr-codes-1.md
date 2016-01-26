@@ -2,7 +2,7 @@
 title: "Scanning QR Codes (part 1)"
 date: "2012-02-03 11:42:48"
 excerpt: "Recognize QR Codes in images from scratch. We'll do all the bit math to figure out the location markers and then read data from the black/white array."
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-qr-code.jpg"
 series: "Scanning QR Codes"

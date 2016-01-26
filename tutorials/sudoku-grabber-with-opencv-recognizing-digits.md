@@ -2,7 +2,7 @@
 title: "SuDoKu Grabber with OpenCV: Recognizing digits"
 date: "2010-08-25 16:41:50"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
 series: "SuDoKu Grabber in OpenCV"

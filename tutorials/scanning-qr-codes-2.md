@@ -2,7 +2,7 @@
 title: "Scanning QR Codes (part 2)"
 date: "2012-02-03 11:42:48"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-qr-code.jpg"
 series: "Scanning QR Codes"

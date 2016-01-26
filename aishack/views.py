@@ -4,6 +4,7 @@ from django.template import Context
 from django.core import exceptions
 import datetime, os
 from hashlib import md5
+import itertools
 
 from django import shortcuts
 from django.shortcuts import render, redirect
@@ -26,7 +27,7 @@ def index(request):
 
     # Fetch the first three featured tutorials
     # Fetch the 3 recent tutorials
-    featured_tutorials = Tutorial.objects.filter(featured=True)
+    featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:3]))
     context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(8)})
 
     return render(request, "index.html", context)
@@ -224,7 +225,14 @@ def tutorials(request, slug=None):
         # This section defines what happens if the url is just /tutorials/
         # fetch_tutorials discards tutorials that are part of a series and only
         # returns the first part (along with a list of parts in the series)
-        tutorials_to_display = utils.fetch_tutorials()
+        output = utils.fetch_tutorials()
+        tutorials_to_display = {}
+
+        for tut in output:
+            category = Category.objects.get(pk=tut[0]['category'])
+            tutorials_to_display.setdefault(category, [])
+            tutorials_to_display[category].append(tut)
+
         context.update({'tutorials_to_display': tutorials_to_display})
 
     return render(request, "tutorials.html", context)

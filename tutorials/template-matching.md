@@ -2,7 +2,7 @@
 title: "Template matching"
 date: "2010-01-21 23:55:07"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-template-matching.jpg"
 track: "Image processing algorithms (level 1)"

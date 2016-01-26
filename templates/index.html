@@ -41,7 +41,7 @@
     <div class='col-md-12'>
         {% for tut, series in recent_tutorials|slice:"4:" %}
             <div class='summary'>
-                <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
+                <img src='{{tut.post_thumb}}' style='height: 80px' class='pull-left'/><a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
                 <p>{{tut.excerpt}}</p>
             </div>
         {% endfor %}

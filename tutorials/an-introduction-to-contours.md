@@ -2,7 +2,7 @@
 title: "An introduction to contours"
 date: "2010-01-01 18:45:56"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: ""
 track: "Image processing algorithms (level 1)"

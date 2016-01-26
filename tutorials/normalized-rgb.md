@@ -2,7 +2,7 @@
 title: "Normalized RGB"
 date: "2010-01-17 23:30:11"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-normalized-rgb.jpg"
 track: "Image processing algorithms (level 1)"

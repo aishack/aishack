@@ -2,7 +2,7 @@
 title: "Thresholding"
 date: "2010-01-03 19:07:36"
 excerpt: ""
-category: "OpenCV"
+category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-thresholding.jpg"
 track: "Image processing algorithms (level 1)"
