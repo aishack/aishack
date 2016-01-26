@@ -15,6 +15,7 @@ Here I'll tell you how to detect circles (which are quite important in computer 
 A circle can be described completely with three pieces of information: the center (a, b) and the radius. (The center consists of two parts, hence a total of three)
 
 x = a + Rcosθ
+
 y = b + Rsinθ
 
 When the θ varies from 0 to 360, a complete circle of radius R is generated.
@@ -28,11 +29,13 @@ So we'll start simple.
 To begin, we'll start with the assumption that you're looking for circles of a particular radius, that is, R is known. The equation of each circle is:
 
 x = a + Rcosθ
+
 y = b + Rsinθ
 
 So, every point in the xy space will be equivalent to a circle in the ab space (R isn't a parameter, we already know it). This is because on rearranging the equations, we get:
 
 a = x~1~ - Rcosθ
+
 b = y~1~ - Rsinθ
 
 for a particular point (x~1~, y~1~). And θ sweeps from 0 to 360 degrees.
