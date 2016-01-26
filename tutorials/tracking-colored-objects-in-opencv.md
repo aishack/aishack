@@ -2,7 +2,7 @@
 title: "Tracking colored objects in OpenCV"
 date: "2010-07-19 23:48:35"
 excerpt: ""
-category: "Computer Vision"
+category: "Projects"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-tracking.jpg"
 ---

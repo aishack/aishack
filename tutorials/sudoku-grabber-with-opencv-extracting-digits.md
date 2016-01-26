@@ -2,7 +2,7 @@
 title: "SuDoKu Grabber with OpenCV: Extracting digits"
 date: "2010-08-25 16:41:50"
 excerpt: ""
-category: "Computer Vision"
+category: "Projects"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-sudoku.jpg"
 series: "SuDoKu Grabber in OpenCV"
