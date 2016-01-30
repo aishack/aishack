@@ -375,6 +375,7 @@ def namethatdataset(request):
     return response
 
 def namethatdataset_quiz(request):
+    # TODO beautify this monstrocity please
     context = utils.get_global_context(request)
 
     # Are we mid game?
@@ -384,17 +385,20 @@ def namethatdataset_quiz(request):
     if not session:
         session = str(uuid.uuid4())
 
+    full_key = lambda x: 'aishack.quiz.%s' % x
+
     # Did redis forget about us?
-    in_redis = session in redis
+
+    in_redis = full_key(session) in redis
 
     # Did we finish a game and we returned again?
     if in_redis:
-        session_data = json.loads(redis[session])
+        session_data = json.loads(redis[full_key(session)])
 
         # Did we cross all the 10 questions?
         if session_data['state'] == 13:
             # Create a new session
-            del redis[session]
+            del redis[full_key(session)]
             in_redis = False
             session_data = {}
     
@@ -406,7 +410,7 @@ def namethatdataset_quiz(request):
         session_data['timestamp'] = time.time()
         session_data['done'] = []
 
-        redis[session] = json.dumps(session_data)
+        redis.setex(full_key(session), 900, json.dumps(session_data))
 
     datasets = {'voc-2012':     'VOC 2012',
                 'caltech-101': 'Caltech 101',
@@ -487,7 +491,7 @@ def namethatdataset_quiz(request):
                         'avatar': img,
         })
         response = render(request, 'name-that-dataset-quiz.html', context);
-        del redis[session]
+        del redis[full_key(session)]
         response.delete_cookie('quiz_session')
         return response
         
@@ -551,7 +555,7 @@ def namethatdataset_quiz(request):
                     'expecting': session_data['expecting'],
                   })
 
-    redis[session] = json.dumps(session_data)
+    redis.setex(full_key(session), 900, json.dumps(session_data))
     response = render(request, 'name-that-dataset-quiz.html', context);
     response.set_cookie('quiz_session', session)
     return response
