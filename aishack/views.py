@@ -427,6 +427,8 @@ def namethatdataset_quiz(request):
     if ans:
         ans = int(ans)
 
+    prev_answer_success = None
+    prev_answer_fail = None
     if 'expecting' in session_data and ans != None:
         if ans == session_data['expecting']:
             # Correct answer!
@@ -495,8 +497,6 @@ def namethatdataset_quiz(request):
         response.delete_cookie('quiz_session')
         return response
         
-    prev_answer_success = None
-    prev_answer_fail = None
 
     key = 'question_%d' % state
     if key not in session_data:
