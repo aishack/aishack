@@ -468,20 +468,20 @@ def namethatdataset_quiz(request):
 
         message = None
         score = session_data['score']
-        if score == 12:
+        if score >= 10:
             message = 'Your grace through math leaves people spellbound.'
             img = 'quiz-grand-master.png'
-        elif score >= 10:
+        elif score >= 8:
             message = 'You are almost there and you know it.'
             img = 'quiz-jedi-master.png'
-        elif score >= 8:
+        elif score >= 5:
             message = 'You understand the ways of the force.'
             img = 'quiz-jedi-knight.png'
-        elif score >= 5:
+        elif score >= 3:
             message = 'You are on the right path.'
             img = 'quiz-padawan.png'
         else:
-            message = 'Your inner strength needs to be unleased.'
+            message = 'Your inner strength needs to be unleashed.'
             img = 'quiz-youngling.png'
 
         session_data['state'] += 1
