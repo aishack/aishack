@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<h2>Name that dataset!</h2>
+<p>Think you've worked with so many images that you can recognize all the datasets just by looking at them? Test your skills!</p>
+<div class='quiz'>
+    {% ifequal topic 'done' %}
+        <div class='clearfix'>
+            <div class='pull-right'>
+                <img src='{% static "img/" %}/{{avatar}}' class='pull-right' />
+            </div>
+            <div class='pull-left'>
+                <center>
+                <p>You scored</p>
+                <p class='final-score'>{{score}}</p>
+                <p>out of 12</p>
+                <p>&nbsp;</p>
+                <p>{{message}}</p>
+                </center>
+            </div>
+        </div>
+        <a href='/name-that-dataset/quiz'><button class='btn btn-primary'>Play again!</button></a>
+    {% else %}
+        <div class='clearfix'>
+            <div class='pull-left'>Question {{state}} of 12</div>
+            <div class='pull-right'><span class='label label-success'>Score: {{score}}</span></div>
+        </div>
+        <p>Which dataset does this <b>{{topic}}</b> belong to?</p>
+        <b>Answer = {{expecting}}</b>
+        <img class='img-responsive img-rounded' src='data:image/png;base64,{{src_img}}' alt='quiz'/>
+
+        <div class='answers'>
+            <a href='/name-that-dataset/quiz/?ans=0'><button class='btn btn-default'>{{opt1}}</button></a>
+            <a href='/name-that-dataset/quiz/?ans=1'><button class='btn btn-default'>{{opt2}}</button></a>
+            {% if opt3 %}
+                <a href='/name-that-dataset/quiz/?ans=2'><button class='btn btn-default'>{{opt3}}</button></a>
+            {% endif %}
+
+            {% if opt4 %}
+                <a href='/name-that-dataset/quiz/?ans=3'><button class='btn btn-default'>{{opt4}}</button></a>
+            {% endif %}
+        </div>
+
+        <div class='feedback'>
+            {% if not prev_answer_success == None %}
+                <div class='alert alert-success' role='alert'>
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <b>Well done!</b> Your answer was correct !
+                </div>
+            {% endif %}
+
+            {% if not prev_answer_fail == None %}
+                <div class='alert alert-danger' role='alert'>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <b>Oops!</b> Your answer was not incorrect!.
+                </div>
+            {% endif %}
+        </div>
+    {% endifequal %}
+</div>
+
+{% endblock %}

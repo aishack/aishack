@@ -599,3 +599,20 @@ div.callout {
     bottom: -20px;
     border-top: 10px solid #ccc;
 }
+
+.quiz img {
+    max-height: 320px;
+    display: block;
+    margin: 2em auto;
+}
+
+.quiz .answers {
+    display: block;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.quiz .final-score {
+    font-size: 5em;
+    font-weight: bold;
+}

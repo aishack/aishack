@@ -48,6 +48,8 @@ urlpatterns = patterns('',
     url(r'^why-login/$', views.whylogin),
     url(r'^opencv-blueprints/$', views.opencvbook),
     url(r'^vision-scrolls/$', views.visionscrolls),
+    url(r'^name-that-dataset/$', views.namethatdataset),
+    url(r'^name-that-dataset/quiz/?$', views.namethatdataset_quiz),
 
     # sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),

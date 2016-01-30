@@ -1,0 +1,12 @@
+cat
+cat
+dog
+dog
+person
+person
+cup
+cup
+airplane
+airplane
+car
+car
