@@ -5,8 +5,8 @@ from django.core import exceptions
 
 import datetime, os
 from hashlib import md5
-import itertools, base64
-import time, random, uuid
+import itertools, base64, json
+import time, random, uuid, redis
 
 from django import shortcuts
 from django.shortcuts import render, redirect
@@ -20,7 +20,7 @@ from django.contrib.auth.models import User
 
 import utils, settings
 
-redis = {}
+redis = redis.StrictRedis('localhost')
 def index(request):
     """
     The home page
@@ -389,21 +389,24 @@ def namethatdataset_quiz(request):
 
     # Did we finish a game and we returned again?
     if in_redis:
-        session_data = redis[session]
+        session_data = json.loads(redis[session])
 
         # Did we cross all the 10 questions?
         if session_data['state'] == 13:
             # Create a new session
             del redis[session]
             in_redis = False
+            session_data = {}
     
     if not in_redis:
         # No session information
-        redis[session] = {}
-        redis[session]['state'] = 0
-        redis[session]['score'] = 0
-        redis[session]['timestamp'] = time.time()
-        redis[session]['done'] = []
+        session_data = {}
+        session_data['state'] = 0
+        session_data['score'] = 0
+        session_data['timestamp'] = time.time()
+        session_data['done'] = []
+
+        redis[session] = json.dumps(session_data)
 
     datasets = {'voc-2012':     'VOC 2012',
                 'caltech-101': 'Caltech 101',
@@ -414,7 +417,26 @@ def namethatdataset_quiz(request):
                 'coil-100':    'Coil 100',
                 None:           None}
 
-    state = redis[session]['state']
+    state = session_data['state']
+
+    ans = request.GET.get('ans', None)
+    if ans:
+        ans = int(ans)
+
+    if 'expecting' in session_data and ans != None:
+        if ans == session_data['expecting']:
+            # Correct answer!
+            prev_answer_success = session_data['expecting']
+            session_data['score'] += 1
+        elif ans != None:
+            # Failed answer!
+            prev_answer_fail = session_data['expecting']
+
+        session_data['done'].append(session_data['pick'])
+        del session_data['pick']
+        session_data['state'] += 1
+        state += 1
+
 
     # The image path to display
     src_img = None
@@ -425,25 +447,21 @@ def namethatdataset_quiz(request):
     opt3 = None
     opt4 = None
 
+    topic_mapping = {0: 'cat', 1: 'cat',
+                     2: 'dog', 3: 'dog',
+                     4: 'person', 5: 'person',
+                     6: 'cup', 7: 'cup',
+                     8: 'airplane', 9: 'airplane',
+                     10: 'car', 11: 'car'}
+
     topic = None
-    if state == 0 or state == 1:
-        topic = 'cat'
-    elif state == 2 or state == 3:
-        topic = 'dog'
-    elif state == 4 or state == 5:
-        topic = 'person'
-    elif state == 6 or state == 7:
-        topic = 'cup'
-    elif state == 8 or state == 9:
-        topic = 'airplane'
-    elif state == 10 or state == 11:
-        topic = 'car'
+    if state in topic_mapping:
+        topic = topic_mapping[state]
     else:
-        # Display the final score
         topic = 'done'
 
         message = None
-        score = redis[session]['score']
+        score = session_data['score']
         if score == 12:
             message = 'Your grace through math leaves people spellbound.'
             img = 'quiz-grand-master.png'
@@ -460,54 +478,29 @@ def namethatdataset_quiz(request):
             message = 'Your inner strength needs to be unleased.'
             img = 'quiz-youngling.png'
 
-        redis[session]['state'] += 1
+        session_data['state'] += 1
 
         context.update({'topic': topic,
-                        'score': redis[session]['score'],
+                        'score': session_data['score'],
                         'current_page': 'name-that-dataset',
                         'message': message,
                         'avatar': img,
         })
         response = render(request, 'name-that-dataset-quiz.html', context);
+        del redis[session]
+        response.delete_cookie('quiz_session')
         return response
         
     prev_answer_success = None
     prev_answer_fail = None
-    try:
-        ans = int(request.GET.get('ans', None))
-    except TypeError as e:
-        ans = None
-
-    if ans == None:
-        # TODO somehow repeat this question
-        pass
-
-    if 'expecting' in redis[session]:
-        if ans == redis[session]['expecting']:
-            # Correct answer!
-            prev_answer_success = redis[session]['expecting']
-            redis[session]['score'] += 1
-            redis[session]['state'] += 1
-            state += 1
-            print('Correct answer!')
-            redis[session]['done'].append(redis[session]['pick'])
-            del redis[session]['pick']
-        elif ans != None:
-            # Failed answer!
-            prev_answer_fail = redis[session]['expecting']
-            redis[session]['state'] += 1
-            state += 1
-            print("Wrong answer!")
-            redis[session]['done'].append(redis[session]['pick'])
-            del redis[session]['pick']
 
     key = 'question_%d' % state
-    if key not in redis[session]:
+    if key not in session_data:
         paths = os.listdir('./name-that-dataset/%s/' % (topic))
         while True:
             random.shuffle(paths)
             pick = '%s/%s' % (topic, paths[0])
-            if pick not in redis[session]['done']:
+            if pick not in session_data['done']:
                 imglist = os.listdir('./name-that-dataset/%s/%s/' % (topic, paths[0]))
                 random.shuffle(imglist)
 
@@ -526,27 +519,27 @@ def namethatdataset_quiz(request):
                 if len(paths) > 3:
                     opt4 = paths[3]
 
-                redis[session]['expecting'] = paths.index(correct)
-                redis[session]['pick'] = pick
+                session_data['expecting'] = paths.index(correct)
+                session_data['pick'] = pick
                 
-                redis[session][key] = {}
-                redis[session][key]['src_img'] = src_img
-                redis[session][key]['opt1'] = opt1
-                redis[session][key]['opt2'] = opt2
-                redis[session][key]['opt3'] = opt3
-                redis[session][key]['opt4'] = opt4
+                session_data[key] = {}
+                session_data[key]['src_img'] = src_img
+                session_data[key]['opt1'] = opt1
+                session_data[key]['opt2'] = opt2
+                session_data[key]['opt3'] = opt3
+                session_data[key]['opt4'] = opt4
 
                 break
     else:
-        src_img = redis[session][key]['src_img']
-        opt1 = redis[session][key]['opt1']
-        opt2 = redis[session][key]['opt2']
-        opt3 = redis[session][key]['opt3']
-        opt4 = redis[session][key]['opt4']
+        src_img = session_data[key]['src_img']
+        opt1 = session_data[key]['opt1']
+        opt2 = session_data[key]['opt2']
+        opt3 = session_data[key]['opt3']
+        opt4 = session_data[key]['opt4']
         
     context.update({'current_page': 'name-that-dataset',
-                    'score':    redis[session]['score'],
-                    'state': redis[session]['state'] + 1,
+                    'score':    session_data['score'],
+                    'state': session_data['state'] + 1,
                     'src_img':  src_img,
                     'opt1':     datasets[opt1],
                     'opt2':     datasets[opt2],
@@ -555,8 +548,10 @@ def namethatdataset_quiz(request):
                     'topic':    topic,
                     'prev_answer_fail': prev_answer_fail,
                     'prev_answer_success': prev_answer_success,
-                    'expecting': redis[session]['expecting'],
+                    'expecting': session_data['expecting'],
                   })
+
+    redis[session] = json.dumps(session_data)
     response = render(request, 'name-that-dataset-quiz.html', context);
     response.set_cookie('quiz_session', session)
     return response
