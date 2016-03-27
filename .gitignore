@@ -14,4 +14,7 @@ web.archive.org/*
 *.pyc
 env/lib
 node_modules
-
+.sass-cache
+askbot-devel*
+askbot
+env/*
