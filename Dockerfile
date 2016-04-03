@@ -7,7 +7,7 @@ COPY templates/ /work/aishack/templates
 COPY categories/ /work/aishack/categories
 COPY tracks/ /work/aishack/tracks/
 COPY tutorials/ /work/aishack/tutorials
-COPY writers/ /work/aishack/tutorials
+COPY writers/ /work/aishack/writers
 COPY aishack_uwsgi.ini /work/aishack/
 
 # Install dependencies
@@ -43,6 +43,23 @@ RUN cd /etc/nginx/sites-enabled && ln -s /etc/nginx/sites-available/aishack.conf
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY uwsgi_params /work/aishack/
+
+RUN apt-get install -y redis-server
+COPY name-that-dataset/ /work/aishack/name-that-dataset/
+
+# Copy the custom Markdown extensions
+# TODO No pip packages exist for this. Fix this when they do!
+COPY 3rdparty/markdown/extensions/mdx_grid_table.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
+COPY 3rdparty/markdown/extensions/mdx_custom_span_class.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
+COPY 3rdparty/markdown/extensions/captions.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
+
+# Ingest content into the database!
+RUN cd /work/aishack/ && python manage.py ingest_category categories/*
+RUN cd /work/aishack/ && python manage.py ingest_user writers/*
+RUN cd /work/aishack/ && python manage.py ingesttrack tracks/*
+RUN cd /work/aishack/ && python manage.py ingesttutorial tutorials/*
+
+CMD supervisord -n
 
 # Weather port
 EXPOSE 8000
