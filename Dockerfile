@@ -1,7 +1,6 @@
 FROM ubuntu:14.04
 
 RUN mkdir /work/aishack/ -p
-RUN cd /work/aishack
 COPY aishack/ /work/aishack/aishack
 COPY templates/ /work/aishack/templates
 COPY categories/ /work/aishack/categories
@@ -11,19 +10,10 @@ COPY writers/ /work/aishack/writers
 COPY aishack_uwsgi.ini /work/aishack/
 
 # Install dependencies
-RUN echo "Setting up machine"
 RUN apt-get update
-RUN apt-get upgrade -y
+#RUN apt-get upgrade -y
 
-RUN echo "Installing requirements"
-RUN apt-get install -y python
-RUN apt-get install -y python-pip
-RUN apt-get install -y python-dev
-RUN apt-get install -y libjpeg-dev
-RUN apt-get install -y libz-dev
-RUN apt-get install -y wget
-RUN apt-get install -y vim
-RUN apt-get install -y nginx
+RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server
 
 COPY requirements.txt /work/aishack/
 RUN pip install -r /work/aishack/requirements.txt
@@ -34,7 +24,6 @@ COPY manage.py /work/aishack/
 RUN cd /work/aishack && python manage.py migrate
 
 # Setup supervisord
-RUN apt-get install -y supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 # Setup nginx
@@ -44,7 +33,6 @@ RUN cd /etc/nginx/sites-enabled && ln -s /etc/nginx/sites-available/aishack.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY uwsgi_params /work/aishack/
 
-RUN apt-get install -y redis-server
 COPY name-that-dataset/ /work/aishack/name-that-dataset/
 
 # Copy the custom Markdown extensions
@@ -58,6 +46,13 @@ RUN cd /work/aishack/ && python manage.py ingest_category categories/*
 RUN cd /work/aishack/ && python manage.py ingest_user writers/*
 RUN cd /work/aishack/ && python manage.py ingesttrack tracks/*
 RUN cd /work/aishack/ && python manage.py ingesttutorial tutorials/*
+
+# Setup elasticsearch
+RUN cd /tmp/ && wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.0/elasticsearch-2.3.0.deb
+RUN dpkg -i /tmp/elasticsearch-2.3.0.deb
+RUN rm /tmp/elasticsearch-2.3.0.deb && mkdir /usr/share/elasticsearch/config/
+COPY ./elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/
+RUN supervisord && sleep 20 && cd /work/aishack/ && python manage.py rebuild_index --noinput
 
 CMD supervisord -n
 
