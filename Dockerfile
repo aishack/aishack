@@ -1,5 +1,9 @@
 FROM ubuntu:14.04
 
+# Install dependencies
+RUN apt-get upgrade -y && apt-get update
+RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server sqlite3
+
 RUN mkdir /work/aishack/ -p
 COPY aishack/ /work/aishack/aishack
 COPY templates/ /work/aishack/templates
@@ -9,12 +13,7 @@ COPY tutorials/ /work/aishack/tutorials
 COPY writers/ /work/aishack/writers
 COPY aishack_uwsgi.ini /work/aishack/
 
-# Install dependencies
-RUN apt-get update
-#RUN apt-get upgrade -y
-
-RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server
-
+# Setup dependencies
 COPY requirements.txt /work/aishack/
 RUN pip install -r /work/aishack/requirements.txt
 RUN pip install uwsgi
@@ -42,17 +41,16 @@ COPY 3rdparty/markdown/extensions/mdx_custom_span_class.py /usr/local/lib/python
 COPY 3rdparty/markdown/extensions/captions.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 
 # Ingest content into the database!
-RUN cd /work/aishack/ && python manage.py ingest_category categories/*
-RUN cd /work/aishack/ && python manage.py ingest_user writers/*
-RUN cd /work/aishack/ && python manage.py ingesttrack tracks/*
-RUN cd /work/aishack/ && python manage.py ingesttutorial tutorials/*
+RUN cd /work/aishack/ && python manage.py ingest_category categories/* && python manage.py ingest_user writers/* && python manage.py ingesttrack tracks/* && python manage.py ingesttutorial tutorials/*
 
 # Setup elasticsearch
-RUN cd /tmp/ && wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.0/elasticsearch-2.3.0.deb
-RUN dpkg -i /tmp/elasticsearch-2.3.0.deb
-RUN rm /tmp/elasticsearch-2.3.0.deb && mkdir /usr/share/elasticsearch/config/
+RUN cd /tmp/ && wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.0/elasticsearch-2.3.0.deb && dpkg -i /tmp/elasticsearch-2.3.0.deb && rm /tmp/elasticsearch-2.3.0.deb && mkdir /usr/share/elasticsearch/config/
 COPY ./elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/
 RUN supervisord && sleep 20 && cd /work/aishack/ && python manage.py rebuild_index --noinput
+
+# Import user data into the database
+COPY ./sourcer ./db.new.sql /work/aishack/
+RUN cd /work/aishack/ && /bin/bash sourcer
 
 CMD supervisord -n
 
