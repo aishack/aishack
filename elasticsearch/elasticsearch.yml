@@ -1,0 +1,8 @@
+node.name: "aishack_haystack"
+cluster.name: aishack
+path.conf: /etc/elasticsearch
+path.data: /var/lib/elasticsearch
+path.work: /tmp/elasticsearch
+path.logs: /var/log/elasticsearch
+path.scripts: /etc/elasticsearch/scripts
+index.store.type: niofs
