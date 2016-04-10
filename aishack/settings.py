@@ -115,7 +115,7 @@ SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200',
+        'URL': 'http://127.0.0.1:9201',
         'INDEX_NAME': 'aishack_haystack',
     }
 }
