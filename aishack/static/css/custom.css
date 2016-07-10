@@ -4,7 +4,7 @@ nav .glyphicon-margin {
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 1200px) {
   .container {
-    width: 940px; } }
+    width: 1200px; } }
 
 .pad-bottom {
   padding-bottom: 3em; }
@@ -43,7 +43,8 @@ figcaption {
 .tut-post-image {
   display: block;
   text-align: center;
-  margin: 0 auto; }
+  margin: 0 auto;
+  width: 100%; }
 
 .tut-success {
   color: #3c763d;
@@ -357,13 +358,29 @@ img.user-gravatar {
   border-radius: 0px; }
 
 .home-new-tuts .summary {
-  border-bottom: solid 1px #d9d9d9; }
+  clear: both;
+  margin-bottom: 1.5em;
+  height: 80px; }
 
 .home-new-tuts .summary:last-of-type {
-  border-bottom: none; }
+  height: 104px;
+  border-bottom: solid 1px #d9d9d9; }
+
+.home-new-tuts .summary > img {
+  margin-right: 0.5em; }
+
+.btn {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 0.2em solid rgba(0, 0, 0, 0.25);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+  font-size: 1em; }
+
+.btn:active {
+  border-bottom: 1px; }
 
 .btn-default {
-  border-radius: 0;
   border-color: #908570; }
 
 .search-thumbnail {
@@ -405,8 +422,8 @@ img.user-gravatar {
   margin-left: 1em; }
 
 body {
-  font-family: Helvetica;
-  font-size: 13px; }
+  font-family: Ubuntu,Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1.5em; }
 
 div.callout {
   width: 350px;
@@ -475,3 +492,6 @@ div.callout {
 .quiz .final-score {
   font-size: 5em;
   font-weight: bold; }
+
+table td {
+  vertical-align: text-bottom; }

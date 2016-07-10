@@ -1,7 +1,7 @@
 ---
 title: "The OpenCV 2 Computer Vision Application Programming Cookbook"
 date: "2011-06-16 12:04:20"
-excerpt: ""
+excerpt: "This is a something that their thing is the thing ahalsk the computer vision application programming cookbook and the thing over here is weird."
 category: "Reviews"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-review-opencv-cookbook.jpg"

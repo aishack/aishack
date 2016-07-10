@@ -1,11 +1,4 @@
-<div class="col-md-4 hidden-xs hidden-sm visible-md visible-lg sidebar">
-    {# Show the 'register now' panel only if someone has not logged in #}
-    {% if not user.is_authenticated %}
-        <div class='panel panel-info'>
-            <div class='panel-heading'>Login</div>
-            <div class='panel-body'>Login to AI Shack (with your Google account) and track your progress through the tutorials!</div>
-        </div>
-    {% endif %}
+<div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg sidebar">
     <div class='panel panel-default'>
         <div class='panel-heading'>Search</div>
         <div class='panel-body'>
@@ -19,41 +12,11 @@
         </div>
     </div>
 
-    {% ifnotequal current_page 'track' %}
-    {% if track %}
-        <div class='panel panel-default'>
-            <div class='panel-heading'>Track: {{track.title}}</div>
-            <div class='panel-body'>
-                {% if track_following %}
-                    <div class='progress'>
-                        <div class='progress-bar' role='progressbar' aria-valuenow='{{tuts_in_track_read}}' aria-valuemin='0' aris-valuemax='{{ track_length }}' style='width: {{tuts_in_track_read_percent}}%'>
-                            {{tuts_in_track_read}} / {{track_length}}
-                        </div>
-                    </div>
-
-                    <ul>
-                        {% for tut in track.tutorial_list %}
-                            {% ifequal tut tutorial %}
-                                <li>{{tut.title}}<span class='glyphicon glyphicon-ok'></span></li>
-                            {% else %}
-                                <li><a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a>{% if tut in track_tuts_read %}<span class='glyphicon glyphicon-ok'></span>{% endif %}</li>
-                            {% endifequal %}
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <p class='pull-right'><a href='/tracks/signup/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a></p>
-                    <p>{{ track.excerpt }}</p>
-                {% endif %}
-            </div>
-        </div>
-    {% endif %}
-    {% endifnotequal %}
-   
     {% if knob_show_opencv_blueprints %} 
         <div class='panel panel-default'>
             <div class='panel-heading'>OpenCV Blueprints</div>
             <div class='panel-body'>
-                <a href='/opencv-blueprints/'><img src='/static/img/opencv-blueprints.jpg' /></a>
+                <center><a href='/opencv-blueprints/'><img src='/static/img/opencv-blueprints.jpg' /></a></center>
             </div>
         </div>
     {% endif %}

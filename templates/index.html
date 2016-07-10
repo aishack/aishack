@@ -7,7 +7,7 @@
 <h3>Featured tutorials</h3>
     <div class='row'>
         {% for tut in featured %}
-            <div class='col-md-4'>
+            <div class='col-md-3'>
                 <div class='item {% if forloop.first %}active{% endif %}'>
                     <a href='/tutorials/{{tut.slug}}'><img class='thumb pull-left' src='{{tut.post_thumb}}' alt='' /></a>
                     <div class=''>
@@ -26,9 +26,9 @@
 <hr/>
 <h3>Recent tutorials</h3>
 <div class='row'>
-    {% for tut, series in recent_tutorials|slice:":3" %}
-        <div class='col-md-4'>
-            <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_image}}" class='img-responsive'/></a>
+    {% for tut, series in recent_tutorials|slice:":4" %}
+        <div class='col-md-3'>
+            <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_thumb}}" class='img-responsive'/></a>
             <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
             <p>{{tut.excerpt}}</p>
             <a href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
@@ -42,13 +42,14 @@
         {% for tut, series in recent_tutorials|slice:"4:" %}
             <div class='summary'>
                 <img src='{{tut.post_thumb}}' style='height: 80px' class='pull-left'/><a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
+                <a href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default pull-right'>Read more</button></a>
                 <p>{{tut.excerpt}}</p>
             </div>
         {% endfor %}
     </div>
 </div>
 
-<a href='/tutorials/'><button class='pull-right btn btn-default'>View all tutorials</button></a>
+<a href='/tutorials/'><button class='btn btn-default'>View all tutorials</button></a>
 
 
 {% endblock %}

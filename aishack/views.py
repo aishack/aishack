@@ -17,6 +17,7 @@ from django.contrib.sitemaps import Sitemap
 
 from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack, TrackTutorials, Category
 from django.contrib.auth.models import User
+from aishack import knobs
 
 import utils, settings
 
@@ -30,7 +31,7 @@ def index(request):
 
     # Fetch the first three featured tutorials
     # Fetch the 3 recent tutorials
-    featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:3]))
+    featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:4]))
     context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(8)})
 
     return render(request, "index.html", context)
@@ -125,7 +126,7 @@ def tutorials(request, slug=None):
     """
     The tutorials home page
     """
-    _num_related = 3
+    _num_related = knobs.num_related
 
     context = utils.get_global_context(request)
     context.update({'current_page': 'tutorials'})
@@ -210,7 +211,7 @@ def tutorials(request, slug=None):
                 related_list.append(0)
         else:
             # The user isn't logged in - display the pre-processed related tutorials
-            related_list = tutorial.related.all()[0:3]
+            related_list = tutorial.related.all()[0:_num_related]
 
         context.update({'related_tuts': related_list})
     else:

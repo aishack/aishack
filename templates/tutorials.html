@@ -6,7 +6,7 @@
             <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
         {% endif %}
         <h2> {{tutorial.title}} </h2>
-       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='595px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='760px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
         {{ tutorial.content | safe }}
 
@@ -29,10 +29,10 @@
         {# related posts #}
         {% if related_tuts %}
             <hr/>
-            <p><strong>Related posts</strong></p>
+            <h4>Related posts</h4>
             <div class='row'>
                 {% for tut in related_tuts %}
-                    <div class='col-md-4'>
+                    <div class='col-md-3'>
                         <img class='img-responsive' src='{{tut.post_image}}' />
                         <p><a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></p>
                     </div>
@@ -41,7 +41,7 @@
         {% endif %}
 
         <hr />
-       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='595px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='760px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
 
         {# Show the book banner #}
@@ -70,19 +70,16 @@
         <p>Tracks are a series of tutorials put together in a logical order</p>
         {% for track in tracks %}
             <div class='clearfix'>
-                <div class='row'>
-                <div class='col-md-2'>
-                    <a href='/tracks/{{track.slug}}/'><img src='{{track.thumbnail}}' /></a>
-                    <hr/>
-                </div>
+                <div class='row clearfix'>
+                    <div class='col-md-2 clearfix'>
+                        <a href='/tracks/{{track.slug}}/'><img class='pull-right' src='{{track.thumbnail}}' /></a>
+                    </div>
 
-                <div class='caption col-md-10'>
-                    <h4><a href='/tracks/{{track.slug}}/'>{{track.title}}</a></h4>
-                    <p>{{track.excerpt | safe}}</p>
-                    {% if track in tracks_following %}
-                        <p>Following</p>
-                    {% endif %}
-                </div>
+                    <div class='caption col-md-10'>
+                        <h4><a href='/tracks/{{track.slug}}/'>{{track.title}}</a></h4>
+                        <p>{{track.excerpt | safe}}</p>
+                    </div>
+                    <hr/>
                 </div>
             </div>
         {% endfor %}

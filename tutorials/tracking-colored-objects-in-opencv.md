@@ -1,10 +1,11 @@
 ---
 title: "Tracking colored objects in OpenCV"
 date: "2010-07-19 23:48:35"
-excerpt: ""
+excerpt: "Given an object that is distinctly colored, you'll learn how to detect the object in the scene and track it as it moves across the frame - live!"
 category: "Projects"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-tracking.jpg"
+featured: true
 ---
 If you're new to image processing, you'll enjoy this project. What we'll attempt to achieve in this tutorial is tracking the location of a coloured object in an image. In our case, it'll be a yellow colored ball. Once we're finished, we'll have something like this: Looks great right? So lets dive right in! 
 

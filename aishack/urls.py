@@ -24,13 +24,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'aishack.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
-
-    # Added for python-social-auth
-    url('', include('social.apps.django_app.urls', namespace='social')),
-
-    # login url in case you don't have JS working
-    url(r'^logout/$', logout),
 
     url(r'^$', views.index),
     url(r'^tutorials/$', views.tutorials),
@@ -59,4 +52,5 @@ urlpatterns = patterns('',
 )
 
 if settings.DEBUG:
+    urlpatterns = urlpatterns + patterns('', url(r'^admin/', include(admin.site.urls)))
     urlpatterns = urlpatterns + static(settings.STATIC_URL)

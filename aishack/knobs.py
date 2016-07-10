@@ -4,3 +4,5 @@ show_vision_scrolls = False
 show_name_that_dataset = True
 
 title_keywords = "Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence."
+
+num_related = 4

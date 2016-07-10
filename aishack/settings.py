@@ -9,18 +9,19 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os, sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'asflha;sldfasl;r7w04u8wordfhl;jasdhpo8ejr5f;sdfltg895m'
-
 # SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = "thisisasecretkeyforyou"
 DEBUG = True
+
+if not DEBUG:
+    assert(SECRET_KEY != "thisisasecretkeyforyou")
+
 ALLOWED_HOSTS = ['.aishack.in', '127.0.0.1', 'localhost']
 
 TEMPLATE_DEBUG = False
@@ -35,7 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aishack',
-    'social.apps.django_app.default',
     #'south',
     'haystack',
     'django.contrib.humanize',
@@ -49,7 +49,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'aishack.urls'
@@ -88,29 +87,21 @@ STATIC_URL = "/static/"
 STATIC_ROOT = '/work/aishack/aishack/static/'
 STATICFILES_DIRS =(os.path.join(BASE_DIR, "static"),)
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
-                        "django.contrib.staticfiles.finders.AppDirectoriesFinder")
+                        "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+                        "compressor.finders.CompressorFinder",)
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-## python-social-auth
-AUTHENTICATION_BACKENDS = (
-    'social.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
 )
 
 #############################################
 # site specific settings
 SITE_TITLE = "AI Shack"
-SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -119,8 +110,3 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'aishack_haystack',
     }
 }
-
-############################################
-# django-social-auth settings
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '258831081234-pvbv8atnveljcmmr5a9pgdv1kj0pqt2m.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'TsO_Jpq8Lywpz5tEg883iWIz'

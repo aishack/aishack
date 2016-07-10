@@ -2,7 +2,7 @@
 title: "All about biological neurons"
 date: "2009-11-18 15:36:56"
 excerpt: ""
-category: "Machine Learning"
+category: "Neural Networks"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-biological-neurons.jpg"
 ---

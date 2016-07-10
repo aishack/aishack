@@ -4,7 +4,7 @@
     {% if track %}
         <h2> {{track.title}} </h2>
         <hr />
-        {% if not user.is_authenticated %}
+        <!--{% if not user.is_authenticated %}
             <p><span class='tut-warn'>You need to login to signup for tracks! Once you sign in, you'll be able to track your progres through the tutorials here.</span></p>
         {% endif %}
 
@@ -18,20 +18,24 @@
         {% else %}
             <a href='/tracks/signup/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a>
         {% endif %}
-        </div>
+        </div>-->
 
 
         {{ track.description | safe }}
         <div class='clearfix'><hr /></div>
 
-        <table class='table table-striped table-hover'>
-            <tr><th></th><th>Tutorial</th></tr>
-        {% for tut in tutorials %}
-            <tr>
-                <td>{% if tut in tutorials_read %}<span class='glyphicon glyphicon-ok'></span>{% else %}&nbsp;{% endif %}</td>
-                <td>{{ forloop.counter }}. <a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></td>
-        {% endfor %}
-        </table>
+        <div class='col-md-offset-2 col-md-8'>
+            <table class='table table-striped table-hover'>
+                <tr><th>Tutorial</th></tr>
+            {% for tut in tutorials %}
+                <tr>
+                    <td>
+                        {{ forloop.counter }}. <a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a>
+                        <a href='/tutorials/{{tut.slug}}/' class='pull-right btn btn-default'>Read tutorial</a>
+                    </td>
+            {% endfor %}
+            </table>
+        </div>
 
         <hr />
     {% endif %}

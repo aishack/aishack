@@ -2,7 +2,7 @@
 title: "A single neuron Dictomizer"
 date: "2009-11-27 01:58:41"
 excerpt: ""
-category: "Machine Learning"
+category: "Neural Networks"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-neuron-dictomizer.jpg"
 ---
