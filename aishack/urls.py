@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     url(r'^vision-scrolls/$', views.visionscrolls),
     url(r'^name-that-dataset/$', views.namethatdataset),
     url(r'^name-that-dataset/quiz/?$', views.namethatdataset_quiz),
+    url(r'^google64c35c9422bb35a3.html', views.google_webmaster),
 
     # sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),

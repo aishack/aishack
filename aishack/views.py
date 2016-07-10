@@ -561,6 +561,9 @@ def namethatdataset_quiz(request):
     response.set_cookie('quiz_session', session)
     return response
 
+def google_webmaster(request):
+    return HttpResponse("google-site-verification: google64c35c9422bb35a3.html", mimetype="text/html")
+
 ######
 # Setup sitemaps for the website
 class AishackSitemap(Sitemap):
