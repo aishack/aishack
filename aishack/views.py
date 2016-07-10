@@ -562,7 +562,7 @@ def namethatdataset_quiz(request):
     return response
 
 def google_webmaster(request):
-    return HttpResponse("google-site-verification: google64c35c9422bb35a3.html", mimetype="text/html")
+    return HttpResponse("google-site-verification: google64c35c9422bb35a3.html", content_type="text/html")
 
 ######
 # Setup sitemaps for the website
