@@ -171,8 +171,11 @@ class LaTeXPreprocessor(markdown.preprocessors.Preprocessor):
         self.tex_preamble += "\n\\begin{document}\n"
 
         # Figure out our text strings and math-mode strings
-        tex_expr = [(self.re_textmode, False, x) for x in self.re_textmode.findall(page)]
-        tex_expr += [(self.re_mathmode, True, x) for x in self.re_mathmode.findall(page)]
+
+        # Original
+        # tex_expr = [(self.re_textmode, False, x) for x in self.re_textmode.findall(page)]
+        # tex_expr += [(self.re_mathmode, True, x) for x in self.re_mathmode.findall(page)]
+        tex_expr = [(self.re_mathmode, True, x) for x in self.re_mathmode.findall(page)]
 
         # No sense in doing the extra work
         if not len(tex_expr):
