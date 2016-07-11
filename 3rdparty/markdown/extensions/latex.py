@@ -114,6 +114,8 @@ class LaTeXPreprocessor(markdown.preprocessors.Preprocessor):
         # clean up if the above failed
         if status:
             self._cleanup(path, err=True)
+            with open(path, 'r') as fp:
+                print(fp.read())
             raise Exception("Couldn't compile LaTeX document." +
                 "Please read '%s.log' for more detail." % path)
 
