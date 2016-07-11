@@ -2,6 +2,7 @@ FROM ubuntu:14.04
 
 # Install dependencies
 RUN apt-get upgrade -y && apt-get update
+RUN apt-get update --fix-missing
 RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server sqlite3 texlive-latex-base dvipng
 
 RUN mkdir /work/aishack/ -p
