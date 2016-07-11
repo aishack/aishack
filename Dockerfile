@@ -39,6 +39,7 @@ COPY name-that-dataset/ /work/aishack/name-that-dataset/
 COPY 3rdparty/markdown/extensions/mdx_grid_table.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 COPY 3rdparty/markdown/extensions/mdx_custom_span_class.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 COPY 3rdparty/markdown/extensions/captions.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
+COPY 3rdparty/markdown/extensions/latex.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 
 # Ingest content into the database!
 RUN cd /work/aishack/ && python manage.py ingest_category categories/* && python manage.py ingest_user writers/* && python manage.py ingest_track tracks/* && python manage.py ingest_tutorial tutorials/*

@@ -495,3 +495,10 @@ div.callout {
 
 table td {
   vertical-align: text-bottom; }
+
+.references-icon {
+  margin-right: 2em; }
+
+.latex-inline {
+  display: block;
+  margin: 0 auto; }

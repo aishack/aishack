@@ -103,7 +103,7 @@ class Command(BaseCommand):
         counter += 1
         content_lines = ''.join(lines[counter+1:])
         md = content_lines.decode('utf8')
-        html = markdown.markdown(md, extensions=['superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
+        html = markdown.markdown(md, extensions=['latex', 'superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
 
         return (frontmatter, html, md)
 
