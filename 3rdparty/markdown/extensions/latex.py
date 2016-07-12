@@ -61,7 +61,7 @@ class LaTeXPreprocessor(markdown.preprocessors.Preprocessor):
 
         self.config = {}
         self.config[("general", "preamble")] = ""
-        self.config[("dvipng", "args")] = "-q -T tight -bg Transparent -z 9 -D 1060"
+        self.config[("dvipng", "args")] = "-q -T tight -bg Transparent -z 9 -D 125"
         self.config[("delimiters", "text")] = "%"
         self.config[("delimiters", "math")] = "$"
         self.config[("delimiters", "preamble")] = "%%"
