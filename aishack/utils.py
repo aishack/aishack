@@ -20,6 +20,7 @@ def get_global_context(request):
             'meta_title': settings.SITE_TITLE, 
             'meta_description': knobs.title_keywords,
             'meta_thumb': '/static/img/logo-footer-left.png',
+            'mode_debug': settings.DEBUG,
         }
 
     if request.user.is_authenticated():
