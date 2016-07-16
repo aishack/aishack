@@ -304,10 +304,17 @@ def profile_edit(request):
 
 def category(request, slug):
     category = shortcuts.get_object_or_404(Category, slug=slug)
-    tutorials = Tutorial.objects.filter(category=category)
+    tutorials = utils.fetch_tutorials()
+
+    tutorials_to_display = []
+    for tut in tutorials:
+        if tut[0]['category'] != category.id:
+            continue
+
+        tutorials_to_display.append(tut)
 
     context = utils.get_global_context(request)
-    context.update({'current_page': 'category', 'category': category, 'tutorials': tutorials})
+    context.update({'current_page': 'category', 'category': category, 'tutorials_to_display': tutorials_to_display})
 
     return render(request, 'category.html', context)
 

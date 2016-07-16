@@ -2,12 +2,23 @@
 
 {% block content %}
     <h2>{{category.title}}</h2>
-    <p>{{category.desc}}</p>
+    <p>{{category.desc|safe}}</p>
     <hr/>
     <h3>Tutorials</h3>
     <ul>
-    {% for tut in tutorials %}
-        <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
-    {% endfor %}
+            {% for tut, series in tutorials_to_display %}
+                {% if series %}
+                    <li>
+                        <a href="/tutorials/{{tut.slug}}/">{{ series.name }}</a>
+                        <span class='glyphicon glyphicon-list-alt'></span>
+                        {% for s in series.tutorial_list %}
+                            <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
+                        {% endfor %}
+                    </li>
+                {% else %}
+                    <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+            <hr/>
     </ul>
 {% endblock %}
