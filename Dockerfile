@@ -4,8 +4,13 @@ FROM ubuntu:14.04
 RUN apt-get upgrade -y && apt-get update
 RUN apt-get update --fix-missing
 RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server sqlite3 texlive-latex-base dvipng
-
 RUN mkdir /work/aishack/ -p
+
+# Setup dependencies
+COPY requirements.txt /work/aishack/
+RUN pip install -r /work/aishack/requirements.txt
+RUN pip install uwsgi
+
 COPY aishack/ /work/aishack/aishack
 COPY templates/ /work/aishack/templates
 COPY categories/ /work/aishack/categories
@@ -13,11 +18,6 @@ COPY tracks/ /work/aishack/tracks/
 COPY tutorials/ /work/aishack/tutorials
 COPY writers/ /work/aishack/writers
 COPY aishack_uwsgi.ini /work/aishack/
-
-# Setup dependencies
-COPY requirements.txt /work/aishack/
-RUN pip install -r /work/aishack/requirements.txt
-RUN pip install uwsgi
 
 # Run migrations
 COPY manage.py /work/aishack/
