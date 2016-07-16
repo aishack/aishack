@@ -188,6 +188,7 @@ def tutorials(request, slug=None):
         # This section defines what happens if the url is just /tutorials/
         # fetch_tutorials discards tutorials that are part of a series and only
         # returns the first part (along with a list of parts in the series)
+
         output = utils.fetch_tutorials()
         tutorials_to_display = {}
 
@@ -197,6 +198,9 @@ def tutorials(request, slug=None):
             tutorials_to_display[category].append(tut)
 
         context.update({'tutorials_to_display': tutorials_to_display})
+
+        categories = Category.objects.all().order_by('order')
+        context.update({'categories': categories})
 
     return render(request, "tutorials.html", context)
 

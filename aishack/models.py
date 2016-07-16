@@ -59,6 +59,8 @@ class Category(models.Model):
     title = models.CharField(max_length=256, unique=True)
     desc  = models.CharField(max_length=1024, blank=True)
     slug  = models.SlugField()
+    thumb = models.CharField(max_length=1024, blank=True)
+    order = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.title

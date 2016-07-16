@@ -2,11 +2,12 @@
 
 {% block content %}
     {% if tutorial %}
+        {{ tutorial }}
         {% if tutorial.post_image %}
             <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
         {% endif %}
-        <h2> {{tutorial.title}} </h2>
-       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='760px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+            <h2> {{tutorial.title}} </h2>
+           <div class="fb-like" data-href="http://facebook.com/aishack" data-width='760px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
         {{ tutorial.content | safe }}
 
@@ -83,25 +84,46 @@
                 </div>
             </div>
         {% endfor %}
-        <h3>Tutorials</h3>
-        <p>There are individual tutorials - pick and choose whichever you like!</p>
-        <ul>
-        {% for category, items in tutorials_to_display.items %}
-            <h4>{{category.title}}</h4>
-            {{category.desc | safe}}
-            {% for tut, series in items %}
-                {% if series %}
-                    <li>
-                        <a href="/tutorials/{{tut.slug}}/">{{ series.name }}</a>
-                        <span class='glyphicon glyphicon-list-alt'></span>
-                        {% for s in series.tutorial_list %}
-                            <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
-                        {% endfor %}
-                    </li>
-                {% else %}
-                    <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
+        <h3>Categories</h3>
+        <p>Some broad categories of topics covered on AI Shack. Pick one to drill down.</p>
+        <div class='row'>
+            {% for category in categories %}
+                <div class='col-md-4'>
+                    <center><a href="/category/{{category.slug}}"><img src='{{category.thumb}}' class='category-thumb' /></a></center>
+                    <h4><center><a href="/category/{{category.slug}}">{{ category.title }}</a></center></h4>
+                    <br/>
+                </div>
+
+                {% if forloop.counter|divisibleby:3 %}
+                    </div>
+                    <div class='row'>
                 {% endif %}
             {% endfor %}
+        </div>
+
+        <h3>All tutorials</h3>
+        <ul>
+        {% for category, items in tutorials_to_display.items %}
+            <div class='clearfix category'>
+                <div class='category-info'>
+                    <img src="{{category.thumb}}" class='category-thumb pull-right' />
+                    <h4><a href='/category/{{category.slug}}'>{{category.title}}</a></h4>
+                    {{category.desc | safe}}
+                </div>
+                {% for tut, series in items %}
+                    {% if series %}
+                        <li>
+                            <a href="/tutorials/{{tut.slug}}/">{{ series.name }}</a>
+                            <span class='glyphicon glyphicon-list-alt'></span>
+                            {% for s in series.tutorial_list %}
+                                <a href='/tutorials/{{s.slug}}/'>{{forloop.counter}}</a>
+                            {% endfor %}
+                        </li>
+                    {% else %}
+                        <li><a href="/tutorials/{{tut.slug}}/">{{ tut.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </div>
             <hr/>
         {% endfor %}
         </ul>

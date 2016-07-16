@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{category.title}}</h2>
-    <p>{{category.desc|safe}}</p>
+    <div class='clearfix category-info'>
+        <img class='category-thumb pull-right' src="{{category.thumb}}" />
+        <h2>{{category.title}}</h2>
+        <p>{{category.desc|safe}}</p>
+    </div>
     <hr/>
     <h3>Tutorials</h3>
     <ul>
