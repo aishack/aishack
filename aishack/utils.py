@@ -6,31 +6,28 @@ import markdown, hashlib
 from aishack.models import AishackUser, Tutorial, TutorialSeries
 from django.contrib.auth.models import User
 
-################
-# Global cache
-global_context = None
+cache_global_context = None
 
 def get_global_context(request):
-    global global_context
+    global cache_global_context
 
-    if not global_context:
+    if not cache_global_context:
         popular_tutorials = fetch_popular_tutorials(5)
+        cache_global_context = popular_tutorials
 
-        ret = {'SITE_TITLE': settings.SITE_TITLE,
-                'POPULAR_TUTORIALS': popular_tutorials,
-                'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
-                'knob_show_vision_scrolls': knobs.show_vision_scrolls,
-                'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
-                'knob_show_name_that_dataset': knobs.show_name_that_dataset,
-                'title_keywords': knobs.title_keywords,
-                'meta_title': settings.SITE_TITLE, 
-                'meta_description': knobs.title_keywords,
-                'meta_thumb': '/static/img/logo-footer-left.png',
-                'mode_debug': settings.DEBUG,
-            }
-        global_context = ret
-
-    return global_context
+    ret = {'SITE_TITLE': settings.SITE_TITLE,
+            'POPULAR_TUTORIALS': cache_global_context,
+            'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
+            'knob_show_vision_scrolls': knobs.show_vision_scrolls,
+            'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
+            'knob_show_name_that_dataset': knobs.show_name_that_dataset,
+            'title_keywords': knobs.title_keywords,
+            'meta_title': settings.SITE_TITLE, 
+            'meta_description': knobs.title_keywords,
+            'meta_thumb': '/static/img/logo-footer-left.png',
+            'mode_debug': settings.DEBUG,
+        }
+    return ret
 
 
 def get_aishack_user(user):
@@ -137,6 +134,7 @@ def fetch_tutorials(num=None, want_series=True):
 
     return tutorials_to_display
 
+yoyo = None
 def fetch_popular_tutorials(num=None):
     tuts = list(Tutorial.objects.order_by('-read_count').values('series_id', 'title', 'slug')[0:num])
     return tuts
