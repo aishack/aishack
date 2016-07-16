@@ -6,27 +6,31 @@ import markdown, hashlib
 from aishack.models import AishackUser, Tutorial, TutorialSeries
 from django.contrib.auth.models import User
 
+################
+# Global cache
+global_context = None
+
 def get_global_context(request):
-    #popular_tutorials = fetch_tutorials(5)
-    popular_tutorials = fetch_popular_tutorials(5)
+    global global_context
 
-    ret = {'SITE_TITLE': settings.SITE_TITLE,
-            'POPULAR_TUTORIALS': popular_tutorials,
-            'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
-            'knob_show_vision_scrolls': knobs.show_vision_scrolls,
-            'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
-            'knob_show_name_that_dataset': knobs.show_name_that_dataset,
-            'title_keywords': knobs.title_keywords,
-            'meta_title': settings.SITE_TITLE, 
-            'meta_description': knobs.title_keywords,
-            'meta_thumb': '/static/img/logo-footer-left.png',
-            'mode_debug': settings.DEBUG,
-        }
+    if not global_context:
+        popular_tutorials = fetch_popular_tutorials(5)
 
-    if request.user.is_authenticated():
-        ret.update({'user_email_md5': hashlib.md5(request.user.email).hexdigest()})
+        ret = {'SITE_TITLE': settings.SITE_TITLE,
+                'POPULAR_TUTORIALS': popular_tutorials,
+                'knob_show_opencv_blueprints': knobs.show_opencv_blueprints,
+                'knob_show_vision_scrolls': knobs.show_vision_scrolls,
+                'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
+                'knob_show_name_that_dataset': knobs.show_name_that_dataset,
+                'title_keywords': knobs.title_keywords,
+                'meta_title': settings.SITE_TITLE, 
+                'meta_description': knobs.title_keywords,
+                'meta_thumb': '/static/img/logo-footer-left.png',
+                'mode_debug': settings.DEBUG,
+            }
+        global_context = ret
 
-    return ret
+    return global_context
 
 
 def get_aishack_user(user):

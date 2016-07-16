@@ -21,17 +21,22 @@ from aishack import knobs
 
 import utils, settings
 
+############### Global cached variables
+featured_tutorials = None
+
 redis = redis.StrictRedis('localhost')
 def index(request):
     """
     The home page
     """
+    global featured_tutorials
     context = utils.get_global_context(request)
     context.update({'current_page': 'home'})
 
     # Fetch the first three featured tutorials
     # Fetch the 3 recent tutorials
-    featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:4]))
+    if not featured_tutorials:
+        featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:4]))
     context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(8)})
 
     return render(request, "index.html", context)
