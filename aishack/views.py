@@ -23,13 +23,14 @@ import utils, settings
 
 ############### Global cached variables
 featured_tutorials = None
+recent_tutorials = None
 
 redis = redis.StrictRedis('localhost')
 def index(request):
     """
     The home page
     """
-    global featured_tutorials
+    global featured_tutorials, recent_tutorials
     context = utils.get_global_context(request)
     context.update({'current_page': 'home'})
 
@@ -37,7 +38,11 @@ def index(request):
     # Fetch the 3 recent tutorials
     if not featured_tutorials:
         featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:4]))
-    context.update({'featured': featured_tutorials, 'recent_tutorials': utils.fetch_tutorials(8)})
+
+    if not recent_tutorials:
+        recent_tutorials = utils.fetch_tutorials(8)
+
+    context.update({'featured': featured_tutorials, 'recent_tutorials': recent_tutorials})
 
     return render(request, "index.html", context)
 
