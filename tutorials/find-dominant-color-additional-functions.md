@@ -228,3 +228,10 @@ We loop through all the colors and create the corresponding colored tiles.
 
 ## Wrap up
 And that's all folks! This should set you up to get this code running on your own machine. Hopefully you found this useful and insightful. I found this particularly useful for techniques like a GMM - where an initialization matters a lot!
+
+### Source code
+You can get the [source code for this tutorial](https://github.com/aishack/dominant-colors) on Github.
+
+### References
+1. _M Orchard_ and _C Bouman_, Color Quantization of Images, _Transactions on Signal Processing_, 1991
+

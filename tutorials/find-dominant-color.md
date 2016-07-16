@@ -114,5 +114,5 @@ The normal of the 3D plane is the eigenvector $\textbf{e}_n$. The thick line in 
 ## Onwards to implementation
 Let's head on to the implementation now. I'll be using OpenCV and C++ (as always). OpenCV already comes with a bunch of useful functions (specially the `cv::eigen` method). Hopefully you enjoyed this tutorial!
 
-## References
+### References
 1. _M Orchard_ and _C Bouman_, Color Quantization of Images, _Transactions on Signal Processing_, 1991

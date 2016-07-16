@@ -315,3 +315,9 @@ This is where we do the actual split. We check if the dot product $\textbf{e}_n\
 
 ## Wrap up
 We have most of the core algorithm done - now we just need to write some additional functions to make our function run. We'll do that in the next part.
+
+### Source code
+You can get the [source code for this tutorial](https://github.com/aishack/dominant-colors) on Github.
+
+### References
+1. _M Orchard_ and _C Bouman_, Color Quantization of Images, _Transactions on Signal Processing_, 1991
