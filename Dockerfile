@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 # Install dependencies
 RUN apt-get upgrade -y && apt-get update
 RUN apt-get update --fix-missing
-RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server sqlite3 texlive-latex-base dvipng
+RUN apt-get install -y python python-pip python-dev libjpeg-dev libz-dev wget vim nginx openjdk-7-jre supervisor redis-server sqlite3 texlive-latex-base dvipng varnish
 RUN mkdir /work/aishack/ -p
 
 # Setup dependencies
@@ -55,6 +55,8 @@ COPY ./sourcer ./db.new.sql /work/aishack/
 RUN cd /work/aishack/ && /bin/bash sourcer
 
 CMD supervisord -n
+
+COPY /work/aishack/varnish.vcl /work/aishack/
 
 # Weather port
 EXPOSE 8000
