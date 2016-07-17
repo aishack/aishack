@@ -12,9 +12,9 @@ In this post,we 'll look at detecting a SuDoKu puzzle. This include all preproce
 
 ## Getting started
 
-Start by creating a new project in your IDE. If you're not sure how that is done, have a look at the [Getting started with OpenCV](/tutorials/using-opencv-on-windows/) guide.
+Start by creating a new project in your IDE. If you're not sure how that is done, have a look at the [Getting started with OpenCV](/tutorials/using-opencv-windows/) guide.
 
-Also, I'll use [OpenCV's C++ interface](/tutorials/opencvs-c-interface/). So make sure you have at least OpenCV 2.0 installed on your computer.
+Also, I'll use [OpenCV's C++ interface](/tutorials/opencvs-interface/). So make sure you have at least OpenCV 2.0 installed on your computer.
 
 Link your project to the OpenCV library files and include the following in your main file: 
     
@@ -70,7 +70,7 @@ Since we're interested in the borders, and they are black, we invert the image _
     :::c++
         bitwise_not(outerBox, outerBox);
 
-This thresholding operation can disconnect certain [connected parts](/tutorials/pixel-neighbourhoods-and-connectedness/) (like lines). So dilating the image once will fill up any small "cracks" that might have crept in. 
+This thresholding operation can disconnect certain [connected parts](/tutorials/pixel-neighbourhoods-connectedness/) (like lines). So dilating the image once will fill up any small "cracks" that might have crept in. 
     
     
     :::c++
@@ -165,7 +165,7 @@ Because we had dilated the image earlier, we'll "restore" it a bit by eroding it
 
 ## Detecting lines
 
-At this point, we have a single blob. Now its time to find lines. This is done with the [Hough transform](/tutorials/the-hough-transform-basics/). OpenCV comes with it. So a line of code is all that's needed: 
+At this point, we have a single blob. Now its time to find lines. This is done with the [Hough transform](/tutorials/hough-transform-basics/). OpenCV comes with it. So a line of code is all that's needed: 
     
     
     :::c++

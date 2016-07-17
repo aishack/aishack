@@ -50,7 +50,10 @@ We can easily find the extreme points of this equation (differentiate and equate
 
 Here's a result I got from the example image I've been using till now:
 
-![](/static/img/tut/sift-maxima-detector.jpg)The author of SIFT recommends generating two such extrema images. So, you need exactly 4 DoG images. To generate 4 DoG images, you need 5 Gaussian blurred images. Hence the 5 level of blurs in each octave.
+![](/static/img/tut/sift-maxima-detector.jpg)
+: The maxima detector. Trust me, there are a bunch of white dots on those black images. The compressions / etc got in the way.
+
+The author of SIFT recommends generating two such extrema images. So, you need exactly 4 DoG images. To generate 4 DoG images, you need 5 Gaussian blurred images. Hence the 5 level of blurs in each octave.
 
 In the image, I've shown just one octave. This is done for all octaves. Also, this image just shows the first part of keypoint detection. The Taylor series part has been skipped.
 

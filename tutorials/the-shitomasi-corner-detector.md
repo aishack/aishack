@@ -12,7 +12,7 @@ The Shi-Tomasi corner detector is based entirely on the [Harris corner detector]
 
 The Harris corner detector has a corner selection criteria. A score is calculated for each pixel, and if the score is above a certain value, the pixel is marked as a corner. The score is calculated using two eigenvalues. That is, you gave the two eigenvalues to a function. The function manipulates them, and gave back a score.
 
-You can read more about how [interesting windows in the Harris corner detector](/tutorials/interesting-windows-in-the-harris-corner-detector/) are selected.
+You can read more about how [interesting windows in the Harris corner detector](/tutorials/windows-harris-corner-detector/) are selected.
 
 Shi and Tomasi suggested that the function should be done away with. Only the eigenvalues should be used to check if the pixel was a corner or not.
 
@@ -30,7 +30,7 @@ In their paper, Shi and Tomasi demonstrated experimentally that this score crite
   * Green: both λ~1~ and λ~2~ are greater than a certain value. Thus, this region is for pixels "accepted" as corners.
   * In the blue and gray regions, either λ~1~ or λ~2~ is less than he required minimum.
   * In the red region, both λ~1~ and λ~2~ are less than the required minimum.
-Compare the above with [a similar graph for Harris corner detector](/tutorials/interesting-windows-in-the-harris-corner-detector/)... You'll see the blue and gray areas are equivalent to the "edge" areas. The red region is for "flat" areas. The green is for corners. 
+Compare the above with [a similar graph for Harris corner detector](/tutorials/windows-harris-corner-detector/)... You'll see the blue and gray areas are equivalent to the "edge" areas. The red region is for "flat" areas. The green is for corners. 
 
 ## Summary
 

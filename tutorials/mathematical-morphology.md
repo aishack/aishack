@@ -97,7 +97,9 @@ Similarly, for the next pixel:
 
 See that little protrusion on the right? That will be erased in the next step. Following these rules, you'll end up with this as your result:
 
-## ![The final result of erosion with a cross shaped structuring element](/static/img/tut/morphology_erosion_9.jpg)Erosion is NOT the inverse of Dilation
+ ![The final result of erosion with a cross shaped structuring element](/static/img/tut/morphology_erosion_9.jpg)
+ 
+## Erosion is NOT the inverse of Dilation
 
 In the above examples, dilating the square produced a plus. And eroding a plus produced a square. This is just by chance. In general, eroding and dilating produces an image different from the original. Here's an example:
 

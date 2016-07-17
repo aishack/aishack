@@ -141,4 +141,4 @@ Simple enough right? Here's the result I got from the program:
 
 Pretty amazing results right? And this happened with just 25 images. Just imagine the quality of images you'd get if you just sit and take snapshots constantly (like the telescopes do).
 
-Next, we'll take a look at [a bit of theory](/tutorials/noise-reduction-by-averaging-theory/) on exactly how this works.
+Next, we'll take a look at [a bit of theory](/tutorials/noise-reduction-averaging-theory/) on exactly how this works.

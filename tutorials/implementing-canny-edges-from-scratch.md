@@ -10,7 +10,7 @@ part: 2
 ---
 Here's an interesting article - we'll implement canny edges. We won't use any prepackaged functions. I'll be using OpenCV for this article, but I'm sure translating it to some other computer vision package won't be difficult.
 
-!!tut-warn|I assume you know how the algorithm works. If not, read up about [the Canny edge detection algorithm](/tutorials/the-canny-edge-detector/)!!!
+!!tut-warn|I assume you know how the algorithm works. If not, read up about [the Canny edge detection algorithm](/tutorials/canny-edge-detector/)!!!
 
 ## Getting Started
 

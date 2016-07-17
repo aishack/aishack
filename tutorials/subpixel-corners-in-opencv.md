@@ -6,7 +6,7 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-subpixel-corners.jpg"
 ---
-OpenCV comes with a function to help you find subpixel corners. It uses [the dot product technique](/tutorials/subpixel-corners-increasing-accuracy/) to refine corners detected by other techniques, like [the Shi-Tomasi corner detector](/tutorials/the-shitomasi-corner-detector/). The function works iteratively, refining the corners till a termination criteria is reached. 
+OpenCV comes with a function to help you find subpixel corners. It uses [the dot product technique](/tutorials/subpixel-corners-increasing-accuracy/) to refine corners detected by other techniques, like [the Shi-Tomasi corner detector](/tutorials/shitomasi-corner-detector/). The function works iteratively, refining the corners till a termination criteria is reached. 
 
 ## Refining corners to subpixel level
 
@@ -21,7 +21,7 @@ The function that lets you calculate better corner positions is `cvFindCornerSub
                             CvTermCriteria criteria);
     
 
-Before calling this function, you must use [cvGoodFeaturesToTrack](/tutorials/corner-detection-in-opencv/) to find the approximate location of corners in an image. This function will then refine those estimates.
+Before calling this function, you must use [cvGoodFeaturesToTrack](/tutorials/corner-detection-opencv/) to find the approximate location of corners in an image. This function will then refine those estimates.
 
 With that in mind, I'll go through each one here. 
 

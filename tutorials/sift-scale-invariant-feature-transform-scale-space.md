@@ -70,7 +70,7 @@ The amount of blurring in each image is important. It goes like this. Assume the
 
 ![](/static/img/tut/sift-abs-sigma-matrix.jpg)
 
-This is a table of σ's for my current example. See how each σ differs by a factor sqrt(2) from the previous one. 
+This is a table of σ's for my current example. See how each σ differs by a factor $\sqrt{2}$ from the previous one. 
 
 ## Summary
 

@@ -42,9 +42,9 @@ But if you can get your application to run on a 10 year old computer too, you're
 
 This post is a part of an article series on OpenCV for Beginners 
 
-  1. [Why OpenCV?](/tutorials/why-opencv/)
-  2. [Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)
-  3. [Hello, World! With Images!](/tutorials/hello-world-with-images/)
+  1. **Why OpenCV?**
+  2. [Installing and getting OpenCV running](/tutorials/installing-getting-opencv-running/)
+  3. [Hello, World! With Images!](/tutorials/hello-world-images/)
   4. [Filtering Images](/tutorials/filtering-images/)
   5. [Capturing Images](/tutorials/capturing-images/)
   6. [HighGUI: Creating Interfaces](/tutorials/highgui-creating-interfaces/)

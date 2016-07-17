@@ -61,7 +61,7 @@ Add C:\OpenCV2.0\src\lib\Debug to the **Library Files**.
 
 ## Step 6: Testing the installation
 
-Just to test that OpenCV is working, we'll create a simple "Hello World!" program. You can have a look at that program here: [Hello World! with Images](/tutorials/hello-world-with-images/).
+Just to test that OpenCV is working, we'll create a simple "Hello World!" program. You can have a look at that program here: [Hello World! with Images](/tutorials/hello-world-images/).
 
 Just get the entire code done, and return back to this article. 
 
@@ -81,4 +81,4 @@ Next, take all the .dll files in C:\OpenCV2.0\src\bin\Debug directory and copy t
 
 If everything worked, you just got a working OpenCV 2.0 installation :) Enjoy!
 
-If you were following the **Beginner's guide to OpenCV**, go to the next part: [Hello World! with Images](/tutorials/hello-world-with-images/)!
+If you were following the **Beginner's guide to OpenCV**, go to the next part: [Hello World! with Images](/tutorials/hello-world-images/)!

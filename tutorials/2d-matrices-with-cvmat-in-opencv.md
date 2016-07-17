@@ -111,7 +111,7 @@ Yet another way of accessing data is using pointers. And, pointers are definitel
 
 With these you get the pointer. Do whatever you want. Set values, retrieve values, whatever!
 
-Note that the parameters are _CvArr _pointers. So you can pass _CvMat_ variables and also _IplImage _variables. You can check the reason for this in the article [Primitive structures in OpenCV](/tutorials/primitive-structures-in-opencv/).
+Note that the parameters are _CvArr _pointers. So you can pass _CvMat_ variables and also _IplImage _variables. You can check the reason for this in the article [Primitive structures in OpenCV](/tutorials/primitive-structures-opencv/).
 
 ## Caution with pointers
 

@@ -68,4 +68,4 @@ So apparently, after a few iterations of averaging, the quality of the image rea
 
 So now you have a great new technique in your arsenal that you can use whenever required! If you have any doubts or criticism or suggestions, do let me know!
 
-[Have a look at the actual C implementation](/tutorials/noise-reduction-by-averaging/)
+[Have a look at the actual C implementation](/tutorials/noise-reduction-averaging/)

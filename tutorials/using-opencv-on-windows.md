@@ -21,10 +21,10 @@ That's a lot of stuff! So lets get started right now!
 This is a series of tutorials. Here's the entire list of tutorials: 
 
 ![Lesson 01](/static/img/tut/using-opencv-thumb-tut1.jpg)
-**[Why OpenCV?](/tutorials/why-opencv/)** This article talks about why to choose OpenCV over Matlab. Update: I found a [comparison of OpenCV against other vision libraries](/tutorials/opencv-vs-vxl-vs-lti-performance-test/).
+**[Why OpenCV?](/tutorials/opencv/)** This article talks about why to choose OpenCV over Matlab. Update: I found a [comparison of OpenCV against other vision libraries](/tutorials/opencv-vs-vxl-vs-lti-performance-test/).
 
 ![](/static/img/tut/using-opencv-thumb-tut2.jpg)
-**[Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)** Here you'll learn how to setup your IDE to recognize OpenCV.
+**[Installing and getting OpenCV running](/tutorials/installing-getting-opencv-running/)** Here you'll learn how to setup your IDE to recognize OpenCV.
 
 ![](/static/img/tut/using-opencv-thumb-tut3.jpg)
 **[Hello, World! with images](/tutorials/hello-world-with-images/)** Your very first OpenCV project! You'll load an image and display it on screen.
@@ -33,7 +33,7 @@ This is a series of tutorials. Here's the entire list of tutorials:
 **[Filtering images](/tutorials/filtering-images/)** Do some weird effects on your images! This is a fun lesson!
 
 ![](/static/img/tut/using-opencv-thumb-tut5.jpg)
-**[Capturing images](/tutorials/capturing-images/)** Using OpenCV's inbuilt capabilities to get live video from your camera. Update: Feeling adventerous? Try [capturing with DirectX](/tutorials/capturing-images-with-directx/) (works on any camera).
+**[Capturing images](/tutorials/capturing-images/)** Using OpenCV's inbuilt capabilities to get live video from your camera. Update: Feeling adventerous? Try [capturing with DirectX](/tutorials/capturing-images-directx/) (works on any camera).
 
 ![](/static/img/tut/using-opencv-thumb-tut6.jpg)
 **[HighGUI: Creating Interfaces](/tutorials/highgui-creating-interfaces/)** Learn the basics of creating an interface and detecting events from trackbars and windows.

@@ -47,6 +47,6 @@ To solve a few problems, you subtract the keypoint's orientation and also thresh
 
 ## The End!
 
-Once you have the features, you go play with them! I'll get to that in a later post(or posts :P). Read up on how [the hough transform](/tutorials/the-hough-transform-basics/) works. It will be used a lot.
+Once you have the features, you go play with them! I'll get to that in a later post(or posts :P). Read up on how [the hough transform](/tutorials/hough-transform-basics/) works. It will be used a lot.
 
 Next, I'll try and explain an implementation of SIFT in OpenCV. Finally, some code! :D Though theory is :-~~

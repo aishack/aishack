@@ -6,7 +6,7 @@ category: "OpenCV"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform.jpg"
 ---
-OpenCV already comes with a  function to perform hough transforms. It lets you choose between different variants of the transform: [the standard hough transform](/tutorials/the-hough-transform-basics/), the probabilistic hough transform and the multi-scale hough transform. Here I'll get into the technical details of getting the command, `cvHoughLines2`, to work. The command expects and returns parameters in a certain format. 
+OpenCV already comes with a  function to perform hough transforms. It lets you choose between different variants of the transform: [the standard hough transform](/tutorials/hough-transform-basics/), the probabilistic hough transform and the multi-scale hough transform. Here I'll get into the technical details of getting the command, `cvHoughLines2`, to work. The command expects and returns parameters in a certain format. 
 
 ## The command
 
@@ -26,7 +26,7 @@ _method_ is either CV_HOUGH_STANDARD, CV_HOUGH_PROBABILISTIC, or CV_HOUGH_MULTI_
 
 _rho_ and _theta_ set the desired accuracy of the transform. _rho_ is in pixels and _theta_ is in radians. The smaller the value, the better the transform will be... but it'll also take more time. Usually, values 1 and 0.01 should be sufficient.
 
-_threshold_ determines which lines are returned. Each line has a particular number of "votes". This parameter sets the minimum number of "votes" in order to qualify as a potential line. You might want to read about [The Hough Transform](/tutorials/the-hough-transform-basics/) for more information on this.
+_threshold_ determines which lines are returned. Each line has a particular number of "votes". This parameter sets the minimum number of "votes" in order to qualify as a potential line. You might want to read about [The Hough Transform](/tutorials/hough-transform-basics/) for more information on this.
 
 _param1_ and _param2_ are used by the different transforms. 
 
@@ -36,7 +36,7 @@ _param1_ and _param2_ are used by the different transforms.
 
 ## Extracting results
 
-Getting results out of this command depends on the _line_storage_ parameter. You have two options: supply a [CVMat matrix](/tutorials/2d-matrices-with-cvmat-in-opencv/) or supply a CvMemoryStorage stucture. 
+Getting results out of this command depends on the _line_storage_ parameter. You have two options: supply a [CVMat matrix](/tutorials/2d-matrices-cvmat-opencv/) or supply a CvMemoryStorage stucture. 
 
 ### The matrix approach
 

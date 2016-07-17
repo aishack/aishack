@@ -19,7 +19,7 @@ First, create a Win32 console application. Choose any name you like, and accept 
 
 Next, add the library files to the project. Go to Project > Properties > Configuration > Linker > Input and write cv.lib cxcore.lib cvaux.lib highgui.lib in Additional Dependencies.
 
-If you have any problems with setting this up, I suggest you go through [Using OpenCV with Window](/tutorials/using-opencv-on-windows/). 
+If you have any problems with setting this up, I suggest you go through [Using OpenCV with Window](/tutorials/using-opencv-windows/). 
 
 ## The plan of action
 

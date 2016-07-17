@@ -14,7 +14,7 @@ track_part: 2
 
 The first thing to do is get OpenCV. You can download it from its [sourceforge.net page](http://sourceforge.net/project/showfiles.php?group_id=22870). Make sure you download the latest version and the correct one for your platform.
 
-**Update**: OpenCV 2.0 is now available. This post works for OpenCV 1.0. Check [how to install OpenCV 2.0](/tutorials/installing-and-configuring-opencv-2-on-windows/). 
+**Update**: OpenCV 2.0 is now available. This post works for OpenCV 1.0. Check [how to install OpenCV 2.0](/tutorials/installing-configuring-opencv-2-windows/). 
 
 ## Telling your IDE about OpenCV
 
@@ -24,7 +24,10 @@ I'll demonstrate the process with these IDEs: Microsoft Visual Studio 2008 and M
 
 Other websites mention how to use OpenCV with other environments:
 
-[OpenCV and Eclipse IDE](http://opencv.willowgarage.com/wiki/Eclipse) [OpenCV and Ch](http://www.softintegration.com/products/thirdparty/opencv/demos/) [OpenCV and C++ Builder](http://opencv.willowgarage.com/wiki/C++Builder) [OpenCV and DevCpp](http://opencv.willowgarage.com/wiki/DevCpp)
+- [OpenCV and Eclipse IDE](http://opencv.willowgarage.com/wiki/Eclipse)
+- [OpenCV and Ch](http://www.softintegration.com/products/thirdparty/opencv/demos/)
+- [OpenCV and C++ Builder](http://opencv.willowgarage.com/wiki/C++Builder)
+- [OpenCV and DevCpp](http://opencv.willowgarage.com/wiki/DevCpp)
 
 ## OpenCV and Microsoft Visual Studio 2008
 
@@ -88,9 +91,9 @@ You need to modify your project's settings in order to do that. I'll demonstrate
 
 This post is a part of an article series on OpenCV for Beginners 
 
-  1. [Why OpenCV?](/tutorials/why-opencv/)
-  2. [Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)
-  3. [Hello, World! With Images!](/tutorials/hello-world-with-images/)
+  1. [Why OpenCV?](/tutorials/opencv/)
+  2. **Installing and getting OpenCV running**
+  3. [Hello, World! With Images!](/tutorials/hello-world-images/)
   4. [Filtering Images](/tutorials/filtering-images/)
   5. [Capturing Images](/tutorials/capturing-images/)
   6. [HighGUI: Creating Interfaces](/tutorials/highgui-creating-interfaces/)

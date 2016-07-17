@@ -74,7 +74,7 @@ And if you want to duplicate the size of another image, you can use:
     :::c++
     Mat n = Mat(m.size(), type);
 
-type defines the number of bytes allocated for each element in the matrix. Check [2D matrices with CvMat in OpenCV](/tutorials/2d-matrices-with-cvmat-in-opencv/) for constants you can use here. Yes, constants remain the same for the C and C++ interface. 
+type defines the number of bytes allocated for each element in the matrix. Check [2D matrices with CvMat in OpenCV](/tutorials/2d-matrices-cvmat-opencv/) for constants you can use here. Yes, constants remain the same for the C and C++ interface. 
 
 ## Accessing elements
 
@@ -158,7 +158,7 @@ Here's a list of C code and its equivalent in C++. It should help you port your 
   * _cvShowImage -> imshow_
   * _cvLoadImage -> imread_
 
-You might want to check the previous post, [Calibration and undistortions with the C++ interface](/tutorials/calibrating-undistorting-with-opencv-in-c-oh-yeah/). It takes you through a working example.
+You might want to check the previous post, [Calibration and undistortions with the C++ interface](/tutorials/calibrating-undistorting-opencv-oh-yeah/). It takes you through a working example.
 
 ## Summary
 

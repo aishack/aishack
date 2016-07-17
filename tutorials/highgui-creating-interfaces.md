@@ -165,9 +165,9 @@ In this tutorial, you learned a bit more about HighGUI and how you can make use 
 
 This post is a part of an article series on OpenCV for Beginners 
 
-  1. [Why OpenCV?](/tutorials/why-opencv/)
-  2. [Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)
-  3. [Hello, World! With Images!](/tutorials/hello-world-with-images/)
+  1. [Why OpenCV?](/tutorials/opencv/)
+  2. [Installing and getting OpenCV running](/tutorials/installing-getting-opencv-running/)
+  3. [Hello, World! With Images!](/tutorials/hello-world-images/)
   4. [Filtering Images](/tutorials/filtering-images/)
   5. [Capturing Images](/tutorials/capturing-images/)
-  6. [HighGUI: Creating Interfaces](/tutorials/highgui-creating-interfaces/)
+  6. **HighGUI: Creating Interfaces**

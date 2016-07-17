@@ -6,7 +6,7 @@ category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-knearest.jpg"
 ---
-Recognizing things is a common problem in machine learning. Even in the [SuDoKu Solver demo](/tutorials/sudoku-grabber-with-opencv-plot/), we require a mechanism to identify digits in the SuDoKu grid. To do this, we'll use a simple algorithm called K-Nearest. It's one of the simplest machine learning algorithms. The results aren't going to be robust, but we'll get some good results. 
+Recognizing things is a common problem in machine learning. Even in the [SuDoKu Solver demo](/tutorials/sudoku-grabber-opencv-plot/), we require a mechanism to identify digits in the SuDoKu grid. To do this, we'll use a simple algorithm called K-Nearest. It's one of the simplest machine learning algorithms. The results aren't going to be robust, but we'll get some good results. 
 
 ## The K-Nearest Neighborhood Classification Algorithm
 

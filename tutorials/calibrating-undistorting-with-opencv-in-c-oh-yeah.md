@@ -6,13 +6,13 @@ category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-camera-calibration-undistort.jpg"
 ---
-I've already talked about [camera distortions](/tutorials/two-major-physical-defects-in-cameras/) and [calibrating a camera](/tutorials/calibrating-a-camera-theory/). Now we'll actually implement it. And we'll do it in C++. Why? Because it's a lot more easier and make much more sense. No more stupid CV_MAT_ELEM macros. And things will just work. But, I won't talk about how the C++ is working. Figure it out yourself ;) 
+I've already talked about [camera distortions](/tutorials/major-physical-defects-cameras/) and [calibrating a camera](/tutorials/calibrating-camera-theory/). Now we'll actually implement it. And we'll do it in C++. Why? Because it's a lot more easier and make much more sense. No more stupid CV_MAT_ELEM macros. And things will just work. But, I won't talk about how the C++ is working. Figure it out yourself ;) 
 
 ## The setup
 
 The first thing we need for this is the latest version of OpenCV. If you're using 1.0 or 1.1pre or any of those, you need to get the latest version. It has the C++ interface. Previous version simply do not have it. Go [download the most recent version at sourceforge](http://sourceforge.net/projects/opencvlibrary/).
 
-Once you have it, [follow these instructions](/tutorials/installing-and-configuring-opencv-2-on-windows/) if you use Visual Studio. If not, check around the OpenCV wiki, and you should see where you can find instructions for your IDE. 
+Once you have it, [follow these instructions](/tutorials/installing-configuring-opencv-2-windows/) if you use Visual Studio. If not, check around the OpenCV wiki, and you should see where you can find instructions for your IDE. 
 
 ## Onto the project
 

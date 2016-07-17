@@ -187,9 +187,9 @@ I hope you learned quite a bit in this tutorial. In the next tutorial, you'll se
 
 This post is a part of an article series on OpenCV for Beginners 
 
-  1. [Why OpenCV?](/tutorials/why-opencv/)
+  1. [Why OpenCV?](/tutorials/opencv/)
   2. [Installing and getting OpenCV running](/tutorials/installing-and-getting-opencv-running/)
-  3. [Hello, World! With Images!](/tutorials/hello-world-with-images/)
-  4. [Filtering Images](/tutorials/filtering-images/)
+  3. [Hello, World! With Images!](/tutorials/hello-world-images/)
+  4. **Filtering Images**
   5. [Capturing Images](/tutorials/capturing-images/)
   6. [HighGUI: Creating Interfaces](/tutorials/highgui-creating-interfaces/)

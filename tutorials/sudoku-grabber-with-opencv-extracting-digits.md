@@ -44,9 +44,9 @@ We'll create a new class to that handles all digit recognition. Start by creatin
     
     };
 
-We've created a constructor and a destructor the class. The _train()_ function takes a path to a dataset of images and a path to its corresponding labels. It will be similar to what was had in [k-Nearest Neighbors for OpenCV](/tutorials/knearest-neighbors-in-opencv/).
+We've created a constructor and a destructor the class. The _train()_ function takes a path to a dataset of images and a path to its corresponding labels. It will be similar to what was had in [k-Nearest Neighbors for OpenCV](/tutorials/knearest-neighbors-opencv/).
 
-_classify()_ takens an image and returns what digit it is. _preprocessImage()_ does some preprocessing... contrast enhancement, centering, _etc. readFlippedInteger()_ is again similar to what was done in [k-Nearest Neighbors for OpenCV](/tutorials/knearest-neighbors-in-opencv/). It has something to do with the endiannesss of your processor and the file-format of the dataset we're using.
+_classify()_ takens an image and returns what digit it is. _preprocessImage()_ does some preprocessing... contrast enhancement, centering, _etc. readFlippedInteger()_ is again similar to what was done in [k-Nearest Neighbors for OpenCV](/tutorials/knearest-neighbors-opencv/). It has something to do with the endiannesss of your processor and the file-format of the dataset we're using.
 
 _knn_ is a k-Nearest Neighbor data structure... and _numRows_, _numCols_ and _numImages_ stores the number of rows and columns in the training dataset. _numImages_ stores the number of images in the dataset. 
 
@@ -147,7 +147,7 @@ Next, add a definition for the _readFlippedInteger _and _train _functions:
         return true;
     }
 
-For this series, I'll use the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) of handwritten digits. I've used the data format used by them to read the file. Have a look at [k-Nearest Neighbors for OpenCV](/tutorials/knearest-neighbors-in-opencv/) for a more detailed explanation about how the above code works.
+For this series, I'll use the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) of handwritten digits. I've used the data format used by them to read the file. Have a look at [k-Nearest Neighbors for OpenCV](/tutorials/knearest-neighbors-opencv/) for a more detailed explanation about how the above code works.
 
 Now, for the very simple function: _classify()_! 
     

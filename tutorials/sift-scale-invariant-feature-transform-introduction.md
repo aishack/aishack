@@ -44,7 +44,7 @@ SIFT is quite an involved algorithm. It has a lot going on and can become confus
   4. **[Get rid of bad key points](/tutorials/sift-scale-invariant-feature-transform-eliminate-low-contrast/)** Edges and low contrast regions are bad keypoints. Eliminating these makes the algorithm efficient and robust. A technique similar to [the Harris Corner Detector](/tutorials/interesting-windows-in-the-harris-corner-detector/) is used here.
   5. **[Assigning an orientation to the keypoints](/tutorials/sift-scale-invariant-feature-transform-keypoint-orientation/)** An orientation is calculated for each key point. Any further calculations are done relative to this orientation. This effectively cancels out the effect of orientation, making it rotation invariant.
   6. **[Generate SIFT features](/tutorials/sift-scale-invariant-feature-transform-features/)** Finally, with scale and rotation invariance in place, one more representation is generated. This helps uniquely identify features. Lets say you have 50,000 features. With this representation, you can easily identify the feature you're looking for (say, a particular eye, or a sign board).
-That was an overview of the entire algorithm. Over the next few days, I'll go through each step in detail. Finally, I'll show you how to **[implement SIFT in OpenCV](/tutorials/implementing-sift-in-opencv/)**! 
+That was an overview of the entire algorithm. Over the next few days, I'll go through each step in detail. Finally, I'll show you how to **[implement SIFT in OpenCV](/tutorials/implementing-sift-opencv/)**! 
 
 ## What do I do with SIFT features?
 
@@ -52,8 +52,6 @@ After you run through the algorithm, you'll have SIFT features for your image. O
 
 Track images, detect and identify objects (which can be partly hidden as well), or whatever you can think of. We'll get into this later as well.
 
-But the catch is, this algorithm is patented.
-
->.<
+But the catch is, this algorithm is patented. Sigh.
 
 So, it's good enough for academic purposes. But if you're looking to make something commercial, look for something else! [Thanks to aLu for pointing out SURF is patented too]

@@ -9,7 +9,7 @@ series: "SuDoKu Grabber in OpenCV"
 part: 5
 ---
 
-In the previous article ([Detecting a SuDoKu puzzle in an Image, Part 3](/tutorials/sudoku-grabber-with-opencv-extracting-grid/)), we created the DigitRecognizer class.It had functions for training and classifying images as digits. We also put some pre-processing code to ensure the image is at the center. Now, we'll combine it with our existing program. We'll also use the merged lines we created earlier. 
+In the previous article ([Detecting a SuDoKu puzzle in an Image, Part 3](/tutorials/sudoku-grabber-opencv-extracting-grid/)), we created the DigitRecognizer class.It had functions for training and classifying images as digits. We also put some pre-processing code to ensure the image is at the center. Now, we'll combine it with our existing program. We'll also use the merged lines we created earlier. 
 
 ## Training the classifier
 

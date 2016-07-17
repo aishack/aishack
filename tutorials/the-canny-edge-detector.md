@@ -34,7 +34,7 @@ Next, gradient magnitudes and directions are calculated at every single point in
 
 The _direction_ of the gradient shows how the edge is oriented.
 
-To calculate these, [the standard sobel edge detector](/tutorials/the-sobel-and-laplacian-edge-detectors/) is used.
+To calculate these, [the standard sobel edge detector](/tutorials/sobel-laplacian-edge-detectors/) is used.
 
 The magnitude of gradient is ![](http://s0.wp.com/latex.php?latex=m%20%3D%20%5Csqrt%7BG_x%5E2%20%2B%20G_y%5E2%7D&bg=ffffff&fg=000&s=0). The direction of gradient is ![](http://s0.wp.com/latex.php?latex=%5Ctheta%20%3D%20arctan%28%5Cfrac%7BG_y%7D%7BG_x%7D%29&bg=ffffff&fg=000&s=0). Here, ![](http://s0.wp.com/latex.php?latex=G_x&bg=ffffff&fg=000&s=0) and ![](http://s0.wp.com/latex.php?latex=G_y&bg=ffffff&fg=000&s=0) are the X and Y derivatives at the point being considered.
 

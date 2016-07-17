@@ -91,7 +91,7 @@ Okay, so we know how to calculate the covariance and mean for each class - but h
 
 Here, the eigenvectors are the yellow and blue tinted arrows. They're not perpendicular and are not aligned with the coordinate axes (the black X-Y axes). Note that the yellow eigenvector encodes information that "there is maximum change along this axis". The blue eigenvector encodes the information that "there is some change along this axis - but it's not the maximum".
 
-The above example is in two dimensions but you should be able to extend it to three dimensions (a bunch of 3D vectors in 3D space). It makes sense to somehow spit the tree using the largest eigenvector.
+The above example is in two dimensions but you should be able to extend it to three dimensions (a bunch of 3D vectors in 3D space). It makes sense to somehow split the tree using the largest eigenvector.
 
 Our datapoints are RGB values. The greater the variance along a particular axis, the greater the chances that there are actually two or more colors along that axis. In practice, this is represented by two quantities - eigenvectors and eigenvalues. Usually, eigenvectors are normalized to have unit length. Eigenvalues represent the magnitude or length of the axes.
 

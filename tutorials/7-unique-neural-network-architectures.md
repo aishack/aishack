@@ -50,7 +50,7 @@ These are similar to the hopfield network, except that they mimic human memories
 
 !!pull-right|![](/static/img/tut/architecture_hamnet.jpg)!!
 
-Hamming & MAXNET
+### Hamming & MAXNET
 
 These networks help in classification (just like the dictomizer/multicategory classifier), but using another technique. We'll go into the details of this network pretty late. This network can be used in unsupervised learning as well.
 
@@ -58,7 +58,7 @@ These networks help in classification (just like the dictomizer/multicategory cl
 
 !!pull-right|![](/static/img/tut/architecture_unsuervised.jpg)!!
 
-Unsupervised learning
+### Unsupervised learning
 
 All previous networks require supervised learning. That is, you give the network an input, and the expected output. The network then adapts accordingly. In this network, no expected output is required. The network "learns" on itself. As impossible as it may sound, it is possible :)
 

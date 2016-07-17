@@ -7,11 +7,11 @@ author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-modern-neuron.jpg"
 ---
 
-Modern artificial neurons have been derived from [McCulloch-Pitts model](/tutorials/first-artificial-neurons-the-mccullochpitts-model/), but with some changes. These changes allow us to create physical neural networks (using resistors, opamps, etc) relatively easily. Plus, these changes make the neurons much more versatile and can adapt to a wider range of applications. 
+Modern artificial neurons have been derived from [McCulloch-Pitts model](/tutorials/artificial-neurons-mccullochpitts-model/), but with some changes. These changes allow us to create physical neural networks (using resistors, opamps, etc) relatively easily. Plus, these changes make the neurons much more versatile and can adapt to a wider range of applications. 
 
 ## The changes
 
-I assume you've gone through the post on [McCulloch-Pitts model](/tutorials/first-artificial-neurons-the-mccullochpitts-model/). So I relate the 3 changes that were made to make the modern neuron. 
+I assume you've gone through the post on [McCulloch-Pitts model](/tutorials/artificial-neurons-mccullochpitts-model/). So I relate the 3 changes that were made to make the modern neuron. 
 
 ### Change 1: The inputs
 

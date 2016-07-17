@@ -12,8 +12,8 @@ Time for some fun! Today we'll be creating an interesting program today. I'll be
 
 For now, I'll assume you've read these posts: 
 
-  * **[Drawing Histograms in OpenCV](/tutorials/drawing-histograms-in-opencv/)** Here I go through a flexible function that will draw a histogram from any grayscale image you give it
-  * **Some method of capturing live video** I've discussed two ways here: one uses [OpenCV's cvcam libraries](/tutorials/capturing-images/) and the other uses [DirectX to capture images using videoInput](/tutorials/capturing-images-with-directx/).
+  * **[Drawing Histograms in OpenCV](/tutorials/drawing-histograms-opencv/)** Here I go through a flexible function that will draw a histogram from any grayscale image you give it
+  * **Some method of capturing live video** I've discussed two ways here: one uses [OpenCV's cvcam libraries](/tutorials/capturing-images/) and the other uses [DirectX to capture images using videoInput](/tutorials/capturing-images-directx/).
 
 ## The main function
 

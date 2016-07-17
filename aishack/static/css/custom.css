@@ -46,6 +46,9 @@ figcaption {
   margin: 0 auto;
   width: 100%; }
 
+.tut-success, .tut-alert, .tut-warn {
+  min-height: 4.4em; }
+
 .tut-success {
   color: #3c763d;
   border-color: #d6e9c6;

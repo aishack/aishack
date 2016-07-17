@@ -122,15 +122,17 @@ Using the function we just created is simple. You give it an image in the RGB co
 
 The normalized image can be represented using only 2 bytes per pixel (as opposed to 3 bytes per pixel in RGB). Here's how:
 
-R' = R/(R+G+B) G' = G/(R+G+B)
+$R' = \frac{R}{R+G+B}$
 
-B' = B/(R+G+B)
+$G' = \frac{G}{R+G+B}$
+
+$B' = \frac{B}{R+G+B}$
 
 But you can represent B' like this as well: 
 
-B' = 1-R'-G'
+$B' = 1-R'-G'$
 
-So ultimately, all you need to store is the value of R' and G'. You can calculate the B' component from the other two. Physically, its this loss of information that "removes" the lighting information from the image. 
+So ultimately, all you need to store is the value of $R'$ and $G'$. You can calculate the B' component from the other two. Physically, its this loss of information that "removes" the lighting information from the image. 
 
 ## Conclusion
 
