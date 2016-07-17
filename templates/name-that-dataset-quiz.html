@@ -23,6 +23,7 @@
         </div>
         <a href='/name-that-dataset/quiz'><button class='btn btn-primary'>Play again!</button></a>
     {% else %}
+        {{expecting}}
         <div class='clearfix'>
             <div class='pull-left'>Question {{state}} of 12</div>
             <div class='pull-right'><span class='label label-success'>Score: {{score}}</span></div>

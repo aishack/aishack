@@ -2,14 +2,16 @@
 
 {% block content %}
     {% if tutorial %}
-        {{ tutorial }}
         {% if tutorial.post_image %}
             <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
         {% endif %}
             <h2> {{tutorial.title}} </h2>
-           <div class="fb-like" data-href="http://facebook.com/aishack" data-width='760px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+           <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width="true" data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
-        {{ tutorial.content | safe }}
+
+        <div class='tutorial-content'>
+            {{ tutorial.content | safe }}
+        </div>
 
         {% if tutorial.series %}
             <hr />
@@ -42,7 +44,7 @@
         {% endif %}
 
         <hr />
-       <div class="fb-like" data-href="http://facebook.com/aishack" data-width='760px' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+       <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width='true' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
 
         {# Show the book banner #}
@@ -53,7 +55,7 @@
                 <h2><strong><a href='/opencv-blueprints'>OpenCV 3 Blueprints</a></strong></h2>
                 <p>Learn how to identify <strong>face expressions</strong>, <strong>fingerprints</strong>, setup automated <strong>camera traps</strong>, stabilize mobile video with <strong>gyroscopes</strong> and use the <strong>Android NDK</strong></p>
                 <p>The book is packed with the fundamentals of computer vision and will get you started on just the right track.</p>
-                <p><a class ='btn btn-primary pull-right' href='/opencv-blueprints'>Learn more about the book</a></p>
+                <p><a class ='btn btn-primary btn-blueprints pull-right' href='/opencv-blueprints'>Learn more about the book</a></p>
             </div>
         {% endif %}
 
@@ -72,10 +74,9 @@
         {% for track in tracks %}
             <div class='clearfix'>
                 <div class='row clearfix'>
-                    <div class='col-md-2 clearfix'>
+                    <div class='col-md-2'>
                         <a href='/tracks/{{track.slug}}/'><img class='pull-right' src='{{track.thumbnail}}' /></a>
                     </div>
-
                     <div class='caption col-md-10'>
                         <h4><a href='/tracks/{{track.slug}}/'>{{track.title}}</a></h4>
                         <p>{{track.excerpt | safe}}</p>
@@ -106,7 +107,7 @@
         {% for category, items in tutorials_to_display.items %}
             <div class='clearfix category'>
                 <div class='category-info'>
-                    <img src="{{category.thumb}}" class='category-thumb pull-right' />
+                    <a href='/category/{{category.slug}}'><img src="{{category.thumb}}" class='category-thumb pull-right' /></a>
                     <h4><a href='/category/{{category.slug}}'>{{category.title}}</a></h4>
                     {{category.desc | safe}}
                 </div>

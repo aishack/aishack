@@ -52,6 +52,55 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="col-md-4 visible-xs visible-sm hidden-md hidden-lg sidebar-bottom">
-    <p>The bottom sidebar</p>
+    <div class='panel panel-default'>
+        <div class='panel-heading'>Search</div>
+        <div class='panel-body'>
+            <form class='form-inline form-search' role='form' method='get' action='/search'>
+                <div class='form-group has-feedback'>
+                    <input placeholder='Search' type='text' class='form-control' name='q' id='q' />
+                    <input type='hidden' name='models' value='aishack.tutorial' />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    {% if knob_show_vision_scrolls %} 
+        <div class='panel panel-default'>
+            <div class='panel-heading'>Vision Scrolls</div>
+            <div class='panel-body'>
+                <a href='/opencv-blueprints/'><img src='/static/img/opencv-blueprints.jpg' /></a>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class='panel panel-default'>
+        <div class='panel-heading'>Popular tutorials</div>
+        <div class='panel-body'>
+            <table class='table'>
+            {% for tut in POPULAR_TUTORIALS %}
+                    <tr><td><a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a></td></tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+
 </div>

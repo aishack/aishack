@@ -359,7 +359,7 @@ img.user-gravatar {
 
 .home-new-tuts .summary {
   clear: both;
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
   height: 80px; }
 
 .home-new-tuts .summary:last-of-type {
@@ -399,6 +399,14 @@ img.user-gravatar {
 .featured .clear-fix {
   clear: both; }
 
+.recent .thumb {
+  height: 80px;
+  width: 80px;
+  margin-right: 10px; }
+
+.recent .read-more {
+  float: right; }
+
 @media (min-width: 992px) {
   .featured .thumb {
     width: 100%;
@@ -406,6 +414,13 @@ img.user-gravatar {
     margin-right: 0px;
     margin-bottom: 10px; }
   .featured .read-more {
+    float: none; }
+  .recent .thumb {
+    height: 100%;
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 10px; }
+  .recent .read-more {
     float: none; } }
 
 .jumbotron {
@@ -503,4 +518,17 @@ table td {
   margin-right: 1em;
   margin-left: 1em;
   border: 0.1em solid #dedede;
-  padding: 0.1em; }
+  padding: 0.1em;
+  width: 80px;
+  height: 80px; }
+
+@media (min-width: 992px) {
+  .category-thumb {
+    width: 200px;
+    height: 200px; } }
+
+.btn-blueprints {
+  margin-bottom: 1em; }
+
+.tutorial-content img {
+  max-width: 100%; }
