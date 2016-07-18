@@ -1,5 +1,5 @@
 ---
-title: "Finding dominant colors in an image: Additional functions"
+title: "Additional functions to view what's happening"
 date: "2016-07-12 06:49:24"
 excerpt: "Here's a simple task - given an image find the dominant colors in the image. I'll walk you through a lesser known technique that does not use kmeans."
 category: "Computer Vision"

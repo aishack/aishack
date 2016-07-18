@@ -7,7 +7,7 @@ class Tutorial(models.Model):
     This table holds information about each tutorial hosted on the website
     Tutorials can be contained within tracks - but a tutorial doesn't know that
     """
-    title          = models.CharField(max_length=128, unique=True)
+    title          = models.CharField(max_length=128)
     content        = models.TextField()
     content_md     = models.TextField()
     date           = models.DateField()

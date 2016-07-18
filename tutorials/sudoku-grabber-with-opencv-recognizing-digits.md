@@ -1,5 +1,5 @@
 ---
-title: "SuDoKu Grabber with OpenCV: Recognizing digits"
+title: "Recognizing digits"
 date: "2010-08-25 16:41:50"
 excerpt: ""
 category: "Projects"

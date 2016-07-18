@@ -1,5 +1,5 @@
 ---
-title: "SIFT: Finding keypoints"
+title: "Finding keypoints"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer Vision"

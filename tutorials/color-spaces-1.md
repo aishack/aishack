@@ -1,5 +1,5 @@
 ---
-title: "Color spaces"
+title: "Greyscale and RGB color spaces"
 date: "2010-01-03 19:53:34"
 excerpt: ""
 category: "Computer Vision"

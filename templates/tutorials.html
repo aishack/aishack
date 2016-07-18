@@ -5,9 +5,14 @@
         {% if tutorial.post_image %}
             <img class='tut-post-image img-responsive' src="{{ tutorial.post_image }}" />
         {% endif %}
-            <h2> {{tutorial.title}} </h2>
            <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width="true" data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
+
+        {% if tutorial.series %}
+            <h2>{{ tutorial.series.name }}</h2>
+            <hr/>
+        {% endif %}
+        <h2>{{ tutorial.title }}</h2>
 
         <div class='tutorial-content'>
             {{ tutorial.content | safe }}

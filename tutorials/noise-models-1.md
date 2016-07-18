@@ -1,5 +1,5 @@
 ---
-title: "Noise Models (part 1)"
+title: "Gaussian and Gamma noise"
 date: "2010-01-09 21:35:57"
 excerpt: ""
 category: "Computer Vision"

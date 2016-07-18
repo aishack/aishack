@@ -1,5 +1,5 @@
 ---
-title: "SuDoKu Grabber with OpenCV: Grid detection"
+title: "Grid detection"
 date: "2010-08-25 16:41:50"
 excerpt: ""
 category: "Projects"

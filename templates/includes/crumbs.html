@@ -6,6 +6,9 @@
             <li><a href='/category/{{category_slug}}/'>{{tutorial.category}}</a></li>
         {% endif %}
         {% if tutorial.slug %}
+            {% if tutorial.series %}
+                <li><a href='/tutorials/{{series_first.slug}}'>{{tutorial.series.name}}</a></li>
+            {% endif %}
             <li><a href='/tutorials/{{tutorial.slug}}/'>{{tutorial.title}}</a></li>
         {% endif %}
     {% endifequal %}

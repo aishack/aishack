@@ -1,5 +1,5 @@
 ---
-title: "SIFT: The scale space"
+title: "The scale space"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer Vision"

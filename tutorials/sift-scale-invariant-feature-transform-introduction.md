@@ -1,5 +1,5 @@
 ---
-title: "SIFT: Introduction"
+title: "Introduction"
 date: "2010-05-14 22:22:09"
 excerpt: "Learn how the famous SIFT keypoint detector works in the background. This paper led a mini revolution in the world of computer vision!"
 category: "Computer Vision"

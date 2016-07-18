@@ -1,5 +1,5 @@
 ---
-title: "Noise Models (part 2)"
+title: "Exponential, Rayleigh, Uniform and Impluse noise"
 date: "2010-01-09 21:35:57"
 excerpt: ""
 category: "Computer Vision"

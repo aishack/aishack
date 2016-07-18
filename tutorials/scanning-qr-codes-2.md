@@ -1,5 +1,5 @@
 ---
-title: "Scanning QR Codes (part 2)"
+title: "Locating the QR code"
 date: "2012-02-03 11:42:48"
 excerpt: ""
 category: "Projects"

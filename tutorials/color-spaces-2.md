@@ -1,5 +1,5 @@
 ---
-title: "Color spaces 2"
+title: "HSV and YCrCb color spaces"
 date: "2010-01-03 19:53:34"
 excerpt: ""
 category: "Computer Vision"

@@ -1,5 +1,5 @@
 ---
-title: "The Canny Edge Detector"
+title: "Introduction the edge detector"
 date: "2011-06-28 11:11:23"
 excerpt: "An in-depth exploration of how the famous Canny edge detection system works. We'll implement our own after going through the theory."
 category: "Computer Vision"

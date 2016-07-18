@@ -1,5 +1,5 @@
 ---
-title: "SIFT: Getting rid of low contrast keypoints"
+title: "Getting rid of low contrast keypoints"
 date: "2010-05-14 22:22:09"
 excerpt: ""
 category: "Computer Vision"

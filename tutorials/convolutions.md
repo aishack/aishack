@@ -1,5 +1,5 @@
 ---
-title: "Convolutions"
+title: "Basics of convolutions"
 date: "2010-08-09 23:51:31"
 excerpt: ""
 category: "Computer Vision"

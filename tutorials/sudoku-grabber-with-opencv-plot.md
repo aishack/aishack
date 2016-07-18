@@ -1,5 +1,5 @@
 ---
-title: "SuDoKu Grabber with OpenCV: The Plot"
+title: "The Plot"
 date: "2010-08-25 16:41:50"
 excerpt: "I decided to write a quick and fun project. The idea is simple - capture an image, identify the sudoku grid + digits and then solve the puzzle!"
 category: "Projects"

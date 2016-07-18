@@ -1,5 +1,5 @@
 ---
-title: "Scanning QR Codes (part 1)"
+title: "Introduction"
 date: "2012-02-03 11:42:48"
 excerpt: "Recognize QR Codes in images from scratch. We'll do all the bit math to figure out the location markers and then read data from the black/white array."
 category: "Projects"

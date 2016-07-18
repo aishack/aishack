@@ -179,7 +179,11 @@ def tutorials(request, slug=None):
         # The user isn't logged in - display the pre-processed related tutorials
         related_list = tutorial.related.all()[0:_num_related]
 
-        context.update({'related_tuts': related_list})
+        series_first = None
+        if tutorial.series:
+            series_first = tutorial.series.tutorials.all()[0]
+
+        context.update({'related_tuts': related_list, 'series_first': series_first})
     else:
         # Fetch all the tracks
         tracks = Track.objects.all()
