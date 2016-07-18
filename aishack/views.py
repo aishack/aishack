@@ -37,7 +37,7 @@ def index(request):
     # Fetch the first three featured tutorials
     # Fetch the 3 recent tutorials
     if not featured_tutorials:
-        featured_tutorials = list(reversed(Tutorial.objects.filter(featured=True).order_by('-date')[0:4]))
+        featured_tutorials = list(Tutorial.objects.filter(featured=True).order_by('-date')[0:4])
 
     if not recent_tutorials:
         recent_tutorials = utils.fetch_tutorials(8)
@@ -155,12 +155,16 @@ def tutorials(request, slug=None):
             track = None
             track_length = 0
 
+        page_title = tutorial.title
+        if tutorial.series:
+            page_title = "%s: %s" % (tutorial.series.name, tutorial.title)
+
         context.update({'tutorial': tutorial,
                         'track': track,
                         'track_length': track_length,
                         'tuts_in_track_read': 0,
                         'tuts_in_track_read_percent': 0,
-                        'page_title': tutorial.title,
+                        'page_title': page_title,
                         'author': author.user,
                         'category_slug': tutorial.category.slug,
                         'author_email_md5': md5(author.user.email).hexdigest(),
