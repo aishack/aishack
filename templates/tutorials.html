@@ -12,7 +12,25 @@
             <h2>{{ tutorial.series.name }}</h2>
             <hr/>
         {% endif %}
-        <h2>{{ tutorial.title }}</h2>
+            <h2>{{ tutorial.title }}</h2>
+            {% if tutorial.series %}
+                <div class='pull-right series-box-top'>
+                    <p><strong>Series</strong>: {{ tutorial.series.name }}:</p>
+                    <ol>
+                        {% for tut in tutorial.series.tutorial_list %}
+                            <li>
+                                {% ifequal tut tutorial %}
+                                    <strong>{{tut.title}}</strong>
+                                {% else %}
+                                    <a href='/tutorials/{{tut.slug}}/'>{{tut.title}}</a>
+                                {% endifequal %}
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            {% endif %}
+
+
 
         <div class='tutorial-content'>
             {{ tutorial.content | safe }}
@@ -20,6 +38,7 @@
 
         {% if tutorial.series %}
             <hr />
+            <h2>More in the series</h2>
             <p>This tutorial is part of a series called <strong>{{ tutorial.series.name }}</strong>:</p>
             <ol>
                 {% for tut in tutorial.series.tutorial_list %}

@@ -539,3 +539,10 @@ table td {
 img.math-false {
   display: block;
   margin: 0 auto; }
+
+.series-box-top {
+  display: box;
+  border: 1px solid #dedede;
+  margin-left: 2em;
+  padding: 1em;
+  width: 40%; }
