@@ -535,3 +535,7 @@ table td {
 
 .tutorial-content img {
   max-width: 100%; }
+
+img.math-false {
+  display: block;
+  margin: 0 auto; }
