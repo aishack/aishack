@@ -51,5 +51,7 @@ RUN supervisord && sleep 20 && cd /work/aishack/ && python manage.py rebuild_ind
 
 COPY varnish.vcl /work/aishack/
 
+CMD supervisord -n
+
 # Weather port
 EXPOSE 8000
