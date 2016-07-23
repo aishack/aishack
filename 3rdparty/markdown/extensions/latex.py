@@ -62,7 +62,7 @@ class LaTeXPreprocessor(markdown.preprocessors.Preprocessor):
         self.config = {}
         self.config[("general", "preamble")] = ""
         self.config[("dvipng", "args")] = "-q -T tight -bg Transparent -z 9 -D 125"
-        self.config[("delimiters", "text")] = "%"
+        self.config[("delimiters", "text")] = "@"
         self.config[("delimiters", "math")] = "$"
         self.config[("delimiters", "preamble")] = "%%"
 
@@ -173,9 +173,9 @@ class LaTeXPreprocessor(markdown.preprocessors.Preprocessor):
         # Figure out our text strings and math-mode strings
 
         # Original
-        # tex_expr = [(self.re_textmode, False, x) for x in self.re_textmode.findall(page)]
+        tex_expr = [(self.re_textmode, False, x) for x in self.re_textmode.findall(page)]
         # tex_expr += [(self.re_mathmode, True, x) for x in self.re_mathmode.findall(page)]
-        tex_expr = [(self.re_mathmode, True, x) for x in self.re_mathmode.findall(page)]
+        tex_expr += [(self.re_mathmode, True, x) for x in self.re_mathmode.findall(page)]
 
         # No sense in doing the extra work
         if not len(tex_expr):
