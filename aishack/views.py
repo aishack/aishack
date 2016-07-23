@@ -330,11 +330,6 @@ def category(request, slug):
 
     return render(request, 'category.html', context)
 
-def whylogin(request):
-    context = utils.get_global_context(request)
-    context.update({'current_page': 'why-login'})
-    return render(request, 'why-login.html', context)
-
 def opencvbook(request):
     context = utils.get_global_context(request)
     context.update({'current_page': 'opencv-blueprints', 'nosidebar': 1})
@@ -347,7 +342,10 @@ def visionscrolls(request):
 
 def namethatdataset(request):
     context = utils.get_global_context(request)
-    context.update({'meta_thumb': '/static/img/quiz.jpg', 'current_page': 'name-that-dataset'})
+    context.update({'meta_thumb': '/static/img/quiz.jpg',
+                    'meta_title': "Name that Dataset!", 
+                    'meta_description': 'Think you\'ve seen enough datasets in your vision career? Here\'s a quiz - can you identify which dataset these images belong to?',
+                    'current_page': 'name-that-dataset'})
     response = render(request, 'name-that-dataset.html', context);
     response.delete_cookie('quiz_session')
 
