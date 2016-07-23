@@ -347,7 +347,7 @@ def visionscrolls(request):
 
 def namethatdataset(request):
     context = utils.get_global_context(request)
-    context.update({'current_page': 'name-that-dataset'})
+    context.update({'meta_thumb': '/static/img/quiz.jpg', 'current_page': 'name-that-dataset'})
     response = render(request, 'name-that-dataset.html', context);
     response.delete_cookie('quiz_session')
 
