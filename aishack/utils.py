@@ -5,11 +5,15 @@ import markdown, hashlib
 
 from aishack.models import AishackUser, Tutorial, TutorialSeries
 from django.contrib.auth.models import User
+from aishack import settings
 
 cache_global_context = None
 
 def get_global_context(request):
     global cache_global_context
+
+    if settings.DEBUG:
+        cache_global_context = None
 
     if not cache_global_context:
         popular_tutorials = fetch_popular_tutorials(5)

@@ -34,6 +34,10 @@ def index(request):
     context = utils.get_global_context(request)
     context.update({'current_page': 'home'})
 
+    if settings.DEBUG:
+        featured_tutorials = None
+        recent_tutorials = None
+
     # Fetch the first three featured tutorials
     # Fetch the 3 recent tutorials
     if not featured_tutorials:
