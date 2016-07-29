@@ -93,7 +93,7 @@ def tracks(request, slug=None):
         return redirect('/tutorials/')
 
     context = utils.get_global_context(request)
-    context.update({'current_page': 'track'})
+    context.update({'current_page': 'track', 'show_sharing_buttons': True})
 
     # We do have a slug
     track = shortcuts.get_object_or_404(Track, slug=slug)
@@ -172,7 +172,8 @@ def tutorials(request, slug=None):
                         'author': author.user,
                         'category_slug': tutorial.category.slug,
                         'author_email_md5': md5(author.user.email).hexdigest(),
-                        'aishackuser': author})
+                        'aishackuser': author,
+                        'show_sharing_buttons': True})
 
         context.update({
             'meta_title': tutorial.title, 
@@ -330,7 +331,10 @@ def category(request, slug):
         tutorials_to_display.append(tut)
 
     context = utils.get_global_context(request)
-    context.update({'current_page': 'category', 'category': category, 'tutorials_to_display': tutorials_to_display})
+    context.update({'current_page': 'category',
+                    'category': category,
+                    'tutorials_to_display': tutorials_to_display,
+                    'show_sharing_buttons': True})
 
     return render(request, 'category.html', context)
 

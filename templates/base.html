@@ -16,6 +16,13 @@
         <meta name="description" content="{{ meta_description }}" />
         <link rel='image_src' href='http://aishack.in{{ meta_thumb }}' />
         <meta property='og:image:url' content='http://aishack.in{{ meta_thumb }}' />
+
+        {% if show_sharing_buttons %}
+            <script type="text/javascript">var switchTo5x=true;</script>
+            <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+            <script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+        {% endif %}
+
     </head>
     <body>
         <div class='container-fluid header-top'>
@@ -83,5 +90,14 @@
         {% block inlinejs %}
         {% endblock %}
         </script>
+
+
+        {% if show_sharing_buttons %}
+            <script type="text/javascript">stLight.options({publisher: "46a0c3c5-b39e-40da-a153-3445ee34a6f6", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+            <script>
+            var options={ "publisher": "46a0c3c5-b39e-40da-a153-3445ee34a6f6", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "linkedin", "reddit", "googleplus", "evernote", "pocket", "pinterest", "sharethis", "email"]}};
+            var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+            </script>
+        {% endif %}
     </body>
 </html>
