@@ -14,9 +14,9 @@ You may have used `mvnrnd` in Matlab or `multivariate_normal` in NumPy. How does
 ## The roadmap
 We know that we can generate uniform random numbers (using the language's built-in random functions). We need to somehow use these to generate n-dimensional gaussian random vectors. We also have a $n \times 1$ mean vector and a $n \times n$ covariance matrix. Here's how we'll do this:
 
-- Generate a bunch of uniform random numbers and convert them into a Gaussian random number with a known mean and standard deviation.
-- Do the previous step $n$ times to generate an n-dimensional Gaussian with a known mean and covariance matrix.
-- Transform this random Gaussian so that it lines up with the mean and covariance provided by the user.
+- Generate a bunch of uniform random numbers and convert them into a Gaussian random *number* with a known mean and standard deviation.
+- Do the previous step $n$ times to generate an n-dimensional Gaussian *vector* with a known mean and covariance matrix.
+- Transform this random Gaussian vector so that it lines up with the mean and covariance provided by the user.
 
 ## Generating 1d Gaussian random numbers
 We can generate uniform random numbers - for example, `rand() / RAND_MAX` in C/C++ can be used to generate a number between 0 and 1. Each floating point number between 0 and 1 has equal probability of showing up - thus the uniform randomness. If we want to convert this number into a Gaussian random number, we need to make use of the *Central Limit Theorem* in probability.
@@ -25,7 +25,7 @@ Let's say you generate $m$ uniform random numbers (each between 0 and 1) and you
 
 @\begin{align*}x &= \frac{\sum_i x_i - \frac{m}{2}}{\sqrt{\frac{m}{12}}}\end{align*}@
 
-Here, $x$ is a one dimensional Gaussian random number - produced using the help of $m$ uniform random variables. The $\frac{m}{2}$ is derived from the term $m\mu_u$ (where $\mu_u$ is the mean of the uniform distribution - 0.5). The denominator is derived from the term $\sigma\sqrt{m}$ where $\sigma^2$ is the variance of the uniform distribution between 0 and 1 (comes to exactly $\frac{1}{12}$).
+Here, $x$ is a one dimensional Gaussian random number - produced using the help of $m$ uniform random variables. The $\frac{m}{2}$ is derived from the term $m\mu_u$ (where $\mu_u$ is the mean of the uniform distribution - $\frac{1-0}{2} = 0.5$). The denominator is derived from the term $\sigma\sqrt{m}$ where $\sigma^2$ is the variance of the uniform distribution between 0 and 1 (comes to exactly $\frac{1}{12}$).
 
 As $m \to \infty$, we get that $x \to N(0, 1)$. Thus, the more uniform random numbers you use, the more accurate the "conversion" to Gaussian would be.
 
@@ -35,10 +35,10 @@ If we're trying to generate an n-d Gaussian random number, we can run do the pre
 This is the *known* Gaussian distribution. Now, we need to somehow transform this into the Gaussian distribution described by the mean and covariance matrix supplied by the user.
 
 ![The known multivariate Gaussian distribution](/static/img/tut/known-2d-gaussian.png)
-: The known multivariate Gaussian distribution N(0, 1)
+: The known multivariate Gaussian distribution in two dimensions N(0, 1)
 
 ## Linear algebra on the Gaussian distribution
-Transforming the Gaussian distribution we have into the distribution we want is a simple linear transformation. This can be thought of as a two step process. First, we line up the covariance matrix and then we line up the mean.
+Transforming the Gaussian into the distribution we want is a simple linear transformation. This can be thought of as a two step process. First, we line up the covariance matrix and then we line up the mean.
 
 ### Lining up the covariance matrix
 The Gaussian distribution we have at the moment is perfectly spherical (in n-dimensions) and is centered at the origin. To move towards the Covariance matrix we want, we would need to squash this spherical distribution and maybe rotate it a little bit (to get some correlation).
