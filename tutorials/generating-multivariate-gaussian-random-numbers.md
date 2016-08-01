@@ -5,7 +5,7 @@ excerpt: "Given a covariance matrix and a mean vector, how do we generate random
 category: "Machine Learning"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-generate-multivariate-gaussian-random.png"
-thumb_pull: "center"
+thumb_pull: "left"
 featured: false
 ---
 
