@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
+series: "Fundamentals of Features and Corners"
+part: 2
 ---
 
 The Harris Corner Detector is a mathematical operator that finds features ([what are features?](/tutorials/features/)) in an image. It is simple to compute, and is fast enough to work on computers. Also, it is popular because it is rotation, scale and illumination variation independent. However, the Shi-Tomasi corner detector, the one implemented in OpenCV, is an improvement of this corner detector.

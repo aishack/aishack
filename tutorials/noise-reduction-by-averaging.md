@@ -1,5 +1,5 @@
 ---
-title: "Noise reduction by Averaging"
+title: "The Technique"
 date: "2010-01-13 22:41:49"
 excerpt: ""
 category: "Computer Vision"
@@ -7,6 +7,8 @@ author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-noise-reduction-averaging.jpg"
 track: "Image processing algorithms (level 1)"
 track_part: 8
+series: "Noise reduction by averaging"
+part: 1
 ---
 
 ## What?! Averaging? You mean blurring?

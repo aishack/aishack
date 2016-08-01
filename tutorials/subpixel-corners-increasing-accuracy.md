@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-subpixel-corners.jpg"
+series: "Fundamentals of Features and Corners"
+part: 5
 ---
 When working with images on a digital system, the smallest part of an image is a pixel. You simply cannot access information "between" pixels. But several application require higher accuracy than a camera can provide. For example, when reconstructing a 3D object from an image, you need accurate measurements. So, mathematical techniques were developed to increase the accuracy of detecting corners. Oh, and the infinite zoom that you see on CSI: Miami, we won't be doing that. 
 

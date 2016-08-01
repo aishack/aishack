@@ -1,5 +1,5 @@
 ---
-title: "The Hough Transform: Normal form"
+title: "The Normal form"
 date: "2010-03-06 12:01:45"
 excerpt: ""
 category: "Computer Vision"
@@ -7,6 +7,8 @@ author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform.jpg"
 track: "Image processing algorithms (level 2)"
 track_part: 8
+series: "The Hough Transform"
+part: 2
 ---
 ## The flaw
 

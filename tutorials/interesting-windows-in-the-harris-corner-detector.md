@@ -5,6 +5,8 @@ excerpt: "The \"score\" calculated for each pixel in the Harris Corner Detector 
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
+series: "Fundamentals of Features and Corners"
+part: 3
 ---
 The "score" calculated for each pixel in the [Harris Corner Detector](/tutorials/harris-corner-detector/) is based on the two eigenvalues of a matrix. The expression to calculate it is not arbitrary, but based on observations of how the expression varies with different eigenvalues. Here's a graphical explanation of how its done. 
 

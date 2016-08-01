@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
+series: "Fundamentals of Features and Corners"
+part: 4
 ---
 The Shi-Tomasi corner detector is based entirely on the [Harris corner detector](/tutorials/harris-corner-detector/). However, one slight variation in a "selection criteria" made this detector much better than the original. It works quite well where even the Harris corner detector fails. So here's the minor change that Shi and Tomasi did to the original Harris corner detector. 
 

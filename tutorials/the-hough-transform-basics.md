@@ -1,5 +1,5 @@
 ---
-title: "The Hough Transform: Basics"
+title: "The Basics"
 date: "2010-03-06 12:01:45"
 excerpt: ""
 category: "Computer Vision"
@@ -7,6 +7,8 @@ author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-hough-transform.jpg"
 track: "Image processing algorithms (level 2)"
 track_part: 7
+series: "The Hough Transform"
+part: 1
 ---
 The Hough transform is an incredible tool that lets you identify lines. Not just lines, but other shapes as well. In this article, I'll talk about the mechanics behind the Hough transform. It will involve a bit of math, but just elementary concepts you learned in school. In this article, we'll work with lines only, though the technique can be easily extended to other shapes. 
 

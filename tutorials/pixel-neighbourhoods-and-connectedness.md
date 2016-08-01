@@ -7,6 +7,8 @@ author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-pixel-neighbor.jpg"
 track: "Image processing algorithms (level 2)"
 track_part: 4
+series: "Connected Component Labelling"
+part: 1
 ---
 The idea of neighbourhoods of pixels and their connectedness is quite intuitive. But formalizing it's definition and knowing what it means "exactly" has its advantages. So here are the things you need to know about neighbourhoods and connectedness of pixels in an image. 
 

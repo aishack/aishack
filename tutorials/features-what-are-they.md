@@ -5,6 +5,8 @@ excerpt: ""
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
+series: "Fundamentals of Features and Corners"
+part: 1
 ---
 Several computer vision tasks require finding matching points across several frames or views. With that info, you could really do a lot of stuff. An example. When doing stereo imaging, you want to know a few corresponding points between the two views. Once you do, you can triangulate almost all points on the image (just like the brain does!). 
 
