@@ -9,7 +9,9 @@ thumb_pull: "left"
 featured: false
 ---
 
-You may have used `mvnrnd` in Matlab or `multivariate_normal` in NumPy. How does it work internally? Given a mean vector $\mu$ and a covariance matrix $\Sigma$, how would you go about generating a random vector that conforms to a multivariate Gaussian? You'll find out in this tutorial.
+You may have used `mvnrnd` in Matlab or `multivariate_normal` in NumPy. How does it work internally? Given a mean vector $\mu$ and a covariance matrix $\Sigma$, how would you go about generating a random vector that conforms to a multivariate Gaussian?
+
+While this may sound like a bunch of big words, the intuitive idea behind all of this is: How do I generate numbers that belong the the classic Bell curve shape of the Gaussian. How does it work if I want more than one dimensions? You'll find out in this tutorial.
 
 ## The roadmap
 We know that we can generate uniform random numbers (using the language's built-in random functions). We need to somehow use these to generate n-dimensional gaussian random vectors. We also have a $n \times 1$ mean vector and a $n \times n$ covariance matrix. Here's how we'll do this:
