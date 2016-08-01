@@ -19,3 +19,4 @@ askbot-devel*
 askbot
 env/*
 aishack/secret.py
+envwin/

@@ -237,7 +237,7 @@ class Command(BaseCommand):
                 
                 thumb = im.crop((left, upper, right, lower))
 
-                parts = filepath.split(os.sep)[-1].split('.')
+                parts = filepath.split('/')[-1].split('.')
                 small_filepath = os.path.join(settings.STATIC_ROOT, 'thumb', '.'.join(parts))
                 thumb_big = thumb.resize( (200, 200), Image.BICUBIC )
                 thumb_big.save(small_filepath)

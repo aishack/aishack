@@ -84,7 +84,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = '/work/aishack/aishack/static/'
+if os.name == 'nt':
+    STATIC_ROOT = 'c://work//aishack//aishack//static//'
+else:
+    STATIC_ROOT = '/work/aishack/aishack/static/'
+
 STATICFILES_DIRS =(os.path.join(BASE_DIR, "static"),)
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
                         "django.contrib.staticfiles.finders.AppDirectoriesFinder",

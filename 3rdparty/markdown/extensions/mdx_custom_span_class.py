@@ -39,6 +39,10 @@ CUSTOM_CLS_RE = r'[!]{2}(?P<class>.+)[|](?P<text>.+)[!]{2}'
 class CustomSpanClassExtension(Extension):
     """ Extension class for markdown """
 
+    def __init__(self, **kwargs):
+    	self.config = {}
+	super(CustomSpanClassExtension, self).__init__(**kwargs)
+
     def extendMarkdown(self, md, md_globals):
         md.inlinePatterns["custom_span_class"] = CustomSpanClassPattern(CUSTOM_CLS_RE, md)
 
