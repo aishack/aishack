@@ -187,6 +187,8 @@ There are a few things happening here. We're running the EM steps 100 times (the
 
 Another thing we do is normalize the responsibilities for each datapoint. This is done only if the total probability is greater than 0 - otherwise you end up with a NaN values in the responsibility matrix - which isn't useful.
 
+We also used a function that we've not defined yet - `calculate_1d_probability`. This function will simply be an implementation of the Gaussian equation. You'll see its implementation later!
+
 ### Step 3: The M step
 Let's move onto the M part now. Here, we need to update the various parameters: `pi`, `learned_means` and `learned_std`. So let's start out with $N_c$:
 
@@ -256,7 +258,29 @@ Finally, we can now draw what we've just learned.
         return
     }
 
-We've used a bunch of functions here that we haven't yet created. In the end, I save out the graph into a file so you can visualize how the various curves move around over time. But first, let's define some new functions:
+We've used a bunch of functions here that we haven't yet created. In the end, I save out the graph into a file so you can visualize how the various curves move around over time.
+
+### Defining all functions
+
+We have quite a backlog of functions we haven't yet defined. Let's define them. Let's start out with calculating the 1D probability given a standard deviation and a mean:
+
+    :::c++
+    float calculate_1d_probability(float value, float mean, float std) {
+        float ret = 0.0f;
+
+        float frac = 1.0f / (std * sqrt(2 * M_PI));
+        float power = -0.5f * pow((value - mean) / std, 2.0);
+
+        ret = frac * exp(power);
+
+        return ret;
+    }
+
+This function simply implements the Gaussian function in one dimension:
+
+@\begin{align*}p(x) &= \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}}\end{align*}@
+
+For simplicity, I've split up the fraction on outside the exponentiation and the fraction inside the exp into two separate parts. Now onto some drawing functions.
     
     :::c++
     void draw_1d_draw_mixture(cv::Mat img, float* data, float* weights, int count_per_component, int num_components {

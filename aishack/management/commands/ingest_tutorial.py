@@ -238,10 +238,10 @@ class Command(BaseCommand):
                 thumb = im.crop((left, upper, right, lower))
 
                 parts = filepath.split('/')[-1].split('.')
-                small_filepath = os.path.join(settings.STATIC_ROOT, 'thumb', '.'.join(parts))
+                small_filepath = '%s%s/%s' % (settings.STATIC_ROOT, 'thumb', '.'.join(parts))
                 thumb_big = thumb.resize( (200, 200), Image.BICUBIC )
                 thumb_big.save(small_filepath)
-                tutorial.post_thumb = '%s/%s' % (settings.STATIC_URL, small_filepath.split(settings.STATIC_URL)[1])
+                tutorial.post_thumb = '%s%s' % (settings.STATIC_URL, small_filepath.split(settings.STATIC_URL)[1])
 
             # Run the INSERT/UPDATE query
             tutorial.save()

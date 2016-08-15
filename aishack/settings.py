@@ -85,7 +85,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 if os.name == 'nt':
-    STATIC_ROOT = 'c://work//aishack//aishack//static//'
+    STATIC_ROOT = 'c:/work/aishack/aishack/static/'
 else:
     STATIC_ROOT = '/work/aishack/aishack/static/'
 
