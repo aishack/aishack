@@ -13,14 +13,14 @@ You may have used `mvnrnd` in Matlab or `multivariate_normal` in NumPy. How does
 
 While this may sound like a bunch of big words, the intuitive idea behind all of this is: How do I generate numbers that belong the the classic Bell curve shape of the Gaussian. How does it work if I want more than one dimensions? You'll find out in this tutorial.
 
-## The roadmap
+### The roadmap
 We know that we can generate uniform random numbers (using the language's built-in random functions). We need to somehow use these to generate n-dimensional gaussian random vectors. We also have a $n \times 1$ mean vector and a $n \times n$ covariance matrix. Here's how we'll do this:
 
 - Generate a bunch of uniform random numbers and convert them into a Gaussian random *number* with a known mean and standard deviation.
 - Do the previous step $n$ times to generate an n-dimensional Gaussian *vector* with a known mean and covariance matrix.
 - Transform this random Gaussian vector so that it lines up with the mean and covariance provided by the user.
 
-## Generating 1d Gaussian random numbers
+### Generating 1d Gaussian random numbers
 We can generate uniform random numbers - for example, `rand() / RAND_MAX` in C/C++ can be used to generate a number between 0 and 1. Each floating point number between 0 and 1 has equal probability of showing up - thus the uniform randomness. If we want to convert this number into a Gaussian random number, we need to make use of the *Central Limit Theorem* in probability.
 
 Let's say you generate $m$ uniform random numbers (each between 0 and 1) and you use the variable $x_i$ to denote each of these. The Central Limit Theorem allows us to convert these $m$ numbers belonging to $U(0, 1)$ into a single number that belongs to the Guassian distribution $N(0, 1)$.
@@ -31,7 +31,7 @@ Here, $x$ is a one dimensional Gaussian random number - produced using the help 
 
 As $m \to \infty$, we get that $x \to N(0, 1)$. Thus, the more uniform random numbers you use, the more accurate the "conversion" to Gaussian would be.
 
-## Generating a multivariate Gaussian random number
+### Generating a multivariate Gaussian random number
 If we're trying to generate an n-d Gaussian random number, we can run do the previous section $n$ times. This would give us $n$ numbers that are centered around zero and are independent of each other. This means, the n-d Gaussian random number generated belongs to $N(\textbf{0}, \textbf{1})$. Here $\textbf{0}$ is an n-dimensional zero vector and $\textbf{I}_n$ is a $n \times n$ identity matrix (the covariance matrix which describes independent components).
 
 This is the *known* Gaussian distribution. Now, we need to somehow transform this into the Gaussian distribution described by the mean and covariance matrix supplied by the user.
@@ -39,10 +39,10 @@ This is the *known* Gaussian distribution. Now, we need to somehow transform thi
 ![The known multivariate Gaussian distribution](/static/img/tut/known-2d-gaussian.png)
 : The known multivariate Gaussian distribution in two dimensions N(0, 1)
 
-## Linear algebra on the Gaussian distribution
+### Linear algebra on the Gaussian distribution
 Transforming the Gaussian into the distribution we want is a simple linear transformation. This can be thought of as a two step process. First, we line up the covariance matrix and then we line up the mean.
 
-### Lining up the covariance matrix
+#### Lining up the covariance matrix
 The Gaussian distribution we have at the moment is perfectly spherical (in n-dimensions) and is centered at the origin. To move towards the Covariance matrix we want, we would need to squash this spherical distribution and maybe rotate it a little bit (to get some correlation).
 
 This can be accomplished by calculating the eigenvectors and eigenvalues of the given covariance matrix and transforming the random number by matrix multiplication.
@@ -54,7 +54,7 @@ Here, $y'$ is the transformed random number. $\lambda$ is the diagonal matrix ma
 ![The known multivariate Gaussian distribution rotated](/static/img/tut/known-2d-gaussian-rotated.png)
 : The known multivariate Gaussian distribution now rotated (and squashed) with the help of the given Covariance matrix.
 
-### Lining up the mean
+#### Lining up the mean
 At this point, the covariance of the random number is in sync with $\Sigma$ but we also need to sync up the mean. Luckily, this is very straightforward. The current mean is at the origin - so to have a mean at $\mu$ we simply need to add it.
 
 @\begin{align*}y &= y' + \mu\end{align*}@
@@ -65,7 +65,7 @@ And this is it. The answer of this equation $y$ is a Gaussian random number that
 ![The known multivariate Gaussian distribution rotated](/static/img/tut/known-2d-gaussian-rotated-translated.png)
 : The known multivariate Gaussian distribution now centered at the right mean.
 
-## Implementing this with Numpy
+### Implementing this with Numpy
 Let's start with a new Python script and import the basics:
 
 	:::python
@@ -200,5 +200,5 @@ If you're not satisfied with the math, you may want to learn the mean and covari
 
 In our code, we generated 1000 random vectors. As you increase this count, `learned_cov` and `learned_mean` will increasingly move closer to `target_cov` and `target_mean`.
 
-## Wrap up
+### Wrap up
 I hope you liked this short tutorial. Hopefully this demystified one aspect of scientific computing that you took for granted and helped you appreciate probability a bit more.
