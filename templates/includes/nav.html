@@ -14,11 +14,23 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
       <ul class="nav navbar-nav navbar-right">
-        <li {% ifequal current_page "home" %}class="active"{% endifequal %}><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+       <li {% ifequal current_page "home" %}class="active"{% endifequal %}><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+        <!--li {% ifequal current_page "starthere" %}class="active"{% endifequal %}><a class='nav-start-here' href="/start-here">Start here</a></li-->
         <li {% ifequal current_page "tutorials" %}class="active"{% endifequal %}><a href="/tutorials/"><span class="glyphicon glyphicon-th glyphicon-margin"></span>Tutorials</a></li>
         <li {% ifequal current_page "contribute" %}class="active"{% endifequal %}><a href="/contribute/"><span class="glyphicon glyphicon-pencil glyphicon-margin"></span>Contribute</a></li>
         <li {% ifequal current_page "about" %}class="active"{% endifequal %}><a href="/about/">About</a></li>
+        <li>
+            <form class='form-inline form-search' role='form' method='get' action='/search'>
+                <div class='form-group has-feedback'>
+                    <input placeholder='Search' type='text' class='form-control' name='q' id='q' />
+                    <input type='hidden' name='models' value='aishack.tutorial' />
+                    <span class='glyphicon glyphicon-search form-control-feedback'></span>
+                </div>
+            </form>
+        </li>
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
