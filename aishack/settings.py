@@ -18,6 +18,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = "thisisasecretkeyforyou"
 DEBUG = True
+ELASTICSEARCH_ADDR = '127.0.0.1'
+ELASTICSEARCH_PORT = 9200
 
 if not DEBUG:
     assert(SECRET_KEY != "thisisasecretkeyforyou")
@@ -110,7 +112,8 @@ SITE_TITLE = "AI Shack"
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9201',
+        'URL': 'http://%s:%d' % (ELASTICSEARCH_ADDR, ELASTICSEARCH_PORT),
         'INDEX_NAME': 'aishack_haystack',
+        'TIMEOUT': 20,
     }
 }
