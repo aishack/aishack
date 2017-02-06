@@ -584,7 +584,8 @@ class CustomSearchView(SearchView):
         context.update({'num_tutorials': num_tutorials,
                         'num_series': num_series,
                         'num_categories': num_categories,
-                        'num_total': num_total})
+                        'num_total': num_total,
+                        'current_page': 'search'})
 
         context.update(utils.get_global_context(None))
 
