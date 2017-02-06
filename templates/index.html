@@ -19,6 +19,7 @@
                             {% endif %}
                         </a>
                         <p>{{ tut.excerpt }}</p>
+                        <a href='/category/{{tut.category.slug}}/' class='tut-category'>{{tut.category.title}}</a>
                         <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
                     </div>
                     <div class='clear-fix'></div>
@@ -55,6 +56,19 @@
         {% endfor %}
     </div>
 </div>
+
+<div class='row category-list'>
+    <div class='col-md-12'>
+        <h3>Categories</h3>
+        <ul>
+            {% for category in categories %}
+            <li><a href='/category/{{category.slug}}/'>{{category.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<hr/>
 
 <a href='/tutorials/'><button class='btn btn-default'>View all tutorials</button></a>
 <hr/>

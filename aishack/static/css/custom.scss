@@ -420,6 +420,10 @@ body {
     }
 }
 
+.tut-category {
+    background: #f00;
+}
+
 img.user-gravatar {
   margin-top: -8px;
 }
@@ -749,4 +753,24 @@ img.math-false {
     margin-bottom: 1em;
     padding: 1em;
     width: 40%;
+}
+
+.category-list {
+    clear: both;
+
+    ul li {
+        float: left;
+        width: 30%;
+        background: url(/static/img/folder-icon.png) no-repeat;
+        list-style: none;
+        padding-left: 30px;
+    }
+
+    ul li:hover {
+        background-image: url(/static/img/folder-open-small.png);
+        transition: background-image 0.2s ease-in-out;
+        -webkit-transition: background-image 0.2s ease-in-out;
+        -moz-transition: background-image 0.2s ease-in-out;
+        -o-transition: background-image 0.2s ease-in-out;
+    }
 }
