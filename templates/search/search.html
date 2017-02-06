@@ -2,6 +2,9 @@
 
 {% load highlight %}
 {% load get_range %}
+{% load is_tutorial %}
+{% load is_category %}
+{% load is_series %}
 
 {% block content %}
     <h2>Search</h2>
@@ -19,12 +22,44 @@
         {% if query %}
             <h3>Here's what I found</h3>
 
+            <div class='col-md-12 category-list'>
+                <ul>
+                {% for result in page.object_list %}
+                    {% if result.object|is_category %}
+                    <li>
+                        <a href='{{ result.object.get_absolute_url }}'>Category: {{ result.object.title }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+
+            <hr/>
+
             {% for result in page.object_list %}
                 <div class='col-md-12'>
-                    <img src='{{ result.object.post_thumb }}' class='pull-left search-thumbnail'/>
-                    <p><a href='{{ result.object.get_absolute_url }}'>{{ result.object.title }}</a></p>
-                    <p>{{ result.object.excerpt }}</p>
-                    <!--a href='/tutorials/{{result.object.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a-->
+                    {% if result.object|is_series %}
+                        <img src='{{ result.object.first_tutorial.post_thumb }}' class='pull-left search-thumbnail'/>
+                        <p><a href='{{result.object.first_tutorial.get_absolute_url}}'>Series: {{ result.object.name }}</a>
+                        <ol>
+                            <span class='glyphicon glyphicon-list-alt'></span>
+                            {% for tut in result.object.tutorial_list %}
+                                <a href='{{tutorial.get_absolute_url}}'>{{forloop.counter}}</a></li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            {% for result in page.object_list %}
+                <div class='col-md-12'>
+                    {% if result.object|is_tutorial %}
+                        <img src='{{ result.object.post_thumb }}' class='pull-left search-thumbnail'/>
+                        <p><a href='{{ result.object.get_absolute_url }}'>{{ result.object.title }}</a></p>
+                        <p>{{ result.object.excerpt }}</p>
+                        <!--a href='/tutorials/{{result.object.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a-->
+                    {% endif %}
+
                 </div>
             {% empty %}
                 <p>No results found.</p>

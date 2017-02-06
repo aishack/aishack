@@ -551,7 +551,7 @@ def namethatdataset_quiz(request):
 def google_webmaster(request):
     return HttpResponse("google-site-verification: google64c35c9422bb35a3.html", content_type="text/html")
 
-def start_here(request):
+def starthere(request):
     context = utils.get_global_context(request)
     context.update({'current_page': 'start-here'})
     return render(request, 'start-here.html', context);
