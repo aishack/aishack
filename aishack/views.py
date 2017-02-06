@@ -46,7 +46,10 @@ def index(request):
     if not recent_tutorials:
         recent_tutorials = utils.fetch_tutorials(8)
 
-    context.update({'featured': featured_tutorials, 'recent_tutorials': recent_tutorials})
+    context.update({'featured': featured_tutorials,
+                    'recent_tutorials': recent_tutorials,
+                    'categories': Category.objects.all()},
+                    )
     return render(request, "index.html", context)
 
 def track_signup(request, slug=None):
@@ -547,6 +550,11 @@ def namethatdataset_quiz(request):
 
 def google_webmaster(request):
     return HttpResponse("google-site-verification: google64c35c9422bb35a3.html", content_type="text/html")
+
+def start_here(request):
+    context = utils.get_global_context(request)
+    context.update({'current_page': 'start-here'})
+    return render(request, 'start-here.html', context);
 
 ######
 # Setup sitemaps for the website
