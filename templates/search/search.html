@@ -20,11 +20,16 @@
     </form>
 
         {% if query %}
+            {% ifequal num_total 0 %}
+                <p>Found nothing bruv</p>
+            {% endifequal %}
+
             <h3>Here's what I found</h3>
 
+            {% if num_categories %}
             <div class='col-md-12 category-list'>
                 <ul>
-                {% for result in page.object_list %}
+                {% for result in object_list %}
                     {% if result.object|is_category %}
                     <li>
                         <a href='{{ result.object.get_absolute_url }}'>Category: {{ result.object.title }}</a>
@@ -35,8 +40,10 @@
             </div>
 
             <hr/>
+            {% endif %}
 
-            {% for result in page.object_list %}
+            {% if num_series %}
+            {% for result in object_list %}
                 <div class='col-md-12'>
                     {% if result.object|is_series %}
                         <img src='{{ result.object.first_tutorial.post_thumb }}' class='pull-left search-thumbnail'/>
@@ -50,8 +57,11 @@
                     {% endif %}
                 </div>
             {% endfor %}
+            <hr/>
+            {% endif %}
 
-            {% for result in page.object_list %}
+            {% if num_tutorials %}
+            {% for result in object_list %}
                 <div class='col-md-12'>
                     {% if result.object|is_tutorial %}
                         <img src='{{ result.object.post_thumb }}' class='pull-left search-thumbnail'/>
@@ -64,22 +74,23 @@
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
+            {% endif %}
 
-            {% if page.has_previous or page.has_next %}
+            {% if is_paginated %}
                 <div>
                     <ul class='pagination'>
-                        {% if page.has_previous %}
-                            <li><a href='/search?q={{query}}&amp;page={{page.previous_page_number}}'>&laquo;</a></li>
+                        {% if paginator.has_previous %}
+                            <li><a href='/search?q={{query}}&amp;page={{paginator.previous_page_number}}'>&laquo;</a></li>
                         {% else %}
                             <li class='disabled'><a href='#'>&laquo;</a></li>
                         {% endif %}
 
-                        {% for num in page.paginator.num_pages|get_range %}
-                            <li {% ifequal forloop.counter page.number %}class='active'{%endifequal%}><a href="/search?q={{query}}&amp;page={{forloop.counter}}">{{forloop.counter}}</a></li>
+                        {% for num in paginator.num_pages|get_range %}
+                            <li {% ifequal forloop.counter number %}class='active'{%endifequal%}><a href="/search?q={{query}}&amp;page={{forloop.counter}}">{{forloop.counter}}</a></li>
                         {% endfor %}
 
-                        {% if page.has_next %}
-                            <li><a href='/search?q={{query}}&amp;page={{page.next_page_number}}'>&raquo;</a></li>
+                        {% if paginator.has_next %}
+                            <li><a href='/search?q={{query}}&amp;page={{paginator.next_page_number}}'>&raquo;</a></li>
                         {% else %}
                             <li class='disabled'><a href='#'>&raquo;</a></li>
                         {% endif %}

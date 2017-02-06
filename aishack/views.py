@@ -15,9 +15,11 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.contrib.sitemaps import Sitemap
 
-from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack, TrackTutorials, Category
+from aishack.models import Tutorial, AishackUser, Track, TutorialRead, UserTrack, TrackTutorials, Category, TutorialSeries
 from django.contrib.auth.models import User
 from aishack import knobs
+
+from haystack.generic_views import SearchView
 
 import utils, settings
 
@@ -555,6 +557,40 @@ def starthere(request):
     context = utils.get_global_context(request)
     context.update({'current_page': 'start-here'})
     return render(request, 'start-here.html', context);
+
+class CustomSearchView(SearchView):
+    def get_queryset(self):
+        queryset = super(CustomSearchView, self).get_queryset()
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CustomSearchView, self).get_context_data(*args, **kwargs)
+
+        num_tutorials = 0
+        num_series = 0
+        num_categories = 0
+        num_total = 0
+
+        for obj in context['object_list']:
+            if obj.object.__class__ == Tutorial:
+                num_tutorials += 1
+            elif obj.object.__class__ == TutorialSeries:
+                num_series += 1
+            elif obj.object.__class__ == Category:
+                num_categories += 1
+
+        num_total = num_categories + num_tutorials + num_series
+
+        context.update({'num_tutorials': num_tutorials,
+                        'num_series': num_series,
+                        'num_categories': num_categories,
+                        'num_total': num_total})
+
+        context.update(utils.get_global_context(None))
+
+        print(context)
+
+        return context
 
 ######
 # Setup sitemaps for the website

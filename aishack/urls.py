@@ -48,7 +48,7 @@ urlpatterns = patterns('',
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # Elasticsearch
-    (r'^search/', include('haystack.urls')),
+    url(r'^search/?$', views.CustomSearchView.as_view(), name='search_view')
 )
 
 if settings.DEBUG:

@@ -8,7 +8,9 @@
         <meta name="keywords" content="" />
         <meta name="author" content="Utkarsh Sinha">
         <link rel="shortcut icon" href="{% static 'img/fav.gif' %}" />
-        <title>{% if page_title %} {{ page_title }} - {% endif %}{{ SITE_TITLE }} - {{ title_keywords }}</title>
+        <title>
+            {% if page_title %} {{ page_title }} - {% endif %}{{ SITE_TITLE }} - {{ title_keywords }}
+        </title>
         <link rel="stylesheet" href='{% static "css/styles.min.css" %}' />
 
         <!-- for use while sharing -->
