@@ -9,25 +9,24 @@
 {% block content %}
     <h2>Search</h2>
 
-    <form method='get' action='.'>
-        <table>
-            {{ form.as_table }}
-            <tr>
-                <td>&nbsp;</td>
-                <td><input type='submit' value='Search' />
-            </tr>
-        </table>
-    </form>
+    <div class='search-page'>
+        <form class='form-inline form-search' role='form' method='get' action='/search/'>
+            <div class='form-group has-feedback'>
+                <input placeholder='Search' type='text' {% if request.GET.q %}value='{{request.GET.q}}'{% endif %} class='form-control' name='q' id='q' />
+                <span class='glyphicon glyphicon-search form-control-feedback'></span>
+            </div>
+        </form>
+        <hr/>
+    </div>
 
         {% if query %}
             {% ifequal num_total 0 %}
                 <p>Found nothing bruv</p>
             {% endifequal %}
 
-            <h3>Here's what I found</h3>
-
             {% if num_categories %}
             <div class='col-md-12 category-list'>
+                <h3>Relevant categories</h3>
                 <ul>
                 {% for result in object_list %}
                     {% if result.object|is_category %}
@@ -38,11 +37,12 @@
                 {% endfor %}
                 </ul>
             </div>
-
+            <div class='clearfix'></div>
             <hr/>
             {% endif %}
 
             {% if num_series %}
+            <h3>Tutorial series</h3>
             {% for result in object_list %}
                 <div class='col-md-12'>
                     {% if result.object|is_series %}
@@ -57,10 +57,12 @@
                     {% endif %}
                 </div>
             {% endfor %}
+            <div class='clearfix'></div>
             <hr/>
             {% endif %}
 
             {% if num_tutorials %}
+            <h3>Tutorials</h3>
             {% for result in object_list %}
                 <div class='col-md-12'>
                     {% if result.object|is_tutorial %}
@@ -74,6 +76,8 @@
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
+                <div class='clearfix'></div>
+                <hr/>
             {% endif %}
 
             {% if is_paginated %}

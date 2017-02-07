@@ -20,6 +20,7 @@ from django.contrib.auth.models import User
 from aishack import knobs
 
 from haystack.generic_views import SearchView
+from haystack.forms import SearchForm
 
 import utils, settings
 
@@ -559,6 +560,7 @@ def starthere(request):
     return render(request, 'start-here.html', context);
 
 class CustomSearchView(SearchView):
+    form_class = SearchForm
     def get_queryset(self):
         queryset = super(CustomSearchView, self).get_queryset()
         return queryset

@@ -420,6 +420,21 @@ body {
     }
 }
 
+.search-page {
+    .form-search {
+        .form-group {
+            width: 50%;
+        }
+        .form-control {
+            width: 100%;
+        }
+
+        .form-control:focus {
+            width: 100%;
+        }
+    }
+}
+
 .tut-category {
     background: #f00;
 }
@@ -772,5 +787,13 @@ img.math-false {
         -webkit-transition: background-image 0.2s ease-in-out;
         -moz-transition: background-image 0.2s ease-in-out;
         -o-transition: background-image 0.2s ease-in-out;
+    }
+}
+
+ul#id_models {
+    li {
+        float: left;
+        list-style: none;
+        margin-right: 2em;
     }
 }
