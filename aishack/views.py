@@ -49,9 +49,15 @@ def index(request):
     if not recent_tutorials:
         recent_tutorials = utils.fetch_tutorials(8)
 
+    categories = None
+    if settings.DEBUG:
+        categories = list(Category.objects.all().order_by('order'))
+    else:
+        categories = list(Category.objects.filter(hidden=False).order_by('order'))
+
     context.update({'featured': featured_tutorials,
                     'recent_tutorials': recent_tutorials,
-                    'categories': Category.objects.all()},
+                    'categories': list(Category.objects.filter(hidden=False).order_by('order'))},
                     )
     return render(request, "index.html", context)
 
@@ -218,7 +224,13 @@ def tutorials(request, slug=None):
 
         context.update({'tutorials_to_display': tutorials_to_display})
 
-        categories = Category.objects.all().order_by('order')
+        if settings.DEBUG:
+            # Debug mode, we show all categories
+            categories = list(Category.objects.all().order_by('order'))
+        else:
+            # Production mode, we show only what's required
+            categories = list(Category.objects.filter(hidden=False).order_by('order'))
+
         context.update({'categories': categories})
 
     return render(request, "tutorials.html", context)

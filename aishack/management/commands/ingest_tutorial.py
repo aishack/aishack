@@ -100,6 +100,9 @@ class Command(BaseCommand):
         if 'track_part' in frontmatter:
             frontmatter['track_part'] = int(frontmatter['track_part'])
 
+        if 'draft' in frontmatter:
+            frontmatter['draft'] = (frontmatter['draft'].lower() == 'true')
+
         counter += 1
         content_lines = ''.join(lines[counter+1:])
         md = content_lines.decode('utf8')
@@ -162,6 +165,16 @@ class Command(BaseCommand):
             self.print_frontmatter(frontmatter)
             self.stdout.write('Parsing markdown successful!')
 
+            if 'draft' in frontmatter and frontmatter['draft']:
+                from django.conf import settings
+                if settings.DEBUG:
+                    self.stdout.write('    [DRAFT] This tutorial is not complete and is currently')
+                    self.stdout.write('            being worked on. Ingesting in DEBUG mode.')
+                else:
+                    self.stdout.write('    [DRAFT] This tutorial is not complete and is currently')
+                    self.stdout.write('            being worked on. Skipping.')
+                    return
+
             if frontmatter['category'] == 'Uncategorized':
                 raise CommandError("No category specified")
 
@@ -170,7 +183,6 @@ class Command(BaseCommand):
                 category = Category.objects.get(title=frontmatter['category'])
             except Category.DoesNotExist, e:
                 raise CommandError("Category doesn't exist: %s" % frontmatter['category'])
-
 
             # Get the author
             try:

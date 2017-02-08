@@ -54,6 +54,11 @@ class Command(BaseCommand):
 
             counter += 1
 
+        if 'hidden' in frontmatter:
+            frontmatter['hidden'] = (frontmatter['hidden'].lower() == 'true')
+        else:
+            frontmatter['hidden'] = False
+
         counter += 1
         content_lines = ''.join(lines[counter+1:])
         md = content_lines.decode('utf8')
@@ -122,14 +127,16 @@ class Command(BaseCommand):
                 category.desc    = content
                 category.thumb   = frontmatter['thumb']
                 category.order   = frontmatter['order']
+                category.hidden  = frontmatter['hidden']
 
             except Category.DoesNotExist, e:
                 self.stdout.write('Category does not exist - trying to create it')
                 # It doesn't exist yet - create the track object
-                category = Category(title = frontmatter['title'],
-                                    slug  = slug,
-                                    desc  = content,
-                                    thumb = frontmatter['thumb'])
+                category = Category(title  = frontmatter['title'],
+                                    slug   = slug,
+                                    desc   = content,
+                                    thumb  = frontmatter['thumb'],
+                                    hidden = frontmatter['hidden'])
 
             # Run the INSERT/UPDATE query
             category.save()

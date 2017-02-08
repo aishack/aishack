@@ -56,11 +56,12 @@ class TutorialSeriesOrder(models.Model):
 
 class Category(models.Model):
     prepopulated_fields = {'slug': ('title',)}
-    title = models.CharField(max_length=256, unique=True)
-    desc  = models.CharField(max_length=1024, blank=True)
-    slug  = models.SlugField()
-    thumb = models.CharField(max_length=1024, blank=True)
-    order = models.IntegerField(default=0)
+    title  = models.CharField(max_length=256, unique=True)
+    desc   = models.CharField(max_length=1024, blank=True)
+    slug   = models.SlugField()
+    thumb  = models.CharField(max_length=1024, blank=True)
+    order  = models.IntegerField(default=0)
+    hidden = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.title
