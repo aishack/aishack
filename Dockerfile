@@ -42,7 +42,7 @@ COPY 3rdparty/markdown/extensions/latex.py /usr/local/lib/python2.7/dist-package
 
 # Ingest content into the database!
 COPY tutorials/ /work/aishack/tutorials
-RUN cd /work/aishack/ && python manage.py ingest_category categories/* && python manage.py ingest_user writers/* && python manage.py ingest_track tracks/* && python manage.py ingest_tutorial tutorials/*
+RUN cd /work/aishack/ && python manage.py ingest_category categories/* && python manage.py ingest_user writers/* && python manage.py ingest_track tracks/* && python manage.py ingest_tutorial tutorials/*.md && python manage.py ingest_tutorial tutorials/software/*.md
 
 # Setup elasticsearch
 RUN cd /tmp/ && wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.0/elasticsearch-2.3.0.deb && dpkg -i /tmp/elasticsearch-2.3.0.deb && rm /tmp/elasticsearch-2.3.0.deb && mkdir /usr/share/elasticsearch/config/
