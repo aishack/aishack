@@ -25,6 +25,7 @@ def get_global_context(request):
             'knob_show_vision_scrolls': knobs.show_vision_scrolls,
             'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
             'knob_show_name_that_dataset': knobs.show_name_that_dataset,
+            'knob_show_comments': knobs.show_comments,
             'title_keywords': knobs.title_keywords,
             'meta_title': settings.SITE_TITLE, 
             'meta_description': knobs.title_keywords,

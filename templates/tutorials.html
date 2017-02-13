@@ -90,6 +90,23 @@
             <div class='clearfix'></div>
         </div>
 
+        {% if knob_show_comments %}
+            <div id="disqus_thread"></div>
+            <script>
+            var disqus_config = function () {
+                this.page.url = "{{request.build_absolute_uri}}";  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "tutorials_{{tutorial.slug}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = '//aishack.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        {% endif %}
+
     {% else %}
         <h2>Tutorials</h2>
         <p>Here is a listing of all the tutorials on this AI Shack</p>
