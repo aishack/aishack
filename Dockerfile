@@ -47,7 +47,7 @@ RUN cd /work/aishack/ && python manage.py ingest_category categories/* && python
 # Setup elasticsearch
 RUN cd /tmp/ && wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.0/elasticsearch-2.3.0.deb && dpkg -i /tmp/elasticsearch-2.3.0.deb && rm /tmp/elasticsearch-2.3.0.deb && mkdir /usr/share/elasticsearch/config/
 COPY ./elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/
-RUN supervisord && sleep 20 && cd /work/aishack/ && python manage.py rebuild_index --noinput
+RUN supervisord && sleep 20 && cd /work/aishack/ && python manage.py rebuild_index --noinput && python manage.py update_related_tutorials
 
 COPY varnish.vcl /work/aishack/
 
