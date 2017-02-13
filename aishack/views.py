@@ -602,9 +602,6 @@ class CustomSearchView(SearchView):
                         'current_page': 'search'})
 
         context.update(utils.get_global_context(None))
-
-        print(context)
-
         return context
 
 ######

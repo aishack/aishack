@@ -53,6 +53,9 @@
             </ol>
         {% endif %}
 
+        <hr />
+       <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width='true' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+
         {# related posts #}
         {% if related_tuts %}
             <hr/>
@@ -60,15 +63,17 @@
             <div class='row'>
                 {% for tut in related_tuts %}
                     <div class='col-md-3'>
-                        <img class='img-responsive' src='{{tut.post_image}}' />
-                        <p><a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></p>
+                        <a href='/tutorials/{{tut.slug}}/'><img class='img-responsive' src='{{tut.post_thumb}}' /></a>
+                        <div>
+                            <h4><a href='/tutorials/{{tut.slug}}/'>{{ tut.title }}</a></h4>
+                            <p>{{ tut.excerpt }}</p>
+                            <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
         {% endif %}
 
-        <hr />
-       <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width='true' data-layout="standard" data-action="like" data-show-faces="true"></div> 
         <hr />
 
         {# Show the book banner #}
