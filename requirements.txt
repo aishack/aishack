@@ -7,7 +7,7 @@ billiard==3.3.0.20
 celery==3.1.18
 chardet==2.3.0
 Coffin==0.3.8
-Django==1.8
+Django==1.10
 django-appconf==1.0.1
 django-avatar==2.1.1
 django-celery==3.1.16

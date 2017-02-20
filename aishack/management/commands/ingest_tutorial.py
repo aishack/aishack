@@ -45,7 +45,6 @@ stop_words = ["a", "about", "above", "across", "after", "again", "against", "all
 
 class Command(BaseCommand):
     help = "Ingest a tutorial markdown file into the database"
-    args = "<md>"
     can_import_settings = True
 
     def read_tutorial_file(self, md, series=False):
@@ -106,7 +105,7 @@ class Command(BaseCommand):
         counter += 1
         content_lines = ''.join(lines[counter+1:])
         md = content_lines.decode('utf8')
-        html = markdown.markdown(md, extensions=['latex', 'superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
+        html = markdown.markdown(md, extensions=['mdx_showable', 'latex', 'superscript', 'subscript', 'mdx_grid_table', 'mdx_custom_span_class', 'captions', 'codehilite', 'tables'])
 
         return (frontmatter, html, md)
 
@@ -149,11 +148,14 @@ class Command(BaseCommand):
         # Return a value that works with just ascii
         return ret.encode('ascii', 'ignore')
 
+    def add_arguments(self, parser):
+        parser.add_argument('tut_md', nargs='+', type=str)
+
     def handle(self, *args, **options):
-        if len(args) == 0:
+        if 'tut_md' not in options or len(options['tut_md']) == 0:
             raise CommandError("Please specify a tutorial.md file to ingest")
 
-        for md in args:
+        for md in options['tut_md']:
             print'\n\nProcessing: %s' % md
             # frontmatter is a dict, content is html
             frontmatter, content, content_md = self.read_tutorial_file(md)

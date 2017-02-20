@@ -98,11 +98,14 @@ class Command(BaseCommand):
         # Return a value that works with just ascii
         return ret.encode('ascii', 'ignore')
 
+    def add_arguments(self, parser):
+        parser.add_argument('category', nargs='+', type=str)
+
     def handle(self, *args, **options):
-        if len(args) == 0:
+        if 'category' not in options or len(options['category']) == 0:
             raise CommandError("Please specify a track.md file to ingest")
 
-        for md in args:
+        for md in options['category']:
             print'\n\nProcessing: %s' % md
             # frontmatter is a dict, content is html
             frontmatter, content, content_md = self.read_track_file(md)

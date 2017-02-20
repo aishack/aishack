@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.conf.urls.static import static
 
 import settings
@@ -19,11 +19,10 @@ sitemaps = {
     'aishack': AishackSitemap()
 }
 
-urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
     # url(r'^$', 'aishack.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
 
     url(r'^$', views.index),
     url(r'^tutorials/$', views.tutorials),
@@ -49,8 +48,8 @@ urlpatterns = patterns('',
 
     # Elasticsearch
     url(r'^search/?$', views.CustomSearchView.as_view(), name='search_view')
-)
+]
 
 if settings.DEBUG:
-    urlpatterns = urlpatterns + patterns('', url(r'^admin/', include(admin.site.urls)))
+    urlpatterns = urlpatterns + [url(r'^admin/', include(admin.site.urls))]
     urlpatterns = urlpatterns + static(settings.STATIC_URL)

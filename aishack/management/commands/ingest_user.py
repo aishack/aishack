@@ -15,7 +15,6 @@ from aishack.models import Tutorial, Category, TutorialSeries, TutorialSeriesOrd
 
 class Command(BaseCommand):
     help = "Ingest a user markdown file"
-    args = "<md>"
 
     def read_user_file(self, md, series=False):
         if not os.path.exists(md):
@@ -93,11 +92,14 @@ class Command(BaseCommand):
         # Return a value that works with just ascii
         return ret.encode('ascii', 'ignore')
 
+    def add_arguments(self, parser):
+        parser.add_argument('user', nargs='+', type=str)
+
     def handle(self, *args, **options):
-        if len(args) == 0:
+        if 'user' not in options or len(options['user']) == 0:
             raise CommandError("Please specify a track.md file to ingest")
 
-        for md in args:
+        for md in options['user']:
             print'\n\nProcessing: %s' % md
             # frontmatter is a dict, content is html
             frontmatter, content, content_md = self.read_user_file(md)
