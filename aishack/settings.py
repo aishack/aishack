@@ -116,7 +116,7 @@ SITE_TITLE = "AI Shack"
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
         'URL': 'http://%s:%d' % (ELASTICSEARCH_ADDR, ELASTICSEARCH_PORT),
         'INDEX_NAME': 'aishack_haystack',
         'TIMEOUT': 20,

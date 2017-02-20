@@ -23,7 +23,7 @@ django-robots==1.1
 django-tinymce==1.5.1b2
 django-transaction-signals==1.0.0
 docutils==0.12
-elasticsearch==1.2.0
+elasticsearch==2.0.0
 funcsigs==0.4
 html5lib==0.90
 httplib2==0.9.1
