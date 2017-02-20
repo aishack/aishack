@@ -39,6 +39,7 @@ COPY 3rdparty/markdown/extensions/mdx_grid_table.py /usr/local/lib/python2.7/dis
 COPY 3rdparty/markdown/extensions/mdx_custom_span_class.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 COPY 3rdparty/markdown/extensions/captions.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 COPY 3rdparty/markdown/extensions/latex.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
+COPY 3rdparty/markdown/extensions/mdx_showable.py /usr/local/lib/python2.7/dist-packages/markdown/extensions
 
 # Ingest content into the database!
 COPY tutorials/ /work/aishack/tutorials
