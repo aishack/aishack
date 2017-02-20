@@ -33,12 +33,11 @@ class Command(BaseCommand):
             num_related = related_tuts.count()
             print '    %s related tutorials' % num_related
 
-            for index in xrange(num_related):
+            index = 0
+            for rel in [x for x in related_tuts.all()]
                 if index > 20:
                     # Only store the top 20 
                     break
-
-                rel = related_tuts[index]
 
                 if not rel or not rel.object:
                     import pdb; pdb.set_trace()
@@ -46,3 +45,5 @@ class Command(BaseCommand):
 
                 tutorial.related.add(rel.object)
                 tutorial.save()
+
+                index = index + 1
