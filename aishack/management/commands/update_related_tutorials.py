@@ -34,7 +34,7 @@ class Command(BaseCommand):
             print '    %s related tutorials' % num_related
 
             index = 0
-            for rel in [x for x in related_tuts.all()]
+            for rel in [x for x in related_tuts.all()]:
                 if index > 20:
                     # Only store the top 20 
                     break
