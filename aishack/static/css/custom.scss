@@ -403,7 +403,7 @@ body {
 .logo-footer {}
 
 .form-search {
-    margin-top: 0.5em;
+    margin-top: 0em;
     margin-left: 1em;
     .form-control {
         width: 120px;
@@ -412,6 +412,8 @@ body {
         -moz-transition: width 0.25s ease-in-out;
         -o-transition: width 0.25s ease-in-out;
         transition: width 0.25s ease-in-out;
+        border-radius: 0px;
+        border: 0px;
     }
 
     .form-control:focus {
@@ -472,18 +474,18 @@ img.user-gravatar {
 .site-logo {
   background: url(/static/img/logo-site-title.png) no-repeat;
   height: 2em;
-  width: 2em;
+  width: 1.3em;
   display: inline-block;
-  margin-top: -0.35em;
-  margin-right: -0.6em;
+  margin-top: 0.1em;
 }
 
 .navbar {
   border-radius: 0px;
+  min-height: 1em;
 }
 
 .navbar-default {
-  background-color: $primary-color;
+  background-color: $primary-color-dark;
   border-color: $primary-color-dark;
 }
 
@@ -799,6 +801,23 @@ ul#id_models {
 }
 
 .navbar-brand {
-    font-size: 2.5em;
+    font-size: 1.5em;
     text-shadow: 0.05em 0.05em rgba(0, 0, 0, 0.2);
+    height: 1em;
+    padding: 0px;
+    line-height: auto;
 }
+
+.navbar-brand > a > strong {
+    margin-top: 0.3em;
+}
+
+.navbar-nav {
+     li {
+         a {
+            padding-top: 8px;
+            padding-bottom: 8px;
+         }
+     }
+}
+
