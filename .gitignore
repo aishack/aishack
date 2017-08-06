@@ -18,5 +18,5 @@ node_modules
 askbot-devel*
 askbot
 env/*
-aishack/secret.py
+aishack/setup.py
 envwin/
