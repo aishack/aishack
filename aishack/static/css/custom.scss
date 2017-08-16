@@ -9,8 +9,10 @@ $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
-nav .glyphicon-margin {
-  margin-right: 0.5em;
+nav {
+    .glyphicon-margin {
+        margin-right: 0.5em;
+    }
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -772,6 +774,13 @@ img.math-false {
     width: 40%;
 }
 
+@media screen and (max-width: 600px) {
+    .series-box-top {
+        visibility: hidden;
+        display: none;
+    }
+}
+
 .category-list {
     clear: both;
 
@@ -821,3 +830,102 @@ ul#id_models {
      }
 }
 
+/****************************/
+// ----------------  THE BASICS FOR THE TIMELINE
+
+//@import url('https://fonts.googleapis.com/css?family=Oswald|Roboto:400,700');
+
+/*
+body {
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+// ----------------  THE FONTS
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: .5em;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+	font-size: .8rem;
+}*/
+
+// ----------------  LAYOUT
+
+.news-timeline-container {
+	max-width: 1024px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+// ----------------  THE FONTS
+
+$border-color: rgba(black, .3);
+$gray-color: rgba(0, 0, 0, 0.5);
+
+.timeline-item {
+	padding: 3em 2em 2em;
+	position: relative;
+	color: rgba(black, .7);
+	border-left: 2px solid $border-color;
+
+    h1 {
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+
+	&::before {
+		content: attr(date-is);
+		position: absolute;
+		left: 1em;
+		font-weight: bold;
+		top: 0.5em;
+		display: block;
+        color: $gray-color;
+	}
+
+	&::after {
+		width: 10px;
+		height: 10px;
+		display: block;
+		top: 1em;
+		position: absolute;
+		left: -7px;
+		border-radius: 10px;
+		content: '';
+		border: 2px solid $border-color;
+		background: white;
+	}
+
+	&:last-child {
+		border-image: linear-gradient(
+			to bottom,
+			$border-color 60%,
+			rgba($border-color, 0)) 1 100%
+		;
+	}
+}
+
+.timeline-item-old {
+    @extend .timeline-item;
+    padding: 0.5em 2em 1em;
+
+    .date {
+        color: $gray-color;
+        font-size: 75%;
+    }
+}
+
+.container {
+    emph {
+        font-weight: lighter;
+        font-size: 1.5em;
+    }
+}

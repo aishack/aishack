@@ -10,6 +10,7 @@
 
         {% if tutorial.series %}
             <h2>{{ tutorial.series.name }}</h2>
+            <p><emph>{{ tutorial.excerpt }}</emph></p>
             <hr/>
         {% endif %}
             <h2>{{ tutorial.title }}</h2>
@@ -54,7 +55,11 @@
         {% endif %}
 
         <hr />
-       <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width='true' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+        <div class='post-tutorial-social'>
+           <div class="fb-like" data-href="http://facebook.com/aishack" data-adapt-container-width='true' data-layout="standard" data-action="like" data-show-faces="true"></div> 
+           <hr/>
+            <div class="sharethis-inline-share-buttons"></div>
+        </div>
 
         {# related posts #}
         {% if related_tuts %}

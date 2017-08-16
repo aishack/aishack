@@ -52,9 +52,9 @@ def read_tutorial_file(slug):
     lines = fp.readlines()
     fp.close()
 
-    # If we reach here, we were successful in opening the file!
-    ret = {}
+    return parse_frontmatter_markdown(lines)
 
+def parse_frontmatter_markdown(lines):
     # Parse the front matter
     first = True
     second = False

@@ -582,6 +582,11 @@ img.math-false {
   padding: 1em;
   width: 40%; }
 
+@media screen and (max-width: 600px) {
+  .series-box-top {
+    visibility: hidden;
+    display: none; } }
+
 .category-list {
   clear: both; }
   .category-list ul li {
@@ -615,3 +620,70 @@ ul#id_models li {
 .navbar-nav li a {
   padding-top: 8px;
   padding-bottom: 8px; }
+
+/****************************/
+/*
+body {
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+// ----------------  THE FONTS
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: .5em;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+	font-size: .8rem;
+}*/
+.news-timeline-container {
+  max-width: 1024px;
+  width: 90%;
+  margin: 0 auto; }
+
+.timeline-item, .timeline-item-old {
+  padding: 3em 2em 2em;
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
+  border-left: 2px solid rgba(0, 0, 0, 0.3); }
+  .timeline-item h1, .timeline-item-old h1 {
+    margin-top: 0;
+    font-size: 1.5em; }
+  .timeline-item::before, .timeline-item-old::before {
+    content: attr(date-is);
+    position: absolute;
+    left: 1em;
+    font-weight: bold;
+    top: 0.5em;
+    display: block;
+    color: rgba(0, 0, 0, 0.5); }
+  .timeline-item::after, .timeline-item-old::after {
+    width: 10px;
+    height: 10px;
+    display: block;
+    top: 1em;
+    position: absolute;
+    left: -7px;
+    border-radius: 10px;
+    content: '';
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background: white; }
+  .timeline-item:last-child, .timeline-item-old:last-child {
+    border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, transparent) 1 100%; }
+
+.timeline-item-old {
+  padding: 0.5em 2em 1em; }
+  .timeline-item-old .date {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 75%; }
+
+.container emph {
+  font-weight: lighter;
+  font-size: 1.5em; }

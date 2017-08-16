@@ -19,6 +19,10 @@
         <link rel='image_src' href='http://aishack.in{{ meta_thumb }}' />
         <meta property='og:image:url' content='http://aishack.in{{ meta_thumb }}' />
 
+        {% if tutorial %}
+            <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5993cdcb770096001434eafb&product=inline-share-buttons' async='async'></script>
+        {% endif %}
+
         {% if show_sharing_buttons %}
             <script type="text/javascript">var switchTo5x=true;</script>
             <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

@@ -105,7 +105,9 @@ def tracks(request, slug=None):
         return redirect('/tutorials/')
 
     context = utils.get_global_context(request)
-    context.update({'current_page': 'track', 'show_sharing_buttons': True})
+    context.update({'current_page': 'track',
+                    'show_sharing_buttons': settings.SHOW_SHARING_BUTTONS,
+                    'show_sharing_buttons_inline': settings.SHOW_SHARING_BUTTONS_INLINE})
 
     # We do have a slug
     track = shortcuts.get_object_or_404(Track, slug=slug)
@@ -185,7 +187,8 @@ def tutorials(request, slug=None):
                         'category_slug': tutorial.category.slug,
                         'author_email_md5': md5(author.user.email).hexdigest(),
                         'aishackuser': author,
-                        'show_sharing_buttons': True})
+                        'show_sharing_buttons': settings.SHOW_SHARING_BUTTONS,
+                        'show_sharing_buttons_inline': settings.SHOW_SHARING_BUTTONS_INLINE})
 
         context.update({
             'meta_title': tutorial.title, 
@@ -352,7 +355,8 @@ def category(request, slug):
     context.update({'current_page': 'category',
                     'category': category,
                     'tutorials_to_display': tutorials_to_display,
-                    'show_sharing_buttons': True})
+                    'show_sharing_buttons': settings.SHOW_SHARING_BUTTONS,
+                    'show_sharing_buttons_inline': settings.SHOW_SHARING_BUTTONS_INLINE})
 
     return render(request, 'category.html', context)
 
@@ -615,3 +619,5 @@ class AishackSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.date
+
+

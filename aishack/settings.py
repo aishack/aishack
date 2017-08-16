@@ -20,6 +20,8 @@ SECRET_KEY = "thisisasecretkeyforyou"
 DEBUG = True
 ELASTICSEARCH_ADDR = '127.0.0.1'
 ELASTICSEARCH_PORT = 9200
+SHOW_SHARING_BUTTONS = False
+SHOW_SHARING_BUTTONS_INLINE = True
 
 if not DEBUG:
     assert(SECRET_KEY != "thisisasecretkeyforyou")
