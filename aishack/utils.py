@@ -26,9 +26,11 @@ def get_global_context(request):
             'knob_show_opencv_blueprints_banner_per_tutorial': knobs.show_opencv_blueprints_banner_per_tutorial,
             'knob_show_name_that_dataset': knobs.show_name_that_dataset,
             'knob_show_comments': knobs.show_comments,
+            'knob_show_contribute': knobs.show_contribute,
             'title_keywords': knobs.title_keywords,
             'meta_title': settings.SITE_TITLE, 
             'meta_description': knobs.title_keywords,
+            'knob_hide_sidebar': knobs.hide_sidebar,
             'meta_thumb': '/static/img/logo-footer-left.png',
             'mode_debug': settings.DEBUG,
         }

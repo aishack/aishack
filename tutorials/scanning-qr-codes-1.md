@@ -20,7 +20,8 @@ A QR code is made up of four main parts:
   3. Timing pattern: These are alternating black/white modules on the QR code. The idea is to help figure out the data grid accurately.
   4. The actual data: The blacks/whites form bits. Groups of 8 such modules makes one byte. You could combine 16 modules to get unicode data.
 
-![](/static/img/tut/qr-intro.jpg)
+![The key elements of a QR code](/static/img/tut/qr-intro.jpg)
+: The key elements of a QR code
 
 !!tut-success|A 'module' is one square on the QR code. So an alignment pattern is 5 modules wide - one module is black, one is white, next is black, then white and finally black.!!
 
@@ -28,7 +29,8 @@ A QR code is made up of four main parts:
 
 Detecting a QR code revolves around identifying finder patterns. The key idea is that there's a ratio in the number of black/white/black/white/black. And this ratio remains the same no matter what angle you look at it.
 
-![](/static/img/tut/qr-finder-pattern.jpg)
+![Anatomy of a QR code finder pattern](/static/img/tut/qr-finder-pattern.jpg)
+: Anatomy of a QR code finder pattern
 
 In the above picture, you'll see that each of the red lines has roughly the same ratio. It does not depend on the angle. Once you've 'identified' such a ratio, you need to confirm what you see is a finder pattern or not. You do this by checking along the horizontal and vertical axes. If it's the same ratio, you know you've found a finder pattern.
 

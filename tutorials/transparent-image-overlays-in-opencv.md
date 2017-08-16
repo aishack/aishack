@@ -21,9 +21,7 @@ Lets get to the code now. Create a new project. First, add the standard OpenCV h
     
     :::c++
     #include <cv.h>
-    
     #include <highgui.h>
-    
     #include "videoInput.h"
 
 Then, the main function:

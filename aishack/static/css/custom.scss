@@ -9,6 +9,10 @@ $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
+body {
+    font-family: "Avenir", "Avenir Next", "Helvetica Neue", "Segoe UI", "Verdana", sans-serif;
+}
+
 nav {
     .glyphicon-margin {
         margin-right: 0.5em;
@@ -16,9 +20,9 @@ nav {
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 1200px) {
+@media (min-width: 800px) {
   .container {
-    width: 1200px;
+    width: 800px;
   }
 }
 
@@ -60,7 +64,7 @@ figcaption {
   display: block;
   width: 80%;
   text-align: center;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 .tut-post-image {
@@ -398,6 +402,8 @@ body {
     padding-top: 1em;
     padding-bottom: 0.5em;
     text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
   }
 }
 
@@ -419,7 +425,7 @@ body {
     }
 
     .form-control:focus {
-        width: 300px;
+        width: 250px;
         background-color: rgba(255, 255, 255, 255);
     }
 }
@@ -928,4 +934,18 @@ $gray-color: rgba(0, 0, 0, 0.5);
         font-weight: lighter;
         font-size: 1.5em;
     }
+}
+
+.author-bio {
+    font-size: 1.25em;
+    font-weight: lighter;
+}
+
+.about-footer {
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+.popular-footer {
+    @extend .about-footer
 }

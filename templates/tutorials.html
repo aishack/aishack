@@ -95,8 +95,8 @@
 
         {# author bio #}
         <div class='well'>
-            <div class='col-sm-2'>{% if aishackuser.website %}<a href='{{ aishackuser.website }}' target='_blank'>{% endif %}<img class='img-circle' src='http://gravatar.com/avatar/{{ author_email_md5 }}?size=80px' />{% if aishackuser.website %} </a>{% endif %}</div>
-            <div class='col-sm-10'>{{ aishackuser.short_bio | safe }}</div>
+            <div class='col-sm-2'>{% if aishackuser.website %}<a href='{{ aishackuser.website }}' target='_blank'>{% endif %}<img class='img-circle' src='http://gravatar.com/avatar/{{ author_email_md5 }}?size=96px' />{% if aishackuser.website %} </a>{% endif %}</div>
+            <div class='col-sm-10 author-bio'>{{ aishackuser.short_bio | safe }}</div>
             <div class='clearfix'></div>
         </div>
 
