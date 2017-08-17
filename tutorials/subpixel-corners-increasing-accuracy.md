@@ -1,7 +1,7 @@
 ---
 title: "Subpixel Corners: Increasing accuracy"
 date: "2010-05-08 20:20:46"
-excerpt: ""
+excerpt: "A lot of computer vision algorithms use features as their backbone. But what exactly is a feature?"
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-subpixel-corners.jpg"

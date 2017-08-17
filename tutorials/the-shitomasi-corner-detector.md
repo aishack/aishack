@@ -1,7 +1,7 @@
 ---
 title: "The Shi-Tomasi Corner Detector"
 date: "2010-05-02 21:52:01"
-excerpt: ""
+excerpt: "A lot of computer vision algorithms use features as their backbone. But what exactly is a feature?"
 category: "Computer Vision"
 author: "sinha.utkarsh1990@gmail.com"
 post_image: "/static/img/tut/post-interesting-features.jpg"
