@@ -175,7 +175,7 @@ Here, we start looping through all pixels. We use the standard technique of havi
                 cv::Mat scaled = cv::Mat(3, 1, CV_64FC1, cv::Scalar(0));
                 scaled.at<double>(0) = color[0]/255.0f;
                 scaled.at<double>(1) = color[1]/255.0f;
-                scaled.at<double>(2) = color[1]/255.0f;
+                scaled.at<double>(2) = color[2]/255.0f;
 
                 mean = mean + scaled;
                 cov  = cov + (scaled * scaled.t())
