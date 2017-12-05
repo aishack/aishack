@@ -19,6 +19,9 @@
        <li {% ifequal current_page "home" %}class="active"{% endifequal %}><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
         <!--li {% ifequal current_page "starthere" %}class="active"{% endifequal %}><a class='nav-start-here' href="/start-here">Start here</a></li-->
         <li {% ifequal current_page "tutorials" %}class="active"{% endifequal %}><a href="/tutorials/"><span class="glyphicon glyphicon-th glyphicon-margin"></span>Tutorials</a></li>
+        {% if knob_show_entropy %}
+        <li {% ifequal current_page "news" %}class="active"{% endifequal %}><a href="/entropy/"><span class="glyphicon glyphicon-calendar glyphicon-margin"></span>Entropy</a></li>
+        {% endif %}
         {% if knob_enable_contribute %}
             <li {% ifequal current_page "contribute" %}class="active"{% endifequal %}><a href="/contribute/"><span class="glyphicon glyphicon-pencil glyphicon-margin"></span>Contribute</a></li>
         {% endif %}

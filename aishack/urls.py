@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 
 import settings
+import knobs
 
 # Custom modules
 from aishack import views
@@ -49,6 +50,12 @@ urlpatterns = [
     # Elasticsearch
     url(r'^search/?$', views.CustomSearchView.as_view(), name='search_view')
 ]
+
+if knobs.show_entropy:
+    urlpatterns += [
+        url(r'^entropy/$', views.entropy),
+        url(r'^entropy/(?P<date>[0-9]+)$', views.entropy),
+    ]
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + [url(r'^admin/', include(admin.site.urls))]

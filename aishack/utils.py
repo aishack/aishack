@@ -27,6 +27,7 @@ def get_global_context(request):
             'knob_show_name_that_dataset': knobs.show_name_that_dataset,
             'knob_show_comments': knobs.show_comments,
             'knob_show_contribute': knobs.show_contribute,
+            'knob_show_entropy': knobs.show_entropy,
             'title_keywords': knobs.title_keywords,
             'meta_title': settings.SITE_TITLE, 
             'meta_description': knobs.title_keywords,

@@ -575,6 +575,40 @@ def starthere(request):
     context.update({'current_page': 'start-here'})
     return render(request, 'start-here.html', context);
 
+def entropy(request, date=None):
+    context = utils.get_global_context(request)
+    context.update({'current_page': 'entropy'})
+
+    articles = []
+    news_articles = sorted([x for x in os.listdir(settings.ENTROPY_PATH_BASE) if x.endswith('.md')])
+
+    if date:
+        news_articles = [x for x in news_articles if date in x]
+        context.update({'contains_article': True})
+
+    for post in reversed(news_articles):
+        frontmatter, content = utils.parse_frontmatter_markdown(open('%s%s' % (settings.ENTROPY_PATH_BASE, post), 'r').readlines())
+
+        news_fulldate = post[post.find('-')+1:post.find('.')]
+        news_year = int(news_fulldate[0:4])
+        news_month = int(news_fulldate[4:6])
+        news_day = int(news_fulldate[6:])
+        news_datetime = datetime.datetime(year=news_year, month=news_month, day=news_day)
+        frontmatter['date'] = news_datetime.strftime('%b %d, %Y')
+        frontmatter['link'] = news_datetime.strftime('%Y%m%d')
+        articles.append(frontmatter)
+
+        if date:
+            context.update({'current_article': content})
+            context.update({'current_article_frontmatter': frontmatter})
+
+    article_count = len(articles)
+    context.update({'articles': articles[0:min(article_count, settings.ENTROPY_ARTICLE_COUNT)]})
+
+    if article_count > settings.ENTROPY_ARTICLE_COUNT:
+        context.update({'old_articles': articles[settings.ENTROPY_ARTICLE_COUNT:]})
+    return render(request, 'entropy.html', context)
+
 class CustomSearchView(SearchView):
     form_class = SearchForm
     def get_queryset(self):
