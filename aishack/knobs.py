@@ -6,7 +6,7 @@ show_comments = True
 hide_sidebar = True
 show_contribute = False
 
-title_keywords = "Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence."
+meta_description = "Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence."
 
 num_related = 4
 show_entropy = False
