@@ -48,7 +48,7 @@ Next, we try to get a hold of the image passed to our program through command li
 Now, you do the actual detection. If a code was actually found, draw it!
 
     :::c++
-        qrReader qr = qrReader();
+        qrReader reader = qrReader();
         bool found = reader.find(imgBW);
         if(found) {
             reader.drawFinders(img);
