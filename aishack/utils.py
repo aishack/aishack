@@ -7,6 +7,13 @@ from aishack.models import AishackUser, Tutorial, TutorialSeries
 from django.contrib.auth.models import User
 from aishack import settings
 
+# Custom processors for markdowns
+from aishack.extras.captions import FigcaptionExtension
+from aishack.extras.mdx_custom_span_class import CustomSpanClassExtension
+from aishack.extras.mdx_grid_table import GridTableExtension
+from aishack.extras.subscript import SubscriptExtension
+from aishack.extras.superscript import SuperscriptExtension
+
 cache_global_context = None
 
 def get_global_context(request):
@@ -141,7 +148,15 @@ def fetch_tutorials(num=None, want_series=True):
 
     return tutorials_to_display
 
-yoyo = None
 def fetch_popular_tutorials(num=None):
     tuts = list(Tutorial.objects.order_by('-read_count').values('series_id', 'title', 'slug')[0:num])
     return tuts
+
+def get_markdown_extensions():
+    return [SuperscriptExtension(), 
+            SubscriptExtension(), 
+            GridTableExtension(), 
+            CustomSpanClassExtension(), 
+            FigcaptionExtension(), 
+            'codehilite', 
+            'tables']
