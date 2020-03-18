@@ -13,6 +13,7 @@ from aishack.extras.mdx_custom_span_class import CustomSpanClassExtension
 from aishack.extras.mdx_grid_table import GridTableExtension
 from aishack.extras.subscript import SubscriptExtension
 from aishack.extras.superscript import SuperscriptExtension
+from aishack.extras.latex import MarkdownLatex
 
 cache_global_context = None
 
@@ -158,5 +159,6 @@ def get_markdown_extensions():
             GridTableExtension(), 
             CustomSpanClassExtension(), 
             FigcaptionExtension(), 
+            MarkdownLatex(),
             'codehilite', 
             'tables']
