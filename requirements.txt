@@ -58,10 +58,9 @@ six==1.7.3
 South==1.0
 Unidecode==0.4.18
 urllib3==1.9
-uWSGI==2.0.6
 verlib==0.1
 wheel==0.24.0
 MarkdownSuperscript==1.0.1
 MarkdownSubscript==1.0.1
 nltk==3.4.5
-sklearn==0.20.4
+scikit-learn==0.20.4
