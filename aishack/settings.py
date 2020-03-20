@@ -16,10 +16,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = "thisisasecretkeyforyou"
-DEBUG = True
+SECRET_KEY = "askjcma3ou4mdp3984dawpcuiexp0*&^BO*P#OB"
+DEBUG = False
 ELASTICSEARCH_ADDR = '127.0.0.1'
-ELASTICSEARCH_PORT = 9200
+ELASTICSEARCH_PORT = 9201
 ENTROPY_PATH_BASE = './entropy/'
 ENTROPY_ARTICLE_COUNT = 5
 SHOW_SHARING_BUTTONS = False
@@ -93,8 +93,7 @@ STATIC_URL = "/static/"
 if os.name == 'nt':
     STATIC_ROOT = 'c:/work/aishack/aishack/static/'
 else:
-    #STATIC_ROOT = '/work/aishack/aishack/static/'
-    STATIC_ROOT = '/Users/utkarsh/work/aishack/aishack/static/'
+    STATIC_ROOT = '/work/aishack/aishack/static/'
 
 STATICFILES_DIRS =(os.path.join(BASE_DIR, "static"),)
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
