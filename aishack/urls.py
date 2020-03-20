@@ -1,8 +1,9 @@
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 
-import settings
-import knobs
+#import settings
+#import knobs
+from aishack import settings, knobs
 
 # Custom modules
 from aishack import views

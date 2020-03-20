@@ -50,7 +50,7 @@ class Command(BaseCommand):
         # Now start going through the se!
         count = 1
         while len(unprocessed) > 0:
-            print 'Processing link %s/%s' % (count, len(unprocessed))
+            print('Processing link %s/%s' % (count, len(unprocessed)))
             current, origin = unprocessed.pop()
 
             processed.add(current)

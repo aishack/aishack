@@ -6,7 +6,7 @@
 import sys, os
 import markdown, re
 from datetime import datetime
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 # Django specific imports
 from django.core.management.base import BaseCommand, CommandError

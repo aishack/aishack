@@ -105,8 +105,7 @@ class Command(BaseCommand):
 
         counter += 1
         content_lines = ''.join(lines[counter+1:])
-        md = content_lines.decode('utf8')
-        html = markdown.markdown(md, extensions=get_markdown_extensions())
+        html = markdown.markdown(content_lines, extensions=get_markdown_extensions())
 
         return (frontmatter, html, md)
 
@@ -157,7 +156,7 @@ class Command(BaseCommand):
             raise CommandError("Please specify a tutorial.md file to ingest")
 
         for md in options['tut_md']:
-            print'\n\nProcessing: %s' % md
+            print('\n\nProcessing: %s' % md)
             # frontmatter is a dict, content is html
             frontmatter, content, content_md = self.read_tutorial_file(md)
 
@@ -184,13 +183,13 @@ class Command(BaseCommand):
             # Get this into the django model
             try:
                 category = Category.objects.get(title=frontmatter['category'])
-            except Category.DoesNotExist, e:
+            except Category.DoesNotExist as e:
                 raise CommandError("Category doesn't exist: %s" % frontmatter['category'])
 
             # Get the author
             try:
                 user = User.objects.get(email=frontmatter['author'])
-            except User.DoesNotExist, e:
+            except User.DoesNotExist as e:
                 raise CommandError('User does not exist: %s' % frontmatter['author'])
 
             slug = self.generate_slug(md)
@@ -214,7 +213,7 @@ class Command(BaseCommand):
                 tutorial.featured   = frontmatter['featured']
                 tutorial.series     = None
 
-            except Tutorial.DoesNotExist, e:
+            except Tutorial.DoesNotExist as e:
                 self.stdout.write('Tutorial does not exist - trying to create it')
                 # It doesn't exist yet - create the tutorial object
                 tutorial = Tutorial(title       = frontmatter['title'],
@@ -232,7 +231,7 @@ class Command(BaseCommand):
                 from django.conf import settings
                 fp = settings.STATIC_ROOT.replace(settings.STATIC_URL, '')
                 filepath = os.path.join(fp, frontmatter['post_image'][1:])
-                im = Image.open(filepath)
+                im = Image.open(filepath).convert(mode='RGB')
                 (width, height) = im.size
 
                 upper = 0
@@ -265,7 +264,7 @@ class Command(BaseCommand):
             if 'series' in frontmatter:
                 try:
                     series = TutorialSeries.objects.get(name=frontmatter['series'])
-                except TutorialSeries.DoesNotExist, e:
+                except TutorialSeries.DoesNotExist as e:
                     self.stdout.write('Series "%s" does not exist' % frontmatter['series'])
                     # Create a new tutorial series
                     series = TutorialSeries(name=frontmatter['series'])
@@ -282,7 +281,7 @@ class Command(BaseCommand):
             if 'track' in frontmatter:
                 try:
                     track = Track.objects.get(title=frontmatter['track'])
-                except Track.DoesNotExist, e:
+                except Track.DoesNotExist as e:
                     self.stdout.write('Track "%s" does not exist' % frontmatter['track'])
 
                     track = Track(title=frontmatter['track'])

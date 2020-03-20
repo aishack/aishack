@@ -93,7 +93,8 @@ STATIC_URL = "/static/"
 if os.name == 'nt':
     STATIC_ROOT = 'c:/work/aishack/aishack/static/'
 else:
-    STATIC_ROOT = '/work/aishack/aishack/static/'
+    #STATIC_ROOT = '/work/aishack/aishack/static/'
+    STATIC_ROOT = '/Users/utkarsh/work/aishack/aishack/static/'
 
 STATICFILES_DIRS =(os.path.join(BASE_DIR, "static"),)
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",

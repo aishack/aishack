@@ -62,8 +62,7 @@ class Command(BaseCommand):
 
         counter += 1
         content_lines = ''.join(lines[counter+1:])
-        md = content_lines.decode('utf8')
-        html = markdown.markdown(md, extensions=get_markdown_extensions())
+        html = markdown.markdown(content_lines, extensions=get_markdown_extensions())
 
         return (frontmatter, html, md)
 
@@ -107,7 +106,7 @@ class Command(BaseCommand):
             raise CommandError("Please specify a track.md file to ingest")
 
         for md in options['category']:
-            print'\n\nProcessing: %s' % md
+            print('\n\nProcessing: %s' % md)
             # frontmatter is a dict, content is html
             frontmatter, content, content_md = self.read_track_file(md)
 
@@ -133,7 +132,7 @@ class Command(BaseCommand):
                 category.order   = frontmatter['order']
                 category.hidden  = frontmatter['hidden']
 
-            except Category.DoesNotExist, e:
+            except Category.DoesNotExist as e:
                 self.stdout.write('Category does not exist - trying to create it')
                 # It doesn't exist yet - create the track object
                 category = Category(title  = frontmatter['title'],

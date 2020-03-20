@@ -56,8 +56,7 @@ class Command(BaseCommand):
 
         counter += 1
         content_lines = ''.join(lines[counter+1:])
-        md = content_lines.decode('utf8')
-        html = markdown.markdown(md, extensions=get_markdown_extensions())
+        html = markdown.markdown(content_lines, extensions=get_markdown_extensions())
 
         return (frontmatter, html, md)
 
@@ -101,7 +100,7 @@ class Command(BaseCommand):
             raise CommandError("Please specify a track.md file to ingest")
 
         for md in options['user']:
-            print'\n\nProcessing: %s' % md
+            print('\n\nProcessing: %s' % md)
             # frontmatter is a dict, content is html
             frontmatter, content, content_md = self.read_user_file(md)
 
@@ -129,7 +128,7 @@ class Command(BaseCommand):
                 user.save()
                 aiuser.save()
 
-            except User.DoesNotExist, e:
+            except User.DoesNotExist as e:
                 self.stdout.write('User does not exist - trying to create it')
                 # It doesn't exist yet - create the track object
                 username = self.generate_username(md)
@@ -146,7 +145,7 @@ class Command(BaseCommand):
                                      website = frontmatter['website'],
                                      bio = content)
                 aiuser.save()
-            except AishackUser.DoesNotExist, e:
+            except AishackUser.DoesNotExist as e:
                 aiuser = AishackUser(user = user,
                                      short_bio = frontmatter['short_bio'],
                                      website = frontmatter['website'],

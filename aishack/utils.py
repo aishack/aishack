@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import settings, knobs
+from aishack import settings, knobs
 
 import markdown, hashlib
 
@@ -48,7 +48,7 @@ def get_global_context(request):
 def get_aishack_user(user):
     try:
         aishack_user = AishackUser.objects.get(user=user)
-    except AishackUser.DoesNotExist, e:
+    except AishackUser.DoesNotExist as e:
         aishack_user = AishackUser(user=user)
         aishack_user.save()
     return aishack_user

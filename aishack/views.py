@@ -22,7 +22,7 @@ from aishack import knobs
 from haystack.generic_views import SearchView
 from haystack.forms import SearchForm
 
-import utils, settings
+from aishack import utils, settings
 
 ############### Global cached variables
 featured_tutorials = None
@@ -185,7 +185,7 @@ def tutorials(request, slug=None):
                         'page_title': page_title,
                         'author': author.user,
                         'category_slug': tutorial.category.slug,
-                        'author_email_md5': md5(author.user.email).hexdigest(),
+                        'author_email_md5': md5(author.user.email.encode('utf-8')).hexdigest(),
                         'aishackuser': author,
                         'show_sharing_buttons': settings.SHOW_SHARING_BUTTONS,
                         'show_sharing_buttons_inline': settings.SHOW_SHARING_BUTTONS_INLINE})
@@ -297,7 +297,7 @@ def profile(request, username=None):
                     'tutorials_written': tutorials_written,
                     'tutorials_written_count': len(tutorials_written),
                     'current_page': 'profile',
-                    'profile_email_md5': md5(user.user.email).hexdigest()})
+                    'profile_email_md5': md5(user.user.email.encode('utf-8')).hexdigest()})
 
     return render(request, 'profile.html', context)
 
