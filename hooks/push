@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+git pull
+python ./setup.py
+docker build -t aishack .
+pid=`docker ps | grep 8000 | awk '{print$1}'`
+docker stop $pid
+
