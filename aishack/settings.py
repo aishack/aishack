@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = "askjcma3ou4mdp3984dawpcuiexp0*&^BO*P#OB"
-DEBUG = False
+DEBUG = True
 ELASTICSEARCH_ADDR = '127.0.0.1'
 ELASTICSEARCH_PORT = 9201
 ENTROPY_PATH_BASE = './entropy/'
@@ -93,9 +93,10 @@ STATIC_URL = "/static/"
 if os.name == 'nt':
     STATIC_ROOT = 'c:/work/aishack/aishack/static/'
 else:
-    STATIC_ROOT = '/work/aishack/aishack/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, "aishack", "static", '')
+assert os.path.exists(STATIC_ROOT)
 
-STATICFILES_DIRS =(os.path.join(BASE_DIR, "static"),)
+#STATICFILES_DIRS =(os.path.join("aishack", "static"),)
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
                         "django.contrib.staticfiles.finders.AppDirectoriesFinder",
                         "compressor.finders.CompressorFinder",)

@@ -53,7 +53,7 @@ class Command(BaseCommand):
             raise CommandError("File doesn't exist: %s" % md)
 
         # Read in the contents of the file
-        with open(md, 'r', encoding='utf-8') as fp:
+        with open(md, 'r') as fp:
             lines = fp.readlines()
 
         # Parse the front matter
@@ -137,7 +137,7 @@ class Command(BaseCommand):
         # Remove stop words
         for word in stop_words:
             if word in parts:
-                parts = filter(lambda x: x!=word, parts)
+                parts = list(filter(lambda x: x!=word, parts))
 
         # Convert spaces into -
         ret = '-'.join(parts)
@@ -231,7 +231,8 @@ class Command(BaseCommand):
                 from django.conf import settings
                 fp = settings.STATIC_ROOT.replace(settings.STATIC_URL, '')
                 filepath = os.path.join(fp, frontmatter['post_image'][1:])
-                im = Image.open(filepath).convert(mode='RGB')
+                im = Image.open(filepath)
+                im = im.convert(mode='RGB')
                 (width, height) = im.size
 
                 upper = 0
@@ -253,7 +254,7 @@ class Command(BaseCommand):
 
                 parts = filepath.split('/')[-1].split('.')
                 small_filepath = '%s%s/%s' % (settings.STATIC_ROOT, 'thumb', '.'.join(parts))
-                thumb_big = thumb.resize( (200, 200), Image.BICUBIC )
+                thumb_big = thumb.resize( (200, 200), Image.BICUBIC ).convert(mode='RGB')
                 thumb_big.save(small_filepath)
                 tutorial.post_thumb = '%s%s' % (settings.STATIC_URL, small_filepath.split(settings.STATIC_URL)[1])
 

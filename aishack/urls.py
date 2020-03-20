@@ -60,4 +60,5 @@ if knobs.show_entropy:
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + [url(r'^admin/', include(admin.site.urls))]
-    urlpatterns = urlpatterns + static(settings.STATIC_URL)
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
