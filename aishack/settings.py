@@ -17,7 +17,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = "askjcma3ou4mdp3984dawpcuiexp0*&^BO*P#OB"
-DEBUG = False
+
+# If running locally, enable DEBUG mode.
+DEBUG = (len(sys.argv) > 1 and sys.argv[1] == 'runserver')
 ELASTICSEARCH_ADDR = '127.0.0.1'
 ELASTICSEARCH_PORT = 9201
 ENTROPY_PATH_BASE = './entropy/'
