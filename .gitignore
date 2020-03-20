@@ -20,3 +20,4 @@ askbot
 env/*
 aishack/setup.py
 envwin/
+markdown-latex/

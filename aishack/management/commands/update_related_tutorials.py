@@ -6,13 +6,14 @@
 import sys, os
 import markdown, re
 from datetime import datetime
+from BeautifulSoup import BeautifulSoup
 
 # Django specific imports
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
-
-from haystack.query import SearchQuerySet
-
+import nltk
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
 from aishack.models import Tutorial, Category
 
 class Command(BaseCommand):
@@ -24,26 +25,52 @@ class Command(BaseCommand):
             raise CommandError("No parameters are required for this command")
 
         tutorials = Tutorial.objects.all()
-        sqs = SearchQuerySet()
+
+        print('Precomputing features.')
+        nltk.download('punkt')
+        stemmer = nltk.stem.porter.PorterStemmer()
+        remove_punctuation_map = dict((ord(char), None) for char in "!\"#$%&'()*+, -./:;<=>?@[\]^_`{|}~")
+        
+        def stem_tokens(tokens):
+            return [stemmer.stem(item) for item in tokens]
+
+        def normalize(text):
+            return stem_tokens(nltk.word_tokenize(text.lower().translate(remove_punctuation_map)))
+
+        def extract_text(html):
+            soup = BeautifulSoup(html)
+            code = soup.findAll('div', {'class': 'codehilite'})
+            [x.extract() for x in soup.findAll('div', {'class': 'codehilite'})]
+            [x.extract() for x in soup.findAll('img',)]
+            word_list = soup.findAll(text=True)
+            return  ''.join(word_list)
+        vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
+        output = vectorizer.fit_transform([extract_text(x.content) for x in tutorials])
+        output = output * output.T
+        output = np.asarray(output.todense())
+        output = output - np.eye(output.shape[0])
+
 
         # loop over each tutorial
-        for tutorial in tutorials:
-            print 'Processing %s' % tutorial.title
-            related_tuts = sqs.more_like_this(tutorial).all()
-            num_related = related_tuts.count()
-            print '    %s related tutorials' % num_related
+        for idx, tutorial in enumerate(tutorials):
+            print('Working on: %s' % tutorial.title)
+            top_n = list(reversed(output[idx, :].argsort().tolist()))
+            if top_n[0] == idx:
+                top_n.pop(0)
 
-            index = 0
-            for rel in [x for x in related_tuts.all() if type(x.object) == Tutorial]:
-                if index > 20:
-                    # Only store the top 20 
+            tutorial.related.clear()
+            for n in top_n:
+                if output[idx, n] > 0:
+                    to_add = tutorials[n]
+                    if tutorials[n].series:
+                        to_add = tutorials[n].series.tutorials.first()
+                    if to_add not in tutorial.related.all():
+                        print('    related: %s' % to_add.title)
+                        tutorial.related.add(to_add)
+                    tutorial.save()
+                else:
                     break
 
-                if not rel or not rel.object:
-                    import pdb; pdb.set_trace()
+                if tutorial.related.count() >= 10:
                     break
-
-                tutorial.related.add(rel.object)
-                tutorial.save()
-
-                index = index + 1
+        print('Done.')
