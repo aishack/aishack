@@ -53,7 +53,7 @@ class Command(BaseCommand):
             raise CommandError("File doesn't exist: %s" % md)
 
         # Read in the contents of the file
-        with open(md, 'r') as fp:
+        with open(md, 'r', encoding='utf-8') as fp:
             lines = fp.readlines()
 
         # Parse the front matter
