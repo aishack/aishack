@@ -3,7 +3,7 @@
     {% ifequal current_page 'tutorials' %}
         <li><a href="/tutorials/">Tutorials</a></li>
         {% if tutorial.category %}
-            <li><a href='/category/{{category_slug}}/'>{{tutorial.category}}</a></li>
+            <li><a href='/category/{{category_slug}}/'>{{tutorial.category.title}}</a></li>
         {% endif %}
         {% if tutorial.slug %}
             {% if tutorial.series %}
