@@ -10,7 +10,7 @@
     <h2>Search</h2>
 
     <div class='search-page'>
-        <form class='form-inline form-search' role='form' method='get' action='/search/'>
+        <form class='form-inline form-search' method='get' action='/search/'>
             <div class='form-group has-feedback'>
                 <input placeholder='Search' type='text' {% if request.GET.q %}value='{{request.GET.q}}'{% endif %} class='form-control' name='q' id='q' />
                 <span class='glyphicon glyphicon-search form-control-feedback'></span>

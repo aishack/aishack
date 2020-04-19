@@ -9,7 +9,7 @@
         {% for tut in featured %}
             <div class='col-md-3'>
                 <div class='item {% if forloop.first %}active{% endif %}'>
-                    <a href='/tutorials/{{tut.slug}}'><img class='thumb pull-left' src='{{tut.post_thumb}}' alt='' /></a>
+                    <a href='/tutorials/{{tut.slug}}'><img class='thumb pull-left' src='{{tut.post_thumb}}' alt='{{tut.title}}' /></a>
                     <div class=''>
                         <a href='/tutorials/{{tut.slug}}'>
                             {% if tut.series %}
@@ -20,7 +20,7 @@
                         </a>
                         <p>{{ tut.excerpt }}</p>
                         <!--a href='/category/{{tut.category.slug}}/' class='tut-category'>{{tut.category.title}}</a-->
-                        <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
+                        <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' class='btn btn-default'>Read more</button></a>
                     </div>
                     <div class='clear-fix'></div>
                 </div>
@@ -35,10 +35,10 @@
 <div class='row recent'>
     {% for tut, series in recent_tutorials|slice:":4" %}
         <div class='col-md-3'>
-            <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_thumb}}" class='thumb pull-left'/></a>
+            <a href='/tutorials/{{tut.slug}}/'><img src="{{tut.post_thumb}}" class='thumb pull-left' alt='{{tut.title}}'/></a>
             <a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
             <p>{{tut.excerpt}}</p>
-            <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a>
+            <a class='read-more' href='/tutorials/{{tut.slug}}/'><button type='button' class='btn btn-default'>Read more</button></a>
             <div class='clearfix'></div>
         </div>
     {% endfor %}
@@ -49,8 +49,8 @@
     <div class='col-md-12'>
         {% for tut, series in recent_tutorials|slice:"4:" %}
             <div class='summary clearfix'>
-                <img src='{{tut.post_thumb}}' style='height: 80px' class='pull-left'/><a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
-                <a href='/tutorials/{{tut.slug}}/'><button type='button' role='button' class='btn btn-default pull-right'>Read more</button></a>
+                <img src='{{tut.post_thumb}}' style='height: 80px' class='pull-left' alt='{{tut.title}}'/><a href='/tutorials/{{tut.slug}}/'><h4>{% if series %} {{ series.name }} {% else %} {{ tut.title }} {% endif %}</h4></a>
+                <a href='/tutorials/{{tut.slug}}/'><button type='button' class='btn btn-default pull-right'>Read more</button></a>
                 <p>{{tut.excerpt}}</p>
             </div>
         {% endfor %}
