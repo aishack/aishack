@@ -647,6 +647,7 @@ class CustomSearchView(SearchView):
 class AishackSitemap(Sitemap):
     changefreq = 'daily'
     priority = 0.5
+    protocol = 'https'
 
     def items(self):
         return Tutorial.objects.all()
