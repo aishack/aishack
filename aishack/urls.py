@@ -1,4 +1,5 @@
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import path
 from django.conf.urls.static import static
 
 #import settings
@@ -10,7 +11,7 @@ from aishack import views
 
 # Enable admin mode
 from django.contrib import admin
-from django.contrib.auth.views import login, logout
+from django.contrib.auth import login, logout
 
 admin.autodiscover()
 
@@ -26,39 +27,39 @@ urlpatterns = [
     # url(r'^$', 'aishack.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', views.index),
-    url(r'^tutorials/$', views.tutorials),
-    url(r'^tutorials/(?P<slug>[a-zA-Z0-9-]+)/$', views.tutorials),
-    url(r'^category/(?P<slug>[a-zA-Z0-9-]+)/$', views.category),
-    url(r'^contribute/$', views.contribute),
-    url(r'^about/$', views.about),
-    url(r'^tracks/$', views.tracks),
-    url(r'^tracks/signup/$', views.track_signup),
-    url(r'^tracks/signup/(?P<slug>[a-zA-Z0-9-]+)/$', views.track_signup),
-    url(r'^tracks/(?P<slug>[a-zA-Z0-9-]+)/$', views.tracks),
-    url(r'^profile/$', views.profile),
-    url(r'^profile/edit/$', views.profile_edit),
-    url(r'^profile/(?P<username>[a-zA-Z0-9-]+)/$', views.profile),
-    url(r'^opencv-blueprints/$', views.opencvbook),
-    url(r'^vision-scrolls/$', views.visionscrolls),
-    url(r'^name-that-dataset/$', views.namethatdataset),
-    url(r'^name-that-dataset/quiz/?$', views.namethatdataset_quiz),
-    url(r'^google64c35c9422bb35a3.html', views.google_webmaster),
+    path(r'', views.index),
+    path(r'tutorials/', views.tutorials),
+    path(r'tutorials/<slug:slug>/', views.tutorials),
+    path(r'category/<slug:slug>/', views.category),
+    path(r'contribute/', views.contribute),
+    path(r'about/', views.about),
+    path(r'tracks/', views.tracks),
+    path(r'tracks/signup/', views.track_signup),
+    path(r'tracks/signup/<slug:slug>/', views.track_signup),
+    path(r'tracks/<slug:slug>/', views.tracks),
+    path(r'profile/', views.profile),
+    path(r'profile/edit/', views.profile_edit),
+    path(r'profile/<str:username>/', views.profile),
+    path(r'opencv-blueprints/', views.opencvbook),
+    path(r'vision-scrolls/', views.visionscrolls),
+    path(r'name-that-dataset/', views.namethatdataset),
+    path(r'name-that-dataset/quiz/?', views.namethatdataset_quiz),
+    path(r'google64c35c9422bb35a3.html', views.google_webmaster),
 
     # sitemap
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path(r'sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # Elasticsearch
-    url(r'^search/?$', views.CustomSearchView.as_view(), name='search_view')
+    path(r'search/?', views.CustomSearchView.as_view(), name='search_view')
 ]
 
 if knobs.show_entropy:
     urlpatterns += [
-        url(r'^entropy/$', views.entropy),
-        url(r'^entropy/(?P<date>[0-9]+)$', views.entropy),
+        url(r'entropy/', views.entropy),
+        url(r'entropy/<int:date>', views.entropy),
     ]
 
 if settings.DEBUG:
-    urlpatterns = urlpatterns + [url(r'^admin/', include(admin.site.urls))]
+    urlpatterns = urlpatterns + [path(r'admin/', admin.site.urls)]
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

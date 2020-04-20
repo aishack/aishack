@@ -11,16 +11,16 @@ class Tutorial(models.Model):
     content        = models.TextField()
     content_md     = models.TextField()
     date           = models.DateField()
-    category       = models.ForeignKey('Category')
+    category       = models.ForeignKey('Category', on_delete=models.CASCADE)
     slug           = models.CharField(max_length=128, unique=True)
     post_image     = models.ImageField(upload_to='static/img/tut/', max_length=256)
     post_thumb     = models.ImageField(upload_to='static/thumb/', max_length=256, null=True)
     excerpt        = models.CharField(max_length=512, blank=True)
-    author         = models.ForeignKey(User)
+    author         = models.ForeignKey(User, on_delete=models.CASCADE)
     related        = models.ManyToManyField('self', blank=True)
     featured       = models.BooleanField(default=False)
     read_count     = models.BigIntegerField(default=0)
-    series         = models.ForeignKey('TutorialSeries', default=None, blank=True, null=True)
+    series         = models.ForeignKey('TutorialSeries', default=None, blank=True, null=True, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return '/tutorials/%s/' % self.slug
@@ -47,8 +47,8 @@ class TutorialSeries(models.Model):
         return self.name
 
 class TutorialSeriesOrder(models.Model):
-    series   = models.ForeignKey('TutorialSeries')
-    tutorial = models.ForeignKey('Tutorial')
+    series   = models.ForeignKey('TutorialSeries', on_delete=models.CASCADE)
+    tutorial = models.ForeignKey('Tutorial', on_delete=models.CASCADE)
     order    = models.IntegerField(default=0)
 
     class Meta:
@@ -105,7 +105,7 @@ class AishackUser(models.Model):
     """
     Extending the base User class for more attributes
     """
-    user      = models.OneToOneField(User, primary_key=True)
+    user      = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     short_bio = models.CharField(max_length=256, blank=True)
     bio       = models.TextField(max_length=2048, blank=True)
     website   = models.URLField(blank=True)
@@ -126,8 +126,8 @@ class TutorialRead(models.Model):
     """
     This table holds information about what all tutorials a user has read
     """
-    user     = models.ForeignKey('AishackUser')
-    tutorial = models.ForeignKey('Tutorial')
+    user     = models.ForeignKey('AishackUser', on_delete=models.CASCADE)
+    tutorial = models.ForeignKey('Tutorial', on_delete=models.CASCADE)
     date     = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
@@ -137,14 +137,14 @@ class TrackTutorials(models.Model):
     """
     This table stores which tutorials belong to which tracks
     """
-    track    = models.ForeignKey("Track")
-    tutorial = models.ForeignKey("Tutorial")
+    track    = models.ForeignKey("Track", on_delete=models.CASCADE)
+    tutorial = models.ForeignKey("Tutorial", on_delete=models.CASCADE)
     order    = models.IntegerField(default=0)
 
 class UserTrack(models.Model):
     """
     This table holds which tracks a user has signed up for
     """
-    user        = models.ForeignKey('AishackUser')
-    track       = models.ForeignKey('Track')
+    user        = models.ForeignKey('AishackUser', on_delete=models.CASCADE)
+    track       = models.ForeignKey('Track', on_delete=models.CASCADE)
     signup_date = models.DateField(auto_now_add=True)

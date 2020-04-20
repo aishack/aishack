@@ -146,7 +146,7 @@ class Command(BaseCommand):
         ret = ret.replace('/', '-')
 
         # Return a value that works with just ascii
-        return ret.encode('ascii', 'ignore')
+        return ret
 
     def add_arguments(self, parser):
         parser.add_argument('tut_md', nargs='+', type=str)
