@@ -32,7 +32,7 @@ RUN cd /etc/nginx/sites-enabled && ln -s /etc/nginx/sites-available/aishack.conf
 
 # Run migrations
 COPY manage.py /work/aishack/
-RUN cd /work/aishack && python3 manage.py migrate
+RUN cd /work/aishack && python3 manage.py migrate --run-syncdb
 
 # Copy the custom Markdown extensions
 # TODO No pip packages exist for this. Fix this when they do!

@@ -50,7 +50,7 @@ urlpatterns = [
     path(r'sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # Elasticsearch
-    path(r'search/?', views.CustomSearchView.as_view(), name='search_view')
+    path(r'search/', views.CustomSearchView.as_view(), name='search_view')
 ]
 
 if knobs.show_entropy:
