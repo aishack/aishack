@@ -74,7 +74,7 @@ def track_signup(request, slug=None):
         # to sign up for
         return redirect('/tutorials/')
 
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return redirect('/tracks/%s/' % slug)
 
     # Fetch the track we're trying to sign up for
@@ -119,7 +119,7 @@ def tracks(request, slug=None):
     track_followed = False
     track_completed = False
     tuts_read = []
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         aishack_user = utils.get_aishack_user(request.user)
         tuts_read = aishack_user.tutorials_read.all()
         list_read = []
@@ -261,7 +261,7 @@ def login(request):
 def profile(request, username=None):
     if not username:
         # Try to fetch information about the current user
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return redirect('/')
 
         user = utils.get_aishack_user(request.user)
@@ -311,7 +311,7 @@ def profile_edit(request):
         raise Http404()
 
     # Confirm if the user is logged in
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         raise Http404()
 
     # Fetch the parameters
