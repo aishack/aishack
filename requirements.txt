@@ -47,7 +47,7 @@ python-modargs==1.7
 pytz==2013b0
 rcssmin==1.0.6
 redis==2.10.1
-requests==2.3.0
+requests==2.20.0
 rjsmin==1.1.0
 sanction==0.3.1
 scikit-learn==0.20.4
