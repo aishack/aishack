@@ -1,4 +1,6 @@
 FROM ubuntu:18.04
+ARG sha1=sha1
+ENV sha1=$sha1
 
 # Install dependencies
 RUN apt-get upgrade -y && apt-get update

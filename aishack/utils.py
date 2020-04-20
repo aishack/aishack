@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import os
 from aishack import settings, knobs
 
 import markdown, hashlib
@@ -41,6 +42,7 @@ def get_global_context(request):
             'knob_hide_sidebar': knobs.hide_sidebar,
             'meta_thumb': '/static/img/logo-footer-left.png',
             'mode_debug': settings.DEBUG,
+            'sha1': os.environ['sha1'] if 'sha1' in os.environ else None,
         }
     return ret
 

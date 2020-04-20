@@ -2,7 +2,9 @@
 
 git pull
 python3 ./setup.py
-docker build -t aishack .
+SHA1=`git rev-parse HEAD`
+export SHA1
+docker build --build-arg sha1=$SHA1 -t aishack .
 pid=`docker ps | grep 8000 | awk '{print$1}'`
 docker stop $pid
 
