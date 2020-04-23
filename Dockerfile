@@ -60,7 +60,7 @@ RUN cd /work/aishack/ && \
 
 RUN supervisord && sleep 20 && cd /work/aishack/ && python3 manage.py rebuild_index --noinput && python3 manage.py update_related_tutorials
 
-CMD supervisord -n
+CMD ["supervisord", "-n"]
 
 # Weather port
 EXPOSE 8000
