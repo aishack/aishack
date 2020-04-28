@@ -61,7 +61,8 @@ RUN supervisord && \
   python3 manage.py ingest_tutorial tutorials/*.md && \
   python3 manage.py ingest_tutorial tutorials/software/*.md \
   python3 manage.py rebuild_index && \
-  python3 manage.py update_related_tutorials
+  python3 manage.py update_related_tutorials && \
+  python3 manage.py update_index
 
 # Launch.
 CMD ["supervisord", "-n"]
