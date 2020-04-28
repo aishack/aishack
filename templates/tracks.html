@@ -11,12 +11,12 @@
         <div class='clearfix pull-right'>
         {% if track_followed %}
             {% if track_completed %}
-                <a href='/tracks/certificate/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-success'>Completed!</button></a>
+                <a href='/tracks/certificate/{{track.slug}}/' id='btn-signup' data-toggle='tooltip' class='btn btn-success'>Completed!</a>
             {% else %}
-                <a href='/tracks/withdraw/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-default'>Withdraw</button></a>
+                <a href='/tracks/withdraw/{{track.slug}}/' id='btn-signup' data-toggle='tooltip' class='btn btn-default'>Withdraw</a>
             {% endif %}
         {% else %}
-            <a href='/tracks/signup/{{track.slug}}/' id='btn-signup' data-toggle='tooltip'><button type='button' class='btn btn-primary'>Signup</button></a>
+            <a href='/tracks/signup/{{track.slug}}/' id='btn-signup' data-toggle='tooltip' class='btn btn-primary'>Signup</a>
         {% endif %}
         </div>-->
 
