@@ -11,8 +11,9 @@ var jsFiles = ['./aishack/static/js/jquery-1.11.1.min.js',
                './aishack/static/js/bootstrap-editable.min.js',
                './aishack/static/js/custom.js'];
 
+const sass = require('node-sass');
 module.exports = function(grunt) {
-
+  pkg: grunt.file.readJSON ('package.json'),
   grunt.initConfig({
     jshint: {
       files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
@@ -24,43 +25,44 @@ module.exports = function(grunt) {
     },
     sass: {
         options: {
-            sourceMap: false
+            implementation: sass,
+            sourceMap: false,
         },
         dist: {
-            files: scssFiles
+            files: scssFiles,
         }
     },
     cssmin: {
         options: {
             shorthandCompacting: false,
-            roundingPrecision: -1
+            roundingPrecision: -1,
         },
         target: {
             files: {
-                './aishack/static/css/styles.min.css': cssFiles
+                './aishack/static/css/styles.min.css': cssFiles,
             }
         }
     },
     uglify: {
         my_target: {
             files: {
-                './aishack/static/js/bundle.min.js': jsFiles
+                './aishack/static/js/bundle.min.js': jsFiles,
             }
         }
     },
     coffee: {
         compile: {
             files: {
-                './aishack/static/js/custom.js': coffeeFiles
+                './aishack/static/js/custom.js': coffeeFiles,
             }
         },
     },
     watch: {
       cssstuff: {
           files: ['./aishack/static/css/custom.scss'],
-          tasks: ['sass', 'cssmin']
+          tasks: ['sass', 'cssmin'],
       }
-    }
+    },
   });
 
   grunt.loadNpmTasks('grunt-sass');

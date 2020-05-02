@@ -572,6 +572,9 @@ table td {
 .btn-blueprints {
   margin-bottom: 1em; }
 
+.pull-right {
+  align: right; }
+
 .tutorial-content img {
   max-width: 100%; }
 
@@ -681,7 +684,7 @@ p {
     border: 2px solid rgba(0, 0, 0, 0.3);
     background: white; }
   .timeline-item:last-child, .timeline-item-old:last-child {
-    border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, transparent) 1 100%; }
+    border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0)) 1 100%; }
 
 .timeline-item-old {
   padding: 0.5em 2em 1em; }
