@@ -59,3 +59,4 @@ sqlparse==0.3.1
 Unidecode==0.4.18
 urllib3==1.24.2
 verlib==0.1
+uwsgi==2.0.18
