@@ -36,12 +36,23 @@ class Command(BaseCommand):
             return stem_tokens(nltk.word_tokenize(text.lower().translate(remove_punctuation_map)))
 
         def extract_text(html):
+            # https://stackoverflow.com/a/32238989
+            # BeautifulSoup4 for some reason hits brakes if after removing a tag
+            # two new-line characters are next to each other. To work around this,
+            # after removing a set of tags (like code), regenerate the HTML before
+            # beforing another tag (like img).
             soup = BeautifulSoup(html, 'html.parser')
-            code = soup.findAll('div', {'class': 'codehilite'})
-            [x.extract() for x in soup.findAll('div', {'class': 'codehilite'})]
-            [x.extract() for x in soup.findAll('img',)]
-            word_list = soup.findAll(text=True)
-            return  ''.join(word_list)
+            code = soup.find_all('div', {'class': 'codehilite'})
+            [x.decompose() for x in code]
+
+            soup = BeautifulSoup(soup.prettify(), 'html.parser')
+            [x.decompose() for x in soup.findAll('figure')]
+
+            soup = BeautifulSoup(soup.prettify(), 'html.parser')
+            [x.decompose() for x in soup.find_all('img')]
+
+            content = soup.get_text()
+            return content
 
         vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
         output = vectorizer.fit_transform([extract_text(x.content) for x in tutorials])
@@ -72,8 +83,12 @@ class Command(BaseCommand):
         return related_list
 
     def _compute_es_similarity(self, tutorial):
-        sqs = SearchQuerySet()
-        related_tuts = sqs.more_like_this(tutorial).all()
+        try:
+            sqs = SearchQuerySet()
+            related_tuts = sqs.more_like_this(tutorial).all()
+        except:
+            # If there were no results returned, return an empty list.
+            return []
         return [x.object for x in related_tuts.all() if type(x.object) == Tutorial]
 
     def handle(self, *args, **options):
@@ -84,20 +99,16 @@ class Command(BaseCommand):
         cached_computation = self._precompute_nltk_features(tutorials)
         for idx, tutorial in enumerate(tutorials):
             print('Processing %s' % tutorial.title)
-            try:
-                # Use elastic search's similarity score.
-                related_tutorials = self._compute_es_similarity(tutorial)
-            except:
-                print('Fetching related tutorials from elastic search failed.')
-                related_tutorials = []
+            # Use elastic search's similarity score.
+            related_tutorials = self._compute_es_similarity(tutorial)
 
             # If there are not enough related articles, try using NLTK.
-            if len(related_tutorials) < 4:
+            if len(related_tutorials) < 5:
                 related_tutorials += self._compute_nltk_similarity(cached_computation, tutorials, idx)
 
             # If the number of related tutorials is still less than 4
             # (required by the theme) add random tutorials
-            while len(related_tutorials) < 4:
+            while len(related_tutorials) < 5:
                 related_tutorials.append(random.choise(tutorial))
 
             tutorial.related.clear()
