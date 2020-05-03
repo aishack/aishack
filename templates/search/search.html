@@ -67,7 +67,11 @@
                 <div class='col-md-12'>
                     {% if result.object|is_tutorial %}
                         <img src='{{ result.object.post_thumb }}' class='pull-left search-thumbnail'/>
-                        <p><a href='{{ result.object.get_absolute_url }}'>{{ result.object.title }}</a></p>
+                        {% if result.object.series %}
+                            <p><a href='{{ result.object.get_absolute_url }}'>{{result.object.series.name}}: {{ result.object.title }}</a></p>
+                        {% else %}
+                            <p><a href='{{ result.object.get_absolute_url }}'>{{ result.object.title }}</a></p>
+                        {% endif %}
                         <p>{{ result.object.excerpt }}</p>
                         <!--a href='/tutorials/{{result.object.slug}}/'><button type='button' role='button' class='btn btn-default'>Read more</button></a-->
                     {% endif %}
