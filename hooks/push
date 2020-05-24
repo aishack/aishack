@@ -2,9 +2,7 @@
 
 git pull
 python3 ./setup.py
-#docker build --build-arg sha1=$SHA1 -t aishack .
-#pid=`docker ps | grep 8000 | awk '{print$1}'`
-#docker stop $pid
 source /work/aishack/env_prod/bin/activate
-source /work/aishack/configure.sh
+pip install -r requirements.txt
+python3 /work/aishack/manage.py schedule_update
 supervisorctl restart aishack:uwsgi
