@@ -23,7 +23,7 @@ docutils==0.12
 elasticsearch==2.0.0
 funcsigs==0.4
 html5lib==0.90
-httplib2==0.9.1
+httplib2==0.19.0
 idna==2.7
 importlib-metadata==1.6.0
 Jinja2==2.10.1
