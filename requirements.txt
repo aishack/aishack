@@ -7,7 +7,7 @@ celery==4.4.2
 certifi==2020.4.5.1
 chardet==2.3.0
 Coffin==0.3.8
-Django==3.0.3
+Django==3.1.6
 django-appconf==1.0.4
 django-avatar==2.1.1
 django-compressor==2.4
