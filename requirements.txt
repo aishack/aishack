@@ -33,7 +33,7 @@ lockfile==0.10.2
 Logbook==1.4.0
 longerusername==0.4
 Markdown==2.4.1
-markdown2==2.3.8
+markdown2==2.4.0
 MarkdownSubscript==1.0.1
 MarkdownSuperscript==1.0.1
 MarkupSafe==0.23
